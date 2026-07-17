@@ -15333,7 +15333,7 @@
           "memberships"
         ],
         "summary": "Create a membership",
-        "description": "Ensures an active membership for the given email will be provisioned.\n\n- If the user already exists, they will be added to the requestor's organization.\n- If it doesn't exist, a new user will be provisioned.\n\nThis request requires \"Manage Organization\" permissions.\n\nAPI access to this endpoint is supported via OAuth only.",
+        "description": "Ensures an active membership for the given email will be provisioned.\n\n- If the user already exists, they will be added to the requestor's organization.\n- If it doesn't exist, a new user will be provisioned.\n\nThis request requires \"Manage Organization\" permissions.\n\nAs a security precaution, this operation requires the organization to have the\n\"Restrict new users to emails from these domains\" setting enabled, and the new\nmember's email address must belong to one of its verified domains.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -15387,10 +15387,13 @@
             "description": "Successful response"
           },
           "400": {
-            "description": "Bad request"
+            "description": "Invalid membership data, including an email address that does not belong to one of the organization's verified domains."
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Membership creation is not permitted because the requestor cannot manage the organization, the verified domain restriction is disabled, or the requested role grants the `manage_organization` permission."
           },
           "404": {
             "description": "Not found"
@@ -28655,7 +28658,7 @@
           },
           "role_id": {
             "title": "Role ID",
-            "description": "One of `admin`, `superuser`, `user`, or `restricteduser` for the corresponding predefined role, or the ID of a custom [Role](https://developer.close.com/api/resources/roles).",
+            "description": "One of `superuser`, `user`, or `restricteduser` for the corresponding predefined role, or the ID of a custom [Role](https://developer.close.com/api/resources/roles). The role must not grant the `manage_organization` permission.",
             "type": "string",
             "minLength": 1
           }

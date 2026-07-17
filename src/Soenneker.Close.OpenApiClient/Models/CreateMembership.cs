@@ -20,7 +20,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string Email { get; set; }
 #endif
-        /// <summary>One of `admin`, `superuser`, `user`, or `restricteduser` for the corresponding predefined role, or the ID of a custom [Role](https://developer.close.com/api/resources/roles).</summary>
+        /// <summary>One of `superuser`, `user`, or `restricteduser` for the corresponding predefined role, or the ID of a custom [Role](https://developer.close.com/api/resources/roles). The role must not grant the `manage_organization` permission.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RoleId { get; set; }

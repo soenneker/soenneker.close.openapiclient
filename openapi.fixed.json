@@ -9704,7 +9704,7 @@
           "memberships"
         ],
         "summary": "Create a membership",
-        "description": "Ensures an active membership for the given email will be provisioned.\n\n- If the user already exists, they will be added to the requestor\u0027s organization.\n- If it doesn\u0027t exist, a new user will be provisioned.\n\nThis request requires \u0022Manage Organization\u0022 permissions.\n\nAPI access to this endpoint is supported via OAuth only.",
+        "description": "Ensures an active membership for the given email will be provisioned.\n\n- If the user already exists, they will be added to the requestor\u0027s organization.\n- If it doesn\u0027t exist, a new user will be provisioned.\n\nThis request requires \u0022Manage Organization\u0022 permissions.\n\nAs a security precaution, this operation requires the organization to have the\n\u0022Restrict new users to emails from these domains\u0022 setting enabled, and the new\nmember\u0027s email address must belong to one of its verified domains.",
         "operationId": "MembershipsCreate",
         "requestBody": {
           "content": {
@@ -17650,7 +17650,7 @@
             "title": "Role ID",
             "minLength": 1,
             "type": "string",
-            "description": "One of \u0060admin\u0060, \u0060superuser\u0060, \u0060user\u0060, or \u0060restricteduser\u0060 for the corresponding predefined role, or the ID of a custom [Role](https://developer.close.com/api/resources/roles)."
+            "description": "One of \u0060superuser\u0060, \u0060user\u0060, or \u0060restricteduser\u0060 for the corresponding predefined role, or the ID of a custom [Role](https://developer.close.com/api/resources/roles). The role must not grant the \u0060manage_organization\u0060 permission."
           }
         },
         "additionalProperties": false

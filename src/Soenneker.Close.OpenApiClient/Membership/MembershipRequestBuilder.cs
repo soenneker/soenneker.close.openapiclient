@@ -47,7 +47,7 @@ namespace Soenneker.Close.OpenApiClient.Membership
         {
         }
         /// <summary>
-        /// Ensures an active membership for the given email will be provisioned.- If the user already exists, they will be added to the requestor&apos;s organization.- If it doesn&apos;t exist, a new user will be provisioned.This request requires &quot;Manage Organization&quot; permissions.API access to this endpoint is supported via OAuth only.
+        /// Ensures an active membership for the given email will be provisioned.- If the user already exists, they will be added to the requestor&apos;s organization.- If it doesn&apos;t exist, a new user will be provisioned.This request requires &quot;Manage Organization&quot; permissions.As a security precaution, this operation requires the organization to have the&quot;Restrict new users to emails from these domains&quot; setting enabled, and the newmember&apos;s email address must belong to one of its verified domains.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson123"/></returns>
         /// <param name="body">The request body</param>
@@ -87,7 +87,7 @@ namespace Soenneker.Close.OpenApiClient.Membership
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson124>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson124.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Ensures an active membership for the given email will be provisioned.- If the user already exists, they will be added to the requestor&apos;s organization.- If it doesn&apos;t exist, a new user will be provisioned.This request requires &quot;Manage Organization&quot; permissions.API access to this endpoint is supported via OAuth only.
+        /// Ensures an active membership for the given email will be provisioned.- If the user already exists, they will be added to the requestor&apos;s organization.- If it doesn&apos;t exist, a new user will be provisioned.This request requires &quot;Manage Organization&quot; permissions.As a security precaution, this operation requires the organization to have the&quot;Restrict new users to emails from these domains&quot; setting enabled, and the newmember&apos;s email address must belong to one of its verified domains.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
