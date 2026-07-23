@@ -41,7 +41,7 @@ namespace Soenneker.Close.OpenApiClient.Phone_number
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Phone_numberRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/phone_number{?_fields*,_limit*,_skip*,is_group_number*,number*,user_id*}", pathParameters)
+        public Phone_numberRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/phone_number{?_fields*,_limit*,_skip*,is_group_number*,number*,participant_user_id*,user_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Soenneker.Close.OpenApiClient.Phone_number
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Phone_numberRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/phone_number{?_fields*,_limit*,_skip*,is_group_number*,number*,user_id*}", rawUrl)
+        public Phone_numberRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/phone_number{?_fields*,_limit*,_skip*,is_group_number*,number*,participant_user_id*,user_id*}", rawUrl)
         {
         }
         /// <summary>
@@ -114,6 +114,8 @@ namespace Soenneker.Close.OpenApiClient.Phone_number
             [QueryParameter("_fields")]
             public string Fields { get; set; }
 #endif
+            /// <summary>Deprecated. Use `participant_user_id` instead. The distinction between personal and group numbers is being removed, and `is_group_number` will be removed in a future update.</summary>
+            [Obsolete("")]
             [QueryParameter("is_group_number")]
             public bool? IsGroupNumber { get; set; }
             /// <summary>Number of results to return.</summary>
@@ -128,9 +130,21 @@ namespace Soenneker.Close.OpenApiClient.Phone_number
             [QueryParameter("number")]
             public string Number { get; set; }
 #endif
+            /// <summary>Return numbers the given user participates in, including both personal and group numbers they belong to.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("participant_user_id")]
+            public string? ParticipantUserId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("participant_user_id")]
+            public string ParticipantUserId { get; set; }
+#endif
             /// <summary>Number of results to skip before returning, for pagination.</summary>
             [QueryParameter("_skip")]
             public int? Skip { get; set; }
+            /// <summary>Deprecated. Use `participant_user_id` instead. The distinction between personal and group numbers is being removed, and `user_id` will be removed in a future update.</summary>
+            [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("user_id")]

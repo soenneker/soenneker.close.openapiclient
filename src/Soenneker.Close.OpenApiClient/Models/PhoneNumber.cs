@@ -86,7 +86,8 @@ namespace Soenneker.Close.OpenApiClient.Models
 #endif
         /// <summary>Number of seconds we ring this number on inbound calls before moving on (e.g. to voicemail). `null` means the default of 30 seconds is used.</summary>
         public int? InboundRingDuration { get; set; }
-        /// <summary>The is_group_number property</summary>
+        /// <summary>Deprecated. The distinction between personal and group numbers is being removed, and `is_group_number` will be removed in a future update.</summary>
+        [Obsolete("")]
         public bool? IsGroupNumber { get; set; }
         /// <summary>The is_premium property</summary>
         public bool? IsPremium { get; set; }
@@ -176,7 +177,8 @@ namespace Soenneker.Close.OpenApiClient.Models
 #endif
         /// <summary>The type property</summary>
         public global::Soenneker.Close.OpenApiClient.Models.PhoneNumberType? Type { get; set; }
-        /// <summary>The user_id property</summary>
+        /// <summary>Deprecated. Set to the sole member&apos;s user ID for single-member numbers, otherwise `null`. `user_id` will be removed in a future update.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserId { get; set; }

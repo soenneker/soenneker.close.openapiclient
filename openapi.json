@@ -17310,6 +17310,7 @@
             "in": "query",
             "name": "user_id",
             "required": false,
+            "description": "Deprecated. Use `participant_user_id` instead. The distinction between personal and group numbers is being removed, and `user_id` will be removed in a future update.",
             "schema": {
               "title": "User ID",
               "default": null,
@@ -17320,19 +17321,40 @@
                 {
                   "type": "null"
                 }
-              ]
+              ],
+              "deprecated": true
             }
           },
           {
             "in": "query",
             "name": "is_group_number",
             "required": false,
+            "description": "Deprecated. Use `participant_user_id` instead. The distinction between personal and group numbers is being removed, and `is_group_number` will be removed in a future update.",
             "schema": {
               "title": "Is Group Number",
               "default": null,
               "anyOf": [
                 {
                   "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "deprecated": true
+            }
+          },
+          {
+            "in": "query",
+            "name": "participant_user_id",
+            "required": false,
+            "description": "Return numbers the given user participates in, including both personal and group numbers they belong to.",
+            "schema": {
+              "title": "Participant User ID",
+              "default": null,
+              "anyOf": [
+                {
+                  "type": "string"
                 },
                 {
                   "type": "null"
@@ -17517,7 +17539,7 @@
           "phone_numbers"
         ],
         "summary": "Request an internal phone number",
-        "description": "Renting a phone number incurs a cost. You need the \"Manage Group Phone Numbers\" permission to rent group numbers.\n\nIf a number was rented, a 201 response is returned with the new number. If no number was rented (4xx response code), the response contains a `status` field which may contain one of the values below. New statuses may be added in the future.\n\n* `has-voice-only`: This country/prefix combination only has non-SMS-capable\n  numbers. You can attempt renting the number by passing `with_sms` as `false`.\n* `needs-more-info`: More information (such as proof of address) is needed to\n  rent this number. This number can only be rented by contacting Close support.\n* `billing-error`: An error related to billing has occurred. For example, the\n  telephony budget has been reached, or there are not enough funds and recharging failed.\n* `error`: An error has occurred while renting this number. A human-readable\n  message is returned in the `error` field.",
+        "description": "Renting a phone number incurs a cost. You need the \"Manage Team Phone Numbers\" permission to rent group numbers.\n\nIf a number was rented, a 201 response is returned with the new number. If no number was rented (4xx response code), the response contains a `status` field which may contain one of the values below. New statuses may be added in the future.\n\n* `has-voice-only`: This country/prefix combination only has non-SMS-capable\n  numbers. You can attempt renting the number by passing `with_sms` as `false`.\n* `needs-more-info`: More information (such as proof of address) is needed to\n  rent this number. This number can only be rented by contacting Close support.\n* `billing-error`: An error related to billing has occurred. For example, the\n  telephony budget has been reached, or there are not enough funds and recharging failed.\n* `error`: An error has occurred while renting this number. A human-readable\n  message is returned in the `error` field.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -17676,7 +17698,7 @@
           "phone_numbers"
         ],
         "summary": "Update a phone number",
-        "description": "You need the \"Manage Group Phone Numbers\" permission to update a group number. You can only update your own personal numbers.\n\nYou can:\n\n- Change a `label` of your number.\n- Set up call forwarding via `forward_to` and `forward_to_enabled`.\n- Set up a voicemail greeting by including a URL of an mp3 recording in `voicemail_greeting_url`. We require the URL to be secure (i.e. starting with https://).\n- Modify which team members are part of a group number via `participants`. This should be a list of user IDs.\n- Modify which external phone numbers are part of a group number via `phone_numbers`. This should be a list of phone numbers in E.164 international format, e.g. \"+16503334444\".\n- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via `inbound_ring_duration`.",
+        "description": "You need the \"Manage Team Phone Numbers\" permission to update a group number. You can only update your own personal numbers.\n\nYou can:\n\n- Change a `label` of your number.\n- Set up call forwarding via `forward_to` and `forward_to_enabled`.\n- Set up a voicemail greeting by including a URL of an mp3 recording in `voicemail_greeting_url`. We require the URL to be secure (i.e. starting with https://).\n- Modify which team members are part of a group number via `participants`. This should be a list of user IDs.\n- Modify which external phone numbers are part of a group number via `phone_numbers`. This should be a list of phone numbers in E.164 international format, e.g. \"+16503334444\".\n- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via `inbound_ring_duration`.",
         "parameters": [
           {
             "in": "path",
@@ -17769,7 +17791,7 @@
           "phone_numbers"
         ],
         "summary": "Delete a phone number",
-        "description": "You need the \"Manage Group Phone Numbers\" permission to delete a group number. You can only delete your own personal numbers.",
+        "description": "You need the \"Manage Team Phone Numbers\" permission to delete a group number. You can only delete your own personal numbers.",
         "parameters": [
           {
             "in": "path",
@@ -31841,6 +31863,8 @@
           },
           "is_group_number": {
             "title": "Is Group Number",
+            "description": "Deprecated. The distinction between personal and group numbers is being removed, and `is_group_number` will be removed in a future update.",
+            "deprecated": true,
             "type": "boolean"
           },
           "is_premium": {
@@ -31942,6 +31966,8 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "Deprecated. Set to the sole member's user ID for single-member numbers, otherwise `null`. `user_id` will be removed in a future update.",
+            "deprecated": true,
             "anyOf": [
               {
                 "type": "string"
