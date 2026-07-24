@@ -18894,6 +18894,9 @@
             "title": "Organization ID",
             "type": "string"
           },
+          "primary_address_full": {
+            "$ref": "#/components/schemas/LeadPrimaryAddressFull"
+          },
           "primary_address_summary": {
             "$ref": "#/components/schemas/LeadPrimaryAddressSummary"
           },
@@ -22983,6 +22986,11 @@
       },
       "LeadName": {
         "title": "Name",
+        "type": "string",
+        "nullable": true
+      },
+      "LeadPrimaryAddressFull": {
+        "title": "Primary Address Full",
         "type": "string",
         "nullable": true
       },

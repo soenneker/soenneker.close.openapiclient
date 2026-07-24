@@ -30781,6 +30781,17 @@
             "title": "Organization ID",
             "type": "string"
           },
+          "primary_address_full": {
+            "title": "Primary Address Full",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "primary_address_summary": {
             "title": "Primary Address Summary",
             "anyOf": [

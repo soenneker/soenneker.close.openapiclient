@@ -134,6 +134,14 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string OrganizationId { get; set; }
 #endif
+        /// <summary>The primary_address_full property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PrimaryAddressFull { get; set; }
+#nullable restore
+#else
+        public string PrimaryAddressFull { get; set; }
+#endif
         /// <summary>The primary_address_summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -272,6 +280,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "opportunities", n => { Opportunities = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.Opportunity>(global::Soenneker.Close.OpenApiClient.Models.Opportunity.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
+                { "primary_address_full", n => { PrimaryAddressFull = n.GetStringValue(); } },
                 { "primary_address_summary", n => { PrimaryAddressSummary = n.GetStringValue(); } },
                 { "primary_email", n => { PrimaryEmail = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryEmail>(global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryEmail.CreateFromDiscriminatorValue); } },
                 { "primary_phone", n => { PrimaryPhone = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryPhone>(global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryPhone.CreateFromDiscriminatorValue); } },
@@ -310,6 +319,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.Opportunity>("opportunities", Opportunities);
             writer.WriteStringValue("organization_id", OrganizationId);
+            writer.WriteStringValue("primary_address_full", PrimaryAddressFull);
             writer.WriteStringValue("primary_address_summary", PrimaryAddressSummary);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryEmail>("primary_email", PrimaryEmail);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryPhone>("primary_phone", PrimaryPhone);
