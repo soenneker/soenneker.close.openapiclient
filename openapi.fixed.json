@@ -17815,8 +17815,7 @@
       "CreatePhoneNumberRequest": {
         "title": "CreatePhoneNumberRequest",
         "required": [
-          "country",
-          "sharing"
+          "country"
         ],
         "type": "object",
         "properties": {
