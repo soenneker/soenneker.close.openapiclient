@@ -15339,7 +15339,7 @@
           "users"
         ],
         "summary": "List users in your organization",
-        "description": "List all the users who are members of the same organizations as you are.",
+        "description": "List all users who are members of your organization.",
         "operationId": "UsersList",
         "parameters": [
           {
