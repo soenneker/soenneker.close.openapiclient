@@ -62,6 +62,12 @@
       }
     },
     {
+      "name": "activities.import_updates",
+      "externalDocs": {
+        "url": "https://developer.close.com/api/resources/activities/import-updates"
+      }
+    },
+    {
       "name": "activities.lead_merges",
       "externalDocs": {
         "url": "https://developer.close.com/api/resources/activities/lead-merges"
@@ -779,6 +785,9 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -961,6 +970,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -1197,6 +1209,9 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -1207,6 +1222,7 @@
                   "data": [
                     {
                       "_type": "Created",
+                      "activity_at": "2015-10-27T03:55:41.251000+00:00",
                       "contact_id": null,
                       "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "created_by_name": "Bruce Wayne",
@@ -1225,6 +1241,24 @@
                     }
                   ],
                   "has_more": false
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/CreatedActivity"
+                      },
+                      "type": "array"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "has_more"
+                  ]
                 }
               }
             },
@@ -1257,6 +1291,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -1265,6 +1302,7 @@
               "application/json": {
                 "example": {
                   "_type": "Created",
+                  "activity_at": "2015-10-27T03:55:41.251000+00:00",
                   "contact_id": null,
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                   "created_by_name": "Bruce Wayne",
@@ -1280,6 +1318,9 @@
                   "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                   "user_name": "Bruce Wayne",
                   "users": []
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/CreatedActivity"
                 }
               }
             },
@@ -1381,6 +1422,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -1529,6 +1573,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -1732,6 +1779,9 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -2092,6 +2142,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -2393,6 +2446,9 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -2675,6 +2731,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -3272,6 +3331,201 @@
         }
       }
     },
+    "/activity/import_update/": {
+      "get": {
+        "operationId": "activities.import_updates_list",
+        "tags": [
+          "activities.import_updates"
+        ],
+        "summary": "List or filter all ImportUpdate activities",
+        "description": "Get a list of ImportUpdate activities, which record bulk import operations that modified existing leads. Each ImportUpdate is associated with a bulk import (`import_id`) and indicates whether the change has been reverted.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_IdInParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_LeadIdParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_ContactIdParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_UserIdParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_OrganizationIdParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_TypeParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_DateCreatedGteParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_DateCreatedLteParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_DateCreatedGtParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_DateCreatedLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_ActivityAtGteParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_ActivityAtLteParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_ActivityAtGtParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "data": [
+                    {
+                      "_type": "ImportUpdate",
+                      "activity_at": "2024-05-01T12:00:00.000000+00:00",
+                      "contact_id": null,
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_name": "Stefan W\u00f3jcik",
+                      "date_created": "2024-05-01T12:00:00.000000+00:00",
+                      "date_updated": "2024-05-01T12:00:00.000000+00:00",
+                      "id": "acti_AyXImportUpd4te0ExAmPLeAcTiViTyId00000000000",
+                      "import_id": "bulk_AyXImpOrtIdEx4mPlE000000000000000000000000",
+                      "lead_id": "lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "reverted": false,
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_name": "Stefan W\u00f3jcik",
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Stefan W\u00f3jcik",
+                      "users": []
+                    }
+                  ],
+                  "has_more": false
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/activity/import_update/{id}/": {
+      "get": {
+        "operationId": "activities.import_updates_get",
+        "tags": [
+          "activities.import_updates"
+        ],
+        "summary": "Get a single ImportUpdate activity",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "_type": "ImportUpdate",
+                  "activity_at": "2024-05-01T12:00:00.000000+00:00",
+                  "contact_id": null,
+                  "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "created_by_name": "Stefan W\u00f3jcik",
+                  "date_created": "2024-05-01T12:00:00.000000+00:00",
+                  "date_updated": "2024-05-01T12:00:00.000000+00:00",
+                  "id": "acti_AyXImportUpd4te0ExAmPLeAcTiViTyId00000000000",
+                  "import_id": "bulk_AyXImpOrtIdEx4mPlE000000000000000000000000",
+                  "lead_id": "lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h",
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "reverted": false,
+                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "updated_by_name": "Stefan W\u00f3jcik",
+                  "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "user_name": "Stefan W\u00f3jcik",
+                  "users": []
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "activities.import_updates_delete",
+        "tags": [
+          "activities.import_updates"
+        ],
+        "summary": "Delete an ImportUpdate activity",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
     "/activity/lead_merge/": {
       "get": {
         "operationId": "activities.lead_merges_list",
@@ -3327,6 +3581,9 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -3386,6 +3643,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -3887,6 +4147,9 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -4050,6 +4313,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -4267,6 +4533,9 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -4460,6 +4729,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -4697,6 +4969,9 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -4816,6 +5091,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -4961,6 +5239,9 @@
                 }
               ]
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -5097,6 +5378,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -5232,6 +5516,9 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -5289,6 +5576,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -5426,6 +5716,9 @@
                 }
               ]
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -5608,6 +5901,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -29560,6 +29856,181 @@
           "remote_phone"
         ],
         "additionalProperties": false
+      },
+      "CreatedActivity": {
+        "title": "CreatedActivity",
+        "type": "object",
+        "properties": {
+          "_type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "activity_at": {
+            "title": "Activity At",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "contact_id": {
+            "title": "Contact ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_by": {
+            "title": "Created By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_by_name": {
+            "title": "Created By Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time"
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "import_id": {
+            "title": "Import ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "lead_id": {
+            "title": "Lead ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "source": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CreationSource"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "updated_by": {
+            "title": "Updated By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "updated_by_name": {
+            "title": "Updated By Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_id": {
+            "title": "User ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_name": {
+            "title": "User Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "users": {
+            "title": "Users",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "_type",
+          "activity_at",
+          "contact_id",
+          "created_by",
+          "date_created",
+          "date_updated",
+          "id",
+          "import_id",
+          "lead_id",
+          "organization_id",
+          "source",
+          "updated_by",
+          "user_id",
+          "users"
+        ]
       },
       "CreationSource": {
         "title": "CreationSource",

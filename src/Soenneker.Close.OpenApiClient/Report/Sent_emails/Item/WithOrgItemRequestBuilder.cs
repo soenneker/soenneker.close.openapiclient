@@ -36,20 +36,20 @@ namespace Soenneker.Close.OpenApiClient.Report.Sent_emails.Item
         /// <summary>
         /// Get sent emails report
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson146"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson147"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson146?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Report.Sent_emails.Item.WithOrgItemRequestBuilder.WithOrgItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson147?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Report.Sent_emails.Item.WithOrgItemRequestBuilder.WithOrgItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson146> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Report.Sent_emails.Item.WithOrgItemRequestBuilder.WithOrgItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson147> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Report.Sent_emails.Item.WithOrgItemRequestBuilder.WithOrgItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson146>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson146.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson147>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson147.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get sent emails report

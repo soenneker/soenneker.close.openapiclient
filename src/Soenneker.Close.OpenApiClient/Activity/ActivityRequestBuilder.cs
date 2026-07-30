@@ -9,6 +9,7 @@ using Soenneker.Close.OpenApiClient.Activity.Custom;
 using Soenneker.Close.OpenApiClient.Activity.Email;
 using Soenneker.Close.OpenApiClient.Activity.Emailthread;
 using Soenneker.Close.OpenApiClient.Activity.Form_submission;
+using Soenneker.Close.OpenApiClient.Activity.Import_update;
 using Soenneker.Close.OpenApiClient.Activity.Lead_merge;
 using Soenneker.Close.OpenApiClient.Activity.Meeting;
 using Soenneker.Close.OpenApiClient.Activity.Note;
@@ -59,6 +60,11 @@ namespace Soenneker.Close.OpenApiClient.Activity
         public global::Soenneker.Close.OpenApiClient.Activity.Form_submission.Form_submissionRequestBuilder Form_submission
         {
             get => new global::Soenneker.Close.OpenApiClient.Activity.Form_submission.Form_submissionRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The import_update property</summary>
+        public global::Soenneker.Close.OpenApiClient.Activity.Import_update.Import_updateRequestBuilder Import_update
+        {
+            get => new global::Soenneker.Close.OpenApiClient.Activity.Import_update.Import_updateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The lead_merge property</summary>
         public global::Soenneker.Close.OpenApiClient.Activity.Lead_merge.Lead_mergeRequestBuilder Lead_merge

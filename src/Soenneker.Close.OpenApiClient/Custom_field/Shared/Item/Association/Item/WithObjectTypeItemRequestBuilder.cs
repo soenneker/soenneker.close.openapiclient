@@ -53,40 +53,40 @@ namespace Soenneker.Close.OpenApiClient.Custom_field.Shared.Item.Association.Ite
         /// <summary>
         /// Fetch a Shared Custom Field Association
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson82"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson83"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson82?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson83?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson82> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson83> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson82>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson82.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson83>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson83.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// You can change the `required` or the `editable_with_roles` attributes. Everything else cannot be changed.The `object_type` in the URL can be either:- `lead` when editing the association with the Lead object.- `contact` when editing the association with the Contact object.- `opportunity` when editing the association with the Opportunity object.- `custom_activity_type/&lt;catype_id&gt;` when editing the association with a specific  Custom Activity Type.- `custom_object_type/&lt;cotype_id&gt;` when editing the association with a specific  Custom Object Type.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson83"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson84"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson83?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedUpdateAssociationRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson84?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedUpdateAssociationRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson83> PutAsync(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedUpdateAssociationRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson84> PutAsync(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedUpdateAssociationRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson83>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson83.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson84>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson84.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Remove the association between a shared custom field and an object type. The field will immediately disappear from API responses for that object type and all stored values will be permanently deleted.The `object_type` in the URL can be `lead`, `contact`, `opportunity`, `custom_activity_type/&lt;catype_id&gt;`, or `custom_object_type/&lt;cotype_id&gt;`.If the field was `required` on the associated type, removing the association also removes that requirement.

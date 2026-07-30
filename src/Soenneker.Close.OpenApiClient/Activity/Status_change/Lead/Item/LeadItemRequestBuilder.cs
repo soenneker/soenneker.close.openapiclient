@@ -22,7 +22,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Status_change.Lead.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LeadItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/status_change/lead/{id}", pathParameters)
+        public LeadItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/status_change/lead/{id}{?_fields*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Status_change.Lead.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LeadItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/status_change/lead/{id}", rawUrl)
+        public LeadItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/status_change/lead/{id}{?_fields*}", rawUrl)
         {
         }
         /// <summary>
@@ -53,20 +53,20 @@ namespace Soenneker.Close.OpenApiClient.Activity.Status_change.Lead.Item
         /// <summary>
         /// Get a single LeadStatusChange activity
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson25"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson26"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson25?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson26?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Status_change.Lead.Item.LeadItemRequestBuilder.LeadItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson25> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson26> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Status_change.Lead.Item.LeadItemRequestBuilder.LeadItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson25>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson25.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson26>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson26.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Deleting a LeadStatusChange does not change the status of the Lead. It only removes the status change event from the Lead&apos;s activity feed.It should only be used if the status change is irrelevant (such as records for a change that has been reverted) and having it in the activity feed is causing integration problems with another system.
@@ -94,11 +94,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Status_change.Lead.Item
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Status_change.Lead.Item.LeadItemRequestBuilder.LeadItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Status_change.Lead.Item.LeadItemRequestBuilder.LeadItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -114,6 +114,23 @@ namespace Soenneker.Close.OpenApiClient.Activity.Status_change.Lead.Item
         public global::Soenneker.Close.OpenApiClient.Activity.Status_change.Lead.Item.LeadItemRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Close.OpenApiClient.Activity.Status_change.Lead.Item.LeadItemRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Get a single LeadStatusChange activity
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class LeadItemRequestBuilderGetQueryParameters 
+        {
+            /// <summary>Comma-separated list of fields to include in the response.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("_fields")]
+            public string? Fields { get; set; }
+#nullable restore
+#else
+            [QueryParameter("_fields")]
+            public string Fields { get; set; }
+#endif
         }
     }
 }

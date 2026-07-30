@@ -180,6 +180,9 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -328,6 +331,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -543,15 +549,42 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
           "200": {
-            "description": "Default",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson2"
+                  "$ref": "#/components/schemas/ActivitiesCreationsList200Response"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "_type": "Created",
+                      "activity_at": "2015-10-27T03:55:41.251000\u002B00:00",
+                      "contact_id": null,
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_name": "Bruce Wayne",
+                      "date_created": "2015-10-27T03:55:41.251000\u002B00:00",
+                      "date_updated": "2015-10-27T03:55:41.252000\u002B00:00",
+                      "id": "acti_Lx3fnL9Mq77beBRaMEQmk6rZqxUTVIIQ4MjFFGQ772y",
+                      "import_id": null,
+                      "lead_id": "lead_1aW9yllGxSZwPa3E8lf3IkBJpVHTjJUrsM2rX9n9nSX",
+                      "organization_id": "orga_Bkhj8tDhPUehdIKungGNdFKJL9e8qkj8kn00oMfxq8l",
+                      "source": "ui",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_name": "Bruce Wayne",
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Bruce Wayne",
+                      "users": []
+                    }
+                  ],
+                  "has_more": false
                 }
               }
             }
@@ -574,15 +607,37 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
           "200": {
-            "description": "Default",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson3"
+                  "$ref": "#/components/schemas/CreatedActivity"
+                },
+                "example": {
+                  "_type": "Created",
+                  "activity_at": "2015-10-27T03:55:41.251000\u002B00:00",
+                  "contact_id": null,
+                  "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "created_by_name": "Bruce Wayne",
+                  "date_created": "2015-10-27T03:55:41.251000\u002B00:00",
+                  "date_updated": "2015-10-27T03:55:41.252000\u002B00:00",
+                  "id": "acti_Lx3fnL9Mq77beBRaMEQmk6rZqxUTVIIQ4MjFFGQ772y",
+                  "import_id": null,
+                  "lead_id": "lead_1aW9yllGxSZwPa3E8lf3IkBJpVHTjJUrsM2rX9n9nSX",
+                  "organization_id": "orga_Bkhj8tDhPUehdIKungGNdFKJL9e8qkj8kn00oMfxq8l",
+                  "source": "ui",
+                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "updated_by_name": "Bruce Wayne",
+                  "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "user_name": "Bruce Wayne",
+                  "users": []
                 }
               }
             }
@@ -671,6 +726,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -679,7 +737,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson4"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson2"
                 }
               }
             }
@@ -715,7 +773,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson5"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson3"
                 }
               }
             }
@@ -738,6 +796,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -746,7 +807,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson6"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson4"
                 }
               }
             }
@@ -791,7 +852,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson7"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson5"
                 }
               }
             }
@@ -820,7 +881,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson8"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson6"
                 }
               }
             }
@@ -884,6 +945,9 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -1210,6 +1274,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -1426,7 +1493,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson9"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson7"
                 }
               }
             }
@@ -1490,6 +1557,9 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -1498,7 +1568,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson10"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson8"
                 }
               }
             }
@@ -1521,6 +1591,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -1529,7 +1602,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson11"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson9"
                 }
               }
             }
@@ -1559,7 +1632,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson12"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson10"
                 }
               }
             }
@@ -1820,7 +1893,145 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson11"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/activity/import_update": {
+      "get": {
+        "tags": [
+          "activities.import_updates"
+        ],
+        "summary": "List or filter all ImportUpdate activities",
+        "description": "Get a list of ImportUpdate activities, which record bulk import operations that modified existing leads. Each ImportUpdate is associated with a bulk import (\u0060import_id\u0060) and indicates whether the change has been reverted.",
+        "operationId": "ActivitiesImportUpdatesList",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_IdInParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_LeadIdParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_ContactIdParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_UserIdParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_OrganizationIdParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_TypeParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_DateCreatedGteParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_DateCreatedLteParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_DateCreatedGtParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_DateCreatedLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_ActivityAtGteParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_ActivityAtLteParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_ActivityAtGtParam"
+          },
+          {
+            "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson12"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/activity/import_update/{id}": {
+      "get": {
+        "tags": [
+          "activities.import_updates"
+        ],
+        "summary": "Get a single ImportUpdate activity",
+        "operationId": "ActivitiesImportUpdatesGet",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default",
+            "content": {
+              "application/json": {
+                "schema": {
                   "$ref": "#/components/schemas/DefaultResponseResponseJson13"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "activities.import_updates"
+        ],
+        "summary": "Delete an ImportUpdate activity",
+        "operationId": "ActivitiesImportUpdatesDelete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Default",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson14"
                 }
               }
             }
@@ -1883,6 +2094,9 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -1891,7 +2105,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson14"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson15"
                 }
               }
             }
@@ -1914,6 +2128,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -1922,7 +2139,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson15"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson16"
                 }
               }
             }
@@ -1996,7 +2213,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson16"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson17"
                 }
               }
             }
@@ -2031,7 +2248,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson17"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson18"
                 }
               }
             }
@@ -2071,7 +2288,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson18"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson19"
                 }
               }
             }
@@ -2100,7 +2317,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson19"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson20"
                 }
               }
             }
@@ -2142,7 +2359,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson20"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson21"
                 }
               }
             }
@@ -2205,6 +2422,9 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -2334,6 +2554,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -2466,7 +2689,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson21"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson22"
                 }
               }
             }
@@ -2530,6 +2753,9 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -2688,6 +2914,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -2841,7 +3070,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson22"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson23"
                 }
               }
             }
@@ -2904,6 +3133,9 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -2912,7 +3144,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson23"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson24"
                 }
               }
             }
@@ -2942,7 +3174,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson24"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson25"
                 }
               }
             }
@@ -2965,6 +3197,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -2973,7 +3208,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson25"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson26"
                 }
               }
             }
@@ -3003,7 +3238,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson26"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson27"
                 }
               }
             }
@@ -3076,6 +3311,9 @@
               "default": null,
               "nullable": true
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -3084,7 +3322,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson27"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson28"
                 }
               }
             }
@@ -3114,7 +3352,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson28"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson29"
                 }
               }
             }
@@ -3137,6 +3375,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -3145,7 +3386,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson29"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson30"
                 }
               }
             }
@@ -3175,7 +3416,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson30"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson31"
                 }
               }
             }
@@ -3238,6 +3479,9 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -3246,7 +3490,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson31"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson32"
                 }
               }
             }
@@ -3269,6 +3513,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -3277,7 +3524,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson32"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson33"
                 }
               }
             }
@@ -3306,7 +3553,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson33"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson34"
                 }
               }
             }
@@ -3380,6 +3627,9 @@
               "default": null,
               "nullable": true
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -3527,6 +3777,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "responses": {
@@ -3666,7 +3919,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson34"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson35"
                 }
               }
             }
@@ -3939,7 +4192,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson35"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson36"
                 }
               }
             }
@@ -4952,7 +5205,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson36"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson37"
                 }
               }
             }
@@ -4985,7 +5238,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson37"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson38"
                 }
               }
             }
@@ -5017,7 +5270,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson38"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson39"
                 }
               }
             }
@@ -5059,7 +5312,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson39"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson40"
                 }
               }
             }
@@ -5089,7 +5342,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson40"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson41"
                 }
               }
             }
@@ -5155,7 +5408,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson41"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson42"
                 }
               }
             }
@@ -5187,7 +5440,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson42"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson43"
                 }
               }
             }
@@ -5260,7 +5513,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson43"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson44"
                 }
               }
             }
@@ -5330,7 +5583,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson44"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson45"
                 }
               }
             }
@@ -5823,7 +6076,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson45"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson46"
                 }
               }
             }
@@ -5845,7 +6098,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson46"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson47"
                 }
               }
             }
@@ -5875,7 +6128,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson47"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson48"
                 }
               }
             }
@@ -5907,7 +6160,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson48"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson49"
                 }
               }
             }
@@ -5947,7 +6200,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson49"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson50"
                 }
               }
             }
@@ -5976,7 +6229,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson50"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson51"
                 }
               }
             }
@@ -6009,7 +6262,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson51"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson52"
                 }
               }
             }
@@ -6039,7 +6292,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson52"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson53"
                 }
               }
             }
@@ -6073,7 +6326,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson53"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson54"
                 }
               }
             }
@@ -6113,7 +6366,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson54"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson55"
                 }
               }
             }
@@ -6143,7 +6396,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson55"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson56"
                 }
               }
             }
@@ -6176,7 +6429,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson56"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson57"
                 }
               }
             }
@@ -6205,7 +6458,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson57"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson58"
                 }
               }
             }
@@ -6239,7 +6492,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson58"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson59"
                 }
               }
             }
@@ -6279,7 +6532,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson59"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson60"
                 }
               }
             }
@@ -6309,7 +6562,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson60"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson61"
                 }
               }
             }
@@ -6331,7 +6584,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson61"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson62"
                 }
               }
             }
@@ -6361,7 +6614,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson62"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson63"
                 }
               }
             }
@@ -6392,7 +6645,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson63"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson64"
                 }
               }
             }
@@ -6432,7 +6685,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson64"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson65"
                 }
               }
             }
@@ -6462,7 +6715,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson65"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson66"
                 }
               }
             }
@@ -6495,7 +6748,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson66"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson67"
                 }
               }
             }
@@ -6524,7 +6777,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson67"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson68"
                 }
               }
             }
@@ -6558,7 +6811,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson68"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson69"
                 }
               }
             }
@@ -6598,7 +6851,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson69"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson70"
                 }
               }
             }
@@ -6628,7 +6881,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson70"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson71"
                 }
               }
             }
@@ -6661,7 +6914,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson71"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson72"
                 }
               }
             }
@@ -6690,7 +6943,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson72"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson73"
                 }
               }
             }
@@ -6724,7 +6977,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson73"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson74"
                 }
               }
             }
@@ -6764,7 +7017,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson74"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson75"
                 }
               }
             }
@@ -6794,7 +7047,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson75"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson76"
                 }
               }
             }
@@ -6821,7 +7074,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson76"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson77"
                 }
               }
             }
@@ -6850,7 +7103,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson77"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson78"
                 }
               }
             }
@@ -6884,7 +7137,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson78"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson79"
                 }
               }
             }
@@ -6924,7 +7177,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson79"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson80"
                 }
               }
             }
@@ -6954,7 +7207,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson80"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson81"
                 }
               }
             }
@@ -6996,7 +7249,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson81"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson82"
                 }
               }
             }
@@ -7035,7 +7288,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson82"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson83"
                 }
               }
             }
@@ -7083,7 +7336,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson83"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson84"
                 }
               }
             }
@@ -7121,7 +7374,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson84"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson85"
                 }
               }
             }
@@ -7152,7 +7405,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson85"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson86"
                 }
               }
             }
@@ -7192,7 +7445,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson86"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson87"
                 }
               }
             }
@@ -7235,7 +7488,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson87"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson88"
                 }
               }
             }
@@ -7265,7 +7518,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson88"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson89"
                 }
               }
             }
@@ -7296,7 +7549,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson89"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson90"
                 }
               }
             }
@@ -7336,7 +7589,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson90"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson91"
                 }
               }
             }
@@ -7365,7 +7618,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson91"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson92"
                 }
               }
             }
@@ -7387,7 +7640,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson92"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson93"
                 }
               }
             }
@@ -7417,7 +7670,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson93"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson94"
                 }
               }
             }
@@ -7449,7 +7702,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson94"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson95"
                 }
               }
             }
@@ -7489,7 +7742,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson95"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson96"
                 }
               }
             }
@@ -7518,7 +7771,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson96"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson97"
                 }
               }
             }
@@ -7597,7 +7850,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson97"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson98"
                 }
               }
             }
@@ -7632,7 +7885,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson98"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson99"
                 }
               }
             }
@@ -7675,7 +7928,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson99"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson100"
                 }
               }
             }
@@ -7709,7 +7962,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson100"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson101"
                 }
               }
             }
@@ -7751,7 +8004,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson101"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson102"
                 }
               }
             }
@@ -7793,7 +8046,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson102"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson103"
                 }
               }
             }
@@ -7822,7 +8075,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson103"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson104"
                 }
               }
             }
@@ -7964,7 +8217,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson104"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson105"
                 }
               }
             }
@@ -8003,7 +8256,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson105"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson106"
                 }
               }
             }
@@ -8123,7 +8376,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson106"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson107"
                 }
               }
             }
@@ -8155,7 +8408,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson107"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson108"
                 }
               }
             }
@@ -8187,7 +8440,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson108"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson109"
                 }
               }
             }
@@ -8219,7 +8472,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson109"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson110"
                 }
               }
             }
@@ -8249,7 +8502,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson110"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson111"
                 }
               }
             }
@@ -8284,7 +8537,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson111"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson112"
                 }
               }
             }
@@ -8316,7 +8569,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson112"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson113"
                 }
               }
             }
@@ -8346,7 +8599,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson113"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson114"
                 }
               }
             }
@@ -8381,7 +8634,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson114"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson115"
                 }
               }
             }
@@ -8416,7 +8669,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson115"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson116"
                 }
               }
             }
@@ -8451,7 +8704,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson116"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson117"
                 }
               }
             }
@@ -8773,7 +9026,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson117"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson118"
                 }
               }
             }
@@ -8902,7 +9155,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson118"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson119"
                 }
               }
             }
@@ -9117,7 +9370,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson119"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson120"
                 }
               }
             }
@@ -9397,7 +9650,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson120"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson121"
                 }
               }
             }
@@ -9663,7 +9916,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson121"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson122"
                 }
               }
             }
@@ -9690,7 +9943,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson122"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson123"
                 }
               }
             }
@@ -9725,7 +9978,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson123"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson124"
                 }
               }
             }
@@ -9757,7 +10010,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson124"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson125"
                 }
               }
             }
@@ -9801,7 +10054,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson125"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson126"
                 }
               }
             }
@@ -9831,7 +10084,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson126"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson127"
                 }
               }
             }
@@ -9863,7 +10116,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson127"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson128"
                 }
               }
             }
@@ -9909,7 +10162,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson128"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson129"
                 }
               }
             }
@@ -10638,7 +10891,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson129"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson130"
                 }
               }
             }
@@ -10677,7 +10930,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson130"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson131"
                 }
               }
             }
@@ -10740,7 +10993,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson131"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson132"
                 }
               }
             }
@@ -10992,7 +11245,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson132"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson133"
                 }
               }
             }
@@ -11236,7 +11489,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson133"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson134"
                 }
               }
             }
@@ -11420,7 +11673,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson134"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson135"
                 }
               }
             }
@@ -11441,7 +11694,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson135"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson136"
                 }
               }
             }
@@ -11470,7 +11723,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson136"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson137"
                 }
               }
             }
@@ -11501,7 +11754,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson137"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson138"
                 }
               }
             }
@@ -11541,7 +11794,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson138"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson139"
                 }
               }
             }
@@ -11571,7 +11824,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson139"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson140"
                 }
               }
             }
@@ -11873,7 +12126,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson140"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson141"
                 }
               }
             }
@@ -12013,7 +12266,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson141"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson142"
                 }
               }
             }
@@ -12035,7 +12288,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson142"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson143"
                 }
               }
             }
@@ -12123,7 +12376,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson143"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson144"
                 }
               }
             }
@@ -12155,7 +12408,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson144"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson145"
                 }
               }
             }
@@ -12187,7 +12440,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson145"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson146"
                 }
               }
             }
@@ -12240,7 +12493,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson146"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson147"
                 }
               }
             }
@@ -12301,7 +12554,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson147"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson148"
                 }
               }
             }
@@ -12370,7 +12623,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson148"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson149"
                 }
               }
             }
@@ -12391,7 +12644,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson149"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson150"
                 }
               }
             }
@@ -12421,7 +12674,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson150"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson151"
                 }
               }
             }
@@ -12452,7 +12705,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson151"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson152"
                 }
               }
             }
@@ -12491,7 +12744,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson152"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson153"
                 }
               }
             }
@@ -12521,7 +12774,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson153"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson154"
                 }
               }
             }
@@ -12944,7 +13197,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson154"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson155"
                 }
               }
             }
@@ -12965,7 +13218,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson155"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson156"
                 }
               }
             }
@@ -12994,7 +13247,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson156"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson157"
                 }
               }
             }
@@ -13026,7 +13279,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson157"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson158"
                 }
               }
             }
@@ -13058,7 +13311,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson158"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson159"
                 }
               }
             }
@@ -13089,7 +13342,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson159"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson160"
                 }
               }
             }
@@ -13128,7 +13381,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson160"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson161"
                 }
               }
             }
@@ -13157,7 +13410,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson161"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson162"
                 }
               }
             }
@@ -13197,7 +13450,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson162"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson163"
                 }
               }
             }
@@ -13227,7 +13480,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson163"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson164"
                 }
               }
             }
@@ -13265,7 +13518,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson164"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson165"
                 }
               }
             }
@@ -13297,7 +13550,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson165"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson166"
                 }
               }
             }
@@ -13328,7 +13581,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson166"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson167"
                 }
               }
             }
@@ -13357,7 +13610,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson167"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson168"
                 }
               }
             }
@@ -13386,7 +13639,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson168"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson169"
                 }
               }
             }
@@ -13415,7 +13668,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson169"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson170"
                 }
               }
             }
@@ -13452,7 +13705,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson170"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson171"
                 }
               }
             }
@@ -13492,7 +13745,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson171"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson172"
                 }
               }
             }
@@ -13521,7 +13774,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson172"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson173"
                 }
               }
             }
@@ -13575,7 +13828,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson173"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson174"
                 }
               }
             }
@@ -13604,7 +13857,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson174"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson175"
                 }
               }
             }
@@ -13635,7 +13888,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson175"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson176"
                 }
               }
             }
@@ -13674,7 +13927,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson176"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson177"
                 }
               }
             }
@@ -13704,7 +13957,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson177"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson178"
                 }
               }
             }
@@ -13725,7 +13978,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson178"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson179"
                 }
               }
             }
@@ -13754,7 +14007,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson179"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson180"
                 }
               }
             }
@@ -13785,7 +14038,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson180"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson181"
                 }
               }
             }
@@ -13824,7 +14077,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson181"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson182"
                 }
               }
             }
@@ -13853,7 +14106,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson182"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson183"
                 }
               }
             }
@@ -13907,7 +14160,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson183"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson184"
                 }
               }
             }
@@ -13938,7 +14191,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson184"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson185"
                 }
               }
             }
@@ -13967,7 +14220,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson185"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson186"
                 }
               }
             }
@@ -14000,7 +14253,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson186"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson187"
                 }
               }
             }
@@ -14051,7 +14304,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson187"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson188"
                 }
               }
             }
@@ -14092,7 +14345,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson188"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson189"
                 }
               }
             }
@@ -14121,7 +14374,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson189"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson190"
                 }
               }
             }
@@ -14142,7 +14395,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson190"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson191"
                 }
               }
             }
@@ -14171,7 +14424,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson191"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson192"
                 }
               }
             }
@@ -14202,7 +14455,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson192"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson193"
                 }
               }
             }
@@ -14242,7 +14495,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson193"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson194"
                 }
               }
             }
@@ -14272,7 +14525,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson194"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson195"
                 }
               }
             }
@@ -14298,7 +14551,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson195"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson196"
                 }
               }
             }
@@ -14333,7 +14586,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson196"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson197"
                 }
               }
             }
@@ -14367,7 +14620,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson197"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson198"
                 }
               }
             }
@@ -14409,7 +14662,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson198"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson199"
                 }
               }
             }
@@ -14439,7 +14692,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson199"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson200"
                 }
               }
             }
@@ -14755,7 +15008,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson200"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson201"
                 }
               }
             }
@@ -14812,7 +15065,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson201"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson202"
                 }
               }
             }
@@ -15132,7 +15385,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson202"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson203"
                 }
               }
             }
@@ -15166,7 +15419,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson203"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson204"
                 }
               }
             }
@@ -15211,7 +15464,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson204"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson205"
                 }
               }
             }
@@ -15240,7 +15493,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson205"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson206"
                 }
               }
             }
@@ -15262,7 +15515,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson206"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson207"
                 }
               }
             }
@@ -15294,7 +15547,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson207"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson208"
                 }
               }
             }
@@ -15325,7 +15578,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson208"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson209"
                 }
               }
             }
@@ -15362,7 +15615,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson209"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson210"
                 }
               }
             }
@@ -15394,7 +15647,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson210"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson211"
                 }
               }
             }
@@ -15438,7 +15691,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson211"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson212"
                 }
               }
             }
@@ -15460,7 +15713,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson212"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson213"
                 }
               }
             }
@@ -15543,7 +15796,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson213"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson214"
                 }
               }
             }
@@ -15575,7 +15828,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson214"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson215"
                 }
               }
             }
@@ -15616,7 +15869,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson215"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson216"
                 }
               }
             }
@@ -15645,7 +15898,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson216"
+                  "$ref": "#/components/schemas/DefaultResponseResponseJson217"
                 }
               }
             }
@@ -18151,6 +18404,90 @@
           }
         },
         "additionalProperties": false
+      },
+      "CreatedActivity": {
+        "title": "CreatedActivity",
+        "required": [
+          "_type",
+          "activity_at",
+          "contact_id",
+          "created_by",
+          "date_created",
+          "date_updated",
+          "id",
+          "import_id",
+          "lead_id",
+          "organization_id",
+          "source",
+          "updated_by",
+          "user_id",
+          "users"
+        ],
+        "type": "object",
+        "properties": {
+          "_type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "activity_at": {
+            "$ref": "#/components/schemas/CreatedActivityActivityAt"
+          },
+          "contact_id": {
+            "$ref": "#/components/schemas/CreatedActivityContactId"
+          },
+          "created_by": {
+            "$ref": "#/components/schemas/CreatedActivityCreatedBy"
+          },
+          "created_by_name": {
+            "$ref": "#/components/schemas/CreatedActivityCreatedByName"
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time"
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "import_id": {
+            "$ref": "#/components/schemas/CreatedActivityImportId"
+          },
+          "lead_id": {
+            "$ref": "#/components/schemas/CreatedActivityLeadId"
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "source": {
+            "$ref": "#/components/schemas/CreatedActivitySource"
+          },
+          "updated_by": {
+            "$ref": "#/components/schemas/CreatedActivityUpdatedBy"
+          },
+          "updated_by_name": {
+            "$ref": "#/components/schemas/CreatedActivityUpdatedByName"
+          },
+          "user_id": {
+            "$ref": "#/components/schemas/CreatedActivityUserId"
+          },
+          "user_name": {
+            "$ref": "#/components/schemas/CreatedActivityUserName"
+          },
+          "users": {
+            "title": "Users",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
       },
       "CreationSource": {
         "title": "CreationSource",
@@ -22569,6 +22906,69 @@
         "type": "string",
         "nullable": true
       },
+      "CreatedActivityActivityAt": {
+        "title": "Activity At",
+        "type": "string",
+        "format": "date-time",
+        "nullable": true
+      },
+      "CreatedActivityContactId": {
+        "title": "Contact ID",
+        "type": "string",
+        "nullable": true
+      },
+      "CreatedActivityCreatedBy": {
+        "title": "Created By",
+        "type": "string",
+        "nullable": true
+      },
+      "CreatedActivityCreatedByName": {
+        "title": "Created By Name",
+        "type": "string",
+        "default": null,
+        "nullable": true
+      },
+      "CreatedActivityImportId": {
+        "title": "Import ID",
+        "type": "string",
+        "nullable": true
+      },
+      "CreatedActivityLeadId": {
+        "title": "Lead ID",
+        "type": "string",
+        "nullable": true
+      },
+      "CreatedActivitySource": {
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/CreationSourceWrapper"
+          }
+        ],
+        "nullable": true
+      },
+      "CreatedActivityUpdatedBy": {
+        "title": "Updated By",
+        "type": "string",
+        "nullable": true
+      },
+      "CreatedActivityUpdatedByName": {
+        "title": "Updated By Name",
+        "type": "string",
+        "default": null,
+        "nullable": true
+      },
+      "CreatedActivityUserId": {
+        "title": "User ID",
+        "type": "string",
+        "nullable": true
+      },
+      "CreatedActivityUserName": {
+        "title": "User Name",
+        "type": "string",
+        "default": null,
+        "nullable": true
+      },
       "EmailActivityActivityAt": {
         "title": "Activity At",
         "type": "string",
@@ -24440,6 +24840,17 @@
           }
         }
       },
+      "CreationSourceWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/CreationSource"
+          }
+        }
+      },
       "CommunicationDirectionWrapper": {
         "required": [
           "value"
@@ -24549,6 +24960,24 @@
         "type": "object",
         "description": "Default response schema"
       },
+      "ActivitiesCreationsList200Response": {
+        "required": [
+          "data",
+          "has_more"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreatedActivity"
+            }
+          },
+          "has_more": {
+            "type": "boolean"
+          }
+        }
+      },
       "DefaultResponseResponseJson2": {
         "title": "DefaultResponse",
         "type": "object",
@@ -24574,16 +25003,6 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "DefaultResponseResponseJson7": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "DefaultResponseResponseJson8": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
       "ActivitiesEmailsList200Response": {
         "required": [
           "data",
@@ -24602,22 +25021,22 @@
           }
         }
       },
+      "DefaultResponseResponseJson7": {
+        "title": "DefaultResponse",
+        "type": "object",
+        "description": "Default response schema"
+      },
+      "DefaultResponseResponseJson8": {
+        "title": "DefaultResponse",
+        "type": "object",
+        "description": "Default response schema"
+      },
       "DefaultResponseResponseJson9": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
       "DefaultResponseResponseJson10": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "DefaultResponseResponseJson11": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "DefaultResponseResponseJson12": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -24639,6 +25058,16 @@
             "type": "boolean"
           }
         }
+      },
+      "DefaultResponseResponseJson11": {
+        "title": "DefaultResponse",
+        "type": "object",
+        "description": "Default response schema"
+      },
+      "DefaultResponseResponseJson12": {
+        "title": "DefaultResponse",
+        "type": "object",
+        "description": "Default response schema"
       },
       "DefaultResponseResponseJson13": {
         "title": "DefaultResponse",
@@ -24665,15 +25094,20 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "ActivitiesMeetingsUpdateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson18": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
+      "ActivitiesMeetingsUpdateRequest": {
+        "type": "object"
+      },
       "DefaultResponseResponseJson19": {
+        "title": "DefaultResponse",
+        "type": "object",
+        "description": "Default response schema"
+      },
+      "DefaultResponseResponseJson20": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -24681,7 +25115,7 @@
       "ActivitiesMeetingsCreateIntegrationRequest": {
         "type": "object"
       },
-      "DefaultResponseResponseJson20": {
+      "DefaultResponseResponseJson21": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -24704,7 +25138,7 @@
           }
         }
       },
-      "DefaultResponseResponseJson21": {
+      "DefaultResponseResponseJson22": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -24727,23 +25161,18 @@
           }
         }
       },
-      "DefaultResponseResponseJson22": {
+      "DefaultResponseResponseJson23": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "DefaultResponseResponseJson23": {
+      "DefaultResponseResponseJson24": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
       "ActivitiesLeadStatusChangesCreateRequest": {
         "type": "object"
-      },
-      "DefaultResponseResponseJson24": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
       },
       "DefaultResponseResponseJson25": {
         "title": "DefaultResponse",
@@ -24760,13 +25189,13 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "ActivitiesOpportunityStatusChangesCreateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson28": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "ActivitiesOpportunityStatusChangesCreateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson29": {
         "title": "DefaultResponse",
@@ -24793,6 +25222,11 @@
         "type": "object",
         "description": "Default response schema"
       },
+      "DefaultResponseResponseJson34": {
+        "title": "DefaultResponse",
+        "type": "object",
+        "description": "Default response schema"
+      },
       "ActivitiesWhatsappMessagesList200Response": {
         "required": [
           "data",
@@ -24811,7 +25245,7 @@
           }
         }
       },
-      "DefaultResponseResponseJson34": {
+      "DefaultResponseResponseJson35": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -24834,7 +25268,7 @@
           }
         }
       },
-      "DefaultResponseResponseJson35": {
+      "DefaultResponseResponseJson36": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -24923,11 +25357,6 @@
       "BulkActionsSequenceSubscriptionsCreateRequest": {
         "type": "object"
       },
-      "DefaultResponseResponseJson36": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
       "DefaultResponseResponseJson37": {
         "title": "DefaultResponse",
         "type": "object",
@@ -24968,6 +25397,11 @@
         "type": "object",
         "description": "Default response schema"
       },
+      "DefaultResponseResponseJson45": {
+        "title": "DefaultResponse",
+        "type": "object",
+        "description": "Default response schema"
+      },
       "ContactsList200Response": {
         "required": [
           "data",
@@ -24986,12 +25420,12 @@
           }
         }
       },
-      "DefaultResponseResponseJson45": {
+      "DefaultResponseResponseJson46": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "DefaultResponseResponseJson46": {
+      "DefaultResponseResponseJson47": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -24999,23 +25433,18 @@
       "CustomActivityTypesCreateRequest": {
         "type": "object"
       },
-      "DefaultResponseResponseJson47": {
+      "DefaultResponseResponseJson48": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "DefaultResponseResponseJson48": {
+      "DefaultResponseResponseJson49": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
       "CustomActivityTypesUpdateRequest": {
         "type": "object"
-      },
-      "DefaultResponseResponseJson49": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
       },
       "DefaultResponseResponseJson50": {
         "title": "DefaultResponse",
@@ -25027,26 +25456,26 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "CustomFieldsActivityCreateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson52": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "CustomFieldsActivityCreateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson53": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "CustomFieldsActivityUpdateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson54": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "CustomFieldsActivityUpdateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson55": {
         "title": "DefaultResponse",
@@ -25058,26 +25487,26 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "CustomFieldsContactCreateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson57": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "CustomFieldsContactCreateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson58": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "CustomFieldsContactUpdateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson59": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "CustomFieldsContactUpdateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson60": {
         "title": "DefaultResponse",
@@ -25089,26 +25518,26 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "CustomFieldsCustomObjectCreateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson62": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "CustomFieldsCustomObjectCreateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson63": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "CustomFieldsCustomObjectUpdateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson64": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "CustomFieldsCustomObjectUpdateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson65": {
         "title": "DefaultResponse",
@@ -25120,26 +25549,26 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "CustomFieldsLeadCreateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson67": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "CustomFieldsLeadCreateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson68": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "CustomFieldsLeadUpdateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson69": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "CustomFieldsLeadUpdateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson70": {
         "title": "DefaultResponse",
@@ -25151,26 +25580,26 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "CustomFieldsOpportunityCreateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson72": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "CustomFieldsOpportunityCreateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson73": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "CustomFieldsOpportunityUpdateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson74": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "CustomFieldsOpportunityUpdateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson75": {
         "title": "DefaultResponse",
@@ -25182,15 +25611,20 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "CustomFieldsSharedCreateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson77": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
+      "CustomFieldsSharedCreateRequest": {
+        "type": "object"
+      },
       "DefaultResponseResponseJson78": {
+        "title": "DefaultResponse",
+        "type": "object",
+        "description": "Default response schema"
+      },
+      "DefaultResponseResponseJson79": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -25198,12 +25632,12 @@
       "CustomFieldsSharedUpdateRequest": {
         "type": "object"
       },
-      "DefaultResponseResponseJson79": {
+      "DefaultResponseResponseJson80": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "DefaultResponseResponseJson80": {
+      "DefaultResponseResponseJson81": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -25211,23 +25645,18 @@
       "CustomFieldsSharedCreateAssociationRequest": {
         "type": "object"
       },
-      "DefaultResponseResponseJson81": {
+      "DefaultResponseResponseJson82": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "DefaultResponseResponseJson82": {
+      "DefaultResponseResponseJson83": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
       "CustomFieldsSharedUpdateAssociationRequest": {
         "type": "object"
-      },
-      "DefaultResponseResponseJson83": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
       },
       "DefaultResponseResponseJson84": {
         "title": "DefaultResponse",
@@ -25239,15 +25668,20 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "CustomFieldSchemasUpdateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson86": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
+      "CustomFieldSchemasUpdateRequest": {
+        "type": "object"
+      },
       "DefaultResponseResponseJson87": {
+        "title": "DefaultResponse",
+        "type": "object",
+        "description": "Default response schema"
+      },
+      "DefaultResponseResponseJson88": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -25255,23 +25689,18 @@
       "CustomObjectsCreateRequest": {
         "type": "object"
       },
-      "DefaultResponseResponseJson88": {
+      "DefaultResponseResponseJson89": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "DefaultResponseResponseJson89": {
+      "DefaultResponseResponseJson90": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
       "CustomObjectsUpdateRequest": {
         "type": "object"
-      },
-      "DefaultResponseResponseJson90": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
       },
       "DefaultResponseResponseJson91": {
         "title": "DefaultResponse",
@@ -25283,26 +25712,26 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "CustomObjectTypesCreateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson93": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "CustomObjectTypesCreateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson94": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "CustomObjectTypesUpdateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson95": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "CustomObjectTypesUpdateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson96": {
         "title": "DefaultResponse",
@@ -25324,26 +25753,26 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "EmailTemplatesCreateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson100": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "EmailTemplatesCreateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson101": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "EmailTemplatesUpdateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson102": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "EmailTemplatesUpdateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson103": {
         "title": "DefaultResponse",
@@ -25380,13 +25809,13 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "ExportsCreateLeadRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson110": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "ExportsCreateLeadRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson111": {
         "title": "DefaultResponse",
@@ -25398,13 +25827,13 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "ExportsCreateOpportunityRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson113": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "ExportsCreateOpportunityRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson114": {
         "title": "DefaultResponse",
@@ -25417,6 +25846,11 @@
         "description": "Default response schema"
       },
       "DefaultResponseResponseJson116": {
+        "title": "DefaultResponse",
+        "type": "object",
+        "description": "Default response schema"
+      },
+      "DefaultResponseResponseJson117": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -25457,12 +25891,12 @@
           }
         }
       },
-      "DefaultResponseResponseJson117": {
+      "DefaultResponseResponseJson118": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "DefaultResponseResponseJson118": {
+      "DefaultResponseResponseJson119": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -25485,7 +25919,7 @@
           }
         }
       },
-      "DefaultResponseResponseJson119": {
+      "DefaultResponseResponseJson120": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -25514,18 +25948,13 @@
       "LeadsMergeRequest": {
         "type": "object"
       },
-      "DefaultResponseResponseJson120": {
+      "DefaultResponseResponseJson121": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
       "LeadsUpdateRequest": {
         "type": "object"
-      },
-      "DefaultResponseResponseJson121": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
       },
       "DefaultResponseResponseJson122": {
         "title": "DefaultResponse",
@@ -25562,6 +25991,11 @@
         "type": "object",
         "description": "Default response schema"
       },
+      "DefaultResponseResponseJson129": {
+        "title": "DefaultResponse",
+        "type": "object",
+        "description": "Default response schema"
+      },
       "OpportunitiesList200Response": {
         "required": [
           "data",
@@ -25580,17 +26014,17 @@
           }
         }
       },
-      "DefaultResponseResponseJson129": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
       "DefaultResponseResponseJson130": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
       "DefaultResponseResponseJson131": {
+        "title": "DefaultResponse",
+        "type": "object",
+        "description": "Default response schema"
+      },
+      "DefaultResponseResponseJson132": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -25613,7 +26047,7 @@
           }
         }
       },
-      "DefaultResponseResponseJson132": {
+      "DefaultResponseResponseJson133": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -25636,11 +26070,6 @@
           }
         }
       },
-      "DefaultResponseResponseJson133": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
       "DefaultResponseResponseJson134": {
         "title": "DefaultResponse",
         "type": "object",
@@ -25651,15 +26080,20 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "PipelinesCreateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson136": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
+      "PipelinesCreateRequest": {
+        "type": "object"
+      },
       "DefaultResponseResponseJson137": {
+        "title": "DefaultResponse",
+        "type": "object",
+        "description": "Default response schema"
+      },
+      "DefaultResponseResponseJson138": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -25667,12 +26101,12 @@
       "PipelinesUpdateRequest": {
         "type": "object"
       },
-      "DefaultResponseResponseJson138": {
+      "DefaultResponseResponseJson139": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "DefaultResponseResponseJson139": {
+      "DefaultResponseResponseJson140": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -25695,18 +26129,13 @@
           }
         }
       },
-      "DefaultResponseResponseJson140": {
+      "DefaultResponseResponseJson141": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
       "ReportingGetActivityRequest": {
         "type": "object"
-      },
-      "DefaultResponseResponseJson141": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
       },
       "DefaultResponseResponseJson142": {
         "title": "DefaultResponse",
@@ -25718,21 +26147,21 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "ReportingGetFunnelStagesRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson144": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "ReportingGetFunnelTotalsRequest": {
+      "ReportingGetFunnelStagesRequest": {
         "type": "object"
       },
       "DefaultResponseResponseJson145": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "ReportingGetFunnelTotalsRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson146": {
         "title": "DefaultResponse",
@@ -25754,15 +26183,20 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "RolesCreateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson150": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
+      "RolesCreateRequest": {
+        "type": "object"
+      },
       "DefaultResponseResponseJson151": {
+        "title": "DefaultResponse",
+        "type": "object",
+        "description": "Default response schema"
+      },
+      "DefaultResponseResponseJson152": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -25770,12 +26204,12 @@
       "RolesUpdateRequest": {
         "type": "object"
       },
-      "DefaultResponseResponseJson152": {
+      "DefaultResponseResponseJson153": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "DefaultResponseResponseJson153": {
+      "DefaultResponseResponseJson154": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -25801,12 +26235,12 @@
       "SmartViewsUpdateRequest": {
         "type": "object"
       },
-      "DefaultResponseResponseJson154": {
+      "DefaultResponseResponseJson155": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "DefaultResponseResponseJson155": {
+      "DefaultResponseResponseJson156": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -25814,18 +26248,13 @@
       "SchedulingLinksCreateRequest": {
         "type": "object"
       },
-      "DefaultResponseResponseJson156": {
+      "DefaultResponseResponseJson157": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
       "SchedulingLinksCreateIntegrationRequest": {
         "type": "object"
-      },
-      "DefaultResponseResponseJson157": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
       },
       "DefaultResponseResponseJson158": {
         "title": "DefaultResponse",
@@ -25837,13 +26266,13 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "SchedulingLinksUpdateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson160": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "SchedulingLinksUpdateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson161": {
         "title": "DefaultResponse",
@@ -25855,26 +26284,26 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "SendAsCreateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson163": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "SendAsCreateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson164": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "SendAsBulkCreateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson165": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "SendAsBulkCreateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson166": {
         "title": "DefaultResponse",
@@ -25891,26 +26320,26 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "SequencesCreateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson169": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "SequencesCreateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson170": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "SequencesUpdateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson171": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "SequencesUpdateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson172": {
         "title": "DefaultResponse",
@@ -25922,26 +26351,26 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "SequencesCreateSubscriptionRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson174": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "SequencesCreateSubscriptionRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson175": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "SequencesUpdateSubscriptionRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson176": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "SequencesUpdateSubscriptionRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson177": {
         "title": "DefaultResponse",
@@ -25953,26 +26382,26 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "SchedulingLinksCreateSharedRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson179": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "SchedulingLinksCreateSharedRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson180": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "SchedulingLinksUpdateSharedRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson181": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "SchedulingLinksUpdateSharedRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson182": {
         "title": "DefaultResponse",
@@ -25984,13 +26413,13 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "SchedulingLinksDeleteSharedAssociationRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson184": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "SchedulingLinksDeleteSharedAssociationRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson185": {
         "title": "DefaultResponse",
@@ -26022,26 +26451,26 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "LeadStatusesCreateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson191": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "LeadStatusesCreateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson192": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "LeadStatusesUpdateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson193": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "LeadStatusesUpdateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson194": {
         "title": "DefaultResponse",
@@ -26053,26 +26482,26 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "OpportunityStatusesCreateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson196": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "OpportunityStatusesCreateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson197": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "OpportunityStatusesUpdateRequest": {
-        "type": "object"
-      },
       "DefaultResponseResponseJson198": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
+      },
+      "OpportunityStatusesUpdateRequest": {
+        "type": "object"
       },
       "DefaultResponseResponseJson199": {
         "title": "DefaultResponse",
@@ -26160,6 +26589,11 @@
         "description": "Default response schema"
       },
       "DefaultResponseResponseJson216": {
+        "title": "DefaultResponse",
+        "type": "object",
+        "description": "Default response schema"
+      },
+      "DefaultResponseResponseJson217": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
@@ -27602,6 +28036,12 @@
       "name": "activities.form_submissions",
       "externalDocs": {
         "url": "https://developer.close.com/api/resources/activities/form-submissions"
+      }
+    },
+    {
+      "name": "activities.import_updates",
+      "externalDocs": {
+        "url": "https://developer.close.com/api/resources/activities/import-updates"
       }
     },
     {

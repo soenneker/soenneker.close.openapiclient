@@ -36,20 +36,20 @@ namespace Soenneker.Close.OpenApiClient.Me
         /// <summary>
         /// A special instance of the Users endpoint for the current user. Useful for determining your own `id` and `organization_id`.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson122"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson123"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson122?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Me.MeRequestBuilder.MeRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson123?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Me.MeRequestBuilder.MeRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson122> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Me.MeRequestBuilder.MeRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson123> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Me.MeRequestBuilder.MeRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson122>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson122.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson123>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson123.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// A special instance of the Users endpoint for the current user. Useful for determining your own `id` and `organization_id`.
