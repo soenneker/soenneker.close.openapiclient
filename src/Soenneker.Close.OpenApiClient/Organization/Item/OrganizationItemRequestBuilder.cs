@@ -36,40 +36,40 @@ namespace Soenneker.Close.OpenApiClient.Organization.Item
         /// <summary>
         /// By default, `memberships` and `inactive_memberships` are populated with user data prefixed with `user_`. If you&apos;d rather have a nested `user` field, use a query string like `?_expand=memberships__user,inactive_memberships__user`.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson131"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson127"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson131?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Organization.Item.OrganizationItemRequestBuilder.OrganizationItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson127?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Organization.Item.OrganizationItemRequestBuilder.OrganizationItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson131> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Organization.Item.OrganizationItemRequestBuilder.OrganizationItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson127> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Organization.Item.OrganizationItemRequestBuilder.OrganizationItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson131>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson131.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson127>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson127.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Update an organization
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson132"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson128"/></returns>
         /// <param name="body">Editable organization settings.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson132?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.Organization body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Organization.Item.OrganizationItemRequestBuilder.OrganizationItemRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson128?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.Organization body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Organization.Item.OrganizationItemRequestBuilder.OrganizationItemRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson132> PutAsync(global::Soenneker.Close.OpenApiClient.Models.Organization body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Organization.Item.OrganizationItemRequestBuilder.OrganizationItemRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson128> PutAsync(global::Soenneker.Close.OpenApiClient.Models.Organization body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Organization.Item.OrganizationItemRequestBuilder.OrganizationItemRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson132>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson132.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson128>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson128.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// By default, `memberships` and `inactive_memberships` are populated with user data prefixed with `user_`. If you&apos;d rather have a nested `user` field, use a query string like `?_expand=memberships__user,inactive_memberships__user`.

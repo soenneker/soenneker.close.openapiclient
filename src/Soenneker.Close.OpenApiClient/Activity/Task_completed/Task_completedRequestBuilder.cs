@@ -49,20 +49,20 @@ namespace Soenneker.Close.OpenApiClient.Activity.Task_completed
         /// <summary>
         /// List or filter all TaskCompleted activities
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson32"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesTaskCompletionsList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson32?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Task_completed.Task_completedRequestBuilder.Task_completedRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivitiesTaskCompletionsList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Task_completed.Task_completedRequestBuilder.Task_completedRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson32> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Task_completed.Task_completedRequestBuilder.Task_completedRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivitiesTaskCompletionsList200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Task_completed.Task_completedRequestBuilder.Task_completedRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson32>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson32.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesTaskCompletionsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesTaskCompletionsList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List or filter all TaskCompleted activities

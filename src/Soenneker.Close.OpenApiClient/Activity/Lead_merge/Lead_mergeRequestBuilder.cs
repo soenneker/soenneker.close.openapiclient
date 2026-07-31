@@ -49,20 +49,20 @@ namespace Soenneker.Close.OpenApiClient.Activity.Lead_merge
         /// <summary>
         /// List or filter all LeadMerge activities
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson15"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson13"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson15?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Lead_merge.Lead_mergeRequestBuilder.Lead_mergeRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson13?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Lead_merge.Lead_mergeRequestBuilder.Lead_mergeRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson15> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Lead_merge.Lead_mergeRequestBuilder.Lead_mergeRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson13> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Lead_merge.Lead_mergeRequestBuilder.Lead_mergeRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson15>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson15.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson13>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson13.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List or filter all LeadMerge activities

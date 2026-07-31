@@ -3419,6 +3419,24 @@
                     }
                   ],
                   "has_more": false
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ImportUpdateActivity"
+                      },
+                      "type": "array"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "has_more"
+                  ]
                 }
               }
             },
@@ -3478,6 +3496,9 @@
                   "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                   "user_name": "Stefan W\u00f3jcik",
                   "users": []
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ImportUpdateActivity"
                 }
               }
             },
@@ -5529,6 +5550,7 @@
                   "data": [
                     {
                       "_type": "TaskCompleted",
+                      "activity_at": "2013-02-01T01:05:04.070000+00:00",
                       "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "created_by_name": "Stefan W\u00f3jcik",
                       "date_created": "2013-02-01T01:05:04.070000+00:00",
@@ -5536,14 +5558,36 @@
                       "id": "acti_asjiweURMfsLgKuYGqbQ4Qp7L5a16pQOcDfTgotqDak",
                       "lead_id": "lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "task_assigned_to": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "task_assigned_to_name": "Stefan W\u00f3jcik",
                       "task_id": "task_ask2cItUeDL0jvuoJIcOocrqhqVVnLUZrEbcdM3ihhT",
                       "task_text": "Follow up",
                       "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "updated_by_name": "Stefan W\u00f3jcik",
-                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Stefan W\u00f3jcik",
+                      "users": []
                     }
                   ],
                   "has_more": false
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/TaskCompletedActivity"
+                      },
+                      "type": "array"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "has_more"
+                  ]
                 }
               }
             },
@@ -5587,14 +5631,26 @@
               "application/json": {
                 "example": {
                   "_type": "TaskCompleted",
+                  "activity_at": "2013-02-01T01:05:04.070000+00:00",
+                  "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "created_by_name": "Stefan W\u00f3jcik",
                   "date_created": "2013-02-01T01:05:04.070000+00:00",
                   "date_updated": "2013-02-01T01:06:35.668000+00:00",
                   "id": "acti_asjiweURMfsLgKuYGqbQ4Qp7L5a16pQOcDfTgotqDak",
                   "lead_id": "lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "task_assigned_to": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "task_assigned_to_name": "Stefan W\u00f3jcik",
                   "task_id": "task_ask2cItUeDL0jvuoJIcOocrqhqVVnLUZrEbcdM3ihhT",
                   "task_text": "Follow up",
-                  "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "updated_by_name": "Stefan W\u00f3jcik",
+                  "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "user_name": "Stefan W\u00f3jcik",
+                  "users": []
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/TaskCompletedActivity"
                 }
               }
             },
@@ -31015,6 +31071,175 @@
           "user_id"
         ]
       },
+      "ImportUpdateActivity": {
+        "title": "ImportUpdateActivity",
+        "type": "object",
+        "properties": {
+          "_type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "activity_at": {
+            "title": "Activity At",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "contact_id": {
+            "title": "Contact ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_by": {
+            "title": "Created By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_by_name": {
+            "title": "Created By Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time"
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "import_id": {
+            "title": "Import ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "lead_id": {
+            "title": "Lead ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "reverted": {
+            "title": "Reverted",
+            "type": "boolean"
+          },
+          "updated_by": {
+            "title": "Updated By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "updated_by_name": {
+            "title": "Updated By Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_id": {
+            "title": "User ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_name": {
+            "title": "User Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "users": {
+            "title": "Users",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "_type",
+          "activity_at",
+          "contact_id",
+          "created_by",
+          "date_created",
+          "date_updated",
+          "id",
+          "import_id",
+          "lead_id",
+          "organization_id",
+          "reverted",
+          "updated_by",
+          "user_id",
+          "users"
+        ]
+      },
       "InlineLeadStatusPayload": {
         "title": "InlineLeadStatusPayload",
         "description": "Reference to an existing lead status by `id`.",
@@ -33425,6 +33650,236 @@
           "field-mapping-error",
           "filter-config-invalid",
           "email-ai-generation-failed"
+        ]
+      },
+      "TaskCompletedActivity": {
+        "title": "TaskCompletedActivity",
+        "type": "object",
+        "properties": {
+          "_type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "activity_at": {
+            "title": "Activity At",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "comment_summary": {
+            "title": "Comment Summary",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CommentSummary"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_by": {
+            "title": "Created By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_by_name": {
+            "title": "Created By Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time"
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "lead_id": {
+            "title": "Lead ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "sequence_id": {
+            "title": "Sequence ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sequence_name": {
+            "title": "Sequence Name",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sequence_subscription_id": {
+            "title": "Sequence Subscription ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "task_assigned_to": {
+            "title": "Task Assigned To",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "task_assigned_to_name": {
+            "title": "Task Assigned To Name",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "task_id": {
+            "title": "Task ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "task_text": {
+            "title": "Task Text",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "updated_by": {
+            "title": "Updated By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "updated_by_name": {
+            "title": "Updated By Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_id": {
+            "title": "User ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_name": {
+            "title": "User Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "users": {
+            "title": "Users",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "_type",
+          "activity_at",
+          "created_by",
+          "date_created",
+          "date_updated",
+          "id",
+          "lead_id",
+          "organization_id",
+          "task_id",
+          "task_text",
+          "updated_by",
+          "user_id",
+          "users"
         ]
       },
       "TaskPriority": {
