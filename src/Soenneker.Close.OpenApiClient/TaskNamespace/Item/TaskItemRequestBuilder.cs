@@ -53,40 +53,40 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace.Item
         /// <summary>
         /// Fetch a task&apos;s details
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson200"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson196"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson200?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.Item.TaskItemRequestBuilder.TaskItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson196?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.Item.TaskItemRequestBuilder.TaskItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson200> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.Item.TaskItemRequestBuilder.TaskItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson196> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.Item.TaskItemRequestBuilder.TaskItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson200>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson200.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson196>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson196.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The `assigned_to`, `date` (either a date or a date-time), and `is_complete` fields may be updated on all tasks. If the task type is `lead`, the `text` field may also be modified.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson201"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson197"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson201?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateNotification body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.Item.TaskItemRequestBuilder.TaskItemRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson197?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateNotification body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.Item.TaskItemRequestBuilder.TaskItemRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson201> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateNotification body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.Item.TaskItemRequestBuilder.TaskItemRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson197> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateNotification body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.Item.TaskItemRequestBuilder.TaskItemRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson201>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson201.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson197>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson197.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete a task

@@ -49,40 +49,40 @@ namespace Soenneker.Close.OpenApiClient.Status.Opportunity
         /// <summary>
         /// List opportunity statuses for your organization
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson192"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson188"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson192?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson188?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson192> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson188> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson192>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson192.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson188>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson188.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a new opportunity status. The status must belong to a pipeline (specified by `pipeline_id`) and have a `type` of `active`, `won`, or `lost`.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson193"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson189"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson193?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusesCreateRequest body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson189?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusesCreateRequest body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson193> PostAsync(global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusesCreateRequest body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson189> PostAsync(global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusesCreateRequest body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson193>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson193.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson189>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson189.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List opportunity statuses for your organization

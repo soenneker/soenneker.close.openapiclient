@@ -49,40 +49,40 @@ namespace Soenneker.Close.OpenApiClient.Activity.Custom
         /// <summary>
         /// &quot;Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).If you&apos;re filtering by `custom_activity_type_id` or `custom_activity_type_id__in` parameter, the `lead_id` parameter will be required as well. If you want to retrieve all Custom Activity instances of a specific type regardless of the lead, you will need to get leads that contain such an activity type using [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) and provide those Lead IDs one at a time to this endpoint.&quot;
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson2"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesCustomActivitiesList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson2?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Custom.CustomRequestBuilder.CustomRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivitiesCustomActivitiesList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Custom.CustomRequestBuilder.CustomRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson2> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Custom.CustomRequestBuilder.CustomRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivitiesCustomActivitiesList200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Custom.CustomRequestBuilder.CustomRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson2>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson2.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesCustomActivitiesList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesCustomActivitiesList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Custom Activity instances will be created by default with the &apos;published&apos; status. All required fields will be validated in this status. To create an activity without setting all required fields, you can use the &quot;draft&quot; status.A Custom Activity can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a Custom Activity.
+        /// &quot;Custom Activity instances will be created by default with the &apos;published&apos; status. All required fields will be validated in this status. To create an activity without setting all required fields, you can use the \&quot;draft\&quot; status.A Custom Activity can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a Custom Activity.Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).&quot;
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson3"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CustomActivity"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson3?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateCustomActivity body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomActivity?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateCustomActivity body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson3> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateCustomActivity body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomActivity> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateCustomActivity body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson3>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson3.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CustomActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CustomActivity.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// &quot;Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).If you&apos;re filtering by `custom_activity_type_id` or `custom_activity_type_id__in` parameter, the `lead_id` parameter will be required as well. If you want to retrieve all Custom Activity instances of a specific type regardless of the lead, you will need to get leads that contain such an activity type using [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) and provide those Lead IDs one at a time to this endpoint.&quot;
@@ -104,7 +104,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Custom
             return requestInfo;
         }
         /// <summary>
-        /// Custom Activity instances will be created by default with the &apos;published&apos; status. All required fields will be validated in this status. To create an activity without setting all required fields, you can use the &quot;draft&quot; status.A Custom Activity can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a Custom Activity.
+        /// &quot;Custom Activity instances will be created by default with the &apos;published&apos; status. All required fields will be validated in this status. To create an activity without setting all required fields, you can use the \&quot;draft\&quot; status.A Custom Activity can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a Custom Activity.Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).&quot;
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

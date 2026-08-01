@@ -53,40 +53,40 @@ namespace Soenneker.Close.OpenApiClient.Custom_field.Opportunity.Item
         /// <summary>
         /// Fetch Opportunity Custom Field&apos;s details
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson70"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson66"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson70?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_field.Opportunity.Item.OpportunityItemRequestBuilder.OpportunityItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson66?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_field.Opportunity.Item.OpportunityItemRequestBuilder.OpportunityItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson70> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_field.Opportunity.Item.OpportunityItemRequestBuilder.OpportunityItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson66> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_field.Opportunity.Item.OpportunityItemRequestBuilder.OpportunityItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson70>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson70.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson66>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson66.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// You can rename it, change its type, change whether it accepts multiple values or not, change whether editing its values is restricted to specific Roles, or update the options for a &quot;choices&quot; field type. The updated name will immediately appear in the Close UI and only valid values for the updated `type` will be returned by the Contact API.Some of the type changes need to convert all of the existing values for a given Custom Field to the new type. When this is required, the response will include an additional `converting_to_type` field. When the conversion is done, `converting_to_type` will no longer be returned.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson71"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson67"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson71?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsOpportunityUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson67?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsOpportunityUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson71> PutAsync(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsOpportunityUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson67> PutAsync(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsOpportunityUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson71>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson71.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson67>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson67.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete an opportunity custom field. The field will immediately disappear from API responses and values on existing opportunities will be permanently removed.

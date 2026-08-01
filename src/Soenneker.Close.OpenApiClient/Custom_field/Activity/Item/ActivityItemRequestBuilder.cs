@@ -53,40 +53,40 @@ namespace Soenneker.Close.OpenApiClient.Custom_field.Activity.Item
         /// <summary>
         /// Fetch Activity Custom Field&apos;s details
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson50"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson46"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson50?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_field.Activity.Item.ActivityItemRequestBuilder.ActivityItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson46?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_field.Activity.Item.ActivityItemRequestBuilder.ActivityItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson50> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_field.Activity.Item.ActivityItemRequestBuilder.ActivityItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson46> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_field.Activity.Item.ActivityItemRequestBuilder.ActivityItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson50>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson50.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson46>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson46.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// You can rename it, change whether it accepts multiple values or not, change the &quot;required&quot; flag, change whether editing its values is restricted to specific Roles, or update the options for a &quot;choices&quot; field type. The updated name will immediately appear in the Close UI and only valid values for the updated `type` will be returned by the Custom Activity API.The `custom_activity_type_id` and `type` values cannot be changed.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson51"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson47"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson51?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsActivityUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson47?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsActivityUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson51> PutAsync(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsActivityUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson47> PutAsync(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsActivityUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson51>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson51.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson47>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson47.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete an activity custom field. The field will immediately disappear from API responses and values on existing activities will be permanently removed.

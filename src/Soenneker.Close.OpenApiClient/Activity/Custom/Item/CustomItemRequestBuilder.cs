@@ -51,42 +51,42 @@ namespace Soenneker.Close.OpenApiClient.Activity.Custom.Item
             await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get a single Custom Activity instance
+        /// &quot;Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).&quot;
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson4"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CustomActivity"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson4?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Custom.Item.CustomItemRequestBuilder.CustomItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomActivity?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Custom.Item.CustomItemRequestBuilder.CustomItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson4> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Custom.Item.CustomItemRequestBuilder.CustomItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomActivity> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Custom.Item.CustomItemRequestBuilder.CustomItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson4>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson4.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CustomActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CustomActivity.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// A Custom Activity can be updated to add, change or remove any Custom Fields and to change the status between &quot;draft&quot; and &quot;published&quot;.A Custom Activity can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a Custom Activity.
+        /// &quot;A Custom Activity can be updated to add, change or remove any Custom Fields and to change the status between \&quot;draft\&quot; and \&quot;published\&quot;.A Custom Activity can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a Custom Activity.Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).&quot;
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson5"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CustomActivity"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson5?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateCustomActivity body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomActivity?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateCustomActivity body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson5> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateCustomActivity body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomActivity> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateCustomActivity body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson5>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson5.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CustomActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CustomActivity.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete a Custom Activity instance
@@ -108,7 +108,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Custom.Item
             return requestInfo;
         }
         /// <summary>
-        /// Get a single Custom Activity instance
+        /// &quot;Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).&quot;
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -127,7 +127,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Custom.Item
             return requestInfo;
         }
         /// <summary>
-        /// A Custom Activity can be updated to add, change or remove any Custom Fields and to change the status between &quot;draft&quot; and &quot;published&quot;.A Custom Activity can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a Custom Activity.
+        /// &quot;A Custom Activity can be updated to add, change or remove any Custom Fields and to change the status between \&quot;draft\&quot; and \&quot;published\&quot;.A Custom Activity can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a Custom Activity.Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).&quot;
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -158,7 +158,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Custom.Item
             return new global::Soenneker.Close.OpenApiClient.Activity.Custom.Item.CustomItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get a single Custom Activity instance
+        /// &quot;Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).&quot;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class CustomItemRequestBuilderGetQueryParameters 

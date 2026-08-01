@@ -49,20 +49,20 @@ namespace Soenneker.Close.OpenApiClient.Comment_thread
         /// <summary>
         /// Users with restricted lead visibility cannot list comment threads across all leads, and must scope the request to specific threads or objects via the `ids` or `object_ids` filters. Unscoped requests from such users return a `403`.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson38"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson34"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson38?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Comment_thread.Comment_threadRequestBuilder.Comment_threadRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson34?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Comment_thread.Comment_threadRequestBuilder.Comment_threadRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson38> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Comment_thread.Comment_threadRequestBuilder.Comment_threadRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson34> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Comment_thread.Comment_threadRequestBuilder.Comment_threadRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson38>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson38.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson34>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson34.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Users with restricted lead visibility cannot list comment threads across all leads, and must scope the request to specific threads or objects via the `ids` or `object_ids` filters. Unscoped requests from such users return a `403`.

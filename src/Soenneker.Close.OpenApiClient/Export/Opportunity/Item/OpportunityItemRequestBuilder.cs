@@ -36,20 +36,20 @@ namespace Soenneker.Close.OpenApiClient.Export.Opportunity.Item
         /// <summary>
         /// &quot;Get a single opportunity export to do things like check its `status` or get a `download_url`.`status` can have one of these values: `created`, `started`, `in_progress`, `done`, `error`.&quot;
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson111"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson107"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson111?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Export.Opportunity.Item.OpportunityItemRequestBuilder.OpportunityItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson107?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Export.Opportunity.Item.OpportunityItemRequestBuilder.OpportunityItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson111> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Export.Opportunity.Item.OpportunityItemRequestBuilder.OpportunityItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson107> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Export.Opportunity.Item.OpportunityItemRequestBuilder.OpportunityItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson111>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson111.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson107>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson107.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// &quot;Get a single opportunity export to do things like check its `status` or get a `download_url`.`status` can have one of these values: `created`, `started`, `in_progress`, `done`, `error`.&quot;

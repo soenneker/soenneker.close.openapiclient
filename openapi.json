@@ -1435,6 +1435,7 @@
                   "data": [
                     {
                       "_type": "CustomActivity",
+                      "activity_at": "2020-08-04T16:45:35.367000+00:00",
                       "contact_id": null,
                       "created_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
                       "created_by_name": "Bruce Wayne",
@@ -1443,10 +1444,14 @@
                       "date_created": "2020-08-04T16:45:35.367000+00:00",
                       "date_updated": "2020-08-04T17:37:56.439000+00:00",
                       "id": "acti_5J7mimiIKB1tQ3gVduP0c4UhXbNj5ptMLteAWRJu7Sf",
+                      "last_published_at": null,
                       "lead_id": "lead_hwnL36A2iEMSLIlmGhsdrcmOJzTUzqEHwr66wrA1K2T",
+                      "mentions": [],
+                      "mentions_updated_at": null,
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "pinned": false,
                       "pinned_at": null,
+                      "source": "ui",
                       "status": "draft",
                       "updated_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
                       "updated_by_name": "Bruce Wayne",
@@ -1456,6 +1461,7 @@
                     },
                     {
                       "_type": "CustomActivity",
+                      "activity_at": "2020-08-04T16:45:29.612000+00:00",
                       "contact_id": null,
                       "created_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
                       "created_by_name": "Bruce Wayne",
@@ -1463,10 +1469,14 @@
                       "date_created": "2020-08-04T16:45:29.612000+00:00",
                       "date_updated": "2020-08-04T16:46:02.705000+00:00",
                       "id": "acti_v0VS1AZAg8LjnpBm1hZz83UZ3yWK0n9SdVV5i8yC6he",
+                      "last_published_at": "2020-08-04T16:45:29.612000+00:00",
                       "lead_id": "lead_hwnL36A2iEMSLIlmGhsdrcmOJzTUzqEHwr66wrA1K2T",
+                      "mentions": [],
+                      "mentions_updated_at": null,
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "pinned": false,
                       "pinned_at": null,
+                      "source": "ui",
                       "status": "published",
                       "updated_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
                       "updated_by_name": "Bruce Wayne",
@@ -1476,6 +1486,24 @@
                     }
                   ],
                   "has_more": false
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/CustomActivity"
+                      },
+                      "type": "array"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "has_more"
+                  ]
                 }
               }
             },
@@ -1498,7 +1526,7 @@
           "activities.custom_activities"
         ],
         "summary": "Create a new Custom Activity instance",
-        "description": "Custom Activity instances will be created by default with the 'published' status. All required fields will be validated in this status. To create an activity without setting all required fields, you can use the \"draft\" status.\n\nA Custom Activity can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a Custom Activity.",
+        "description": "Custom Activity instances will be created by default with the 'published' status. All required fields will be validated in this status. To create an activity without setting all required fields, you can use the \"draft\" status.\n\nA Custom Activity can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a Custom Activity.\n\nCustom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1522,6 +1550,7 @@
               "application/json": {
                 "example": {
                   "_type": "CustomActivity",
+                  "activity_at": "2020-08-04T16:45:35.367000+00:00",
                   "contact_id": null,
                   "created_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
                   "created_by_name": "Bruce Wayne",
@@ -1531,16 +1560,23 @@
                   "date_created": "2020-08-04T16:45:35.367000+00:00",
                   "date_updated": "2020-08-04T17:37:56.439000+00:00",
                   "id": "acti_5J7mimiIKB1tQ3gVduP0c4UhXbNj5ptMLteAWRJu7Sf",
+                  "last_published_at": "2020-08-04T16:45:35.367000+00:00",
                   "lead_id": "lead_hwnL36A2iEMSLIlmGhsdrcmOJzTUzqEHwr66wrA1K2T",
+                  "mentions": [],
+                  "mentions_updated_at": null,
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                   "pinned": true,
                   "pinned_at": "2020-08-04T17:37:56.439000+00:00",
+                  "source": "ui",
                   "status": "published",
                   "updated_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
                   "updated_by_name": "Bruce Wayne",
                   "user_id": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
                   "user_name": "Bruce Wayne",
                   "users": []
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/CustomActivity"
                 }
               }
             },
@@ -1565,6 +1601,7 @@
           "activities.custom_activities"
         ],
         "summary": "Get a single Custom Activity instance",
+        "description": "Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).",
         "parameters": [
           {
             "in": "path",
@@ -1584,6 +1621,7 @@
               "application/json": {
                 "example": {
                   "_type": "CustomActivity",
+                  "activity_at": "2020-08-04T16:45:35.367000+00:00",
                   "contact_id": null,
                   "created_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
                   "created_by_name": "Bruce Wayne",
@@ -1592,16 +1630,23 @@
                   "date_created": "2020-08-04T16:45:35.367000+00:00",
                   "date_updated": "2020-08-04T17:37:56.439000+00:00",
                   "id": "acti_5J7mimiIKB1tQ3gVduP0c4UhXbNj5ptMLteAWRJu7Sf",
+                  "last_published_at": null,
                   "lead_id": "lead_hwnL36A2iEMSLIlmGhsdrcmOJzTUzqEHwr66wrA1K2T",
+                  "mentions": [],
+                  "mentions_updated_at": null,
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                   "pinned": false,
                   "pinned_at": null,
+                  "source": "ui",
                   "status": "draft",
                   "updated_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
                   "updated_by_name": "Bruce Wayne",
                   "user_id": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
                   "user_name": "Bruce Wayne",
                   "users": []
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/CustomActivity"
                 }
               }
             },
@@ -1624,7 +1669,7 @@
           "activities.custom_activities"
         ],
         "summary": "Updating a Custom Activity instance",
-        "description": "A Custom Activity can be updated to add, change or remove any Custom Fields and to change the status between \"draft\" and \"published\".\n\nA Custom Activity can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a Custom Activity.",
+        "description": "A Custom Activity can be updated to add, change or remove any Custom Fields and to change the status between \"draft\" and \"published\".\n\nA Custom Activity can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a Custom Activity.\n\nCustom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).",
         "parameters": [
           {
             "in": "path",
@@ -1657,6 +1702,7 @@
               "application/json": {
                 "example": {
                   "_type": "CustomActivity",
+                  "activity_at": "2020-08-04T16:45:35.367000+00:00",
                   "contact_id": null,
                   "created_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
                   "created_by_name": "Bruce Wayne",
@@ -1665,16 +1711,23 @@
                   "date_created": "2020-08-04T16:45:35.367000+00:00",
                   "date_updated": "2020-08-04T17:37:56.439000+00:00",
                   "id": "acti_5J7mimiIKB1tQ3gVduP0c4UhXbNj5ptMLteAWRJu7Sf",
+                  "last_published_at": "2020-08-04T16:45:35.367000+00:00",
                   "lead_id": "lead_hwnL36A2iEMSLIlmGhsdrcmOJzTUzqEHwr66wrA1K2T",
+                  "mentions": [],
+                  "mentions_updated_at": null,
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                   "pinned": true,
                   "pinned_at": "2020-08-04T17:37:56.439000+00:00",
+                  "source": "ui",
                   "status": "published",
                   "updated_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
                   "updated_by_name": "Bruce Wayne",
                   "user_id": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
                   "user_name": "Bruce Wayne",
                   "users": []
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/CustomActivity"
                 }
               }
             },
@@ -30104,6 +30157,249 @@
           "ai",
           "whatsapp",
           "webform"
+        ]
+      },
+      "CustomActivity": {
+        "title": "CustomActivity",
+        "type": "object",
+        "properties": {
+          "_type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "activity_at": {
+            "title": "Activity At",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "comment_summary": {
+            "title": "Comment Summary",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CommentSummary"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "contact_id": {
+            "title": "Contact ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_by": {
+            "title": "Created By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_by_name": {
+            "title": "Created By Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "custom_activity_type_id": {
+            "title": "Custom Activity Type ID",
+            "type": "string"
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time"
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "last_published_at": {
+            "title": "Last Published At",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "lead_id": {
+            "title": "Lead ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "mentions": {
+            "title": "Mentions",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions_updated_at": {
+            "title": "Mentions Updated At",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "pinned": {
+            "title": "Pinned",
+            "type": "boolean"
+          },
+          "pinned_at": {
+            "title": "Pinned At",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "source": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CreationSource"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status": {
+            "$ref": "#/components/schemas/CustomActivityStatus"
+          },
+          "updated_by": {
+            "title": "Updated By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "updated_by_name": {
+            "title": "Updated By Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_id": {
+            "title": "User ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_name": {
+            "title": "User Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "users": {
+            "title": "Users",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "_type",
+          "activity_at",
+          "contact_id",
+          "created_by",
+          "custom_activity_type_id",
+          "date_created",
+          "date_updated",
+          "id",
+          "last_published_at",
+          "lead_id",
+          "mentions",
+          "mentions_updated_at",
+          "organization_id",
+          "pinned",
+          "pinned_at",
+          "source",
+          "status",
+          "updated_by",
+          "user_id",
+          "users"
+        ]
+      },
+      "CustomActivityStatus": {
+        "title": "CustomActivityStatus",
+        "type": "string",
+        "enum": [
+          "draft",
+          "published"
         ]
       },
       "EmailActivity": {

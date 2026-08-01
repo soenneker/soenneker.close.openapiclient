@@ -36,20 +36,20 @@ namespace Soenneker.Close.OpenApiClient.User.Availability
         /// <summary>
         /// List user availability statuses for all users in an organization.The `active_calls` field is an array of call metadata for calls that the user is currently participating in.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson207"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson203"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson207?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.User.Availability.AvailabilityRequestBuilder.AvailabilityRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson203?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.User.Availability.AvailabilityRequestBuilder.AvailabilityRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson207> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.User.Availability.AvailabilityRequestBuilder.AvailabilityRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson203> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.User.Availability.AvailabilityRequestBuilder.AvailabilityRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson207>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson207.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson203>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson203.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List user availability statuses for all users in an organization.The `active_calls` field is an array of call metadata for calls that the user is currently participating in.
