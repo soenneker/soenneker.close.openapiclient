@@ -49,40 +49,40 @@ namespace Soenneker.Close.OpenApiClient.Export.Opportunity
         /// <summary>
         /// List Opportunity Exports
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson105"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ExportsListOpportunity200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson105?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Export.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.ExportsListOpportunity200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Export.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson105> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Export.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.ExportsListOpportunity200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Export.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson105>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson105.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ExportsListOpportunity200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ExportsListOpportunity200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// &quot;Parameters:  - `params` (optional) - A dictionary of filters, which would be used for the `/opportunity/` endpoint.  - `format` - Format of the exported file. The choices are: `csv`, `json`  - `date_format` (optional) - Controls the format of date objects. Note: this only works with the `csv` format.    - `original` (default) - A date format that includes microseconds and timezone information.        - Date: `[YYYY]-[MM]-[DD]`        - Date w/ time: `[YYYY]-[MM]-[DD] [hh]:[mm]:[ss.sssss]±[hh]:[mm]`    - `iso8601` (recommended) - An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) compatible date representation that does not include microseconds.        - Date: `[YYYY]-[MM]-[DD]`        - Date w/ time: `[YYYY]-[MM]-[DD]T[hh]:[mm]:[ss]±[hh]:[mm]`    - `excel` - An Excel compatible date format. Dates are always in UTC, do not include timezone information or microseconds, and use a 12 hour clock with an AM or PM designation.        - Date: `[YYYY]-[MM]-[DD]`        - Date w/ time: `[YYYY]-[MM]-[DD] [hh]:[mm]:[ss] [AM|PM]`  - `fields` (optional) - By default we return all the data fields. If you only need specific fields exported, you can explicitly list them in fields to get smaller exports.  - `send_done_email` - Set to `false` if you don&apos;t want to get a confirmation email after the bulk action is done.&quot;
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson106"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ExportsCreateOpportunity201Response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson106?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.ExportsCreateOpportunityRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.ExportsCreateOpportunity201Response?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.ExportsCreateOpportunityRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson106> PostAsync(global::Soenneker.Close.OpenApiClient.Models.ExportsCreateOpportunityRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.ExportsCreateOpportunity201Response> PostAsync(global::Soenneker.Close.OpenApiClient.Models.ExportsCreateOpportunityRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson106>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson106.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ExportsCreateOpportunity201Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ExportsCreateOpportunity201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List Opportunity Exports

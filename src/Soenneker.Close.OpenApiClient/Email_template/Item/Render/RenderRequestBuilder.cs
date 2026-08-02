@@ -36,20 +36,20 @@ namespace Soenneker.Close.OpenApiClient.Email_template.Item.Render
         /// <summary>
         /// Render an email template for the given lead/contact using the current user context.Accepts two forms of usage:- Single lead/contact:  - `lead_id` and `contact_id` is supplied (both required)- Preview results from a search query  - `query` (required) contains a search query  - `entry` (optional, ranges from 0 to 99) specifies the index of the lead/contact that should be rendered.  - `mode` (optional), which can have a value of:     - `lead` (default), the first contact of the lead with the index given by `entry` will be rendered (excluding leads that have no email addresses).     - `contact`, then `entry` refers to the index of the contact (excluding contacts that have no emails). Will return an empty dict if there are no more entries.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson97"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesRender200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson97?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Email_template.Item.Render.RenderRequestBuilder.RenderRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesRender200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Email_template.Item.Render.RenderRequestBuilder.RenderRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson97> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Email_template.Item.Render.RenderRequestBuilder.RenderRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesRender200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Email_template.Item.Render.RenderRequestBuilder.RenderRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson97>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson97.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesRender200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesRender200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Render an email template for the given lead/contact using the current user context.Accepts two forms of usage:- Single lead/contact:  - `lead_id` and `contact_id` is supplied (both required)- Preview results from a search query  - `query` (required) contains a search query  - `entry` (optional, ranges from 0 to 99) specifies the index of the lead/contact that should be rendered.  - `mode` (optional), which can have a value of:     - `lead` (default), the first contact of the lead with the index given by `entry` will be rendered (excluding leads that have no email addresses).     - `contact`, then `entry` refers to the index of the contact (excluding contacts that have no emails). Will return an empty dict if there are no more entries.

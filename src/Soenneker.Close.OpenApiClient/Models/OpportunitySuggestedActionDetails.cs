@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunityAdjustCloseDateActionDetails"/>, <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunityChangeStatusActionDetails"/>, <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunityFollowUpCallActionDetails"/>, <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunityFollowUpEmailActionDetails"/>, <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunityFollowUpSmsActionDetails"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunityAdjustCloseDateActionDetails"/>, <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunityChangeStatusActionDetails"/>, <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunityFollowUpCallActionDetails"/>, <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunityFollowUpEmailActionDetails"/>, <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunityFollowUpSmsActionDetails"/>, <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedActionDetailsMember1"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OpportunitySuggestedActionDetails : IComposedTypeWrapper, IParsable
@@ -53,6 +53,14 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public global::Soenneker.Close.OpenApiClient.Models.OpportunityFollowUpSmsActionDetails OpportunityFollowUpSmsActionDetails { get; set; }
 #endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedActionDetailsMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedActionDetailsMember1? OpportunitySuggestedActionDetailsMember1 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedActionDetailsMember1 OpportunitySuggestedActionDetailsMember1 { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -67,6 +75,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             result.OpportunityFollowUpCallActionDetails = new global::Soenneker.Close.OpenApiClient.Models.OpportunityFollowUpCallActionDetails();
             result.OpportunityFollowUpEmailActionDetails = new global::Soenneker.Close.OpenApiClient.Models.OpportunityFollowUpEmailActionDetails();
             result.OpportunityFollowUpSmsActionDetails = new global::Soenneker.Close.OpenApiClient.Models.OpportunityFollowUpSmsActionDetails();
+            result.OpportunitySuggestedActionDetailsMember1 = new global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedActionDetailsMember1();
             return result;
         }
         /// <summary>
@@ -75,9 +84,9 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(OpportunityAdjustCloseDateActionDetails != null || OpportunityChangeStatusActionDetails != null || OpportunityFollowUpCallActionDetails != null || OpportunityFollowUpEmailActionDetails != null || OpportunityFollowUpSmsActionDetails != null)
+            if(OpportunityAdjustCloseDateActionDetails != null || OpportunityChangeStatusActionDetails != null || OpportunityFollowUpCallActionDetails != null || OpportunityFollowUpEmailActionDetails != null || OpportunityFollowUpSmsActionDetails != null || OpportunitySuggestedActionDetailsMember1 != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(OpportunityAdjustCloseDateActionDetails, OpportunityChangeStatusActionDetails, OpportunityFollowUpCallActionDetails, OpportunityFollowUpEmailActionDetails, OpportunityFollowUpSmsActionDetails);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(OpportunityAdjustCloseDateActionDetails, OpportunityChangeStatusActionDetails, OpportunityFollowUpCallActionDetails, OpportunityFollowUpEmailActionDetails, OpportunityFollowUpSmsActionDetails, OpportunitySuggestedActionDetailsMember1);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -88,7 +97,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityAdjustCloseDateActionDetails>(null, OpportunityAdjustCloseDateActionDetails, OpportunityChangeStatusActionDetails, OpportunityFollowUpCallActionDetails, OpportunityFollowUpEmailActionDetails, OpportunityFollowUpSmsActionDetails);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityAdjustCloseDateActionDetails>(null, OpportunityAdjustCloseDateActionDetails, OpportunityChangeStatusActionDetails, OpportunityFollowUpCallActionDetails, OpportunityFollowUpEmailActionDetails, OpportunityFollowUpSmsActionDetails, OpportunitySuggestedActionDetailsMember1);
         }
     }
 }

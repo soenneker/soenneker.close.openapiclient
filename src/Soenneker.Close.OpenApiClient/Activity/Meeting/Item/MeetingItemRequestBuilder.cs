@@ -59,40 +59,40 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
         /// <summary>
         /// &quot;Meeting transcripts can be accessed using this API but are not loaded by default. To load transcripts, use the `_fields` parameter with `transcripts` value.The `transcripts` field is an array of objects for each Close Notetaker bot that joined the meeting. Typically, there will be only one transcript. Transcripts are ordered by the time bots joined the meeting.Example transcripts in response:```json{ \&quot;transcripts\&quot;: [ { \&quot;utterances\&quot;: [ { \&quot;speaker_label\&quot;: \&quot;John Lead\&quot;, \&quot;speaker_side\&quot;: \&quot;contact\&quot;, \&quot;start\&quot;: 0.1, \&quot;end\&quot;: 1.2, \&quot;text\&quot;: \&quot;Hey, what&apos;s up? How is it going?\&quot; }, { \&quot;speaker_label\&quot;: \&quot;Jane User\&quot;, \&quot;speaker_side\&quot;: \&quot;close-user\&quot;, \&quot;start\&quot;: 1.3, \&quot;end\&quot;: 2.4, \&quot;text\&quot;: \&quot;Hey John, I&apos;m doing great. How about you?\&quot; } ], \&quot;summary_text\&quot;: \&quot;Summary text\&quot;, \&quot;summary_html\&quot;: \&quot;&lt;p&gt;Summary text&lt;/p&gt;\&quot; } ] }```&quot;
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson12"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsGet200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson12?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Meeting.Item.MeetingItemRequestBuilder.MeetingItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsGet200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Meeting.Item.MeetingItemRequestBuilder.MeetingItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson12> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Meeting.Item.MeetingItemRequestBuilder.MeetingItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsGet200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Meeting.Item.MeetingItemRequestBuilder.MeetingItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson12>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson12.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsGet200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsGet200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Most commonly this can be used to update a meetings&apos;s `user_note_html` or `outcome_id`.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson13"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdate200Response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson13?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdate200Response?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson13> PutAsync(global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdate200Response> PutAsync(global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson13>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson13.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdate200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdate200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete a Meeting activity

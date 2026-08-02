@@ -103,10 +103,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.CreationSourceWrapper2? Source { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.CustomActivitySource? Source { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.CreationSourceWrapper2 Source { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.CustomActivitySource Source { get; set; }
 #endif
         /// <summary>The status property</summary>
         public global::Soenneker.Close.OpenApiClient.Models.CustomActivityStatus? Status { get; set; }
@@ -199,7 +199,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "pinned", n => { Pinned = n.GetBoolValue(); } },
                 { "pinned_at", n => { PinnedAt = n.GetDateTimeOffsetValue(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreationSourceWrapper2>(global::Soenneker.Close.OpenApiClient.Models.CreationSourceWrapper2.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CustomActivitySource>(global::Soenneker.Close.OpenApiClient.Models.CustomActivitySource.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CustomActivityStatus>(); } },
                 { "_type", n => { Type = n.GetStringValue(); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
@@ -232,7 +232,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteBoolValue("pinned", Pinned);
             writer.WriteDateTimeOffsetValue("pinned_at", PinnedAt);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreationSourceWrapper2>("source", Source);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CustomActivitySource>("source", Source);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CustomActivityStatus>("status", Status);
             writer.WriteStringValue("_type", Type);
             writer.WriteStringValue("updated_by", UpdatedBy);

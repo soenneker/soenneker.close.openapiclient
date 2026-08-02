@@ -59,40 +59,40 @@ namespace Soenneker.Close.OpenApiClient.Custom_field.Shared.Item
         /// <summary>
         /// Fetch Shared Custom Field&apos;s details
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson71"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedGet200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson71?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_field.Shared.Item.ItemRequestBuilder.ItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedGet200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_field.Shared.Item.ItemRequestBuilder.ItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson71> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_field.Shared.Item.ItemRequestBuilder.ItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedGet200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_field.Shared.Item.ItemRequestBuilder.ItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson71>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson71.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedGet200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedGet200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// You can rename it or update the options for a &quot;choices&quot; field type. The updated name will immediately appear in the Close UI and only valid values for the updated `choices` will be returned by the Lead/Contact/Custom Activity APIs.The `type` value cannot be changed.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson72"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedUpdate200Response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson72?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedUpdate200Response?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson72> PutAsync(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedUpdate200Response> PutAsync(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson72>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson72.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedUpdate200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedUpdate200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete a shared custom field and all its associations. The field will immediately disappear from API responses and values on all associated object types will be permanently removed.

@@ -17,10 +17,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The contact_preference property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.BulkEmailContactPreferenceWrapper? ContactPreference { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.BulkEmailActionContactPreference? ContactPreference { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.BulkEmailContactPreferenceWrapper ContactPreference { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.BulkEmailActionContactPreference ContactPreference { get; set; }
 #endif
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -105,10 +105,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper3? Status { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.BulkEmailActionStatus? Status { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper3 Status { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.BulkEmailActionStatus Status { get; set; }
 #endif
         /// <summary>The template_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -151,7 +151,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "contact_preference", n => { ContactPreference = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkEmailContactPreferenceWrapper>(global::Soenneker.Close.OpenApiClient.Models.BulkEmailContactPreferenceWrapper.CreateFromDiscriminatorValue); } },
+                { "contact_preference", n => { ContactPreference = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkEmailActionContactPreference>(global::Soenneker.Close.OpenApiClient.Models.BulkEmailActionContactPreference.CreateFromDiscriminatorValue); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetDateTimeOffsetValue(); } },
                 { "date_updated", n => { DateUpdated = n.GetDateTimeOffsetValue(); } },
@@ -168,7 +168,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "send_done_email", n => { SendDoneEmail = n.GetBoolValue(); } },
                 { "sender", n => { Sender = n.GetStringValue(); } },
                 { "sort", n => { Sort = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.BulkEmailActionSortItemProperty>(global::Soenneker.Close.OpenApiClient.Models.BulkEmailActionSortItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper3>(global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper3.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkEmailActionStatus>(global::Soenneker.Close.OpenApiClient.Models.BulkEmailActionStatus.CreateFromDiscriminatorValue); } },
                 { "template_id", n => { TemplateId = n.GetStringValue(); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
             };
@@ -180,7 +180,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkEmailContactPreferenceWrapper>("contact_preference", ContactPreference);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkEmailActionContactPreference>("contact_preference", ContactPreference);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteDateTimeOffsetValue("date_created", DateCreated);
             writer.WriteDateTimeOffsetValue("date_updated", DateUpdated);
@@ -197,7 +197,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("sender", Sender);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.BulkEmailActionSortItemProperty>("sort", Sort);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkEmailActionSQueryProperty>("s_query", SQuery);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper3>("status", Status);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkEmailActionStatus>("status", Status);
             writer.WriteStringValue("template_id", TemplateId);
             writer.WriteStringValue("updated_by", UpdatedBy);
             writer.WriteAdditionalData(AdditionalData);

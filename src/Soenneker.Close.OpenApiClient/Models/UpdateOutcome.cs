@@ -40,10 +40,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>Set to `vm-dropped` if this outcome should be automatically set on calls whenever a team member performs a Voicemail Drop. Otherwise, leave empty or explicitly set to `custom` (default).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.OutcomeTypeWrapper? Type { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.UpdateOutcomeType? Type { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.OutcomeTypeWrapper Type { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.UpdateOutcomeType Type { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -66,7 +66,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "applies_to", n => { AppliesTo = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.UpdateOutcomeAppliesTo>(global::Soenneker.Close.OpenApiClient.Models.UpdateOutcomeAppliesTo.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.OutcomeTypeWrapper>(global::Soenneker.Close.OpenApiClient.Models.OutcomeTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.UpdateOutcomeType>(global::Soenneker.Close.OpenApiClient.Models.UpdateOutcomeType.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -79,7 +79,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.UpdateOutcomeAppliesTo>("applies_to", AppliesTo);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OutcomeTypeWrapper>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.UpdateOutcomeType>("type", Type);
         }
     }
 }

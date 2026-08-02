@@ -33,18 +33,18 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The carrier property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.UnderlyingCarrierWrapper? Carrier { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.PhoneNumberCarrier? Carrier { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.UnderlyingCarrierWrapper Carrier { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.PhoneNumberCarrier Carrier { get; set; }
 #endif
         /// <summary>The carrier_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.CarrierNumberTypeWrapper? CarrierType { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.PhoneNumberCarrierType? CarrierType { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.CarrierNumberTypeWrapper CarrierType { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.PhoneNumberCarrierType CarrierType { get; set; }
 #endif
         /// <summary>The country property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -223,8 +223,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             {
                 { "address_id", n => { AddressId = n.GetStringValue(); } },
                 { "bundle_id", n => { BundleId = n.GetStringValue(); } },
-                { "carrier", n => { Carrier = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.UnderlyingCarrierWrapper>(global::Soenneker.Close.OpenApiClient.Models.UnderlyingCarrierWrapper.CreateFromDiscriminatorValue); } },
-                { "carrier_type", n => { CarrierType = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CarrierNumberTypeWrapper>(global::Soenneker.Close.OpenApiClient.Models.CarrierNumberTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "carrier", n => { Carrier = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.PhoneNumberCarrier>(global::Soenneker.Close.OpenApiClient.Models.PhoneNumberCarrier.CreateFromDiscriminatorValue); } },
+                { "carrier_type", n => { CarrierType = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.PhoneNumberCarrierType>(global::Soenneker.Close.OpenApiClient.Models.PhoneNumberCarrierType.CreateFromDiscriminatorValue); } },
                 { "country", n => { Country = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetDateTimeOffsetValue(); } },
                 { "date_updated", n => { DateUpdated = n.GetDateTimeOffsetValue(); } },
@@ -265,8 +265,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("address_id", AddressId);
             writer.WriteStringValue("bundle_id", BundleId);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.UnderlyingCarrierWrapper>("carrier", Carrier);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CarrierNumberTypeWrapper>("carrier_type", CarrierType);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.PhoneNumberCarrier>("carrier", Carrier);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.PhoneNumberCarrierType>("carrier_type", CarrierType);
             writer.WriteStringValue("country", Country);
             writer.WriteDateTimeOffsetValue("date_created", DateCreated);
             writer.WriteDateTimeOffsetValue("date_updated", DateUpdated);

@@ -23,10 +23,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.IntegrationLinkTypeWrapper? Type { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.UpdateIntegrationLinkType? Type { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.IntegrationLinkTypeWrapper Type { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.UpdateIntegrationLinkType Type { get; set; }
 #endif
         /// <summary>The url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,7 +55,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.IntegrationLinkTypeWrapper>(global::Soenneker.Close.OpenApiClient.Models.IntegrationLinkTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.UpdateIntegrationLinkType>(global::Soenneker.Close.OpenApiClient.Models.UpdateIntegrationLinkType.CreateFromDiscriminatorValue); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
         }
@@ -67,7 +67,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.IntegrationLinkTypeWrapper>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.UpdateIntegrationLinkType>("type", Type);
             writer.WriteStringValue("url", Url);
         }
     }

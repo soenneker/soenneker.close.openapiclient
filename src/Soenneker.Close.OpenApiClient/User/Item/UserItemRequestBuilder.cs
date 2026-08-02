@@ -36,20 +36,20 @@ namespace Soenneker.Close.OpenApiClient.User.Item
         /// <summary>
         /// Fetch a single user
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson204"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.UsersGet200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson204?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.User.Item.UserItemRequestBuilder.UserItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.UsersGet200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.User.Item.UserItemRequestBuilder.UserItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson204> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.User.Item.UserItemRequestBuilder.UserItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.UsersGet200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.User.Item.UserItemRequestBuilder.UserItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson204>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DefaultResponseResponseJson204.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.UsersGet200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.UsersGet200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Fetch a single user
