@@ -3327,11 +3327,37 @@
         ],
         "responses": {
           "200": {
-            "description": "Default",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ActivitiesLeadStatusChangesList200Response"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "_type": "LeadStatusChange",
+                      "activity_at": "2013-08-23T20:57:45.956000\u002B00:00",
+                      "contact_id": null,
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_name": "Anthony Nemitz",
+                      "date_created": "2013-08-23T20:57:45.956000\u002B00:00",
+                      "date_updated": "2013-08-23T20:57:45.956000\u002B00:00",
+                      "id": "acti_jSqoxKYTY522iEfrKfKzqjhw5zP8uS59SQx38KGbbhx",
+                      "lead_id": "lead_DwJwyY8nynRQicBMFPFccrbAJHT1bxv7t31UiphS9kv",
+                      "new_status_id": "stat_t7Zd2uspYPvBafR5bu9agrFZFs8GToWIbDnkqSk8nT8",
+                      "new_status_label": "Trial Qualified",
+                      "old_status_id": "stat_TRuQucMjSlSSV6cGAQixHBNyU2FS9zDyixNguwlfXxu",
+                      "old_status_label": "Trial",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_name": "Anthony Nemitz",
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Anthony Nemitz",
+                      "users": []
+                    }
+                  ],
+                  "has_more": false
                 }
               }
             }
@@ -3356,12 +3382,33 @@
           }
         },
         "responses": {
-          "201": {
-            "description": "Default",
+          "200": {
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ActivitiesLeadStatusChangesCreate201Response"
+                  "$ref": "#/components/schemas/LeadStatusChangeActivity"
+                },
+                "example": {
+                  "_type": "LeadStatusChange",
+                  "activity_at": "2013-08-23T20:57:45.956000\u002B00:00",
+                  "contact_id": null,
+                  "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "created_by_name": "Anthony Nemitz",
+                  "date_created": "2013-08-23T20:57:45.956000\u002B00:00",
+                  "date_updated": "2013-08-23T20:57:45.956000\u002B00:00",
+                  "id": "acti_jSqoxKYTY522iEfrKfKzqjhw5zP8uS59SQx38KGbbhx",
+                  "lead_id": "lead_fioU1Nk5LC0H0iei9XBGHW2CFZU0yeP2zZCJQP9pC4m",
+                  "new_status_id": "stat_t7Zd2uspYPvBafR5bu9agrFZFs8GToWIbDnkqSk8nT8",
+                  "new_status_label": "Trial Qualified",
+                  "old_status_id": "stat_TRuQucMjSlSSV6cGAQixHBNyU2FS9zDyixNguwlfXxu",
+                  "old_status_label": "Trial",
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "updated_by_name": "Anthony Nemitz",
+                  "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "user_name": "Anthony Nemitz",
+                  "users": []
                 }
               }
             }
@@ -3391,11 +3438,32 @@
         ],
         "responses": {
           "200": {
-            "description": "Default",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ActivitiesLeadStatusChangesGet200Response"
+                  "$ref": "#/components/schemas/LeadStatusChangeActivity"
+                },
+                "example": {
+                  "_type": "LeadStatusChange",
+                  "activity_at": "2013-08-23T20:57:45.956000\u002B00:00",
+                  "contact_id": null,
+                  "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "created_by_name": "Anthony Nemitz",
+                  "date_created": "2013-08-23T20:57:45.956000\u002B00:00",
+                  "date_updated": "2013-08-23T20:57:45.956000\u002B00:00",
+                  "id": "acti_jSqoxKYTY522iEfrKfKzqjhw5zP8uS59SQx38KGbbhx",
+                  "lead_id": "lead_DwJwyY8nynRQicBMFPFccrbAJHT1bxv7t31UiphS9kv",
+                  "new_status_id": "stat_t7Zd2uspYPvBafR5bu9agrFZFs8GToWIbDnkqSk8nT8",
+                  "new_status_label": "Trial Qualified",
+                  "old_status_id": "stat_TRuQucMjSlSSV6cGAQixHBNyU2FS9zDyixNguwlfXxu",
+                  "old_status_label": "Trial",
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "updated_by_name": "Anthony Nemitz",
+                  "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "user_name": "Anthony Nemitz",
+                  "users": []
                 }
               }
             }
@@ -16195,16 +16263,26 @@
             "type": "string"
           },
           "activity_at": {
-            "$ref": "#/components/schemas/ActivityBaseActivityAt"
+            "title": "Activity At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "contact_id": {
-            "$ref": "#/components/schemas/ActivityBaseContactId"
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
           },
           "created_by": {
-            "$ref": "#/components/schemas/ActivityBaseCreatedBy"
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
           },
           "created_by_name": {
-            "$ref": "#/components/schemas/ActivityBaseCreatedByName"
+            "title": "Created By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "date_created": {
             "title": "Date Created",
@@ -16221,23 +16299,35 @@
             "type": "string"
           },
           "lead_id": {
-            "$ref": "#/components/schemas/ActivityBaseLeadId"
+            "title": "Lead ID",
+            "type": "string",
+            "nullable": true
           },
           "organization_id": {
             "title": "Organization ID",
             "type": "string"
           },
           "updated_by": {
-            "$ref": "#/components/schemas/ActivityBaseUpdatedBy"
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
           },
           "updated_by_name": {
-            "$ref": "#/components/schemas/ActivityBaseUpdatedByName"
+            "title": "Updated By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "user_id": {
-            "$ref": "#/components/schemas/ActivityBaseUserId"
+            "title": "User ID",
+            "type": "string",
+            "nullable": true
           },
           "user_name": {
-            "$ref": "#/components/schemas/ActivityBaseUserName"
+            "title": "User Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "users": {
             "title": "Users",
@@ -16259,16 +16349,24 @@
         "type": "object",
         "properties": {
           "content_type": {
-            "$ref": "#/components/schemas/AttachmentContentType"
+            "title": "Content Type",
+            "type": "string",
+            "nullable": true
           },
           "filename": {
-            "$ref": "#/components/schemas/AttachmentFilename"
+            "title": "Filename",
+            "type": "string",
+            "nullable": true
           },
           "size": {
-            "$ref": "#/components/schemas/AttachmentSize"
+            "title": "Size",
+            "type": "integer",
+            "nullable": true
           },
           "thumbnail_url": {
-            "$ref": "#/components/schemas/AttachmentThumbnailUrl"
+            "title": "Thumbnail URL",
+            "type": "string",
+            "nullable": true
           },
           "url": {
             "title": "URL",
@@ -16343,7 +16441,9 @@
         "type": "object",
         "properties": {
           "contact_email": {
-            "$ref": "#/components/schemas/BasicSubscriptionInfoForContactContactEmail"
+            "title": "Contact Email",
+            "type": "string",
+            "nullable": true
           },
           "date_created": {
             "title": "Date Created",
@@ -16351,7 +16451,9 @@
             "format": "date-time"
           },
           "initial_email_id": {
-            "$ref": "#/components/schemas/BasicSubscriptionInfoForContactInitialEmailId"
+            "title": "Initial Email ID",
+            "type": "string",
+            "nullable": true
           },
           "sequence_id": {
             "title": "Sequence ID",
@@ -16365,7 +16467,10 @@
             "$ref": "#/components/schemas/WorkflowStatus"
           },
           "start_date": {
-            "$ref": "#/components/schemas/BasicSubscriptionInfoForContactStartDate"
+            "title": "Start Date",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "subscription_id": {
             "title": "Subscription ID",
@@ -16561,27 +16666,39 @@
             "$ref": "#/components/schemas/BulkActionObjectType"
           },
           "created_by": {
-            "$ref": "#/components/schemas/BulkDeleteActionCreatedBy"
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
           },
           "date_created": {
-            "$ref": "#/components/schemas/BulkDeleteActionDateCreated"
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "date_updated": {
-            "$ref": "#/components/schemas/BulkDeleteActionDateUpdated"
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "id": {
             "title": "ID",
             "type": "string"
           },
           "n_leads": {
-            "$ref": "#/components/schemas/BulkDeleteActionNLeads"
+            "title": "N Leads",
+            "type": "integer",
+            "nullable": true
           },
           "n_leads_processed": {
             "title": "N Leads Processed",
             "type": "integer"
           },
           "n_objects": {
-            "$ref": "#/components/schemas/BulkDeleteActionNObjects"
+            "title": "N Objects",
+            "type": "integer",
+            "nullable": true
           },
           "n_objects_processed": {
             "title": "N Objects Processed",
@@ -16592,10 +16709,14 @@
             "type": "string"
           },
           "query": {
-            "$ref": "#/components/schemas/BulkDeleteActionQuery"
+            "title": "Query",
+            "type": "string",
+            "nullable": true
           },
           "results_limit": {
-            "$ref": "#/components/schemas/BulkDeleteActionResultsLimit"
+            "title": "Results Limit",
+            "type": "integer",
+            "nullable": true
           },
           "s_query": {
             "$ref": "#/components/schemas/BulkDeleteActionSQueryProperty"
@@ -16615,7 +16736,9 @@
             "$ref": "#/components/schemas/BulkDeleteActionStatus"
           },
           "updated_by": {
-            "$ref": "#/components/schemas/BulkDeleteActionUpdatedBy"
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -16646,36 +16769,54 @@
         "type": "object",
         "properties": {
           "created_by": {
-            "$ref": "#/components/schemas/BulkEditActionCreatedBy"
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
           },
           "custom_field_name": {
-            "$ref": "#/components/schemas/BulkEditActionCustomFieldName"
+            "title": "Custom Field Name",
+            "type": "string",
+            "nullable": true
           },
           "custom_field_value": {
-            "$ref": "#/components/schemas/BulkEditActionCustomFieldValue"
+            "title": "Custom Field Value",
+            "type": "string",
+            "nullable": true
           },
           "date_created": {
-            "$ref": "#/components/schemas/BulkEditActionDateCreated"
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "date_updated": {
-            "$ref": "#/components/schemas/BulkEditActionDateUpdated"
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "id": {
             "title": "ID",
             "type": "string"
           },
           "lead_status_id": {
-            "$ref": "#/components/schemas/BulkEditActionLeadStatusId"
+            "title": "Lead Status ID",
+            "type": "string",
+            "nullable": true
           },
           "n_leads": {
-            "$ref": "#/components/schemas/BulkEditActionNLeads"
+            "title": "N Leads",
+            "type": "integer",
+            "nullable": true
           },
           "n_leads_processed": {
             "title": "N Leads Processed",
             "type": "integer"
           },
           "n_objects": {
-            "$ref": "#/components/schemas/BulkEditActionNObjects"
+            "title": "N Objects",
+            "type": "integer",
+            "nullable": true
           },
           "n_objects_processed": {
             "title": "N Objects Processed",
@@ -16686,10 +16827,14 @@
             "type": "string"
           },
           "query": {
-            "$ref": "#/components/schemas/BulkEditActionQuery"
+            "title": "Query",
+            "type": "string",
+            "nullable": true
           },
           "results_limit": {
-            "$ref": "#/components/schemas/BulkEditActionResultsLimit"
+            "title": "Results Limit",
+            "type": "integer",
+            "nullable": true
           },
           "s_query": {
             "$ref": "#/components/schemas/BulkEditActionSQueryProperty"
@@ -16712,7 +16857,9 @@
             "$ref": "#/components/schemas/BulkEditActionType"
           },
           "updated_by": {
-            "$ref": "#/components/schemas/BulkEditActionUpdatedBy"
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -16824,30 +16971,44 @@
             "$ref": "#/components/schemas/BulkEmailActionContactPreference"
           },
           "created_by": {
-            "$ref": "#/components/schemas/BulkEmailActionCreatedBy"
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
           },
           "date_created": {
-            "$ref": "#/components/schemas/BulkEmailActionDateCreated"
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "date_updated": {
-            "$ref": "#/components/schemas/BulkEmailActionDateUpdated"
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "email_account_id": {
-            "$ref": "#/components/schemas/BulkEmailActionEmailAccountId"
+            "title": "Email Account ID",
+            "type": "string",
+            "nullable": true
           },
           "id": {
             "title": "ID",
             "type": "string"
           },
           "n_leads": {
-            "$ref": "#/components/schemas/BulkEmailActionNLeads"
+            "title": "N Leads",
+            "type": "integer",
+            "nullable": true
           },
           "n_leads_processed": {
             "title": "N Leads Processed",
             "type": "integer"
           },
           "n_objects": {
-            "$ref": "#/components/schemas/BulkEmailActionNObjects"
+            "title": "N Objects",
+            "type": "integer",
+            "nullable": true
           },
           "n_objects_processed": {
             "title": "N Objects Processed",
@@ -16858,10 +17019,14 @@
             "type": "string"
           },
           "query": {
-            "$ref": "#/components/schemas/BulkEmailActionQuery"
+            "title": "Query",
+            "type": "string",
+            "nullable": true
           },
           "results_limit": {
-            "$ref": "#/components/schemas/BulkEmailActionResultsLimit"
+            "title": "Results Limit",
+            "type": "integer",
+            "nullable": true
           },
           "s_query": {
             "$ref": "#/components/schemas/BulkEmailActionSQueryProperty"
@@ -16871,7 +17036,9 @@
             "type": "boolean"
           },
           "sender": {
-            "$ref": "#/components/schemas/BulkEmailActionSender"
+            "title": "Sender",
+            "type": "string",
+            "nullable": true
           },
           "sort": {
             "title": "Sort",
@@ -16884,10 +17051,14 @@
             "$ref": "#/components/schemas/BulkEmailActionStatus"
           },
           "template_id": {
-            "$ref": "#/components/schemas/BulkEmailActionTemplateId"
+            "title": "Template ID",
+            "type": "string",
+            "nullable": true
           },
           "updated_by": {
-            "$ref": "#/components/schemas/BulkEmailActionUpdatedBy"
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -16959,30 +17130,44 @@
             "$ref": "#/components/schemas/BulkSequenceSubscriptionActionContactPreference"
           },
           "created_by": {
-            "$ref": "#/components/schemas/BulkSequenceSubscriptionActionCreatedBy"
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
           },
           "date_created": {
-            "$ref": "#/components/schemas/BulkSequenceSubscriptionActionDateCreated"
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "date_updated": {
-            "$ref": "#/components/schemas/BulkSequenceSubscriptionActionDateUpdated"
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "from_phone_number_id": {
-            "$ref": "#/components/schemas/BulkSequenceSubscriptionActionFromPhoneNumberId"
+            "title": "From Phone Number ID",
+            "type": "string",
+            "nullable": true
           },
           "id": {
             "title": "ID",
             "type": "string"
           },
           "n_leads": {
-            "$ref": "#/components/schemas/BulkSequenceSubscriptionActionNLeads"
+            "title": "N Leads",
+            "type": "integer",
+            "nullable": true
           },
           "n_leads_processed": {
             "title": "N Leads Processed",
             "type": "integer"
           },
           "n_objects": {
-            "$ref": "#/components/schemas/BulkSequenceSubscriptionActionNObjects"
+            "title": "N Objects",
+            "type": "integer",
+            "nullable": true
           },
           "n_objects_processed": {
             "title": "N Objects Processed",
@@ -16993,10 +17178,14 @@
             "type": "string"
           },
           "query": {
-            "$ref": "#/components/schemas/BulkSequenceSubscriptionActionQuery"
+            "title": "Query",
+            "type": "string",
+            "nullable": true
           },
           "results_limit": {
-            "$ref": "#/components/schemas/BulkSequenceSubscriptionActionResultsLimit"
+            "title": "Results Limit",
+            "type": "integer",
+            "nullable": true
           },
           "s_query": {
             "$ref": "#/components/schemas/BulkSequenceSubscriptionActionSQueryProperty"
@@ -17006,16 +17195,24 @@
             "type": "boolean"
           },
           "sender_account_id": {
-            "$ref": "#/components/schemas/BulkSequenceSubscriptionActionSenderAccountId"
+            "title": "Sender Account ID",
+            "type": "string",
+            "nullable": true
           },
           "sender_email": {
-            "$ref": "#/components/schemas/BulkSequenceSubscriptionActionSenderEmail"
+            "title": "Sender Email",
+            "type": "string",
+            "nullable": true
           },
           "sender_name": {
-            "$ref": "#/components/schemas/BulkSequenceSubscriptionActionSenderName"
+            "title": "Sender Name",
+            "type": "string",
+            "nullable": true
           },
           "sequence_id": {
-            "$ref": "#/components/schemas/BulkSequenceSubscriptionActionSequenceId"
+            "title": "Sequence ID",
+            "type": "string",
+            "nullable": true
           },
           "sort": {
             "title": "Sort",
@@ -17028,7 +17225,9 @@
             "$ref": "#/components/schemas/BulkSequenceSubscriptionActionStatus"
           },
           "updated_by": {
-            "$ref": "#/components/schemas/BulkSequenceSubscriptionActionUpdatedBy"
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -17151,16 +17350,26 @@
             "type": "string"
           },
           "activity_at": {
-            "$ref": "#/components/schemas/CallActivityActivityAt"
+            "title": "Activity At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "contact_id": {
-            "$ref": "#/components/schemas/CallActivityContactId"
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
           },
           "created_by": {
-            "$ref": "#/components/schemas/CallActivityCreatedBy"
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
           },
           "created_by_name": {
-            "$ref": "#/components/schemas/CallActivityCreatedByName"
+            "title": "Created By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "date_created": {
             "title": "Date Created",
@@ -17177,23 +17386,36 @@
             "type": "string"
           },
           "lead_id": {
-            "$ref": "#/components/schemas/CallActivityLeadId"
+            "title": "Lead ID",
+            "type": "string",
+            "nullable": true
           },
           "organization_id": {
             "title": "Organization ID",
             "type": "string"
           },
           "outcome_id": {
-            "$ref": "#/components/schemas/CallActivityOutcomeId"
+            "title": "Outcome ID",
+            "type": "string",
+            "nullable": true
           },
           "sequence_id": {
-            "$ref": "#/components/schemas/CallActivitySequenceId"
+            "title": "Sequence ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "sequence_name": {
-            "$ref": "#/components/schemas/CallActivitySequenceName"
+            "title": "Sequence Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "sequence_subscription_id": {
-            "$ref": "#/components/schemas/CallActivitySequenceSubscriptionId"
+            "title": "Sequence Subscription ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "source": {
             "$ref": "#/components/schemas/PhoneActivitySource"
@@ -17202,16 +17424,26 @@
             "$ref": "#/components/schemas/CallStatus"
           },
           "updated_by": {
-            "$ref": "#/components/schemas/CallActivityUpdatedBy"
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
           },
           "updated_by_name": {
-            "$ref": "#/components/schemas/CallActivityUpdatedByName"
+            "title": "Updated By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "user_id": {
-            "$ref": "#/components/schemas/CallActivityUserId"
+            "title": "User ID",
+            "type": "string",
+            "nullable": true
           },
           "user_name": {
-            "$ref": "#/components/schemas/CallActivityUserName"
+            "title": "User Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "users": {
             "title": "Users",
@@ -17372,7 +17604,9 @@
         "type": "object",
         "properties": {
           "created_by": {
-            "$ref": "#/components/schemas/ContactCreatedBy"
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
           },
           "date_created": {
             "title": "Date Created",
@@ -17407,13 +17641,20 @@
             }
           },
           "lead_id": {
-            "$ref": "#/components/schemas/ContactLeadId"
+            "title": "Lead ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "lead_suggestions_operation_id": {
-            "$ref": "#/components/schemas/ContactLeadSuggestionsOperationId"
+            "title": "Lead Suggestions Operation ID",
+            "type": "string",
+            "nullable": true
           },
           "name": {
-            "$ref": "#/components/schemas/ContactName"
+            "title": "Name",
+            "type": "string",
+            "nullable": true
           },
           "organization_id": {
             "title": "Organization ID",
@@ -17441,16 +17682,24 @@
             }
           },
           "timezone": {
-            "$ref": "#/components/schemas/ContactTimezone"
+            "title": "Timezone",
+            "type": "string",
+            "nullable": true
           },
           "timezone_source": {
-            "$ref": "#/components/schemas/ContactTimezoneSource"
+            "title": "Timezone Source",
+            "type": "string",
+            "nullable": true
           },
           "title": {
-            "$ref": "#/components/schemas/ContactTitle"
+            "title": "Title",
+            "type": "string",
+            "nullable": true
           },
           "updated_by": {
-            "$ref": "#/components/schemas/ContactUpdatedBy"
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
           },
           "urls": {
             "title": "URLs",
@@ -17493,7 +17742,9 @@
         "type": "object",
         "properties": {
           "country": {
-            "$ref": "#/components/schemas/ContactPhoneCountry"
+            "title": "Country",
+            "type": "string",
+            "nullable": true
           },
           "outbound_sms_blocked": {
             "title": "Outbound SMS Blocked",
@@ -17532,7 +17783,9 @@
         "type": "object",
         "properties": {
           "dialer_id": {
-            "$ref": "#/components/schemas/ContactRecentCallDialerId"
+            "title": "Dialer ID",
+            "type": "string",
+            "nullable": true
           },
           "duration": {
             "title": "Duration",
@@ -17713,10 +17966,14 @@
             }
           },
           "agent_config_id": {
-            "$ref": "#/components/schemas/CreateCallTaskAgentConfigId"
+            "title": "Agent Config ID",
+            "type": "string",
+            "nullable": true
           },
           "assigned_to": {
-            "$ref": "#/components/schemas/CreateCallTaskAssignedTo"
+            "title": "Assigned To",
+            "type": "string",
+            "nullable": true
           },
           "contact_id": {
             "title": "Contact ID",
@@ -17742,7 +17999,9 @@
             "type": "string"
           },
           "text": {
-            "$ref": "#/components/schemas/CreateCallTaskText"
+            "title": "Text",
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -18097,10 +18356,14 @@
             }
           },
           "assigned_to": {
-            "$ref": "#/components/schemas/CreateLeadTaskAssignedTo"
+            "title": "Assigned To",
+            "type": "string",
+            "nullable": true
           },
           "contact_id": {
-            "$ref": "#/components/schemas/CreateLeadTaskContactId"
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
           },
           "created_by": {
             "title": "Created By",
@@ -18237,40 +18500,84 @@
             "$ref": "#/components/schemas/CreateOpportunityAttachments"
           },
           "confidence": {
-            "$ref": "#/components/schemas/CreateOpportunityConfidence"
+            "title": "Confidence",
+            "type": "integer",
+            "default": null,
+            "nullable": true
           },
           "contact_id": {
-            "$ref": "#/components/schemas/CreateOpportunityContactId"
+            "title": "Contact ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "created_by": {
-            "$ref": "#/components/schemas/CreateOpportunityCreatedBy"
+            "title": "Created By",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "date_created": {
-            "$ref": "#/components/schemas/CreateOpportunityDateCreated"
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time",
+            "default": null,
+            "nullable": true
           },
           "date_won": {
-            "$ref": "#/components/schemas/CreateOpportunityDateWon"
+            "title": "Date Won",
+            "type": "string",
+            "description": "If not set on the resource or in the request, \u0060date_won\u0060 will be set automatically to today\u0027s date when setting \u0060status_id\u0060 to a status with type \u0060won\u0060. The \u0060x-tz-offset\u0060 header, used to pass your timezone\u0027s UTC offset, will be taken into account.",
+            "format": "date-time",
+            "default": null,
+            "nullable": true
           },
           "lead_id": {
-            "$ref": "#/components/schemas/CreateOpportunityLeadId"
+            "title": "Lead ID",
+            "type": "string",
+            "description": "Opportunities belong to exactly one Lead. If not provided, a new lead will be created (appearing as \u0022Untitled\u0022 in the UI).",
+            "default": null,
+            "nullable": true
           },
           "note": {
-            "$ref": "#/components/schemas/CreateOpportunityNote"
+            "title": "Note",
+            "type": "string",
+            "description": "Plaintext/markdown version of the note. If \u0060note_html\u0060 is also provided in the same request, this value is ignored and \u0060note\u0060 is derived from the HTML instead.",
+            "default": null,
+            "nullable": true
           },
           "note_html": {
-            "$ref": "#/components/schemas/CreateOpportunityNoteHtml"
+            "title": "Note HTML",
+            "type": "string",
+            "description": "Rich-text HTML version of the note. When set, \u0060note\u0060 is automatically populated with the plaintext version (tags become markdown), overriding any \u0060note\u0060 value passed in the same request.",
+            "default": null,
+            "nullable": true
           },
           "pipeline_id": {
-            "$ref": "#/components/schemas/CreateOpportunityPipelineId"
+            "title": "Pipeline ID",
+            "type": "string",
+            "description": "Specify which pipeline this opportunity should belong to. When supplied without \u0060status_id\u0060, the opportunity will be created with the first available status of that pipeline. When supplied with \u0060status_id\u0060, the status must belong to the specified pipeline or a 400 error will be returned. If the pipeline does not exist, a 400 error will be returned. See the [Pipelines API](https://developer.close.com/api/resources/pipelines).",
+            "default": null,
+            "nullable": true
           },
           "status_id": {
-            "$ref": "#/components/schemas/CreateOpportunityStatusId"
+            "title": "Status ID",
+            "type": "string",
+            "description": "Post a \u0060status_id\u0060 to create an opportunity with a specific status. If omitted, the organization\u0027s default (first) status will be used (or the first status of the \u0060pipeline_id\u0060 if provided). See the [Opportunity Status API](https://developer.close.com/api/resources/opportunity-statuses).",
+            "default": null,
+            "nullable": true
           },
           "user_id": {
-            "$ref": "#/components/schemas/CreateOpportunityUserId"
+            "title": "User ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "value": {
-            "$ref": "#/components/schemas/CreateOpportunityValue"
+            "title": "Value",
+            "type": "integer",
+            "default": null,
+            "nullable": true
           },
           "value_period": {
             "$ref": "#/components/schemas/CreateOpportunityValuePeriod"
@@ -18296,7 +18603,11 @@
             "$ref": "#/components/schemas/CreateOutcomeAppliesTo"
           },
           "description": {
-            "$ref": "#/components/schemas/CreateOutcomeDescription"
+            "title": "Description",
+            "type": "string",
+            "description": "Explain what the outcome means and when it should be used.",
+            "default": null,
+            "nullable": true
           },
           "name": {
             "title": "Name",
@@ -18317,7 +18628,10 @@
         "type": "object",
         "properties": {
           "bundle_id": {
-            "$ref": "#/components/schemas/CreatePhoneNumberRequestBundleId"
+            "title": "Bundle ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "carrier_type": {
             "$ref": "#/components/schemas/CreatePhoneNumberRequestCarrierType"
@@ -18337,10 +18651,18 @@
             "$ref": "#/components/schemas/PhoneNumberSharing"
           },
           "with_mms": {
-            "$ref": "#/components/schemas/CreatePhoneNumberRequestWithMms"
+            "title": "With MMS",
+            "type": "boolean",
+            "description": "By default, MMS-capable numbers are rented if Close supports MMS for the given country. Renting an MMS-capable number can be forced by setting this flag to \u0060true\u0060. If set to \u0060false\u0060, certain prefixes that don\u0027t support MMS can be rented in countries where Close supports MMS. In most scenarios, this flag should not be passed. When you request an MMS number, you must set \u0060with_sms\u0060 to \u0060true\u0060 as well.",
+            "default": null,
+            "nullable": true
           },
           "with_sms": {
-            "$ref": "#/components/schemas/CreatePhoneNumberRequestWithSms"
+            "title": "With SMS",
+            "type": "boolean",
+            "description": "By default, SMS-capable numbers are rented if Close supports SMS for the given country. Renting an SMS-capable number can be forced by setting this flag to \u0060true\u0060. If set to \u0060false\u0060, certain prefixes that don\u0027t support SMS can be rented in countries where Close supports SMS. In most scenarios, this flag should not be passed unless a \u0060has-voice-only\u0060 error status is received.",
+            "default": null,
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -18361,7 +18683,10 @@
             "description": "IDs of [Shared Custom Fields](/api/resources/custom-fields/custom-fields-shared) to associate with this Playbook."
           },
           "description": {
-            "$ref": "#/components/schemas/CreatePlaybookDescription"
+            "title": "Description",
+            "type": "string",
+            "description": "Description of the playbook.",
+            "nullable": true
           },
           "name": {
             "title": "Name",
@@ -18376,7 +18701,10 @@
             "description": "IDs of [Outcomes](/api/resources/outcomes/) that should be associated with this Playbook."
           },
           "summary_guidance": {
-            "$ref": "#/components/schemas/CreatePlaybookSummaryGuidance"
+            "title": "Summary Guidance",
+            "type": "string",
+            "description": "Guidance for AI summaries of calls and meetings associated with this Playbook.",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -18622,7 +18950,13 @@
             "type": "string"
           },
           "integration_link": {
-            "$ref": "#/components/schemas/CreateWhatsAppMessageIntegrationLink"
+            "title": "Integration Link",
+            "maxLength": 2083,
+            "minLength": 1,
+            "type": "string",
+            "format": "uri",
+            "default": null,
+            "nullable": true
           },
           "lead_id": {
             "title": "Lead ID",
@@ -18641,10 +18975,15 @@
             "type": "string"
           },
           "response_to_id": {
-            "$ref": "#/components/schemas/CreateWhatsAppMessageResponseToId"
+            "title": "Response To ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "user_id": {
-            "$ref": "#/components/schemas/CreateWhatsAppMessageUserId"
+            "title": "User ID",
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -18674,16 +19013,26 @@
             "type": "string"
           },
           "activity_at": {
-            "$ref": "#/components/schemas/CreatedActivityActivityAt"
+            "title": "Activity At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "contact_id": {
-            "$ref": "#/components/schemas/CreatedActivityContactId"
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
           },
           "created_by": {
-            "$ref": "#/components/schemas/CreatedActivityCreatedBy"
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
           },
           "created_by_name": {
-            "$ref": "#/components/schemas/CreatedActivityCreatedByName"
+            "title": "Created By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "date_created": {
             "title": "Date Created",
@@ -18700,10 +19049,14 @@
             "type": "string"
           },
           "import_id": {
-            "$ref": "#/components/schemas/CreatedActivityImportId"
+            "title": "Import ID",
+            "type": "string",
+            "nullable": true
           },
           "lead_id": {
-            "$ref": "#/components/schemas/CreatedActivityLeadId"
+            "title": "Lead ID",
+            "type": "string",
+            "nullable": true
           },
           "organization_id": {
             "title": "Organization ID",
@@ -18713,16 +19066,26 @@
             "$ref": "#/components/schemas/CreatedActivitySource"
           },
           "updated_by": {
-            "$ref": "#/components/schemas/CreatedActivityUpdatedBy"
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
           },
           "updated_by_name": {
-            "$ref": "#/components/schemas/CreatedActivityUpdatedByName"
+            "title": "Updated By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "user_id": {
-            "$ref": "#/components/schemas/CreatedActivityUserId"
+            "title": "User ID",
+            "type": "string",
+            "nullable": true
           },
           "user_name": {
-            "$ref": "#/components/schemas/CreatedActivityUserName"
+            "title": "User Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "users": {
             "title": "Users",
@@ -18837,19 +19200,29 @@
             "type": "string"
           },
           "activity_at": {
-            "$ref": "#/components/schemas/CustomActivityActivityAt"
+            "title": "Activity At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "comment_summary": {
             "$ref": "#/components/schemas/CustomActivityCommentSummary"
           },
           "contact_id": {
-            "$ref": "#/components/schemas/CustomActivityContactId"
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
           },
           "created_by": {
-            "$ref": "#/components/schemas/CustomActivityCreatedBy"
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
           },
           "created_by_name": {
-            "$ref": "#/components/schemas/CustomActivityCreatedByName"
+            "title": "Created By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "custom_activity_type_id": {
             "title": "Custom Activity Type ID",
@@ -18870,10 +19243,15 @@
             "type": "string"
           },
           "last_published_at": {
-            "$ref": "#/components/schemas/CustomActivityLastPublishedAt"
+            "title": "Last Published At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "lead_id": {
-            "$ref": "#/components/schemas/CustomActivityLeadId"
+            "title": "Lead ID",
+            "type": "string",
+            "nullable": true
           },
           "mentions": {
             "title": "Mentions",
@@ -18883,7 +19261,10 @@
             }
           },
           "mentions_updated_at": {
-            "$ref": "#/components/schemas/CustomActivityMentionsUpdatedAt"
+            "title": "Mentions Updated At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "organization_id": {
             "title": "Organization ID",
@@ -18894,7 +19275,10 @@
             "type": "boolean"
           },
           "pinned_at": {
-            "$ref": "#/components/schemas/CustomActivityPinnedAt"
+            "title": "Pinned At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "source": {
             "$ref": "#/components/schemas/CustomActivitySource"
@@ -18903,16 +19287,26 @@
             "$ref": "#/components/schemas/CustomActivityStatus"
           },
           "updated_by": {
-            "$ref": "#/components/schemas/CustomActivityUpdatedBy"
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
           },
           "updated_by_name": {
-            "$ref": "#/components/schemas/CustomActivityUpdatedByName"
+            "title": "Updated By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "user_id": {
-            "$ref": "#/components/schemas/CustomActivityUserId"
+            "title": "User ID",
+            "type": "string",
+            "nullable": true
           },
           "user_name": {
-            "$ref": "#/components/schemas/CustomActivityUserName"
+            "title": "User Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "users": {
             "title": "Users",
@@ -18992,13 +19386,22 @@
             "type": "string"
           },
           "activity_at": {
-            "$ref": "#/components/schemas/EmailActivityActivityAt"
+            "title": "Activity At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "agent_action_reason": {
-            "$ref": "#/components/schemas/EmailActivityAgentActionReason"
+            "title": "Agent Action Reason",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "agent_config_id": {
-            "$ref": "#/components/schemas/EmailActivityAgentConfigId"
+            "title": "Agent Config ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "attachments": {
             "$ref": "#/components/schemas/EmailActivityAttachments"
@@ -19011,16 +19414,25 @@
             }
           },
           "body_html": {
-            "$ref": "#/components/schemas/EmailActivityBodyHtml"
+            "title": "Body HTML",
+            "type": "string",
+            "nullable": true
           },
           "body_preview": {
-            "$ref": "#/components/schemas/EmailActivityBodyPreview"
+            "title": "Body Preview",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "body_text": {
-            "$ref": "#/components/schemas/EmailActivityBodyText"
+            "title": "Body Text",
+            "type": "string",
+            "nullable": true
           },
           "bulk_email_action_id": {
-            "$ref": "#/components/schemas/EmailActivityBulkEmailActionId"
+            "title": "Bulk Email Action ID",
+            "type": "string",
+            "nullable": true
           },
           "cc": {
             "title": "Cc",
@@ -19030,13 +19442,20 @@
             }
           },
           "contact_id": {
-            "$ref": "#/components/schemas/EmailActivityContactId"
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
           },
           "created_by": {
-            "$ref": "#/components/schemas/EmailActivityCreatedBy"
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
           },
           "created_by_name": {
-            "$ref": "#/components/schemas/EmailActivityCreatedByName"
+            "title": "Created By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "date_created": {
             "title": "Date Created",
@@ -19044,10 +19463,16 @@
             "format": "date-time"
           },
           "date_scheduled": {
-            "$ref": "#/components/schemas/EmailActivityDateScheduled"
+            "title": "Date Scheduled",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "date_sent": {
-            "$ref": "#/components/schemas/EmailActivityDateSent"
+            "title": "Date Sent",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "date_updated": {
             "title": "Date Updated",
@@ -19058,7 +19483,10 @@
             "$ref": "#/components/schemas/EmailActivityDirection"
           },
           "email_account_id": {
-            "$ref": "#/components/schemas/EmailActivityEmailAccountId"
+            "title": "Email Account ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "envelope": {
             "$ref": "#/components/schemas/EmailActivityEnvelope"
@@ -19068,10 +19496,15 @@
             "type": "boolean"
           },
           "followup_sequence_delay": {
-            "$ref": "#/components/schemas/EmailActivityFollowupSequenceDelay"
+            "title": "Followup Sequence Delay",
+            "type": "integer",
+            "nullable": true
           },
           "followup_sequence_id": {
-            "$ref": "#/components/schemas/EmailActivityFollowupSequenceId"
+            "title": "Followup Sequence ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "has_reply": {
             "title": "Has Reply",
@@ -19082,10 +19515,14 @@
             "type": "string"
           },
           "in_reply_to_id": {
-            "$ref": "#/components/schemas/EmailActivityInReplyToId"
+            "title": "In Reply To ID",
+            "type": "string",
+            "nullable": true
           },
           "lead_id": {
-            "$ref": "#/components/schemas/EmailActivityLeadId"
+            "title": "Lead ID",
+            "type": "string",
+            "nullable": true
           },
           "message_ids": {
             "title": "Message IDs",
@@ -19102,7 +19539,9 @@
             "$ref": "#/components/schemas/EmailActivityOpens"
           },
           "opens_summary": {
-            "$ref": "#/components/schemas/EmailActivityOpensSummary"
+            "title": "Opens Summary",
+            "type": "string",
+            "nullable": true
           },
           "organization_id": {
             "title": "Organization ID",
@@ -19116,37 +19555,59 @@
             }
           },
           "send_as_id": {
-            "$ref": "#/components/schemas/EmailActivitySendAsId"
+            "title": "Send As ID",
+            "type": "string",
+            "nullable": true
           },
           "send_attempts": {
             "$ref": "#/components/schemas/EmailActivitySendAttempts"
           },
           "sender": {
-            "$ref": "#/components/schemas/EmailActivitySender"
+            "title": "Sender",
+            "type": "string",
+            "nullable": true
           },
           "sequence_id": {
-            "$ref": "#/components/schemas/EmailActivitySequenceId"
+            "title": "Sequence ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "sequence_name": {
-            "$ref": "#/components/schemas/EmailActivitySequenceName"
+            "title": "Sequence Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "sequence_subscription_id": {
-            "$ref": "#/components/schemas/EmailActivitySequenceSubscriptionId"
+            "title": "Sequence Subscription ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "status": {
             "$ref": "#/components/schemas/MessageStatus"
           },
           "subject": {
-            "$ref": "#/components/schemas/EmailActivitySubject"
+            "title": "Subject",
+            "type": "string",
+            "nullable": true
           },
           "template_id": {
-            "$ref": "#/components/schemas/EmailActivityTemplateId"
+            "title": "Template ID",
+            "type": "string",
+            "nullable": true
           },
           "template_name": {
-            "$ref": "#/components/schemas/EmailActivityTemplateName"
+            "title": "Template Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "thread_id": {
-            "$ref": "#/components/schemas/EmailActivityThreadId"
+            "title": "Thread ID",
+            "type": "string",
+            "nullable": true
           },
           "to": {
             "title": "To",
@@ -19156,16 +19617,26 @@
             }
           },
           "updated_by": {
-            "$ref": "#/components/schemas/EmailActivityUpdatedBy"
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
           },
           "updated_by_name": {
-            "$ref": "#/components/schemas/EmailActivityUpdatedByName"
+            "title": "Updated By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "user_id": {
-            "$ref": "#/components/schemas/EmailActivityUserId"
+            "title": "User ID",
+            "type": "string",
+            "nullable": true
           },
           "user_name": {
-            "$ref": "#/components/schemas/EmailActivityUserName"
+            "title": "User Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "users": {
             "title": "Users",
@@ -19300,16 +19771,26 @@
             "type": "string"
           },
           "activity_at": {
-            "$ref": "#/components/schemas/FormSubmissionActivityActivityAt"
+            "title": "Activity At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "contact_id": {
-            "$ref": "#/components/schemas/FormSubmissionActivityContactId"
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
           },
           "created_by": {
-            "$ref": "#/components/schemas/FormSubmissionActivityCreatedBy"
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
           },
           "created_by_name": {
-            "$ref": "#/components/schemas/FormSubmissionActivityCreatedByName"
+            "title": "Created By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "date_created": {
             "title": "Date Created",
@@ -19330,42 +19811,65 @@
             "type": "string"
           },
           "form_name": {
-            "$ref": "#/components/schemas/FormSubmissionActivityFormName"
+            "title": "Form Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "id": {
             "title": "ID",
             "type": "string"
           },
           "ip_address": {
-            "$ref": "#/components/schemas/FormSubmissionActivityIpAddress"
+            "title": "Ip Address",
+            "type": "string",
+            "nullable": true
           },
           "lead_id": {
-            "$ref": "#/components/schemas/FormSubmissionActivityLeadId"
+            "title": "Lead ID",
+            "type": "string",
+            "nullable": true
           },
           "organization_id": {
             "title": "Organization ID",
             "type": "string"
           },
           "origin": {
-            "$ref": "#/components/schemas/FormSubmissionActivityOrigin"
+            "title": "Origin",
+            "type": "string",
+            "nullable": true
           },
           "source_url": {
-            "$ref": "#/components/schemas/FormSubmissionActivitySourceUrl"
+            "title": "Source URL",
+            "type": "string",
+            "nullable": true
           },
           "source_url_normalized": {
-            "$ref": "#/components/schemas/FormSubmissionActivitySourceUrlNormalized"
+            "title": "Source URL Normalized",
+            "type": "string",
+            "nullable": true
           },
           "updated_by": {
-            "$ref": "#/components/schemas/FormSubmissionActivityUpdatedBy"
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
           },
           "updated_by_name": {
-            "$ref": "#/components/schemas/FormSubmissionActivityUpdatedByName"
+            "title": "Updated By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "user_id": {
-            "$ref": "#/components/schemas/FormSubmissionActivityUserId"
+            "title": "User ID",
+            "type": "string",
+            "nullable": true
           },
           "user_name": {
-            "$ref": "#/components/schemas/FormSubmissionActivityUserName"
+            "title": "User Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "users": {
             "title": "Users",
@@ -19446,16 +19950,26 @@
             "type": "string"
           },
           "activity_at": {
-            "$ref": "#/components/schemas/ImportUpdateActivityActivityAt"
+            "title": "Activity At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "contact_id": {
-            "$ref": "#/components/schemas/ImportUpdateActivityContactId"
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
           },
           "created_by": {
-            "$ref": "#/components/schemas/ImportUpdateActivityCreatedBy"
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
           },
           "created_by_name": {
-            "$ref": "#/components/schemas/ImportUpdateActivityCreatedByName"
+            "title": "Created By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "date_created": {
             "title": "Date Created",
@@ -19472,10 +19986,14 @@
             "type": "string"
           },
           "import_id": {
-            "$ref": "#/components/schemas/ImportUpdateActivityImportId"
+            "title": "Import ID",
+            "type": "string",
+            "nullable": true
           },
           "lead_id": {
-            "$ref": "#/components/schemas/ImportUpdateActivityLeadId"
+            "title": "Lead ID",
+            "type": "string",
+            "nullable": true
           },
           "organization_id": {
             "title": "Organization ID",
@@ -19486,16 +20004,26 @@
             "type": "boolean"
           },
           "updated_by": {
-            "$ref": "#/components/schemas/ImportUpdateActivityUpdatedBy"
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
           },
           "updated_by_name": {
-            "$ref": "#/components/schemas/ImportUpdateActivityUpdatedByName"
+            "title": "Updated By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "user_id": {
-            "$ref": "#/components/schemas/ImportUpdateActivityUserId"
+            "title": "User ID",
+            "type": "string",
+            "nullable": true
           },
           "user_name": {
-            "$ref": "#/components/schemas/ImportUpdateActivityUserName"
+            "title": "User Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "users": {
             "title": "Users",
@@ -19539,13 +20067,21 @@
         "type": "object",
         "properties": {
           "created_by": {
-            "$ref": "#/components/schemas/IntegrationLinkCreatedBy"
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
           },
           "date_created": {
-            "$ref": "#/components/schemas/IntegrationLinkDateCreated"
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "date_updated": {
-            "$ref": "#/components/schemas/IntegrationLinkDateUpdated"
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "id": {
             "title": "ID",
@@ -19563,7 +20099,9 @@
             "$ref": "#/components/schemas/IntegrationLinkType"
           },
           "updated_by": {
-            "$ref": "#/components/schemas/IntegrationLinkUpdatedBy"
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
           },
           "url": {
             "title": "Url",
@@ -19644,10 +20182,14 @@
             "type": "string"
           },
           "created_by": {
-            "$ref": "#/components/schemas/LeadCreatedBy"
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
           },
           "created_by_name": {
-            "$ref": "#/components/schemas/LeadCreatedByName"
+            "title": "Created By Name",
+            "type": "string",
+            "nullable": true
           },
           "date_created": {
             "title": "Date Created",
@@ -19660,7 +20202,9 @@
             "format": "date-time"
           },
           "description": {
-            "$ref": "#/components/schemas/LeadDescription"
+            "title": "Description",
+            "type": "string",
+            "nullable": true
           },
           "display_name": {
             "title": "Display Name",
@@ -19682,10 +20226,15 @@
             }
           },
           "localtime": {
-            "$ref": "#/components/schemas/LeadLocaltime"
+            "title": "Localtime",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "name": {
-            "$ref": "#/components/schemas/LeadName"
+            "title": "Name",
+            "type": "string",
+            "nullable": true
           },
           "opportunities": {
             "title": "Opportunities",
@@ -19700,10 +20249,14 @@
             "type": "string"
           },
           "primary_address_full": {
-            "$ref": "#/components/schemas/LeadPrimaryAddressFull"
+            "title": "Primary Address Full",
+            "type": "string",
+            "nullable": true
           },
           "primary_address_summary": {
-            "$ref": "#/components/schemas/LeadPrimaryAddressSummary"
+            "title": "Primary Address Summary",
+            "type": "string",
+            "nullable": true
           },
           "primary_email": {
             "$ref": "#/components/schemas/LeadPrimaryEmail"
@@ -19719,7 +20272,9 @@
             }
           },
           "source": {
-            "$ref": "#/components/schemas/LeadSource"
+            "title": "Source",
+            "type": "string",
+            "nullable": true
           },
           "status_id": {
             "title": "Status ID",
@@ -19744,13 +20299,19 @@
             }
           },
           "updated_by": {
-            "$ref": "#/components/schemas/LeadUpdatedBy"
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
           },
           "updated_by_name": {
-            "$ref": "#/components/schemas/LeadUpdatedByName"
+            "title": "Updated By Name",
+            "type": "string",
+            "nullable": true
           },
           "url": {
-            "$ref": "#/components/schemas/LeadUrl"
+            "title": "URL",
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -19768,22 +20329,34 @@
         "type": "object",
         "properties": {
           "address_1": {
-            "$ref": "#/components/schemas/LeadAddressAddress1"
+            "title": "Address 1",
+            "type": "string",
+            "nullable": true
           },
           "address_2": {
-            "$ref": "#/components/schemas/LeadAddressAddress2"
+            "title": "Address 2",
+            "type": "string",
+            "nullable": true
           },
           "city": {
-            "$ref": "#/components/schemas/LeadAddressCity"
+            "title": "City",
+            "type": "string",
+            "nullable": true
           },
           "country": {
-            "$ref": "#/components/schemas/LeadAddressCountry"
+            "title": "Country",
+            "type": "string",
+            "nullable": true
           },
           "label": {
-            "$ref": "#/components/schemas/LeadAddressLabel"
+            "title": "Label",
+            "type": "string",
+            "nullable": true
           },
           "state": {
-            "$ref": "#/components/schemas/LeadAddressState"
+            "title": "State",
+            "type": "string",
+            "nullable": true
           },
           "tz_ids": {
             "title": "TZ IDs",
@@ -19793,7 +20366,132 @@
             }
           },
           "zipcode": {
-            "$ref": "#/components/schemas/LeadAddressZipcode"
+            "title": "Zipcode",
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "LeadStatusChangeActivity": {
+        "title": "LeadStatusChangeActivity",
+        "required": [
+          "_type",
+          "activity_at",
+          "contact_id",
+          "created_by",
+          "date_created",
+          "date_updated",
+          "id",
+          "lead_id",
+          "new_status_id",
+          "old_status_id",
+          "organization_id",
+          "updated_by",
+          "user_id",
+          "users"
+        ],
+        "type": "object",
+        "properties": {
+          "_paused_subscriptions": {
+            "title": "Paused Subscriptions",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PausedSubscription"
+            }
+          },
+          "_type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "activity_at": {
+            "title": "Activity At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "contact_id": {
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
+          },
+          "created_by": {
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
+          },
+          "created_by_name": {
+            "title": "Created By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time"
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "lead_id": {
+            "title": "Lead ID",
+            "type": "string",
+            "nullable": true
+          },
+          "new_status_id": {
+            "title": "New Status ID",
+            "type": "string"
+          },
+          "new_status_label": {
+            "title": "New Status Label",
+            "type": "string"
+          },
+          "old_status_id": {
+            "title": "Old Status ID",
+            "type": "string"
+          },
+          "old_status_label": {
+            "title": "Old Status Label",
+            "type": "string"
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "updated_by": {
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
+          },
+          "updated_by_name": {
+            "title": "Updated By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "user_id": {
+            "title": "User ID",
+            "type": "string",
+            "nullable": true
+          },
+          "user_name": {
+            "title": "User Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "users": {
+            "title": "Users",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -19805,10 +20503,16 @@
             "$ref": "#/components/schemas/AutoRecordCalls"
           },
           "default_caller_id": {
-            "$ref": "#/components/schemas/MembershipDefaultCallerId"
+            "title": "Default Caller ID",
+            "type": "string",
+            "description": "ID of the phone number to use as this member\u0027s default outbound caller ID.",
+            "nullable": true
           },
           "hangup_recording_url": {
-            "$ref": "#/components/schemas/MembershipHangupRecordingUrl"
+            "title": "Hangup Recording URL",
+            "type": "string",
+            "description": "URL of the audio file used as this member\u0027s voicemail drop recording.",
+            "nullable": true
           },
           "may_workflows_impersonate": {
             "title": "May Workflows Impersonate",
@@ -19923,10 +20627,14 @@
         "type": "object",
         "properties": {
           "annualized_expected_value": {
-            "$ref": "#/components/schemas/OpportunityAnnualizedExpectedValue"
+            "title": "Annualized Expected Value",
+            "type": "integer",
+            "nullable": true
           },
           "annualized_value": {
-            "$ref": "#/components/schemas/OpportunityAnnualizedValue"
+            "title": "Annualized Value",
+            "type": "integer",
+            "nullable": true
           },
           "attachments": {
             "title": "Attachments",
@@ -19943,16 +20651,24 @@
             "type": "integer"
           },
           "contact_id": {
-            "$ref": "#/components/schemas/OpportunityContactId"
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
           },
           "contact_name": {
-            "$ref": "#/components/schemas/OpportunityContactName"
+            "title": "Contact Name",
+            "type": "string",
+            "nullable": true
           },
           "created_by": {
-            "$ref": "#/components/schemas/OpportunityCreatedBy"
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
           },
           "created_by_name": {
-            "$ref": "#/components/schemas/OpportunityCreatedByName"
+            "title": "Created By Name",
+            "type": "string",
+            "nullable": true
           },
           "date_created": {
             "title": "Date Created",
@@ -19960,7 +20676,10 @@
             "format": "date-time"
           },
           "date_lost": {
-            "$ref": "#/components/schemas/OpportunityDateLost"
+            "title": "Date Lost",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "date_updated": {
             "title": "Date Updated",
@@ -19968,10 +20687,15 @@
             "format": "date-time"
           },
           "date_won": {
-            "$ref": "#/components/schemas/OpportunityDateWon"
+            "title": "Date Won",
+            "type": "string",
+            "format": "date",
+            "nullable": true
           },
           "expected_value": {
-            "$ref": "#/components/schemas/OpportunityExpectedValue"
+            "title": "Expected Value",
+            "type": "integer",
+            "nullable": true
           },
           "id": {
             "title": "ID",
@@ -19993,7 +20717,9 @@
             "type": "string"
           },
           "lead_name": {
-            "$ref": "#/components/schemas/OpportunityLeadName"
+            "title": "Lead Name",
+            "type": "string",
+            "nullable": true
           },
           "lead_primary_email": {
             "$ref": "#/components/schemas/OpportunityLeadPrimaryEmail"
@@ -20002,20 +20728,28 @@
             "$ref": "#/components/schemas/OpportunityLeadPrimaryPhone"
           },
           "note": {
-            "$ref": "#/components/schemas/OpportunityNote"
+            "title": "Note",
+            "type": "string",
+            "nullable": true
           },
           "note_html": {
-            "$ref": "#/components/schemas/OpportunityNoteHtml"
+            "title": "Note Html",
+            "type": "string",
+            "nullable": true
           },
           "organization_id": {
             "title": "Organization ID",
             "type": "string"
           },
           "pipeline_id": {
-            "$ref": "#/components/schemas/OpportunityPipelineId"
+            "title": "Pipeline ID",
+            "type": "string",
+            "nullable": true
           },
           "pipeline_name": {
-            "$ref": "#/components/schemas/OpportunityPipelineName"
+            "title": "Pipeline Name",
+            "type": "string",
+            "nullable": true
           },
           "stall_status": {
             "$ref": "#/components/schemas/OpportunityStallStatus"
@@ -20039,26 +20773,38 @@
             "$ref": "#/components/schemas/OpportunitySuggestedActionComposed"
           },
           "updated_by": {
-            "$ref": "#/components/schemas/OpportunityUpdatedBy"
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
           },
           "updated_by_name": {
-            "$ref": "#/components/schemas/OpportunityUpdatedByName"
+            "title": "Updated By Name",
+            "type": "string",
+            "nullable": true
           },
           "user_id": {
             "title": "User ID",
             "type": "string"
           },
           "user_name": {
-            "$ref": "#/components/schemas/OpportunityUserName"
+            "title": "User Name",
+            "type": "string",
+            "nullable": true
           },
           "value": {
-            "$ref": "#/components/schemas/OpportunityValue"
+            "title": "Value",
+            "type": "integer",
+            "nullable": true
           },
           "value_currency": {
-            "$ref": "#/components/schemas/OpportunityValueCurrency"
+            "title": "Value Currency",
+            "type": "string",
+            "nullable": true
           },
           "value_formatted": {
-            "$ref": "#/components/schemas/OpportunityValueFormatted"
+            "title": "Value Formatted",
+            "type": "string",
+            "nullable": true
           },
           "value_period": {
             "$ref": "#/components/schemas/OpportunityValuePeriod"
@@ -20290,7 +21036,9 @@
             }
           },
           "created_by": {
-            "$ref": "#/components/schemas/OutcomeCreatedBy"
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
           },
           "date_created": {
             "title": "Date Created",
@@ -20303,7 +21051,9 @@
             "format": "date-time"
           },
           "description": {
-            "$ref": "#/components/schemas/OutcomeDescription"
+            "title": "Description",
+            "type": "string",
+            "nullable": true
           },
           "id": {
             "title": "ID",
@@ -20321,7 +21071,9 @@
             "$ref": "#/components/schemas/OutcomeType"
           },
           "updated_by": {
-            "$ref": "#/components/schemas/OutcomeUpdatedBy"
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -20369,6 +21121,46 @@
               "name": "Custom"
             }
           ]
+        }
+      },
+      "PausedSubscription": {
+        "title": "PausedSubscription",
+        "required": [
+          "contact_id",
+          "contact_name",
+          "id",
+          "sequence_id",
+          "sequence_name",
+          "sequence_status"
+        ],
+        "type": "object",
+        "properties": {
+          "contact_id": {
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
+          },
+          "contact_name": {
+            "title": "Contact Name",
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "sequence_id": {
+            "title": "Sequence ID",
+            "type": "string"
+          },
+          "sequence_name": {
+            "title": "Sequence Name",
+            "type": "string"
+          },
+          "sequence_status": {
+            "title": "Sequence Status",
+            "type": "string"
+          }
         }
       },
       "PhoneActivityDirection": {
@@ -20445,10 +21237,14 @@
         "type": "object",
         "properties": {
           "address_id": {
-            "$ref": "#/components/schemas/PhoneNumberAddressId"
+            "title": "Address ID",
+            "type": "string",
+            "nullable": true
           },
           "bundle_id": {
-            "$ref": "#/components/schemas/PhoneNumberBundleId"
+            "title": "Bundle ID",
+            "type": "string",
+            "nullable": true
           },
           "carrier": {
             "$ref": "#/components/schemas/PhoneNumberCarrier"
@@ -20457,7 +21253,9 @@
             "$ref": "#/components/schemas/PhoneNumberCarrierType"
           },
           "country": {
-            "$ref": "#/components/schemas/PhoneNumberCountry"
+            "title": "Country",
+            "type": "string",
+            "nullable": true
           },
           "date_created": {
             "title": "Date Created",
@@ -20470,21 +21268,28 @@
             "format": "date-time"
           },
           "forward_to": {
-            "$ref": "#/components/schemas/PhoneNumberForwardTo"
+            "title": "Forward To",
+            "type": "string",
+            "nullable": true
           },
           "forward_to_enabled": {
             "title": "Forward To Enabled",
             "type": "boolean"
           },
           "forward_to_formatted": {
-            "$ref": "#/components/schemas/PhoneNumberForwardToFormatted"
+            "title": "Forward To Formatted",
+            "type": "string",
+            "nullable": true
           },
           "id": {
             "title": "ID",
             "type": "string"
           },
           "inbound_ring_duration": {
-            "$ref": "#/components/schemas/PhoneNumberInboundRingDuration"
+            "title": "Inbound Ring Duration",
+            "type": "integer",
+            "description": "Number of seconds we ring this number on inbound calls before moving on (e.g. to voicemail). \u0060null\u0060 means the default of 30 seconds is used.",
+            "nullable": true
           },
           "is_group_number": {
             "title": "Is Group Number",
@@ -20505,14 +21310,19 @@
             "type": "string"
           },
           "last_billed_price": {
-            "$ref": "#/components/schemas/PhoneNumberLastBilledPrice"
+            "title": "Last Billed Price",
+            "type": "number",
+            "nullable": true
           },
           "mms_enabled": {
             "title": "Mms Enabled",
             "type": "boolean"
           },
           "next_billing_on": {
-            "$ref": "#/components/schemas/PhoneNumberNextBillingOn"
+            "title": "Next Billing On",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "number": {
             "title": "Number",
@@ -20573,10 +21383,16 @@
             "$ref": "#/components/schemas/PhoneNumberType"
           },
           "user_id": {
-            "$ref": "#/components/schemas/PhoneNumberUserId"
+            "title": "User ID",
+            "type": "string",
+            "description": "Deprecated. Set to the sole member\u0027s user ID for single-member numbers, otherwise \u0060null\u0060. \u0060user_id\u0060 will be removed in a future update.",
+            "nullable": true,
+            "deprecated": true
           },
           "voicemail_greeting_url": {
-            "$ref": "#/components/schemas/PhoneNumberVoicemailGreetingUrl"
+            "title": "Voicemail Greeting URL",
+            "type": "string",
+            "nullable": true
           },
           "was_ported": {
             "title": "Was Ported",
@@ -20656,10 +21472,15 @@
         "type": "object",
         "properties": {
           "archived_at": {
-            "$ref": "#/components/schemas/PlaybookArchivedAt"
+            "title": "Archived At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "archived_by_id": {
-            "$ref": "#/components/schemas/PlaybookArchivedById"
+            "title": "Archived By ID",
+            "type": "string",
+            "nullable": true
           },
           "created_at": {
             "title": "Created At",
@@ -20678,7 +21499,9 @@
             }
           },
           "description": {
-            "$ref": "#/components/schemas/PlaybookDescription"
+            "title": "Description",
+            "type": "string",
+            "nullable": true
           },
           "id": {
             "title": "ID",
@@ -20700,10 +21523,14 @@
             }
           },
           "position": {
-            "$ref": "#/components/schemas/PlaybookPosition"
+            "title": "Position",
+            "type": "integer",
+            "nullable": true
           },
           "summary_guidance": {
-            "$ref": "#/components/schemas/PlaybookSummaryGuidance"
+            "title": "Summary Guidance",
+            "type": "string",
+            "nullable": true
           },
           "updated_at": {
             "title": "Updated At",
@@ -20810,25 +21637,43 @@
             "type": "string"
           },
           "activity_at": {
-            "$ref": "#/components/schemas/SmsActivityActivityAt"
+            "title": "Activity At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "agent_action_reason": {
-            "$ref": "#/components/schemas/SmsActivityAgentActionReason"
+            "title": "Agent Action Reason",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "agent_config_id": {
-            "$ref": "#/components/schemas/SmsActivityAgentConfigId"
+            "title": "Agent Config ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "contact_id": {
-            "$ref": "#/components/schemas/SmsActivityContactId"
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
           },
           "cost": {
-            "$ref": "#/components/schemas/SmsActivityCost"
+            "title": "Cost",
+            "type": "string",
+            "nullable": true
           },
           "created_by": {
-            "$ref": "#/components/schemas/SmsActivityCreatedBy"
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
           },
           "created_by_name": {
-            "$ref": "#/components/schemas/SmsActivityCreatedByName"
+            "title": "Created By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "date_created": {
             "title": "Date Created",
@@ -20836,10 +21681,16 @@
             "format": "date-time"
           },
           "date_scheduled": {
-            "$ref": "#/components/schemas/SmsActivityDateScheduled"
+            "title": "Date Scheduled",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "date_sent": {
-            "$ref": "#/components/schemas/SmsActivityDateSent"
+            "title": "Date Sent",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "date_updated": {
             "title": "Date Updated",
@@ -20850,45 +21701,70 @@
             "$ref": "#/components/schemas/PhoneActivityDirection"
           },
           "error_message": {
-            "$ref": "#/components/schemas/SmsActivityErrorMessage"
+            "title": "Error Message",
+            "type": "string",
+            "nullable": true
           },
           "id": {
             "title": "ID",
             "type": "string"
           },
           "lead_id": {
-            "$ref": "#/components/schemas/SmsActivityLeadId"
+            "title": "Lead ID",
+            "type": "string",
+            "nullable": true
           },
           "local_country_iso": {
-            "$ref": "#/components/schemas/SmsActivityLocalCountryIso"
+            "title": "Local Country Iso",
+            "type": "string",
+            "nullable": true
           },
           "local_phone": {
-            "$ref": "#/components/schemas/SmsActivityLocalPhone"
+            "title": "Local Phone",
+            "type": "string",
+            "nullable": true
           },
           "local_phone_formatted": {
-            "$ref": "#/components/schemas/SmsActivityLocalPhoneFormatted"
+            "title": "Local Phone Formatted",
+            "type": "string",
+            "nullable": true
           },
           "organization_id": {
             "title": "Organization ID",
             "type": "string"
           },
           "remote_country_iso": {
-            "$ref": "#/components/schemas/SmsActivityRemoteCountryIso"
+            "title": "Remote Country Iso",
+            "type": "string",
+            "nullable": true
           },
           "remote_phone": {
-            "$ref": "#/components/schemas/SmsActivityRemotePhone"
+            "title": "Remote Phone",
+            "type": "string",
+            "nullable": true
           },
           "remote_phone_formatted": {
-            "$ref": "#/components/schemas/SmsActivityRemotePhoneFormatted"
+            "title": "Remote Phone Formatted",
+            "type": "string",
+            "nullable": true
           },
           "sequence_id": {
-            "$ref": "#/components/schemas/SmsActivitySequenceId"
+            "title": "Sequence ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "sequence_name": {
-            "$ref": "#/components/schemas/SmsActivitySequenceName"
+            "title": "Sequence Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "sequence_subscription_id": {
-            "$ref": "#/components/schemas/SmsActivitySequenceSubscriptionId"
+            "title": "Sequence Subscription ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "source": {
             "$ref": "#/components/schemas/PhoneActivitySource"
@@ -20897,22 +21773,36 @@
             "$ref": "#/components/schemas/MessageStatus"
           },
           "template_id": {
-            "$ref": "#/components/schemas/SmsActivityTemplateId"
+            "title": "Template ID",
+            "type": "string",
+            "nullable": true
           },
           "text": {
-            "$ref": "#/components/schemas/SmsActivityText"
+            "title": "Text",
+            "type": "string",
+            "nullable": true
           },
           "updated_by": {
-            "$ref": "#/components/schemas/SmsActivityUpdatedBy"
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
           },
           "updated_by_name": {
-            "$ref": "#/components/schemas/SmsActivityUpdatedByName"
+            "title": "Updated By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "user_id": {
-            "$ref": "#/components/schemas/SmsActivityUserId"
+            "title": "User ID",
+            "type": "string",
+            "nullable": true
           },
           "user_name": {
-            "$ref": "#/components/schemas/SmsActivityUserName"
+            "title": "User Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "users": {
             "title": "Users",
@@ -20975,7 +21865,9 @@
             "format": "date-time"
           },
           "description": {
-            "$ref": "#/components/schemas/SavedSearchDescription"
+            "title": "Description",
+            "type": "string",
+            "nullable": true
           },
           "id": {
             "title": "ID",
@@ -20986,7 +21878,9 @@
             "type": "boolean"
           },
           "is_user_dependent": {
-            "$ref": "#/components/schemas/SavedSearchIsUserDependent"
+            "title": "Is User Dependent",
+            "type": "boolean",
+            "nullable": true
           },
           "name": {
             "title": "Name",
@@ -20997,7 +21891,9 @@
             "type": "string"
           },
           "query": {
-            "$ref": "#/components/schemas/SavedSearchQuery"
+            "title": "Query",
+            "type": "string",
+            "nullable": true
           },
           "s_query": {
             "$ref": "#/components/schemas/SavedSearchSQuery"
@@ -21015,7 +21911,9 @@
             "$ref": "#/components/schemas/SavedSearchType"
           },
           "user_id": {
-            "$ref": "#/components/schemas/SavedSearchUserId"
+            "title": "User ID",
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -21118,10 +22016,15 @@
         "type": "object",
         "properties": {
           "created_at": {
-            "$ref": "#/components/schemas/SharingSettingsEmbeddedResponseCreatedAt"
+            "title": "Created At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "created_by_id": {
-            "$ref": "#/components/schemas/SharingSettingsEmbeddedResponseCreatedById"
+            "title": "Created By ID",
+            "type": "string",
+            "nullable": true
           },
           "group_ids": {
             "title": "Group IDs",
@@ -21131,10 +22034,15 @@
             }
           },
           "updated_at": {
-            "$ref": "#/components/schemas/SharingSettingsEmbeddedResponseUpdatedAt"
+            "title": "Updated At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "updated_by_id": {
-            "$ref": "#/components/schemas/SharingSettingsEmbeddedResponseUpdatedById"
+            "title": "Updated By ID",
+            "type": "string",
+            "nullable": true
           },
           "user_ids": {
             "title": "User IDs",
@@ -21473,16 +22381,24 @@
             "type": "string"
           },
           "activity_at": {
-            "$ref": "#/components/schemas/TaskCompletedActivityActivityAt"
+            "title": "Activity At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "comment_summary": {
             "$ref": "#/components/schemas/TaskCompletedActivityCommentSummary"
           },
           "created_by": {
-            "$ref": "#/components/schemas/TaskCompletedActivityCreatedBy"
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
           },
           "created_by_name": {
-            "$ref": "#/components/schemas/TaskCompletedActivityCreatedByName"
+            "title": "Created By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "date_created": {
             "title": "Date Created",
@@ -21499,44 +22415,70 @@
             "type": "string"
           },
           "lead_id": {
-            "$ref": "#/components/schemas/TaskCompletedActivityLeadId"
+            "title": "Lead ID",
+            "type": "string",
+            "nullable": true
           },
           "organization_id": {
             "title": "Organization ID",
             "type": "string"
           },
           "sequence_id": {
-            "$ref": "#/components/schemas/TaskCompletedActivitySequenceId"
+            "title": "Sequence ID",
+            "type": "string",
+            "nullable": true
           },
           "sequence_name": {
-            "$ref": "#/components/schemas/TaskCompletedActivitySequenceName"
+            "title": "Sequence Name",
+            "type": "string",
+            "nullable": true
           },
           "sequence_subscription_id": {
-            "$ref": "#/components/schemas/TaskCompletedActivitySequenceSubscriptionId"
+            "title": "Sequence Subscription ID",
+            "type": "string",
+            "nullable": true
           },
           "task_assigned_to": {
-            "$ref": "#/components/schemas/TaskCompletedActivityTaskAssignedTo"
+            "title": "Task Assigned To",
+            "type": "string",
+            "nullable": true
           },
           "task_assigned_to_name": {
-            "$ref": "#/components/schemas/TaskCompletedActivityTaskAssignedToName"
+            "title": "Task Assigned To Name",
+            "type": "string",
+            "nullable": true
           },
           "task_id": {
-            "$ref": "#/components/schemas/TaskCompletedActivityTaskId"
+            "title": "Task ID",
+            "type": "string",
+            "nullable": true
           },
           "task_text": {
-            "$ref": "#/components/schemas/TaskCompletedActivityTaskText"
+            "title": "Task Text",
+            "type": "string",
+            "nullable": true
           },
           "updated_by": {
-            "$ref": "#/components/schemas/TaskCompletedActivityUpdatedBy"
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
           },
           "updated_by_name": {
-            "$ref": "#/components/schemas/TaskCompletedActivityUpdatedByName"
+            "title": "Updated By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "user_id": {
-            "$ref": "#/components/schemas/TaskCompletedActivityUserId"
+            "title": "User ID",
+            "type": "string",
+            "nullable": true
           },
           "user_name": {
-            "$ref": "#/components/schemas/TaskCompletedActivityUserName"
+            "title": "User Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "users": {
             "title": "Users",
@@ -21917,13 +22859,19 @@
         "type": "object",
         "properties": {
           "name": {
-            "$ref": "#/components/schemas/UpdateIntegrationLinkName"
+            "title": "Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "type": {
             "$ref": "#/components/schemas/UpdateIntegrationLinkType"
           },
           "url": {
-            "$ref": "#/components/schemas/UpdateIntegrationLinkUrl"
+            "title": "Url",
+            "type": "string",
+            "default": null,
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -21972,14 +22920,18 @@
         "type": "object",
         "properties": {
           "agent_config_id": {
-            "$ref": "#/components/schemas/UpdateNotificationAgentConfigId"
+            "title": "Agent Config ID",
+            "type": "string",
+            "nullable": true
           },
           "assigned_to": {
             "title": "Assigned To",
             "type": "string"
           },
           "contact_id": {
-            "$ref": "#/components/schemas/UpdateNotificationContactId"
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
           },
           "created_by": {
             "title": "Created By",
@@ -22036,10 +22988,16 @@
             "type": "integer"
           },
           "contact_id": {
-            "$ref": "#/components/schemas/UpdateOpportunityContactId"
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
           },
           "date_won": {
-            "$ref": "#/components/schemas/UpdateOpportunityDateWon"
+            "title": "Date Won",
+            "type": "string",
+            "description": "If not set on the resource or in the request, \u0060date_won\u0060 will be set automatically to today\u0027s date when setting \u0060status_id\u0060 to a status with type \u0060won\u0060. The \u0060x-tz-offset\u0060 header, used to pass your timezone\u0027s UTC offset, will be taken into account.",
+            "format": "date-time",
+            "nullable": true
           },
           "note": {
             "title": "Note",
@@ -22047,7 +23005,10 @@
             "description": "Plaintext/markdown version of the note. If \u0060note_html\u0060 is also provided in the same request, this value is ignored and \u0060note\u0060 is derived from the HTML instead."
           },
           "note_html": {
-            "$ref": "#/components/schemas/UpdateOpportunityNoteHtml"
+            "title": "Note HTML",
+            "type": "string",
+            "description": "Rich-text HTML version of the note. When set, \u0060note\u0060 is automatically populated with the plaintext version (tags become markdown), overriding any \u0060note\u0060 value passed in the same request. Pass \u0060null\u0060 to clear \u0060note_html\u0060; \u0060note\u0060 is cleared as well.",
+            "nullable": true
           },
           "status": {
             "title": "Status",
@@ -22059,7 +23020,9 @@
             "description": "Setting the \u0060status_id\u0060 to a status with a type of \u0060won\u0060 will automatically set the \u0060date_won\u0060 field if it is not already set or provided in the request. Reverting it from a \u0060won\u0060 status to an \u0060active\u0060 or \u0060lost\u0060 will not automatically change \u0060date_won\u0060."
           },
           "user_id": {
-            "$ref": "#/components/schemas/UpdateOpportunityUserId"
+            "title": "User ID",
+            "type": "string",
+            "nullable": true
           },
           "value": {
             "title": "Value",
@@ -22086,10 +23049,18 @@
             "$ref": "#/components/schemas/UpdateOutcomeAppliesTo"
           },
           "description": {
-            "$ref": "#/components/schemas/UpdateOutcomeDescription"
+            "title": "Description",
+            "type": "string",
+            "description": "Explain what the outcome means and when it should be used.",
+            "default": null,
+            "nullable": true
           },
           "name": {
-            "$ref": "#/components/schemas/UpdateOutcomeName"
+            "title": "Name",
+            "type": "string",
+            "description": "Displayed to users wherever outcomes can be selected.",
+            "default": null,
+            "nullable": true
           },
           "type": {
             "$ref": "#/components/schemas/UpdateOutcomeType"
@@ -22139,7 +23110,9 @@
             "type": "boolean"
           },
           "voicemail_greeting_url": {
-            "$ref": "#/components/schemas/UpdatePhoneNumberVoicemailGreetingUrl"
+            "title": "Voicemail Greeting URL",
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -22157,7 +23130,10 @@
             "description": "IDs of [Shared Custom Fields](/api/resources/custom-fields/custom-fields-shared) to associate with this Playbook."
           },
           "description": {
-            "$ref": "#/components/schemas/UpdatePlaybookDescription"
+            "title": "Description",
+            "type": "string",
+            "description": "Description of the playbook.",
+            "nullable": true
           },
           "name": {
             "title": "Name",
@@ -22172,7 +23148,10 @@
             "description": "IDs of [Outcomes](/api/resources/outcomes/) that should be associated with this Playbook."
           },
           "summary_guidance": {
-            "$ref": "#/components/schemas/UpdatePlaybookSummaryGuidance"
+            "title": "Summary Guidance",
+            "type": "string",
+            "description": "Guidance for AI summaries of calls and meetings associated with this Playbook.",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -22292,10 +23271,18 @@
             "$ref": "#/components/schemas/UpdateWebhookStatus"
           },
           "url": {
-            "$ref": "#/components/schemas/UpdateWebhookUrl"
+            "title": "Url",
+            "type": "string",
+            "description": "Destination URL for the webhook subscription",
+            "default": null,
+            "nullable": true
           },
           "verify_ssl": {
-            "$ref": "#/components/schemas/UpdateWebhookVerifySsl"
+            "title": "Verify Ssl",
+            "type": "boolean",
+            "description": "Verify SSL certificate of destination webhook URL. Set to \u0060false\u0060 to disable SSL certificate validation. We recommend using https to protect your data during delivery.",
+            "default": null,
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -22324,7 +23311,12 @@
             "$ref": "#/components/schemas/CommunicationDirection"
           },
           "integration_link": {
-            "$ref": "#/components/schemas/UpdateWhatsAppMessageIntegrationLink"
+            "title": "Integration Link",
+            "maxLength": 2083,
+            "minLength": 1,
+            "type": "string",
+            "format": "uri",
+            "nullable": true
           },
           "local_phone": {
             "title": "Local Phone",
@@ -22339,7 +23331,9 @@
             "type": "string"
           },
           "response_to_id": {
-            "$ref": "#/components/schemas/UpdateWhatsAppMessageResponseToId"
+            "title": "Response To ID",
+            "type": "string",
+            "nullable": true
           },
           "user_id": {
             "title": "User ID",
@@ -22470,7 +23464,10 @@
             "type": "string"
           },
           "activity_at": {
-            "$ref": "#/components/schemas/WhatsAppMessageActivityActivityAt"
+            "title": "Activity At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "attachments": {
             "title": "Attachments",
@@ -22480,13 +23477,20 @@
             }
           },
           "contact_id": {
-            "$ref": "#/components/schemas/WhatsAppMessageActivityContactId"
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
           },
           "created_by": {
-            "$ref": "#/components/schemas/WhatsAppMessageActivityCreatedBy"
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
           },
           "created_by_name": {
-            "$ref": "#/components/schemas/WhatsAppMessageActivityCreatedByName"
+            "title": "Created By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "date_created": {
             "title": "Date Created",
@@ -22510,13 +23514,19 @@
             "type": "string"
           },
           "integration_link": {
-            "$ref": "#/components/schemas/WhatsAppMessageActivityIntegrationLink"
+            "title": "Integration Link",
+            "type": "string",
+            "nullable": true
           },
           "integration_name": {
-            "$ref": "#/components/schemas/WhatsAppMessageActivityIntegrationName"
+            "title": "Integration Name",
+            "type": "string",
+            "nullable": true
           },
           "lead_id": {
-            "$ref": "#/components/schemas/WhatsAppMessageActivityLeadId"
+            "title": "Lead ID",
+            "type": "string",
+            "nullable": true
           },
           "local_phone": {
             "title": "Local Phone",
@@ -22547,16 +23557,27 @@
             "type": "string"
           },
           "response_to_id": {
-            "$ref": "#/components/schemas/WhatsAppMessageActivityResponseToId"
+            "title": "Response To ID",
+            "type": "string",
+            "nullable": true
           },
           "sequence_id": {
-            "$ref": "#/components/schemas/WhatsAppMessageActivitySequenceId"
+            "title": "Sequence ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "sequence_name": {
-            "$ref": "#/components/schemas/WhatsAppMessageActivitySequenceName"
+            "title": "Sequence Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "sequence_subscription_id": {
-            "$ref": "#/components/schemas/WhatsAppMessageActivitySequenceSubscriptionId"
+            "title": "Sequence Subscription ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "source": {
             "$ref": "#/components/schemas/CreationSource"
@@ -22566,16 +23587,26 @@
             "type": "string"
           },
           "updated_by": {
-            "$ref": "#/components/schemas/WhatsAppMessageActivityUpdatedBy"
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
           },
           "updated_by_name": {
-            "$ref": "#/components/schemas/WhatsAppMessageActivityUpdatedByName"
+            "title": "Updated By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "user_id": {
-            "$ref": "#/components/schemas/WhatsAppMessageActivityUserId"
+            "title": "User ID",
+            "type": "string",
+            "nullable": true
           },
           "user_name": {
-            "$ref": "#/components/schemas/WhatsAppMessageActivityUserName"
+            "title": "User Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
           },
           "users": {
             "title": "Users",
@@ -22652,91 +23683,6 @@
           ]
         }
       },
-      "ActivityBaseActivityAt": {
-        "title": "Activity At",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "ActivityBaseContactId": {
-        "title": "Contact ID",
-        "type": "string",
-        "nullable": true
-      },
-      "ActivityBaseCreatedBy": {
-        "title": "Created By",
-        "type": "string",
-        "nullable": true
-      },
-      "ActivityBaseCreatedByName": {
-        "title": "Created By Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "ActivityBaseLeadId": {
-        "title": "Lead ID",
-        "type": "string",
-        "nullable": true
-      },
-      "ActivityBaseUpdatedBy": {
-        "title": "Updated By",
-        "type": "string",
-        "nullable": true
-      },
-      "ActivityBaseUpdatedByName": {
-        "title": "Updated By Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "ActivityBaseUserId": {
-        "title": "User ID",
-        "type": "string",
-        "nullable": true
-      },
-      "ActivityBaseUserName": {
-        "title": "User Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "AttachmentContentType": {
-        "title": "Content Type",
-        "type": "string",
-        "nullable": true
-      },
-      "AttachmentFilename": {
-        "title": "Filename",
-        "type": "string",
-        "nullable": true
-      },
-      "AttachmentSize": {
-        "title": "Size",
-        "type": "integer",
-        "nullable": true
-      },
-      "AttachmentThumbnailUrl": {
-        "title": "Thumbnail URL",
-        "type": "string",
-        "nullable": true
-      },
-      "BasicSubscriptionInfoForContactContactEmail": {
-        "title": "Contact Email",
-        "type": "string",
-        "nullable": true
-      },
-      "BasicSubscriptionInfoForContactInitialEmailId": {
-        "title": "Initial Email ID",
-        "type": "string",
-        "nullable": true
-      },
-      "BasicSubscriptionInfoForContactStartDate": {
-        "title": "Start Date",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
       "BasicSubscriptionInfoForContactSubscriptionStatusReason": {
         "type": "object",
         "anyOf": [
@@ -22749,43 +23695,6 @@
             ]
           }
         ]
-      },
-      "BulkDeleteActionCreatedBy": {
-        "title": "Created By",
-        "type": "string",
-        "nullable": true
-      },
-      "BulkDeleteActionDateCreated": {
-        "title": "Date Created",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "BulkDeleteActionDateUpdated": {
-        "title": "Date Updated",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "BulkDeleteActionNLeads": {
-        "title": "N Leads",
-        "type": "integer",
-        "nullable": true
-      },
-      "BulkDeleteActionNObjects": {
-        "title": "N Objects",
-        "type": "integer",
-        "nullable": true
-      },
-      "BulkDeleteActionQuery": {
-        "title": "Query",
-        "type": "string",
-        "nullable": true
-      },
-      "BulkDeleteActionResultsLimit": {
-        "title": "Results Limit",
-        "type": "integer",
-        "nullable": true
       },
       "BulkDeleteActionStatus": {
         "type": "object",
@@ -22800,63 +23709,6 @@
           }
         ]
       },
-      "BulkDeleteActionUpdatedBy": {
-        "title": "Updated By",
-        "type": "string",
-        "nullable": true
-      },
-      "BulkEditActionCreatedBy": {
-        "title": "Created By",
-        "type": "string",
-        "nullable": true
-      },
-      "BulkEditActionCustomFieldName": {
-        "title": "Custom Field Name",
-        "type": "string",
-        "nullable": true
-      },
-      "BulkEditActionCustomFieldValue": {
-        "title": "Custom Field Value",
-        "type": "string",
-        "nullable": true
-      },
-      "BulkEditActionDateCreated": {
-        "title": "Date Created",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "BulkEditActionDateUpdated": {
-        "title": "Date Updated",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "BulkEditActionLeadStatusId": {
-        "title": "Lead Status ID",
-        "type": "string",
-        "nullable": true
-      },
-      "BulkEditActionNLeads": {
-        "title": "N Leads",
-        "type": "integer",
-        "nullable": true
-      },
-      "BulkEditActionNObjects": {
-        "title": "N Objects",
-        "type": "integer",
-        "nullable": true
-      },
-      "BulkEditActionQuery": {
-        "title": "Query",
-        "type": "string",
-        "nullable": true
-      },
-      "BulkEditActionResultsLimit": {
-        "title": "Results Limit",
-        "type": "integer",
-        "nullable": true
-      },
       "BulkEditActionStatus": {
         "type": "object",
         "anyOf": [
@@ -22869,11 +23721,6 @@
             ]
           }
         ]
-      },
-      "BulkEditActionUpdatedBy": {
-        "title": "Updated By",
-        "type": "string",
-        "nullable": true
       },
       "BulkEmailActionContactPreference": {
         "type": "object",
@@ -22888,53 +23735,6 @@
           }
         ]
       },
-      "BulkEmailActionCreatedBy": {
-        "title": "Created By",
-        "type": "string",
-        "nullable": true
-      },
-      "BulkEmailActionDateCreated": {
-        "title": "Date Created",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "BulkEmailActionDateUpdated": {
-        "title": "Date Updated",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "BulkEmailActionEmailAccountId": {
-        "title": "Email Account ID",
-        "type": "string",
-        "nullable": true
-      },
-      "BulkEmailActionNLeads": {
-        "title": "N Leads",
-        "type": "integer",
-        "nullable": true
-      },
-      "BulkEmailActionNObjects": {
-        "title": "N Objects",
-        "type": "integer",
-        "nullable": true
-      },
-      "BulkEmailActionQuery": {
-        "title": "Query",
-        "type": "string",
-        "nullable": true
-      },
-      "BulkEmailActionResultsLimit": {
-        "title": "Results Limit",
-        "type": "integer",
-        "nullable": true
-      },
-      "BulkEmailActionSender": {
-        "title": "Sender",
-        "type": "string",
-        "nullable": true
-      },
       "BulkEmailActionStatus": {
         "type": "object",
         "anyOf": [
@@ -22947,16 +23747,6 @@
             ]
           }
         ]
-      },
-      "BulkEmailActionTemplateId": {
-        "title": "Template ID",
-        "type": "string",
-        "nullable": true
-      },
-      "BulkEmailActionUpdatedBy": {
-        "title": "Updated By",
-        "type": "string",
-        "nullable": true
       },
       "BulkSequenceSubscriptionActionCallsAssignedTo": {
         "title": "Calls Assigned To",
@@ -22988,68 +23778,6 @@
           }
         ]
       },
-      "BulkSequenceSubscriptionActionCreatedBy": {
-        "title": "Created By",
-        "type": "string",
-        "nullable": true
-      },
-      "BulkSequenceSubscriptionActionDateCreated": {
-        "title": "Date Created",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "BulkSequenceSubscriptionActionDateUpdated": {
-        "title": "Date Updated",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "BulkSequenceSubscriptionActionFromPhoneNumberId": {
-        "title": "From Phone Number ID",
-        "type": "string",
-        "nullable": true
-      },
-      "BulkSequenceSubscriptionActionNLeads": {
-        "title": "N Leads",
-        "type": "integer",
-        "nullable": true
-      },
-      "BulkSequenceSubscriptionActionNObjects": {
-        "title": "N Objects",
-        "type": "integer",
-        "nullable": true
-      },
-      "BulkSequenceSubscriptionActionQuery": {
-        "title": "Query",
-        "type": "string",
-        "nullable": true
-      },
-      "BulkSequenceSubscriptionActionResultsLimit": {
-        "title": "Results Limit",
-        "type": "integer",
-        "nullable": true
-      },
-      "BulkSequenceSubscriptionActionSenderAccountId": {
-        "title": "Sender Account ID",
-        "type": "string",
-        "nullable": true
-      },
-      "BulkSequenceSubscriptionActionSenderEmail": {
-        "title": "Sender Email",
-        "type": "string",
-        "nullable": true
-      },
-      "BulkSequenceSubscriptionActionSenderName": {
-        "title": "Sender Name",
-        "type": "string",
-        "nullable": true
-      },
-      "BulkSequenceSubscriptionActionSequenceId": {
-        "title": "Sequence ID",
-        "type": "string",
-        "nullable": true
-      },
       "BulkSequenceSubscriptionActionStatus": {
         "type": "object",
         "anyOf": [
@@ -23062,11 +23790,6 @@
             ]
           }
         ]
-      },
-      "BulkSequenceSubscriptionActionUpdatedBy": {
-        "title": "Updated By",
-        "type": "string",
-        "nullable": true
       },
       "BulkUpdateNotificationsDate": {
         "title": "Date",
@@ -23095,139 +23818,6 @@
           }
         ]
       },
-      "CallActivityActivityAt": {
-        "title": "Activity At",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "CallActivityContactId": {
-        "title": "Contact ID",
-        "type": "string",
-        "nullable": true
-      },
-      "CallActivityCreatedBy": {
-        "title": "Created By",
-        "type": "string",
-        "nullable": true
-      },
-      "CallActivityCreatedByName": {
-        "title": "Created By Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "CallActivityLeadId": {
-        "title": "Lead ID",
-        "type": "string",
-        "nullable": true
-      },
-      "CallActivityOutcomeId": {
-        "title": "Outcome ID",
-        "type": "string",
-        "nullable": true
-      },
-      "CallActivitySequenceId": {
-        "title": "Sequence ID",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "CallActivitySequenceName": {
-        "title": "Sequence Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "CallActivitySequenceSubscriptionId": {
-        "title": "Sequence Subscription ID",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "CallActivityUpdatedBy": {
-        "title": "Updated By",
-        "type": "string",
-        "nullable": true
-      },
-      "CallActivityUpdatedByName": {
-        "title": "Updated By Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "CallActivityUserId": {
-        "title": "User ID",
-        "type": "string",
-        "nullable": true
-      },
-      "CallActivityUserName": {
-        "title": "User Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "ContactCreatedBy": {
-        "title": "Created By",
-        "type": "string",
-        "nullable": true
-      },
-      "ContactLeadId": {
-        "title": "Lead ID",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "ContactLeadSuggestionsOperationId": {
-        "title": "Lead Suggestions Operation ID",
-        "type": "string",
-        "nullable": true
-      },
-      "ContactName": {
-        "title": "Name",
-        "type": "string",
-        "nullable": true
-      },
-      "ContactTimezone": {
-        "title": "Timezone",
-        "type": "string",
-        "nullable": true
-      },
-      "ContactTimezoneSource": {
-        "title": "Timezone Source",
-        "type": "string",
-        "nullable": true
-      },
-      "ContactTitle": {
-        "title": "Title",
-        "type": "string",
-        "nullable": true
-      },
-      "ContactUpdatedBy": {
-        "title": "Updated By",
-        "type": "string",
-        "nullable": true
-      },
-      "ContactPhoneCountry": {
-        "title": "Country",
-        "type": "string",
-        "nullable": true
-      },
-      "ContactRecentCallDialerId": {
-        "title": "Dialer ID",
-        "type": "string",
-        "nullable": true
-      },
-      "CreateCallTaskAgentConfigId": {
-        "title": "Agent Config ID",
-        "type": "string",
-        "nullable": true
-      },
-      "CreateCallTaskAssignedTo": {
-        "title": "Assigned To",
-        "type": "string",
-        "nullable": true
-      },
       "CreateCallTaskDate": {
         "title": "Date",
         "type": "object",
@@ -23241,21 +23831,6 @@
             "format": "date"
           }
         ]
-      },
-      "CreateCallTaskText": {
-        "title": "Text",
-        "type": "string",
-        "nullable": true
-      },
-      "CreateLeadTaskAssignedTo": {
-        "title": "Assigned To",
-        "type": "string",
-        "nullable": true
-      },
-      "CreateLeadTaskContactId": {
-        "title": "Contact ID",
-        "type": "string",
-        "nullable": true
       },
       "CreateLeadTaskDate": {
         "title": "Date",
@@ -23316,86 +23891,6 @@
           }
         ]
       },
-      "CreateOpportunityConfidence": {
-        "title": "Confidence",
-        "type": "integer",
-        "default": null,
-        "nullable": true
-      },
-      "CreateOpportunityContactId": {
-        "title": "Contact ID",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "CreateOpportunityCreatedBy": {
-        "title": "Created By",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "CreateOpportunityDateCreated": {
-        "title": "Date Created",
-        "type": "string",
-        "format": "date-time",
-        "default": null,
-        "nullable": true
-      },
-      "CreateOpportunityDateWon": {
-        "title": "Date Won",
-        "type": "string",
-        "description": "If not set on the resource or in the request, \u0060date_won\u0060 will be set automatically to today\u0027s date when setting \u0060status_id\u0060 to a status with type \u0060won\u0060. The \u0060x-tz-offset\u0060 header, used to pass your timezone\u0027s UTC offset, will be taken into account.",
-        "format": "date-time",
-        "default": null,
-        "nullable": true
-      },
-      "CreateOpportunityLeadId": {
-        "title": "Lead ID",
-        "type": "string",
-        "description": "Opportunities belong to exactly one Lead. If not provided, a new lead will be created (appearing as \u0022Untitled\u0022 in the UI).",
-        "default": null,
-        "nullable": true
-      },
-      "CreateOpportunityNote": {
-        "title": "Note",
-        "type": "string",
-        "description": "Plaintext/markdown version of the note. If \u0060note_html\u0060 is also provided in the same request, this value is ignored and \u0060note\u0060 is derived from the HTML instead.",
-        "default": null,
-        "nullable": true
-      },
-      "CreateOpportunityNoteHtml": {
-        "title": "Note HTML",
-        "type": "string",
-        "description": "Rich-text HTML version of the note. When set, \u0060note\u0060 is automatically populated with the plaintext version (tags become markdown), overriding any \u0060note\u0060 value passed in the same request.",
-        "default": null,
-        "nullable": true
-      },
-      "CreateOpportunityPipelineId": {
-        "title": "Pipeline ID",
-        "type": "string",
-        "description": "Specify which pipeline this opportunity should belong to. When supplied without \u0060status_id\u0060, the opportunity will be created with the first available status of that pipeline. When supplied with \u0060status_id\u0060, the status must belong to the specified pipeline or a 400 error will be returned. If the pipeline does not exist, a 400 error will be returned. See the [Pipelines API](https://developer.close.com/api/resources/pipelines).",
-        "default": null,
-        "nullable": true
-      },
-      "CreateOpportunityStatusId": {
-        "title": "Status ID",
-        "type": "string",
-        "description": "Post a \u0060status_id\u0060 to create an opportunity with a specific status. If omitted, the organization\u0027s default (first) status will be used (or the first status of the \u0060pipeline_id\u0060 if provided). See the [Opportunity Status API](https://developer.close.com/api/resources/opportunity-statuses).",
-        "default": null,
-        "nullable": true
-      },
-      "CreateOpportunityUserId": {
-        "title": "User ID",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "CreateOpportunityValue": {
-        "title": "Value",
-        "type": "integer",
-        "default": null,
-        "nullable": true
-      },
       "CreateOpportunityValuePeriod": {
         "type": "object",
         "anyOf": [
@@ -23428,131 +23923,6 @@
         "description": "\u0022Deprecated. This field will be derived from \u0060type\u0060 in a future update: \u0060custom\u0060 applies to calls and meetings, \u0060vm-dropped\u0060 applies to calls only.\u0022",
         "deprecated": true
       },
-      "CreateOutcomeDescription": {
-        "title": "Description",
-        "type": "string",
-        "description": "Explain what the outcome means and when it should be used.",
-        "default": null,
-        "nullable": true
-      },
-      "CreatePhoneNumberRequestBundleId": {
-        "title": "Bundle ID",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "CreatePhoneNumberRequestCarrierType": {
-        "title": "Carrier Type",
-        "enum": [
-          "local",
-          "national",
-          "mobile",
-          "tollfree"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "nullable": true,
-        "x-ms-enum": {
-          "name": "CreatePhoneNumberRequestCarrierType",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "local",
-              "name": "Local"
-            },
-            {
-              "value": "national",
-              "name": "National"
-            },
-            {
-              "value": "mobile",
-              "name": "Mobile"
-            },
-            {
-              "value": "tollfree",
-              "name": "Tollfree"
-            }
-          ]
-        }
-      },
-      "CreatePhoneNumberRequestWithMms": {
-        "title": "With MMS",
-        "type": "boolean",
-        "description": "By default, MMS-capable numbers are rented if Close supports MMS for the given country. Renting an MMS-capable number can be forced by setting this flag to \u0060true\u0060. If set to \u0060false\u0060, certain prefixes that don\u0027t support MMS can be rented in countries where Close supports MMS. In most scenarios, this flag should not be passed. When you request an MMS number, you must set \u0060with_sms\u0060 to \u0060true\u0060 as well.",
-        "default": null,
-        "nullable": true
-      },
-      "CreatePhoneNumberRequestWithSms": {
-        "title": "With SMS",
-        "type": "boolean",
-        "description": "By default, SMS-capable numbers are rented if Close supports SMS for the given country. Renting an SMS-capable number can be forced by setting this flag to \u0060true\u0060. If set to \u0060false\u0060, certain prefixes that don\u0027t support SMS can be rented in countries where Close supports SMS. In most scenarios, this flag should not be passed unless a \u0060has-voice-only\u0060 error status is received.",
-        "default": null,
-        "nullable": true
-      },
-      "CreatePlaybookDescription": {
-        "title": "Description",
-        "type": "string",
-        "description": "Description of the playbook.",
-        "nullable": true
-      },
-      "CreatePlaybookSummaryGuidance": {
-        "title": "Summary Guidance",
-        "type": "string",
-        "description": "Guidance for AI summaries of calls and meetings associated with this Playbook.",
-        "nullable": true
-      },
-      "CreateWhatsAppMessageIntegrationLink": {
-        "title": "Integration Link",
-        "maxLength": 2083,
-        "minLength": 1,
-        "type": "string",
-        "format": "uri",
-        "default": null,
-        "nullable": true
-      },
-      "CreateWhatsAppMessageResponseToId": {
-        "title": "Response To ID",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "CreateWhatsAppMessageUserId": {
-        "title": "User ID",
-        "type": "string",
-        "nullable": true
-      },
-      "CreatedActivityActivityAt": {
-        "title": "Activity At",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "CreatedActivityContactId": {
-        "title": "Contact ID",
-        "type": "string",
-        "nullable": true
-      },
-      "CreatedActivityCreatedBy": {
-        "title": "Created By",
-        "type": "string",
-        "nullable": true
-      },
-      "CreatedActivityCreatedByName": {
-        "title": "Created By Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "CreatedActivityImportId": {
-        "title": "Import ID",
-        "type": "string",
-        "nullable": true
-      },
-      "CreatedActivityLeadId": {
-        "title": "Lead ID",
-        "type": "string",
-        "nullable": true
-      },
       "CreatedActivitySource": {
         "type": "object",
         "anyOf": [
@@ -23565,34 +23935,6 @@
             ]
           }
         ]
-      },
-      "CreatedActivityUpdatedBy": {
-        "title": "Updated By",
-        "type": "string",
-        "nullable": true
-      },
-      "CreatedActivityUpdatedByName": {
-        "title": "Updated By Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "CreatedActivityUserId": {
-        "title": "User ID",
-        "type": "string",
-        "nullable": true
-      },
-      "CreatedActivityUserName": {
-        "title": "User Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "CustomActivityActivityAt": {
-        "title": "Activity At",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
       },
       "CustomActivityCommentSummary": {
         "title": "Comment Summary",
@@ -23623,45 +23965,6 @@
           }
         }
       },
-      "CustomActivityContactId": {
-        "title": "Contact ID",
-        "type": "string",
-        "nullable": true
-      },
-      "CustomActivityCreatedBy": {
-        "title": "Created By",
-        "type": "string",
-        "nullable": true
-      },
-      "CustomActivityCreatedByName": {
-        "title": "Created By Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "CustomActivityLastPublishedAt": {
-        "title": "Last Published At",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "CustomActivityLeadId": {
-        "title": "Lead ID",
-        "type": "string",
-        "nullable": true
-      },
-      "CustomActivityMentionsUpdatedAt": {
-        "title": "Mentions Updated At",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "CustomActivityPinnedAt": {
-        "title": "Pinned At",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
       "CustomActivitySource": {
         "type": "object",
         "anyOf": [
@@ -23674,46 +23977,6 @@
             ]
           }
         ]
-      },
-      "CustomActivityUpdatedBy": {
-        "title": "Updated By",
-        "type": "string",
-        "nullable": true
-      },
-      "CustomActivityUpdatedByName": {
-        "title": "Updated By Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "CustomActivityUserId": {
-        "title": "User ID",
-        "type": "string",
-        "nullable": true
-      },
-      "CustomActivityUserName": {
-        "title": "User Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "EmailActivityActivityAt": {
-        "title": "Activity At",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "EmailActivityAgentActionReason": {
-        "title": "Agent Action Reason",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "EmailActivityAgentConfigId": {
-        "title": "Agent Config ID",
-        "type": "string",
-        "default": null,
-        "nullable": true
       },
       "EmailActivityAttachments": {
         "title": "Attachments",
@@ -23732,55 +23995,6 @@
           }
         ]
       },
-      "EmailActivityBodyHtml": {
-        "title": "Body HTML",
-        "type": "string",
-        "nullable": true
-      },
-      "EmailActivityBodyPreview": {
-        "title": "Body Preview",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "EmailActivityBodyText": {
-        "title": "Body Text",
-        "type": "string",
-        "nullable": true
-      },
-      "EmailActivityBulkEmailActionId": {
-        "title": "Bulk Email Action ID",
-        "type": "string",
-        "nullable": true
-      },
-      "EmailActivityContactId": {
-        "title": "Contact ID",
-        "type": "string",
-        "nullable": true
-      },
-      "EmailActivityCreatedBy": {
-        "title": "Created By",
-        "type": "string",
-        "nullable": true
-      },
-      "EmailActivityCreatedByName": {
-        "title": "Created By Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "EmailActivityDateScheduled": {
-        "title": "Date Scheduled",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "EmailActivityDateSent": {
-        "title": "Date Sent",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
       "EmailActivityDirection": {
         "type": "object",
         "anyOf": [
@@ -23793,59 +24007,6 @@
             ]
           }
         ]
-      },
-      "EmailActivityEmailAccountId": {
-        "title": "Email Account ID",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "EmailActivityEnvelope": {
-        "title": "Envelope",
-        "required": [
-          "type"
-        ],
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "object"
-          },
-          {
-            "enum": [
-              null
-            ]
-          }
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "discriminator": {
-          "propertyName": "type"
-        }
-      },
-      "EmailActivityFollowupSequenceDelay": {
-        "title": "Followup Sequence Delay",
-        "type": "integer",
-        "nullable": true
-      },
-      "EmailActivityFollowupSequenceId": {
-        "title": "Followup Sequence ID",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "EmailActivityInReplyToId": {
-        "title": "In Reply To ID",
-        "type": "string",
-        "nullable": true
-      },
-      "EmailActivityLeadId": {
-        "title": "Lead ID",
-        "type": "string",
-        "nullable": true
       },
       "EmailActivityOpens": {
         "title": "Opens",
@@ -23867,16 +24028,6 @@
           }
         ]
       },
-      "EmailActivityOpensSummary": {
-        "title": "Opens Summary",
-        "type": "string",
-        "nullable": true
-      },
-      "EmailActivitySendAsId": {
-        "title": "Send As ID",
-        "type": "string",
-        "nullable": true
-      },
       "EmailActivitySendAttempts": {
         "title": "Send Attempts",
         "type": "object",
@@ -23897,72 +24048,6 @@
           }
         ]
       },
-      "EmailActivitySender": {
-        "title": "Sender",
-        "type": "string",
-        "nullable": true
-      },
-      "EmailActivitySequenceId": {
-        "title": "Sequence ID",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "EmailActivitySequenceName": {
-        "title": "Sequence Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "EmailActivitySequenceSubscriptionId": {
-        "title": "Sequence Subscription ID",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "EmailActivitySubject": {
-        "title": "Subject",
-        "type": "string",
-        "nullable": true
-      },
-      "EmailActivityTemplateId": {
-        "title": "Template ID",
-        "type": "string",
-        "nullable": true
-      },
-      "EmailActivityTemplateName": {
-        "title": "Template Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "EmailActivityThreadId": {
-        "title": "Thread ID",
-        "type": "string",
-        "nullable": true
-      },
-      "EmailActivityUpdatedBy": {
-        "title": "Updated By",
-        "type": "string",
-        "nullable": true
-      },
-      "EmailActivityUpdatedByName": {
-        "title": "Updated By Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "EmailActivityUserId": {
-        "title": "User ID",
-        "type": "string",
-        "nullable": true
-      },
-      "EmailActivityUserName": {
-        "title": "User Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
       "FormFieldDefinitionChoices": {
         "title": "Choices",
         "type": "object",
@@ -23979,81 +24064,6 @@
             ]
           }
         ]
-      },
-      "FormSubmissionActivityActivityAt": {
-        "title": "Activity At",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "FormSubmissionActivityContactId": {
-        "title": "Contact ID",
-        "type": "string",
-        "nullable": true
-      },
-      "FormSubmissionActivityCreatedBy": {
-        "title": "Created By",
-        "type": "string",
-        "nullable": true
-      },
-      "FormSubmissionActivityCreatedByName": {
-        "title": "Created By Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "FormSubmissionActivityFormName": {
-        "title": "Form Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "FormSubmissionActivityIpAddress": {
-        "title": "Ip Address",
-        "type": "string",
-        "nullable": true
-      },
-      "FormSubmissionActivityLeadId": {
-        "title": "Lead ID",
-        "type": "string",
-        "nullable": true
-      },
-      "FormSubmissionActivityOrigin": {
-        "title": "Origin",
-        "type": "string",
-        "nullable": true
-      },
-      "FormSubmissionActivitySourceUrl": {
-        "title": "Source URL",
-        "type": "string",
-        "nullable": true
-      },
-      "FormSubmissionActivitySourceUrlNormalized": {
-        "title": "Source URL Normalized",
-        "type": "string",
-        "nullable": true
-      },
-      "FormSubmissionActivityUpdatedBy": {
-        "title": "Updated By",
-        "type": "string",
-        "nullable": true
-      },
-      "FormSubmissionActivityUpdatedByName": {
-        "title": "Updated By Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "FormSubmissionActivityUserId": {
-        "title": "User ID",
-        "type": "string",
-        "nullable": true
-      },
-      "FormSubmissionActivityUserName": {
-        "title": "User Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
       },
       "FormSubmissionActivityValuesAdditionalProperties": {
         "type": "object",
@@ -24103,118 +24113,6 @@
             ]
           }
         ]
-      },
-      "ImportUpdateActivityActivityAt": {
-        "title": "Activity At",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "ImportUpdateActivityContactId": {
-        "title": "Contact ID",
-        "type": "string",
-        "nullable": true
-      },
-      "ImportUpdateActivityCreatedBy": {
-        "title": "Created By",
-        "type": "string",
-        "nullable": true
-      },
-      "ImportUpdateActivityCreatedByName": {
-        "title": "Created By Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "ImportUpdateActivityImportId": {
-        "title": "Import ID",
-        "type": "string",
-        "nullable": true
-      },
-      "ImportUpdateActivityLeadId": {
-        "title": "Lead ID",
-        "type": "string",
-        "nullable": true
-      },
-      "ImportUpdateActivityUpdatedBy": {
-        "title": "Updated By",
-        "type": "string",
-        "nullable": true
-      },
-      "ImportUpdateActivityUpdatedByName": {
-        "title": "Updated By Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "ImportUpdateActivityUserId": {
-        "title": "User ID",
-        "type": "string",
-        "nullable": true
-      },
-      "ImportUpdateActivityUserName": {
-        "title": "User Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "IntegrationLinkCreatedBy": {
-        "title": "Created By",
-        "type": "string",
-        "nullable": true
-      },
-      "IntegrationLinkDateCreated": {
-        "title": "Date Created",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "IntegrationLinkDateUpdated": {
-        "title": "Date Updated",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "IntegrationLinkUpdatedBy": {
-        "title": "Updated By",
-        "type": "string",
-        "nullable": true
-      },
-      "LeadCreatedBy": {
-        "title": "Created By",
-        "type": "string",
-        "nullable": true
-      },
-      "LeadCreatedByName": {
-        "title": "Created By Name",
-        "type": "string",
-        "nullable": true
-      },
-      "LeadDescription": {
-        "title": "Description",
-        "type": "string",
-        "nullable": true
-      },
-      "LeadLocaltime": {
-        "title": "Localtime",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "LeadName": {
-        "title": "Name",
-        "type": "string",
-        "nullable": true
-      },
-      "LeadPrimaryAddressFull": {
-        "title": "Primary Address Full",
-        "type": "string",
-        "nullable": true
-      },
-      "LeadPrimaryAddressSummary": {
-        "title": "Primary Address Summary",
-        "type": "string",
-        "nullable": true
       },
       "LeadPrimaryEmail": {
         "title": "Primary Email",
@@ -24274,83 +24172,6 @@
           }
         }
       },
-      "LeadSource": {
-        "title": "Source",
-        "type": "string",
-        "nullable": true
-      },
-      "LeadUpdatedBy": {
-        "title": "Updated By",
-        "type": "string",
-        "nullable": true
-      },
-      "LeadUpdatedByName": {
-        "title": "Updated By Name",
-        "type": "string",
-        "nullable": true
-      },
-      "LeadUrl": {
-        "title": "URL",
-        "type": "string",
-        "nullable": true
-      },
-      "LeadAddressAddress1": {
-        "title": "Address 1",
-        "type": "string",
-        "nullable": true
-      },
-      "LeadAddressAddress2": {
-        "title": "Address 2",
-        "type": "string",
-        "nullable": true
-      },
-      "LeadAddressCity": {
-        "title": "City",
-        "type": "string",
-        "nullable": true
-      },
-      "LeadAddressCountry": {
-        "title": "Country",
-        "type": "string",
-        "nullable": true
-      },
-      "LeadAddressLabel": {
-        "title": "Label",
-        "type": "string",
-        "nullable": true
-      },
-      "LeadAddressState": {
-        "title": "State",
-        "type": "string",
-        "nullable": true
-      },
-      "LeadAddressZipcode": {
-        "title": "Zipcode",
-        "type": "string",
-        "nullable": true
-      },
-      "MembershipDefaultCallerId": {
-        "title": "Default Caller ID",
-        "type": "string",
-        "description": "ID of the phone number to use as this member\u0027s default outbound caller ID.",
-        "nullable": true
-      },
-      "MembershipHangupRecordingUrl": {
-        "title": "Hangup Recording URL",
-        "type": "string",
-        "description": "URL of the audio file used as this member\u0027s voicemail drop recording.",
-        "nullable": true
-      },
-      "OpportunityAnnualizedExpectedValue": {
-        "title": "Annualized Expected Value",
-        "type": "integer",
-        "nullable": true
-      },
-      "OpportunityAnnualizedValue": {
-        "title": "Annualized Value",
-        "type": "integer",
-        "nullable": true
-      },
       "OpportunityCommentSummary": {
         "title": "Comment Summary",
         "required": [
@@ -24379,48 +24200,6 @@
             "CommentSummary": "#/components/schemas/CommentSummary"
           }
         }
-      },
-      "OpportunityContactId": {
-        "title": "Contact ID",
-        "type": "string",
-        "nullable": true
-      },
-      "OpportunityContactName": {
-        "title": "Contact Name",
-        "type": "string",
-        "nullable": true
-      },
-      "OpportunityCreatedBy": {
-        "title": "Created By",
-        "type": "string",
-        "nullable": true
-      },
-      "OpportunityCreatedByName": {
-        "title": "Created By Name",
-        "type": "string",
-        "nullable": true
-      },
-      "OpportunityDateLost": {
-        "title": "Date Lost",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "OpportunityDateWon": {
-        "title": "Date Won",
-        "type": "string",
-        "format": "date",
-        "nullable": true
-      },
-      "OpportunityExpectedValue": {
-        "title": "Expected Value",
-        "type": "integer",
-        "nullable": true
-      },
-      "OpportunityLeadName": {
-        "title": "Lead Name",
-        "type": "string",
-        "nullable": true
       },
       "OpportunityLeadPrimaryEmail": {
         "title": "Lead Primary Email",
@@ -24467,26 +24246,6 @@
             ]
           }
         ]
-      },
-      "OpportunityNote": {
-        "title": "Note",
-        "type": "string",
-        "nullable": true
-      },
-      "OpportunityNoteHtml": {
-        "title": "Note Html",
-        "type": "string",
-        "nullable": true
-      },
-      "OpportunityPipelineId": {
-        "title": "Pipeline ID",
-        "type": "string",
-        "nullable": true
-      },
-      "OpportunityPipelineName": {
-        "title": "Pipeline Name",
-        "type": "string",
-        "nullable": true
       },
       "OpportunityStallStatus": {
         "title": "Stall Status",
@@ -24546,36 +24305,6 @@
           }
         }
       },
-      "OpportunityUpdatedBy": {
-        "title": "Updated By",
-        "type": "string",
-        "nullable": true
-      },
-      "OpportunityUpdatedByName": {
-        "title": "Updated By Name",
-        "type": "string",
-        "nullable": true
-      },
-      "OpportunityUserName": {
-        "title": "User Name",
-        "type": "string",
-        "nullable": true
-      },
-      "OpportunityValue": {
-        "title": "Value",
-        "type": "integer",
-        "nullable": true
-      },
-      "OpportunityValueCurrency": {
-        "title": "Value Currency",
-        "type": "string",
-        "nullable": true
-      },
-      "OpportunityValueFormatted": {
-        "title": "Value Formatted",
-        "type": "string",
-        "nullable": true
-      },
       "OpportunitySuggestedActionDetails": {
         "title": "Details",
         "required": [
@@ -24621,31 +24350,6 @@
           }
         }
       },
-      "OutcomeCreatedBy": {
-        "title": "Created By",
-        "type": "string",
-        "nullable": true
-      },
-      "OutcomeDescription": {
-        "title": "Description",
-        "type": "string",
-        "nullable": true
-      },
-      "OutcomeUpdatedBy": {
-        "title": "Updated By",
-        "type": "string",
-        "nullable": true
-      },
-      "PhoneNumberAddressId": {
-        "title": "Address ID",
-        "type": "string",
-        "nullable": true
-      },
-      "PhoneNumberBundleId": {
-        "title": "Bundle ID",
-        "type": "string",
-        "nullable": true
-      },
       "PhoneNumberCarrier": {
         "type": "object",
         "anyOf": [
@@ -24671,258 +24375,6 @@
             ]
           }
         ]
-      },
-      "PhoneNumberCountry": {
-        "title": "Country",
-        "type": "string",
-        "nullable": true
-      },
-      "PhoneNumberForwardTo": {
-        "title": "Forward To",
-        "type": "string",
-        "nullable": true
-      },
-      "PhoneNumberForwardToFormatted": {
-        "title": "Forward To Formatted",
-        "type": "string",
-        "nullable": true
-      },
-      "PhoneNumberInboundRingDuration": {
-        "title": "Inbound Ring Duration",
-        "type": "integer",
-        "description": "Number of seconds we ring this number on inbound calls before moving on (e.g. to voicemail). \u0060null\u0060 means the default of 30 seconds is used.",
-        "nullable": true
-      },
-      "PhoneNumberLastBilledPrice": {
-        "title": "Last Billed Price",
-        "type": "number",
-        "nullable": true
-      },
-      "PhoneNumberNextBillingOn": {
-        "title": "Next Billing On",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "PhoneNumberUserId": {
-        "title": "User ID",
-        "type": "string",
-        "description": "Deprecated. Set to the sole member\u0027s user ID for single-member numbers, otherwise \u0060null\u0060. \u0060user_id\u0060 will be removed in a future update.",
-        "nullable": true,
-        "deprecated": true
-      },
-      "PhoneNumberVoicemailGreetingUrl": {
-        "title": "Voicemail Greeting URL",
-        "type": "string",
-        "nullable": true
-      },
-      "PlaybookArchivedAt": {
-        "title": "Archived At",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "PlaybookArchivedById": {
-        "title": "Archived By ID",
-        "type": "string",
-        "nullable": true
-      },
-      "PlaybookDescription": {
-        "title": "Description",
-        "type": "string",
-        "nullable": true
-      },
-      "PlaybookPosition": {
-        "title": "Position",
-        "type": "integer",
-        "nullable": true
-      },
-      "PlaybookSummaryGuidance": {
-        "title": "Summary Guidance",
-        "type": "string",
-        "nullable": true
-      },
-      "SmsActivityActivityAt": {
-        "title": "Activity At",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "SmsActivityAgentActionReason": {
-        "title": "Agent Action Reason",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "SmsActivityAgentConfigId": {
-        "title": "Agent Config ID",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "SmsActivityContactId": {
-        "title": "Contact ID",
-        "type": "string",
-        "nullable": true
-      },
-      "SmsActivityCost": {
-        "title": "Cost",
-        "type": "string",
-        "nullable": true
-      },
-      "SmsActivityCreatedBy": {
-        "title": "Created By",
-        "type": "string",
-        "nullable": true
-      },
-      "SmsActivityCreatedByName": {
-        "title": "Created By Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "SmsActivityDateScheduled": {
-        "title": "Date Scheduled",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "SmsActivityDateSent": {
-        "title": "Date Sent",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "SmsActivityErrorMessage": {
-        "title": "Error Message",
-        "type": "string",
-        "nullable": true
-      },
-      "SmsActivityLeadId": {
-        "title": "Lead ID",
-        "type": "string",
-        "nullable": true
-      },
-      "SmsActivityLocalCountryIso": {
-        "title": "Local Country Iso",
-        "type": "string",
-        "nullable": true
-      },
-      "SmsActivityLocalPhone": {
-        "title": "Local Phone",
-        "type": "string",
-        "nullable": true
-      },
-      "SmsActivityLocalPhoneFormatted": {
-        "title": "Local Phone Formatted",
-        "type": "string",
-        "nullable": true
-      },
-      "SmsActivityRemoteCountryIso": {
-        "title": "Remote Country Iso",
-        "type": "string",
-        "nullable": true
-      },
-      "SmsActivityRemotePhone": {
-        "title": "Remote Phone",
-        "type": "string",
-        "nullable": true
-      },
-      "SmsActivityRemotePhoneFormatted": {
-        "title": "Remote Phone Formatted",
-        "type": "string",
-        "nullable": true
-      },
-      "SmsActivitySequenceId": {
-        "title": "Sequence ID",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "SmsActivitySequenceName": {
-        "title": "Sequence Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "SmsActivitySequenceSubscriptionId": {
-        "title": "Sequence Subscription ID",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "SmsActivityTemplateId": {
-        "title": "Template ID",
-        "type": "string",
-        "nullable": true
-      },
-      "SmsActivityText": {
-        "title": "Text",
-        "type": "string",
-        "nullable": true
-      },
-      "SmsActivityUpdatedBy": {
-        "title": "Updated By",
-        "type": "string",
-        "nullable": true
-      },
-      "SmsActivityUpdatedByName": {
-        "title": "Updated By Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "SmsActivityUserId": {
-        "title": "User ID",
-        "type": "string",
-        "nullable": true
-      },
-      "SmsActivityUserName": {
-        "title": "User Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "SavedSearchDescription": {
-        "title": "Description",
-        "type": "string",
-        "nullable": true
-      },
-      "SavedSearchIsUserDependent": {
-        "title": "Is User Dependent",
-        "type": "boolean",
-        "nullable": true
-      },
-      "SavedSearchQuery": {
-        "title": "Query",
-        "type": "string",
-        "nullable": true
-      },
-      "SavedSearchSQuery": {
-        "title": "S Query",
-        "required": [
-          "type"
-        ],
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "object"
-          },
-          {
-            "enum": [
-              null
-            ]
-          }
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "discriminator": {
-          "propertyName": "type"
-        }
       },
       "SavedSearchSelectedFields": {
         "title": "Selected Fields",
@@ -24986,39 +24438,6 @@
           }
         }
       },
-      "SavedSearchUserId": {
-        "title": "User ID",
-        "type": "string",
-        "nullable": true
-      },
-      "SharingSettingsEmbeddedResponseCreatedAt": {
-        "title": "Created At",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "SharingSettingsEmbeddedResponseCreatedById": {
-        "title": "Created By ID",
-        "type": "string",
-        "nullable": true
-      },
-      "SharingSettingsEmbeddedResponseUpdatedAt": {
-        "title": "Updated At",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "SharingSettingsEmbeddedResponseUpdatedById": {
-        "title": "Updated By ID",
-        "type": "string",
-        "nullable": true
-      },
-      "TaskCompletedActivityActivityAt": {
-        "title": "Activity At",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
       "TaskCompletedActivityCommentSummary": {
         "title": "Comment Summary",
         "required": [
@@ -25048,85 +24467,6 @@
           }
         }
       },
-      "TaskCompletedActivityCreatedBy": {
-        "title": "Created By",
-        "type": "string",
-        "nullable": true
-      },
-      "TaskCompletedActivityCreatedByName": {
-        "title": "Created By Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "TaskCompletedActivityLeadId": {
-        "title": "Lead ID",
-        "type": "string",
-        "nullable": true
-      },
-      "TaskCompletedActivitySequenceId": {
-        "title": "Sequence ID",
-        "type": "string",
-        "nullable": true
-      },
-      "TaskCompletedActivitySequenceName": {
-        "title": "Sequence Name",
-        "type": "string",
-        "nullable": true
-      },
-      "TaskCompletedActivitySequenceSubscriptionId": {
-        "title": "Sequence Subscription ID",
-        "type": "string",
-        "nullable": true
-      },
-      "TaskCompletedActivityTaskAssignedTo": {
-        "title": "Task Assigned To",
-        "type": "string",
-        "nullable": true
-      },
-      "TaskCompletedActivityTaskAssignedToName": {
-        "title": "Task Assigned To Name",
-        "type": "string",
-        "nullable": true
-      },
-      "TaskCompletedActivityTaskId": {
-        "title": "Task ID",
-        "type": "string",
-        "nullable": true
-      },
-      "TaskCompletedActivityTaskText": {
-        "title": "Task Text",
-        "type": "string",
-        "nullable": true
-      },
-      "TaskCompletedActivityUpdatedBy": {
-        "title": "Updated By",
-        "type": "string",
-        "nullable": true
-      },
-      "TaskCompletedActivityUpdatedByName": {
-        "title": "Updated By Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "TaskCompletedActivityUserId": {
-        "title": "User ID",
-        "type": "string",
-        "nullable": true
-      },
-      "TaskCompletedActivityUserName": {
-        "title": "User Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "UpdateIntegrationLinkName": {
-        "title": "Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
       "UpdateIntegrationLinkType": {
         "type": "object",
         "anyOf": [
@@ -25139,22 +24479,6 @@
             ]
           }
         ]
-      },
-      "UpdateIntegrationLinkUrl": {
-        "title": "Url",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "UpdateNotificationAgentConfigId": {
-        "title": "Agent Config ID",
-        "type": "string",
-        "nullable": true
-      },
-      "UpdateNotificationContactId": {
-        "title": "Contact ID",
-        "type": "string",
-        "nullable": true
       },
       "UpdateNotificationDate": {
         "title": "Date",
@@ -25197,29 +24521,6 @@
           }
         ]
       },
-      "UpdateOpportunityContactId": {
-        "title": "Contact ID",
-        "type": "string",
-        "nullable": true
-      },
-      "UpdateOpportunityDateWon": {
-        "title": "Date Won",
-        "type": "string",
-        "description": "If not set on the resource or in the request, \u0060date_won\u0060 will be set automatically to today\u0027s date when setting \u0060status_id\u0060 to a status with type \u0060won\u0060. The \u0060x-tz-offset\u0060 header, used to pass your timezone\u0027s UTC offset, will be taken into account.",
-        "format": "date-time",
-        "nullable": true
-      },
-      "UpdateOpportunityNoteHtml": {
-        "title": "Note HTML",
-        "type": "string",
-        "description": "Rich-text HTML version of the note. When set, \u0060note\u0060 is automatically populated with the plaintext version (tags become markdown), overriding any \u0060note\u0060 value passed in the same request. Pass \u0060null\u0060 to clear \u0060note_html\u0060; \u0060note\u0060 is cleared as well.",
-        "nullable": true
-      },
-      "UpdateOpportunityUserId": {
-        "title": "User ID",
-        "type": "string",
-        "nullable": true
-      },
       "UpdateOutcomeAppliesTo": {
         "title": "Applies To",
         "type": "object",
@@ -25239,20 +24540,6 @@
         "description": "\u0022Deprecated. This field will be derived from \u0060type\u0060 in a future update: \u0060custom\u0060 applies to calls and meetings, \u0060vm-dropped\u0060 applies to calls only.\u0022",
         "deprecated": true
       },
-      "UpdateOutcomeDescription": {
-        "title": "Description",
-        "type": "string",
-        "description": "Explain what the outcome means and when it should be used.",
-        "default": null,
-        "nullable": true
-      },
-      "UpdateOutcomeName": {
-        "title": "Name",
-        "type": "string",
-        "description": "Displayed to users wherever outcomes can be selected.",
-        "default": null,
-        "nullable": true
-      },
       "UpdateOutcomeType": {
         "type": "object",
         "anyOf": [
@@ -25266,23 +24553,6 @@
           }
         ],
         "description": "Set to \u0060vm-dropped\u0060 if this outcome should be automatically set on calls whenever a team member performs a Voicemail Drop. Otherwise, leave empty or explicitly set to \u0060custom\u0060 (default)."
-      },
-      "UpdatePhoneNumberVoicemailGreetingUrl": {
-        "title": "Voicemail Greeting URL",
-        "type": "string",
-        "nullable": true
-      },
-      "UpdatePlaybookDescription": {
-        "title": "Description",
-        "type": "string",
-        "description": "Description of the playbook.",
-        "nullable": true
-      },
-      "UpdatePlaybookSummaryGuidance": {
-        "title": "Summary Guidance",
-        "type": "string",
-        "description": "Guidance for AI summaries of calls and meetings associated with this Playbook.",
-        "nullable": true
       },
       "UpdateWebhookEvents": {
         "title": "Events",
@@ -25314,141 +24584,6 @@
             ]
           }
         ]
-      },
-      "UpdateWebhookUrl": {
-        "title": "Url",
-        "type": "string",
-        "description": "Destination URL for the webhook subscription",
-        "default": null,
-        "nullable": true
-      },
-      "UpdateWebhookVerifySsl": {
-        "title": "Verify Ssl",
-        "type": "boolean",
-        "description": "Verify SSL certificate of destination webhook URL. Set to \u0060false\u0060 to disable SSL certificate validation. We recommend using https to protect your data during delivery.",
-        "default": null,
-        "nullable": true
-      },
-      "UpdateWhatsAppMessageIntegrationLink": {
-        "title": "Integration Link",
-        "maxLength": 2083,
-        "minLength": 1,
-        "type": "string",
-        "format": "uri",
-        "nullable": true
-      },
-      "UpdateWhatsAppMessageResponseToId": {
-        "title": "Response To ID",
-        "type": "string",
-        "nullable": true
-      },
-      "WebhookSubscriptionEventExtraFilter": {
-        "title": "Extra Filter",
-        "required": [
-          "type"
-        ],
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "object"
-          },
-          {
-            "enum": [
-              null
-            ]
-          }
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "discriminator": {
-          "propertyName": "type"
-        }
-      },
-      "WhatsAppMessageActivityActivityAt": {
-        "title": "Activity At",
-        "type": "string",
-        "format": "date-time",
-        "nullable": true
-      },
-      "WhatsAppMessageActivityContactId": {
-        "title": "Contact ID",
-        "type": "string",
-        "nullable": true
-      },
-      "WhatsAppMessageActivityCreatedBy": {
-        "title": "Created By",
-        "type": "string",
-        "nullable": true
-      },
-      "WhatsAppMessageActivityCreatedByName": {
-        "title": "Created By Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "WhatsAppMessageActivityIntegrationLink": {
-        "title": "Integration Link",
-        "type": "string",
-        "nullable": true
-      },
-      "WhatsAppMessageActivityIntegrationName": {
-        "title": "Integration Name",
-        "type": "string",
-        "nullable": true
-      },
-      "WhatsAppMessageActivityLeadId": {
-        "title": "Lead ID",
-        "type": "string",
-        "nullable": true
-      },
-      "WhatsAppMessageActivityResponseToId": {
-        "title": "Response To ID",
-        "type": "string",
-        "nullable": true
-      },
-      "WhatsAppMessageActivitySequenceId": {
-        "title": "Sequence ID",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "WhatsAppMessageActivitySequenceName": {
-        "title": "Sequence Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "WhatsAppMessageActivitySequenceSubscriptionId": {
-        "title": "Sequence Subscription ID",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "WhatsAppMessageActivityUpdatedBy": {
-        "title": "Updated By",
-        "type": "string",
-        "nullable": true
-      },
-      "WhatsAppMessageActivityUpdatedByName": {
-        "title": "Updated By Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
-      },
-      "WhatsAppMessageActivityUserId": {
-        "title": "User ID",
-        "type": "string",
-        "nullable": true
-      },
-      "WhatsAppMessageActivityUserName": {
-        "title": "User Name",
-        "type": "string",
-        "default": null,
-        "nullable": true
       },
       "BulkDeleteActionSQuery": {
         "title": "S Query",
@@ -25603,6 +24738,12 @@
           }
         }
       },
+      "EmailActivityEnvelope": {
+        "title": "Envelope",
+        "type": "object",
+        "default": null,
+        "nullable": true
+      },
       "FormSubmissionActivityValues": {
         "title": "Values",
         "type": "object",
@@ -25625,6 +24766,11 @@
       },
       "LeadTasksItem": {
         "type": "object"
+      },
+      "SavedSearchSQuery": {
+        "title": "S Query",
+        "type": "object",
+        "nullable": true
       },
       "UpdateContactEmailsItem": {
         "required": [
@@ -25750,6 +24896,12 @@
             "type": "string"
           }
         }
+      },
+      "WebhookSubscriptionEventExtraFilter": {
+        "title": "Extra Filter",
+        "type": "object",
+        "default": null,
+        "nullable": true
       },
       "StatusReasonWrapper": {
         "required": [
@@ -26194,22 +25346,25 @@
         "description": "Default response schema"
       },
       "ActivitiesLeadStatusChangesList200Response": {
-        "title": "DefaultResponse",
+        "required": [
+          "data",
+          "has_more"
+        ],
         "type": "object",
-        "description": "Default response schema"
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LeadStatusChangeActivity"
+            }
+          },
+          "has_more": {
+            "type": "boolean"
+          }
+        }
       },
       "ActivitiesLeadStatusChangesCreateRequest": {
         "type": "object"
-      },
-      "ActivitiesLeadStatusChangesCreate201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "ActivitiesLeadStatusChangesGet200Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
       },
       "ActivitiesLeadStatusChangesDelete204Response": {
         "title": "DefaultResponse",
@@ -27833,6 +26988,40 @@
             {
               "value": "error",
               "name": "Error"
+            }
+          ]
+        }
+      },
+      "CreatePhoneNumberRequestCarrierType": {
+        "title": "Carrier Type",
+        "enum": [
+          "local",
+          "national",
+          "mobile",
+          "tollfree"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "nullable": true,
+        "x-ms-enum": {
+          "name": "CreatePhoneNumberRequestCarrierType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "local",
+              "name": "Local"
+            },
+            {
+              "value": "national",
+              "name": "National"
+            },
+            {
+              "value": "mobile",
+              "name": "Mobile"
+            },
+            {
+              "value": "tollfree",
+              "name": "Tollfree"
             }
           ]
         }
