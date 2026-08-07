@@ -53,20 +53,20 @@ namespace Soenneker.Close.OpenApiClient.Activity.Status_change.Opportunity.Item
         /// <summary>
         /// Get a single OpportunityStatusChange activity
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesOpportunityStatusChangesGet200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusChangeActivity"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivitiesOpportunityStatusChangesGet200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Status_change.Opportunity.Item.OpportunityItemRequestBuilder.OpportunityItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusChangeActivity?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Status_change.Opportunity.Item.OpportunityItemRequestBuilder.OpportunityItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivitiesOpportunityStatusChangesGet200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Status_change.Opportunity.Item.OpportunityItemRequestBuilder.OpportunityItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusChangeActivity> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Status_change.Opportunity.Item.OpportunityItemRequestBuilder.OpportunityItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesOpportunityStatusChangesGet200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesOpportunityStatusChangesGet200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusChangeActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusChangeActivity.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Deleting an OpportunityStatusChange does not change the status of the Opportunity. It only removes the status change event from the Lead&apos;s activity feed.It should only be used if the status change is irrelevant (such as records for a change that has been reverted) and having it in the activity feed is causing integration problems with another system.

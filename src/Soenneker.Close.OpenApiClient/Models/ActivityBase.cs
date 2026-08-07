@@ -16,6 +16,22 @@ namespace Soenneker.Close.OpenApiClient.Models
         public DateTimeOffset? ActivityAt { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The attachments property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Close.OpenApiClient.Models.Attachment>? Attachments { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Close.OpenApiClient.Models.Attachment> Attachments { get; set; }
+#endif
+        /// <summary>The comment_summary property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary? CommentSummary { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary CommentSummary { get; set; }
+#endif
         /// <summary>The contact_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -60,6 +76,30 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string LeadId { get; set; }
 #endif
+        /// <summary>The note property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Note { get; set; }
+#nullable restore
+#else
+        public string Note { get; set; }
+#endif
+        /// <summary>The note_html property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? NoteHtml { get; set; }
+#nullable restore
+#else
+        public string NoteHtml { get; set; }
+#endif
+        /// <summary>The note_mentions property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? NoteMentions { get; set; }
+#nullable restore
+#else
+        public List<string> NoteMentions { get; set; }
+#endif
         /// <summary>The organization_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,6 +107,26 @@ namespace Soenneker.Close.OpenApiClient.Models
 #nullable restore
 #else
         public string OrganizationId { get; set; }
+#endif
+        /// <summary>The pinned property</summary>
+        public bool? Pinned { get; set; }
+        /// <summary>The pinned_at property</summary>
+        public DateTimeOffset? PinnedAt { get; set; }
+        /// <summary>The source property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Close.OpenApiClient.Models.ActivityBaseSource? Source { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Close.OpenApiClient.Models.ActivityBaseSource Source { get; set; }
+#endif
+        /// <summary>The title property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Title { get; set; }
+#nullable restore
+#else
+        public string Title { get; set; }
 #endif
         /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -142,6 +202,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "activity_at", n => { ActivityAt = n.GetDateTimeOffsetValue(); } },
+                { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.Attachment>(global::Soenneker.Close.OpenApiClient.Models.Attachment.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "comment_summary", n => { CommentSummary = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary>(global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary.CreateFromDiscriminatorValue); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "created_by_name", n => { CreatedByName = n.GetStringValue(); } },
@@ -149,7 +211,14 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "date_updated", n => { DateUpdated = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "lead_id", n => { LeadId = n.GetStringValue(); } },
+                { "note", n => { Note = n.GetStringValue(); } },
+                { "note_html", n => { NoteHtml = n.GetStringValue(); } },
+                { "note_mentions", n => { NoteMentions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
+                { "pinned", n => { Pinned = n.GetBoolValue(); } },
+                { "pinned_at", n => { PinnedAt = n.GetDateTimeOffsetValue(); } },
+                { "source", n => { Source = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.ActivityBaseSource>(global::Soenneker.Close.OpenApiClient.Models.ActivityBaseSource.CreateFromDiscriminatorValue); } },
+                { "title", n => { Title = n.GetStringValue(); } },
                 { "_type", n => { Type = n.GetStringValue(); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
                 { "updated_by_name", n => { UpdatedByName = n.GetStringValue(); } },
@@ -166,6 +235,8 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("activity_at", ActivityAt);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.Attachment>("attachments", Attachments);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary>("comment_summary", CommentSummary);
             writer.WriteStringValue("contact_id", ContactId);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteStringValue("created_by_name", CreatedByName);
@@ -173,7 +244,14 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("date_updated", DateUpdated);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("lead_id", LeadId);
+            writer.WriteStringValue("note", Note);
+            writer.WriteStringValue("note_html", NoteHtml);
+            writer.WriteCollectionOfPrimitiveValues<string>("note_mentions", NoteMentions);
             writer.WriteStringValue("organization_id", OrganizationId);
+            writer.WriteBoolValue("pinned", Pinned);
+            writer.WriteDateTimeOffsetValue("pinned_at", PinnedAt);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.ActivityBaseSource>("source", Source);
+            writer.WriteStringValue("title", Title);
             writer.WriteStringValue("_type", Type);
             writer.WriteStringValue("updated_by", UpdatedBy);
             writer.WriteStringValue("updated_by_name", UpdatedByName);

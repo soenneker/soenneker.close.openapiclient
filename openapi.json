@@ -4235,6 +4235,7 @@
                     {
                       "_type": "Note",
                       "activity_at": "2013-02-01T01:05:04.070000+00:00",
+                      "attachments": [],
                       "contact_id": null,
                       "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "created_by_name": "Bruce Wayne",
@@ -4244,9 +4245,11 @@
                       "lead_id": "lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h",
                       "note": "Welcome to Close!\n\nGet started by:\n\n  1. Import your leads! Use our \"Bulk CSV Upload\" tool by clicking your name in the top right. Add leads manually by clicking \"New Lead\" in the lower left.\n  2. Invite your co-workers!\n  3. Setup two-way syncing of your emails by going to Settings -> Email Settings.",
                       "note_html": "<body><p>Welcome to Close!</p><p>Get started by:</p><ol><li>Import your leads! Use our \"Bulk CSV Upload\" tool by clicking your name in the top right. Add leads manually by clicking \"New Lead\" in the lower left.</li><li>Invite your co-workers!</li><li>Setup two-way syncing of your emails by going to Settings -> Email Settings.</li></ol></body>",
+                      "note_mentions": [],
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "pinned": true,
                       "pinned_at": "2025-08-19T14:14:34.383000+00:00",
+                      "source": null,
                       "title": "Welcome to Close!",
                       "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "updated_by_name": "Bruce Wayne",
@@ -4343,9 +4346,11 @@
                   "lead_id": "lead_s6vHFTK1TSRoH6otXOexWDO9jM4xyb1kELHDoU7Fdsp",
                   "note": "this is a test note.",
                   "note_html": "<body><p>this is a test note.</p></body>",
+                  "note_mentions": [],
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                   "pinned": false,
                   "pinned_at": null,
+                  "source": "api",
                   "title": null,
                   "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                   "updated_by_name": "Bruce Wayne",
@@ -4417,8 +4422,11 @@
                   "lead_id": "lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h",
                   "note": "Welcome to Close!\n\nGet started by:\n\n  1. Import your leads! Use our \"Bulk CSV Upload\" tool by clicking your name in the top right. Add leads manually by clicking \"New Lead\" in the lower left.\n  2. Invite your co-workers!\n  3. Setup two-way syncing of your emails by going to Settings -> Email Settings.",
                   "note_html": "<body><p>Welcome to Close!</p><p>Get started by:</p><ol><li>Import your leads! Use our \"Bulk CSV Upload\" tool by clicking your name in the top right. Add leads manually by clicking \"New Lead\" in the lower left.</li><li>Invite your co-workers!</li><li>Setup two-way syncing of your emails by going to Settings -> Email Settings.</li></ol></body>",
+                  "note_mentions": [],
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "pinned": true,
                   "pinned_at": "2025-08-19T14:14:34.383000+00:00",
+                  "source": null,
                   "title": "Welcome to Close!",
                   "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                   "updated_by_name": "Bruce Wayne",
@@ -4482,6 +4490,7 @@
                 "example": {
                   "_type": "Note",
                   "activity_at": "2013-02-20T06:39:57.266000+00:00",
+                  "attachments": [],
                   "contact_id": null,
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                   "created_by_name": "Bruce Wayne",
@@ -4491,9 +4500,11 @@
                   "lead_id": "lead_s6vHFTK1TSRoH6otXOexWDO9jM4xyb1kELHDoU7Fdsp",
                   "note": "this is an update to my existing note.",
                   "note_html": "<body><p>this is an update to my existing note.</p></body>",
+                  "note_mentions": [],
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                   "pinned": true,
                   "pinned_at": "2013-02-20T06:41:59.846000+00:00",
+                  "source": "api",
                   "title": "Welcome to Close!",
                   "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                   "updated_by_name": "Bruce Wayne",
@@ -5356,6 +5367,7 @@
                   "data": [
                     {
                       "_type": "OpportunityStatusChange",
+                      "activity_at": "2013-08-23T21:21:11.862000+00:00",
                       "contact_id": null,
                       "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "created_by_name": "Anthony Nemitz",
@@ -5364,26 +5376,49 @@
                       "id": "acti_CAI2lO44gRLMIvgsKfPZghRyuv1h8S3l7c4cDznXukd",
                       "lead_id": "lead_0VaTsortzKpCv1ik6hbNoudduuD0m2Itevet0fKX39G",
                       "new_pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
+                      "new_pipeline_name": "Sales",
                       "new_status_id": "stat_DetsqwxFOOHx2JnhqtovutN3zeuARGfzB21x5t1W88G",
                       "new_status_label": "Won",
                       "new_status_type": "won",
                       "old_pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
+                      "old_pipeline_name": "Sales",
                       "old_status_id": "stat_ue534UFRaocoMJJA9CYCwnMsRJP2qt6YGnpZOAx7ckK",
                       "old_status_label": "Active",
                       "old_status_type": "active",
-                      "opportunity_date_won": "2013-08-23",
+                      "opportunity_confidence": 100,
+                      "opportunity_date_won": "2013-08-23T00:00:00+00:00",
                       "opportunity_id": "oppo_fn2kSFXS06akJ7XisR7vQQeObyK4upCc43RiAx1Vyz6",
                       "opportunity_value": 0,
                       "opportunity_value_currency": "USD",
                       "opportunity_value_formatted": null,
+                      "opportunity_value_period": "one_time",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "updated_by_name": "Anthony Nemitz",
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                      "user_name": "Anthony Nemitz"
+                      "user_name": "Anthony Nemitz",
+                      "users": []
                     }
                   ],
                   "has_more": false
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/OpportunityStatusChangeActivity"
+                      },
+                      "type": "array"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "has_more"
+                  ]
                 }
               }
             },
@@ -5427,6 +5462,7 @@
               "application/json": {
                 "example": {
                   "_type": "OpportunityStatusChange",
+                  "activity_at": "2013-08-23T21:21:11.862000+00:00",
                   "contact_id": null,
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                   "created_by_name": "Anthony Nemitz",
@@ -5434,22 +5470,32 @@
                   "date_updated": "2013-08-23T21:21:11.862000+00:00",
                   "id": "acti_CAI2lO44gRLMIvgsKfPZghRyuv1h8S3l7c4cDznXukd",
                   "lead_id": "lead_0VaTsortzKpCv1ik6hbNoudduuD0m2Itevet0fKX39G",
+                  "new_pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
+                  "new_pipeline_name": "Sales",
                   "new_status_id": "stat_DetsqwxFOOHx2JnhqtovutN3zeuARGfzB21x5t1W88G",
                   "new_status_label": "Won",
                   "new_status_type": "won",
+                  "old_pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
+                  "old_pipeline_name": "Sales",
                   "old_status_id": "stat_ue534UFRaocoMJJA9CYCwnMsRJP2qt6YGnpZOAx7ckK",
                   "old_status_label": "Active",
                   "old_status_type": "active",
-                  "opportunity_date_won": "2013-08-23",
+                  "opportunity_confidence": 100,
+                  "opportunity_date_won": "2013-08-23T00:00:00+00:00",
                   "opportunity_id": "oppo_fn2kSFXS06akJ7XisR7vQQeObyK4upCc43RiAx1Vyz6",
                   "opportunity_value": 0,
                   "opportunity_value_currency": "USD",
                   "opportunity_value_formatted": null,
+                  "opportunity_value_period": "one_time",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                   "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                   "updated_by_name": "Anthony Nemitz",
                   "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "user_name": "Anthony Nemitz"
+                  "user_name": "Anthony Nemitz",
+                  "users": []
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/OpportunityStatusChangeActivity"
                 }
               }
             },
@@ -5493,6 +5539,7 @@
               "application/json": {
                 "example": {
                   "_type": "OpportunityStatusChange",
+                  "activity_at": "2013-08-23T21:21:11.862000+00:00",
                   "contact_id": null,
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                   "created_by_name": "Anthony Nemitz",
@@ -5500,22 +5547,32 @@
                   "date_updated": "2013-08-23T21:21:11.862000+00:00",
                   "id": "acti_CAI2lO44gRLMIvgsKfPZghRyuv1h8S3l7c4cDznXukd",
                   "lead_id": "lead_0VaTsortzKpCv1ik6hbNoudduuD0m2Itevet0fKX39G",
+                  "new_pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
+                  "new_pipeline_name": "Sales",
                   "new_status_id": "stat_DetsqwxFOOHx2JnhqtovutN3zeuARGfzB21x5t1W88G",
                   "new_status_label": "Won",
                   "new_status_type": "won",
+                  "old_pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
+                  "old_pipeline_name": "Sales",
                   "old_status_id": "stat_ue534UFRaocoMJJA9CYCwnMsRJP2qt6YGnpZOAx7ckK",
                   "old_status_label": "Active",
                   "old_status_type": "active",
-                  "opportunity_date_won": "2013-08-23",
+                  "opportunity_confidence": 100,
+                  "opportunity_date_won": "2013-08-23T00:00:00+00:00",
                   "opportunity_id": "oppo_fn2kSFXS06akJ7XisR7vQQeObyK4upCc43RiAx1Vyz6",
                   "opportunity_value": 0,
                   "opportunity_value_currency": "USD",
                   "opportunity_value_formatted": null,
+                  "opportunity_value_period": "one_time",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                   "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                   "updated_by_name": "Anthony Nemitz",
                   "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "user_name": "Anthony Nemitz"
+                  "user_name": "Anthony Nemitz",
+                  "users": []
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/OpportunityStatusChangeActivity"
                 }
               }
             },
@@ -26375,6 +26432,24 @@
               }
             ]
           },
+          "attachments": {
+            "title": "Attachments",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Attachment"
+            }
+          },
+          "comment_summary": {
+            "title": "Comment Summary",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CommentSummary"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "contact_id": {
             "title": "Contact ID",
             "anyOf": [
@@ -26434,9 +26509,61 @@
               }
             ]
           },
+          "note": {
+            "title": "Note",
+            "type": "string"
+          },
+          "note_html": {
+            "title": "Note Html",
+            "type": "string"
+          },
+          "note_mentions": {
+            "title": "Note Mentions",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "organization_id": {
             "title": "Organization ID",
             "type": "string"
+          },
+          "pinned": {
+            "title": "Pinned",
+            "type": "boolean"
+          },
+          "pinned_at": {
+            "title": "Pinned At",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "source": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CreationSource"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "title": {
+            "title": "Title",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "updated_by": {
             "title": "Updated By",
@@ -26495,13 +26622,21 @@
         "required": [
           "_type",
           "activity_at",
+          "attachments",
           "contact_id",
           "created_by",
           "date_created",
           "date_updated",
           "id",
           "lead_id",
+          "note",
+          "note_html",
+          "note_mentions",
           "organization_id",
+          "pinned",
+          "pinned_at",
+          "source",
+          "title",
           "updated_by",
           "user_id",
           "users"
@@ -32744,6 +32879,279 @@
         "required": [
           "contact_id",
           "message_draft"
+        ]
+      },
+      "OpportunityStatusChangeActivity": {
+        "title": "OpportunityStatusChangeActivity",
+        "type": "object",
+        "properties": {
+          "_type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "activity_at": {
+            "title": "Activity At",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "contact_id": {
+            "title": "Contact ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_by": {
+            "title": "Created By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_by_name": {
+            "title": "Created By Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time"
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "lead_id": {
+            "title": "Lead ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "new_pipeline_id": {
+            "title": "New Pipeline ID",
+            "type": "string"
+          },
+          "new_pipeline_name": {
+            "title": "New Pipeline Name",
+            "type": "string"
+          },
+          "new_status_id": {
+            "title": "New Status ID",
+            "type": "string"
+          },
+          "new_status_label": {
+            "title": "New Status Label",
+            "type": "string"
+          },
+          "new_status_type": {
+            "title": "New Status Type",
+            "$ref": "#/components/schemas/OpportunityStatusType"
+          },
+          "old_pipeline_id": {
+            "title": "Old Pipeline ID",
+            "type": "string"
+          },
+          "old_pipeline_name": {
+            "title": "Old Pipeline Name",
+            "type": "string"
+          },
+          "old_status_id": {
+            "title": "Old Status ID",
+            "type": "string"
+          },
+          "old_status_label": {
+            "title": "Old Status Label",
+            "type": "string"
+          },
+          "old_status_type": {
+            "title": "Old Status Type",
+            "$ref": "#/components/schemas/OpportunityStatusType"
+          },
+          "opportunity_confidence": {
+            "title": "Opportunity Confidence",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "opportunity_date_won": {
+            "title": "Opportunity Date Won",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "opportunity_id": {
+            "title": "Opportunity ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "opportunity_value": {
+            "title": "Opportunity Value",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "opportunity_value_currency": {
+            "title": "Opportunity Value Currency",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "opportunity_value_formatted": {
+            "title": "Opportunity Value Formatted",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "opportunity_value_period": {
+            "title": "Opportunity Value Period",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/OpportunityValuePeriod"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "updated_by": {
+            "title": "Updated By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "updated_by_name": {
+            "title": "Updated By Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_id": {
+            "title": "User ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_name": {
+            "title": "User Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "users": {
+            "title": "Users",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "_type",
+          "activity_at",
+          "contact_id",
+          "created_by",
+          "date_created",
+          "date_updated",
+          "id",
+          "lead_id",
+          "new_status_id",
+          "old_status_id",
+          "opportunity_id",
+          "organization_id",
+          "updated_by",
+          "user_id",
+          "users"
         ]
       },
       "OpportunityStatusType": {
