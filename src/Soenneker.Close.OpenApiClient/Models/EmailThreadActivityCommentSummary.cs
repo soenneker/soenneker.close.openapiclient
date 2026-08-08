@@ -9,37 +9,45 @@ namespace Soenneker.Close.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ActivitiesEmailThreadsList200Response : IAdditionalDataHolder, IParsable
+    public partial class EmailThreadActivityCommentSummary : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The data property</summary>
+        /// <summary>The comment_count property</summary>
+        public int? CommentCount { get; set; }
+        /// <summary>The thread_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivity>? Data { get; set; }
+        public string? ThreadId { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivity> Data { get; set; }
+        public string ThreadId { get; set; }
 #endif
-        /// <summary>The has_more property</summary>
-        public bool? HasMore { get; set; }
+        /// <summary>Union discriminator</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesEmailThreadsList200Response"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivityCommentSummary"/> and sets the default values.
         /// </summary>
-        public ActivitiesEmailThreadsList200Response()
+        public EmailThreadActivityCommentSummary()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesEmailThreadsList200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivityCommentSummary"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Close.OpenApiClient.Models.ActivitiesEmailThreadsList200Response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivityCommentSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.ActivitiesEmailThreadsList200Response();
+            return new global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivityCommentSummary();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -49,8 +57,9 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivity>(global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivity.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "has_more", n => { HasMore = n.GetBoolValue(); } },
+                { "comment_count", n => { CommentCount = n.GetIntValue(); } },
+                { "thread_id", n => { ThreadId = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -60,8 +69,9 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivity>("data", Data);
-            writer.WriteBoolValue("has_more", HasMore);
+            writer.WriteIntValue("comment_count", CommentCount);
+            writer.WriteStringValue("thread_id", ThreadId);
+            writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

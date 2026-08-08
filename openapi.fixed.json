@@ -1704,11 +1704,279 @@
         ],
         "responses": {
           "200": {
-            "description": "Default",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ActivitiesEmailThreadsList200Response"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "_type": "EmailThread",
+                      "activity_at": "2014-12-07T04:10:46\u002B00:00",
+                      "contact_id": null,
+                      "created_by": null,
+                      "created_by_name": null,
+                      "date_created": "2014-12-07T04:10:46\u002B00:00",
+                      "date_updated": "2014-12-07T04:11:00.476000\u002B00:00",
+                      "emails": [
+                        {
+                          "_type": "Email",
+                          "activity_at": "2014-12-07T04:10:46\u002B00:00",
+                          "attachments": [],
+                          "bcc": [],
+                          "body_preview": "Hey Karen,\r\n\r\nThanks for signing up for Close. My name is Steli Efti and I\u0027m\r\nthe CEO of Close. Please let me know if I can do anything to\r\nhelp make your trial into a massive success.\r\n\r\nAdditi",
+                          "bulk_email_action_id": null,
+                          "cc": [],
+                          "contact_id": "cont_alksdjfalksdfj8NzQM56BzBZ8X2GWaowuifsOeWyeJ",
+                          "created_by": null,
+                          "created_by_name": null,
+                          "date_created": "2014-12-07T04:10:46\u002B00:00",
+                          "date_scheduled": null,
+                          "date_sent": "2014-12-07T04:10:46\u002B00:00",
+                          "date_updated": "2014-12-07T04:11:00.459000\u002B00:00",
+                          "direction": "outgoing",
+                          "email_account_id": "emailacct_aslkdjfalksjdfCmLShmuvlPMFy7Ze61FVeEj1VXnlG",
+                          "envelope": {
+                            "bcc": [],
+                            "cc": [],
+                            "date": "Sun, 07 Dec 2014 04:10:46 \u002B0000",
+                            "from": [
+                              {
+                                "email": "steli@close.com",
+                                "name": "Steli Efti"
+                              }
+                            ],
+                            "in_reply_to": null,
+                            "message_id": "\u003C5483d346af89c_c0031a60fdc11130711c@ns5001546.ip-192-95-32.net.mail\u003E",
+                            "reply_to": [],
+                            "sender": [
+                              {
+                                "email": "steli@close.com",
+                                "name": "Steli Efti"
+                              }
+                            ],
+                            "subject": "Excited to have you on board!",
+                            "to": [
+                              {
+                                "email": "karen@example.com",
+                                "name": null
+                              }
+                            ]
+                          },
+                          "followup_sequence_add_cc_bcc": false,
+                          "followup_sequence_delay": null,
+                          "has_reply": false,
+                          "id": "acti_12342j3451lk25iH1Rrtk9LWxwpUZmHygjww4c5iFw4",
+                          "in_reply_to_id": null,
+                          "lead_id": "lead_5cIz6MHYMYEJLDTJRzoyfLHAMymuWlPweEMvslHoBf5",
+                          "message_ids": [
+                            "\u003C5483d346af89c_c0031a60fdc11130711c@ns5001546.ip-192-95-32.net.mail\u003E"
+                          ],
+                          "need_smtp_credentials": false,
+                          "opens": [],
+                          "opens_summary": null,
+                          "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                          "references": [],
+                          "send_as_id": null,
+                          "send_attempts": [],
+                          "sender": "Steli Efti \u003Csteli@close.com\u003E",
+                          "sequence_id": "seq_1BTljGuCooX0nbFoPihl07",
+                          "sequence_name": "My Sequence",
+                          "sequence_subscription_id": "sub_wRlAku35U53xEV7PcNY3Qo",
+                          "status": "sent",
+                          "subject": "Excited to have you on board!",
+                          "template_id": null,
+                          "template_name": null,
+                          "thread_id": "acti_giHHCV8uOniX2wuFmKY14VWqOEq5zXxWi6FQL88MoNH",
+                          "to": [
+                            "karen@example.com"
+                          ],
+                          "updated_by": null,
+                          "updated_by_name": null,
+                          "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                          "user_name": "Steli Efti",
+                          "users": []
+                        },
+                        {
+                          "_type": "Email",
+                          "activity_at": "2014-11-28T17:26:00\u002B00:00",
+                          "attachments": [],
+                          "bcc": [],
+                          "body_preview": "Hey Carlos,\r\n\r\nThanks for signing up for Close. My name is Steli Efti and I\u0027m\r\nthe CEO of Close. Please let me know if I can do anything to\r\nhelp make your trial into a massive success.\r\n\r\nAddit",
+                          "bulk_email_action_id": null,
+                          "cc": [],
+                          "contact_id": "cont_Hw4160e5c61QoFpEkvbUeGYJ0uDMLODYfrBRLWDFHh6",
+                          "created_by": null,
+                          "created_by_name": null,
+                          "date_created": "2014-11-28T17:26:00\u002B00:00",
+                          "date_scheduled": null,
+                          "date_sent": "2014-11-28T17:26:00\u002B00:00",
+                          "date_updated": "2014-11-28T17:26:47.740000\u002B00:00",
+                          "direction": "outgoing",
+                          "email_account_id": "emailacct_eLq7Zxa3CPKgapCmLShmuvlPMFy7Ze61FVeEj1VXnlG",
+                          "envelope": {
+                            "bcc": [],
+                            "cc": [],
+                            "date": "Fri, 28 Nov 2014 17:26:00 \u002B0000",
+                            "from": [
+                              {
+                                "email": "steli@close.com",
+                                "name": "Steli Efti"
+                              }
+                            ],
+                            "in_reply_to": null,
+                            "message_id": "\u003C5478b0283055a_724e3fb94e13cb5c60513397@ns5001376.ip-192-95-32.net.mail\u003E",
+                            "reply_to": [],
+                            "sender": [
+                              {
+                                "email": "steli@close.com",
+                                "name": "Steli Efti"
+                              }
+                            ],
+                            "subject": "Excited to have you on board!",
+                            "to": [
+                              {
+                                "email": "carlos@abc.com",
+                                "name": null
+                              }
+                            ]
+                          },
+                          "followup_sequence_add_cc_bcc": false,
+                          "followup_sequence_delay": null,
+                          "has_reply": false,
+                          "id": "acti_3ANoOJE7DkTwxG9s1TY3SP3VhiJFeua3gt85nuzb0by",
+                          "in_reply_to_id": null,
+                          "lead_id": "lead_5cIz6MHYMYEJLDTJRzoyfLHAMymuWlPweEMvslHoBf5",
+                          "message_ids": [
+                            "\u003C5478b0283055a_724e3fb94e13cb5c60513397@ns5001376.ip-192-95-32.net.mail\u003E"
+                          ],
+                          "need_smtp_credentials": false,
+                          "opens": [],
+                          "opens_summary": null,
+                          "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                          "references": [],
+                          "send_as_id": null,
+                          "send_attempts": [],
+                          "sender": "Steli Efti \u003Csteli@close.com\u003E",
+                          "sequence_id": null,
+                          "sequence_name": null,
+                          "sequence_subscription_id": null,
+                          "status": "sent",
+                          "subject": "Excited to have you on board!",
+                          "template_id": null,
+                          "template_name": null,
+                          "thread_id": "acti_giHHCV8uOniX2wuFmKY14VWqOEq5zXxWi6FQL88MoNH",
+                          "to": [
+                            "carlos@abc.com"
+                          ],
+                          "updated_by": null,
+                          "updated_by_name": null,
+                          "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                          "user_name": "Steli Efti",
+                          "users": []
+                        },
+                        {
+                          "_type": "Email",
+                          "activity_at": "2014-11-26T10:15:44\u002B00:00",
+                          "attachments": [],
+                          "bcc": [],
+                          "body_preview": "Hey TrueAccord,\r\n\r\nThanks for signing up for Close. My name is Steli Efti and I\u0027m\r\nthe CEO of Close. Please let me know if I can do anything to\r\nhelp make your trial into a massive success.\r\n\r\nA",
+                          "bulk_email_action_id": null,
+                          "cc": [],
+                          "contact_id": "cont_6d0dRVHWGMvsJLFjAms1xTL0LCeQoRVWyZtpQs0Y98S",
+                          "created_by": null,
+                          "created_by_name": null,
+                          "date_created": "2014-11-26T10:15:44\u002B00:00",
+                          "date_scheduled": null,
+                          "date_sent": "2014-11-26T10:15:44\u002B00:00",
+                          "date_updated": "2014-11-26T10:17:58.234000\u002B00:00",
+                          "direction": "outgoing",
+                          "email_account_id": "emailacct_eLq7Zxa3CPKgapCmLShmuvlPMFy7Ze61FVeEj1VXnlG",
+                          "envelope": {
+                            "bcc": [],
+                            "cc": [],
+                            "date": "Wed, 26 Nov 2014 10:15:44 \u002B0000",
+                            "from": [
+                              {
+                                "email": "steli@close.com",
+                                "name": "Steli Efti"
+                              }
+                            ],
+                            "in_reply_to": null,
+                            "message_id": "\u003C5475a850a030a_620f1ba3e246281806c1@ns5000834.ip-142-4-219.net.mail\u003E",
+                            "reply_to": [],
+                            "sender": [
+                              {
+                                "email": "steli@close.com",
+                                "name": "Steli Efti"
+                              }
+                            ],
+                            "subject": "Excited to have you on board!",
+                            "to": [
+                              {
+                                "email": "ohad@trueaccord.com",
+                                "name": null
+                              }
+                            ]
+                          },
+                          "followup_sequence_add_cc_bcc": false,
+                          "followup_sequence_delay": null,
+                          "has_reply": false,
+                          "id": "acti_lcAFcE1n7vbkjtlcwpSSLGpheZKBSrmrPFcCM9S13q0",
+                          "in_reply_to_id": null,
+                          "lead_id": "lead_5cIz6MHYMYEJLDTJRzoyfLHAMymuWlPweEMvslHoBf5",
+                          "message_ids": [
+                            "\u003C5475a850a030a_620f1ba3e246281806c1@ns5000834.ip-142-4-219.net.mail\u003E"
+                          ],
+                          "need_smtp_credentials": false,
+                          "opens": [],
+                          "opens_summary": null,
+                          "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                          "references": [],
+                          "send_as_id": null,
+                          "send_attempts": [],
+                          "sender": "Steli Efti \u003Csteli@close.com\u003E",
+                          "sequence_id": null,
+                          "sequence_name": null,
+                          "sequence_subscription_id": null,
+                          "status": "sent",
+                          "subject": "Excited to have you on board!",
+                          "template_id": null,
+                          "template_name": null,
+                          "thread_id": "acti_giHHCV8uOniX2wuFmKY14VWqOEq5zXxWi6FQL88MoNH",
+                          "to": [
+                            "ohad@abc.com"
+                          ],
+                          "updated_by": null,
+                          "updated_by_name": null,
+                          "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                          "user_name": "Steli Efti",
+                          "users": []
+                        }
+                      ],
+                      "id": "acti_giHHCV8uOnialksjdflaksjdflq5zXxWi6FQL88MoNH",
+                      "latest_normalized_subject": "Excited to have you on board!",
+                      "lead_id": "lead_5cIz6MHYMYEJLDTJRzoyfLHAMymuWlPweEMvslHoBf5",
+                      "n_emails": 3,
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "participants": [
+                        {
+                          "email": "steli@close.com",
+                          "name": "Steli Efti"
+                        }
+                      ],
+                      "updated_by": null,
+                      "updated_by_name": null,
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Steli Efti",
+                      "users": [
+                        "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                      ]
+                    }
+                  ],
+                  "has_more": false
                 }
               }
             }
@@ -1738,11 +2006,274 @@
         ],
         "responses": {
           "200": {
-            "description": "Default",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ActivitiesEmailThreadsGet200Response"
+                  "$ref": "#/components/schemas/EmailThreadActivity"
+                },
+                "example": {
+                  "_type": "EmailThread",
+                  "activity_at": "2014-12-07T04:10:46\u002B00:00",
+                  "contact_id": null,
+                  "created_by": null,
+                  "created_by_name": null,
+                  "date_created": "2014-12-07T04:10:46\u002B00:00",
+                  "date_updated": "2014-12-07T04:11:00.476000\u002B00:00",
+                  "emails": [
+                    {
+                      "_type": "Email",
+                      "activity_at": "2014-12-07T04:10:46\u002B00:00",
+                      "attachments": [],
+                      "bcc": [],
+                      "body_preview": "Hey Karen,\r\n\r\nThanks for signing up for Close. My name is Steli Efti and I\u0027m\r\nthe CEO of Close. Please let me know if I can do anything to\r\nhelp make your trial into a massive success.\r\n\r\nAdditi",
+                      "bulk_email_action_id": null,
+                      "cc": [],
+                      "contact_id": "cont_alksdjfalksdfj8NzQM56BzBZ8X2GWaowuifsOeWyeJ",
+                      "created_by": null,
+                      "created_by_name": null,
+                      "date_created": "2014-12-07T04:10:46\u002B00:00",
+                      "date_scheduled": null,
+                      "date_sent": "2014-12-07T04:10:46\u002B00:00",
+                      "date_updated": "2014-12-07T04:11:00.459000\u002B00:00",
+                      "direction": "outgoing",
+                      "email_account_id": "emailacct_aslkdjfalksjdfCmLShmuvlPMFy7Ze61FVeEj1VXnlG",
+                      "envelope": {
+                        "bcc": [],
+                        "cc": [],
+                        "date": "Sun, 07 Dec 2014 04:10:46 \u002B0000",
+                        "from": [
+                          {
+                            "email": "steli@close.com",
+                            "name": "Steli Efti"
+                          }
+                        ],
+                        "in_reply_to": null,
+                        "message_id": "\u003C5483d346af89c_c0031a60fdc11130711c@ns5001546.ip-192-95-32.net.mail\u003E",
+                        "reply_to": [],
+                        "sender": [
+                          {
+                            "email": "steli@close.com",
+                            "name": "Steli Efti"
+                          }
+                        ],
+                        "subject": "Excited to have you on board!",
+                        "to": [
+                          {
+                            "email": "karen@example.com",
+                            "name": null
+                          }
+                        ]
+                      },
+                      "followup_sequence_add_cc_bcc": false,
+                      "followup_sequence_delay": null,
+                      "has_reply": false,
+                      "id": "acti_12342j3451lk25iH1Rrtk9LWxwpUZmHygjww4c5iFw4",
+                      "in_reply_to_id": null,
+                      "lead_id": "lead_5cIz6MHYMYEJLDTJRzoyfLHAMymuWlPweEMvslHoBf5",
+                      "message_ids": [
+                        "\u003C5483d346af89c_c0031a60fdc11130711c@ns5001546.ip-192-95-32.net.mail\u003E"
+                      ],
+                      "need_smtp_credentials": false,
+                      "opens": [],
+                      "opens_summary": null,
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "references": [],
+                      "send_as_id": null,
+                      "send_attempts": [],
+                      "sender": "Steli Efti \u003Csteli@close.com\u003E",
+                      "sequence_id": "seq_1BTljGuCooX0nbFoPihl07",
+                      "sequence_name": "My Sequence",
+                      "sequence_subscription_id": "sub_wRlAku35U53xEV7PcNY3Qo",
+                      "status": "sent",
+                      "subject": "Excited to have you on board!",
+                      "template_id": null,
+                      "template_name": null,
+                      "thread_id": "acti_giHHCV8uOniX2wuFmKY14VWqOEq5zXxWi6FQL88MoNH",
+                      "to": [
+                        "karen@example.com"
+                      ],
+                      "updated_by": null,
+                      "updated_by_name": null,
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Steli Efti",
+                      "users": []
+                    },
+                    {
+                      "_type": "Email",
+                      "activity_at": "2014-11-28T17:26:00\u002B00:00",
+                      "attachments": [],
+                      "bcc": [],
+                      "body_preview": "Hey Carlos,\r\n\r\nThanks for signing up for Close. My name is Steli Efti and I\u0027m\r\nthe CEO of Close. Please let me know if I can do anything to\r\nhelp make your trial into a massive success.\r\n\r\nAddit",
+                      "bulk_email_action_id": null,
+                      "cc": [],
+                      "contact_id": "cont_Hw4160e5c61QoFpEkvbUeGYJ0uDMLODYfrBRLWDFHh6",
+                      "created_by": null,
+                      "created_by_name": null,
+                      "date_created": "2014-11-28T17:26:00\u002B00:00",
+                      "date_scheduled": null,
+                      "date_sent": "2014-11-28T17:26:00\u002B00:00",
+                      "date_updated": "2014-11-28T17:26:47.740000\u002B00:00",
+                      "direction": "outgoing",
+                      "email_account_id": "emailacct_eLq7Zxa3CPKgapCmLShmuvlPMFy7Ze61FVeEj1VXnlG",
+                      "envelope": {
+                        "bcc": [],
+                        "cc": [],
+                        "date": "Fri, 28 Nov 2014 17:26:00 \u002B0000",
+                        "from": [
+                          {
+                            "email": "steli@close.com",
+                            "name": "Steli Efti"
+                          }
+                        ],
+                        "in_reply_to": null,
+                        "message_id": "\u003C5478b0283055a_724e3fb94e13cb5c60513397@ns5001376.ip-192-95-32.net.mail\u003E",
+                        "reply_to": [],
+                        "sender": [
+                          {
+                            "email": "steli@close.com",
+                            "name": "Steli Efti"
+                          }
+                        ],
+                        "subject": "Excited to have you on board!",
+                        "to": [
+                          {
+                            "email": "carlos@abc.com",
+                            "name": null
+                          }
+                        ]
+                      },
+                      "followup_sequence_add_cc_bcc": false,
+                      "followup_sequence_delay": null,
+                      "has_reply": false,
+                      "id": "acti_3ANoOJE7DkTwxG9s1TY3SP3VhiJFeua3gt85nuzb0by",
+                      "in_reply_to_id": null,
+                      "lead_id": "lead_5cIz6MHYMYEJLDTJRzoyfLHAMymuWlPweEMvslHoBf5",
+                      "message_ids": [
+                        "\u003C5478b0283055a_724e3fb94e13cb5c60513397@ns5001376.ip-192-95-32.net.mail\u003E"
+                      ],
+                      "need_smtp_credentials": false,
+                      "opens": [],
+                      "opens_summary": null,
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "references": [],
+                      "send_as_id": null,
+                      "send_attempts": [],
+                      "sender": "Steli Efti \u003Csteli@close.com\u003E",
+                      "sequence_id": null,
+                      "sequence_name": null,
+                      "sequence_subscription_id": null,
+                      "status": "sent",
+                      "subject": "Excited to have you on board!",
+                      "template_id": null,
+                      "template_name": null,
+                      "thread_id": "acti_giHHCV8uOniX2wuFmKY14VWqOEq5zXxWi6FQL88MoNH",
+                      "to": [
+                        "carlos@abc.com"
+                      ],
+                      "updated_by": null,
+                      "updated_by_name": null,
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Steli Efti",
+                      "users": []
+                    },
+                    {
+                      "_type": "Email",
+                      "activity_at": "2014-11-26T10:15:44\u002B00:00",
+                      "attachments": [],
+                      "bcc": [],
+                      "body_preview": "Hey TrueAccord,\r\n\r\nThanks for signing up for Close. My name is Steli Efti and I\u0027m\r\nthe CEO of Close. Please let me know if I can do anything to\r\nhelp make your trial into a massive success.\r\n\r\nA",
+                      "bulk_email_action_id": null,
+                      "cc": [],
+                      "contact_id": "cont_6d0dRVHWGMvsJLFjAms1xTL0LCeQoRVWyZtpQs0Y98S",
+                      "created_by": null,
+                      "created_by_name": null,
+                      "date_created": "2014-11-26T10:15:44\u002B00:00",
+                      "date_scheduled": null,
+                      "date_sent": "2014-11-26T10:15:44\u002B00:00",
+                      "date_updated": "2014-11-26T10:17:58.234000\u002B00:00",
+                      "direction": "outgoing",
+                      "email_account_id": "emailacct_eLq7Zxa3CPKgapCmLShmuvlPMFy7Ze61FVeEj1VXnlG",
+                      "envelope": {
+                        "bcc": [],
+                        "cc": [],
+                        "date": "Wed, 26 Nov 2014 10:15:44 \u002B0000",
+                        "from": [
+                          {
+                            "email": "steli@close.com",
+                            "name": "Steli Efti"
+                          }
+                        ],
+                        "in_reply_to": null,
+                        "message_id": "\u003C5475a850a030a_620f1ba3e246281806c1@ns5000834.ip-142-4-219.net.mail\u003E",
+                        "reply_to": [],
+                        "sender": [
+                          {
+                            "email": "steli@close.com",
+                            "name": "Steli Efti"
+                          }
+                        ],
+                        "subject": "Excited to have you on board!",
+                        "to": [
+                          {
+                            "email": "ohad@trueaccord.com",
+                            "name": null
+                          }
+                        ]
+                      },
+                      "followup_sequence_add_cc_bcc": false,
+                      "followup_sequence_delay": null,
+                      "has_reply": false,
+                      "id": "acti_lcAFcE1n7vbkjtlcwpSSLGpheZKBSrmrPFcCM9S13q0",
+                      "in_reply_to_id": null,
+                      "lead_id": "lead_5cIz6MHYMYEJLDTJRzoyfLHAMymuWlPweEMvslHoBf5",
+                      "message_ids": [
+                        "\u003C5475a850a030a_620f1ba3e246281806c1@ns5000834.ip-142-4-219.net.mail\u003E"
+                      ],
+                      "need_smtp_credentials": false,
+                      "opens": [],
+                      "opens_summary": null,
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "references": [],
+                      "send_as_id": null,
+                      "send_attempts": [],
+                      "sender": "Steli Efti \u003Csteli@close.com\u003E",
+                      "sequence_id": null,
+                      "sequence_name": null,
+                      "sequence_subscription_id": null,
+                      "status": "sent",
+                      "subject": "Excited to have you on board!",
+                      "template_id": null,
+                      "template_name": null,
+                      "thread_id": "acti_giHHCV8uOniX2wuFmKY14VWqOEq5zXxWi6FQL88MoNH",
+                      "to": [
+                        "ohad@abc.com"
+                      ],
+                      "updated_by": null,
+                      "updated_by_name": null,
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Steli Efti",
+                      "users": []
+                    }
+                  ],
+                  "id": "acti_giHHCV8uOnialksjdflaksjdflq5zXxWi6FQL88MoNH",
+                  "latest_normalized_subject": "Excited to have you on board!",
+                  "lead_id": "lead_5cIz6MHYMYEJLDTJRzoyfLHAMymuWlPweEMvslHoBf5",
+                  "n_emails": 3,
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "participants": [
+                    {
+                      "email": "steli@close.com",
+                      "name": "Steli Efti"
+                    }
+                  ],
+                  "updated_by": null,
+                  "updated_by_name": null,
+                  "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "user_name": "Steli Efti",
+                  "users": [
+                    "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                  ]
                 }
               }
             }
@@ -19816,6 +20347,777 @@
           }
         }
       },
+      "EmailEnvelope": {
+        "title": "EmailEnvelope",
+        "required": [
+          "bcc",
+          "cc",
+          "date",
+          "from",
+          "in_reply_to",
+          "is_autoreply",
+          "message_id",
+          "reply_to",
+          "sender",
+          "subject",
+          "to"
+        ],
+        "type": "object",
+        "properties": {
+          "bcc": {
+            "title": "BCC",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailIdentity"
+            }
+          },
+          "cc": {
+            "title": "CC",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailIdentity"
+            }
+          },
+          "date": {
+            "title": "Date",
+            "type": "string",
+            "nullable": true
+          },
+          "from": {
+            "title": "From",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailIdentity"
+            }
+          },
+          "in_reply_to": {
+            "title": "In Reply To",
+            "type": "string",
+            "nullable": true
+          },
+          "is_autoreply": {
+            "title": "Is Auto-Reply",
+            "type": "boolean"
+          },
+          "message_id": {
+            "title": "Message ID",
+            "type": "string",
+            "nullable": true
+          },
+          "reply_to": {
+            "title": "Reply To",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailIdentity"
+            }
+          },
+          "sender": {
+            "title": "Sender",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailIdentity"
+            }
+          },
+          "subject": {
+            "title": "Subject",
+            "type": "string",
+            "nullable": true
+          },
+          "to": {
+            "title": "To",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailIdentity"
+            }
+          }
+        }
+      },
+      "EmailIdentity": {
+        "title": "EmailIdentity",
+        "required": [
+          "email",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        }
+      },
+      "EmailInThread": {
+        "title": "EmailInThread",
+        "required": [
+          "_type",
+          "activity_at",
+          "bcc",
+          "bulk_email_action_id",
+          "cc",
+          "contact_id",
+          "created_by",
+          "date_created",
+          "date_scheduled",
+          "date_sent",
+          "date_updated",
+          "direction",
+          "followup_sequence_add_cc_bcc",
+          "followup_sequence_delay",
+          "has_reply",
+          "id",
+          "in_reply_to_id",
+          "lead_id",
+          "message_ids",
+          "need_smtp_credentials",
+          "opens_summary",
+          "organization_id",
+          "references",
+          "send_as_id",
+          "sender",
+          "status",
+          "subject",
+          "template_id",
+          "thread_id",
+          "to",
+          "updated_by",
+          "user_id",
+          "users"
+        ],
+        "type": "object",
+        "properties": {
+          "_type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "activity_at": {
+            "title": "Activity At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "agent_action_reason": {
+            "title": "Agent Action Reason",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "agent_config_id": {
+            "title": "Agent Config ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "ai_draft": {
+            "$ref": "#/components/schemas/EmailInThreadAiDraft"
+          },
+          "attachments": {
+            "$ref": "#/components/schemas/EmailInThreadAttachments"
+          },
+          "bcc": {
+            "title": "Bcc",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "body_html": {
+            "title": "Body HTML",
+            "type": "string",
+            "nullable": true
+          },
+          "body_html_quoted": {
+            "$ref": "#/components/schemas/EmailInThreadBodyHtmlQuoted"
+          },
+          "body_preview": {
+            "title": "Body Preview",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "body_text": {
+            "title": "Body Text",
+            "type": "string",
+            "nullable": true
+          },
+          "body_text_quoted": {
+            "$ref": "#/components/schemas/EmailInThreadBodyTextQuoted"
+          },
+          "bulk_email_action_id": {
+            "title": "Bulk Email Action ID",
+            "type": "string",
+            "nullable": true
+          },
+          "cc": {
+            "title": "Cc",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "contact_id": {
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
+          },
+          "created_by": {
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
+          },
+          "created_by_name": {
+            "title": "Created By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time"
+          },
+          "date_scheduled": {
+            "title": "Date Scheduled",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "date_sent": {
+            "title": "Date Sent",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time"
+          },
+          "direction": {
+            "$ref": "#/components/schemas/EmailInThreadDirection"
+          },
+          "email_account_id": {
+            "title": "Email Account ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "envelope": {
+            "$ref": "#/components/schemas/EmailInThreadEnvelope"
+          },
+          "followup_sequence_add_cc_bcc": {
+            "title": "Followup Sequence Add Cc Bcc",
+            "type": "boolean"
+          },
+          "followup_sequence_delay": {
+            "title": "Followup Sequence Delay",
+            "type": "integer",
+            "nullable": true
+          },
+          "followup_sequence_id": {
+            "title": "Followup Sequence ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "has_reply": {
+            "title": "Has Reply",
+            "type": "boolean"
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "in_reply_to_id": {
+            "title": "In Reply To ID",
+            "type": "string",
+            "nullable": true
+          },
+          "lead_id": {
+            "title": "Lead ID",
+            "type": "string",
+            "nullable": true
+          },
+          "message_ids": {
+            "title": "Message IDs",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need_smtp_credentials": {
+            "title": "Need Smtp Credentials",
+            "type": "boolean"
+          },
+          "opens": {
+            "$ref": "#/components/schemas/EmailInThreadOpens"
+          },
+          "opens_summary": {
+            "title": "Opens Summary",
+            "type": "string",
+            "nullable": true
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "references": {
+            "title": "References",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "send_as_id": {
+            "title": "Send As ID",
+            "type": "string",
+            "nullable": true
+          },
+          "send_attempts": {
+            "$ref": "#/components/schemas/EmailInThreadSendAttempts"
+          },
+          "sender": {
+            "title": "Sender",
+            "type": "string",
+            "nullable": true
+          },
+          "sequence_id": {
+            "title": "Sequence ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "sequence_name": {
+            "title": "Sequence Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "sequence_subscription_id": {
+            "title": "Sequence Subscription ID",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/MessageStatus"
+          },
+          "subject": {
+            "title": "Subject",
+            "type": "string",
+            "nullable": true
+          },
+          "template_id": {
+            "title": "Template ID",
+            "type": "string",
+            "nullable": true
+          },
+          "template_name": {
+            "title": "Template Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "thread_id": {
+            "title": "Thread ID",
+            "type": "string",
+            "nullable": true
+          },
+          "to": {
+            "title": "To",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "updated_by": {
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
+          },
+          "updated_by_name": {
+            "title": "Updated By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "user_id": {
+            "title": "User ID",
+            "type": "string",
+            "nullable": true
+          },
+          "user_name": {
+            "title": "User Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "users": {
+            "title": "Users",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "EmailOpen": {
+        "title": "EmailOpen",
+        "required": [
+          "ip_address",
+          "opened_at",
+          "opened_by",
+          "user_agent"
+        ],
+        "type": "object",
+        "properties": {
+          "ip_address": {
+            "title": "Ip Address",
+            "type": "string",
+            "nullable": true
+          },
+          "opened_at": {
+            "title": "Opened At",
+            "type": "string",
+            "format": "date-time"
+          },
+          "opened_by": {
+            "title": "Opened By",
+            "type": "string",
+            "nullable": true
+          },
+          "user_agent": {
+            "title": "User Agent",
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "EmailPreview": {
+        "title": "EmailPreview",
+        "required": [
+          "bcc",
+          "body_preview",
+          "cc",
+          "date_created",
+          "date_sent",
+          "date_updated",
+          "direction",
+          "envelope",
+          "has_attachments",
+          "id",
+          "opens_summary",
+          "send_as_id",
+          "sender",
+          "status",
+          "subject",
+          "to",
+          "user_id"
+        ],
+        "type": "object",
+        "properties": {
+          "bcc": {
+            "title": "BCC",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "body_preview": {
+            "title": "Body Preview",
+            "type": "string",
+            "nullable": true
+          },
+          "cc": {
+            "title": "CC",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time"
+          },
+          "date_sent": {
+            "title": "Date Sent",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time"
+          },
+          "direction": {
+            "$ref": "#/components/schemas/CommunicationDirection"
+          },
+          "envelope": {
+            "$ref": "#/components/schemas/EmailPreviewEnvelope"
+          },
+          "has_attachments": {
+            "title": "Has Attachments",
+            "type": "boolean",
+            "nullable": true
+          },
+          "id": {
+            "title": "ID",
+            "type": "string",
+            "nullable": true
+          },
+          "opens_summary": {
+            "title": "Opens Summary",
+            "type": "string",
+            "nullable": true
+          },
+          "send_as_id": {
+            "title": "Send As ID",
+            "type": "string",
+            "nullable": true
+          },
+          "sender": {
+            "title": "Sender",
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/MessageStatus"
+          },
+          "subject": {
+            "title": "Subject",
+            "type": "string",
+            "nullable": true
+          },
+          "to": {
+            "title": "To",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "user_id": {
+            "title": "User ID",
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "EmailThreadActivity": {
+        "title": "EmailThreadActivity",
+        "required": [
+          "_type",
+          "activity_at",
+          "contact_id",
+          "created_by",
+          "date_created",
+          "date_updated",
+          "id",
+          "latest_normalized_subject",
+          "lead_id",
+          "n_emails",
+          "organization_id",
+          "updated_by",
+          "user_id",
+          "users"
+        ],
+        "type": "object",
+        "properties": {
+          "_type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "activity_at": {
+            "title": "Activity At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "comment_summary": {
+            "$ref": "#/components/schemas/EmailThreadActivityCommentSummary"
+          },
+          "contact_id": {
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
+          },
+          "created_by": {
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
+          },
+          "created_by_name": {
+            "title": "Created By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time"
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time"
+          },
+          "emails": {
+            "title": "Emails",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailInThread"
+            }
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "importance": {
+            "$ref": "#/components/schemas/EmailThreadActivityImportance"
+          },
+          "latest_emails": {
+            "title": "Latest Emails",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailPreview"
+            }
+          },
+          "latest_normalized_subject": {
+            "title": "Latest Normalized Subject",
+            "type": "string",
+            "nullable": true
+          },
+          "lead_id": {
+            "title": "Lead ID",
+            "type": "string",
+            "nullable": true
+          },
+          "n_emails": {
+            "title": "Number of Emails",
+            "type": "integer",
+            "nullable": true
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "participants": {
+            "title": "Participants",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailIdentity"
+            }
+          },
+          "summary": {
+            "$ref": "#/components/schemas/EmailThreadActivitySummary"
+          },
+          "updated_by": {
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
+          },
+          "updated_by_name": {
+            "title": "Updated By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "user_id": {
+            "title": "User ID",
+            "type": "string",
+            "nullable": true
+          },
+          "user_name": {
+            "title": "User Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "users": {
+            "title": "Users",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "EmailThreadSummary": {
+        "title": "EmailThreadSummary",
+        "required": [
+          "expired_at",
+          "generated_at",
+          "status",
+          "summary_html",
+          "summary_text",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "expired_at": {
+            "title": "Expired At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "feedback": {
+            "$ref": "#/components/schemas/EmailThreadSummaryFeedback"
+          },
+          "generated_at": {
+            "title": "Generated At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/SummaryStatus"
+          },
+          "summary_html": {
+            "title": "Summary HTML",
+            "type": "string",
+            "nullable": true
+          },
+          "summary_text": {
+            "title": "Summary Text",
+            "type": "string",
+            "nullable": true
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "EmailThreadSummaryFeedback": {
+        "title": "EmailThreadSummaryFeedback",
+        "required": [
+          "detail",
+          "given_at",
+          "rating"
+        ],
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "string",
+            "nullable": true
+          },
+          "given_at": {
+            "title": "Given At",
+            "type": "string",
+            "format": "date-time"
+          },
+          "rating": {
+            "$ref": "#/components/schemas/SummaryFeedbackRating"
+          }
+        }
+      },
       "Form": {
         "title": "Form",
         "required": [
@@ -20201,6 +21503,84 @@
               "type": "string"
             }
           }
+        }
+      },
+      "ImportantEmailThread": {
+        "title": "ImportantEmailThread",
+        "required": [
+          "reason",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "reason": {
+            "$ref": "#/components/schemas/ImportantThreadReason"
+          },
+          "type": {
+            "title": "Type",
+            "enum": [
+              "important"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "Type",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "important",
+                  "name": "Important"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "ImportantThreadReason": {
+        "title": "ImportantThreadReason",
+        "enum": [
+          "manual",
+          "contains-manual-message",
+          "most-recent-communication",
+          "has-response",
+          "whitelisted",
+          "by-default",
+          "unset-initial-default"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "ImportantThreadReason",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "manual",
+              "name": "Manual"
+            },
+            {
+              "value": "contains-manual-message",
+              "name": "ContainsManualMessage"
+            },
+            {
+              "value": "most-recent-communication",
+              "name": "MostRecentCommunication"
+            },
+            {
+              "value": "has-response",
+              "name": "HasResponse"
+            },
+            {
+              "value": "whitelisted",
+              "name": "Whitelisted"
+            },
+            {
+              "value": "by-default",
+              "name": "ByDefault"
+            },
+            {
+              "value": "unset-initial-default",
+              "name": "UnsetInitialDefault"
+            }
+          ]
         }
       },
       "InlineLeadStatusPayload": {
@@ -20742,6 +22122,74 @@
             {
               "value": "error",
               "name": "Error"
+            }
+          ]
+        }
+      },
+      "NotImportantEmailThread": {
+        "title": "NotImportantEmailThread",
+        "required": [
+          "reason",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "reason": {
+            "$ref": "#/components/schemas/NotImportantThreadReason"
+          },
+          "type": {
+            "title": "Type",
+            "enum": [
+              "not_important"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "Type",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "not_important",
+                  "name": "NotImportant"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "NotImportantThreadReason": {
+        "title": "NotImportantThreadReason",
+        "enum": [
+          "manual",
+          "scheduling-emails",
+          "automated-outbound",
+          "marketing-or-transactional",
+          "by-default"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "NotImportantThreadReason",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "manual",
+              "name": "Manual"
+            },
+            {
+              "value": "scheduling-emails",
+              "name": "SchedulingEmails"
+            },
+            {
+              "value": "automated-outbound",
+              "name": "AutomatedOutbound"
+            },
+            {
+              "value": "marketing-or-transactional",
+              "name": "MarketingOrTransactional"
+            },
+            {
+              "value": "by-default",
+              "name": "ByDefault"
             }
           ]
         }
@@ -21885,6 +23333,42 @@
           }
         }
       },
+      "QuotedEmailHtml": {
+        "title": "QuotedEmailHTML",
+        "required": [
+          "expand",
+          "html"
+        ],
+        "type": "object",
+        "properties": {
+          "expand": {
+            "title": "Expand",
+            "type": "boolean"
+          },
+          "html": {
+            "title": "HTML",
+            "type": "string"
+          }
+        }
+      },
+      "QuotedEmailText": {
+        "title": "QuotedEmailText",
+        "required": [
+          "expand",
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "expand": {
+            "title": "Expand",
+            "type": "boolean"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          }
+        }
+      },
       "RenderedIntegrationLink": {
         "title": "RenderedIntegrationLink",
         "required": [
@@ -22695,6 +24179,62 @@
             {
               "value": "email-ai-generation-failed",
               "name": "EmailAiGenerationFailed"
+            }
+          ]
+        }
+      },
+      "SummaryFeedbackRating": {
+        "title": "SummaryFeedbackRating",
+        "enum": [
+          "positive",
+          "negative"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "SummaryFeedbackRating",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "positive",
+              "name": "Positive"
+            },
+            {
+              "value": "negative",
+              "name": "Negative"
+            }
+          ]
+        }
+      },
+      "SummaryStatus": {
+        "title": "SummaryStatus",
+        "enum": [
+          "pending",
+          "success",
+          "failure",
+          "expired"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "SummaryStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "pending",
+              "name": "Pending"
+            },
+            {
+              "value": "success",
+              "name": "Success"
+            },
+            {
+              "value": "failure",
+              "name": "Failure"
+            },
+            {
+              "value": "expired",
+              "name": "Expired"
             }
           ]
         }
@@ -24399,10 +25939,7 @@
           {
             "type": "array",
             "items": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              }
+              "$ref": "#/components/schemas/EmailOpen"
             }
           },
           {
@@ -24431,6 +25968,221 @@
             ]
           }
         ]
+      },
+      "EmailInThreadAttachments": {
+        "title": "Attachments",
+        "type": "object",
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Attachment"
+            }
+          },
+          {
+            "enum": [
+              null
+            ]
+          }
+        ]
+      },
+      "EmailInThreadBodyHtmlQuoted": {
+        "title": "Body HTML Quoted",
+        "type": "object",
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QuotedEmailHtml"
+            }
+          },
+          {
+            "enum": [
+              null
+            ]
+          }
+        ]
+      },
+      "EmailInThreadBodyTextQuoted": {
+        "title": "Body Text Quoted",
+        "type": "object",
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QuotedEmailText"
+            }
+          },
+          {
+            "enum": [
+              null
+            ]
+          }
+        ]
+      },
+      "EmailInThreadDirection": {
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/CommunicationDirectionWrapper2"
+          },
+          {
+            "enum": [
+              null
+            ]
+          }
+        ]
+      },
+      "EmailInThreadOpens": {
+        "title": "Opens",
+        "type": "object",
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailOpen"
+            }
+          },
+          {
+            "enum": [
+              null
+            ]
+          }
+        ]
+      },
+      "EmailInThreadSendAttempts": {
+        "title": "Send Attempts",
+        "type": "object",
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "enum": [
+              null
+            ]
+          }
+        ]
+      },
+      "EmailPreviewEnvelope": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/EmailEnvelope"
+          },
+          {
+            "enum": [
+              null
+            ]
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "EmailEnvelope": "#/components/schemas/EmailEnvelope"
+          }
+        }
+      },
+      "EmailThreadActivityCommentSummary": {
+        "title": "Comment Summary",
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/CommentSummary"
+          },
+          {
+            "enum": [
+              null
+            ]
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "CommentSummary": "#/components/schemas/CommentSummary"
+          }
+        }
+      },
+      "EmailThreadActivityImportance": {
+        "title": "Importance",
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/ImportantEmailThread"
+          },
+          {
+            "$ref": "#/components/schemas/NotImportantEmailThread"
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "ImportantEmailThread": "#/components/schemas/ImportantEmailThread",
+            "NotImportantEmailThread": "#/components/schemas/NotImportantEmailThread"
+          }
+        }
+      },
+      "EmailThreadActivitySummary": {
+        "title": "Summary",
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/EmailThreadSummary"
+          },
+          {
+            "enum": [
+              null
+            ]
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "EmailThreadSummary": "#/components/schemas/EmailThreadSummary"
+          }
+        }
       },
       "FormFieldDefinitionChoices": {
         "title": "Choices",
@@ -25142,6 +26894,17 @@
         "default": null,
         "nullable": true
       },
+      "EmailInThreadAiDraft": {
+        "title": "Ai Draft",
+        "type": "object",
+        "nullable": true
+      },
+      "EmailInThreadEnvelope": {
+        "title": "Envelope",
+        "type": "object",
+        "default": null,
+        "nullable": true
+      },
       "FormSubmissionActivityValues": {
         "title": "Values",
         "type": "object",
@@ -25444,6 +27207,17 @@
           }
         }
       },
+      "CommunicationDirectionWrapper2": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/CommunicationDirection"
+          }
+        }
+      },
       "OpportunityValuePeriodWrapper2": {
         "required": [
           "value"
@@ -25618,14 +27392,22 @@
         "description": "Default response schema"
       },
       "ActivitiesEmailThreadsList200Response": {
-        "title": "DefaultResponse",
+        "required": [
+          "data",
+          "has_more"
+        ],
         "type": "object",
-        "description": "Default response schema"
-      },
-      "ActivitiesEmailThreadsGet200Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailThreadActivity"
+            }
+          },
+          "has_more": {
+            "type": "boolean"
+          }
+        }
       },
       "ActivitiesEmailThreadsDelete204Response": {
         "title": "DefaultResponse",

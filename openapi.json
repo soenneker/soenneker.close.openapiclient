@@ -2512,6 +2512,7 @@
                   "data": [
                     {
                       "_type": "EmailThread",
+                      "activity_at": "2014-12-07T04:10:46+00:00",
                       "contact_id": null,
                       "created_by": null,
                       "created_by_name": null,
@@ -2520,14 +2521,17 @@
                       "emails": [
                         {
                           "_type": "Email",
+                          "activity_at": "2014-12-07T04:10:46+00:00",
                           "attachments": [],
                           "bcc": [],
                           "body_preview": "Hey Karen,\r\n\r\nThanks for signing up for Close. My name is Steli Efti and I'm\r\nthe CEO of Close. Please let me know if I can do anything to\r\nhelp make your trial into a massive success.\r\n\r\nAdditi",
+                          "bulk_email_action_id": null,
                           "cc": [],
                           "contact_id": "cont_alksdjfalksdfj8NzQM56BzBZ8X2GWaowuifsOeWyeJ",
                           "created_by": null,
                           "created_by_name": null,
                           "date_created": "2014-12-07T04:10:46+00:00",
+                          "date_scheduled": null,
                           "date_sent": "2014-12-07T04:10:46+00:00",
                           "date_updated": "2014-12-07T04:11:00.459000+00:00",
                           "direction": "outgoing",
@@ -2559,16 +2563,21 @@
                               }
                             ]
                           },
+                          "followup_sequence_add_cc_bcc": false,
+                          "followup_sequence_delay": null,
+                          "has_reply": false,
                           "id": "acti_12342j3451lk25iH1Rrtk9LWxwpUZmHygjww4c5iFw4",
                           "in_reply_to_id": null,
                           "lead_id": "lead_5cIz6MHYMYEJLDTJRzoyfLHAMymuWlPweEMvslHoBf5",
                           "message_ids": [
                             "<5483d346af89c_c0031a60fdc11130711c@ns5001546.ip-192-95-32.net.mail>"
                           ],
+                          "need_smtp_credentials": false,
                           "opens": [],
                           "opens_summary": null,
                           "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                           "references": [],
+                          "send_as_id": null,
                           "send_attempts": [],
                           "sender": "Steli Efti <steli@close.com>",
                           "sequence_id": "seq_1BTljGuCooX0nbFoPihl07",
@@ -2590,14 +2599,17 @@
                         },
                         {
                           "_type": "Email",
+                          "activity_at": "2014-11-28T17:26:00+00:00",
                           "attachments": [],
                           "bcc": [],
                           "body_preview": "Hey Carlos,\r\n\r\nThanks for signing up for Close. My name is Steli Efti and I'm\r\nthe CEO of Close. Please let me know if I can do anything to\r\nhelp make your trial into a massive success.\r\n\r\nAddit",
+                          "bulk_email_action_id": null,
                           "cc": [],
                           "contact_id": "cont_Hw4160e5c61QoFpEkvbUeGYJ0uDMLODYfrBRLWDFHh6",
                           "created_by": null,
                           "created_by_name": null,
                           "date_created": "2014-11-28T17:26:00+00:00",
+                          "date_scheduled": null,
                           "date_sent": "2014-11-28T17:26:00+00:00",
                           "date_updated": "2014-11-28T17:26:47.740000+00:00",
                           "direction": "outgoing",
@@ -2629,6 +2641,9 @@
                               }
                             ]
                           },
+                          "followup_sequence_add_cc_bcc": false,
+                          "followup_sequence_delay": null,
+                          "has_reply": false,
                           "id": "acti_3ANoOJE7DkTwxG9s1TY3SP3VhiJFeua3gt85nuzb0by",
                           "in_reply_to_id": null,
                           "lead_id": "lead_5cIz6MHYMYEJLDTJRzoyfLHAMymuWlPweEMvslHoBf5",
@@ -2640,6 +2655,7 @@
                           "opens_summary": null,
                           "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                           "references": [],
+                          "send_as_id": null,
                           "send_attempts": [],
                           "sender": "Steli Efti <steli@close.com>",
                           "sequence_id": null,
@@ -2661,14 +2677,17 @@
                         },
                         {
                           "_type": "Email",
+                          "activity_at": "2014-11-26T10:15:44+00:00",
                           "attachments": [],
                           "bcc": [],
                           "body_preview": "Hey TrueAccord,\r\n\r\nThanks for signing up for Close. My name is Steli Efti and I'm\r\nthe CEO of Close. Please let me know if I can do anything to\r\nhelp make your trial into a massive success.\r\n\r\nA",
+                          "bulk_email_action_id": null,
                           "cc": [],
                           "contact_id": "cont_6d0dRVHWGMvsJLFjAms1xTL0LCeQoRVWyZtpQs0Y98S",
                           "created_by": null,
                           "created_by_name": null,
                           "date_created": "2014-11-26T10:15:44+00:00",
+                          "date_scheduled": null,
                           "date_sent": "2014-11-26T10:15:44+00:00",
                           "date_updated": "2014-11-26T10:17:58.234000+00:00",
                           "direction": "outgoing",
@@ -2700,6 +2719,9 @@
                               }
                             ]
                           },
+                          "followup_sequence_add_cc_bcc": false,
+                          "followup_sequence_delay": null,
+                          "has_reply": false,
                           "id": "acti_lcAFcE1n7vbkjtlcwpSSLGpheZKBSrmrPFcCM9S13q0",
                           "in_reply_to_id": null,
                           "lead_id": "lead_5cIz6MHYMYEJLDTJRzoyfLHAMymuWlPweEMvslHoBf5",
@@ -2711,6 +2733,7 @@
                           "opens_summary": null,
                           "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                           "references": [],
+                          "send_as_id": null,
                           "send_attempts": [],
                           "sender": "Steli Efti <steli@close.com>",
                           "sequence_id": null,
@@ -2752,6 +2775,24 @@
                     }
                   ],
                   "has_more": false
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/EmailThreadActivity"
+                      },
+                      "type": "array"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "has_more"
+                  ]
                 }
               }
             },
@@ -2795,6 +2836,7 @@
               "application/json": {
                 "example": {
                   "_type": "EmailThread",
+                  "activity_at": "2014-12-07T04:10:46+00:00",
                   "contact_id": null,
                   "created_by": null,
                   "created_by_name": null,
@@ -2803,14 +2845,17 @@
                   "emails": [
                     {
                       "_type": "Email",
+                      "activity_at": "2014-12-07T04:10:46+00:00",
                       "attachments": [],
                       "bcc": [],
                       "body_preview": "Hey Karen,\r\n\r\nThanks for signing up for Close. My name is Steli Efti and I'm\r\nthe CEO of Close. Please let me know if I can do anything to\r\nhelp make your trial into a massive success.\r\n\r\nAdditi",
+                      "bulk_email_action_id": null,
                       "cc": [],
                       "contact_id": "cont_alksdjfalksdfj8NzQM56BzBZ8X2GWaowuifsOeWyeJ",
                       "created_by": null,
                       "created_by_name": null,
                       "date_created": "2014-12-07T04:10:46+00:00",
+                      "date_scheduled": null,
                       "date_sent": "2014-12-07T04:10:46+00:00",
                       "date_updated": "2014-12-07T04:11:00.459000+00:00",
                       "direction": "outgoing",
@@ -2842,16 +2887,21 @@
                           }
                         ]
                       },
+                      "followup_sequence_add_cc_bcc": false,
+                      "followup_sequence_delay": null,
+                      "has_reply": false,
                       "id": "acti_12342j3451lk25iH1Rrtk9LWxwpUZmHygjww4c5iFw4",
                       "in_reply_to_id": null,
                       "lead_id": "lead_5cIz6MHYMYEJLDTJRzoyfLHAMymuWlPweEMvslHoBf5",
                       "message_ids": [
                         "<5483d346af89c_c0031a60fdc11130711c@ns5001546.ip-192-95-32.net.mail>"
                       ],
+                      "need_smtp_credentials": false,
                       "opens": [],
                       "opens_summary": null,
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "references": [],
+                      "send_as_id": null,
                       "send_attempts": [],
                       "sender": "Steli Efti <steli@close.com>",
                       "sequence_id": "seq_1BTljGuCooX0nbFoPihl07",
@@ -2873,14 +2923,17 @@
                     },
                     {
                       "_type": "Email",
+                      "activity_at": "2014-11-28T17:26:00+00:00",
                       "attachments": [],
                       "bcc": [],
                       "body_preview": "Hey Carlos,\r\n\r\nThanks for signing up for Close. My name is Steli Efti and I'm\r\nthe CEO of Close. Please let me know if I can do anything to\r\nhelp make your trial into a massive success.\r\n\r\nAddit",
+                      "bulk_email_action_id": null,
                       "cc": [],
                       "contact_id": "cont_Hw4160e5c61QoFpEkvbUeGYJ0uDMLODYfrBRLWDFHh6",
                       "created_by": null,
                       "created_by_name": null,
                       "date_created": "2014-11-28T17:26:00+00:00",
+                      "date_scheduled": null,
                       "date_sent": "2014-11-28T17:26:00+00:00",
                       "date_updated": "2014-11-28T17:26:47.740000+00:00",
                       "direction": "outgoing",
@@ -2912,6 +2965,9 @@
                           }
                         ]
                       },
+                      "followup_sequence_add_cc_bcc": false,
+                      "followup_sequence_delay": null,
+                      "has_reply": false,
                       "id": "acti_3ANoOJE7DkTwxG9s1TY3SP3VhiJFeua3gt85nuzb0by",
                       "in_reply_to_id": null,
                       "lead_id": "lead_5cIz6MHYMYEJLDTJRzoyfLHAMymuWlPweEMvslHoBf5",
@@ -2923,6 +2979,7 @@
                       "opens_summary": null,
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "references": [],
+                      "send_as_id": null,
                       "send_attempts": [],
                       "sender": "Steli Efti <steli@close.com>",
                       "sequence_id": null,
@@ -2944,14 +3001,17 @@
                     },
                     {
                       "_type": "Email",
+                      "activity_at": "2014-11-26T10:15:44+00:00",
                       "attachments": [],
                       "bcc": [],
                       "body_preview": "Hey TrueAccord,\r\n\r\nThanks for signing up for Close. My name is Steli Efti and I'm\r\nthe CEO of Close. Please let me know if I can do anything to\r\nhelp make your trial into a massive success.\r\n\r\nA",
+                      "bulk_email_action_id": null,
                       "cc": [],
                       "contact_id": "cont_6d0dRVHWGMvsJLFjAms1xTL0LCeQoRVWyZtpQs0Y98S",
                       "created_by": null,
                       "created_by_name": null,
                       "date_created": "2014-11-26T10:15:44+00:00",
+                      "date_scheduled": null,
                       "date_sent": "2014-11-26T10:15:44+00:00",
                       "date_updated": "2014-11-26T10:17:58.234000+00:00",
                       "direction": "outgoing",
@@ -2983,6 +3043,9 @@
                           }
                         ]
                       },
+                      "followup_sequence_add_cc_bcc": false,
+                      "followup_sequence_delay": null,
+                      "has_reply": false,
                       "id": "acti_lcAFcE1n7vbkjtlcwpSSLGpheZKBSrmrPFcCM9S13q0",
                       "in_reply_to_id": null,
                       "lead_id": "lead_5cIz6MHYMYEJLDTJRzoyfLHAMymuWlPweEMvslHoBf5",
@@ -2994,6 +3057,7 @@
                       "opens_summary": null,
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "references": [],
+                      "send_as_id": null,
                       "send_attempts": [],
                       "sender": "Steli Efti <steli@close.com>",
                       "sequence_id": null,
@@ -3032,6 +3096,9 @@
                   "users": [
                     "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
                   ]
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/EmailThreadActivity"
                 }
               }
             },
@@ -30863,10 +30930,7 @@
               {
                 "type": "array",
                 "items": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
+                  "$ref": "#/components/schemas/EmailOpen"
                 }
               },
               {
@@ -31117,6 +31181,1274 @@
           "updated_by",
           "user_id",
           "users"
+        ]
+      },
+      "EmailEnvelope": {
+        "title": "EmailEnvelope",
+        "type": "object",
+        "properties": {
+          "bcc": {
+            "title": "BCC",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailIdentity"
+            }
+          },
+          "cc": {
+            "title": "CC",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailIdentity"
+            }
+          },
+          "date": {
+            "title": "Date",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "from": {
+            "title": "From",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailIdentity"
+            }
+          },
+          "in_reply_to": {
+            "title": "In Reply To",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "is_autoreply": {
+            "title": "Is Auto-Reply",
+            "type": "boolean"
+          },
+          "message_id": {
+            "title": "Message ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reply_to": {
+            "title": "Reply To",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailIdentity"
+            }
+          },
+          "sender": {
+            "title": "Sender",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailIdentity"
+            }
+          },
+          "subject": {
+            "title": "Subject",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "to": {
+            "title": "To",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailIdentity"
+            }
+          }
+        },
+        "required": [
+          "bcc",
+          "cc",
+          "date",
+          "from",
+          "in_reply_to",
+          "is_autoreply",
+          "message_id",
+          "reply_to",
+          "sender",
+          "subject",
+          "to"
+        ]
+      },
+      "EmailIdentity": {
+        "title": "EmailIdentity",
+        "type": "object",
+        "properties": {
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "name"
+        ]
+      },
+      "EmailInThread": {
+        "title": "EmailInThread",
+        "type": "object",
+        "properties": {
+          "_type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "activity_at": {
+            "title": "Activity At",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "agent_action_reason": {
+            "title": "Agent Action Reason",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "agent_config_id": {
+            "title": "Agent Config ID",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "ai_draft": {
+            "title": "Ai Draft",
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": true
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "attachments": {
+            "title": "Attachments",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Attachment"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "bcc": {
+            "title": "Bcc",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "body_html": {
+            "title": "Body HTML",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "body_html_quoted": {
+            "title": "Body HTML Quoted",
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/QuotedEmailHTML"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "body_preview": {
+            "title": "Body Preview",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "body_text": {
+            "title": "Body Text",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "body_text_quoted": {
+            "title": "Body Text Quoted",
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/QuotedEmailText"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "bulk_email_action_id": {
+            "title": "Bulk Email Action ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cc": {
+            "title": "Cc",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "contact_id": {
+            "title": "Contact ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_by": {
+            "title": "Created By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_by_name": {
+            "title": "Created By Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time"
+          },
+          "date_scheduled": {
+            "title": "Date Scheduled",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "date_sent": {
+            "title": "Date Sent",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time"
+          },
+          "direction": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CommunicationDirection"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "email_account_id": {
+            "title": "Email Account ID",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "envelope": {
+            "title": "Envelope",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": true
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "followup_sequence_add_cc_bcc": {
+            "title": "Followup Sequence Add Cc Bcc",
+            "type": "boolean"
+          },
+          "followup_sequence_delay": {
+            "title": "Followup Sequence Delay",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "followup_sequence_id": {
+            "title": "Followup Sequence ID",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "has_reply": {
+            "title": "Has Reply",
+            "type": "boolean"
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "in_reply_to_id": {
+            "title": "In Reply To ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "lead_id": {
+            "title": "Lead ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "message_ids": {
+            "title": "Message IDs",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need_smtp_credentials": {
+            "title": "Need Smtp Credentials",
+            "type": "boolean"
+          },
+          "opens": {
+            "title": "Opens",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EmailOpen"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "opens_summary": {
+            "title": "Opens Summary",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "references": {
+            "title": "References",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "send_as_id": {
+            "title": "Send As ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "send_attempts": {
+            "title": "Send Attempts",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sender": {
+            "title": "Sender",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sequence_id": {
+            "title": "Sequence ID",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sequence_name": {
+            "title": "Sequence Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sequence_subscription_id": {
+            "title": "Sequence Subscription ID",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status": {
+            "$ref": "#/components/schemas/MessageStatus"
+          },
+          "subject": {
+            "title": "Subject",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "template_id": {
+            "title": "Template ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "template_name": {
+            "title": "Template Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "thread_id": {
+            "title": "Thread ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "to": {
+            "title": "To",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "updated_by": {
+            "title": "Updated By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "updated_by_name": {
+            "title": "Updated By Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_id": {
+            "title": "User ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_name": {
+            "title": "User Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "users": {
+            "title": "Users",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "_type",
+          "activity_at",
+          "bcc",
+          "bulk_email_action_id",
+          "cc",
+          "contact_id",
+          "created_by",
+          "date_created",
+          "date_scheduled",
+          "date_sent",
+          "date_updated",
+          "direction",
+          "followup_sequence_add_cc_bcc",
+          "followup_sequence_delay",
+          "has_reply",
+          "id",
+          "in_reply_to_id",
+          "lead_id",
+          "message_ids",
+          "need_smtp_credentials",
+          "opens_summary",
+          "organization_id",
+          "references",
+          "send_as_id",
+          "sender",
+          "status",
+          "subject",
+          "template_id",
+          "thread_id",
+          "to",
+          "updated_by",
+          "user_id",
+          "users"
+        ]
+      },
+      "EmailOpen": {
+        "title": "EmailOpen",
+        "type": "object",
+        "properties": {
+          "ip_address": {
+            "title": "Ip Address",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "opened_at": {
+            "title": "Opened At",
+            "type": "string",
+            "format": "date-time"
+          },
+          "opened_by": {
+            "title": "Opened By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_agent": {
+            "title": "User Agent",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "ip_address",
+          "opened_at",
+          "opened_by",
+          "user_agent"
+        ]
+      },
+      "EmailPreview": {
+        "title": "EmailPreview",
+        "type": "object",
+        "properties": {
+          "bcc": {
+            "title": "BCC",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "body_preview": {
+            "title": "Body Preview",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cc": {
+            "title": "CC",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time"
+          },
+          "date_sent": {
+            "title": "Date Sent",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time"
+          },
+          "direction": {
+            "$ref": "#/components/schemas/CommunicationDirection"
+          },
+          "envelope": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/EmailEnvelope"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "has_attachments": {
+            "title": "Has Attachments",
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "id": {
+            "title": "ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "opens_summary": {
+            "title": "Opens Summary",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "send_as_id": {
+            "title": "Send As ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sender": {
+            "title": "Sender",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status": {
+            "$ref": "#/components/schemas/MessageStatus"
+          },
+          "subject": {
+            "title": "Subject",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "to": {
+            "title": "To",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "user_id": {
+            "title": "User ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "bcc",
+          "body_preview",
+          "cc",
+          "date_created",
+          "date_sent",
+          "date_updated",
+          "direction",
+          "envelope",
+          "has_attachments",
+          "id",
+          "opens_summary",
+          "send_as_id",
+          "sender",
+          "status",
+          "subject",
+          "to",
+          "user_id"
+        ]
+      },
+      "EmailThreadActivity": {
+        "title": "EmailThreadActivity",
+        "type": "object",
+        "properties": {
+          "_type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "activity_at": {
+            "title": "Activity At",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "comment_summary": {
+            "title": "Comment Summary",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CommentSummary"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "contact_id": {
+            "title": "Contact ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_by": {
+            "title": "Created By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_by_name": {
+            "title": "Created By Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time"
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time"
+          },
+          "emails": {
+            "title": "Emails",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailInThread"
+            }
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "importance": {
+            "title": "Importance",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ImportantEmailThread"
+              },
+              {
+                "$ref": "#/components/schemas/NotImportantEmailThread"
+              }
+            ]
+          },
+          "latest_emails": {
+            "title": "Latest Emails",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailPreview"
+            }
+          },
+          "latest_normalized_subject": {
+            "title": "Latest Normalized Subject",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "lead_id": {
+            "title": "Lead ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "n_emails": {
+            "title": "Number of Emails",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "participants": {
+            "title": "Participants",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailIdentity"
+            }
+          },
+          "summary": {
+            "title": "Summary",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/EmailThreadSummary"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "updated_by": {
+            "title": "Updated By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "updated_by_name": {
+            "title": "Updated By Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_id": {
+            "title": "User ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_name": {
+            "title": "User Name",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "users": {
+            "title": "Users",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "_type",
+          "activity_at",
+          "contact_id",
+          "created_by",
+          "date_created",
+          "date_updated",
+          "id",
+          "latest_normalized_subject",
+          "lead_id",
+          "n_emails",
+          "organization_id",
+          "updated_by",
+          "user_id",
+          "users"
+        ]
+      },
+      "EmailThreadSummary": {
+        "title": "EmailThreadSummary",
+        "type": "object",
+        "properties": {
+          "expired_at": {
+            "title": "Expired At",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "feedback": {
+            "title": "Feedback",
+            "$ref": "#/components/schemas/EmailThreadSummaryFeedback"
+          },
+          "generated_at": {
+            "title": "Generated At",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status": {
+            "$ref": "#/components/schemas/SummaryStatus"
+          },
+          "summary_html": {
+            "title": "Summary HTML",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "summary_text": {
+            "title": "Summary Text",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "expired_at",
+          "generated_at",
+          "status",
+          "summary_html",
+          "summary_text",
+          "updated_at"
+        ]
+      },
+      "EmailThreadSummaryFeedback": {
+        "title": "EmailThreadSummaryFeedback",
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "given_at": {
+            "title": "Given At",
+            "type": "string",
+            "format": "date-time"
+          },
+          "rating": {
+            "$ref": "#/components/schemas/SummaryFeedbackRating"
+          }
+        },
+        "required": [
+          "detail",
+          "given_at",
+          "rating"
         ]
       },
       "Form": {
@@ -31699,6 +33031,37 @@
           "updated_by",
           "user_id",
           "users"
+        ]
+      },
+      "ImportantEmailThread": {
+        "title": "ImportantEmailThread",
+        "type": "object",
+        "properties": {
+          "reason": {
+            "$ref": "#/components/schemas/ImportantThreadReason"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "const": "important"
+          }
+        },
+        "required": [
+          "reason",
+          "type"
+        ]
+      },
+      "ImportantThreadReason": {
+        "title": "ImportantThreadReason",
+        "type": "string",
+        "enum": [
+          "manual",
+          "contains-manual-message",
+          "most-recent-communication",
+          "has-response",
+          "whitelisted",
+          "by-default",
+          "unset-initial-default"
         ]
       },
       "InlineLeadStatusPayload": {
@@ -32410,6 +33773,35 @@
           "outbox",
           "sent",
           "error"
+        ]
+      },
+      "NotImportantEmailThread": {
+        "title": "NotImportantEmailThread",
+        "type": "object",
+        "properties": {
+          "reason": {
+            "$ref": "#/components/schemas/NotImportantThreadReason"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "const": "not_important"
+          }
+        },
+        "required": [
+          "reason",
+          "type"
+        ]
+      },
+      "NotImportantThreadReason": {
+        "title": "NotImportantThreadReason",
+        "type": "string",
+        "enum": [
+          "manual",
+          "scheduling-emails",
+          "automated-outbound",
+          "marketing-or-transactional",
+          "by-default"
         ]
       },
       "NotificationResolution": {
@@ -33826,6 +35218,42 @@
           "updated_by_id"
         ]
       },
+      "QuotedEmailHTML": {
+        "title": "QuotedEmailHTML",
+        "type": "object",
+        "properties": {
+          "expand": {
+            "title": "Expand",
+            "type": "boolean"
+          },
+          "html": {
+            "title": "HTML",
+            "type": "string"
+          }
+        },
+        "required": [
+          "expand",
+          "html"
+        ]
+      },
+      "QuotedEmailText": {
+        "title": "QuotedEmailText",
+        "type": "object",
+        "properties": {
+          "expand": {
+            "title": "Expand",
+            "type": "boolean"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "expand",
+          "text"
+        ]
+      },
       "RenderedIntegrationLink": {
         "title": "RenderedIntegrationLink",
         "type": "object",
@@ -34613,6 +36041,24 @@
           "field-mapping-error",
           "filter-config-invalid",
           "email-ai-generation-failed"
+        ]
+      },
+      "SummaryFeedbackRating": {
+        "title": "SummaryFeedbackRating",
+        "type": "string",
+        "enum": [
+          "positive",
+          "negative"
+        ]
+      },
+      "SummaryStatus": {
+        "title": "SummaryStatus",
+        "type": "string",
+        "enum": [
+          "pending",
+          "success",
+          "failure",
+          "expired"
         ]
       },
       "TaskCompletedActivity": {
