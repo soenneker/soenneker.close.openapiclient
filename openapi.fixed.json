@@ -2819,11 +2819,39 @@
         ],
         "responses": {
           "200": {
-            "description": "Default",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ActivitiesLeadMergesList200Response"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "_type": "LeadMerge",
+                      "activity_at": "2013-02-01T01:05:04.070000\u002B00:00",
+                      "contact_id": null,
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_name": "Stefan W\u00F3jcik",
+                      "date_created": "2013-02-01T01:05:04.070000\u002B00:00",
+                      "date_updated": "2013-02-01T01:06:35.668000\u002B00:00",
+                      "destination_display_name": "Destination Lead",
+                      "destination_lead_id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
+                      "error_message": null,
+                      "id": "acti_asjiweURMfsLgKuYGqbQ4Qp7L5a16pQOcDfTgotqDak",
+                      "lead_id": "lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h",
+                      "merge_status": "in_progress",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "source_display_name": "Source Lead",
+                      "source_lead_id": "lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_name": "Stefan W\u00F3jcik",
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Stefan W\u00F3jcik",
+                      "users": []
+                    }
+                  ],
+                  "has_more": false
                 }
               }
             }
@@ -2853,11 +2881,34 @@
         ],
         "responses": {
           "200": {
-            "description": "Default",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ActivitiesLeadMergesGet200Response"
+                  "$ref": "#/components/schemas/LeadMergeActivity"
+                },
+                "example": {
+                  "_type": "LeadMerge",
+                  "activity_at": "2013-02-01T01:05:04.070000\u002B00:00",
+                  "contact_id": null,
+                  "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "created_by_name": "Stefan W\u00F3jcik",
+                  "date_created": "2013-02-01T01:05:04.070000\u002B00:00",
+                  "date_updated": "2013-02-01T01:06:35.668000\u002B00:00",
+                  "destination_display_name": "Destination Lead",
+                  "destination_lead_id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
+                  "error_message": null,
+                  "id": "acti_asjiweURMfsLgKuYGqbQ4Qp7L5a16pQOcDfTgotqDak",
+                  "lead_id": "lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h",
+                  "merge_status": "in_progress",
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "source_display_name": "Source Lead",
+                  "source_lead_id": "lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h",
+                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "updated_by_name": "Stefan W\u00F3jcik",
+                  "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "user_name": "Stefan W\u00F3jcik",
+                  "users": []
                 }
               }
             }
@@ -2927,11 +2978,95 @@
         ],
         "responses": {
           "200": {
-            "description": "Default",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ActivitiesMeetingsList200Response"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "_type": "Meeting",
+                      "activity_at": "2019-10-11T16:30:00\u002B00:00",
+                      "actual_duration": null,
+                      "attached_call_ids": [],
+                      "attendees": [
+                        {
+                          "contact_id": "cont_V3RuqD9VJKJWOtPsoH7EMy3MnKoFED2Ulgd4g87Ayqc",
+                          "email": "bruce@wayneenterprises.com",
+                          "is_organizer": false,
+                          "name": "Bruce Wayne",
+                          "status": "noreply",
+                          "user_id": null
+                        },
+                        {
+                          "contact_id": null,
+                          "email": "jane@example.com",
+                          "is_organizer": true,
+                          "name": null,
+                          "status": "yes",
+                          "user_id": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk"
+                        }
+                      ],
+                      "calendar_event_link": "https://www.google.com/calendar/event?eid=NzlrNGRoMmk5bm9jZDEwOGtjMmY3Y2RzODggamFuZUBleGFtcGxlLmNvbQ",
+                      "calendar_event_uids": [
+                        "79k4dh2i9nocd108kc2f7cds88"
+                      ],
+                      "conference_links": [
+                        {
+                          "type": "ZOOM",
+                          "url": "https://zoom.us/j/zoommeeting"
+                        }
+                      ],
+                      "connected_account_id": "emailacct_OoSyqxjm1HbuxcRsOyrm2SwR1uOTBdHKPdhAaf9mhUp",
+                      "contact_id": null,
+                      "conversation_type_id": null,
+                      "conversation_type_reason": null,
+                      "created_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                      "created_by_name": "Jane User",
+                      "date_created": "2019-10-11T16:30:00\u002B00:00",
+                      "date_updated": "2019-10-11T16:18:17.942000\u002B00:00",
+                      "duration": 3600,
+                      "ends_at": "2019-10-11T17:30:00\u002B00:00",
+                      "id": "acti_qwA2IPmjYyMQQ2UWuNxBOtc2CbZtRUOb5JkS1i3Qo1b",
+                      "integrations": [],
+                      "is_recurring": false,
+                      "lead_id": "lead_Qq33JAqr6zrgqtJGkKv7XQxTnQxpTEJA7Mfcx98ZrWe",
+                      "location": "https://zoom.us/j/zoommeeting",
+                      "note": "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nJane User is inviting you to a scheduled Zoom meeting to find out if you\u0027re really Batman.\n\nJoin Zoom Meeting\nhttps://zoom.us/j/zoommeeting\n\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
+                      "notetaker_id": null,
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "outcome_autofill_confidence": null,
+                      "outcome_autofill_reasoning": null,
+                      "outcome_id": null,
+                      "outcome_reason": null,
+                      "playbook_id": null,
+                      "playbook_reason": null,
+                      "provider_calendar_event_id": "79k4dh2i9nocd108kc2f7cds88",
+                      "provider_calendar_ids": [
+                        "primary"
+                      ],
+                      "provider_calendar_type": "google",
+                      "source": "calendar",
+                      "starts_at": "2019-10-11T16:30:00\u002B00:00",
+                      "status": "upcoming",
+                      "summary": null,
+                      "title": "Bruce Wayne Interview",
+                      "updated_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                      "updated_by_name": "Jane User",
+                      "user_id": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                      "user_name": "Jane User",
+                      "user_note": null,
+                      "user_note_date_updated": null,
+                      "user_note_html": null,
+                      "user_note_mentions": [],
+                      "users": [
+                        "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk"
+                      ]
+                    }
+                  ],
+                  "has_more": false
                 }
               }
             }
@@ -2962,11 +3097,90 @@
         ],
         "responses": {
           "200": {
-            "description": "Default",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ActivitiesMeetingsGet200Response"
+                  "$ref": "#/components/schemas/MeetingActivity"
+                },
+                "example": {
+                  "_type": "Meeting",
+                  "activity_at": "2019-10-11T16:30:00\u002B00:00",
+                  "actual_duration": null,
+                  "attached_call_ids": [],
+                  "attendees": [
+                    {
+                      "contact_id": "cont_V3RuqD9VJKJWOtPsoH7EMy3MnKoFED2Ulgd4g87Ayqc",
+                      "email": "bruce@wayneenterprises.com",
+                      "is_organizer": false,
+                      "name": null,
+                      "status": "noreply",
+                      "user_id": null
+                    },
+                    {
+                      "contact_id": null,
+                      "email": "jane@example.com",
+                      "is_organizer": true,
+                      "name": null,
+                      "status": "yes",
+                      "user_id": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk"
+                    }
+                  ],
+                  "calendar_event_link": "https://www.google.com/calendar/event?eid=NzlrNGRoMmk5bm9jZDEwOGtjMmY3Y2RzODggamFuZUBleGFtcGxlLmNvbQ",
+                  "calendar_event_uids": [
+                    "79k4dh2i9nocd108kc2f7cds88"
+                  ],
+                  "conference_links": [
+                    {
+                      "type": "ZOOM",
+                      "url": "https://zoom.us/j/zoommeeting"
+                    }
+                  ],
+                  "connected_account_id": "emailacct_OoSyqxjm1HbuxcRsOyrm2SwR1uOTBdHKPdhAaf9mhUp",
+                  "contact_id": null,
+                  "conversation_type_id": null,
+                  "conversation_type_reason": null,
+                  "created_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                  "created_by_name": "Jane User",
+                  "date_created": "2019-10-11T16:30:00\u002B00:00",
+                  "date_updated": "2019-10-11T16:30:00.368000\u002B00:00",
+                  "duration": 3600,
+                  "ends_at": "2019-10-11T17:30:00\u002B00:00",
+                  "id": "acti_qwA2IPmjYyMQQ2UWuNxBOtc2CbZtRUOb5JkS1i3Qo1b",
+                  "integrations": [],
+                  "is_recurring": false,
+                  "lead_id": "lead_Qq33JAqr6zrgqtJGkKv7XQxTnQxpTEJA7Mfcx98ZrWe",
+                  "location": "https://zoom.us/j/zoommeeting",
+                  "note": "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nJane User is inviting you to a scheduled Zoom meeting to find out if you\u0027re really Batman.\n\nJoin Zoom Meeting\nhttps://zoom.us/j/zoommeeting\n\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
+                  "notetaker_id": null,
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "outcome_autofill_confidence": null,
+                  "outcome_autofill_reasoning": null,
+                  "outcome_id": null,
+                  "outcome_reason": null,
+                  "playbook_id": null,
+                  "playbook_reason": null,
+                  "provider_calendar_event_id": "79k4dh2i9nocd108kc2f7cds88",
+                  "provider_calendar_ids": [
+                    "primary"
+                  ],
+                  "provider_calendar_type": "google",
+                  "source": "calendar",
+                  "starts_at": "2019-10-11T16:30:00\u002B00:00",
+                  "status": "in-progress",
+                  "summary": null,
+                  "title": "Bruce Wayne Interview",
+                  "updated_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                  "updated_by_name": "Jane User",
+                  "user_id": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                  "user_name": "Jane User",
+                  "user_note": null,
+                  "user_note_date_updated": null,
+                  "user_note_html": null,
+                  "user_note_mentions": [],
+                  "users": [
+                    "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk"
+                  ]
                 }
               }
             }
@@ -3002,11 +3216,90 @@
         },
         "responses": {
           "200": {
-            "description": "Default",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ActivitiesMeetingsUpdate200Response"
+                  "$ref": "#/components/schemas/MeetingActivity"
+                },
+                "example": {
+                  "_type": "Meeting",
+                  "activity_at": "2019-10-11T16:30:00\u002B00:00",
+                  "actual_duration": null,
+                  "attached_call_ids": [],
+                  "attendees": [
+                    {
+                      "contact_id": "cont_V3RuqD9VJKJWOtPsoH7EMy3MnKoFED2Ulgd4g87Ayqc",
+                      "email": "bruce@wayneenterprises.com",
+                      "is_organizer": false,
+                      "name": null,
+                      "status": "noreply",
+                      "user_id": null
+                    },
+                    {
+                      "contact_id": null,
+                      "email": "jane@example.com",
+                      "is_organizer": true,
+                      "name": null,
+                      "status": "yes",
+                      "user_id": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk"
+                    }
+                  ],
+                  "calendar_event_link": "https://www.google.com/calendar/event?eid=NzlrNGRoMmk5bm9jZDEwOGtjMmY3Y2RzODggamFuZUBleGFtcGxlLmNvbQ",
+                  "calendar_event_uids": [
+                    "79k4dh2i9nocd108kc2f7cds88"
+                  ],
+                  "conference_links": [
+                    {
+                      "type": "ZOOM",
+                      "url": "https://zoom.us/j/zoommeeting"
+                    }
+                  ],
+                  "connected_account_id": "emailacct_OoSyqxjm1HbuxcRsOyrm2SwR1uOTBdHKPdhAaf9mhUp",
+                  "contact_id": null,
+                  "conversation_type_id": null,
+                  "conversation_type_reason": null,
+                  "created_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                  "created_by_name": "Jane User",
+                  "date_created": "2019-10-11T16:30:00\u002B00:00",
+                  "date_updated": "2019-10-11T16:30:00.368000\u002B00:00",
+                  "duration": 3600,
+                  "ends_at": "2019-10-11T17:30:00\u002B00:00",
+                  "id": "acti_qwA2IPmjYyMQQ2UWuNxBOtc2CbZtRUOb5JkS1i3Qo1b",
+                  "integrations": [],
+                  "is_recurring": false,
+                  "lead_id": "lead_Qq33JAqr6zrgqtJGkKv7XQxTnQxpTEJA7Mfcx98ZrWe",
+                  "location": "https://zoom.us/j/zoommeeting",
+                  "note": "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nJane User is inviting you to a scheduled Zoom meeting to find out if you\u0027re really Batman.\n\nJoin Zoom Meeting\nhttps://zoom.us/j/zoommeeting\n\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
+                  "notetaker_id": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "outcome_autofill_confidence": null,
+                  "outcome_autofill_reasoning": null,
+                  "outcome_id": "outcome_031uY9IKV1JxfNKM9n2qCw",
+                  "outcome_reason": null,
+                  "playbook_id": null,
+                  "playbook_reason": null,
+                  "provider_calendar_event_id": "79k4dh2i9nocd108kc2f7cds88",
+                  "provider_calendar_ids": [
+                    "primary"
+                  ],
+                  "provider_calendar_type": "google",
+                  "source": "calendar",
+                  "starts_at": "2019-10-11T16:30:00\u002B00:00",
+                  "status": "in-progress",
+                  "summary": null,
+                  "title": "Bruce Wayne Interview",
+                  "updated_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                  "updated_by_name": "Jane User",
+                  "user_id": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                  "user_name": "Jane User",
+                  "user_note": "Discussed product/service offering, highlighting security and scalability features.",
+                  "user_note_date_updated": "2019-10-11T16:30:00.368000\u002B00:00",
+                  "user_note_html": "\u003Cbody\u003E\u003Cp\u003E\u003Cul\u003E\u003Cli\u003EDiscussed product/service offering, highlighting security and scalability features.\u003C/li\u003E\u003Cli\u003EAddressed Bruce Wayne\u0027s specific project requirements and concerns.\u003C/li\u003E\u003Cli\u003ENegotiated customized pricing package.\u003C/li\u003E\u003Cul\u003E\u003C/p\u003E\u003C/body\u003E",
+                  "user_note_mentions": [],
+                  "users": [
+                    "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk"
+                  ]
                 }
               }
             }
@@ -18288,6 +18581,54 @@
           ]
         }
       },
+      "ConferenceLinkType": {
+        "title": "ConferenceLinkType",
+        "enum": [
+          "ZOOM",
+          "GOOGLE_MEET",
+          "GOOGLE_HANGOUTS",
+          "MICROSOFT_TEAMS",
+          "SKYPE",
+          "WEBEX",
+          "GO_TO_MEETING"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "ConferenceLinkType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "ZOOM",
+              "name": "Zoom"
+            },
+            {
+              "value": "GOOGLE_MEET",
+              "name": "GoogleMeet"
+            },
+            {
+              "value": "GOOGLE_HANGOUTS",
+              "name": "GoogleHangouts"
+            },
+            {
+              "value": "MICROSOFT_TEAMS",
+              "name": "MicrosoftTeams"
+            },
+            {
+              "value": "SKYPE",
+              "name": "Skype"
+            },
+            {
+              "value": "WEBEX",
+              "name": "Webex"
+            },
+            {
+              "value": "GO_TO_MEETING",
+              "name": "GoToMeeting"
+            }
+          ]
+        }
+      },
       "Contact": {
         "title": "Contact",
         "required": [
@@ -21921,6 +22262,169 @@
           }
         }
       },
+      "LeadMergeActivity": {
+        "title": "LeadMergeActivity",
+        "required": [
+          "_type",
+          "activity_at",
+          "contact_id",
+          "created_by",
+          "date_created",
+          "date_updated",
+          "destination_display_name",
+          "destination_lead_id",
+          "error_message",
+          "id",
+          "lead_id",
+          "merge_status",
+          "organization_id",
+          "source_display_name",
+          "source_lead_id",
+          "updated_by",
+          "user_id",
+          "users"
+        ],
+        "type": "object",
+        "properties": {
+          "_type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "activity_at": {
+            "title": "Activity At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "contact_id": {
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
+          },
+          "created_by": {
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
+          },
+          "created_by_name": {
+            "title": "Created By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time"
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time"
+          },
+          "destination_display_name": {
+            "title": "Destination Display Name",
+            "type": "string",
+            "nullable": true
+          },
+          "destination_lead_id": {
+            "title": "Destination Lead ID",
+            "type": "string"
+          },
+          "error_message": {
+            "title": "Error Message",
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "lead_id": {
+            "title": "Lead ID",
+            "type": "string",
+            "nullable": true
+          },
+          "merge_status": {
+            "$ref": "#/components/schemas/LeadMergeStatus"
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "source_display_name": {
+            "title": "Source Display Name",
+            "type": "string",
+            "nullable": true
+          },
+          "source_lead_id": {
+            "title": "Source Lead ID",
+            "type": "string"
+          },
+          "updated_by": {
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
+          },
+          "updated_by_name": {
+            "title": "Updated By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "user_id": {
+            "title": "User ID",
+            "type": "string",
+            "nullable": true
+          },
+          "user_name": {
+            "title": "User Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "users": {
+            "title": "Users",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "LeadMergeStatus": {
+        "title": "LeadMergeStatus",
+        "enum": [
+          "pending",
+          "in_progress",
+          "completed",
+          "errored"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "LeadMergeStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "pending",
+              "name": "Pending"
+            },
+            {
+              "value": "in_progress",
+              "name": "InProgress"
+            },
+            {
+              "value": "completed",
+              "name": "Completed"
+            },
+            {
+              "value": "errored",
+              "name": "Errored"
+            }
+          ]
+        }
+      },
       "LeadStatusChangeActivity": {
         "title": "LeadStatusChangeActivity",
         "required": [
@@ -22041,6 +22545,640 @@
             "items": {
               "type": "string"
             }
+          }
+        }
+      },
+      "MeetingActivity": {
+        "title": "MeetingActivity",
+        "required": [
+          "_type",
+          "activity_at",
+          "actual_duration",
+          "attached_call_ids",
+          "attendees",
+          "calendar_event_link",
+          "calendar_event_uids",
+          "conference_links",
+          "connected_account_id",
+          "contact_id",
+          "conversation_type_id",
+          "conversation_type_reason",
+          "created_by",
+          "date_created",
+          "date_updated",
+          "duration",
+          "ends_at",
+          "id",
+          "integrations",
+          "is_recurring",
+          "lead_id",
+          "location",
+          "note",
+          "notetaker_id",
+          "organization_id",
+          "outcome_autofill_confidence",
+          "outcome_autofill_reasoning",
+          "outcome_id",
+          "outcome_reason",
+          "playbook_id",
+          "playbook_reason",
+          "provider_calendar_event_id",
+          "provider_calendar_ids",
+          "provider_calendar_type",
+          "source",
+          "starts_at",
+          "status",
+          "summary",
+          "title",
+          "updated_by",
+          "user_id",
+          "user_note",
+          "user_note_date_updated",
+          "user_note_html",
+          "user_note_mentions",
+          "users"
+        ],
+        "type": "object",
+        "properties": {
+          "_paused_subscriptions": {
+            "title": "Paused Subscriptions",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MeetingPausedSubscription"
+            }
+          },
+          "_type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "activity_at": {
+            "title": "Activity At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "actual_duration": {
+            "title": "Actual Duration",
+            "type": "integer",
+            "nullable": true
+          },
+          "attached_call_ids": {
+            "title": "Attached Call IDs",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "attendees": {
+            "title": "Attendees",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MeetingAttendee"
+            }
+          },
+          "calendar_event_link": {
+            "title": "Calendar Event Link",
+            "type": "string",
+            "nullable": true
+          },
+          "calendar_event_uids": {
+            "title": "Calendar Event UIDs",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "comment_summary": {
+            "$ref": "#/components/schemas/MeetingActivityCommentSummary"
+          },
+          "conference_links": {
+            "title": "Conference Links",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MeetingConferenceLink"
+            }
+          },
+          "connected_account_id": {
+            "title": "Connected Account ID",
+            "type": "string",
+            "nullable": true
+          },
+          "contact_id": {
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
+          },
+          "conversation_type_id": {
+            "title": "Conversation Type ID",
+            "type": "string",
+            "nullable": true
+          },
+          "conversation_type_reason": {
+            "$ref": "#/components/schemas/MeetingActivityConversationTypeReason"
+          },
+          "created_by": {
+            "title": "Created By",
+            "type": "string",
+            "nullable": true
+          },
+          "created_by_name": {
+            "title": "Created By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time"
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time"
+          },
+          "duration": {
+            "title": "Duration",
+            "type": "integer"
+          },
+          "ends_at": {
+            "title": "Ends At",
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "integrations": {
+            "title": "Integrations",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MeetingActivityIntegrationsItemProperty"
+            }
+          },
+          "is_recurring": {
+            "title": "Is Recurring",
+            "type": "boolean"
+          },
+          "lead_id": {
+            "title": "Lead ID",
+            "type": "string",
+            "nullable": true
+          },
+          "location": {
+            "title": "Location",
+            "type": "string"
+          },
+          "note": {
+            "title": "Note",
+            "type": "string"
+          },
+          "notetaker_id": {
+            "title": "Notetaker ID",
+            "type": "string",
+            "nullable": true
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "outcome_autofill_confidence": {
+            "$ref": "#/components/schemas/MeetingActivityOutcomeAutofillConfidence"
+          },
+          "outcome_autofill_reasoning": {
+            "title": "Outcome Autofill Reasoning",
+            "type": "string",
+            "nullable": true
+          },
+          "outcome_id": {
+            "title": "Outcome ID",
+            "type": "string",
+            "nullable": true
+          },
+          "outcome_reason": {
+            "$ref": "#/components/schemas/MeetingActivityOutcomeReason"
+          },
+          "playbook_id": {
+            "title": "Playbook ID",
+            "type": "string",
+            "nullable": true
+          },
+          "playbook_reason": {
+            "$ref": "#/components/schemas/MeetingActivityPlaybookReason"
+          },
+          "provider_calendar_event_id": {
+            "title": "Provider Calendar Event ID",
+            "type": "string",
+            "nullable": true
+          },
+          "provider_calendar_ids": {
+            "title": "Provider Calendar IDs",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "provider_calendar_type": {
+            "$ref": "#/components/schemas/MeetingActivityProviderCalendarType"
+          },
+          "source": {
+            "$ref": "#/components/schemas/MeetingSource"
+          },
+          "starts_at": {
+            "title": "Starts At",
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "$ref": "#/components/schemas/MeetingActivityStatus"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/MeetingActivitySummary"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          },
+          "transcripts": {
+            "title": "Transcripts",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MeetingActivityTranscriptsItem"
+            }
+          },
+          "updated_by": {
+            "title": "Updated By",
+            "type": "string",
+            "nullable": true
+          },
+          "updated_by_name": {
+            "title": "Updated By Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "user_id": {
+            "title": "User ID",
+            "type": "string",
+            "nullable": true
+          },
+          "user_name": {
+            "title": "User Name",
+            "type": "string",
+            "default": null,
+            "nullable": true
+          },
+          "user_note": {
+            "title": "User Note",
+            "type": "string",
+            "nullable": true
+          },
+          "user_note_date_updated": {
+            "title": "User Note Date Updated",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "user_note_html": {
+            "title": "User Note Html",
+            "type": "string",
+            "nullable": true
+          },
+          "user_note_mentions": {
+            "title": "User Note Mentions",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "users": {
+            "title": "Users",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "MeetingAttendee": {
+        "title": "MeetingAttendee",
+        "required": [
+          "contact_id",
+          "email",
+          "is_organizer",
+          "name",
+          "status",
+          "user_id"
+        ],
+        "type": "object",
+        "properties": {
+          "contact_id": {
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "title": "Email",
+            "type": "string",
+            "nullable": true
+          },
+          "is_organizer": {
+            "title": "Is Organizer",
+            "type": "boolean",
+            "nullable": true
+          },
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "title": "Status",
+            "type": "string",
+            "nullable": true
+          },
+          "user_id": {
+            "title": "User ID",
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "MeetingConferenceLink": {
+        "title": "MeetingConferenceLink",
+        "required": [
+          "type",
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/ConferenceLinkType"
+          },
+          "url": {
+            "title": "URL",
+            "type": "string"
+          }
+        }
+      },
+      "MeetingPausedSubscription": {
+        "title": "MeetingPausedSubscription",
+        "required": [
+          "contact_id",
+          "contact_name",
+          "id",
+          "sequence_id",
+          "sequence_name",
+          "sequence_status"
+        ],
+        "type": "object",
+        "properties": {
+          "contact_id": {
+            "title": "Contact ID",
+            "type": "string",
+            "nullable": true
+          },
+          "contact_name": {
+            "title": "Contact Name",
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "sequence_id": {
+            "title": "Sequence ID",
+            "type": "string"
+          },
+          "sequence_name": {
+            "title": "Sequence Name",
+            "type": "string"
+          },
+          "sequence_status": {
+            "title": "Sequence Status",
+            "type": "string"
+          }
+        }
+      },
+      "MeetingSource": {
+        "title": "MeetingSource",
+        "enum": [
+          "calendar",
+          "manual"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "MeetingSource",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "calendar",
+              "name": "Calendar"
+            },
+            {
+              "value": "manual",
+              "name": "Manual"
+            }
+          ]
+        }
+      },
+      "MeetingStatus": {
+        "title": "MeetingStatus",
+        "enum": [
+          "upcoming",
+          "in-progress",
+          "completed",
+          "canceled",
+          "declined-by-org",
+          "declined-by-lead"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "MeetingStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "upcoming",
+              "name": "Upcoming"
+            },
+            {
+              "value": "in-progress",
+              "name": "InProgress"
+            },
+            {
+              "value": "completed",
+              "name": "Completed"
+            },
+            {
+              "value": "canceled",
+              "name": "Canceled"
+            },
+            {
+              "value": "declined-by-org",
+              "name": "DeclinedByOrg"
+            },
+            {
+              "value": "declined-by-lead",
+              "name": "DeclinedByLead"
+            }
+          ]
+        }
+      },
+      "MeetingSummary": {
+        "title": "MeetingSummary",
+        "required": [
+          "html",
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "html": {
+            "title": "Html",
+            "type": "string"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          }
+        }
+      },
+      "MeetingTranscript": {
+        "title": "MeetingTranscript",
+        "required": [
+          "has_speaker_labels",
+          "id",
+          "speakers",
+          "summary_text",
+          "utterances"
+        ],
+        "type": "object",
+        "properties": {
+          "has_speaker_labels": {
+            "title": "Has Speaker Labels",
+            "type": "boolean"
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "speakers": {
+            "title": "Speakers",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MeetingTranscriptSpeaker"
+            }
+          },
+          "summary_html": {
+            "title": "Summary Html",
+            "type": "string",
+            "nullable": true
+          },
+          "summary_text": {
+            "title": "Summary Text",
+            "type": "string",
+            "nullable": true
+          },
+          "utterances": {
+            "title": "Utterances",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MeetingTranscriptUtterance"
+            }
+          }
+        }
+      },
+      "MeetingTranscriptSpeaker": {
+        "title": "MeetingTranscriptSpeaker",
+        "required": [
+          "speaker_label",
+          "speaker_side",
+          "talk_percentage",
+          "talk_time"
+        ],
+        "type": "object",
+        "properties": {
+          "speaker_label": {
+            "title": "Speaker Label",
+            "type": "string"
+          },
+          "speaker_side": {
+            "$ref": "#/components/schemas/MeetingTranscriptSpeakerSpeakerSide"
+          },
+          "talk_percentage": {
+            "title": "Talk Percentage",
+            "type": "number"
+          },
+          "talk_time": {
+            "title": "Talk Time",
+            "type": "number"
+          }
+        }
+      },
+      "MeetingTranscriptUtterance": {
+        "title": "MeetingTranscriptUtterance",
+        "required": [
+          "end",
+          "speaker_label",
+          "speaker_side",
+          "start",
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "end": {
+            "title": "End",
+            "type": "number"
+          },
+          "speaker_label": {
+            "title": "Speaker Label",
+            "type": "string"
+          },
+          "speaker_side": {
+            "$ref": "#/components/schemas/MeetingTranscriptUtteranceSpeakerSide"
+          },
+          "start": {
+            "title": "Start",
+            "type": "number"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          },
+          "words": {
+            "title": "Words",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MeetingTranscriptWord"
+            }
+          }
+        }
+      },
+      "MeetingTranscriptWord": {
+        "title": "MeetingTranscriptWord",
+        "required": [
+          "end",
+          "start",
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "end": {
+            "title": "End",
+            "type": "number",
+            "nullable": true
+          },
+          "start": {
+            "title": "Start",
+            "type": "number",
+            "nullable": true
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
           }
         }
       },
@@ -22890,6 +24028,62 @@
           ]
         }
       },
+      "OutcomeAutofillConfidence": {
+        "title": "OutcomeAutofillConfidence",
+        "enum": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "OutcomeAutofillConfidence",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "low",
+              "name": "Low"
+            },
+            {
+              "value": "medium",
+              "name": "Medium"
+            },
+            {
+              "value": "high",
+              "name": "High"
+            }
+          ]
+        }
+      },
+      "OutcomeReason": {
+        "title": "OutcomeReason",
+        "enum": [
+          "autofilled",
+          "user-selected",
+          "voicemail-dropped"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "OutcomeReason",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "autofilled",
+              "name": "Autofilled"
+            },
+            {
+              "value": "user-selected",
+              "name": "UserSelected"
+            },
+            {
+              "value": "voicemail-dropped",
+              "name": "VoicemailDropped"
+            }
+          ]
+        }
+      },
       "OutcomeType": {
         "title": "OutcomeType",
         "enum": [
@@ -23331,6 +24525,52 @@
             "title": "Updated By ID",
             "type": "string"
           }
+        }
+      },
+      "PlaybookReason": {
+        "title": "PlaybookReason",
+        "enum": [
+          "user-selected",
+          "autodetected"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "PlaybookReason",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "user-selected",
+              "name": "UserSelected"
+            },
+            {
+              "value": "autodetected",
+              "name": "Autodetected"
+            }
+          ]
+        }
+      },
+      "ProviderCalendarType": {
+        "title": "ProviderCalendarType",
+        "enum": [
+          "google",
+          "microsoft"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "ProviderCalendarType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "google",
+              "name": "Google"
+            },
+            {
+              "value": "microsoft",
+              "name": "Microsoft"
+            }
+          ]
         }
       },
       "QuotedEmailHtml": {
@@ -23881,6 +25121,34 @@
             "title": "Whole Org",
             "type": "boolean"
           }
+        }
+      },
+      "SpeakerSide": {
+        "title": "SpeakerSide",
+        "enum": [
+          "contact",
+          "close-user",
+          "voice-agent"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "SpeakerSide",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "contact",
+              "name": "Contact"
+            },
+            {
+              "value": "close-user",
+              "name": "CloseUser"
+            },
+            {
+              "value": "voice-agent",
+              "name": "VoiceAgent"
+            }
+          ]
         }
       },
       "StalledOpportunityActionItems": {
@@ -26308,6 +27576,195 @@
           }
         }
       },
+      "MeetingActivityCommentSummary": {
+        "title": "Comment Summary",
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/CommentSummary"
+          },
+          {
+            "enum": [
+              null
+            ]
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "CommentSummary": "#/components/schemas/CommentSummary"
+          }
+        }
+      },
+      "MeetingActivityConversationTypeReason": {
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/PlaybookReasonWrapper"
+          },
+          {
+            "enum": [
+              null
+            ]
+          }
+        ]
+      },
+      "MeetingActivityOutcomeAutofillConfidence": {
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/OutcomeAutofillConfidenceWrapper"
+          },
+          {
+            "enum": [
+              null
+            ]
+          }
+        ]
+      },
+      "MeetingActivityOutcomeReason": {
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/OutcomeReasonWrapper"
+          },
+          {
+            "enum": [
+              null
+            ]
+          }
+        ]
+      },
+      "MeetingActivityPlaybookReason": {
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/PlaybookReasonWrapper2"
+          },
+          {
+            "enum": [
+              null
+            ]
+          }
+        ]
+      },
+      "MeetingActivityProviderCalendarType": {
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/ProviderCalendarTypeWrapper"
+          },
+          {
+            "enum": [
+              null
+            ]
+          }
+        ]
+      },
+      "MeetingActivityStatus": {
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/MeetingStatusWrapper"
+          },
+          {
+            "enum": [
+              null
+            ]
+          }
+        ]
+      },
+      "MeetingActivitySummary": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/MeetingSummary"
+          },
+          {
+            "enum": [
+              null
+            ]
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "MeetingSummary": "#/components/schemas/MeetingSummary"
+          }
+        }
+      },
+      "MeetingActivityTranscriptsItem": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/MeetingTranscript"
+          },
+          {
+            "enum": [
+              null
+            ]
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "MeetingTranscript": "#/components/schemas/MeetingTranscript"
+          }
+        }
+      },
+      "MeetingTranscriptSpeakerSpeakerSide": {
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/SpeakerSideWrapper"
+          },
+          {
+            "enum": [
+              null
+            ]
+          }
+        ]
+      },
+      "MeetingTranscriptUtteranceSpeakerSide": {
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/SpeakerSideWrapper2"
+          },
+          {
+            "enum": [
+              null
+            ]
+          }
+        ]
+      },
       "OpportunityCommentSummary": {
         "title": "Comment Summary",
         "required": [
@@ -26928,6 +28385,9 @@
       "LeadTasksItem": {
         "type": "object"
       },
+      "MeetingActivityIntegrationsItem": {
+        "type": "object"
+      },
       "SavedSearchSQuery": {
         "title": "S Query",
         "type": "object",
@@ -27218,6 +28678,94 @@
           }
         }
       },
+      "PlaybookReasonWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/PlaybookReason"
+          }
+        }
+      },
+      "OutcomeAutofillConfidenceWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/OutcomeAutofillConfidence"
+          }
+        }
+      },
+      "OutcomeReasonWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/OutcomeReason"
+          }
+        }
+      },
+      "PlaybookReasonWrapper2": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/PlaybookReason"
+          }
+        }
+      },
+      "ProviderCalendarTypeWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/ProviderCalendarType"
+          }
+        }
+      },
+      "MeetingStatusWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/MeetingStatus"
+          }
+        }
+      },
+      "SpeakerSideWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/SpeakerSide"
+          }
+        }
+      },
+      "SpeakerSideWrapper2": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/SpeakerSide"
+          }
+        }
+      },
       "OpportunityValuePeriodWrapper2": {
         "required": [
           "value"
@@ -27461,32 +29009,43 @@
         "description": "Default response schema"
       },
       "ActivitiesLeadMergesList200Response": {
-        "title": "DefaultResponse",
+        "required": [
+          "data",
+          "has_more"
+        ],
         "type": "object",
-        "description": "Default response schema"
-      },
-      "ActivitiesLeadMergesGet200Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LeadMergeActivity"
+            }
+          },
+          "has_more": {
+            "type": "boolean"
+          }
+        }
       },
       "ActivitiesMeetingsList200Response": {
-        "title": "DefaultResponse",
+        "required": [
+          "data",
+          "has_more"
+        ],
         "type": "object",
-        "description": "Default response schema"
-      },
-      "ActivitiesMeetingsGet200Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MeetingActivity"
+            }
+          },
+          "has_more": {
+            "type": "boolean"
+          }
+        }
       },
       "ActivitiesMeetingsUpdateRequest": {
         "type": "object"
-      },
-      "ActivitiesMeetingsUpdate200Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
       },
       "ActivitiesMeetingsDelete204Response": {
         "title": "DefaultResponse",
@@ -29036,6 +30595,9 @@
         "type": "object"
       },
       "LeadTasksItemProperty": {
+        "type": "object"
+      },
+      "MeetingActivityIntegrationsItemProperty": {
         "type": "object"
       },
       "CreateCallActivityDirection": {

@@ -7,30 +7,31 @@ using System.IO;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
-    /// <summary>
-    /// Default response schema
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ActivitiesMeetingsGet200Response : IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class MeetingActivityPlaybookReason : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The value property</summary>
+        public global::Soenneker.Close.OpenApiClient.Models.PlaybookReason? Value { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsGet200Response"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.MeetingActivityPlaybookReason"/> and sets the default values.
         /// </summary>
-        public ActivitiesMeetingsGet200Response()
+        public MeetingActivityPlaybookReason()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsGet200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.MeetingActivityPlaybookReason"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsGet200Response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Close.OpenApiClient.Models.MeetingActivityPlaybookReason CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsGet200Response();
+            return new global::Soenneker.Close.OpenApiClient.Models.MeetingActivityPlaybookReason();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -40,6 +41,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.PlaybookReason>(); } },
             };
         }
         /// <summary>
@@ -49,6 +51,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.PlaybookReason>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
