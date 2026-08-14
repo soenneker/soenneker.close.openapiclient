@@ -38,12 +38,20 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string Prefix { get; set; }
 #endif
-        /// <summary>The sharing property</summary>
+        /// <summary>Deprecated. `personal` for a number that belongs to an individual user, or `group` for a group number. The distinction between personal and group numbers is being removed, and this field will be removed in a future update. When omitted, defaults to `personal`.</summary>
+        [Obsolete("")]
         public global::Soenneker.Close.OpenApiClient.Models.PhoneNumberSharing? Sharing { get; set; }
         /// <summary>By default, MMS-capable numbers are rented if Close supports MMS for the given country. Renting an MMS-capable number can be forced by setting this flag to `true`. If set to `false`, certain prefixes that don&apos;t support MMS can be rented in countries where Close supports MMS. In most scenarios, this flag should not be passed. When you request an MMS number, you must set `with_sms` to `true` as well.</summary>
         public bool? WithMms { get; set; }
         /// <summary>By default, SMS-capable numbers are rented if Close supports SMS for the given country. Renting an SMS-capable number can be forced by setting this flag to `true`. If set to `false`, certain prefixes that don&apos;t support SMS can be rented in countries where Close supports SMS. In most scenarios, this flag should not be passed unless a `has-voice-only` error status is received.</summary>
         public bool? WithSms { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequest"/> and sets the default values.
+        /// </summary>
+        public CreatePhoneNumberRequest()
+        {
+            Sharing = global::Soenneker.Close.OpenApiClient.Models.PhoneNumberSharing.Personal;
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>

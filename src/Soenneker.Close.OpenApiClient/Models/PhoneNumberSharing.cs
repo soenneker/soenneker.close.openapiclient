@@ -3,10 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>Deprecated. `personal` for a number that belongs to an individual user, or `group` for a group number. The distinction between personal and group numbers is being removed, and this field will be removed in a future update. When omitted, defaults to `personal`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
+    [Obsolete("")]
     public enum PhoneNumberSharing
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "personal")]
         #pragma warning disable CS1591

@@ -27,10 +27,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The comment_summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary? CommentSummary { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.CommentSummary? CommentSummary { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary CommentSummary { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.CommentSummary CommentSummary { get; set; }
 #endif
         /// <summary>The contact_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -115,10 +115,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.ActivityBaseSource? Source { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.CreationSourceWrapper? Source { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.ActivityBaseSource Source { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.CreationSourceWrapper Source { get; set; }
 #endif
         /// <summary>The title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -203,7 +203,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             {
                 { "activity_at", n => { ActivityAt = n.GetDateTimeOffsetValue(); } },
                 { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.Attachment>(global::Soenneker.Close.OpenApiClient.Models.Attachment.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "comment_summary", n => { CommentSummary = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary>(global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary.CreateFromDiscriminatorValue); } },
+                { "comment_summary", n => { CommentSummary = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommentSummary>(global::Soenneker.Close.OpenApiClient.Models.CommentSummary.CreateFromDiscriminatorValue); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "created_by_name", n => { CreatedByName = n.GetStringValue(); } },
@@ -217,7 +217,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "pinned", n => { Pinned = n.GetBoolValue(); } },
                 { "pinned_at", n => { PinnedAt = n.GetDateTimeOffsetValue(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.ActivityBaseSource>(global::Soenneker.Close.OpenApiClient.Models.ActivityBaseSource.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreationSourceWrapper>(global::Soenneker.Close.OpenApiClient.Models.CreationSourceWrapper.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "_type", n => { Type = n.GetStringValue(); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
@@ -236,7 +236,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("activity_at", ActivityAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.Attachment>("attachments", Attachments);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary>("comment_summary", CommentSummary);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommentSummary>("comment_summary", CommentSummary);
             writer.WriteStringValue("contact_id", ContactId);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteStringValue("created_by_name", CreatedByName);
@@ -250,7 +250,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteBoolValue("pinned", Pinned);
             writer.WriteDateTimeOffsetValue("pinned_at", PinnedAt);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.ActivityBaseSource>("source", Source);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreationSourceWrapper>("source", Source);
             writer.WriteStringValue("title", Title);
             writer.WriteStringValue("_type", Type);
             writer.WriteStringValue("updated_by", UpdatedBy);

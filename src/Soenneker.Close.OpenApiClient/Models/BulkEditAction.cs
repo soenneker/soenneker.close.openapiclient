@@ -105,10 +105,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.BulkEditActionStatus? Status { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper2? Status { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.BulkEditActionStatus Status { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper2 Status { get; set; }
 #endif
         /// <summary>The type property</summary>
         public global::Soenneker.Close.OpenApiClient.Models.BulkEditActionType? Type { get; set; }
@@ -162,7 +162,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "s_query", n => { SQuery = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkEditActionSQueryProperty>(global::Soenneker.Close.OpenApiClient.Models.BulkEditActionSQueryProperty.CreateFromDiscriminatorValue); } },
                 { "send_done_email", n => { SendDoneEmail = n.GetBoolValue(); } },
                 { "sort", n => { Sort = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.BulkEditActionSortItemProperty>(global::Soenneker.Close.OpenApiClient.Models.BulkEditActionSortItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkEditActionStatus>(global::Soenneker.Close.OpenApiClient.Models.BulkEditActionStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper2>(global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper2.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.BulkEditActionType>(); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
             };
@@ -191,7 +191,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteBoolValue("send_done_email", SendDoneEmail);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.BulkEditActionSortItemProperty>("sort", Sort);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkEditActionSQueryProperty>("s_query", SQuery);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkEditActionStatus>("status", Status);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper2>("status", Status);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.BulkEditActionType>("type", Type);
             writer.WriteStringValue("updated_by", UpdatedBy);
             writer.WriteAdditionalData(AdditionalData);

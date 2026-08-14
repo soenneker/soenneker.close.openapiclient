@@ -17,10 +17,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The choices property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.FormFieldDefinitionChoices? Choices { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.FormFieldChoice>? Choices { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.FormFieldDefinitionChoices Choices { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.FormFieldChoice> Choices { get; set; }
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -71,7 +71,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "choices", n => { Choices = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.FormFieldDefinitionChoices>(global::Soenneker.Close.OpenApiClient.Models.FormFieldDefinitionChoices.CreateFromDiscriminatorValue); } },
+                { "choices", n => { Choices = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.FormFieldChoice>(global::Soenneker.Close.OpenApiClient.Models.FormFieldChoice.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
@@ -84,7 +84,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.FormFieldDefinitionChoices>("choices", Choices);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.FormFieldChoice>("choices", Choices);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("type", Type);

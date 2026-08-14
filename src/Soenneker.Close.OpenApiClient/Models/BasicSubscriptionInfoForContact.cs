@@ -65,10 +65,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The subscription_status_reason property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.BasicSubscriptionInfoForContactSubscriptionStatusReason? SubscriptionStatusReason { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.StatusReasonWrapper? SubscriptionStatusReason { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.BasicSubscriptionInfoForContactSubscriptionStatusReason SubscriptionStatusReason { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.StatusReasonWrapper SubscriptionStatusReason { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.BasicSubscriptionInfoForContact"/> and sets the default values.
@@ -104,7 +104,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
                 { "subscription_id", n => { SubscriptionId = n.GetStringValue(); } },
                 { "subscription_status", n => { SubscriptionStatus = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.WorkflowRunStatus>(); } },
-                { "subscription_status_reason", n => { SubscriptionStatusReason = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BasicSubscriptionInfoForContactSubscriptionStatusReason>(global::Soenneker.Close.OpenApiClient.Models.BasicSubscriptionInfoForContactSubscriptionStatusReason.CreateFromDiscriminatorValue); } },
+                { "subscription_status_reason", n => { SubscriptionStatusReason = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.StatusReasonWrapper>(global::Soenneker.Close.OpenApiClient.Models.StatusReasonWrapper.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -123,7 +123,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("start_date", StartDate);
             writer.WriteStringValue("subscription_id", SubscriptionId);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.WorkflowRunStatus>("subscription_status", SubscriptionStatus);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BasicSubscriptionInfoForContactSubscriptionStatusReason>("subscription_status_reason", SubscriptionStatusReason);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.StatusReasonWrapper>("subscription_status_reason", SubscriptionStatusReason);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -13,7 +13,7 @@ namespace Soenneker.Close.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Membership : IParsable
     {
-        /// <summary>The auto_record_calls property</summary>
+        /// <summary>Whether this member&apos;s calls are automatically recorded. Starts as `unset` and can be set to `enabled` or `disabled`.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.AutoRecordCalls? AutoRecordCalls { get; set; }
         /// <summary>ID of the phone number to use as this member&apos;s default outbound caller ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

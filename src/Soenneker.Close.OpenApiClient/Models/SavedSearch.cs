@@ -81,10 +81,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The sharing_settings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.SavedSearchSharingSettings? SharingSettings { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.SharingSettingsEmbeddedResponse? SharingSettings { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.SavedSearchSharingSettings SharingSettings { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.SharingSettingsEmbeddedResponse SharingSettings { get; set; }
 #endif
         /// <summary>The s_query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -141,7 +141,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "s_query", n => { SQuery = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.SavedSearchSQuery>(global::Soenneker.Close.OpenApiClient.Models.SavedSearchSQuery.CreateFromDiscriminatorValue); } },
                 { "selected_fields", n => { SelectedFields = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.SavedSearchSelectedFields>(global::Soenneker.Close.OpenApiClient.Models.SavedSearchSelectedFields.CreateFromDiscriminatorValue); } },
                 { "shared_with", n => { SharedWith = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.SavedSearchSharedWith>(global::Soenneker.Close.OpenApiClient.Models.SavedSearchSharedWith.CreateFromDiscriminatorValue); } },
-                { "sharing_settings", n => { SharingSettings = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.SavedSearchSharingSettings>(global::Soenneker.Close.OpenApiClient.Models.SavedSearchSharingSettings.CreateFromDiscriminatorValue); } },
+                { "sharing_settings", n => { SharingSettings = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.SharingSettingsEmbeddedResponse>(global::Soenneker.Close.OpenApiClient.Models.SharingSettingsEmbeddedResponse.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.SavedSearchType>(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
             };
@@ -164,7 +164,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("query", Query);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.SavedSearchSelectedFields>("selected_fields", SelectedFields);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.SavedSearchSharedWith>("shared_with", SharedWith);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.SavedSearchSharingSettings>("sharing_settings", SharingSettings);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.SharingSettingsEmbeddedResponse>("sharing_settings", SharingSettings);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.SavedSearchSQuery>("s_query", SQuery);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.SavedSearchType>("type", Type);
             writer.WriteStringValue("user_id", UserId);

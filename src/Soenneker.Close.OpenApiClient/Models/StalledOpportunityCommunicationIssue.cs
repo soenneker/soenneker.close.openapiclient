@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>The communication issue that is causing the stalled opportunity. If there is no issue, set to NoIssue.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum StalledOpportunityCommunicationIssue
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "no_issue")]
         #pragma warning disable CS1591

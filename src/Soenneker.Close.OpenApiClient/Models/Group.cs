@@ -25,10 +25,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The members property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.GroupMembers? Members { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.GroupMember>? Members { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.GroupMembers Members { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.GroupMember> Members { get; set; }
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -72,7 +72,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "members", n => { Members = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.GroupMembers>(global::Soenneker.Close.OpenApiClient.Models.GroupMembers.CreateFromDiscriminatorValue); } },
+                { "members", n => { Members = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.GroupMember>(global::Soenneker.Close.OpenApiClient.Models.GroupMember.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
             };
@@ -85,7 +85,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.GroupMembers>("members", Members);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.GroupMember>("members", Members);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteAdditionalData(AdditionalData);

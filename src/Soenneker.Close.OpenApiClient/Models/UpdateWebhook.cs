@@ -15,18 +15,18 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>A list of events to subscribe to. Each event has an `object_type` and an `action` from values in the [event log](https://developer.close.com/api/resources/events/list-of-event-types). You can also use [Webhook Filters](https://developer.close.com/api/resources/webhooks/webhook-filters) while creating your subscription so that an event only fires to a Webhook when certain conditions are met.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.UpdateWebhookEvents? Events { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.WebhookSubscriptionEvent>? Events { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.UpdateWebhookEvents Events { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.WebhookSubscriptionEvent> Events { get; set; }
 #endif
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.UpdateWebhookStatus? Status { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.WebhookStatusWrapper? Status { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.UpdateWebhookStatus Status { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.WebhookStatusWrapper Status { get; set; }
 #endif
         /// <summary>Destination URL for the webhook subscription</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -56,8 +56,8 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "events", n => { Events = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.UpdateWebhookEvents>(global::Soenneker.Close.OpenApiClient.Models.UpdateWebhookEvents.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.UpdateWebhookStatus>(global::Soenneker.Close.OpenApiClient.Models.UpdateWebhookStatus.CreateFromDiscriminatorValue); } },
+                { "events", n => { Events = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.WebhookSubscriptionEvent>(global::Soenneker.Close.OpenApiClient.Models.WebhookSubscriptionEvent.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.WebhookStatusWrapper>(global::Soenneker.Close.OpenApiClient.Models.WebhookStatusWrapper.CreateFromDiscriminatorValue); } },
                 { "url", n => { Url = n.GetStringValue(); } },
                 { "verify_ssl", n => { VerifySsl = n.GetBoolValue(); } },
             };
@@ -69,8 +69,8 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.UpdateWebhookEvents>("events", Events);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.UpdateWebhookStatus>("status", Status);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.WebhookSubscriptionEvent>("events", Events);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.WebhookStatusWrapper>("status", Status);
             writer.WriteStringValue("url", Url);
             writer.WriteBoolValue("verify_ssl", VerifySsl);
         }

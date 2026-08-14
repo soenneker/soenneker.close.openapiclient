@@ -19,10 +19,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The comment_summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivityCommentSummary? CommentSummary { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.CommentSummary? CommentSummary { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivityCommentSummary CommentSummary { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.CommentSummary CommentSummary { get; set; }
 #endif
         /// <summary>The contact_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -121,10 +121,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivitySummary? Summary { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.EmailThreadSummary? Summary { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivitySummary Summary { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.EmailThreadSummary Summary { get; set; }
 #endif
         /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -200,7 +200,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "activity_at", n => { ActivityAt = n.GetDateTimeOffsetValue(); } },
-                { "comment_summary", n => { CommentSummary = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivityCommentSummary>(global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivityCommentSummary.CreateFromDiscriminatorValue); } },
+                { "comment_summary", n => { CommentSummary = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommentSummary>(global::Soenneker.Close.OpenApiClient.Models.CommentSummary.CreateFromDiscriminatorValue); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "created_by_name", n => { CreatedByName = n.GetStringValue(); } },
@@ -215,7 +215,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "n_emails", n => { NEmails = n.GetIntValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "participants", n => { Participants = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EmailIdentity>(global::Soenneker.Close.OpenApiClient.Models.EmailIdentity.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivitySummary>(global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivitySummary.CreateFromDiscriminatorValue); } },
+                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailThreadSummary>(global::Soenneker.Close.OpenApiClient.Models.EmailThreadSummary.CreateFromDiscriminatorValue); } },
                 { "_type", n => { Type = n.GetStringValue(); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
                 { "updated_by_name", n => { UpdatedByName = n.GetStringValue(); } },
@@ -232,7 +232,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("activity_at", ActivityAt);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivityCommentSummary>("comment_summary", CommentSummary);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommentSummary>("comment_summary", CommentSummary);
             writer.WriteStringValue("contact_id", ContactId);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteStringValue("created_by_name", CreatedByName);
@@ -247,7 +247,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteIntValue("n_emails", NEmails);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EmailIdentity>("participants", Participants);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivitySummary>("summary", Summary);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailThreadSummary>("summary", Summary);
             writer.WriteStringValue("_type", Type);
             writer.WriteStringValue("updated_by", UpdatedBy);
             writer.WriteStringValue("updated_by_name", UpdatedByName);

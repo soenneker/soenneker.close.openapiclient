@@ -161,10 +161,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The opportunity_value_period property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusChangeActivityOpportunityValuePeriod? OpportunityValuePeriod { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.OpportunityValuePeriodWrapper2? OpportunityValuePeriod { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusChangeActivityOpportunityValuePeriod OpportunityValuePeriod { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.OpportunityValuePeriodWrapper2 OpportunityValuePeriod { get; set; }
 #endif
         /// <summary>The organization_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -271,7 +271,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "opportunity_value", n => { OpportunityValue = n.GetIntValue(); } },
                 { "opportunity_value_currency", n => { OpportunityValueCurrency = n.GetStringValue(); } },
                 { "opportunity_value_formatted", n => { OpportunityValueFormatted = n.GetStringValue(); } },
-                { "opportunity_value_period", n => { OpportunityValuePeriod = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusChangeActivityOpportunityValuePeriod>(global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusChangeActivityOpportunityValuePeriod.CreateFromDiscriminatorValue); } },
+                { "opportunity_value_period", n => { OpportunityValuePeriod = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityValuePeriodWrapper2>(global::Soenneker.Close.OpenApiClient.Models.OpportunityValuePeriodWrapper2.CreateFromDiscriminatorValue); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "_type", n => { Type = n.GetStringValue(); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
@@ -312,7 +312,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteIntValue("opportunity_value", OpportunityValue);
             writer.WriteStringValue("opportunity_value_currency", OpportunityValueCurrency);
             writer.WriteStringValue("opportunity_value_formatted", OpportunityValueFormatted);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusChangeActivityOpportunityValuePeriod>("opportunity_value_period", OpportunityValuePeriod);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityValuePeriodWrapper2>("opportunity_value_period", OpportunityValuePeriod);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("_type", Type);
             writer.WriteStringValue("updated_by", UpdatedBy);

@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>Whether this member&apos;s calls are automatically recorded. Starts as `unset` and can be set to `enabled` or `disabled`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum AutoRecordCalls
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "enabled")]
         #pragma warning disable CS1591

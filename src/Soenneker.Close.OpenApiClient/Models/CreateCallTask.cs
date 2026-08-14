@@ -81,7 +81,13 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Text { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.CreateCallTask_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.CreateCallTask"/> and sets the default values.
         /// </summary>
@@ -116,7 +122,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "lead_id", n => { LeadId = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
-                { "_type", n => { Type = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreateCallTask_type>(); } },
+                { "_type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -135,7 +141,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("lead_id", LeadId);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("text", Text);
-            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreateCallTask_type>("_type", Type);
+            writer.WriteStringValue("_type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

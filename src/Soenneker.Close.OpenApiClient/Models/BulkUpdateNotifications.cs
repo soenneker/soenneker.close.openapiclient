@@ -43,10 +43,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The resolution property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotificationsResolution? Resolution { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.NotificationResolutionWrapper? Resolution { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotificationsResolution Resolution { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.NotificationResolutionWrapper Resolution { get; set; }
 #endif
         /// <summary>The text property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -79,7 +79,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "is_complete", n => { IsComplete = n.GetBoolValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "priority", n => { Priority = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.TaskPriority>(); } },
-                { "resolution", n => { Resolution = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotificationsResolution>(global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotificationsResolution.CreateFromDiscriminatorValue); } },
+                { "resolution", n => { Resolution = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.NotificationResolutionWrapper>(global::Soenneker.Close.OpenApiClient.Models.NotificationResolutionWrapper.CreateFromDiscriminatorValue); } },
                 { "text", n => { Text = n.GetStringValue(); } },
             };
         }
@@ -95,7 +95,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteBoolValue("is_complete", IsComplete);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.TaskPriority>("priority", Priority);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotificationsResolution>("resolution", Resolution);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.NotificationResolutionWrapper>("resolution", Resolution);
             writer.WriteStringValue("text", Text);
         }
     }

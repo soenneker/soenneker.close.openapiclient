@@ -27,10 +27,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The contact_preference property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionContactPreference? ContactPreference { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionContactPreferenceWrapper? ContactPreference { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionContactPreference ContactPreference { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionContactPreferenceWrapper ContactPreference { get; set; }
 #endif
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -139,10 +139,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionStatus? Status { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper4? Status { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionStatus Status { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper4 Status { get; set; }
 #endif
         /// <summary>The updated_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -179,7 +179,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             {
                 { "action_type", n => { ActionType = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionType>(); } },
                 { "calls_assigned_to", n => { CallsAssignedTo = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionCallsAssignedTo>(global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionCallsAssignedTo.CreateFromDiscriminatorValue); } },
-                { "contact_preference", n => { ContactPreference = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionContactPreference>(global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionContactPreference.CreateFromDiscriminatorValue); } },
+                { "contact_preference", n => { ContactPreference = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionContactPreferenceWrapper>(global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionContactPreferenceWrapper.CreateFromDiscriminatorValue); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetDateTimeOffsetValue(); } },
                 { "date_updated", n => { DateUpdated = n.GetDateTimeOffsetValue(); } },
@@ -199,7 +199,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "sender_name", n => { SenderName = n.GetStringValue(); } },
                 { "sequence_id", n => { SequenceId = n.GetStringValue(); } },
                 { "sort", n => { Sort = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionSortItemProperty>(global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionSortItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionStatus>(global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper4>(global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper4.CreateFromDiscriminatorValue); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
             };
         }
@@ -212,7 +212,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionType>("action_type", ActionType);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionCallsAssignedTo>("calls_assigned_to", CallsAssignedTo);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionContactPreference>("contact_preference", ContactPreference);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionContactPreferenceWrapper>("contact_preference", ContactPreference);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteDateTimeOffsetValue("date_created", DateCreated);
             writer.WriteDateTimeOffsetValue("date_updated", DateUpdated);
@@ -232,7 +232,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("sequence_id", SequenceId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionSortItemProperty>("sort", Sort);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionSQueryProperty>("s_query", SQuery);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionStatus>("status", Status);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper4>("status", Status);
             writer.WriteStringValue("updated_by", UpdatedBy);
             writer.WriteAdditionalData(AdditionalData);
         }

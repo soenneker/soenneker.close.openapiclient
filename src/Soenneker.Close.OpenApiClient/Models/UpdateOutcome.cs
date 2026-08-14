@@ -16,10 +16,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.UpdateOutcomeAppliesTo? AppliesTo { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.OutcomeAppliesTo?>? AppliesTo { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.UpdateOutcomeAppliesTo AppliesTo { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.OutcomeAppliesTo?> AppliesTo { get; set; }
 #endif
         /// <summary>Explain what the outcome means and when it should be used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -40,10 +40,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>Set to `vm-dropped` if this outcome should be automatically set on calls whenever a team member performs a Voicemail Drop. Otherwise, leave empty or explicitly set to `custom` (default).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.UpdateOutcomeType? Type { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.OutcomeTypeWrapper? Type { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.UpdateOutcomeType Type { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.OutcomeTypeWrapper Type { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -63,10 +63,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "applies_to", n => { AppliesTo = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.UpdateOutcomeAppliesTo>(global::Soenneker.Close.OpenApiClient.Models.UpdateOutcomeAppliesTo.CreateFromDiscriminatorValue); } },
+                { "applies_to", n => { AppliesTo = n.GetCollectionOfEnumValues<global::Soenneker.Close.OpenApiClient.Models.OutcomeAppliesTo>()?.AsList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.UpdateOutcomeType>(global::Soenneker.Close.OpenApiClient.Models.UpdateOutcomeType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.OutcomeTypeWrapper>(global::Soenneker.Close.OpenApiClient.Models.OutcomeTypeWrapper.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -76,10 +76,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.UpdateOutcomeAppliesTo>("applies_to", AppliesTo);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.Close.OpenApiClient.Models.OutcomeAppliesTo>("applies_to", AppliesTo);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.UpdateOutcomeType>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OutcomeTypeWrapper>("type", Type);
         }
     }
 }

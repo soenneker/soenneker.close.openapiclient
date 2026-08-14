@@ -30,10 +30,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The comment_summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.OpportunityCommentSummary? CommentSummary { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.CommentSummary? CommentSummary { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.OpportunityCommentSummary CommentSummary { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.CommentSummary CommentSummary { get; set; }
 #endif
         /// <summary>The confidence property</summary>
         public int? Confidence { get; set; }
@@ -116,18 +116,18 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The lead_primary_email property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.OpportunityLeadPrimaryEmail? LeadPrimaryEmail { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.ContactEmail? LeadPrimaryEmail { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.OpportunityLeadPrimaryEmail LeadPrimaryEmail { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.ContactEmail LeadPrimaryEmail { get; set; }
 #endif
         /// <summary>The lead_primary_phone property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.OpportunityLeadPrimaryPhone? LeadPrimaryPhone { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.ContactPhone>? LeadPrimaryPhone { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.OpportunityLeadPrimaryPhone LeadPrimaryPhone { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.ContactPhone> LeadPrimaryPhone { get; set; }
 #endif
         /// <summary>The note property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -172,10 +172,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The stall_status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.OpportunityStallStatus? StallStatus { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.StalledOpportunityActionItems? StallStatus { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.OpportunityStallStatus StallStatus { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.StalledOpportunityActionItems StallStatus { get; set; }
 #endif
         /// <summary>The status_display_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -206,10 +206,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The suggested_action property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedActionComposed? SuggestedAction { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedAction? SuggestedAction { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedActionComposed SuggestedAction { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedAction SuggestedAction { get; set; }
 #endif
         /// <summary>The updated_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -291,7 +291,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "annualized_expected_value", n => { AnnualizedExpectedValue = n.GetIntValue(); } },
                 { "annualized_value", n => { AnnualizedValue = n.GetIntValue(); } },
                 { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.Attachment>(global::Soenneker.Close.OpenApiClient.Models.Attachment.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "comment_summary", n => { CommentSummary = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityCommentSummary>(global::Soenneker.Close.OpenApiClient.Models.OpportunityCommentSummary.CreateFromDiscriminatorValue); } },
+                { "comment_summary", n => { CommentSummary = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommentSummary>(global::Soenneker.Close.OpenApiClient.Models.CommentSummary.CreateFromDiscriminatorValue); } },
                 { "confidence", n => { Confidence = n.GetIntValue(); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
                 { "contact_name", n => { ContactName = n.GetStringValue(); } },
@@ -307,19 +307,19 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "is_stalled", n => { IsStalled = n.GetBoolValue(); } },
                 { "lead_id", n => { LeadId = n.GetStringValue(); } },
                 { "lead_name", n => { LeadName = n.GetStringValue(); } },
-                { "lead_primary_email", n => { LeadPrimaryEmail = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityLeadPrimaryEmail>(global::Soenneker.Close.OpenApiClient.Models.OpportunityLeadPrimaryEmail.CreateFromDiscriminatorValue); } },
-                { "lead_primary_phone", n => { LeadPrimaryPhone = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityLeadPrimaryPhone>(global::Soenneker.Close.OpenApiClient.Models.OpportunityLeadPrimaryPhone.CreateFromDiscriminatorValue); } },
+                { "lead_primary_email", n => { LeadPrimaryEmail = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.ContactEmail>(global::Soenneker.Close.OpenApiClient.Models.ContactEmail.CreateFromDiscriminatorValue); } },
+                { "lead_primary_phone", n => { LeadPrimaryPhone = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ContactPhone>(global::Soenneker.Close.OpenApiClient.Models.ContactPhone.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "note", n => { Note = n.GetStringValue(); } },
                 { "note_html", n => { NoteHtml = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "pipeline_id", n => { PipelineId = n.GetStringValue(); } },
                 { "pipeline_name", n => { PipelineName = n.GetStringValue(); } },
-                { "stall_status", n => { StallStatus = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityStallStatus>(global::Soenneker.Close.OpenApiClient.Models.OpportunityStallStatus.CreateFromDiscriminatorValue); } },
+                { "stall_status", n => { StallStatus = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.StalledOpportunityActionItems>(global::Soenneker.Close.OpenApiClient.Models.StalledOpportunityActionItems.CreateFromDiscriminatorValue); } },
                 { "status_display_name", n => { StatusDisplayName = n.GetStringValue(); } },
                 { "status_id", n => { StatusId = n.GetStringValue(); } },
                 { "status_label", n => { StatusLabel = n.GetStringValue(); } },
                 { "status_type", n => { StatusType = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusType>(); } },
-                { "suggested_action", n => { SuggestedAction = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedActionComposed>(global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedActionComposed.CreateFromDiscriminatorValue); } },
+                { "suggested_action", n => { SuggestedAction = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedAction>(global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedAction.CreateFromDiscriminatorValue); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
                 { "updated_by_name", n => { UpdatedByName = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
@@ -340,7 +340,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteIntValue("annualized_expected_value", AnnualizedExpectedValue);
             writer.WriteIntValue("annualized_value", AnnualizedValue);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.Attachment>("attachments", Attachments);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityCommentSummary>("comment_summary", CommentSummary);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommentSummary>("comment_summary", CommentSummary);
             writer.WriteIntValue("confidence", Confidence);
             writer.WriteStringValue("contact_id", ContactId);
             writer.WriteStringValue("contact_name", ContactName);
@@ -356,19 +356,19 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteBoolValue("is_stalled", IsStalled);
             writer.WriteStringValue("lead_id", LeadId);
             writer.WriteStringValue("lead_name", LeadName);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityLeadPrimaryEmail>("lead_primary_email", LeadPrimaryEmail);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityLeadPrimaryPhone>("lead_primary_phone", LeadPrimaryPhone);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.ContactEmail>("lead_primary_email", LeadPrimaryEmail);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ContactPhone>("lead_primary_phone", LeadPrimaryPhone);
             writer.WriteStringValue("note", Note);
             writer.WriteStringValue("note_html", NoteHtml);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("pipeline_id", PipelineId);
             writer.WriteStringValue("pipeline_name", PipelineName);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityStallStatus>("stall_status", StallStatus);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.StalledOpportunityActionItems>("stall_status", StallStatus);
             writer.WriteStringValue("status_display_name", StatusDisplayName);
             writer.WriteStringValue("status_id", StatusId);
             writer.WriteStringValue("status_label", StatusLabel);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusType>("status_type", StatusType);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedActionComposed>("suggested_action", SuggestedAction);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedAction>("suggested_action", SuggestedAction);
             writer.WriteStringValue("updated_by", UpdatedBy);
             writer.WriteStringValue("updated_by_name", UpdatedByName);
             writer.WriteStringValue("user_id", UserId);

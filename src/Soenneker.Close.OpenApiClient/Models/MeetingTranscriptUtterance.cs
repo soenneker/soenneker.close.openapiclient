@@ -27,10 +27,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The speaker_side property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptUtteranceSpeakerSide? SpeakerSide { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.SpeakerSideWrapper2? SpeakerSide { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptUtteranceSpeakerSide SpeakerSide { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.SpeakerSideWrapper2 SpeakerSide { get; set; }
 #endif
         /// <summary>The start property</summary>
         public double? Start { get; set; }
@@ -77,7 +77,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             {
                 { "end", n => { End = n.GetDoubleValue(); } },
                 { "speaker_label", n => { SpeakerLabel = n.GetStringValue(); } },
-                { "speaker_side", n => { SpeakerSide = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptUtteranceSpeakerSide>(global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptUtteranceSpeakerSide.CreateFromDiscriminatorValue); } },
+                { "speaker_side", n => { SpeakerSide = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.SpeakerSideWrapper2>(global::Soenneker.Close.OpenApiClient.Models.SpeakerSideWrapper2.CreateFromDiscriminatorValue); } },
                 { "start", n => { Start = n.GetDoubleValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
                 { "words", n => { Words = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptWord>(global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptWord.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -92,7 +92,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("end", End);
             writer.WriteStringValue("speaker_label", SpeakerLabel);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptUtteranceSpeakerSide>("speaker_side", SpeakerSide);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.SpeakerSideWrapper2>("speaker_side", SpeakerSide);
             writer.WriteDoubleValue("start", Start);
             writer.WriteStringValue("text", Text);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptWord>("words", Words);

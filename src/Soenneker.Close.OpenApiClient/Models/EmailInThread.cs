@@ -43,10 +43,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The attachments property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.EmailInThreadAttachments? Attachments { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.Attachment>? Attachments { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.EmailInThreadAttachments Attachments { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.Attachment> Attachments { get; set; }
 #endif
         /// <summary>The bcc property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -67,10 +67,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The body_html_quoted property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.EmailInThreadBodyHtmlQuoted? BodyHtmlQuoted { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.QuotedEmailHtml>? BodyHtmlQuoted { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.EmailInThreadBodyHtmlQuoted BodyHtmlQuoted { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.QuotedEmailHtml> BodyHtmlQuoted { get; set; }
 #endif
         /// <summary>The body_preview property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -91,10 +91,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The body_text_quoted property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.EmailInThreadBodyTextQuoted? BodyTextQuoted { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.QuotedEmailText>? BodyTextQuoted { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.EmailInThreadBodyTextQuoted BodyTextQuoted { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.QuotedEmailText> BodyTextQuoted { get; set; }
 #endif
         /// <summary>The bulk_email_action_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -147,10 +147,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The direction property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.EmailInThreadDirection? Direction { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper2? Direction { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.EmailInThreadDirection Direction { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper2 Direction { get; set; }
 #endif
         /// <summary>The email_account_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -219,10 +219,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The opens property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.EmailInThreadOpens? Opens { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.EmailOpen>? Opens { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.EmailInThreadOpens Opens { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.EmailOpen> Opens { get; set; }
 #endif
         /// <summary>The opens_summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -415,13 +415,13 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "agent_action_reason", n => { AgentActionReason = n.GetStringValue(); } },
                 { "agent_config_id", n => { AgentConfigId = n.GetStringValue(); } },
                 { "ai_draft", n => { AiDraft = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadAiDraft>(global::Soenneker.Close.OpenApiClient.Models.EmailInThreadAiDraft.CreateFromDiscriminatorValue); } },
-                { "attachments", n => { Attachments = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadAttachments>(global::Soenneker.Close.OpenApiClient.Models.EmailInThreadAttachments.CreateFromDiscriminatorValue); } },
+                { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.Attachment>(global::Soenneker.Close.OpenApiClient.Models.Attachment.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "bcc", n => { Bcc = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "body_html", n => { BodyHtml = n.GetStringValue(); } },
-                { "body_html_quoted", n => { BodyHtmlQuoted = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadBodyHtmlQuoted>(global::Soenneker.Close.OpenApiClient.Models.EmailInThreadBodyHtmlQuoted.CreateFromDiscriminatorValue); } },
+                { "body_html_quoted", n => { BodyHtmlQuoted = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.QuotedEmailHtml>(global::Soenneker.Close.OpenApiClient.Models.QuotedEmailHtml.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "body_preview", n => { BodyPreview = n.GetStringValue(); } },
                 { "body_text", n => { BodyText = n.GetStringValue(); } },
-                { "body_text_quoted", n => { BodyTextQuoted = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadBodyTextQuoted>(global::Soenneker.Close.OpenApiClient.Models.EmailInThreadBodyTextQuoted.CreateFromDiscriminatorValue); } },
+                { "body_text_quoted", n => { BodyTextQuoted = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.QuotedEmailText>(global::Soenneker.Close.OpenApiClient.Models.QuotedEmailText.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "bulk_email_action_id", n => { BulkEmailActionId = n.GetStringValue(); } },
                 { "cc", n => { Cc = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
@@ -431,7 +431,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "date_scheduled", n => { DateScheduled = n.GetDateTimeOffsetValue(); } },
                 { "date_sent", n => { DateSent = n.GetDateTimeOffsetValue(); } },
                 { "date_updated", n => { DateUpdated = n.GetDateTimeOffsetValue(); } },
-                { "direction", n => { Direction = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadDirection>(global::Soenneker.Close.OpenApiClient.Models.EmailInThreadDirection.CreateFromDiscriminatorValue); } },
+                { "direction", n => { Direction = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper2>(global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper2.CreateFromDiscriminatorValue); } },
                 { "email_account_id", n => { EmailAccountId = n.GetStringValue(); } },
                 { "envelope", n => { Envelope = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadEnvelope>(global::Soenneker.Close.OpenApiClient.Models.EmailInThreadEnvelope.CreateFromDiscriminatorValue); } },
                 { "followup_sequence_add_cc_bcc", n => { FollowupSequenceAddCcBcc = n.GetBoolValue(); } },
@@ -443,7 +443,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "lead_id", n => { LeadId = n.GetStringValue(); } },
                 { "message_ids", n => { MessageIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "need_smtp_credentials", n => { NeedSmtpCredentials = n.GetBoolValue(); } },
-                { "opens", n => { Opens = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadOpens>(global::Soenneker.Close.OpenApiClient.Models.EmailInThreadOpens.CreateFromDiscriminatorValue); } },
+                { "opens", n => { Opens = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EmailOpen>(global::Soenneker.Close.OpenApiClient.Models.EmailOpen.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "opens_summary", n => { OpensSummary = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "references", n => { References = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -478,13 +478,13 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("agent_action_reason", AgentActionReason);
             writer.WriteStringValue("agent_config_id", AgentConfigId);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadAiDraft>("ai_draft", AiDraft);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadAttachments>("attachments", Attachments);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.Attachment>("attachments", Attachments);
             writer.WriteCollectionOfPrimitiveValues<string>("bcc", Bcc);
             writer.WriteStringValue("body_html", BodyHtml);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadBodyHtmlQuoted>("body_html_quoted", BodyHtmlQuoted);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.QuotedEmailHtml>("body_html_quoted", BodyHtmlQuoted);
             writer.WriteStringValue("body_preview", BodyPreview);
             writer.WriteStringValue("body_text", BodyText);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadBodyTextQuoted>("body_text_quoted", BodyTextQuoted);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.QuotedEmailText>("body_text_quoted", BodyTextQuoted);
             writer.WriteStringValue("bulk_email_action_id", BulkEmailActionId);
             writer.WriteCollectionOfPrimitiveValues<string>("cc", Cc);
             writer.WriteStringValue("contact_id", ContactId);
@@ -494,7 +494,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("date_scheduled", DateScheduled);
             writer.WriteDateTimeOffsetValue("date_sent", DateSent);
             writer.WriteDateTimeOffsetValue("date_updated", DateUpdated);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadDirection>("direction", Direction);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper2>("direction", Direction);
             writer.WriteStringValue("email_account_id", EmailAccountId);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadEnvelope>("envelope", Envelope);
             writer.WriteBoolValue("followup_sequence_add_cc_bcc", FollowupSequenceAddCcBcc);
@@ -506,7 +506,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("lead_id", LeadId);
             writer.WriteCollectionOfPrimitiveValues<string>("message_ids", MessageIds);
             writer.WriteBoolValue("need_smtp_credentials", NeedSmtpCredentials);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadOpens>("opens", Opens);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EmailOpen>("opens", Opens);
             writer.WriteStringValue("opens_summary", OpensSummary);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteCollectionOfPrimitiveValues<string>("references", References);

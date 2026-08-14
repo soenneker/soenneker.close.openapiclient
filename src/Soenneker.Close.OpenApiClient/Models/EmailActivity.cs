@@ -35,10 +35,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The attachments property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.EmailActivityAttachments? Attachments { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.Attachment>? Attachments { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.EmailActivityAttachments Attachments { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.Attachment> Attachments { get; set; }
 #endif
         /// <summary>The bcc property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -123,10 +123,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The direction property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.EmailActivityDirection? Direction { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper? Direction { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.EmailActivityDirection Direction { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper Direction { get; set; }
 #endif
         /// <summary>The email_account_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -195,10 +195,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The opens property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.EmailActivityOpens? Opens { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.EmailOpen>? Opens { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.EmailActivityOpens Opens { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.EmailOpen> Opens { get; set; }
 #endif
         /// <summary>The opens_summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -390,7 +390,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "activity_at", n => { ActivityAt = n.GetDateTimeOffsetValue(); } },
                 { "agent_action_reason", n => { AgentActionReason = n.GetStringValue(); } },
                 { "agent_config_id", n => { AgentConfigId = n.GetStringValue(); } },
-                { "attachments", n => { Attachments = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailActivityAttachments>(global::Soenneker.Close.OpenApiClient.Models.EmailActivityAttachments.CreateFromDiscriminatorValue); } },
+                { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.Attachment>(global::Soenneker.Close.OpenApiClient.Models.Attachment.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "bcc", n => { Bcc = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "body_html", n => { BodyHtml = n.GetStringValue(); } },
                 { "body_preview", n => { BodyPreview = n.GetStringValue(); } },
@@ -404,7 +404,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "date_scheduled", n => { DateScheduled = n.GetDateTimeOffsetValue(); } },
                 { "date_sent", n => { DateSent = n.GetDateTimeOffsetValue(); } },
                 { "date_updated", n => { DateUpdated = n.GetDateTimeOffsetValue(); } },
-                { "direction", n => { Direction = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailActivityDirection>(global::Soenneker.Close.OpenApiClient.Models.EmailActivityDirection.CreateFromDiscriminatorValue); } },
+                { "direction", n => { Direction = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper>(global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper.CreateFromDiscriminatorValue); } },
                 { "email_account_id", n => { EmailAccountId = n.GetStringValue(); } },
                 { "envelope", n => { Envelope = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailActivityEnvelope>(global::Soenneker.Close.OpenApiClient.Models.EmailActivityEnvelope.CreateFromDiscriminatorValue); } },
                 { "followup_sequence_add_cc_bcc", n => { FollowupSequenceAddCcBcc = n.GetBoolValue(); } },
@@ -416,7 +416,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "lead_id", n => { LeadId = n.GetStringValue(); } },
                 { "message_ids", n => { MessageIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "need_smtp_credentials", n => { NeedSmtpCredentials = n.GetBoolValue(); } },
-                { "opens", n => { Opens = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailActivityOpens>(global::Soenneker.Close.OpenApiClient.Models.EmailActivityOpens.CreateFromDiscriminatorValue); } },
+                { "opens", n => { Opens = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EmailOpen>(global::Soenneker.Close.OpenApiClient.Models.EmailOpen.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "opens_summary", n => { OpensSummary = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "references", n => { References = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -450,7 +450,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("activity_at", ActivityAt);
             writer.WriteStringValue("agent_action_reason", AgentActionReason);
             writer.WriteStringValue("agent_config_id", AgentConfigId);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailActivityAttachments>("attachments", Attachments);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.Attachment>("attachments", Attachments);
             writer.WriteCollectionOfPrimitiveValues<string>("bcc", Bcc);
             writer.WriteStringValue("body_html", BodyHtml);
             writer.WriteStringValue("body_preview", BodyPreview);
@@ -464,7 +464,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("date_scheduled", DateScheduled);
             writer.WriteDateTimeOffsetValue("date_sent", DateSent);
             writer.WriteDateTimeOffsetValue("date_updated", DateUpdated);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailActivityDirection>("direction", Direction);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper>("direction", Direction);
             writer.WriteStringValue("email_account_id", EmailAccountId);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailActivityEnvelope>("envelope", Envelope);
             writer.WriteBoolValue("followup_sequence_add_cc_bcc", FollowupSequenceAddCcBcc);
@@ -476,7 +476,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("lead_id", LeadId);
             writer.WriteCollectionOfPrimitiveValues<string>("message_ids", MessageIds);
             writer.WriteBoolValue("need_smtp_credentials", NeedSmtpCredentials);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailActivityOpens>("opens", Opens);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EmailOpen>("opens", Opens);
             writer.WriteStringValue("opens_summary", OpensSummary);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteCollectionOfPrimitiveValues<string>("references", References);
