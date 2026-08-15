@@ -35,10 +35,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The ai_draft property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.EmailInThreadAiDraft? AiDraft { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.EmailInThreadAiDraftProperty? AiDraft { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.EmailInThreadAiDraft AiDraft { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.EmailInThreadAiDraftProperty AiDraft { get; set; }
 #endif
         /// <summary>The attachments property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -163,10 +163,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The envelope property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.EmailInThreadEnvelope? Envelope { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.EmailInThreadEnvelopeProperty? Envelope { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.EmailInThreadEnvelope Envelope { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.EmailInThreadEnvelopeProperty Envelope { get; set; }
 #endif
         /// <summary>The followup_sequence_add_cc_bcc property</summary>
         public bool? FollowupSequenceAddCcBcc { get; set; }
@@ -414,7 +414,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "activity_at", n => { ActivityAt = n.GetDateTimeOffsetValue(); } },
                 { "agent_action_reason", n => { AgentActionReason = n.GetStringValue(); } },
                 { "agent_config_id", n => { AgentConfigId = n.GetStringValue(); } },
-                { "ai_draft", n => { AiDraft = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadAiDraft>(global::Soenneker.Close.OpenApiClient.Models.EmailInThreadAiDraft.CreateFromDiscriminatorValue); } },
+                { "ai_draft", n => { AiDraft = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadAiDraftProperty>(global::Soenneker.Close.OpenApiClient.Models.EmailInThreadAiDraftProperty.CreateFromDiscriminatorValue); } },
                 { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.Attachment>(global::Soenneker.Close.OpenApiClient.Models.Attachment.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "bcc", n => { Bcc = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "body_html", n => { BodyHtml = n.GetStringValue(); } },
@@ -433,7 +433,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "date_updated", n => { DateUpdated = n.GetDateTimeOffsetValue(); } },
                 { "direction", n => { Direction = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper2>(global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper2.CreateFromDiscriminatorValue); } },
                 { "email_account_id", n => { EmailAccountId = n.GetStringValue(); } },
-                { "envelope", n => { Envelope = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadEnvelope>(global::Soenneker.Close.OpenApiClient.Models.EmailInThreadEnvelope.CreateFromDiscriminatorValue); } },
+                { "envelope", n => { Envelope = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadEnvelopeProperty>(global::Soenneker.Close.OpenApiClient.Models.EmailInThreadEnvelopeProperty.CreateFromDiscriminatorValue); } },
                 { "followup_sequence_add_cc_bcc", n => { FollowupSequenceAddCcBcc = n.GetBoolValue(); } },
                 { "followup_sequence_delay", n => { FollowupSequenceDelay = n.GetIntValue(); } },
                 { "followup_sequence_id", n => { FollowupSequenceId = n.GetStringValue(); } },
@@ -477,7 +477,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("activity_at", ActivityAt);
             writer.WriteStringValue("agent_action_reason", AgentActionReason);
             writer.WriteStringValue("agent_config_id", AgentConfigId);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadAiDraft>("ai_draft", AiDraft);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadAiDraftProperty>("ai_draft", AiDraft);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.Attachment>("attachments", Attachments);
             writer.WriteCollectionOfPrimitiveValues<string>("bcc", Bcc);
             writer.WriteStringValue("body_html", BodyHtml);
@@ -496,7 +496,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("date_updated", DateUpdated);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper2>("direction", Direction);
             writer.WriteStringValue("email_account_id", EmailAccountId);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadEnvelope>("envelope", Envelope);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadEnvelopeProperty>("envelope", Envelope);
             writer.WriteBoolValue("followup_sequence_add_cc_bcc", FollowupSequenceAddCcBcc);
             writer.WriteIntValue("followup_sequence_delay", FollowupSequenceDelay);
             writer.WriteStringValue("followup_sequence_id", FollowupSequenceId);

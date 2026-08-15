@@ -139,10 +139,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The envelope property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.EmailActivityEnvelope? Envelope { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.EmailActivityEnvelopeProperty? Envelope { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.EmailActivityEnvelope Envelope { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.EmailActivityEnvelopeProperty Envelope { get; set; }
 #endif
         /// <summary>The followup_sequence_add_cc_bcc property</summary>
         public bool? FollowupSequenceAddCcBcc { get; set; }
@@ -406,7 +406,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "date_updated", n => { DateUpdated = n.GetDateTimeOffsetValue(); } },
                 { "direction", n => { Direction = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper>(global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper.CreateFromDiscriminatorValue); } },
                 { "email_account_id", n => { EmailAccountId = n.GetStringValue(); } },
-                { "envelope", n => { Envelope = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailActivityEnvelope>(global::Soenneker.Close.OpenApiClient.Models.EmailActivityEnvelope.CreateFromDiscriminatorValue); } },
+                { "envelope", n => { Envelope = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailActivityEnvelopeProperty>(global::Soenneker.Close.OpenApiClient.Models.EmailActivityEnvelopeProperty.CreateFromDiscriminatorValue); } },
                 { "followup_sequence_add_cc_bcc", n => { FollowupSequenceAddCcBcc = n.GetBoolValue(); } },
                 { "followup_sequence_delay", n => { FollowupSequenceDelay = n.GetIntValue(); } },
                 { "followup_sequence_id", n => { FollowupSequenceId = n.GetStringValue(); } },
@@ -466,7 +466,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("date_updated", DateUpdated);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper>("direction", Direction);
             writer.WriteStringValue("email_account_id", EmailAccountId);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailActivityEnvelope>("envelope", Envelope);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailActivityEnvelopeProperty>("envelope", Envelope);
             writer.WriteBoolValue("followup_sequence_add_cc_bcc", FollowupSequenceAddCcBcc);
             writer.WriteIntValue("followup_sequence_delay", FollowupSequenceDelay);
             writer.WriteStringValue("followup_sequence_id", FollowupSequenceId);

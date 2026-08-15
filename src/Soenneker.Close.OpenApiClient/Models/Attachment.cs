@@ -14,40 +14,6 @@ namespace Soenneker.Close.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The content_type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ContentType { get; set; }
-#nullable restore
-#else
-        public string ContentType { get; set; }
-#endif
-        /// <summary>The filename property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Filename { get; set; }
-#nullable restore
-#else
-        public string Filename { get; set; }
-#endif
-        /// <summary>The size property</summary>
-        public int? Size { get; set; }
-        /// <summary>The thumbnail_url property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ThumbnailUrl { get; set; }
-#nullable restore
-#else
-        public string ThumbnailUrl { get; set; }
-#endif
-        /// <summary>The url property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Url { get; set; }
-#nullable restore
-#else
-        public string Url { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.Attachment"/> and sets the default values.
         /// </summary>
@@ -73,11 +39,6 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "content_type", n => { ContentType = n.GetStringValue(); } },
-                { "filename", n => { Filename = n.GetStringValue(); } },
-                { "size", n => { Size = n.GetIntValue(); } },
-                { "thumbnail_url", n => { ThumbnailUrl = n.GetStringValue(); } },
-                { "url", n => { Url = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -87,11 +48,6 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("content_type", ContentType);
-            writer.WriteStringValue("filename", Filename);
-            writer.WriteIntValue("size", Size);
-            writer.WriteStringValue("thumbnail_url", ThumbnailUrl);
-            writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -21449,7 +21449,7 @@
             "default": null
           },
           "envelope": {
-            "$ref": "#/components/schemas/EmailActivityEnvelope"
+            "$ref": "#/components/schemas/EmailActivityEnvelopeProperty"
           },
           "followup_sequence_add_cc_bcc": {
             "title": "Followup Sequence Add Cc Bcc",
@@ -21823,7 +21823,7 @@
             "default": null
           },
           "ai_draft": {
-            "$ref": "#/components/schemas/EmailInThreadAiDraft"
+            "$ref": "#/components/schemas/EmailInThreadAiDraftProperty"
           },
           "attachments": {
             "$ref": "#/components/schemas/EmailInThreadAttachments"
@@ -21937,7 +21937,7 @@
             "default": null
           },
           "envelope": {
-            "$ref": "#/components/schemas/EmailInThreadEnvelope"
+            "$ref": "#/components/schemas/EmailInThreadEnvelopeProperty"
           },
           "followup_sequence_add_cc_bcc": {
             "title": "Followup Sequence Add Cc Bcc",
@@ -26403,7 +26403,7 @@
             ]
           },
           "s_query": {
-            "$ref": "#/components/schemas/SavedSearchSQuery"
+            "$ref": "#/components/schemas/SavedSearchSQueryProperty"
           },
           "selected_fields": {
             "$ref": "#/components/schemas/SavedSearchSelectedFields"
@@ -28184,7 +28184,7 @@
             "type": "string"
           },
           "extra_filter": {
-            "$ref": "#/components/schemas/WebhookSubscriptionEventExtraFilter"
+            "$ref": "#/components/schemas/WebhookSubscriptionEventExtraFilterProperty"
           },
           "object_type": {
             "title": "Object Type",
@@ -32138,6 +32138,15 @@
       "BulkSequenceSubscriptionActionSortItemProperty": {
         "type": "object"
       },
+      "EmailActivityEnvelopeProperty": {
+        "type": "object"
+      },
+      "EmailInThreadAiDraftProperty": {
+        "type": "object"
+      },
+      "EmailInThreadEnvelopeProperty": {
+        "type": "object"
+      },
       "FormSubmissionActivityValuesProperty": {
         "type": "object",
         "additionalProperties": {
@@ -32160,6 +32169,12 @@
         "type": "object"
       },
       "MeetingActivityIntegrationsItemProperty": {
+        "type": "object"
+      },
+      "SavedSearchSQueryProperty": {
+        "type": "object"
+      },
+      "WebhookSubscriptionEventExtraFilterProperty": {
         "type": "object"
       },
       "CreateCallActivityDirection": {

@@ -25,10 +25,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The extra_filter property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.WebhookSubscriptionEventExtraFilter? ExtraFilter { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.WebhookSubscriptionEventExtraFilterProperty? ExtraFilter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.WebhookSubscriptionEventExtraFilter ExtraFilter { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.WebhookSubscriptionEventExtraFilterProperty ExtraFilter { get; set; }
 #endif
         /// <summary>The object_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -64,7 +64,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "action", n => { Action = n.GetStringValue(); } },
-                { "extra_filter", n => { ExtraFilter = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.WebhookSubscriptionEventExtraFilter>(global::Soenneker.Close.OpenApiClient.Models.WebhookSubscriptionEventExtraFilter.CreateFromDiscriminatorValue); } },
+                { "extra_filter", n => { ExtraFilter = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.WebhookSubscriptionEventExtraFilterProperty>(global::Soenneker.Close.OpenApiClient.Models.WebhookSubscriptionEventExtraFilterProperty.CreateFromDiscriminatorValue); } },
                 { "object_type", n => { ObjectType = n.GetStringValue(); } },
             };
         }
@@ -76,7 +76,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("action", Action);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.WebhookSubscriptionEventExtraFilter>("extra_filter", ExtraFilter);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.WebhookSubscriptionEventExtraFilterProperty>("extra_filter", ExtraFilter);
             writer.WriteStringValue("object_type", ObjectType);
             writer.WriteAdditionalData(AdditionalData);
         }
