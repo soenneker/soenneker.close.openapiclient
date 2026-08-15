@@ -65,7 +65,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Call
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesCallsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesCallsList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Use this endpoint to log calls made outside of the Close built-in VoIP system.*status*: defaults to `completed`*direction* (optional): `outbound` or `inbound`*recording_url*: you can post a URL pointing to the MP3 recording of your call. For security reasons, we require the URL to be secure (i.e. starting with https://)&quot;
+        /// Use this endpoint to log calls made outside of the Close built-in VoIP system.*status*: defaults to `completed`*direction* (optional): `outbound` or `inbound`*recording_url*: you can post a URL pointing to the MP3 recording of your call. For security reasons, we require the URL to be secure (i.e. starting with https://)
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CallActivity"/></returns>
         /// <param name="body">The request body</param>
@@ -104,7 +104,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Call
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Use this endpoint to log calls made outside of the Close built-in VoIP system.*status*: defaults to `completed`*direction* (optional): `outbound` or `inbound`*recording_url*: you can post a URL pointing to the MP3 recording of your call. For security reasons, we require the URL to be secure (i.e. starting with https://)&quot;
+        /// Use this endpoint to log calls made outside of the Close built-in VoIP system.*status*: defaults to `completed`*direction* (optional): `outbound` or `inbound`*recording_url*: you can post a URL pointing to the MP3 recording of your call. For security reasons, we require the URL to be secure (i.e. starting with https://)
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

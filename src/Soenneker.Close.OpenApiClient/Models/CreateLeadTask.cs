@@ -95,13 +95,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Text { get; set; }
 #endif
         /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.LeadType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.CreateLeadTask"/> and sets the default values.
         /// </summary>
@@ -141,7 +135,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "priority", n => { Priority = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.TaskPriority>(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
-                { "_type", n => { Type = n.GetStringValue(); } },
+                { "_type", n => { Type = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.LeadType>(); } },
             };
         }
         /// <summary>
@@ -164,7 +158,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.TaskPriority>("priority", Priority);
             writer.WriteStringValue("text", Text);
-            writer.WriteStringValue("_type", Type);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.LeadType>("_type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

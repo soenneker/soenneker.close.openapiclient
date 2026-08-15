@@ -3,7 +3,6 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.Close.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -53,40 +52,40 @@ namespace Soenneker.Close.OpenApiClient.Shared_scheduling_link.Item
         /// <summary>
         /// Fetch a Shared Scheduling Link
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.SchedulingLinksGetShared200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Shared_scheduling_link.Item.Shared_scheduling_linkGetResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.SchedulingLinksGetShared200Response?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Shared_scheduling_link.Item.Shared_scheduling_linkGetResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.SchedulingLinksGetShared200Response> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Shared_scheduling_link.Item.Shared_scheduling_linkGetResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.SchedulingLinksGetShared200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.SchedulingLinksGetShared200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Shared_scheduling_link.Item.Shared_scheduling_linkGetResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Shared_scheduling_link.Item.Shared_scheduling_linkGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Update a Shared Scheduling Link
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.SchedulingLinksUpdateShared200Response"/></returns>
-        /// <param name="body">The request body</param>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Shared_scheduling_link.Item.Shared_scheduling_linkPutResponse"/></returns>
+        /// <param name="body">Fallback media schema</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.SchedulingLinksUpdateShared200Response?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.SchedulingLinksUpdateSharedRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Shared_scheduling_link.Item.Shared_scheduling_linkPutResponse?> PutAsync(global::Soenneker.Close.OpenApiClient.Shared_scheduling_link.Item.Shared_scheduling_linkPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.SchedulingLinksUpdateShared200Response> PutAsync(global::Soenneker.Close.OpenApiClient.Models.SchedulingLinksUpdateSharedRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Shared_scheduling_link.Item.Shared_scheduling_linkPutResponse> PutAsync(global::Soenneker.Close.OpenApiClient.Shared_scheduling_link.Item.Shared_scheduling_linkPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.SchedulingLinksUpdateShared200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.SchedulingLinksUpdateShared200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Shared_scheduling_link.Item.Shared_scheduling_linkPutResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Shared_scheduling_link.Item.Shared_scheduling_linkPutResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete a Shared Scheduling Link
@@ -104,7 +103,6 @@ namespace Soenneker.Close.OpenApiClient.Shared_scheduling_link.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -130,15 +128,15 @@ namespace Soenneker.Close.OpenApiClient.Shared_scheduling_link.Item
         /// Update a Shared Scheduling Link
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Fallback media schema</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.SchedulingLinksUpdateSharedRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Shared_scheduling_link.Item.Shared_scheduling_linkPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.SchedulingLinksUpdateSharedRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Shared_scheduling_link.Item.Shared_scheduling_linkPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

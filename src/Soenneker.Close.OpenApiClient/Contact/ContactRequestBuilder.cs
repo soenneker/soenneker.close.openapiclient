@@ -65,7 +65,7 @@ namespace Soenneker.Close.OpenApiClient.Contact
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ContactsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ContactsList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Contacts belong to exactly one Lead (specified by `lead_id`). If you do not provide a `lead_id` then a new lead will be created, named after the contact.Custom field values can be set by including `custom.cf_*` keys in the request body, e.g. `\&quot;custom.cf_abc123\&quot;: \&quot;value\&quot;`.&quot;
+        /// Contacts belong to exactly one Lead (specified by `lead_id`). If you do not provide a `lead_id` then a new lead will be created, named after the contact.Custom field values can be set by including `custom.cf_*` keys in the request body, e.g. `&quot;custom.cf_abc123&quot;: &quot;value&quot;`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.Contact"/></returns>
         /// <param name="body">The request body</param>
@@ -104,7 +104,7 @@ namespace Soenneker.Close.OpenApiClient.Contact
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Contacts belong to exactly one Lead (specified by `lead_id`). If you do not provide a `lead_id` then a new lead will be created, named after the contact.Custom field values can be set by including `custom.cf_*` keys in the request body, e.g. `\&quot;custom.cf_abc123\&quot;: \&quot;value\&quot;`.&quot;
+        /// Contacts belong to exactly one Lead (specified by `lead_id`). If you do not provide a `lead_id` then a new lead will be created, named after the contact.Custom field values can be set by including `custom.cf_*` keys in the request body, e.g. `&quot;custom.cf_abc123&quot;: &quot;value&quot;`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -167,7 +167,7 @@ namespace Soenneker.Close.OpenApiClient.Contact
             public int? Skip { get; set; }
         }
         /// <summary>
-        /// &quot;Contacts belong to exactly one Lead (specified by `lead_id`). If you do not provide a `lead_id` then a new lead will be created, named after the contact.Custom field values can be set by including `custom.cf_*` keys in the request body, e.g. `\&quot;custom.cf_abc123\&quot;: \&quot;value\&quot;`.&quot;
+        /// Contacts belong to exactly one Lead (specified by `lead_id`). If you do not provide a `lead_id` then a new lead will be created, named after the contact.Custom field values can be set by including `custom.cf_*` keys in the request body, e.g. `&quot;custom.cf_abc123&quot;: &quot;value&quot;`.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ContactRequestBuilderPostQueryParameters 

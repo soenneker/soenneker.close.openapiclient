@@ -68,16 +68,16 @@ namespace Soenneker.Close.OpenApiClient.Bulk_action.Sequence_subscription
         /// `action_type` must be one of:- `subscribe` to create a new sequence subscription for contacts that have never received the given sequence.- `resume` to resume any paused sequence subscriptions for the given sequence or all sequences if `sequence_id` is not provided.- `resume_finished` to resume any finished sequence subscriptions for the given sequence or all sequences if `sequence_id` is not provided.- `pause` to pause any active sequence subscriptions for the given sequence or all sequences if `sequence_id` is not provided.`sequence_id`, `sender_account_id`, `sender_name`, `sender_email` and `contact_preference` are required if `action_type` is `subscribe`.`contact_preference` can be set to:- `lead` to only subscribe the primary/first contact email of the lead.- `contact` to subscribe the primary email of each contact of the lead.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionAction"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Fallback media schema</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionAction?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.BulkActionsSequenceSubscriptionsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionAction?> PostAsync(global::Soenneker.Close.OpenApiClient.Bulk_action.Sequence_subscription.Sequence_subscriptionPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionAction> PostAsync(global::Soenneker.Close.OpenApiClient.Models.BulkActionsSequenceSubscriptionsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionAction> PostAsync(global::Soenneker.Close.OpenApiClient.Bulk_action.Sequence_subscription.Sequence_subscriptionPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -107,15 +107,15 @@ namespace Soenneker.Close.OpenApiClient.Bulk_action.Sequence_subscription
         /// `action_type` must be one of:- `subscribe` to create a new sequence subscription for contacts that have never received the given sequence.- `resume` to resume any paused sequence subscriptions for the given sequence or all sequences if `sequence_id` is not provided.- `resume_finished` to resume any finished sequence subscriptions for the given sequence or all sequences if `sequence_id` is not provided.- `pause` to pause any active sequence subscriptions for the given sequence or all sequences if `sequence_id` is not provided.`sequence_id`, `sender_account_id`, `sender_name`, `sender_email` and `contact_preference` are required if `action_type` is `subscribe`.`contact_preference` can be set to:- `lead` to only subscribe the primary/first contact email of the lead.- `contact` to subscribe the primary email of each contact of the lead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Fallback media schema</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.BulkActionsSequenceSubscriptionsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Bulk_action.Sequence_subscription.Sequence_subscriptionPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.BulkActionsSequenceSubscriptionsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Bulk_action.Sequence_subscription.Sequence_subscriptionPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

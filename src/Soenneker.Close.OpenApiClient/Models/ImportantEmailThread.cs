@@ -17,13 +17,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The reason property</summary>
         public global::Soenneker.Close.OpenApiClient.Models.ImportantThreadReason? Reason { get; set; }
         /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.ImportantType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.ImportantEmailThread"/> and sets the default values.
         /// </summary>
@@ -50,7 +44,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "reason", n => { Reason = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.ImportantThreadReason>(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.ImportantType>(); } },
             };
         }
         /// <summary>
@@ -61,7 +55,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.ImportantThreadReason>("reason", Reason);
-            writer.WriteStringValue("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.ImportantType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

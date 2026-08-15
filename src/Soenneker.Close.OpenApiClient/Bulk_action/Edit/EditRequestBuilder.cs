@@ -65,19 +65,19 @@ namespace Soenneker.Close.OpenApiClient.Bulk_action.Edit
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.BulkActionsEditList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.BulkActionsEditList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Pass additional parameters depending on which `type` is passed: - `set_lead_status` will set the Lead Status on all leads. It expects:  - `lead_status_id` - ID of the Lead Status to use. - `clear_custom_field` will clear/remove/unset a specific custom field from all leads. It expects:  - `custom_field_id` or `custom_field_name` - ID or exact name of the custom field to remove. - `set_custom_field` will set/update/add a specific custom field on all leads. It expects:  - `custom_field_id` or `custom_field_name` - ID or exact name of the custom field to set/update.  - `custom_field_value` - New value. Use `custom_field_values` to pass multiple values to custom fields that support it.  - `custom_field_operation` - `replace`, `add`, or `remove` (defaults to `replace`). Only applicable for custom fields that accept multiple values.Use `\&quot;send_done_email\&quot;: false` if you don&apos;t want to get a confirmation email after the bulk action is done.&quot;
+        /// Pass additional parameters depending on which `type` is passed: - `set_lead_status` will set the Lead Status on all leads. It expects:  - `lead_status_id` - ID of the Lead Status to use. - `clear_custom_field` will clear/remove/unset a specific custom field from all leads. It expects:  - `custom_field_id` or `custom_field_name` - ID or exact name of the custom field to remove. - `set_custom_field` will set/update/add a specific custom field on all leads. It expects:  - `custom_field_id` or `custom_field_name` - ID or exact name of the custom field to set/update.  - `custom_field_value` - New value. Use `custom_field_values` to pass multiple values to custom fields that support it.  - `custom_field_operation` - `replace`, `add`, or `remove` (defaults to `replace`). Only applicable for custom fields that accept multiple values.Use `&quot;send_done_email&quot;: false` if you don&apos;t want to get a confirmation email after the bulk action is done.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.BulkEditAction"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Fallback media schema</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.BulkEditAction?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.BulkActionsEditCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.BulkEditAction?> PostAsync(global::Soenneker.Close.OpenApiClient.Bulk_action.Edit.EditPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.BulkEditAction> PostAsync(global::Soenneker.Close.OpenApiClient.Models.BulkActionsEditCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.BulkEditAction> PostAsync(global::Soenneker.Close.OpenApiClient.Bulk_action.Edit.EditPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -104,18 +104,18 @@ namespace Soenneker.Close.OpenApiClient.Bulk_action.Edit
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Pass additional parameters depending on which `type` is passed: - `set_lead_status` will set the Lead Status on all leads. It expects:  - `lead_status_id` - ID of the Lead Status to use. - `clear_custom_field` will clear/remove/unset a specific custom field from all leads. It expects:  - `custom_field_id` or `custom_field_name` - ID or exact name of the custom field to remove. - `set_custom_field` will set/update/add a specific custom field on all leads. It expects:  - `custom_field_id` or `custom_field_name` - ID or exact name of the custom field to set/update.  - `custom_field_value` - New value. Use `custom_field_values` to pass multiple values to custom fields that support it.  - `custom_field_operation` - `replace`, `add`, or `remove` (defaults to `replace`). Only applicable for custom fields that accept multiple values.Use `\&quot;send_done_email\&quot;: false` if you don&apos;t want to get a confirmation email after the bulk action is done.&quot;
+        /// Pass additional parameters depending on which `type` is passed: - `set_lead_status` will set the Lead Status on all leads. It expects:  - `lead_status_id` - ID of the Lead Status to use. - `clear_custom_field` will clear/remove/unset a specific custom field from all leads. It expects:  - `custom_field_id` or `custom_field_name` - ID or exact name of the custom field to remove. - `set_custom_field` will set/update/add a specific custom field on all leads. It expects:  - `custom_field_id` or `custom_field_name` - ID or exact name of the custom field to set/update.  - `custom_field_value` - New value. Use `custom_field_values` to pass multiple values to custom fields that support it.  - `custom_field_operation` - `replace`, `add`, or `remove` (defaults to `replace`). Only applicable for custom fields that accept multiple values.Use `&quot;send_done_email&quot;: false` if you don&apos;t want to get a confirmation email after the bulk action is done.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Fallback media schema</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.BulkActionsEditCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Bulk_action.Edit.EditPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.BulkActionsEditCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Bulk_action.Edit.EditPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

@@ -3,7 +3,6 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.Close.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -36,57 +35,58 @@ namespace Soenneker.Close.OpenApiClient.Custom_field.Lead.Item
         /// <summary>
         /// Delete a lead custom field. The field will immediately disappear from API responses and values on existing leads will be permanently removed.
         /// </summary>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Fetch Lead Custom Field&apos;s details
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CustomFieldsLeadGet200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Custom_field.Lead.Item.LeadGetResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsLeadGet200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_field.Lead.Item.LeadItemRequestBuilder.LeadItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Custom_field.Lead.Item.LeadGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_field.Lead.Item.LeadItemRequestBuilder.LeadItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsLeadGet200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_field.Lead.Item.LeadItemRequestBuilder.LeadItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Custom_field.Lead.Item.LeadGetResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_field.Lead.Item.LeadItemRequestBuilder.LeadItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsLeadGet200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CustomFieldsLeadGet200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Custom_field.Lead.Item.LeadGetResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Custom_field.Lead.Item.LeadGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// You can rename it, change its type, change whether it accepts multiple values or not, change whether editing its values is restricted to specific Roles, or update the options for a &quot;choices&quot; field type. The updated name will immediately appear in the Close UI and only valid values for the updated `type` will be returned by the Lead API.Some of the type changes need to convert all of the existing values for a given Custom Field to the new type. When this is required, the response will include an additional `converting_to_type` field. When the conversion is done, `converting_to_type` will no longer be returned.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CustomFieldsLeadUpdate200Response"/></returns>
-        /// <param name="body">The request body</param>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Custom_field.Lead.Item.LeadPutResponse"/></returns>
+        /// <param name="body">Fallback media schema</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsLeadUpdate200Response?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsLeadUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Custom_field.Lead.Item.LeadPutResponse?> PutAsync(global::Soenneker.Close.OpenApiClient.Custom_field.Lead.Item.LeadPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsLeadUpdate200Response> PutAsync(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsLeadUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Custom_field.Lead.Item.LeadPutResponse> PutAsync(global::Soenneker.Close.OpenApiClient.Custom_field.Lead.Item.LeadPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsLeadUpdate200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CustomFieldsLeadUpdate200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Custom_field.Lead.Item.LeadPutResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Custom_field.Lead.Item.LeadPutResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete a lead custom field. The field will immediately disappear from API responses and values on existing leads will be permanently removed.
@@ -104,7 +104,6 @@ namespace Soenneker.Close.OpenApiClient.Custom_field.Lead.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -130,15 +129,15 @@ namespace Soenneker.Close.OpenApiClient.Custom_field.Lead.Item
         /// You can rename it, change its type, change whether it accepts multiple values or not, change whether editing its values is restricted to specific Roles, or update the options for a &quot;choices&quot; field type. The updated name will immediately appear in the Close UI and only valid values for the updated `type` will be returned by the Lead API.Some of the type changes need to convert all of the existing values for a given Custom Field to the new type. When this is required, the response will include an additional `converting_to_type` field. When the conversion is done, `converting_to_type` will no longer be returned.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Fallback media schema</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsLeadUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Custom_field.Lead.Item.LeadPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsLeadUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Custom_field.Lead.Item.LeadPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

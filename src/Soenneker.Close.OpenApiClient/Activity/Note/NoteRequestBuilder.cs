@@ -65,7 +65,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesNotesList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesNotesList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;To include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename` and `content_type`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin `https://app.close.com/go/file/`.A note can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a note.&quot;
+        /// To include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename` and `content_type`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin `https://app.close.com/go/file/`.A note can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a note.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivityBase"/></returns>
         /// <param name="body">The request body</param>
@@ -104,7 +104,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note
             return requestInfo;
         }
         /// <summary>
-        /// &quot;To include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename` and `content_type`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin `https://app.close.com/go/file/`.A note can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a note.&quot;
+        /// To include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename` and `content_type`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin `https://app.close.com/go/file/`.A note can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a note.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

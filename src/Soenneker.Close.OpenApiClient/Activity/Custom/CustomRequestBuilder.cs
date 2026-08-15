@@ -47,7 +47,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Custom
         {
         }
         /// <summary>
-        /// &quot;Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).If you&apos;re filtering by `custom_activity_type_id` or `custom_activity_type_id__in` parameter, the `lead_id` parameter will be required as well. If you want to retrieve all Custom Activity instances of a specific type regardless of the lead, you will need to get leads that contain such an activity type using [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) and provide those Lead IDs one at a time to this endpoint.&quot;
+        /// Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).If you&apos;re filtering by `custom_activity_type_id` or `custom_activity_type_id__in` parameter, the `lead_id` parameter will be required as well. If you want to retrieve all Custom Activity instances of a specific type regardless of the lead, you will need to get leads that contain such an activity type using [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) and provide those Lead IDs one at a time to this endpoint.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesCustomActivitiesList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Custom
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesCustomActivitiesList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesCustomActivitiesList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Custom Activity instances will be created by default with the &apos;published&apos; status. All required fields will be validated in this status. To create an activity without setting all required fields, you can use the \&quot;draft\&quot; status.A Custom Activity can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a Custom Activity.Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).&quot;
+        /// Custom Activity instances will be created by default with the &apos;published&apos; status. All required fields will be validated in this status. To create an activity without setting all required fields, you can use the &quot;draft&quot; status.A Custom Activity can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a Custom Activity.Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CustomActivity"/></returns>
         /// <param name="body">The request body</param>
@@ -85,7 +85,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Custom
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CustomActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CustomActivity.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).If you&apos;re filtering by `custom_activity_type_id` or `custom_activity_type_id__in` parameter, the `lead_id` parameter will be required as well. If you want to retrieve all Custom Activity instances of a specific type regardless of the lead, you will need to get leads that contain such an activity type using [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) and provide those Lead IDs one at a time to this endpoint.&quot;
+        /// Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).If you&apos;re filtering by `custom_activity_type_id` or `custom_activity_type_id__in` parameter, the `lead_id` parameter will be required as well. If you want to retrieve all Custom Activity instances of a specific type regardless of the lead, you will need to get leads that contain such an activity type using [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) and provide those Lead IDs one at a time to this endpoint.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -104,7 +104,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Custom
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Custom Activity instances will be created by default with the &apos;published&apos; status. All required fields will be validated in this status. To create an activity without setting all required fields, you can use the \&quot;draft\&quot; status.A Custom Activity can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a Custom Activity.Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).&quot;
+        /// Custom Activity instances will be created by default with the &apos;published&apos; status. All required fields will be validated in this status. To create an activity without setting all required fields, you can use the &quot;draft&quot; status.A Custom Activity can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a Custom Activity.Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -135,7 +135,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Custom
             return new global::Soenneker.Close.OpenApiClient.Activity.Custom.CustomRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).If you&apos;re filtering by `custom_activity_type_id` or `custom_activity_type_id__in` parameter, the `lead_id` parameter will be required as well. If you want to retrieve all Custom Activity instances of a specific type regardless of the lead, you will need to get leads that contain such an activity type using [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) and provide those Lead IDs one at a time to this endpoint.&quot;
+        /// Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).If you&apos;re filtering by `custom_activity_type_id` or `custom_activity_type_id__in` parameter, the `lead_id` parameter will be required as well. If you want to retrieve all Custom Activity instances of a specific type regardless of the lead, you will need to get leads that contain such an activity type using [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) and provide those Lead IDs one at a time to this endpoint.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class CustomRequestBuilderGetQueryParameters 

@@ -4,7 +4,6 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Close.OpenApiClient.Custom_object.Item;
-using Soenneker.Close.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -47,45 +46,45 @@ namespace Soenneker.Close.OpenApiClient.Custom_object
         {
         }
         /// <summary>
-        /// &quot;The `lead_id` parameter is required. If you want to retrieve all Custom Object instances regardless of the lead, you will need to use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering).Custom Fields values appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object).Back references to each Custom Object are not collected in this response. If you need to access this information, please use the `back_reference_fields` on the Custom Object Type and [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) to search for objects that reference the Custom Object Instance.&quot;
+        /// The `lead_id` parameter is required. If you want to retrieve all Custom Object instances regardless of the lead, you will need to use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering).Custom Fields values appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object).Back references to each Custom Object are not collected in this response. If you need to access this information, please use the `back_reference_fields` on the Custom Object Type and [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) to search for objects that reference the Custom Object Instance.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CustomObjectsList200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Custom_object.Custom_objectGetResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomObjectsList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_object.Custom_objectRequestBuilder.Custom_objectRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Custom_object.Custom_objectGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_object.Custom_objectRequestBuilder.Custom_objectRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomObjectsList200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_object.Custom_objectRequestBuilder.Custom_objectRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Custom_object.Custom_objectGetResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_object.Custom_objectRequestBuilder.Custom_objectRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CustomObjectsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CustomObjectsList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Custom_object.Custom_objectGetResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Custom_object.Custom_objectGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Custom Field values can be set using the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object).The following fields are required:  - `custom_object_type_id`: The type of Custom Object you are creating determines the Custom Fields that can be used.  - `lead_id`: The Lead that this Custom Object instance will belong to.  - `name`: Each Custom Object has a name, used for display.&quot;
+        /// Custom Field values can be set using the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object).The following fields are required:  - `custom_object_type_id`: The type of Custom Object you are creating determines the Custom Fields that can be used.  - `lead_id`: The Lead that this Custom Object instance will belong to.  - `name`: Each Custom Object has a name, used for display.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CustomObjectsCreate201Response"/></returns>
-        /// <param name="body">The request body</param>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Custom_object.Custom_objectPostResponse"/></returns>
+        /// <param name="body">Fallback media schema</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomObjectsCreate201Response?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CustomObjectsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Custom_object.Custom_objectPostResponse?> PostAsync(global::Soenneker.Close.OpenApiClient.Custom_object.Custom_objectPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomObjectsCreate201Response> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CustomObjectsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Custom_object.Custom_objectPostResponse> PostAsync(global::Soenneker.Close.OpenApiClient.Custom_object.Custom_objectPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CustomObjectsCreate201Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CustomObjectsCreate201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Custom_object.Custom_objectPostResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Custom_object.Custom_objectPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;The `lead_id` parameter is required. If you want to retrieve all Custom Object instances regardless of the lead, you will need to use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering).Custom Fields values appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object).Back references to each Custom Object are not collected in this response. If you need to access this information, please use the `back_reference_fields` on the Custom Object Type and [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) to search for objects that reference the Custom Object Instance.&quot;
+        /// The `lead_id` parameter is required. If you want to retrieve all Custom Object instances regardless of the lead, you will need to use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering).Custom Fields values appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object).Back references to each Custom Object are not collected in this response. If you need to access this information, please use the `back_reference_fields` on the Custom Object Type and [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) to search for objects that reference the Custom Object Instance.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -104,18 +103,18 @@ namespace Soenneker.Close.OpenApiClient.Custom_object
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Custom Field values can be set using the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object).The following fields are required:  - `custom_object_type_id`: The type of Custom Object you are creating determines the Custom Fields that can be used.  - `lead_id`: The Lead that this Custom Object instance will belong to.  - `name`: Each Custom Object has a name, used for display.&quot;
+        /// Custom Field values can be set using the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object).The following fields are required:  - `custom_object_type_id`: The type of Custom Object you are creating determines the Custom Fields that can be used.  - `lead_id`: The Lead that this Custom Object instance will belong to.  - `name`: Each Custom Object has a name, used for display.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Fallback media schema</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.CustomObjectsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Custom_object.Custom_objectPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.CustomObjectsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Custom_object.Custom_objectPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -135,7 +134,7 @@ namespace Soenneker.Close.OpenApiClient.Custom_object
             return new global::Soenneker.Close.OpenApiClient.Custom_object.Custom_objectRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;The `lead_id` parameter is required. If you want to retrieve all Custom Object instances regardless of the lead, you will need to use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering).Custom Fields values appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object).Back references to each Custom Object are not collected in this response. If you need to access this information, please use the `back_reference_fields` on the Custom Object Type and [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) to search for objects that reference the Custom Object Instance.&quot;
+        /// The `lead_id` parameter is required. If you want to retrieve all Custom Object instances regardless of the lead, you will need to use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering).Custom Fields values appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object).Back references to each Custom Object are not collected in this response. If you need to access this information, please use the `back_reference_fields` on the Custom Object Type and [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) to search for objects that reference the Custom Object Instance.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Custom_objectRequestBuilderGetQueryParameters 

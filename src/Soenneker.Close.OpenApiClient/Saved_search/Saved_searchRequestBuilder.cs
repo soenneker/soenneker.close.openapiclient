@@ -47,7 +47,7 @@ namespace Soenneker.Close.OpenApiClient.Saved_search
         {
         }
         /// <summary>
-        /// &quot;Accepts:- A `type` filter that accepts either `lead` or `contact`. Defaults to `lead`.- A `type__in` filter that can be used to select multiple comma-separated types: `lead,contact`.&quot;
+        /// Accepts:- A `type` filter that accepts either `lead` or `contact`. Defaults to `lead`.- A `type__in` filter that can be used to select multiple comma-separated types: `lead,contact`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.SmartViewsList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -85,7 +85,7 @@ namespace Soenneker.Close.OpenApiClient.Saved_search
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.SavedSearch>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.SavedSearch.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Accepts:- A `type` filter that accepts either `lead` or `contact`. Defaults to `lead`.- A `type__in` filter that can be used to select multiple comma-separated types: `lead,contact`.&quot;
+        /// Accepts:- A `type` filter that accepts either `lead` or `contact`. Defaults to `lead`.- A `type__in` filter that can be used to select multiple comma-separated types: `lead,contact`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -135,7 +135,7 @@ namespace Soenneker.Close.OpenApiClient.Saved_search
             return new global::Soenneker.Close.OpenApiClient.Saved_search.Saved_searchRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Accepts:- A `type` filter that accepts either `lead` or `contact`. Defaults to `lead`.- A `type__in` filter that can be used to select multiple comma-separated types: `lead,contact`.&quot;
+        /// Accepts:- A `type` filter that accepts either `lead` or `contact`. Defaults to `lead`.- A `type__in` filter that can be used to select multiple comma-separated types: `lead,contact`.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Saved_searchRequestBuilderGetQueryParameters 

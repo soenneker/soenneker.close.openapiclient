@@ -3,7 +3,6 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.Close.OpenApiClient.Models;
 using Soenneker.Close.OpenApiClient.Send_as.Bulk;
 using Soenneker.Close.OpenApiClient.Send_as.Item;
 using System.Collections.Generic;
@@ -72,40 +71,40 @@ namespace Soenneker.Close.OpenApiClient.Send_as
         /// <summary>
         /// A user only has access to associations they are involved in. This means that when using this endpoint, `allowing_user_id` or `allowed_user_id` must be equal to your user ID. If neither filter is provided, `allowing_user_id` is assumed by default.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.SendAsList200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Send_as.Send_asGetResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.SendAsList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Send_as.Send_asRequestBuilder.Send_asRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Send_as.Send_asGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Send_as.Send_asRequestBuilder.Send_asRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.SendAsList200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Send_as.Send_asRequestBuilder.Send_asRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Send_as.Send_asGetResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Send_as.Send_asRequestBuilder.Send_asRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.SendAsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.SendAsList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Send_as.Send_asGetResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Send_as.Send_asGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a send-as permission. The `allowing_user_id` must be equal to your own user ID.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.SendAsCreate201Response"/></returns>
-        /// <param name="body">The request body</param>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Send_as.Send_asPostResponse"/></returns>
+        /// <param name="body">Fallback media schema</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.SendAsCreate201Response?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.SendAsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Send_as.Send_asPostResponse?> PostAsync(global::Soenneker.Close.OpenApiClient.Send_as.Send_asPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.SendAsCreate201Response> PostAsync(global::Soenneker.Close.OpenApiClient.Models.SendAsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Send_as.Send_asPostResponse> PostAsync(global::Soenneker.Close.OpenApiClient.Send_as.Send_asPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.SendAsCreate201Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.SendAsCreate201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Send_as.Send_asPostResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Send_as.Send_asPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The `allowing_user_id` must be equal to your user ID.Supply both the `allowing_user_id` and the `allowed_user_id` to delete an association by those users.
@@ -123,7 +122,6 @@ namespace Soenneker.Close.OpenApiClient.Send_as
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -149,15 +147,15 @@ namespace Soenneker.Close.OpenApiClient.Send_as
         /// Create a send-as permission. The `allowing_user_id` must be equal to your own user ID.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Fallback media schema</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.SendAsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Send_as.Send_asPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.SendAsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Send_as.Send_asPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

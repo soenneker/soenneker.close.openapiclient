@@ -3,7 +3,6 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.Close.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -36,20 +35,20 @@ namespace Soenneker.Close.OpenApiClient.Dialer.Item
         /// <summary>
         /// Once you have a `source_value` for a dialer session and `source_type=saved-search`, you can use the [saved_search endpoint](https://developer.close.com/api/resources/smart-views/get) to find out more information about the Smart View being used.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.DialersGet200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Dialer.Item.DialerGetResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DialersGet200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Dialer.Item.DialerItemRequestBuilder.DialerItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Dialer.Item.DialerGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Dialer.Item.DialerItemRequestBuilder.DialerItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.DialersGet200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Dialer.Item.DialerItemRequestBuilder.DialerItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Dialer.Item.DialerGetResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Dialer.Item.DialerItemRequestBuilder.DialerItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.DialersGet200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.DialersGet200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Dialer.Item.DialerGetResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Dialer.Item.DialerGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Once you have a `source_value` for a dialer session and `source_type=saved-search`, you can use the [saved_search endpoint](https://developer.close.com/api/resources/smart-views/get) to find out more information about the Smart View being used.

@@ -36,19 +36,20 @@ namespace Soenneker.Close.OpenApiClient.Activity.Call.Item
         /// <summary>
         /// Delete a Call activity
         /// </summary>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get a single Call activity
@@ -69,7 +70,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Call.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CallActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CallActivity.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Most commonly used to update `note_html` or `outcome_id`. Some fields (`status`, `duration`, `direction`) cannot be updated for internal calls made through Close&apos;s VoIP system.**`note_html` and `note`**: setting one overwrites the other. If both are provided, `note_html` takes precedence. `note_html` supports rich-text HTML; `note` is plaintext only.**Deleting recordings**: for internal calls, changing or clearing `recording_url` or `voicemail_url`, or setting `recording_transcript` to `null`, permanently deletes the corresponding recording, voicemail, or transcript. This requires the `delete_own_activities` permission for your own calls, or `manage_others_activities` for other users&apos; calls and calls not assigned to a user. Without the required permission the request fails with a `400` error.&quot;
+        /// Most commonly used to update `note_html` or `outcome_id`. Some fields (`status`, `duration`, `direction`) cannot be updated for internal calls made through Close&apos;s VoIP system.**`note_html` and `note`**: setting one overwrites the other. If both are provided, `note_html` takes precedence. `note_html` supports rich-text HTML; `note` is plaintext only.**Deleting recordings**: for internal calls, changing or clearing `recording_url` or `voicemail_url`, or setting `recording_transcript` to `null`, permanently deletes the corresponding recording, voicemail, or transcript. This requires the `delete_own_activities` permission for your own calls, or `manage_others_activities` for other users&apos; calls and calls not assigned to a user. Without the required permission the request fails with a `400` error.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CallActivity"/></returns>
         /// <param name="body">The request body</param>
@@ -104,7 +105,6 @@ namespace Soenneker.Close.OpenApiClient.Activity.Call.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -127,7 +127,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Call.Item
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Most commonly used to update `note_html` or `outcome_id`. Some fields (`status`, `duration`, `direction`) cannot be updated for internal calls made through Close&apos;s VoIP system.**`note_html` and `note`**: setting one overwrites the other. If both are provided, `note_html` takes precedence. `note_html` supports rich-text HTML; `note` is plaintext only.**Deleting recordings**: for internal calls, changing or clearing `recording_url` or `voicemail_url`, or setting `recording_transcript` to `null`, permanently deletes the corresponding recording, voicemail, or transcript. This requires the `delete_own_activities` permission for your own calls, or `manage_others_activities` for other users&apos; calls and calls not assigned to a user. Without the required permission the request fails with a `400` error.&quot;
+        /// Most commonly used to update `note_html` or `outcome_id`. Some fields (`status`, `duration`, `direction`) cannot be updated for internal calls made through Close&apos;s VoIP system.**`note_html` and `note`**: setting one overwrites the other. If both are provided, `note_html` takes precedence. `note_html` supports rich-text HTML; `note` is plaintext only.**Deleting recordings**: for internal calls, changing or clearing `recording_url` or `voicemail_url`, or setting `recording_transcript` to `null`, permanently deletes the corresponding recording, voicemail, or transcript. This requires the `delete_own_activities` permission for your own calls, or `manage_others_activities` for other users&apos; calls and calls not assigned to a user. Without the required permission the request fails with a `400` error.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

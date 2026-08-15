@@ -47,65 +47,65 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
         {
         }
         /// <summary>
-        /// &quot;The `view` parameter can be used to conveniently access the different task views. It accepts one of the following values:* `inbox`: Shows incomplete tasks up to the end of the user&apos;s day only (taking the time zone into account).* `future`: Shows incomplete tasks starting from the user&apos;s tomorrow only (taking the time zone into account).* `archive`: Shows complete tasks only.Note that a `view` value of `inbox` or `future` will override any `date__lt` or `date__gte` parameters included in the same request.The `_order_by` field allows ordering by `date` or `date_created` (descending order by prepending a minus, e.g. `_order_by=-date`).&quot;
+        /// The `view` parameter can be used to conveniently access the different task views. It accepts one of the following values:* `inbox`: Shows incomplete tasks up to the end of the user&apos;s day only (taking the time zone into account).* `future`: Shows incomplete tasks starting from the user&apos;s tomorrow only (taking the time zone into account).* `archive`: Shows complete tasks only.Note that a `view` value of `inbox` or `future` will override any `date__lt` or `date__gte` parameters included in the same request.The `_order_by` field allows ordering by `date` or `date_created` (descending order by prepending a minus, e.g. `_order_by=-date`).
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.TasksList200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskGetResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.TasksList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskRequestBuilder.TaskRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskRequestBuilder.TaskRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.TasksList200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskRequestBuilder.TaskRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskGetResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskRequestBuilder.TaskRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.TasksList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.TasksList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskGetResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Provide the type of task to be created in the `_type` field. Currently only tasks of type `lead` and `outgoing_call` can be created.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.TasksCreate201Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskPostResponse"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.TasksCreate201Response?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateTask body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskRequestBuilder.TaskRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskPostResponse?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateTask body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskRequestBuilder.TaskRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.TasksCreate201Response> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateTask body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskRequestBuilder.TaskRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskPostResponse> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateTask body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskRequestBuilder.TaskRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.TasksCreate201Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.TasksCreate201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskPostResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Any of the filters of the GET endpoint may be used as query parameters or passed in the request body (see [Filter Parameters](https://developer.close.com/api/overview/filter-parameters)). For example:```json{\&quot;_params\&quot;: {\&quot;id__in\&quot;: \&quot;task_A,task_B,task_C\&quot;}, \&quot;is_complete\&quot;: true}```Only the `assigned_to`, `date` and `is_complete` fields may be updated.&quot;
+        /// Any of the filters of the GET endpoint may be used as query parameters or passed in the request body (see [Filter Parameters](https://developer.close.com/api/overview/filter-parameters)). For example:```json{&quot;_params&quot;: {&quot;id__in&quot;: &quot;task_A,task_B,task_C&quot;}, &quot;is_complete&quot;: true}```Only the `assigned_to`, `date` and `is_complete` fields may be updated.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.TasksBulkUpdate200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskPutResponse"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.TasksBulkUpdate200Response?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotifications body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskRequestBuilder.TaskRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskPutResponse?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotifications body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskRequestBuilder.TaskRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.TasksBulkUpdate200Response> PutAsync(global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotifications body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskRequestBuilder.TaskRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskPutResponse> PutAsync(global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotifications body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskRequestBuilder.TaskRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.TasksBulkUpdate200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.TasksBulkUpdate200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskPutResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskPutResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;The `view` parameter can be used to conveniently access the different task views. It accepts one of the following values:* `inbox`: Shows incomplete tasks up to the end of the user&apos;s day only (taking the time zone into account).* `future`: Shows incomplete tasks starting from the user&apos;s tomorrow only (taking the time zone into account).* `archive`: Shows complete tasks only.Note that a `view` value of `inbox` or `future` will override any `date__lt` or `date__gte` parameters included in the same request.The `_order_by` field allows ordering by `date` or `date_created` (descending order by prepending a minus, e.g. `_order_by=-date`).&quot;
+        /// The `view` parameter can be used to conveniently access the different task views. It accepts one of the following values:* `inbox`: Shows incomplete tasks up to the end of the user&apos;s day only (taking the time zone into account).* `future`: Shows incomplete tasks starting from the user&apos;s tomorrow only (taking the time zone into account).* `archive`: Shows complete tasks only.Note that a `view` value of `inbox` or `future` will override any `date__lt` or `date__gte` parameters included in the same request.The `_order_by` field allows ordering by `date` or `date_created` (descending order by prepending a minus, e.g. `_order_by=-date`).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -146,7 +146,7 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Any of the filters of the GET endpoint may be used as query parameters or passed in the request body (see [Filter Parameters](https://developer.close.com/api/overview/filter-parameters)). For example:```json{\&quot;_params\&quot;: {\&quot;id__in\&quot;: \&quot;task_A,task_B,task_C\&quot;}, \&quot;is_complete\&quot;: true}```Only the `assigned_to`, `date` and `is_complete` fields may be updated.&quot;
+        /// Any of the filters of the GET endpoint may be used as query parameters or passed in the request body (see [Filter Parameters](https://developer.close.com/api/overview/filter-parameters)). For example:```json{&quot;_params&quot;: {&quot;id__in&quot;: &quot;task_A,task_B,task_C&quot;}, &quot;is_complete&quot;: true}```Only the `assigned_to`, `date` and `is_complete` fields may be updated.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -177,7 +177,7 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
             return new global::Soenneker.Close.OpenApiClient.TaskNamespace.TaskRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;The `view` parameter can be used to conveniently access the different task views. It accepts one of the following values:* `inbox`: Shows incomplete tasks up to the end of the user&apos;s day only (taking the time zone into account).* `future`: Shows incomplete tasks starting from the user&apos;s tomorrow only (taking the time zone into account).* `archive`: Shows complete tasks only.Note that a `view` value of `inbox` or `future` will override any `date__lt` or `date__gte` parameters included in the same request.The `_order_by` field allows ordering by `date` or `date_created` (descending order by prepending a minus, e.g. `_order_by=-date`).&quot;
+        /// The `view` parameter can be used to conveniently access the different task views. It accepts one of the following values:* `inbox`: Shows incomplete tasks up to the end of the user&apos;s day only (taking the time zone into account).* `future`: Shows incomplete tasks starting from the user&apos;s tomorrow only (taking the time zone into account).* `archive`: Shows complete tasks only.Note that a `view` value of `inbox` or `future` will override any `date__lt` or `date__gte` parameters included in the same request.The `_order_by` field allows ordering by `date` or `date_created` (descending order by prepending a minus, e.g. `_order_by=-date`).
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class TaskRequestBuilderGetQueryParameters 
@@ -478,7 +478,7 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
 #endif
         }
         /// <summary>
-        /// &quot;Any of the filters of the GET endpoint may be used as query parameters or passed in the request body (see [Filter Parameters](https://developer.close.com/api/overview/filter-parameters)). For example:```json{\&quot;_params\&quot;: {\&quot;id__in\&quot;: \&quot;task_A,task_B,task_C\&quot;}, \&quot;is_complete\&quot;: true}```Only the `assigned_to`, `date` and `is_complete` fields may be updated.&quot;
+        /// Any of the filters of the GET endpoint may be used as query parameters or passed in the request body (see [Filter Parameters](https://developer.close.com/api/overview/filter-parameters)). For example:```json{&quot;_params&quot;: {&quot;id__in&quot;: &quot;task_A,task_B,task_C&quot;}, &quot;is_complete&quot;: true}```Only the `assigned_to`, `date` and `is_complete` fields may be updated.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class TaskRequestBuilderPutQueryParameters 

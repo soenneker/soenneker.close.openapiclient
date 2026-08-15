@@ -12,7 +12,7 @@ namespace Soenneker.Close.OpenApiClient.Models
     public partial class UpdateOutcome : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>&quot;Deprecated. This field will be derived from `type` in a future update: `custom` applies to calls and meetings, `vm-dropped` applies to calls only.&quot;</summary>
+        /// <summary>Deprecated. This field will be derived from `type` in a future update: `custom` applies to calls and meetings, `vm-dropped` applies to calls only.</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

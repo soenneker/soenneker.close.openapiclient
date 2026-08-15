@@ -42,22 +42,23 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
         /// <summary>
         /// Delete a Meeting activity
         /// </summary>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Meeting transcripts can be accessed using this API but are not loaded by default. To load transcripts, use the `_fields` parameter with `transcripts` value.The `transcripts` field is an array of objects for each Close Notetaker bot that joined the meeting. Typically, there will be only one transcript. Transcripts are ordered by the time bots joined the meeting.Example transcripts in response:```json{ \&quot;transcripts\&quot;: [ { \&quot;utterances\&quot;: [ { \&quot;speaker_label\&quot;: \&quot;John Lead\&quot;, \&quot;speaker_side\&quot;: \&quot;contact\&quot;, \&quot;start\&quot;: 0.1, \&quot;end\&quot;: 1.2, \&quot;text\&quot;: \&quot;Hey, what&apos;s up? How is it going?\&quot; }, { \&quot;speaker_label\&quot;: \&quot;Jane User\&quot;, \&quot;speaker_side\&quot;: \&quot;close-user\&quot;, \&quot;start\&quot;: 1.3, \&quot;end\&quot;: 2.4, \&quot;text\&quot;: \&quot;Hey John, I&apos;m doing great. How about you?\&quot; } ], \&quot;summary_text\&quot;: \&quot;Summary text\&quot;, \&quot;summary_html\&quot;: \&quot;&lt;p&gt;Summary text&lt;/p&gt;\&quot; } ] }```&quot;
+        /// Meeting transcripts can be accessed using this API but are not loaded by default. To load transcripts, use the `_fields` parameter with `transcripts` value.The `transcripts` field is an array of objects for each Close Notetaker bot that joined the meeting. Typically, there will be only one transcript. Transcripts are ordered by the time bots joined the meeting.Example transcripts in response:```json{ &quot;transcripts&quot;: [ { &quot;utterances&quot;: [ { &quot;speaker_label&quot;: &quot;John Lead&quot;, &quot;speaker_side&quot;: &quot;contact&quot;, &quot;start&quot;: 0.1, &quot;end&quot;: 1.2, &quot;text&quot;: &quot;Hey, what&apos;s up? How is it going?&quot; }, { &quot;speaker_label&quot;: &quot;Jane User&quot;, &quot;speaker_side&quot;: &quot;close-user&quot;, &quot;start&quot;: 1.3, &quot;end&quot;: 2.4, &quot;text&quot;: &quot;Hey John, I&apos;m doing great. How about you?&quot; } ], &quot;summary_text&quot;: &quot;Summary text&quot;, &quot;summary_html&quot;: &quot;&lt;p&gt;Summary text&lt;/p&gt;&quot; } ] }```
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.MeetingActivity"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -78,16 +79,16 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
         /// Most commonly this can be used to update a meetings&apos;s `user_note_html` or `outcome_id`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.MeetingActivity"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Fallback media schema</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.MeetingActivity?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.MeetingActivity?> PutAsync(global::Soenneker.Close.OpenApiClient.Activity.Meeting.Item.MeetingPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.MeetingActivity> PutAsync(global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.MeetingActivity> PutAsync(global::Soenneker.Close.OpenApiClient.Activity.Meeting.Item.MeetingPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -110,11 +111,10 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Meeting transcripts can be accessed using this API but are not loaded by default. To load transcripts, use the `_fields` parameter with `transcripts` value.The `transcripts` field is an array of objects for each Close Notetaker bot that joined the meeting. Typically, there will be only one transcript. Transcripts are ordered by the time bots joined the meeting.Example transcripts in response:```json{ \&quot;transcripts\&quot;: [ { \&quot;utterances\&quot;: [ { \&quot;speaker_label\&quot;: \&quot;John Lead\&quot;, \&quot;speaker_side\&quot;: \&quot;contact\&quot;, \&quot;start\&quot;: 0.1, \&quot;end\&quot;: 1.2, \&quot;text\&quot;: \&quot;Hey, what&apos;s up? How is it going?\&quot; }, { \&quot;speaker_label\&quot;: \&quot;Jane User\&quot;, \&quot;speaker_side\&quot;: \&quot;close-user\&quot;, \&quot;start\&quot;: 1.3, \&quot;end\&quot;: 2.4, \&quot;text\&quot;: \&quot;Hey John, I&apos;m doing great. How about you?\&quot; } ], \&quot;summary_text\&quot;: \&quot;Summary text\&quot;, \&quot;summary_html\&quot;: \&quot;&lt;p&gt;Summary text&lt;/p&gt;\&quot; } ] }```&quot;
+        /// Meeting transcripts can be accessed using this API but are not loaded by default. To load transcripts, use the `_fields` parameter with `transcripts` value.The `transcripts` field is an array of objects for each Close Notetaker bot that joined the meeting. Typically, there will be only one transcript. Transcripts are ordered by the time bots joined the meeting.Example transcripts in response:```json{ &quot;transcripts&quot;: [ { &quot;utterances&quot;: [ { &quot;speaker_label&quot;: &quot;John Lead&quot;, &quot;speaker_side&quot;: &quot;contact&quot;, &quot;start&quot;: 0.1, &quot;end&quot;: 1.2, &quot;text&quot;: &quot;Hey, what&apos;s up? How is it going?&quot; }, { &quot;speaker_label&quot;: &quot;Jane User&quot;, &quot;speaker_side&quot;: &quot;close-user&quot;, &quot;start&quot;: 1.3, &quot;end&quot;: 2.4, &quot;text&quot;: &quot;Hey John, I&apos;m doing great. How about you?&quot; } ], &quot;summary_text&quot;: &quot;Summary text&quot;, &quot;summary_html&quot;: &quot;&lt;p&gt;Summary text&lt;/p&gt;&quot; } ] }```
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -136,15 +136,15 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
         /// Most commonly this can be used to update a meetings&apos;s `user_note_html` or `outcome_id`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Fallback media schema</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Activity.Meeting.Item.MeetingPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Activity.Meeting.Item.MeetingPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -164,7 +164,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
             return new global::Soenneker.Close.OpenApiClient.Activity.Meeting.Item.MeetingItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Meeting transcripts can be accessed using this API but are not loaded by default. To load transcripts, use the `_fields` parameter with `transcripts` value.The `transcripts` field is an array of objects for each Close Notetaker bot that joined the meeting. Typically, there will be only one transcript. Transcripts are ordered by the time bots joined the meeting.Example transcripts in response:```json{ \&quot;transcripts\&quot;: [ { \&quot;utterances\&quot;: [ { \&quot;speaker_label\&quot;: \&quot;John Lead\&quot;, \&quot;speaker_side\&quot;: \&quot;contact\&quot;, \&quot;start\&quot;: 0.1, \&quot;end\&quot;: 1.2, \&quot;text\&quot;: \&quot;Hey, what&apos;s up? How is it going?\&quot; }, { \&quot;speaker_label\&quot;: \&quot;Jane User\&quot;, \&quot;speaker_side\&quot;: \&quot;close-user\&quot;, \&quot;start\&quot;: 1.3, \&quot;end\&quot;: 2.4, \&quot;text\&quot;: \&quot;Hey John, I&apos;m doing great. How about you?\&quot; } ], \&quot;summary_text\&quot;: \&quot;Summary text\&quot;, \&quot;summary_html\&quot;: \&quot;&lt;p&gt;Summary text&lt;/p&gt;\&quot; } ] }```&quot;
+        /// Meeting transcripts can be accessed using this API but are not loaded by default. To load transcripts, use the `_fields` parameter with `transcripts` value.The `transcripts` field is an array of objects for each Close Notetaker bot that joined the meeting. Typically, there will be only one transcript. Transcripts are ordered by the time bots joined the meeting.Example transcripts in response:```json{ &quot;transcripts&quot;: [ { &quot;utterances&quot;: [ { &quot;speaker_label&quot;: &quot;John Lead&quot;, &quot;speaker_side&quot;: &quot;contact&quot;, &quot;start&quot;: 0.1, &quot;end&quot;: 1.2, &quot;text&quot;: &quot;Hey, what&apos;s up? How is it going?&quot; }, { &quot;speaker_label&quot;: &quot;Jane User&quot;, &quot;speaker_side&quot;: &quot;close-user&quot;, &quot;start&quot;: 1.3, &quot;end&quot;: 2.4, &quot;text&quot;: &quot;Hey John, I&apos;m doing great. How about you?&quot; } ], &quot;summary_text&quot;: &quot;Summary text&quot;, &quot;summary_html&quot;: &quot;&lt;p&gt;Summary text&lt;/p&gt;&quot; } ] }```
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MeetingItemRequestBuilderGetQueryParameters 

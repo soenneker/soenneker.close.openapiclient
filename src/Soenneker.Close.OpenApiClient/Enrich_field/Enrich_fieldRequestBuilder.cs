@@ -34,27 +34,27 @@ namespace Soenneker.Close.OpenApiClient.Enrich_field
         {
         }
         /// <summary>
-        /// &quot;This endpoint uses AI to enrich (populate or enhance) a specific field on a lead or contact. The enrichment process analyzes existing data and external sources to provide intelligent field values.**Parameters:**- `organization_id` (required): The organization ID- `object_type` (required): Either \&quot;lead\&quot; or \&quot;contact\&quot;- `object_id` (required): The ID of the lead or contact to enrich- `field_id` (required): The ID of the custom field to enrich- `set_new_value` (optional): Whether to update the field with the enriched value (default: true)- `overwrite_existing_value` (optional): Whether to overwrite existing field values (default: false)&quot;
+        /// This endpoint uses AI to enrich (populate or enhance) a specific field on a lead or contact. The enrichment process analyzes existing data and external sources to provide intelligent field values.**Parameters:**- `organization_id` (required): The organization ID- `object_type` (required): Either &quot;lead&quot; or &quot;contact&quot;- `object_id` (required): The ID of the lead or contact to enrich- `field_id` (required): The ID of the custom field to enrich- `set_new_value` (optional): Whether to update the field with the enriched value (default: true)- `overwrite_existing_value` (optional): Whether to overwrite existing field values (default: false)
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.FieldEnrichmentCreate201Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Enrich_field.Enrich_fieldPostResponse"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.FieldEnrichmentCreate201Response?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.RunFieldEnrichment body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Enrich_field.Enrich_fieldPostResponse?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.RunFieldEnrichment body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.FieldEnrichmentCreate201Response> PostAsync(global::Soenneker.Close.OpenApiClient.Models.RunFieldEnrichment body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Enrich_field.Enrich_fieldPostResponse> PostAsync(global::Soenneker.Close.OpenApiClient.Models.RunFieldEnrichment body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.FieldEnrichmentCreate201Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.FieldEnrichmentCreate201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Enrich_field.Enrich_fieldPostResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Enrich_field.Enrich_fieldPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;This endpoint uses AI to enrich (populate or enhance) a specific field on a lead or contact. The enrichment process analyzes existing data and external sources to provide intelligent field values.**Parameters:**- `organization_id` (required): The organization ID- `object_type` (required): Either \&quot;lead\&quot; or \&quot;contact\&quot;- `object_id` (required): The ID of the lead or contact to enrich- `field_id` (required): The ID of the custom field to enrich- `set_new_value` (optional): Whether to update the field with the enriched value (default: true)- `overwrite_existing_value` (optional): Whether to overwrite existing field values (default: false)&quot;
+        /// This endpoint uses AI to enrich (populate or enhance) a specific field on a lead or contact. The enrichment process analyzes existing data and external sources to provide intelligent field values.**Parameters:**- `organization_id` (required): The organization ID- `object_type` (required): Either &quot;lead&quot; or &quot;contact&quot;- `object_id` (required): The ID of the lead or contact to enrich- `field_id` (required): The ID of the custom field to enrich- `set_new_value` (optional): Whether to update the field with the enriched value (default: true)- `overwrite_existing_value` (optional): Whether to overwrite existing field values (default: false)
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

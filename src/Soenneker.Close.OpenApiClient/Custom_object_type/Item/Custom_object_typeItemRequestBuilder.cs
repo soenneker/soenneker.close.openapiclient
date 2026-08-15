@@ -3,7 +3,6 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.Close.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -53,40 +52,40 @@ namespace Soenneker.Close.OpenApiClient.Custom_object_type.Item
         /// <summary>
         /// Retrieve a single custom object type by ID. The response contains the Custom Object Type including most Custom Field metadata.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesGet200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Custom_object_type.Item.Custom_object_typeGetResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesGet200Response?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Custom_object_type.Item.Custom_object_typeGetResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesGet200Response> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Custom_object_type.Item.Custom_object_typeGetResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesGet200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesGet200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Custom_object_type.Item.Custom_object_typeGetResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Custom_object_type.Item.Custom_object_typeGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The type&apos;s `name`, `name_plural`, `description`, `api_create_only` and `editable_with_roles` properties may be updated here. These properties will be updated immediately in the Custom Object API. You cannot add, modify, remove or reorder fields from a Custom Object Type using this resource. See [Custom Object Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object) and [Custom Field Schema API](https://developer.close.com/api/resources/custom-fields/custom-field-schemas) for these features.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdate200Response"/></returns>
-        /// <param name="body">The request body</param>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Custom_object_type.Item.Custom_object_typePutResponse"/></returns>
+        /// <param name="body">Fallback media schema</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdate200Response?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Custom_object_type.Item.Custom_object_typePutResponse?> PutAsync(global::Soenneker.Close.OpenApiClient.Custom_object_type.Item.Custom_object_typePutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdate200Response> PutAsync(global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Custom_object_type.Item.Custom_object_typePutResponse> PutAsync(global::Soenneker.Close.OpenApiClient.Custom_object_type.Item.Custom_object_typePutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdate200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdate200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Custom_object_type.Item.Custom_object_typePutResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Custom_object_type.Item.Custom_object_typePutResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete a Custom Object Type
@@ -104,7 +103,6 @@ namespace Soenneker.Close.OpenApiClient.Custom_object_type.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -130,15 +128,15 @@ namespace Soenneker.Close.OpenApiClient.Custom_object_type.Item
         /// The type&apos;s `name`, `name_plural`, `description`, `api_create_only` and `editable_with_roles` properties may be updated here. These properties will be updated immediately in the Custom Object API. You cannot add, modify, remove or reorder fields from a Custom Object Type using this resource. See [Custom Object Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object) and [Custom Field Schema API](https://developer.close.com/api/resources/custom-fields/custom-field-schemas) for these features.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Fallback media schema</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Custom_object_type.Item.Custom_object_typePutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Custom_object_type.Item.Custom_object_typePutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

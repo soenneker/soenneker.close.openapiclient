@@ -65,19 +65,19 @@ namespace Soenneker.Close.OpenApiClient.Bulk_action.Delete
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Use `\&quot;send_done_email\&quot;: false` if you don&apos;t want to get a confirmation email after the bulk action is done.&quot;
+        /// Use `&quot;send_done_email&quot;: false` if you don&apos;t want to get a confirmation email after the bulk action is done.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.BulkDeleteAction"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Fallback media schema</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.BulkDeleteAction?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.BulkDeleteAction?> PostAsync(global::Soenneker.Close.OpenApiClient.Bulk_action.Delete.DeletePostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.BulkDeleteAction> PostAsync(global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.BulkDeleteAction> PostAsync(global::Soenneker.Close.OpenApiClient.Bulk_action.Delete.DeletePostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -104,18 +104,18 @@ namespace Soenneker.Close.OpenApiClient.Bulk_action.Delete
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Use `\&quot;send_done_email\&quot;: false` if you don&apos;t want to get a confirmation email after the bulk action is done.&quot;
+        /// Use `&quot;send_done_email&quot;: false` if you don&apos;t want to get a confirmation email after the bulk action is done.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Fallback media schema</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Bulk_action.Delete.DeletePostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Bulk_action.Delete.DeletePostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

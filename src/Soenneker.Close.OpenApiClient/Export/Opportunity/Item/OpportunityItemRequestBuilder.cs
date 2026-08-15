@@ -3,7 +3,6 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.Close.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -34,25 +33,25 @@ namespace Soenneker.Close.OpenApiClient.Export.Opportunity.Item
         {
         }
         /// <summary>
-        /// &quot;Get a single opportunity export to do things like check its `status` or get a `download_url`.`status` can have one of these values: `created`, `started`, `in_progress`, `done`, `error`.&quot;
+        /// Get a single opportunity export to do things like check its `status` or get a `download_url`.`status` can have one of these values: `created`, `started`, `in_progress`, `done`, `error`.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ExportsGetOpportunity200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Export.Opportunity.Item.OpportunityGetResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.ExportsGetOpportunity200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Export.Opportunity.Item.OpportunityItemRequestBuilder.OpportunityItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Export.Opportunity.Item.OpportunityGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Export.Opportunity.Item.OpportunityItemRequestBuilder.OpportunityItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.ExportsGetOpportunity200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Export.Opportunity.Item.OpportunityItemRequestBuilder.OpportunityItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Export.Opportunity.Item.OpportunityGetResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Export.Opportunity.Item.OpportunityItemRequestBuilder.OpportunityItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ExportsGetOpportunity200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ExportsGetOpportunity200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Export.Opportunity.Item.OpportunityGetResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Export.Opportunity.Item.OpportunityGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Get a single opportunity export to do things like check its `status` or get a `download_url`.`status` can have one of these values: `created`, `started`, `in_progress`, `done`, `error`.&quot;
+        /// Get a single opportunity export to do things like check its `status` or get a `download_url`.`status` can have one of these values: `created`, `started`, `in_progress`, `done`, `error`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +79,7 @@ namespace Soenneker.Close.OpenApiClient.Export.Opportunity.Item
             return new global::Soenneker.Close.OpenApiClient.Export.Opportunity.Item.OpportunityItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Get a single opportunity export to do things like check its `status` or get a `download_url`.`status` can have one of these values: `created`, `started`, `in_progress`, `done`, `error`.&quot;
+        /// Get a single opportunity export to do things like check its `status` or get a `download_url`.`status` can have one of these values: `created`, `started`, `in_progress`, `done`, `error`.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class OpportunityItemRequestBuilderGetQueryParameters 

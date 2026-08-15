@@ -71,19 +71,19 @@ namespace Soenneker.Close.OpenApiClient.Lead
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.LeadsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.LeadsList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Contacts, addresses, and custom fields can all be nested in the lead. Activities, tasks, and opportunities must be posted separately.**status / status_id** (optional): Post either `status` or `status_id` (but not both). If neither is provided, the organization&apos;s default (first) status will be used. Using `status_id` is recommended so that users can rename statuses in the UI without breaking your implementation.**custom.FIELD_ID** (optional): Set custom fields by setting `custom.FIELD_ID` to the field value, where FIELD_ID is the ID of the custom field, e.g.:```json{ \&quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c\&quot;: \&quot;value\&quot;, \&quot;custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F\&quot;: \&quot;other value\&quot; }```If a custom field has `accepts_multiple_values: true`, the entire value will be replaced. For example, given a Lead has a Custom Choice Field with value `[\&quot;A\&quot;, \&quot;B\&quot;]`, adding choice `\&quot;C\&quot;` would mean setting the value to `[\&quot;A\&quot;, \&quot;B\&quot;, \&quot;C\&quot;]`.Note that using the `custom` field dict or the `custom.FIELD_NAME` syntax (instead of custom field IDs) is deprecated and will be removed from the API. See [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.&quot;
+        /// Contacts, addresses, and custom fields can all be nested in the lead. Activities, tasks, and opportunities must be posted separately.**status / status_id** (optional): Post either `status` or `status_id` (but not both). If neither is provided, the organization&apos;s default (first) status will be used. Using `status_id` is recommended so that users can rename statuses in the UI without breaking your implementation.**custom.FIELD_ID** (optional): Set custom fields by setting `custom.FIELD_ID` to the field value, where FIELD_ID is the ID of the custom field, e.g.:```json{ &quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c&quot;: &quot;value&quot;, &quot;custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F&quot;: &quot;other value&quot; }```If a custom field has `accepts_multiple_values: true`, the entire value will be replaced. For example, given a Lead has a Custom Choice Field with value `[&quot;A&quot;, &quot;B&quot;]`, adding choice `&quot;C&quot;` would mean setting the value to `[&quot;A&quot;, &quot;B&quot;, &quot;C&quot;]`.Note that using the `custom` field dict or the `custom.FIELD_NAME` syntax (instead of custom field IDs) is deprecated and will be removed from the API. See [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.Lead"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Fallback media schema</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.Lead?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.LeadsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.Lead?> PostAsync(global::Soenneker.Close.OpenApiClient.Lead.LeadPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.Lead> PostAsync(global::Soenneker.Close.OpenApiClient.Models.LeadsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.Lead> PostAsync(global::Soenneker.Close.OpenApiClient.Lead.LeadPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -110,18 +110,18 @@ namespace Soenneker.Close.OpenApiClient.Lead
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Contacts, addresses, and custom fields can all be nested in the lead. Activities, tasks, and opportunities must be posted separately.**status / status_id** (optional): Post either `status` or `status_id` (but not both). If neither is provided, the organization&apos;s default (first) status will be used. Using `status_id` is recommended so that users can rename statuses in the UI without breaking your implementation.**custom.FIELD_ID** (optional): Set custom fields by setting `custom.FIELD_ID` to the field value, where FIELD_ID is the ID of the custom field, e.g.:```json{ \&quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c\&quot;: \&quot;value\&quot;, \&quot;custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F\&quot;: \&quot;other value\&quot; }```If a custom field has `accepts_multiple_values: true`, the entire value will be replaced. For example, given a Lead has a Custom Choice Field with value `[\&quot;A\&quot;, \&quot;B\&quot;]`, adding choice `\&quot;C\&quot;` would mean setting the value to `[\&quot;A\&quot;, \&quot;B\&quot;, \&quot;C\&quot;]`.Note that using the `custom` field dict or the `custom.FIELD_NAME` syntax (instead of custom field IDs) is deprecated and will be removed from the API. See [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.&quot;
+        /// Contacts, addresses, and custom fields can all be nested in the lead. Activities, tasks, and opportunities must be posted separately.**status / status_id** (optional): Post either `status` or `status_id` (but not both). If neither is provided, the organization&apos;s default (first) status will be used. Using `status_id` is recommended so that users can rename statuses in the UI without breaking your implementation.**custom.FIELD_ID** (optional): Set custom fields by setting `custom.FIELD_ID` to the field value, where FIELD_ID is the ID of the custom field, e.g.:```json{ &quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c&quot;: &quot;value&quot;, &quot;custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F&quot;: &quot;other value&quot; }```If a custom field has `accepts_multiple_values: true`, the entire value will be replaced. For example, given a Lead has a Custom Choice Field with value `[&quot;A&quot;, &quot;B&quot;]`, adding choice `&quot;C&quot;` would mean setting the value to `[&quot;A&quot;, &quot;B&quot;, &quot;C&quot;]`.Note that using the `custom` field dict or the `custom.FIELD_NAME` syntax (instead of custom field IDs) is deprecated and will be removed from the API. See [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Fallback media schema</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.LeadsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Lead.LeadPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.LeadsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Lead.LeadPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
