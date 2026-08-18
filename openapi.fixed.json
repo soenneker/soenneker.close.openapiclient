@@ -23174,27 +23174,30 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/LeadStatusesList200Response"
                 },
                 "example": {
                   "data": [
                     {
+                      "color": null,
                       "id": "stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                       "label": "Potential",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
                     },
                     {
+                      "color": null,
                       "id": "stat_2ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                       "label": "Bad Fit",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
                     },
                     {
+                      "color": null,
                       "id": "stat_3ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                       "label": "Qualified",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
                     },
                     {
+                      "color": null,
                       "id": "stat_8ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                       "label": "Not Serious",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
@@ -23226,8 +23229,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "description": "Fallback media schema"
+                "$ref": "#/components/schemas/CreateOrUpdateLeadStatus"
               },
               "example": {
                 "label": "Potential"
@@ -23242,10 +23244,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/LeadStatus"
                 },
                 "example": {
+                  "color": null,
                   "id": "stat_9ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                   "label": "Potential",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
@@ -23288,10 +23290,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/LeadStatus"
                 },
                 "example": {
+                  "color": null,
                   "id": "stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                   "label": "Potential",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
@@ -23331,8 +23333,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "description": "Fallback media schema"
+                "$ref": "#/components/schemas/CreateOrUpdateLeadStatus"
               },
               "example": {
                 "label": "Renamed"
@@ -23347,10 +23348,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/LeadStatus"
                 },
                 "example": {
+                  "color": null,
                   "id": "stat_9ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                   "label": "Renamed",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
@@ -23421,8 +23422,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/OpportunityStatusesList200Response"
                 },
                 "example": {
                   "data": [
@@ -23488,8 +23488,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "description": "Fallback media schema"
+                "$ref": "#/components/schemas/CreateOpportunityStatus"
               },
               "example": {
                 "label": "Closed",
@@ -23506,8 +23505,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/OpportunityStatus"
                 },
                 "example": {
                   "id": "stat_10diZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
@@ -23558,8 +23556,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/OpportunityStatus"
                 },
                 "example": {
                   "id": "stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
@@ -23606,8 +23603,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "description": "Fallback media schema"
+                "$ref": "#/components/schemas/UpdateOpportunityStatus"
               },
               "example": {
                 "label": "Renamed"
@@ -23622,8 +23618,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/OpportunityStatus"
                 },
                 "example": {
                   "id": "stat_10diZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
@@ -28603,6 +28598,51 @@
         },
         "additionalProperties": false
       },
+      "CreateOpportunityStatus": {
+        "title": "CreateOpportunityStatusSchema",
+        "required": [
+          "label"
+        ],
+        "type": "object",
+        "properties": {
+          "label": {
+            "title": "Label",
+            "minLength": 1,
+            "type": "string"
+          },
+          "pipeline_id": {
+            "title": "Pipeline ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
+          },
+          "type": {
+            "default": "active",
+            "$ref": "#/components/schemas/OpportunityStatusType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateOrUpdateLeadStatus": {
+        "title": "CreateOrUpdateLeadStatusSchema",
+        "required": [
+          "label"
+        ],
+        "type": "object",
+        "properties": {
+          "color": {
+            "$ref": "#/components/schemas/CreateOrUpdateLeadStatusColor"
+          },
+          "label": {
+            "title": "Label",
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateOutcome": {
         "title": "CreateOutcome",
         "required": [
@@ -31823,6 +31863,33 @@
           ]
         }
       },
+      "LeadStatus": {
+        "title": "LeadStatus",
+        "required": [
+          "color",
+          "id",
+          "label",
+          "organization_id"
+        ],
+        "type": "object",
+        "properties": {
+          "color": {
+            "$ref": "#/components/schemas/LeadStatusColorComposed"
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          }
+        }
+      },
       "LeadStatusChangeActivity": {
         "title": "LeadStatusChangeActivity",
         "required": [
@@ -31962,6 +32029,59 @@
               "type": "string"
             }
           }
+        }
+      },
+      "LeadStatusColor": {
+        "title": "LeadStatusColor",
+        "enum": [
+          "blue",
+          "gray",
+          "green",
+          "magenta",
+          "orange",
+          "purple",
+          "teal",
+          "yellow"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "LeadStatusColor",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "blue",
+              "name": "Blue"
+            },
+            {
+              "value": "gray",
+              "name": "Gray"
+            },
+            {
+              "value": "green",
+              "name": "Green"
+            },
+            {
+              "value": "magenta",
+              "name": "Magenta"
+            },
+            {
+              "value": "orange",
+              "name": "Orange"
+            },
+            {
+              "value": "purple",
+              "name": "Purple"
+            },
+            {
+              "value": "teal",
+              "name": "Teal"
+            },
+            {
+              "value": "yellow",
+              "name": "Yellow"
+            }
+          ]
         }
       },
       "MeetingActivity": {
@@ -33163,6 +33283,37 @@
           "message_draft": {
             "title": "Message Draft",
             "type": "string"
+          }
+        }
+      },
+      "OpportunityStatus": {
+        "title": "OpportunityStatus",
+        "required": [
+          "id",
+          "label",
+          "organization_id",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "pipeline_id": {
+            "title": "Pipeline ID",
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/OpportunityStatusType"
           }
         }
       },
@@ -35997,6 +36148,29 @@
         },
         "additionalProperties": false
       },
+      "UpdateOpportunityStatus": {
+        "title": "UpdateOpportunityStatusSchema",
+        "required": [
+          "label"
+        ],
+        "type": "object",
+        "properties": {
+          "label": {
+            "title": "Label",
+            "minLength": 1,
+            "type": "string"
+          },
+          "pipeline_id": {
+            "title": "Pipeline ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
+          }
+        },
+        "additionalProperties": false
+      },
       "UpdateOutcome": {
         "title": "UpdateOutcome",
         "type": "object",
@@ -36989,6 +37163,22 @@
           }
         }
       },
+      "CreateOrUpdateLeadStatusColor": {
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/LeadStatusColorWrapper"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/LeadStatusColor"
+          }
+        }
+      },
       "CreateOutcomeAppliesTo": {
         "title": "Applies To",
         "type": "object",
@@ -37520,6 +37710,22 @@
             "items": {
               "type": "string"
             }
+          }
+        }
+      },
+      "LeadStatusColorComposed": {
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/LeadStatusColorWrapper2"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/LeadStatusColor"
           }
         }
       },
@@ -38659,6 +38865,17 @@
           }
         }
       },
+      "LeadStatusColorWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/LeadStatusColor"
+          }
+        }
+      },
       "CreationSourceWrapper2": {
         "required": [
           "value"
@@ -38700,6 +38917,17 @@
         "properties": {
           "value": {
             "$ref": "#/components/schemas/CommunicationDirection"
+          }
+        }
+      },
+      "LeadStatusColorWrapper2": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/LeadStatusColor"
           }
         }
       },
@@ -39405,6 +39633,42 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/SavedSearch"
+            }
+          },
+          "has_more": {
+            "type": "boolean"
+          }
+        }
+      },
+      "LeadStatusesList200Response": {
+        "required": [
+          "data",
+          "has_more"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LeadStatus"
+            }
+          },
+          "has_more": {
+            "type": "boolean"
+          }
+        }
+      },
+      "OpportunityStatusesList200Response": {
+        "required": [
+          "data",
+          "has_more"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OpportunityStatus"
             }
           },
           "has_more": {

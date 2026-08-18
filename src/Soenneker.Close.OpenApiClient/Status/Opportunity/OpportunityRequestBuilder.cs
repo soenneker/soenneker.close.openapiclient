@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Close.OpenApiClient.Models;
 using Soenneker.Close.OpenApiClient.Status.Opportunity.Item;
 using System.Collections.Generic;
 using System.IO;
@@ -48,40 +49,40 @@ namespace Soenneker.Close.OpenApiClient.Status.Opportunity
         /// <summary>
         /// List opportunity statuses for your organization
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityGetResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusesList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusesList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityGetResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusesList200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityGetResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusesList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusesList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a new opportunity status. The status must belong to a pipeline (specified by `pipeline_id`) and have a `type` of `active`, `won`, or `lost`.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityPostResponse"/></returns>
-        /// <param name="body">Fallback media schema</param>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunityStatus"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityPostResponse?> PostAsync(global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityPostRequestBody body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatus?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateOpportunityStatus body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityPostResponse> PostAsync(global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityPostRequestBody body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatus> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateOpportunityStatus body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityPostResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatus>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.OpportunityStatus.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List opportunity statuses for your organization
@@ -106,15 +107,15 @@ namespace Soenneker.Close.OpenApiClient.Status.Opportunity
         /// Create a new opportunity status. The status must belong to a pipeline (specified by `pipeline_id`) and have a `type` of `active`, `won`, or `lost`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Fallback media schema</param>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityPostRequestBody body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderPostQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.CreateOpportunityStatus body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderPostQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityPostRequestBody body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderPostQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.CreateOpportunityStatus body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Status.Opportunity.OpportunityRequestBuilder.OpportunityRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

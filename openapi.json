@@ -23475,27 +23475,49 @@
                 "example": {
                   "data": [
                     {
+                      "color": null,
                       "id": "stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                       "label": "Potential",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
                     },
                     {
+                      "color": null,
                       "id": "stat_2ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                       "label": "Bad Fit",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
                     },
                     {
+                      "color": null,
                       "id": "stat_3ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                       "label": "Qualified",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
                     },
                     {
+                      "color": null,
                       "id": "stat_8ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                       "label": "Not Serious",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
                     }
                   ],
                   "has_more": false
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/LeadStatus"
+                      },
+                      "type": "array"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "has_more"
+                  ]
                 }
               }
             },
@@ -23523,6 +23545,9 @@
             "application/json": {
               "example": {
                 "label": "Potential"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrUpdateLeadStatus"
               }
             }
           },
@@ -23533,9 +23558,13 @@
             "content": {
               "application/json": {
                 "example": {
+                  "color": null,
                   "id": "stat_9ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                   "label": "Potential",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/LeadStatus"
                 }
               }
             },
@@ -23575,9 +23604,13 @@
             "content": {
               "application/json": {
                 "example": {
+                  "color": null,
                   "id": "stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                   "label": "Potential",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/LeadStatus"
                 }
               }
             },
@@ -23616,6 +23649,9 @@
             "application/json": {
               "example": {
                 "label": "Renamed"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrUpdateLeadStatus"
               }
             }
           },
@@ -23626,9 +23662,13 @@
             "content": {
               "application/json": {
                 "example": {
+                  "color": null,
                   "id": "stat_9ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                   "label": "Renamed",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/LeadStatus"
                 }
               }
             },
@@ -23726,6 +23766,24 @@
                     }
                   ],
                   "has_more": false
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/OpportunityStatus"
+                      },
+                      "type": "array"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "has_more"
+                  ]
                 }
               }
             },
@@ -23761,6 +23819,9 @@
                 "label": "Closed",
                 "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
                 "type": "won"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/CreateOpportunityStatus"
               }
             }
           },
@@ -23776,6 +23837,9 @@
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                   "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
                   "type": "won"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/OpportunityStatus"
                 }
               }
             },
@@ -23823,6 +23887,9 @@
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                   "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
                   "type": "active"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/OpportunityStatus"
                 }
               }
             },
@@ -23863,6 +23930,9 @@
             "application/json": {
               "example": {
                 "label": "Renamed"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOpportunityStatus"
               }
             }
           },
@@ -23878,6 +23948,9 @@
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                   "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
                   "type": "active"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/OpportunityStatus"
                 }
               }
             },
@@ -29785,6 +29858,62 @@
           }
         }
       },
+      "CreateOpportunityStatus": {
+        "title": "CreateOpportunityStatusSchema",
+        "type": "object",
+        "properties": {
+          "label": {
+            "title": "Label",
+            "type": "string",
+            "minLength": 1
+          },
+          "pipeline_id": {
+            "title": "Pipeline ID",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "type": {
+            "default": "active",
+            "$ref": "#/components/schemas/OpportunityStatusType"
+          }
+        },
+        "required": [
+          "label"
+        ],
+        "additionalProperties": false
+      },
+      "CreateOrUpdateLeadStatus": {
+        "title": "CreateOrUpdateLeadStatusSchema",
+        "type": "object",
+        "properties": {
+          "color": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LeadStatusColor"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "label": {
+            "title": "Label",
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "label"
+        ],
+        "additionalProperties": false
+      },
       "CreateOutcome": {
         "title": "CreateOutcome",
         "type": "object",
@@ -33911,6 +34040,40 @@
           "errored"
         ]
       },
+      "LeadStatus": {
+        "title": "LeadStatus",
+        "type": "object",
+        "properties": {
+          "color": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LeadStatusColor"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          }
+        },
+        "required": [
+          "color",
+          "id",
+          "label",
+          "organization_id"
+        ]
+      },
       "LeadStatusChangeActivity": {
         "title": "LeadStatusChangeActivity",
         "type": "object",
@@ -34086,6 +34249,20 @@
           "updated_by",
           "user_id",
           "users"
+        ]
+      },
+      "LeadStatusColor": {
+        "title": "LeadStatusColor",
+        "type": "string",
+        "enum": [
+          "blue",
+          "gray",
+          "green",
+          "magenta",
+          "orange",
+          "purple",
+          "teal",
+          "yellow"
         ]
       },
       "MeetingActivity": {
@@ -35513,6 +35690,37 @@
         "required": [
           "contact_id",
           "message_draft"
+        ]
+      },
+      "OpportunityStatus": {
+        "title": "OpportunityStatus",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "pipeline_id": {
+            "title": "Pipeline ID",
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/OpportunityStatusType"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "organization_id",
+          "type"
         ]
       },
       "OpportunityStatusChangeActivity": {
@@ -38403,6 +38611,33 @@
             }
           }
         }
+      },
+      "UpdateOpportunityStatus": {
+        "title": "UpdateOpportunityStatusSchema",
+        "type": "object",
+        "properties": {
+          "label": {
+            "title": "Label",
+            "type": "string",
+            "minLength": 1
+          },
+          "pipeline_id": {
+            "title": "Pipeline ID",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "label"
+        ],
+        "additionalProperties": false
       },
       "UpdateOutcome": {
         "title": "UpdateOutcome",
