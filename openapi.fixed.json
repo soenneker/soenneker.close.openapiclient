@@ -18059,8 +18059,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/PipelinesList200Response"
                 },
                 "example": {
                   "data": [
@@ -18090,7 +18089,8 @@
                       ],
                       "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
                     }
-                  ]
+                  ],
+                  "has_more": false
                 }
               }
             }
@@ -18116,8 +18116,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "description": "Fallback media schema"
+                "$ref": "#/components/schemas/CreatePipeline"
               },
               "example": {
                 "name": "Success"
@@ -18132,8 +18131,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/Pipeline"
                 },
                 "example": {
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
@@ -18183,8 +18181,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/Pipeline"
                 },
                 "example": {
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
@@ -18247,8 +18244,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "description": "Fallback media schema"
+                "$ref": "#/components/schemas/UpdatePipeline"
               },
               "example": {
                 "name": "Updated Name",
@@ -18274,8 +18270,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/Pipeline"
                 },
                 "example": {
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
@@ -28731,6 +28726,23 @@
         },
         "additionalProperties": false
       },
+      "CreatePipeline": {
+        "title": "CreatePipeline",
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "statuses": {
+            "$ref": "#/components/schemas/CreatePipelineStatuses"
+          }
+        },
+        "additionalProperties": false
+      },
       "CreatePlaybook": {
         "title": "CreatePlaybook",
         "required": [
@@ -30792,6 +30804,20 @@
           },
           "rating": {
             "$ref": "#/components/schemas/SummaryFeedbackRating"
+          }
+        }
+      },
+      "ExistingPipelineOpportunityStatus": {
+        "title": "ExistingPipelineOpportunityStatus",
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "ID",
+            "type": "string",
+            "description": "ID of an existing Opportunity Status. May belong to a different Pipeline, in which case the status is moved into this one."
           }
         }
       },
@@ -32871,6 +32897,24 @@
           ]
         }
       },
+      "NewPipelineOpportunityStatus": {
+        "title": "NewPipelineOpportunityStatus",
+        "required": [
+          "label"
+        ],
+        "type": "object",
+        "properties": {
+          "label": {
+            "title": "Label",
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": {
+            "default": "active",
+            "$ref": "#/components/schemas/OpportunityStatusType"
+          }
+        }
+      },
       "NotImportantEmailThread": {
         "title": "NotImportantEmailThread",
         "required": [
@@ -34160,6 +34204,87 @@
               "name": "VirtualValue"
             }
           ]
+        }
+      },
+      "Pipeline": {
+        "title": "Pipeline",
+        "required": [
+          "created_by",
+          "date_created",
+          "date_updated",
+          "id",
+          "name",
+          "organization_id",
+          "statuses",
+          "updated_by"
+        ],
+        "type": "object",
+        "properties": {
+          "created_by": {
+            "title": "Created By ID",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time"
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "statuses": {
+            "title": "Statuses",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PipelineOpportunityStatus"
+            }
+          },
+          "updated_by": {
+            "title": "Updated By ID",
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "PipelineOpportunityStatus": {
+        "title": "PipelineOpportunityStatus",
+        "required": [
+          "id",
+          "label",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/OpportunityStatusType"
+          }
         }
       },
       "Playbook": {
@@ -36253,6 +36378,20 @@
         },
         "additionalProperties": false
       },
+      "UpdatePipeline": {
+        "title": "UpdatePipeline",
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "statuses": {
+            "$ref": "#/components/schemas/UpdatePipelineStatuses"
+          }
+        },
+        "additionalProperties": false
+      },
       "UpdatePlaybook": {
         "title": "UpdatePlaybook",
         "type": "object",
@@ -37195,6 +37334,22 @@
         ],
         "description": "Deprecated. This field will be derived from \u0060type\u0060 in a future update: \u0060custom\u0060 applies to calls and meetings, \u0060vm-dropped\u0060 applies to calls only.",
         "deprecated": true
+      },
+      "CreatePipelineStatuses": {
+        "title": "Statuses",
+        "type": "object",
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NewPipelineOpportunityStatus"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "Opportunity Statuses to create within the new Pipeline."
       },
       "CreatedActivitySource": {
         "type": "object",
@@ -38364,6 +38519,22 @@
           }
         },
         "description": "Set to \u0060vm-dropped\u0060 if this outcome should be automatically set on calls whenever a team member performs a Voicemail Drop. Otherwise, leave empty or explicitly set to \u0060custom\u0060 (default)."
+      },
+      "UpdatePipelineStatuses": {
+        "title": "Statuses",
+        "type": "object",
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExistingPipelineOpportunityStatus"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "Opportunity Statuses of this Pipeline, in the desired order."
       },
       "UpdateWebhookEvents": {
         "title": "Events",
@@ -39597,6 +39768,24 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/PhoneNumber"
+            }
+          },
+          "has_more": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PipelinesList200Response": {
+        "required": [
+          "data",
+          "has_more"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Pipeline"
             }
           },
           "has_more": {

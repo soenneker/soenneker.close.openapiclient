@@ -18568,6 +18568,25 @@
                       ],
                       "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
                     }
+                  ],
+                  "has_more": false
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/Pipeline"
+                      },
+                      "type": "array"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "has_more"
                   ]
                 }
               }
@@ -18596,6 +18615,9 @@
             "application/json": {
               "example": {
                 "name": "Success"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/CreatePipeline"
               }
             }
           },
@@ -18614,6 +18636,9 @@
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                   "statuses": [],
                   "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Pipeline"
                 }
               }
             },
@@ -18677,6 +18702,9 @@
                     }
                   ],
                   "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Pipeline"
                 }
               }
             },
@@ -18726,6 +18754,9 @@
                     "id": "stat_3PB2sedHBCjwuBImAEwgHOo858f2j41lpROkcl51Fzp"
                   }
                 ]
+              },
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePipeline"
               }
             }
           },
@@ -18760,6 +18791,9 @@
                     }
                   ],
                   "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Pipeline"
                 }
               }
             },
@@ -30048,6 +30082,36 @@
         ],
         "additionalProperties": false
       },
+      "CreatePipeline": {
+        "title": "CreatePipeline",
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "statuses": {
+            "title": "Statuses",
+            "description": "Opportunity Statuses to create within the new Pipeline.",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/NewPipelineOpportunityStatus"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false
+      },
       "CreatePlaybook": {
         "title": "CreatePlaybook",
         "type": "object",
@@ -32745,6 +32809,20 @@
           "rating"
         ]
       },
+      "ExistingPipelineOpportunityStatus": {
+        "title": "ExistingPipelineOpportunityStatus",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "ID",
+            "description": "ID of an existing Opportunity Status. May belong to a different Pipeline, in which case the status is moved into this one.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
       "Form": {
         "title": "Form",
         "type": "object",
@@ -35194,6 +35272,24 @@
           "error"
         ]
       },
+      "NewPipelineOpportunityStatus": {
+        "title": "NewPipelineOpportunityStatus",
+        "type": "object",
+        "properties": {
+          "label": {
+            "title": "Label",
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "default": "active",
+            "$ref": "#/components/schemas/OpportunityStatusType"
+          }
+        },
+        "required": [
+          "label"
+        ]
+      },
       "NotImportantEmailThread": {
         "title": "NotImportantEmailThread",
         "type": "object",
@@ -36562,6 +36658,95 @@
           "internal",
           "external",
           "virtual"
+        ]
+      },
+      "Pipeline": {
+        "title": "Pipeline",
+        "type": "object",
+        "properties": {
+          "created_by": {
+            "title": "Created By ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time"
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "statuses": {
+            "title": "Statuses",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PipelineOpportunityStatus"
+            }
+          },
+          "updated_by": {
+            "title": "Updated By ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "created_by",
+          "date_created",
+          "date_updated",
+          "id",
+          "name",
+          "organization_id",
+          "statuses",
+          "updated_by"
+        ]
+      },
+      "PipelineOpportunityStatus": {
+        "title": "PipelineOpportunityStatus",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/OpportunityStatusType"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "type"
         ]
       },
       "Playbook": {
@@ -38747,6 +38932,34 @@
             "anyOf": [
               {
                 "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdatePipeline": {
+        "title": "UpdatePipeline",
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "default": ""
+          },
+          "statuses": {
+            "title": "Statuses",
+            "description": "Opportunity Statuses of this Pipeline, in the desired order.",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ExistingPipelineOpportunityStatus"
+                }
               },
               {
                 "type": "null"
