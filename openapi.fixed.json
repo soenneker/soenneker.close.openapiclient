@@ -13166,8 +13166,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/ExportsList200Response"
                 },
                 "example": {
                   "data": [
@@ -13232,6 +13231,7 @@
                     {
                       "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "date_created": "2014-04-02T15:32:54.774000\u002B00:00",
+                      "date_format": "original",
                       "date_updated": "2014-04-02T23:35:59.704000\u002B00:00",
                       "download_url": "https://url-to-generated-contacts.json",
                       "fields": [
@@ -13329,7 +13329,7 @@
                       "send_done_email": false,
                       "sort": [],
                       "status": "in_progress",
-                      "type": "lead_opps",
+                      "type": "opportunities",
                       "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
                     },
                     {
@@ -13371,7 +13371,7 @@
                       },
                       "send_done_email": false,
                       "status": "done",
-                      "type": "opps",
+                      "type": "opportunities",
                       "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
                     }
                   ],
@@ -13419,8 +13419,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/ExportsListLead200Response"
                 },
                 "example": {
                   "data": [
@@ -13562,8 +13561,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/Export"
                 },
                 "example": {
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
@@ -13675,8 +13673,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/Export"
                 },
                 "example": {
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
@@ -13778,8 +13775,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/ExportsListOpportunity200Response"
                 },
                 "example": {
                   "data": [
@@ -13875,8 +13871,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/Export"
                 },
                 "example": {
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
@@ -13963,8 +13958,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/Export"
                 },
                 "example": {
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
@@ -14051,8 +14045,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/Export"
                 },
                 "example": {
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
@@ -14077,33 +14070,9 @@
                   "n_docs": 100000,
                   "n_docs_processed": 5000,
                   "organization_id": "orga_klasjd123vxiEY58eTGQmFNG3LPlEVQ4V7Nk",
-                  "results_limit": null,
-                  "s_query": {
-                    "queries": [
-                      {
-                        "object_type": "lead",
-                        "type": "object_type"
-                      },
-                      {
-                        "condition": {
-                          "mode": "full_words",
-                          "type": "text",
-                          "value": "ACME Inc."
-                        },
-                        "field": {
-                          "field_name": "name",
-                          "object_type": "lead",
-                          "type": "regular_field"
-                        },
-                        "type": "field_condition"
-                      }
-                    ],
-                    "type": "and"
-                  },
                   "send_done_email": false,
-                  "sort": [],
                   "status": "in_progress",
-                  "type": "lead_opps",
+                  "type": "opportunities",
                   "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
                 }
               }
@@ -15775,15 +15744,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/MembershipResponse"
                 },
                 "example": {
                   "auto_record_calls": "unset",
                   "default_caller_id": null,
                   "hangup_recording_url": null,
                   "id": "memb_JPCqDJq0AmoZFhemXAWrWk9327DqfJgUF2VGPMOL4Lp",
-                  "is_free": false,
                   "may_workflows_impersonate": false,
                   "onboarding_status": "in-progress",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
@@ -15909,12 +15876,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Fallback media schema"
+                  "$ref": "#/components/schemas/MembershipResponse"
                 },
                 "example": {
                   "auto_record_calls": "enabled",
+                  "default_caller_id": null,
+                  "hangup_recording_url": null,
                   "id": "memb_SLfZq4IU5E2nBA3PBzHFsi1HUv98cPmGUIZGlWK7Z3y",
+                  "may_workflows_impersonate": false,
+                  "onboarding_status": "done",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                   "permissions_granted": [
                     "bulk_delete",
@@ -15925,9 +15895,9 @@
                     "manage_organization",
                     "manage_team_smart_views"
                   ],
-                  "plan_type": "enterprise",
                   "primary_personal_number": "phon_nm67bxYRTJUZNOXflc1I3bBadd0PbQvvui1byxCwK7k",
                   "role_id": "role_y6eLquXvRUdmwqi61tsmgCJUU7uGfxaRbDuLoONZL9p",
+                  "track_email_opens": true,
                   "user_id": "user_A3HwmEOcDLL8ilFx8QKcYEuKDtRPtBuQ68PctqwMqtP"
                 }
               }
@@ -30821,6 +30791,224 @@
           }
         }
       },
+      "Export": {
+        "title": "Export",
+        "required": [
+          "created_by",
+          "date_created",
+          "date_format",
+          "date_updated",
+          "download_url",
+          "fields",
+          "format",
+          "id",
+          "n_docs",
+          "n_docs_processed",
+          "organization_id",
+          "send_done_email",
+          "status",
+          "type",
+          "updated_by"
+        ],
+        "type": "object",
+        "properties": {
+          "created_by": {
+            "title": "Created By ID",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time"
+          },
+          "date_format": {
+            "$ref": "#/components/schemas/ExportDateFormat"
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time"
+          },
+          "download_url": {
+            "title": "Download URL",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "fields": {
+            "title": "Fields",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "format": {
+            "$ref": "#/components/schemas/ExportFormat"
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "limit": {
+            "title": "Limit",
+            "type": [
+              "null",
+              "integer"
+            ],
+            "default": null
+          },
+          "n_docs": {
+            "title": "N Docs",
+            "type": [
+              "null",
+              "integer"
+            ]
+          },
+          "n_docs_processed": {
+            "title": "N Docs Processed",
+            "type": "integer"
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "params": {
+            "$ref": "#/components/schemas/ExportParams"
+          },
+          "query": {
+            "title": "Query",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
+          },
+          "results_limit": {
+            "title": "Results Limit",
+            "type": [
+              "null",
+              "integer"
+            ],
+            "default": null
+          },
+          "s_query": {
+            "$ref": "#/components/schemas/ExportSQuery"
+          },
+          "send_done_email": {
+            "title": "Send Done Email",
+            "type": "boolean"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/ExportSort"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ExportStatus"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ExportType"
+          },
+          "updated_by": {
+            "title": "Updated By ID",
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "ExportDateFormat": {
+        "title": "ExportDateFormat",
+        "enum": [
+          "original",
+          "iso8601",
+          "excel"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "ExportDateFormat",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "original",
+              "name": "Original"
+            },
+            {
+              "value": "iso8601",
+              "name": "Iso8601"
+            },
+            {
+              "value": "excel",
+              "name": "Excel"
+            }
+          ]
+        }
+      },
+      "ExportFormat": {
+        "title": "ExportFormat",
+        "enum": [
+          "csv",
+          "json"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "ExportFormat",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "csv",
+              "name": "Csv"
+            },
+            {
+              "value": "json",
+              "name": "Json"
+            }
+          ]
+        }
+      },
+      "ExportStatus": {
+        "title": "ExportStatus",
+        "enum": [
+          "created",
+          "started",
+          "in_progress",
+          "done",
+          "error"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "ExportStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "created",
+              "name": "Created"
+            },
+            {
+              "value": "started",
+              "name": "Started"
+            },
+            {
+              "value": "in_progress",
+              "name": "InProgress"
+            },
+            {
+              "value": "done",
+              "name": "Done"
+            },
+            {
+              "value": "error",
+              "name": "Error"
+            }
+          ]
+        }
+      },
       "Form": {
         "title": "Form",
         "required": [
@@ -31429,6 +31617,41 @@
               "name": "Opportunity"
             }
           ]
+        }
+      },
+      "Json": {
+        "type": "object",
+        "anyOf": [
+          {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Json"
+            }
+          },
+          {
+            "$ref": "#/components/schemas/JsonBranch2"
+          },
+          {
+            "$ref": "#/components/schemas/JsonBranch3"
+          },
+          {
+            "$ref": "#/components/schemas/JsonBranch4"
+          },
+          {
+            "$ref": "#/components/schemas/JsonBranch5"
+          },
+          {
+            "$ref": "#/components/schemas/JsonBranch6"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "JsonDict": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/Json"
         }
       },
       "Lead": {
@@ -32853,6 +33076,217 @@
         "additionalProperties": false,
         "description": "Editable settings for an organization membership."
       },
+      "MembershipResponse": {
+        "title": "MembershipResponse",
+        "required": [
+          "auto_record_calls",
+          "default_caller_id",
+          "hangup_recording_url",
+          "id",
+          "may_workflows_impersonate",
+          "onboarding_status",
+          "organization_id",
+          "primary_personal_number",
+          "role_id",
+          "track_email_opens",
+          "user_id"
+        ],
+        "type": "object",
+        "properties": {
+          "auto_record_calls": {
+            "$ref": "#/components/schemas/AutoRecordCalls"
+          },
+          "default_caller_id": {
+            "title": "Default Caller ID",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "hangup_recording_url": {
+            "title": "Hangup Recording URL",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "may_workflows_impersonate": {
+            "title": "May Workflows Impersonate",
+            "type": "boolean"
+          },
+          "onboarding_status": {
+            "title": "Onboarding Status",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "permissions_granted": {
+            "title": "Permissions Granted",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Permission"
+            }
+          },
+          "primary_personal_number": {
+            "title": "Primary Personal Number",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "role": {
+            "title": "Role",
+            "type": "string"
+          },
+          "role_id": {
+            "title": "Role ID",
+            "type": "string"
+          },
+          "track_email_opens": {
+            "title": "Track Email Opens",
+            "type": "boolean"
+          },
+          "user": {
+            "description": "A user nested in a membership response.",
+            "title": "User",
+            "$ref": "#/components/schemas/MembershipUser"
+          },
+          "user_email": {
+            "title": "User Email",
+            "type": "string"
+          },
+          "user_first_name": {
+            "title": "User First Name",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "user_full_name": {
+            "title": "User Full Name",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "user_google_profile_image_url": {
+            "title": "User Google Profile Image URL",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "user_id": {
+            "title": "User ID",
+            "type": "string"
+          },
+          "user_image": {
+            "title": "User Image",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "user_last_name": {
+            "title": "User Last Name",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "user_phone": {
+            "title": "User Phone",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Phone number in E.164 format."
+          },
+          "user_phone_formatted": {
+            "title": "User Phone Formatted",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "user_totp_auth_state": {
+            "$ref": "#/components/schemas/TotpAuthState"
+          }
+        },
+        "description": "An organization membership."
+      },
+      "MembershipUser": {
+        "title": "MembershipUser",
+        "required": [
+          "email",
+          "first_name",
+          "full_name",
+          "google_profile_image_url",
+          "id",
+          "image",
+          "last_name",
+          "totp_auth_state"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "first_name": {
+            "title": "First Name",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "full_name": {
+            "title": "Full Name",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "google_profile_image_url": {
+            "title": "Google Profile Image URL",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "image": {
+            "title": "Image",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "last_name": {
+            "title": "Last Name",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "totp_auth_state": {
+            "$ref": "#/components/schemas/TotpAuthState"
+          }
+        },
+        "description": "A user nested in a membership response."
+      },
       "MessageStatus": {
         "title": "MessageStatus",
         "enum": [
@@ -33896,6 +34330,174 @@
             "title": "Sequence Status",
             "type": "string"
           }
+        }
+      },
+      "Permission": {
+        "title": "Permission",
+        "enum": [
+          "manage_organization",
+          "manage_customizations",
+          "manage_group_numbers",
+          "manage_team_smart_views",
+          "manage_team_email_templates",
+          "manage_email_sequences",
+          "ai_enrich",
+          "bulk_import",
+          "bulk_email",
+          "bulk_enrich",
+          "bulk_sequence_subscriptions",
+          "bulk_edit",
+          "bulk_delete",
+          "export",
+          "merge_leads",
+          "delete_leads",
+          "manage_others_opportunities",
+          "delete_own_opportunities",
+          "manage_others_tasks",
+          "delete_own_tasks",
+          "view_voice_agents",
+          "manage_voice_agents",
+          "ai_chat",
+          "manage_chloe_call_tasks",
+          "manage_others_activities",
+          "delete_own_activities",
+          "calling",
+          "call_coach_listen",
+          "call_coach_barge",
+          "view_all_leads",
+          "manage_web_forms"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "Permission",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "manage_organization",
+              "name": "ManageOrganization"
+            },
+            {
+              "value": "manage_customizations",
+              "name": "ManageCustomizations"
+            },
+            {
+              "value": "manage_group_numbers",
+              "name": "ManageGroupNumbers"
+            },
+            {
+              "value": "manage_team_smart_views",
+              "name": "ManageTeamSmartViews"
+            },
+            {
+              "value": "manage_team_email_templates",
+              "name": "ManageTeamEmailTemplates"
+            },
+            {
+              "value": "manage_email_sequences",
+              "name": "ManageEmailSequences"
+            },
+            {
+              "value": "ai_enrich",
+              "name": "AiEnrich"
+            },
+            {
+              "value": "bulk_import",
+              "name": "BulkImport"
+            },
+            {
+              "value": "bulk_email",
+              "name": "BulkEmail"
+            },
+            {
+              "value": "bulk_enrich",
+              "name": "BulkEnrich"
+            },
+            {
+              "value": "bulk_sequence_subscriptions",
+              "name": "BulkSequenceSubscriptions"
+            },
+            {
+              "value": "bulk_edit",
+              "name": "BulkEdit"
+            },
+            {
+              "value": "bulk_delete",
+              "name": "BulkDelete"
+            },
+            {
+              "value": "export",
+              "name": "Export"
+            },
+            {
+              "value": "merge_leads",
+              "name": "MergeLeads"
+            },
+            {
+              "value": "delete_leads",
+              "name": "DeleteLeads"
+            },
+            {
+              "value": "manage_others_opportunities",
+              "name": "ManageOthersOpportunities"
+            },
+            {
+              "value": "delete_own_opportunities",
+              "name": "DeleteOwnOpportunities"
+            },
+            {
+              "value": "manage_others_tasks",
+              "name": "ManageOthersTasks"
+            },
+            {
+              "value": "delete_own_tasks",
+              "name": "DeleteOwnTasks"
+            },
+            {
+              "value": "view_voice_agents",
+              "name": "ViewVoiceAgents"
+            },
+            {
+              "value": "manage_voice_agents",
+              "name": "ManageVoiceAgents"
+            },
+            {
+              "value": "ai_chat",
+              "name": "AiChat"
+            },
+            {
+              "value": "manage_chloe_call_tasks",
+              "name": "ManageChloeCallTasks"
+            },
+            {
+              "value": "manage_others_activities",
+              "name": "ManageOthersActivities"
+            },
+            {
+              "value": "delete_own_activities",
+              "name": "DeleteOwnActivities"
+            },
+            {
+              "value": "calling",
+              "name": "Calling"
+            },
+            {
+              "value": "call_coach_listen",
+              "name": "CallCoachListen"
+            },
+            {
+              "value": "call_coach_barge",
+              "name": "CallCoachBarge"
+            },
+            {
+              "value": "view_all_leads",
+              "name": "ViewAllLeads"
+            },
+            {
+              "value": "manage_web_forms",
+              "name": "ManageWebForms"
+            }
+          ]
         }
       },
       "PhoneActivityDirection": {
@@ -35438,6 +36040,34 @@
             {
               "value": "expired",
               "name": "Expired"
+            }
+          ]
+        }
+      },
+      "TotpAuthState": {
+        "title": "TOTPAuthState",
+        "enum": [
+          "enabled",
+          "disabled",
+          "blocked"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "TotpAuthState",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "enabled",
+              "name": "Enabled"
+            },
+            {
+              "value": "disabled",
+              "name": "Disabled"
+            },
+            {
+              "value": "blocked",
+              "name": "Blocked"
             }
           ]
         }
@@ -37740,6 +38370,52 @@
           }
         }
       },
+      "ExportParams": {
+        "type": "object",
+        "anyOf": [
+          {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Json"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "ExportSQuery": {
+        "type": "object",
+        "anyOf": [
+          {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Json"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "ExportSort": {
+        "title": "Sort",
+        "type": "object",
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/components/schemas/Json"
+              }
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
       "FormFieldDefinitionChoices": {
         "title": "Choices",
         "type": "object",
@@ -39271,6 +39947,64 @@
         "type": "object",
         "description": "Placeholder schema for path example refs"
       },
+      "JsonBranch2": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Json"
+            }
+          }
+        }
+      },
+      "JsonBranch3": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "JsonBranch4": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "integer"
+          }
+        }
+      },
+      "JsonBranch5": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number"
+          }
+        }
+      },
+      "JsonBranch6": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "boolean"
+          }
+        }
+      },
       "ActivitiesCallsList200Response": {
         "required": [
           "data",
@@ -39642,6 +40376,60 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Contact"
+            }
+          },
+          "has_more": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ExportsList200Response": {
+        "required": [
+          "data",
+          "has_more"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Export"
+            }
+          },
+          "has_more": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ExportsListLead200Response": {
+        "required": [
+          "data",
+          "has_more"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Export"
+            }
+          },
+          "has_more": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ExportsListOpportunity200Response": {
+        "required": [
+          "data",
+          "has_more"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Export"
             }
           },
           "has_more": {
@@ -40254,6 +41042,44 @@
             {
               "value": "error",
               "name": "Error"
+            }
+          ]
+        }
+      },
+      "ExportType": {
+        "title": "Type",
+        "enum": [
+          "leads",
+          "contacts",
+          "lead_opps",
+          "opps",
+          "opportunities"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "ExportType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "leads",
+              "name": "Leads"
+            },
+            {
+              "value": "contacts",
+              "name": "Contacts"
+            },
+            {
+              "value": "lead_opps",
+              "name": "LeadOpps"
+            },
+            {
+              "value": "opps",
+              "name": "Opps"
+            },
+            {
+              "value": "opportunities",
+              "name": "Opportunities"
             }
           ]
         }

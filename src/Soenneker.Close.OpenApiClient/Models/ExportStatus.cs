@@ -5,20 +5,28 @@ namespace Soenneker.Close.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum AutoRecordCalls
+    public enum ExportStatus
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "enabled")]
+        [EnumMember(Value = "created")]
         #pragma warning disable CS1591
-        Enabled,
+        Created,
         #pragma warning restore CS1591
-        [EnumMember(Value = "disabled")]
+        [EnumMember(Value = "started")]
         #pragma warning disable CS1591
-        Disabled,
+        Started,
         #pragma warning restore CS1591
-        [EnumMember(Value = "unset")]
+        [EnumMember(Value = "in_progress")]
         #pragma warning disable CS1591
-        Unset,
+        InProgress,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "done")]
+        #pragma warning disable CS1591
+        Done,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "error")]
+        #pragma warning disable CS1591
+        Error,
         #pragma warning restore CS1591
     }
 }

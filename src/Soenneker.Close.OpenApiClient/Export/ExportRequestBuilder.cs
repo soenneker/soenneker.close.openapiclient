@@ -6,6 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.Close.OpenApiClient.Export.Item;
 using Soenneker.Close.OpenApiClient.Export.Lead;
 using Soenneker.Close.OpenApiClient.Export.Opportunity;
+using Soenneker.Close.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -60,20 +61,20 @@ namespace Soenneker.Close.OpenApiClient.Export
         /// <summary>
         /// List all the exports
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Export.ExportGetResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ExportsList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Export.ExportGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Export.ExportRequestBuilder.ExportRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.ExportsList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Export.ExportRequestBuilder.ExportRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Export.ExportGetResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Export.ExportRequestBuilder.ExportRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.ExportsList200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Export.ExportRequestBuilder.ExportRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Export.ExportGetResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Export.ExportGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ExportsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ExportsList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List all the exports

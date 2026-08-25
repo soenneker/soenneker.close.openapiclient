@@ -49,22 +49,22 @@ namespace Soenneker.Close.OpenApiClient.Membership
         /// <summary>
         /// Ensures an active membership for the given email will be provisioned.- If the user already exists, they will be added to the requestor&apos;s organization.- If it doesn&apos;t exist, a new user will be provisioned.This request requires &quot;Manage Organization&quot; permissions.As a security precaution, this operation requires the organization to have the&quot;Restrict new users to emails from these domains&quot; setting enabled, and the newmember&apos;s email address must belong to one of its verified domains.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Membership.MembershipPostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.MembershipResponse"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Membership.MembershipPostResponse?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateMembership body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.MembershipResponse?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateMembership body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Membership.MembershipPostResponse> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateMembership body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.MembershipResponse> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateMembership body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Membership.MembershipPostResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Membership.MembershipPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.MembershipResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.MembershipResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Any field that can be updated on a membership individually can also be used to bulk update multiple memberships. Pass the comma-separated ids of the memberships to update into `id__in` in `_params`. For example:```json{&quot;_params&quot;: {&quot;id__in&quot;: &quot;memb_A,memb_B&quot;}, &quot;role_id&quot;: &quot;role_y6eLquXvRUdmwqi61tsmgCJUU7uGfxaRbDuLoONZL9p&quot;}```

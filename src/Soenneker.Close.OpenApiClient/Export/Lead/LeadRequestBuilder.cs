@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Close.OpenApiClient.Export.Lead.Item;
+using Soenneker.Close.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -48,40 +49,40 @@ namespace Soenneker.Close.OpenApiClient.Export.Lead
         /// <summary>
         /// List Lead Exports
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Export.Lead.LeadGetResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ExportsListLead200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Export.Lead.LeadGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Export.Lead.LeadRequestBuilder.LeadRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.ExportsListLead200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Export.Lead.LeadRequestBuilder.LeadRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Export.Lead.LeadGetResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Export.Lead.LeadRequestBuilder.LeadRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.ExportsListLead200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Export.Lead.LeadRequestBuilder.LeadRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Export.Lead.LeadGetResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Export.Lead.LeadGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ExportsListLead200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ExportsListLead200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// You will receive a link to the generated file via email once the export is done.The exported file is GZIP compressed to make your download and our upload faster. The `content-encoding` HTTP header will be set to `gzip` and the `content-type` HTTP header will be set to `text/csv` for CSV exports or `application/json` for JSON exports.Parameters:  - `s_query/results_limit/sort` (optional) - The [Advanced Filtering API](https://developer.close.com/api/resources/advanced-filtering) parameters used to narrow the exported results down. By default, all leads are exported.  - `format` - Format of the exported file. The choices are: `csv`, `json`. JSON is recommended for raw backups or data migrations.  - `type` - Type of the export.    - `leads` - For CSV exports, it results in one row per lead. For JSON exports, this is the recommended type and is a superset of the other two types.    - `contacts` - For CSV exports, it results in one row per contact.    - `lead_opps` - For CSV exports, it results in one row per opportunity.  - `date_format` (optional) - Controls the format of date objects. Note: this only works with the `csv` format.    - `original` (default) - A date format that includes microseconds and timezone information.        - Date: `[YYYY]-[MM]-[DD]`        - Date w/ time: `[YYYY]-[MM]-[DD] [hh]:[mm]:[ss.sssss]±[hh]:[mm]`    - `iso8601` (recommended) - An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) compatible date representation that does not include microseconds.        - Date: `[YYYY]-[MM]-[DD]`        - Date w/ time: `[YYYY]-[MM]-[DD]T[hh]:[mm]:[ss]±[hh]:[mm]`    - `excel` - An Excel compatible date format. Dates are always in UTC, do not include timezone information or microseconds, and use a 12 hour clock with an AM or PM designation.        - Date: `[YYYY]-[MM]-[DD]`        - Date w/ time: `[YYYY]-[MM]-[DD] [hh]:[mm]:[ss] [AM|PM]`  - `fields` (optional) - By default we return all the data fields in each export type. If you only need specific fields exported, you can explicitly list them in `fields` to get smaller exports.  - `include_activities` (optional) - Activities aren&apos;t included in any exports by default. If you want all your Activities exported as well, pass `&quot;include_activities&quot;: true`. Note: this only works for `leads` type with `json` format.  - `include_smart_fields` (optional) - Smart Fields aren&apos;t included in any exports by default. If you want all of them exported as well, pass `&quot;include_smart_fields&quot;: true`. Note: this only works for `leads` type with `json` format or any type formatted as `csv`. Smart fields are calculated fields, like number of emails on a lead.  - `send_done_email` - Set to `false` if you don&apos;t want to get a confirmation email after the bulk action is done.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Export.Lead.LeadPostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.Export"/></returns>
         /// <param name="body">Fallback media schema</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Export.Lead.LeadPostResponse?> PostAsync(global::Soenneker.Close.OpenApiClient.Export.Lead.LeadPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.Export?> PostAsync(global::Soenneker.Close.OpenApiClient.Export.Lead.LeadPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Export.Lead.LeadPostResponse> PostAsync(global::Soenneker.Close.OpenApiClient.Export.Lead.LeadPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.Export> PostAsync(global::Soenneker.Close.OpenApiClient.Export.Lead.LeadPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Export.Lead.LeadPostResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Export.Lead.LeadPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.Export>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.Export.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List Lead Exports

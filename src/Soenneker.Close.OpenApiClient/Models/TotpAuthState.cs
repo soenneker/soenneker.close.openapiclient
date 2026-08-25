@@ -5,7 +5,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum AutoRecordCalls
+    public enum TotpAuthState
     #pragma warning restore CS1591
     {
         [EnumMember(Value = "enabled")]
@@ -16,9 +16,9 @@ namespace Soenneker.Close.OpenApiClient.Models
         #pragma warning disable CS1591
         Disabled,
         #pragma warning restore CS1591
-        [EnumMember(Value = "unset")]
+        [EnumMember(Value = "blocked")]
         #pragma warning disable CS1591
-        Unset,
+        Blocked,
         #pragma warning restore CS1591
     }
 }

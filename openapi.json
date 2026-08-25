@@ -13538,6 +13538,7 @@
                     {
                       "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "date_created": "2014-04-02T15:32:54.774000+00:00",
+                      "date_format": "original",
                       "date_updated": "2014-04-02T23:35:59.704000+00:00",
                       "download_url": "https://url-to-generated-contacts.json",
                       "fields": [
@@ -13635,7 +13636,7 @@
                       "send_done_email": false,
                       "sort": [],
                       "status": "in_progress",
-                      "type": "lead_opps",
+                      "type": "opportunities",
                       "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
                     },
                     {
@@ -13677,11 +13678,29 @@
                       },
                       "send_done_email": false,
                       "status": "done",
-                      "type": "opps",
+                      "type": "opportunities",
                       "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
                     }
                   ],
                   "has_more": false
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/Export"
+                      },
+                      "type": "array"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "has_more"
+                  ]
                 }
               }
             },
@@ -13783,6 +13802,24 @@
                     }
                   ],
                   "has_more": false
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/Export"
+                      },
+                      "type": "array"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "has_more"
+                  ]
                 }
               }
             },
@@ -13922,6 +13959,9 @@
                   "status": "created",
                   "type": "leads",
                   "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Export"
                 }
               }
             },
@@ -14021,6 +14061,9 @@
                   "status": "done",
                   "type": "leads",
                   "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Export"
                 }
               }
             },
@@ -14106,6 +14149,24 @@
                     }
                   ],
                   "has_more": false
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/Export"
+                      },
+                      "type": "array"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "has_more"
+                  ]
                 }
               }
             },
@@ -14190,6 +14251,9 @@
                   "status": "created",
                   "type": "opps",
                   "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Export"
                 }
               }
             },
@@ -14273,6 +14337,9 @@
                   "status": "done",
                   "type": "opps",
                   "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Export"
                 }
               }
             },
@@ -14338,34 +14405,13 @@
                   "n_docs": 100000,
                   "n_docs_processed": 5000,
                   "organization_id": "orga_klasjd123vxiEY58eTGQmFNG3LPlEVQ4V7Nk",
-                  "results_limit": null,
-                  "s_query": {
-                    "queries": [
-                      {
-                        "object_type": "lead",
-                        "type": "object_type"
-                      },
-                      {
-                        "condition": {
-                          "mode": "full_words",
-                          "type": "text",
-                          "value": "ACME Inc."
-                        },
-                        "field": {
-                          "field_name": "name",
-                          "object_type": "lead",
-                          "type": "regular_field"
-                        },
-                        "type": "field_condition"
-                      }
-                    ],
-                    "type": "and"
-                  },
                   "send_done_email": false,
-                  "sort": [],
                   "status": "in_progress",
-                  "type": "lead_opps",
+                  "type": "opportunities",
                   "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Export"
                 }
               }
             },
@@ -16068,7 +16114,6 @@
                   "default_caller_id": null,
                   "hangup_recording_url": null,
                   "id": "memb_JPCqDJq0AmoZFhemXAWrWk9327DqfJgUF2VGPMOL4Lp",
-                  "is_free": false,
                   "may_workflows_impersonate": false,
                   "onboarding_status": "in-progress",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
@@ -16092,6 +16137,9 @@
                   "role_id": "user",
                   "track_email_opens": true,
                   "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/MembershipResponse"
                 }
               }
             },
@@ -16191,7 +16239,11 @@
               "application/json": {
                 "example": {
                   "auto_record_calls": "enabled",
+                  "default_caller_id": null,
+                  "hangup_recording_url": null,
                   "id": "memb_SLfZq4IU5E2nBA3PBzHFsi1HUv98cPmGUIZGlWK7Z3y",
+                  "may_workflows_impersonate": false,
+                  "onboarding_status": "done",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                   "permissions_granted": [
                     "bulk_delete",
@@ -16202,10 +16254,13 @@
                     "manage_organization",
                     "manage_team_smart_views"
                   ],
-                  "plan_type": "enterprise",
                   "primary_personal_number": "phon_nm67bxYRTJUZNOXflc1I3bBadd0PbQvvui1byxCwK7k",
                   "role_id": "role_y6eLquXvRUdmwqi61tsmgCJUU7uGfxaRbDuLoONZL9p",
+                  "track_email_opens": true,
                   "user_id": "user_A3HwmEOcDLL8ilFx8QKcYEuKDtRPtBuQ68PctqwMqtP"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/MembershipResponse"
                 }
               }
             },
@@ -32823,6 +32878,227 @@
           "id"
         ]
       },
+      "Export": {
+        "title": "Export",
+        "type": "object",
+        "properties": {
+          "created_by": {
+            "title": "Created By ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time"
+          },
+          "date_format": {
+            "$ref": "#/components/schemas/ExportDateFormat"
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time"
+          },
+          "download_url": {
+            "title": "Download URL",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "fields": {
+            "title": "Fields",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "format": {
+            "$ref": "#/components/schemas/ExportFormat"
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "limit": {
+            "title": "Limit",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "n_docs": {
+            "title": "N Docs",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "n_docs_processed": {
+            "title": "N Docs Processed",
+            "type": "integer"
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "params": {
+            "default": null,
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/JSONDict"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "query": {
+            "title": "Query",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "results_limit": {
+            "title": "Results Limit",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "s_query": {
+            "default": null,
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/JSONDict"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "send_done_email": {
+            "title": "Send Done Email",
+            "type": "boolean"
+          },
+          "sort": {
+            "title": "Sort",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/JSONDict"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status": {
+            "$ref": "#/components/schemas/ExportStatus"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "enum": [
+              "leads",
+              "contacts",
+              "lead_opps",
+              "opps",
+              "opportunities"
+            ]
+          },
+          "updated_by": {
+            "title": "Updated By ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "created_by",
+          "date_created",
+          "date_format",
+          "date_updated",
+          "download_url",
+          "fields",
+          "format",
+          "id",
+          "n_docs",
+          "n_docs_processed",
+          "organization_id",
+          "send_done_email",
+          "status",
+          "type",
+          "updated_by"
+        ]
+      },
+      "ExportDateFormat": {
+        "title": "ExportDateFormat",
+        "type": "string",
+        "enum": [
+          "original",
+          "iso8601",
+          "excel"
+        ]
+      },
+      "ExportFormat": {
+        "title": "ExportFormat",
+        "type": "string",
+        "enum": [
+          "csv",
+          "json"
+        ]
+      },
+      "ExportStatus": {
+        "title": "ExportStatus",
+        "type": "string",
+        "enum": [
+          "created",
+          "started",
+          "in_progress",
+          "done",
+          "error"
+        ]
+      },
       "Form": {
         "title": "Form",
         "type": "object",
@@ -33543,6 +33819,40 @@
           "contact",
           "opportunity"
         ]
+      },
+      "JSON": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/JSONDict"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JSON"
+            }
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "JSONDict": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/JSON"
+        }
       },
       "Lead": {
         "title": "Lead",
@@ -35259,6 +35569,282 @@
         },
         "additionalProperties": false
       },
+      "MembershipResponse": {
+        "title": "MembershipResponse",
+        "description": "An organization membership.",
+        "type": "object",
+        "properties": {
+          "auto_record_calls": {
+            "$ref": "#/components/schemas/AutoRecordCalls"
+          },
+          "default_caller_id": {
+            "title": "Default Caller ID",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "hangup_recording_url": {
+            "title": "Hangup Recording URL",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "may_workflows_impersonate": {
+            "title": "May Workflows Impersonate",
+            "type": "boolean"
+          },
+          "onboarding_status": {
+            "title": "Onboarding Status",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "permissions_granted": {
+            "title": "Permissions Granted",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Permission"
+            }
+          },
+          "primary_personal_number": {
+            "title": "Primary Personal Number",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "role": {
+            "title": "Role",
+            "type": "string"
+          },
+          "role_id": {
+            "title": "Role ID",
+            "type": "string"
+          },
+          "track_email_opens": {
+            "title": "Track Email Opens",
+            "type": "boolean"
+          },
+          "user": {
+            "title": "User",
+            "$ref": "#/components/schemas/MembershipUser"
+          },
+          "user_email": {
+            "title": "User Email",
+            "type": "string"
+          },
+          "user_first_name": {
+            "title": "User First Name",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_full_name": {
+            "title": "User Full Name",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_google_profile_image_url": {
+            "title": "User Google Profile Image URL",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_id": {
+            "title": "User ID",
+            "type": "string"
+          },
+          "user_image": {
+            "title": "User Image",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_last_name": {
+            "title": "User Last Name",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_phone": {
+            "title": "User Phone",
+            "description": "Phone number in E.164 format.",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_phone_formatted": {
+            "title": "User Phone Formatted",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_totp_auth_state": {
+            "title": "User TOTP Auth State",
+            "$ref": "#/components/schemas/TOTPAuthState"
+          }
+        },
+        "required": [
+          "auto_record_calls",
+          "default_caller_id",
+          "hangup_recording_url",
+          "id",
+          "may_workflows_impersonate",
+          "onboarding_status",
+          "organization_id",
+          "primary_personal_number",
+          "role_id",
+          "track_email_opens",
+          "user_id"
+        ]
+      },
+      "MembershipUser": {
+        "title": "MembershipUser",
+        "description": "A user nested in a membership response.",
+        "type": "object",
+        "properties": {
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "first_name": {
+            "title": "First Name",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "full_name": {
+            "title": "Full Name",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "google_profile_image_url": {
+            "title": "Google Profile Image URL",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "image": {
+            "title": "Image",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "last_name": {
+            "title": "Last Name",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "totp_auth_state": {
+            "title": "TOTP Auth State",
+            "$ref": "#/components/schemas/TOTPAuthState"
+          }
+        },
+        "required": [
+          "email",
+          "first_name",
+          "full_name",
+          "google_profile_image_url",
+          "id",
+          "image",
+          "last_name",
+          "totp_auth_state"
+        ]
+      },
       "MessageStatus": {
         "title": "MessageStatus",
         "description": "Status of a message, such as Email or SMS.",
@@ -36356,6 +36942,43 @@
           "sequence_id",
           "sequence_name",
           "sequence_status"
+        ]
+      },
+      "Permission": {
+        "title": "Permission",
+        "type": "string",
+        "enum": [
+          "manage_organization",
+          "manage_customizations",
+          "manage_group_numbers",
+          "manage_team_smart_views",
+          "manage_team_email_templates",
+          "manage_email_sequences",
+          "ai_enrich",
+          "bulk_import",
+          "bulk_email",
+          "bulk_enrich",
+          "bulk_sequence_subscriptions",
+          "bulk_edit",
+          "bulk_delete",
+          "export",
+          "merge_leads",
+          "delete_leads",
+          "manage_others_opportunities",
+          "delete_own_opportunities",
+          "manage_others_tasks",
+          "delete_own_tasks",
+          "view_voice_agents",
+          "manage_voice_agents",
+          "ai_chat",
+          "manage_chloe_call_tasks",
+          "manage_others_activities",
+          "delete_own_activities",
+          "calling",
+          "call_coach_listen",
+          "call_coach_barge",
+          "view_all_leads",
+          "manage_web_forms"
         ]
       },
       "PhoneActivityDirection": {
@@ -37737,6 +38360,15 @@
           "success",
           "failure",
           "expired"
+        ]
+      },
+      "TOTPAuthState": {
+        "title": "TOTPAuthState",
+        "type": "string",
+        "enum": [
+          "enabled",
+          "disabled",
+          "blocked"
         ]
       },
       "TaskCompletedActivity": {
