@@ -15951,6 +15951,165 @@
         }
       }
     },
+    "/lead/{id}/files/": {
+      "get": {
+        "operationId": "leads_files_list",
+        "tags": [
+          "leads"
+        ],
+        "summary": "List files attached to a lead",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipParam"
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "data": [
+                    {
+                      "checksum": "d41d8cd98f00b204e9800998ecf8427e",
+                      "content_type": "application/pdf",
+                      "date_created": "2024-03-07T16:07:00+00:00",
+                      "date_updated": "2024-03-07T16:07:00+00:00",
+                      "download_url": "https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/activity.email/acti_5rV2n1Ub/1Zx0AlY1DwBXzKKrVwpAoj/contract.pdf/",
+                      "id": "file_2Lm4kZ8Qqwe0rTaPnB6yXcVd9sHgKfJoMuIlN3vBz1A",
+                      "is_pinned": false,
+                      "last_activity_at": "2024-03-07T16:07:00+00:00",
+                      "last_object_id": "acti_5rV2n1UbQ8mLkJhGfDsAwErTyUiOpZxCvBnM3aQ",
+                      "last_object_type": "activity.email",
+                      "lead_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
+                      "name": "contract.pdf",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "size": 20480,
+                      "thumbnail_url": null,
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                    }
+                  ],
+                  "has_more": false
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/LeadFile"
+                      },
+                      "type": "array"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "has_more"
+                  ]
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "post": {
+        "operationId": "leads_files_create",
+        "tags": [
+          "leads"
+        ],
+        "summary": "Attach a file to a lead",
+        "description": "Attach an already-uploaded file to a lead. First upload the file to S3 using the [Files API](https://developer.close.com/api/resources/files), then pass the resulting download `url` here along with its `filename` and `content_type`.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "content_type": "application/pdf",
+                "filename": "contract.pdf",
+                "url": "https://app.close.com/go/file/temporary/user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk/1Zx0AlY1DwBXzKKrVwpAoj/contract.pdf/"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/CreateLeadFile"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "checksum": "d41d8cd98f00b204e9800998ecf8427e",
+                  "content_type": "application/pdf",
+                  "date_created": "2024-03-07T16:07:00+00:00",
+                  "date_updated": "2024-03-07T16:07:00+00:00",
+                  "download_url": "https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/activity.email/acti_5rV2n1Ub/1Zx0AlY1DwBXzKKrVwpAoj/contract.pdf/",
+                  "id": "file_2Lm4kZ8Qqwe0rTaPnB6yXcVd9sHgKfJoMuIlN3vBz1A",
+                  "is_pinned": false,
+                  "last_activity_at": "2024-03-07T16:07:00+00:00",
+                  "last_object_id": "acti_5rV2n1UbQ8mLkJhGfDsAwErTyUiOpZxCvBnM3aQ",
+                  "last_object_type": "activity.email",
+                  "lead_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
+                  "name": "contract.pdf",
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "size": 20480,
+                  "thumbnail_url": null,
+                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/LeadFile"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
     "/me/": {
       "get": {
         "operationId": "users_get_me",
@@ -29520,6 +29679,35 @@
         ],
         "additionalProperties": false
       },
+      "CreateLeadFile": {
+        "title": "CreateLeadFile",
+        "type": "object",
+        "properties": {
+          "content_type": {
+            "title": "Content Type",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "filename": {
+            "title": "Filename",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          },
+          "url": {
+            "title": "Url",
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "content_type",
+          "filename",
+          "url"
+        ],
+        "additionalProperties": false
+      },
       "CreateLeadTask": {
         "title": "CreateLeadTask",
         "type": "object",
@@ -34216,6 +34404,111 @@
           "zipcode"
         ]
       },
+      "LeadFile": {
+        "title": "LeadFile",
+        "type": "object",
+        "properties": {
+          "checksum": {
+            "title": "Checksum",
+            "type": "string"
+          },
+          "content_type": {
+            "title": "Content Type",
+            "type": "string"
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "format": "date-time"
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "format": "date-time"
+          },
+          "download_url": {
+            "title": "Download Url",
+            "type": "string"
+          },
+          "id": {
+            "title": "ID",
+            "type": "string"
+          },
+          "is_pinned": {
+            "title": "Is Pinned",
+            "type": "boolean"
+          },
+          "last_activity_at": {
+            "title": "Last Activity At",
+            "type": "string",
+            "format": "date-time"
+          },
+          "last_object_id": {
+            "title": "Last Object ID",
+            "type": "string"
+          },
+          "last_object_type": {
+            "title": "Last Object Type",
+            "type": "string"
+          },
+          "lead_id": {
+            "title": "Lead ID",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "size": {
+            "title": "Size",
+            "type": "integer"
+          },
+          "thumbnail_url": {
+            "title": "Thumbnail Url",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "updated_by": {
+            "title": "Updated By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "checksum",
+          "content_type",
+          "date_created",
+          "date_updated",
+          "download_url",
+          "id",
+          "is_pinned",
+          "last_activity_at",
+          "last_object_id",
+          "last_object_type",
+          "lead_id",
+          "name",
+          "organization_id",
+          "size",
+          "thumbnail_url",
+          "updated_by"
+        ]
+      },
       "LeadMergeActivity": {
         "title": "LeadMergeActivity",
         "type": "object",
@@ -37110,7 +37403,7 @@
           },
           "is_group_number": {
             "title": "Is Group Number",
-            "description": "Deprecated. The distinction between personal and group numbers is being removed, and `is_group_number` will be removed in a future update.",
+            "description": "This field is deprecated and will be removed in a future update. Until then, it is set to `false` when the phone number has exactly one member (as defined by the `participants` field) and doesn't have any of the \"shared\" configuration set up (e.g. a phone menu, lead-based routing, a non-default ring order, etc.), and `true` otherwise.",
             "deprecated": true,
             "type": "boolean"
           },
@@ -37167,6 +37460,7 @@
           },
           "participants": {
             "title": "Participants",
+            "description": "Every member of the phone number, as user IDs. If this field is absent, see `user_id` for the sole member.",
             "type": "array",
             "items": {
               "type": "string"
@@ -37174,6 +37468,7 @@
           },
           "phone_numbers": {
             "title": "Phone Numbers",
+            "description": "Present unless the phone number has exactly one member and no shared-number configuration (a phone menu, lead-based routing, a dial-out list, or a non-default ring order).",
             "type": "array",
             "items": {
               "type": "string"
@@ -37181,6 +37476,7 @@
           },
           "phone_numbers_formatted": {
             "title": "Phone Numbers Formatted",
+            "description": "Present under the same condition as `phone_numbers`, with each value formatted for display.",
             "type": "array",
             "items": {
               "type": "string"
@@ -37213,7 +37509,7 @@
           },
           "user_id": {
             "title": "User ID",
-            "description": "Deprecated. Set to the sole member's user ID for single-member numbers, otherwise `null`. `user_id` will be removed in a future update.",
+            "description": "This field is deprecated. See the `participants` field instead to learn who's assigned to this phone number. This `user_id` field will be removed in a future update. Until then, it is set to a specific user ID *only if* the given phone number has a single participant and no additional \"shared\" configuration (e.g. a phone menu, lead-based routing, a non-default ring order, etc.).",
             "deprecated": true,
             "anyOf": [
               {

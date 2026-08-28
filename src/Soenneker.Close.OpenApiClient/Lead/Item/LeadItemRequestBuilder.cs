@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Close.OpenApiClient.Lead.Item.Files;
 using Soenneker.Close.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +18,11 @@ namespace Soenneker.Close.OpenApiClient.Lead.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LeadItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The files property</summary>
+        public global::Soenneker.Close.OpenApiClient.Lead.Item.Files.FilesRequestBuilder Files
+        {
+            get => new global::Soenneker.Close.OpenApiClient.Lead.Item.Files.FilesRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Lead.Item.LeadItemRequestBuilder"/> and sets the default values.
         /// </summary>
