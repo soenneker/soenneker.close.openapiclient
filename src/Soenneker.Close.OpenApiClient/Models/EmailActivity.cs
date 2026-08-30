@@ -235,10 +235,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The send_attempts property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.EmailActivitySendAttempts? SendAttempts { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.EmailActivitySendAttemptsItemProperty>? SendAttempts { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.EmailActivitySendAttempts SendAttempts { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.EmailActivitySendAttemptsItemProperty> SendAttempts { get; set; }
 #endif
         /// <summary>The sender property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -421,7 +421,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "references", n => { References = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "send_as_id", n => { SendAsId = n.GetStringValue(); } },
-                { "send_attempts", n => { SendAttempts = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailActivitySendAttempts>(global::Soenneker.Close.OpenApiClient.Models.EmailActivitySendAttempts.CreateFromDiscriminatorValue); } },
+                { "send_attempts", n => { SendAttempts = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EmailActivitySendAttemptsItemProperty>(global::Soenneker.Close.OpenApiClient.Models.EmailActivitySendAttemptsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "sender", n => { Sender = n.GetStringValue(); } },
                 { "sequence_id", n => { SequenceId = n.GetStringValue(); } },
                 { "sequence_name", n => { SequenceName = n.GetStringValue(); } },
@@ -481,7 +481,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteCollectionOfPrimitiveValues<string>("references", References);
             writer.WriteStringValue("send_as_id", SendAsId);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailActivitySendAttempts>("send_attempts", SendAttempts);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EmailActivitySendAttemptsItemProperty>("send_attempts", SendAttempts);
             writer.WriteStringValue("sender", Sender);
             writer.WriteStringValue("sequence_id", SequenceId);
             writer.WriteStringValue("sequence_name", SequenceName);

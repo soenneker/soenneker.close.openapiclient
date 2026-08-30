@@ -14,6 +14,32 @@ namespace Soenneker.Close.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The ip_address property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IpAddress { get; set; }
+#nullable restore
+#else
+        public string IpAddress { get; set; }
+#endif
+        /// <summary>The opened_at property</summary>
+        public DateTimeOffset? OpenedAt { get; set; }
+        /// <summary>The opened_by property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? OpenedBy { get; set; }
+#nullable restore
+#else
+        public string OpenedBy { get; set; }
+#endif
+        /// <summary>The user_agent property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UserAgent { get; set; }
+#nullable restore
+#else
+        public string UserAgent { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.EmailOpen"/> and sets the default values.
         /// </summary>
@@ -39,6 +65,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "ip_address", n => { IpAddress = n.GetStringValue(); } },
+                { "opened_at", n => { OpenedAt = n.GetDateTimeOffsetValue(); } },
+                { "opened_by", n => { OpenedBy = n.GetStringValue(); } },
+                { "user_agent", n => { UserAgent = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -48,6 +78,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("ip_address", IpAddress);
+            writer.WriteDateTimeOffsetValue("opened_at", OpenedAt);
+            writer.WriteStringValue("opened_by", OpenedBy);
+            writer.WriteStringValue("user_agent", UserAgent);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

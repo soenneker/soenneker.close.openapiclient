@@ -100,11 +100,11 @@ namespace Soenneker.Close.OpenApiClient.Comment_thread
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("ids")]
-            public string? Ids { get; set; }
+            public string[]? Ids { get; set; }
 #nullable restore
 #else
             [QueryParameter("ids")]
-            public string Ids { get; set; }
+            public string[] Ids { get; set; }
 #endif
             /// <summary>Number of results to return.</summary>
             [QueryParameter("_limit")]
@@ -112,11 +112,11 @@ namespace Soenneker.Close.OpenApiClient.Comment_thread
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("object_ids")]
-            public string? ObjectIds { get; set; }
+            public string[]? ObjectIds { get; set; }
 #nullable restore
 #else
             [QueryParameter("object_ids")]
-            public string ObjectIds { get; set; }
+            public string[] ObjectIds { get; set; }
 #endif
             /// <summary>Number of results to skip before returning, for pagination.</summary>
             [QueryParameter("_skip")]

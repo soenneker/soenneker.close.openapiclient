@@ -65,18 +65,18 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The selected_fields property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.SavedSearchSelectedFields? SelectedFields { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.SavedSearchSelectedFieldsItemProperty>? SelectedFields { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.SavedSearchSelectedFields SelectedFields { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.SavedSearchSelectedFieldsItemProperty> SelectedFields { get; set; }
 #endif
         /// <summary>The shared_with property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.SavedSearchSharedWith? SharedWith { get; set; }
+        public List<string>? SharedWith { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.SavedSearchSharedWith SharedWith { get; set; }
+        public List<string> SharedWith { get; set; }
 #endif
         /// <summary>The sharing_settings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -139,8 +139,8 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "query", n => { Query = n.GetStringValue(); } },
                 { "s_query", n => { SQuery = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.SavedSearchSQueryProperty>(global::Soenneker.Close.OpenApiClient.Models.SavedSearchSQueryProperty.CreateFromDiscriminatorValue); } },
-                { "selected_fields", n => { SelectedFields = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.SavedSearchSelectedFields>(global::Soenneker.Close.OpenApiClient.Models.SavedSearchSelectedFields.CreateFromDiscriminatorValue); } },
-                { "shared_with", n => { SharedWith = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.SavedSearchSharedWith>(global::Soenneker.Close.OpenApiClient.Models.SavedSearchSharedWith.CreateFromDiscriminatorValue); } },
+                { "selected_fields", n => { SelectedFields = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.SavedSearchSelectedFieldsItemProperty>(global::Soenneker.Close.OpenApiClient.Models.SavedSearchSelectedFieldsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "shared_with", n => { SharedWith = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "sharing_settings", n => { SharingSettings = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.SharingSettingsEmbeddedResponse>(global::Soenneker.Close.OpenApiClient.Models.SharingSettingsEmbeddedResponse.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.SavedSearchType>(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
@@ -162,8 +162,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("query", Query);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.SavedSearchSelectedFields>("selected_fields", SelectedFields);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.SavedSearchSharedWith>("shared_with", SharedWith);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.SavedSearchSelectedFieldsItemProperty>("selected_fields", SelectedFields);
+            writer.WriteCollectionOfPrimitiveValues<string>("shared_with", SharedWith);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.SharingSettingsEmbeddedResponse>("sharing_settings", SharingSettings);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.SavedSearchSQueryProperty>("s_query", SQuery);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.SavedSearchType>("type", Type);

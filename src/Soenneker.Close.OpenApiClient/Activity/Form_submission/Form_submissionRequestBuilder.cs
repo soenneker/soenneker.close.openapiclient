@@ -203,11 +203,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Form_submission
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("form_id")]
-            public string? FormId { get; set; }
+            public string[]? FormId { get; set; }
 #nullable restore
 #else
             [QueryParameter("form_id")]
-            public string FormId { get; set; }
+            public string[] FormId { get; set; }
 #endif
             /// <summary>Filter by multiple form IDs (comma-separated).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

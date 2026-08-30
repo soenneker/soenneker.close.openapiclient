@@ -14,12 +14,23 @@ namespace Soenneker.Close.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The label property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Label { get; set; }
+#nullable restore
+#else
+        public string Label { get; set; }
+#endif
+        /// <summary>The type property</summary>
+        public global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.NewPipelineOpportunityStatus"/> and sets the default values.
         /// </summary>
         public NewPipelineOpportunityStatus()
         {
             AdditionalData = new Dictionary<string, object>();
+            Type = global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusType.Active;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,6 +50,8 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "label", n => { Label = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusType>(); } },
             };
         }
         /// <summary>
@@ -48,6 +61,8 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("label", Label);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

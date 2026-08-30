@@ -189,11 +189,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Custom
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("custom_activity_type_id")]
-            public string? CustomActivityTypeId { get; set; }
+            public string[]? CustomActivityTypeId { get; set; }
 #nullable restore
 #else
             [QueryParameter("custom_activity_type_id")]
-            public string CustomActivityTypeId { get; set; }
+            public string[] CustomActivityTypeId { get; set; }
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

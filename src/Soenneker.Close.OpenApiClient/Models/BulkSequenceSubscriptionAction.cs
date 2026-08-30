@@ -19,10 +19,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The calls_assigned_to property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionCallsAssignedTo? CallsAssignedTo { get; set; }
+        public List<string>? CallsAssignedTo { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionCallsAssignedTo CallsAssignedTo { get; set; }
+        public List<string> CallsAssignedTo { get; set; }
 #endif
         /// <summary>The contact_preference property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -178,7 +178,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "action_type", n => { ActionType = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionType>(); } },
-                { "calls_assigned_to", n => { CallsAssignedTo = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionCallsAssignedTo>(global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionCallsAssignedTo.CreateFromDiscriminatorValue); } },
+                { "calls_assigned_to", n => { CallsAssignedTo = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "contact_preference", n => { ContactPreference = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionContactPreferenceWrapper>(global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionContactPreferenceWrapper.CreateFromDiscriminatorValue); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetDateTimeOffsetValue(); } },
@@ -211,7 +211,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionType>("action_type", ActionType);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionCallsAssignedTo>("calls_assigned_to", CallsAssignedTo);
+            writer.WriteCollectionOfPrimitiveValues<string>("calls_assigned_to", CallsAssignedTo);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionContactPreferenceWrapper>("contact_preference", ContactPreference);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteDateTimeOffsetValue("date_created", DateCreated);

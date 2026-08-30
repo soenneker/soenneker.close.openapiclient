@@ -1008,18 +1008,13 @@
             "in": "query",
             "schema": {
               "title": "Custom Activity Type ID",
-              "type": "object",
-              "anyOf": [
-                {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                {
-                  "type": "null"
-                }
+              "type": [
+                "null",
+                "array"
               ],
+              "items": {
+                "type": "string"
+              },
               "default": null
             }
           },
@@ -2832,18 +2827,13 @@
             "description": "Filter by a specific form ID.",
             "schema": {
               "title": "Form ID",
-              "type": "object",
-              "anyOf": [
-                {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                {
-                  "type": "null"
-                }
+              "type": [
+                "null",
+                "array"
               ],
+              "items": {
+                "type": "string"
+              },
               "default": null
             }
           },
@@ -7910,18 +7900,13 @@
             "in": "query",
             "schema": {
               "title": "IDs",
-              "type": "object",
-              "anyOf": [
-                {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                {
-                  "type": "null"
-                }
+              "type": [
+                "null",
+                "array"
               ],
+              "items": {
+                "type": "string"
+              },
               "default": null
             }
           },
@@ -7930,18 +7915,13 @@
             "in": "query",
             "schema": {
               "title": "Object IDs",
-              "type": "object",
-              "anyOf": [
-                {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                {
-                  "type": "null"
-                }
+              "type": [
+                "null",
+                "array"
               ],
+              "items": {
+                "type": "string"
+              },
               "default": null
             }
           }
@@ -20592,7 +20572,6 @@
             "name": "type",
             "in": "query",
             "schema": {
-              "type": "object",
               "anyOf": [
                 {
                   "$ref": "#/components/schemas/SavedSearchType"
@@ -26980,7 +26959,14 @@
             "$ref": "#/components/schemas/BulkSequenceSubscriptionActionType"
           },
           "calls_assigned_to": {
-            "$ref": "#/components/schemas/BulkSequenceSubscriptionActionCallsAssignedTo"
+            "title": "Calls Assigned To",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            }
           },
           "contact_preference": {
             "$ref": "#/components/schemas/BulkSequenceSubscriptionActionContactPreference"
@@ -28627,7 +28613,15 @@
         "type": "object",
         "properties": {
           "attachments": {
-            "$ref": "#/components/schemas/CreateOpportunityAttachments"
+            "title": "Attachments",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AttachmentIn"
+            },
+            "default": null
           },
           "confidence": {
             "title": "Confidence",
@@ -28792,7 +28786,17 @@
         "type": "object",
         "properties": {
           "applies_to": {
-            "$ref": "#/components/schemas/CreateOutcomeAppliesTo"
+            "title": "Applies To",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/OutcomeAppliesTo"
+            },
+            "description": "Deprecated. This field will be derived from \u0060type\u0060 in a future update: \u0060custom\u0060 applies to calls and meetings, \u0060vm-dropped\u0060 applies to calls only.",
+            "default": null,
+            "deprecated": true
           },
           "description": {
             "title": "Description",
@@ -28884,7 +28888,16 @@
             "type": "string"
           },
           "statuses": {
-            "$ref": "#/components/schemas/CreatePipelineStatuses"
+            "title": "Statuses",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/NewPipelineOpportunityStatus"
+            },
+            "description": "Opportunity Statuses to create within the new Pipeline.",
+            "default": null
           }
         },
         "additionalProperties": false
@@ -29752,7 +29765,15 @@
             "default": null
           },
           "attachments": {
-            "$ref": "#/components/schemas/EmailActivityAttachments"
+            "title": "Attachments",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/Attachment"
+            },
+            "default": null
           },
           "bcc": {
             "title": "Bcc",
@@ -29912,7 +29933,15 @@
             "type": "boolean"
           },
           "opens": {
-            "$ref": "#/components/schemas/EmailActivityOpens"
+            "title": "Opens",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/EmailOpen"
+            },
+            "default": null
           },
           "opens_summary": {
             "title": "Opens Summary",
@@ -29940,7 +29969,15 @@
             ]
           },
           "send_attempts": {
-            "$ref": "#/components/schemas/EmailActivitySendAttempts"
+            "title": "Send Attempts",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/EmailActivitySendAttemptsItemProperty"
+            },
+            "default": null
           },
           "sender": {
             "title": "Sender",
@@ -30234,7 +30271,15 @@
             "$ref": "#/components/schemas/EmailInThreadAiDraftProperty"
           },
           "attachments": {
-            "$ref": "#/components/schemas/EmailInThreadAttachments"
+            "title": "Attachments",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/Attachment"
+            },
+            "default": null
           },
           "bcc": {
             "title": "Bcc",
@@ -30251,7 +30296,14 @@
             ]
           },
           "body_html_quoted": {
-            "$ref": "#/components/schemas/EmailInThreadBodyHtmlQuoted"
+            "title": "Body HTML Quoted",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/QuotedEmailHtml"
+            }
           },
           "body_preview": {
             "title": "Body Preview",
@@ -30269,7 +30321,14 @@
             ]
           },
           "body_text_quoted": {
-            "$ref": "#/components/schemas/EmailInThreadBodyTextQuoted"
+            "title": "Body Text Quoted",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/QuotedEmailText"
+            }
           },
           "bulk_email_action_id": {
             "title": "Bulk Email Action ID",
@@ -30400,7 +30459,15 @@
             "type": "boolean"
           },
           "opens": {
-            "$ref": "#/components/schemas/EmailInThreadOpens"
+            "title": "Opens",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/EmailOpen"
+            },
+            "default": null
           },
           "opens_summary": {
             "title": "Opens Summary",
@@ -30428,7 +30495,15 @@
             ]
           },
           "send_attempts": {
-            "$ref": "#/components/schemas/EmailInThreadSendAttempts"
+            "title": "Send Attempts",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/EmailInThreadSendAttemptsItemProperty"
+            },
+            "default": null
           },
           "sender": {
             "title": "Sender",
@@ -31079,7 +31154,15 @@
             "type": "boolean"
           },
           "sort": {
-            "$ref": "#/components/schemas/ExportSort"
+            "title": "Sort",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/ExportSortItem"
+            },
+            "default": null
           },
           "status": {
             "$ref": "#/components/schemas/ExportStatus"
@@ -31262,7 +31345,14 @@
         "type": "object",
         "properties": {
           "choices": {
-            "$ref": "#/components/schemas/FormFieldDefinitionChoices"
+            "title": "Choices",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/FormFieldChoice"
+            }
           },
           "id": {
             "title": "ID",
@@ -31466,7 +31556,15 @@
             "type": "string"
           },
           "members": {
-            "$ref": "#/components/schemas/GroupMembers"
+            "title": "Members",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/GroupMember"
+            },
+            "default": null
           },
           "name": {
             "title": "Name",
@@ -33844,7 +33942,14 @@
             "$ref": "#/components/schemas/OpportunityLeadPrimaryEmail"
           },
           "lead_primary_phone": {
-            "$ref": "#/components/schemas/OpportunityLeadPrimaryPhone"
+            "title": "Lead Primary Phone",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/ContactPhone"
+            }
           },
           "note": {
             "title": "Note",
@@ -35766,10 +35871,28 @@
             "$ref": "#/components/schemas/SavedSearchSQueryProperty"
           },
           "selected_fields": {
-            "$ref": "#/components/schemas/SavedSearchSelectedFields"
+            "title": "Selected Fields",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/SavedSearchSelectedFieldsItemProperty"
+            },
+            "default": null
           },
           "shared_with": {
-            "$ref": "#/components/schemas/SavedSearchSharedWith"
+            "title": "Shared With",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "default": [
+              null
+            ]
           },
           "sharing_settings": {
             "$ref": "#/components/schemas/SavedSearchSharingSettings"
@@ -37207,7 +37330,17 @@
         "type": "object",
         "properties": {
           "applies_to": {
-            "$ref": "#/components/schemas/UpdateOutcomeAppliesTo"
+            "title": "Applies To",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/OutcomeAppliesTo"
+            },
+            "description": "Deprecated. This field will be derived from \u0060type\u0060 in a future update: \u0060custom\u0060 applies to calls and meetings, \u0060vm-dropped\u0060 applies to calls only.",
+            "default": null,
+            "deprecated": true
           },
           "description": {
             "title": "Description",
@@ -37293,7 +37426,16 @@
             "type": "string"
           },
           "statuses": {
-            "$ref": "#/components/schemas/UpdatePipelineStatuses"
+            "title": "Statuses",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/ExistingPipelineOpportunityStatus"
+            },
+            "description": "Opportunity Statuses of this Pipeline, in the desired order.",
+            "default": null
           }
         },
         "additionalProperties": false
@@ -37468,7 +37610,16 @@
         "type": "object",
         "properties": {
           "events": {
-            "$ref": "#/components/schemas/UpdateWebhookEvents"
+            "title": "Events",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/WebhookSubscriptionEvent"
+            },
+            "description": "A list of events to subscribe to. Each event has an \u0060object_type\u0060 and an \u0060action\u0060 from values in the [event log](https://developer.close.com/api/resources/events/list-of-event-types). You can also use [Webhook Filters](https://developer.close.com/api/resources/webhooks/webhook-filters) while creating your subscription so that an event only fires to a Webhook when certain conditions are met.",
+            "default": null
           },
           "status": {
             "$ref": "#/components/schemas/UpdateWebhookStatus"
@@ -38044,21 +38195,6 @@
           }
         }
       },
-      "BulkSequenceSubscriptionActionCallsAssignedTo": {
-        "title": "Calls Assigned To",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
       "BulkSequenceSubscriptionActionContactPreference": {
         "type": "object",
         "anyOf": [
@@ -38177,21 +38313,6 @@
           }
         ]
       },
-      "CreateOpportunityAttachments": {
-        "title": "Attachments",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AttachmentIn"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
       "CreateOpportunityValuePeriod": {
         "type": "object",
         "anyOf": [
@@ -38223,39 +38344,6 @@
             "$ref": "#/components/schemas/LeadStatusColor"
           }
         }
-      },
-      "CreateOutcomeAppliesTo": {
-        "title": "Applies To",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OutcomeAppliesTo"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "description": "Deprecated. This field will be derived from \u0060type\u0060 in a future update: \u0060custom\u0060 applies to calls and meetings, \u0060vm-dropped\u0060 applies to calls only.",
-        "deprecated": true
-      },
-      "CreatePipelineStatuses": {
-        "title": "Statuses",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/NewPipelineOpportunityStatus"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "description": "Opportunity Statuses to create within the new Pipeline."
       },
       "CreatedActivitySource": {
         "type": "object",
@@ -38311,21 +38399,6 @@
           }
         }
       },
-      "EmailActivityAttachments": {
-        "title": "Attachments",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Attachment"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
       "EmailActivityDirection": {
         "type": "object",
         "anyOf": [
@@ -38342,84 +38415,6 @@
           }
         }
       },
-      "EmailActivityOpens": {
-        "title": "Opens",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EmailOpen"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "EmailActivitySendAttempts": {
-        "title": "Send Attempts",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              }
-            }
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "EmailInThreadAttachments": {
-        "title": "Attachments",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Attachment"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "EmailInThreadBodyHtmlQuoted": {
-        "title": "Body HTML Quoted",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/QuotedEmailHtml"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "EmailInThreadBodyTextQuoted": {
-        "title": "Body Text Quoted",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/QuotedEmailText"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
       "EmailInThreadDirection": {
         "type": "object",
         "anyOf": [
@@ -38435,39 +38430,6 @@
             "$ref": "#/components/schemas/CommunicationDirection"
           }
         }
-      },
-      "EmailInThreadOpens": {
-        "title": "Opens",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EmailOpen"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "EmailInThreadSendAttempts": {
-        "title": "Send Attempts",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              }
-            }
-          },
-          {
-            "type": "null"
-          }
-        ]
       },
       "EmailPreviewEnvelope": {
         "type": "object",
@@ -38647,65 +38609,22 @@
         }
       },
       "ExportParams": {
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/Json"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ]
+        "type": [
+          "null",
+          "object"
+        ],
+        "additionalProperties": {
+          "$ref": "#/components/schemas/Json"
+        }
       },
       "ExportSQuery": {
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/Json"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "ExportSort": {
-        "title": "Sort",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/components/schemas/Json"
-              }
-            }
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "FormFieldDefinitionChoices": {
-        "title": "Choices",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/FormFieldChoice"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ]
+        "type": [
+          "null",
+          "object"
+        ],
+        "additionalProperties": {
+          "$ref": "#/components/schemas/Json"
+        }
       },
       "FormSubmissionActivityValuesAdditionalProperties": {
         "type": "object",
@@ -38729,21 +38648,6 @@
           },
           {
             "type": "boolean"
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "GroupMembers": {
-        "title": "Members",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/GroupMember"
-            }
           },
           {
             "type": "null"
@@ -39104,21 +39008,6 @@
           }
         }
       },
-      "OpportunityLeadPrimaryPhone": {
-        "title": "Lead Primary Phone",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ContactPhone"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
       "OpportunityStallStatus": {
         "title": "Stall Status",
         "type": "object",
@@ -39265,36 +39154,6 @@
           }
         }
       },
-      "SavedSearchSelectedFields": {
-        "title": "Selected Fields",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "type": "object"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "SavedSearchSharedWith": {
-        "title": "Shared With",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
       "SavedSearchSharingSettings": {
         "type": "object",
         "anyOf": [
@@ -39438,23 +39297,6 @@
           }
         }
       },
-      "UpdateOutcomeAppliesTo": {
-        "title": "Applies To",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OutcomeAppliesTo"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "description": "Deprecated. This field will be derived from \u0060type\u0060 in a future update: \u0060custom\u0060 applies to calls and meetings, \u0060vm-dropped\u0060 applies to calls only.",
-        "deprecated": true
-      },
       "UpdateOutcomeType": {
         "type": "object",
         "anyOf": [
@@ -39471,38 +39313,6 @@
           }
         },
         "description": "Set to \u0060vm-dropped\u0060 if this outcome should be automatically set on calls whenever a team member performs a Voicemail Drop. Otherwise, leave empty or explicitly set to \u0060custom\u0060 (default)."
-      },
-      "UpdatePipelineStatuses": {
-        "title": "Statuses",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ExistingPipelineOpportunityStatus"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "description": "Opportunity Statuses of this Pipeline, in the desired order."
-      },
-      "UpdateWebhookEvents": {
-        "title": "Events",
-        "type": "object",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/WebhookSubscriptionEvent"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "description": "A list of events to subscribe to. Each event has an \u0060object_type\u0060 and an \u0060action\u0060 from values in the [event log](https://developer.close.com/api/resources/events/list-of-event-types). You can also use [Webhook Filters](https://developer.close.com/api/resources/webhooks/webhook-filters) while creating your subscription so that an event only fires to a Webhook when certain conditions are met."
       },
       "UpdateWebhookStatus": {
         "type": "object",
@@ -39689,6 +39499,12 @@
         ],
         "default": null
       },
+      "EmailActivitySendAttemptsItem": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
       "EmailInThreadAiDraft": {
         "title": "Ai Draft",
         "type": [
@@ -39703,6 +39519,12 @@
           "object"
         ],
         "default": null
+      },
+      "EmailInThreadSendAttemptsItem": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
       },
       "FormSubmissionActivityValues": {
         "title": "Values",
@@ -39736,6 +39558,9 @@
           "null",
           "object"
         ]
+      },
+      "SavedSearchSelectedFieldsItem": {
+        "type": "object"
       },
       "UpdateContactEmailsItem": {
         "required": [
@@ -40974,11 +40799,29 @@
       "EmailActivityEnvelopeProperty": {
         "type": "object"
       },
+      "EmailActivitySendAttemptsItemProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
       "EmailInThreadAiDraftProperty": {
         "type": "object"
       },
       "EmailInThreadEnvelopeProperty": {
         "type": "object"
+      },
+      "EmailInThreadSendAttemptsItemProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "ExportSortItem": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/Json"
+        }
       },
       "FormSubmissionActivityValuesProperty": {
         "type": "object",
@@ -41005,6 +40848,9 @@
         "type": "object"
       },
       "SavedSearchSQueryProperty": {
+        "type": "object"
+      },
+      "SavedSearchSelectedFieldsItemProperty": {
         "type": "object"
       },
       "WebhookSubscriptionEventExtraFilterProperty": {
