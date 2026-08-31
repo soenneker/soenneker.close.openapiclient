@@ -26972,6 +26972,30 @@
               }
             ]
           },
+          "agent_action_reason": {
+            "title": "Agent Action Reason",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "agent_config_id": {
+            "title": "Agent Config ID",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "attachments": {
             "title": "Attachments",
             "type": "array",

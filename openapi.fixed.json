@@ -25966,6 +25966,22 @@
             ],
             "format": "date-time"
           },
+          "agent_action_reason": {
+            "title": "Agent Action Reason",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
+          },
+          "agent_config_id": {
+            "title": "Agent Config ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
+          },
           "attachments": {
             "title": "Attachments",
             "type": "array",

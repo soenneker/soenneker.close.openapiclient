@@ -16,6 +16,22 @@ namespace Soenneker.Close.OpenApiClient.Models
         public DateTimeOffset? ActivityAt { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The agent_action_reason property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AgentActionReason { get; set; }
+#nullable restore
+#else
+        public string AgentActionReason { get; set; }
+#endif
+        /// <summary>The agent_config_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AgentConfigId { get; set; }
+#nullable restore
+#else
+        public string AgentConfigId { get; set; }
+#endif
         /// <summary>The attachments property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -202,6 +218,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "activity_at", n => { ActivityAt = n.GetDateTimeOffsetValue(); } },
+                { "agent_action_reason", n => { AgentActionReason = n.GetStringValue(); } },
+                { "agent_config_id", n => { AgentConfigId = n.GetStringValue(); } },
                 { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.Attachment>(global::Soenneker.Close.OpenApiClient.Models.Attachment.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "comment_summary", n => { CommentSummary = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommentSummary>(global::Soenneker.Close.OpenApiClient.Models.CommentSummary.CreateFromDiscriminatorValue); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
@@ -235,6 +253,8 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("activity_at", ActivityAt);
+            writer.WriteStringValue("agent_action_reason", AgentActionReason);
+            writer.WriteStringValue("agent_config_id", AgentConfigId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.Attachment>("attachments", Attachments);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommentSummary>("comment_summary", CommentSummary);
             writer.WriteStringValue("contact_id", ContactId);
