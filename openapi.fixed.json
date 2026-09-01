@@ -15876,6 +15876,7 @@
                 "example": {
                   "auto_record_calls": "unset",
                   "default_caller_id": null,
+                  "default_caller_id_mode": "fixed",
                   "hangup_recording_url": null,
                   "id": "memb_JPCqDJq0AmoZFhemXAWrWk9327DqfJgUF2VGPMOL4Lp",
                   "may_workflows_impersonate": false,
@@ -16008,6 +16009,7 @@
                 "example": {
                   "auto_record_calls": "enabled",
                   "default_caller_id": null,
+                  "default_caller_id_mode": "fixed",
                   "hangup_recording_url": null,
                   "id": "memb_SLfZq4IU5E2nBA3PBzHFsi1HUv98cPmGUIZGlWK7Z3y",
                   "may_workflows_impersonate": false,
@@ -27420,6 +27422,30 @@
           ]
         }
       },
+      "CallerIdMode": {
+        "title": "CallerIdMode",
+        "enum": [
+          "fixed",
+          "auto"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "How a caller\u0027s outbound number is chosen. Fixed uses a single configured number; Auto lets Close select the best number per call/SMS (Managed by Close Caller ID).",
+        "x-ms-enum": {
+          "name": "CallerIdMode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "fixed",
+              "name": "FixedValue"
+            },
+            {
+              "value": "auto",
+              "name": "Auto"
+            }
+          ]
+        }
+      },
       "CarrierNumberType": {
         "title": "CarrierNumberType",
         "enum": [
@@ -33434,7 +33460,12 @@
               "null",
               "string"
             ],
-            "description": "ID of the phone number to use as this member\u0027s default outbound caller ID."
+            "description": "ID of the phone number to use as this member\u0027s default outbound caller ID. Close keeps this value while \u0060default_caller_id_mode\u0060 is \u0060auto\u0060, but outbound calls do not use it."
+          },
+          "default_caller_id_mode": {
+            "description": "How this member\u0027s outbound caller ID is chosen. In \u0060fixed\u0060 mode, outbound calls use \u0060default_caller_id\u0060. In \u0060auto\u0060 mode, Close derives the number for each call and ignores \u0060default_caller_id\u0060.",
+            "title": "Default Caller ID Mode",
+            "$ref": "#/components/schemas/CallerIdMode"
           },
           "hangup_recording_url": {
             "title": "Hangup Recording URL",
@@ -33468,6 +33499,7 @@
         "required": [
           "auto_record_calls",
           "default_caller_id",
+          "default_caller_id_mode",
           "hangup_recording_url",
           "id",
           "may_workflows_impersonate",
@@ -33489,6 +33521,11 @@
               "null",
               "string"
             ]
+          },
+          "default_caller_id_mode": {
+            "description": "How a caller\u0027s outbound number is chosen. Fixed uses a single configured number; Auto lets Close select the best number per call/SMS (Managed by Close Caller ID).",
+            "title": "Default Caller ID Mode",
+            "$ref": "#/components/schemas/CallerIdMode"
           },
           "hangup_recording_url": {
             "title": "Hangup Recording URL",

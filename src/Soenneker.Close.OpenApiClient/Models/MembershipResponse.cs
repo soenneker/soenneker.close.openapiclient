@@ -25,6 +25,8 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string DefaultCallerId { get; set; }
 #endif
+        /// <summary>How a caller&apos;s outbound number is chosen. Fixed uses a single configured number; Auto lets Close select the best number per call/SMS (Managed by Close Caller ID).</summary>
+        public global::Soenneker.Close.OpenApiClient.Models.CallerIdMode? DefaultCallerIdMode { get; set; }
         /// <summary>The hangup_recording_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -202,6 +204,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             {
                 { "auto_record_calls", n => { AutoRecordCalls = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.AutoRecordCalls>(); } },
                 { "default_caller_id", n => { DefaultCallerId = n.GetStringValue(); } },
+                { "default_caller_id_mode", n => { DefaultCallerIdMode = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdMode>(); } },
                 { "hangup_recording_url", n => { HangupRecordingUrl = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "may_workflows_impersonate", n => { MayWorkflowsImpersonate = n.GetBoolValue(); } },
@@ -234,6 +237,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.AutoRecordCalls>("auto_record_calls", AutoRecordCalls);
             writer.WriteStringValue("default_caller_id", DefaultCallerId);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdMode>("default_caller_id_mode", DefaultCallerIdMode);
             writer.WriteStringValue("hangup_recording_url", HangupRecordingUrl);
             writer.WriteStringValue("id", Id);
             writer.WriteBoolValue("may_workflows_impersonate", MayWorkflowsImpersonate);

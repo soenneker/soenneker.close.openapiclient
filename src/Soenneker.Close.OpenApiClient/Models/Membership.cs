@@ -15,7 +15,7 @@ namespace Soenneker.Close.OpenApiClient.Models
     {
         /// <summary>Whether this member&apos;s calls are automatically recorded. Starts as `unset` and can be set to `enabled` or `disabled`.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.AutoRecordCalls? AutoRecordCalls { get; set; }
-        /// <summary>ID of the phone number to use as this member&apos;s default outbound caller ID.</summary>
+        /// <summary>ID of the phone number to use as this member&apos;s default outbound caller ID. Close keeps this value while `default_caller_id_mode` is `auto`, but outbound calls do not use it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DefaultCallerId { get; set; }
@@ -23,6 +23,8 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string DefaultCallerId { get; set; }
 #endif
+        /// <summary>How this member&apos;s outbound caller ID is chosen. In `fixed` mode, outbound calls use `default_caller_id`. In `auto` mode, Close derives the number for each call and ignores `default_caller_id`.</summary>
+        public global::Soenneker.Close.OpenApiClient.Models.CallerIdMode? DefaultCallerIdMode { get; set; }
         /// <summary>URL of the audio file used as this member&apos;s voicemail drop recording.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -63,6 +65,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             {
                 { "auto_record_calls", n => { AutoRecordCalls = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.AutoRecordCalls>(); } },
                 { "default_caller_id", n => { DefaultCallerId = n.GetStringValue(); } },
+                { "default_caller_id_mode", n => { DefaultCallerIdMode = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdMode>(); } },
                 { "hangup_recording_url", n => { HangupRecordingUrl = n.GetStringValue(); } },
                 { "may_workflows_impersonate", n => { MayWorkflowsImpersonate = n.GetBoolValue(); } },
                 { "role_id", n => { RoleId = n.GetStringValue(); } },
@@ -78,6 +81,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.AutoRecordCalls>("auto_record_calls", AutoRecordCalls);
             writer.WriteStringValue("default_caller_id", DefaultCallerId);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdMode>("default_caller_id_mode", DefaultCallerIdMode);
             writer.WriteStringValue("hangup_recording_url", HangupRecordingUrl);
             writer.WriteBoolValue("may_workflows_impersonate", MayWorkflowsImpersonate);
             writer.WriteStringValue("role_id", RoleId);
