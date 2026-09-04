@@ -99,24 +99,32 @@ namespace Soenneker.Close.OpenApiClient.Comment_thread
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("ids")]
             public string[]? Ids { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("ids")]
             public string[] Ids { get; set; }
+            #pragma warning restore CS1591
 #endif
             /// <summary>Number of results to return.</summary>
             [QueryParameter("_limit")]
             public int? Limit { get; set; }
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("object_ids")]
             public string[]? ObjectIds { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("object_ids")]
             public string[] ObjectIds { get; set; }
+            #pragma warning restore CS1591
 #endif
             /// <summary>Number of results to skip before returning, for pagination.</summary>
             [QueryParameter("_skip")]

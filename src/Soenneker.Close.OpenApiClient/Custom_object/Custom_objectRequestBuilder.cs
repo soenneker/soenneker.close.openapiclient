@@ -141,21 +141,29 @@ namespace Soenneker.Close.OpenApiClient.Custom_object
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("custom_object_type_id")]
             public string? CustomObjectTypeId { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("custom_object_type_id")]
             public string CustomObjectTypeId { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("lead_id")]
             public string? LeadId { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("lead_id")]
             public string LeadId { get; set; }
+            #pragma warning restore CS1591
 #endif
         }
     }

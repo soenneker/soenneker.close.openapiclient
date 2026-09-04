@@ -88,8 +88,10 @@ namespace Soenneker.Close.OpenApiClient.User.Item
             /// <summary>Number of results to return.</summary>
             [QueryParameter("_limit")]
             public int? Limit { get; set; }
+            #pragma warning disable CS1591
             [QueryParameter("_order_by")]
             public global::Soenneker.Close.OpenApiClient.Models.UsersGetOrderByParameter? OrderBy { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Number of results to skip before returning, for pagination.</summary>
             [QueryParameter("_skip")]
             public int? Skip { get; set; }

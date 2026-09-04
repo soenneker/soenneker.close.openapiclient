@@ -29142,6 +29142,9 @@
       },
       "CreateTask": {
         "title": "CreateTask",
+        "required": [
+          "_type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -29200,6 +29203,9 @@
               "null",
               "string"
             ]
+          },
+          "_type": {
+            "type": "string"
           }
         },
         "discriminator": {

@@ -99,21 +99,29 @@ namespace Soenneker.Close.OpenApiClient.Connected_account
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("_fields")]
             public string[]? Fields { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("_fields")]
             public string[] Fields { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("user_id")]
             public string? UserId { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("user_id")]
             public string UserId { get; set; }
+            #pragma warning restore CS1591
 #endif
         }
     }

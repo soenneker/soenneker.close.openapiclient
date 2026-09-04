@@ -123,12 +123,16 @@ namespace Soenneker.Close.OpenApiClient.Phone_number
             public int? Limit { get; set; }
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("number")]
             public string? Number { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("number")]
             public string Number { get; set; }
+            #pragma warning restore CS1591
 #endif
             /// <summary>Return numbers the given user participates in, including both personal and group numbers they belong to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

@@ -7,12 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
-    /// <summary>
-    /// An action item recommended to progress or resolve the stalled opportunity.
-    /// </summary>
     [Obsolete("")]
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class ActionItem : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>The recommended next step to progress or resolve the stalled opportunity</summary>
         public global::Soenneker.Close.OpenApiClient.Models.StalledOpportunityActionTypeV1? Action { get; set; }

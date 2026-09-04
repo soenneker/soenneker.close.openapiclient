@@ -142,21 +142,29 @@ namespace Soenneker.Close.OpenApiClient.Comment
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("object_id")]
             public string? ObjectId { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("object_id")]
             public string ObjectId { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("thread_id")]
             public string? ThreadId { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("thread_id")]
             public string ThreadId { get; set; }
+            #pragma warning restore CS1591
 #endif
         }
     }

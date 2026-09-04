@@ -139,10 +139,14 @@ namespace Soenneker.Close.OpenApiClient.Email_template
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Email_templateRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("is_archived")]
             public bool? IsArchived { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("is_shared")]
             public bool? IsShared { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Number of results to return.</summary>
             [QueryParameter("_limit")]
             public int? Limit { get; set; }

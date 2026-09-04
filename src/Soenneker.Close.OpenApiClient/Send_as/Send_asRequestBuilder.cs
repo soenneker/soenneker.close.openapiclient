@@ -182,21 +182,29 @@ namespace Soenneker.Close.OpenApiClient.Send_as
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("allowed_user_id")]
             public string? AllowedUserId { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("allowed_user_id")]
             public string AllowedUserId { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("allowing_user_id")]
             public string? AllowingUserId { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("allowing_user_id")]
             public string AllowingUserId { get; set; }
+            #pragma warning restore CS1591
 #endif
         }
         /// <summary>
@@ -207,21 +215,29 @@ namespace Soenneker.Close.OpenApiClient.Send_as
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("allowed_user_id")]
             public string? AllowedUserId { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("allowed_user_id")]
             public string AllowedUserId { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("allowing_user_id")]
             public string? AllowingUserId { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("allowing_user_id")]
             public string AllowingUserId { get; set; }
+            #pragma warning restore CS1591
 #endif
         }
     }
