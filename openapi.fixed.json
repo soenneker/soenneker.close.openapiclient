@@ -4422,6 +4422,7 @@
                           "url": "https://app.close.com/go/sms/acti_12358hIUhaklslYoYSbtozZuUTyB2zO2nhm7iVSpZpp/media/media_7Ga8l93XLVvqNsgjPbBuUI/"
                         }
                       ],
+                      "caller_id_mode": null,
                       "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
                       "cost": "1",
                       "created_by": null,
@@ -4515,6 +4516,7 @@
                 "example": {
                   "_type": "SMS",
                   "activity_at": "2016-10-03T16:06:11.167000\u002B00:00",
+                  "caller_id_mode": null,
                   "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
                   "cost": "1",
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
@@ -4601,6 +4603,7 @@
                       "url": "https://app.close.com/go/sms/acti_12358hIUhaklslYoYSbtozZuUTyB2zO2nhm7iVSpZpp/media/media_7Ga8l93XLVvqNsgjPbBuUI/"
                     }
                   ],
+                  "caller_id_mode": null,
                   "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
                   "cost": "1",
                   "created_by": null,
@@ -4685,6 +4688,7 @@
                 "example": {
                   "_type": "SMS",
                   "activity_at": "2016-10-03T16:06:11.167000\u002B00:00",
+                  "caller_id_mode": null,
                   "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
                   "cost": "1",
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
@@ -35574,6 +35578,7 @@
         "required": [
           "_type",
           "activity_at",
+          "caller_id_mode",
           "contact_id",
           "cost",
           "created_by",
@@ -35629,6 +35634,9 @@
               "string"
             ],
             "default": null
+          },
+          "caller_id_mode": {
+            "$ref": "#/components/schemas/SmsActivityCallerIdMode"
           },
           "contact_id": {
             "title": "Contact ID",
@@ -39213,6 +39221,22 @@
           }
         }
       },
+      "SmsActivityCallerIdMode": {
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/CallerIdModeWrapper"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/CallerIdMode"
+          }
+        }
+      },
       "SavedSearchSharingSettings": {
         "type": "object",
         "anyOf": [
@@ -40056,6 +40080,17 @@
         "properties": {
           "value": {
             "$ref": "#/components/schemas/CarrierNumberType"
+          }
+        }
+      },
+      "CallerIdModeWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/CallerIdMode"
           }
         }
       },
