@@ -30526,6 +30526,17 @@
               ]
             }
           },
+          "caller_id_mode": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "enum": [
+              "fixed",
+              "auto",
+              null
+            ]
+          },
           "contact_id": {
             "type": [
               "null",
@@ -40085,6 +40096,17 @@
                 "url"
               ]
             }
+          },
+          "caller_id_mode": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "enum": [
+              "fixed",
+              "auto",
+              null
+            ]
           },
           "contact_id": {
             "type": [

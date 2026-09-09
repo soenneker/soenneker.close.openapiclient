@@ -22,6 +22,8 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public List<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityAttachmentsItem> Attachments { get; set; }
 #endif
+        /// <summary>The caller_id_mode property</summary>
+        public global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityCallerIdMode? CallerIdMode { get; set; }
         /// <summary>The contact_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -122,6 +124,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             {
                 { "activity_at", n => { ActivityAt = n.GetDateTimeOffsetValue(); } },
                 { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityAttachmentsItem>(global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityAttachmentsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "caller_id_mode", n => { CallerIdMode = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityCallerIdMode>(); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetDateTimeOffsetValue(); } },
@@ -146,6 +149,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("activity_at", ActivityAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityAttachmentsItem>("attachments", Attachments);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityCallerIdMode>("caller_id_mode", CallerIdMode);
             writer.WriteStringValue("contact_id", ContactId);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteDateTimeOffsetValue("date_created", DateCreated);

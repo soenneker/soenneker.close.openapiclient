@@ -22,6 +22,8 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public List<global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityAttachmentsItem> Attachments { get; set; }
 #endif
+        /// <summary>The caller_id_mode property</summary>
+        public global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityCallerIdMode? CallerIdMode { get; set; }
         /// <summary>The contact_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -100,6 +102,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             {
                 { "activity_at", n => { ActivityAt = n.GetDateTimeOffsetValue(); } },
                 { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityAttachmentsItem>(global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityAttachmentsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "caller_id_mode", n => { CallerIdMode = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityCallerIdMode>(); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
                 { "lead_id", n => { LeadId = n.GetStringValue(); } },
                 { "local_phone", n => { LocalPhone = n.GetStringValue(); } },
@@ -119,6 +122,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("activity_at", ActivityAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityAttachmentsItem>("attachments", Attachments);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityCallerIdMode>("caller_id_mode", CallerIdMode);
             writer.WriteStringValue("contact_id", ContactId);
             writer.WriteStringValue("lead_id", LeadId);
             writer.WriteStringValue("local_phone", LocalPhone);

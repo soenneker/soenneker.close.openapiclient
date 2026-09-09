@@ -29017,6 +29017,9 @@
               "$ref": "#/components/schemas/CreateSmsActivityAttachmentsItem"
             }
           },
+          "caller_id_mode": {
+            "$ref": "#/components/schemas/CreateSmsActivityCallerIdMode"
+          },
           "contact_id": {
             "type": [
               "null",
@@ -37570,6 +37573,9 @@
               "$ref": "#/components/schemas/UpdateSmsActivityAttachmentsItem"
             }
           },
+          "caller_id_mode": {
+            "$ref": "#/components/schemas/UpdateSmsActivityCallerIdMode"
+          },
           "contact_id": {
             "type": [
               "null",
@@ -41190,6 +41196,32 @@
           ]
         }
       },
+      "CreateSmsActivityCallerIdMode": {
+        "enum": [
+          "fixed",
+          "auto",
+          null
+        ],
+        "type": [
+          "null",
+          "string"
+        ],
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "CreateSmsActivityCallerIdMode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "fixed",
+              "name": "FixedValue"
+            },
+            {
+              "value": "auto",
+              "name": "Auto"
+            }
+          ]
+        }
+      },
       "CreateSmsActivityDirection": {
         "enum": [
           "inbound",
@@ -41493,6 +41525,32 @@
             {
               "value": "error",
               "name": "Error"
+            }
+          ]
+        }
+      },
+      "UpdateSmsActivityCallerIdMode": {
+        "enum": [
+          "fixed",
+          "auto",
+          null
+        ],
+        "type": [
+          "null",
+          "string"
+        ],
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "UpdateSmsActivityCallerIdMode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "fixed",
+              "name": "FixedValue"
+            },
+            {
+              "value": "auto",
+              "name": "Auto"
             }
           ]
         }
