@@ -34780,6 +34780,7 @@
         "title": "Permission",
         "enum": [
           "manage_organization",
+          "manage_others_api_keys",
           "manage_customizations",
           "manage_group_numbers",
           "manage_team_smart_views",
@@ -34820,6 +34821,10 @@
             {
               "value": "manage_organization",
               "name": "ManageOrganization"
+            },
+            {
+              "value": "manage_others_api_keys",
+              "name": "ManageOthersApiKeys"
             },
             {
               "value": "manage_customizations",

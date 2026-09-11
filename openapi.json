@@ -37302,6 +37302,7 @@
         "type": "string",
         "enum": [
           "manage_organization",
+          "manage_others_api_keys",
           "manage_customizations",
           "manage_group_numbers",
           "manage_team_smart_views",

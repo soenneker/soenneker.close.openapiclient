@@ -12,6 +12,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         #pragma warning disable CS1591
         ManageOrganization,
         #pragma warning restore CS1591
+        [EnumMember(Value = "manage_others_api_keys")]
+        #pragma warning disable CS1591
+        ManageOthersApiKeys,
+        #pragma warning restore CS1591
         [EnumMember(Value = "manage_customizations")]
         #pragma warning disable CS1591
         ManageCustomizations,
