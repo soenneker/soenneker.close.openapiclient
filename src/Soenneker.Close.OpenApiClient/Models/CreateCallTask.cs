@@ -72,6 +72,8 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string OrganizationId { get; set; }
 #endif
+        /// <summary>The priority property</summary>
+        public global::Soenneker.Close.OpenApiClient.Models.TaskPriority? Priority { get; set; }
         /// <summary>The text property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -115,6 +117,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "is_complete", n => { IsComplete = n.GetBoolValue(); } },
                 { "lead_id", n => { LeadId = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
+                { "priority", n => { Priority = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.TaskPriority>(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
                 { "_type", n => { Type = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.OutgoingCallType>(); } },
             };
@@ -134,6 +137,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteBoolValue("is_complete", IsComplete);
             writer.WriteStringValue("lead_id", LeadId);
             writer.WriteStringValue("organization_id", OrganizationId);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.TaskPriority>("priority", Priority);
             writer.WriteStringValue("text", Text);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.OutgoingCallType>("_type", Type);
             writer.WriteAdditionalData(AdditionalData);

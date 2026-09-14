@@ -4423,6 +4423,7 @@
                         }
                       ],
                       "caller_id_mode": null,
+                      "caller_id_reason": null,
                       "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
                       "cost": "1",
                       "created_by": null,
@@ -4517,6 +4518,7 @@
                   "_type": "SMS",
                   "activity_at": "2016-10-03T16:06:11.167000\u002B00:00",
                   "caller_id_mode": null,
+                  "caller_id_reason": null,
                   "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
                   "cost": "1",
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
@@ -4604,6 +4606,7 @@
                     }
                   ],
                   "caller_id_mode": null,
+                  "caller_id_reason": null,
                   "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
                   "cost": "1",
                   "created_by": null,
@@ -4689,6 +4692,7 @@
                   "_type": "SMS",
                   "activity_at": "2016-10-03T16:06:11.167000\u002B00:00",
                   "caller_id_mode": null,
+                  "caller_id_reason": null,
                   "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
                   "cost": "1",
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
@@ -27450,6 +27454,35 @@
           ]
         }
       },
+      "CallerIdReason": {
+        "title": "CallerIdReason",
+        "enum": [
+          "context",
+          "local_presence",
+          "fallback"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Why a number was chosen in Auto mode: reused from a prior communication (context), picked for geographic proximity (local_presence), or the default/oldest fallback.",
+        "x-ms-enum": {
+          "name": "CallerIdReason",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "context",
+              "name": "Context"
+            },
+            {
+              "value": "local_presence",
+              "name": "LocalPresence"
+            },
+            {
+              "value": "fallback",
+              "name": "Fallback"
+            }
+          ]
+        }
+      },
       "CarrierNumberType": {
         "title": "CarrierNumberType",
         "enum": [
@@ -28032,6 +28065,10 @@
           "organization_id": {
             "title": "Organization ID",
             "type": "string"
+          },
+          "priority": {
+            "title": "Priority",
+            "$ref": "#/components/schemas/TaskPriority"
           },
           "text": {
             "title": "Text",
@@ -35587,6 +35624,7 @@
           "_type",
           "activity_at",
           "caller_id_mode",
+          "caller_id_reason",
           "contact_id",
           "cost",
           "created_by",
@@ -35645,6 +35683,9 @@
           },
           "caller_id_mode": {
             "$ref": "#/components/schemas/SmsActivityCallerIdMode"
+          },
+          "caller_id_reason": {
+            "$ref": "#/components/schemas/SmsActivityCallerIdReason"
           },
           "contact_id": {
             "title": "Contact ID",
@@ -39248,6 +39289,22 @@
           }
         }
       },
+      "SmsActivityCallerIdReason": {
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/CallerIdReasonWrapper"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/CallerIdReason"
+          }
+        }
+      },
       "SavedSearchSharingSettings": {
         "type": "object",
         "anyOf": [
@@ -40102,6 +40159,17 @@
         "properties": {
           "value": {
             "$ref": "#/components/schemas/CallerIdMode"
+          }
+        }
+      },
+      "CallerIdReasonWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/CallerIdReason"
           }
         }
       },
