@@ -108,6 +108,14 @@ namespace Soenneker.Close.OpenApiClient.Models
         #pragma warning disable CS1591
         ManageChloeCallTasks,
         #pragma warning restore CS1591
+        [EnumMember(Value = "view_custom_agents")]
+        #pragma warning disable CS1591
+        ViewCustomAgents,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "manage_custom_agents")]
+        #pragma warning disable CS1591
+        ManageCustomAgents,
+        #pragma warning restore CS1591
         [EnumMember(Value = "manage_others_activities")]
         #pragma warning disable CS1591
         ManageOthersActivities,

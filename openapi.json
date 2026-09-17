@@ -12519,7 +12519,7 @@
                 "example": {
                   "data": [
                     {
-                      "caller_id": "",
+                      "caller_id": null,
                       "date_created": "2018-07-17T12:35:01.230707",
                       "date_updated": "2018-07-31T14:15:11.496227",
                       "id": "dial_23eLaYZDjeL8tzFQMW5sto",
@@ -37344,6 +37344,8 @@
           "manage_voice_agents",
           "ai_chat",
           "manage_chloe_call_tasks",
+          "view_custom_agents",
+          "manage_custom_agents",
           "manage_others_activities",
           "delete_own_activities",
           "calling",
