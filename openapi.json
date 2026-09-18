@@ -8588,6 +8588,7 @@
                 "identities",
                 "imap",
                 "is_imap_archive_sync_enabled",
+                "label",
                 "latest_receive_error",
                 "latest_send_error",
                 "lead_suggestions_updated_at",
@@ -8639,6 +8640,7 @@
                           "name": "Anthony Nemitz"
                         }
                       ],
+                      "label": "anthony@close.com",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "synced_calendars": [
                         "anthony@close.com"
@@ -8659,6 +8661,7 @@
                         }
                       ],
                       "imap": null,
+                      "label": "anthony@close.com",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "smtp": {
                         "host": "smtp.mailgun.org",
@@ -8673,6 +8676,7 @@
                       "email": "anthony@close.com",
                       "id": "emailacct_0WwZ19CuOSGOtT2RMOqTPIMyvNMuFbfEr3Iul2hrWYm",
                       "identities": [],
+                      "label": "anthony@close.com",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
                     }
@@ -8733,6 +8737,7 @@
                 "identities",
                 "imap",
                 "is_imap_archive_sync_enabled",
+                "label",
                 "latest_receive_error",
                 "latest_send_error",
                 "lead_suggestions_updated_at",
@@ -8765,6 +8770,7 @@
                       "name": "Anthony Nemitz"
                     }
                   ],
+                  "label": "anthony@close.com",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                   "synced_calendars": [
                     "anthony@close.com"
@@ -30302,6 +30308,22 @@
         "title": "CreatePhoneNumberRequest",
         "type": "object",
         "properties": {
+          "assign_to": {
+            "title": "Assign To",
+            "description": "IDs of the users the new phone number is assigned to. When omitted, the number is assigned to the user making the request. Assigning it to anyone else requires the \"Manage Team Phone Numbers\" permission, and every user must be an active member of the organization who is allowed to make calls.",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "bundle_id": {
             "title": "Bundle ID",
             "default": null,

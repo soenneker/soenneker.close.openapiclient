@@ -12,6 +12,14 @@ namespace Soenneker.Close.OpenApiClient.Models
     public partial class CreatePhoneNumberRequest : IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>IDs of the users the new phone number is assigned to. When omitted, the number is assigned to the user making the request. Assigning it to anyone else requires the &quot;Manage Team Phone Numbers&quot; permission, and every user must be an active member of the organization who is allowed to make calls.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? AssignTo { get; set; }
+#nullable restore
+#else
+        public List<string> AssignTo { get; set; }
+#endif
         /// <summary>The bundle_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -70,6 +78,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "assign_to", n => { AssignTo = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "bundle_id", n => { BundleId = n.GetStringValue(); } },
                 { "carrier_type", n => { CarrierType = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType>(); } },
                 { "country", n => { Country = n.GetStringValue(); } },
@@ -86,6 +95,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfPrimitiveValues<string>("assign_to", AssignTo);
             writer.WriteStringValue("bundle_id", BundleId);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType>("carrier_type", CarrierType);
             writer.WriteStringValue("country", Country);
