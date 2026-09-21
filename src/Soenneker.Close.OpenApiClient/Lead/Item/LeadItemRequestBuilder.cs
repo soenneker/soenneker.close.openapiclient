@@ -79,16 +79,16 @@ namespace Soenneker.Close.OpenApiClient.Lead.Item
         /// Supports non-destructive patches. Nested `contacts` cannot be updated through this endpoint -- use the Contacts API instead.**status**: See `status` and `status_id` guidance on the create endpoint.**custom.FIELD_ID** (optional): See `custom.FIELD_ID` guidance on the create endpoint. You can also unset a single field, e.g.:```json{ &quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c&quot;: null }```If the custom field accepts multiple values, you can specify `.add` or `.remove` as part of the field key to add/remove a single value to/from a list of values, e.g.:```json{ &quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c.add&quot;: &quot;Wednesday&quot; }```adds &quot;Wednesday&quot; to the list of values which already exist on the given lead.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.Lead"/></returns>
-        /// <param name="body">Fallback media schema</param>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.Lead?> PutAsync(global::Soenneker.Close.OpenApiClient.Lead.Item.LeadPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.Lead?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.LeadsUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.Lead> PutAsync(global::Soenneker.Close.OpenApiClient.Lead.Item.LeadPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.Lead> PutAsync(global::Soenneker.Close.OpenApiClient.Models.LeadsUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -136,15 +136,15 @@ namespace Soenneker.Close.OpenApiClient.Lead.Item
         /// Supports non-destructive patches. Nested `contacts` cannot be updated through this endpoint -- use the Contacts API instead.**status**: See `status` and `status_id` guidance on the create endpoint.**custom.FIELD_ID** (optional): See `custom.FIELD_ID` guidance on the create endpoint. You can also unset a single field, e.g.:```json{ &quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c&quot;: null }```If the custom field accepts multiple values, you can specify `.add` or `.remove` as part of the field key to add/remove a single value to/from a list of values, e.g.:```json{ &quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c.add&quot;: &quot;Wednesday&quot; }```adds &quot;Wednesday&quot; to the list of values which already exist on the given lead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Fallback media schema</param>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Lead.Item.LeadPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.LeadsUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Lead.Item.LeadPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.LeadsUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

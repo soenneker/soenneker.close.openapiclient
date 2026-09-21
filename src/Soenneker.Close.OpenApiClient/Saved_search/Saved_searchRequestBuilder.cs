@@ -68,16 +68,16 @@ namespace Soenneker.Close.OpenApiClient.Saved_search
         /// Create a Lead or Contact Smart View.For Lead Smart Views, the `type` field is optional (since `lead` is the default `type`).When creating a Smart View, you must specify that you want to get objects of the appropriate type via an `object_type` clause as per the [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) section. See the examples below.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.SavedSearch"/></returns>
-        /// <param name="body">Fallback media schema</param>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.SavedSearch?> PostAsync(global::Soenneker.Close.OpenApiClient.Saved_search.Saved_searchPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.SavedSearch?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.SmartViewsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.SavedSearch> PostAsync(global::Soenneker.Close.OpenApiClient.Saved_search.Saved_searchPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.SavedSearch> PostAsync(global::Soenneker.Close.OpenApiClient.Models.SmartViewsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -107,15 +107,15 @@ namespace Soenneker.Close.OpenApiClient.Saved_search
         /// Create a Lead or Contact Smart View.For Lead Smart Views, the `type` field is optional (since `lead` is the default `type`).When creating a Smart View, you must specify that you want to get objects of the appropriate type via an `object_type` clause as per the [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) section. See the examples below.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Fallback media schema</param>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Saved_search.Saved_searchPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.SmartViewsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Saved_search.Saved_searchPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.SmartViewsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
