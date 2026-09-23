@@ -39,6 +39,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         #pragma warning disable CS1591
         InsufficientAiCreditBalance,
         #pragma warning restore CS1591
+        [EnumMember(Value = "plan-not-supported")]
+        #pragma warning disable CS1591
+        PlanNotSupported,
+        #pragma warning restore CS1591
         [EnumMember(Value = "reply-received")]
         #pragma warning disable CS1591
         ReplyReceived,

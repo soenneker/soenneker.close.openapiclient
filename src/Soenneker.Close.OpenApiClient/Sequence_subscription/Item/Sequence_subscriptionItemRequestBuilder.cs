@@ -70,7 +70,7 @@ namespace Soenneker.Close.OpenApiClient.Sequence_subscription.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.SequencesGetSubscription200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.SequencesGetSubscription200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a specific Subscription
+        /// Setting `status` to `active` restarts the Subscription, so it requires a plan that includes Workflow runs and otherwise returns a 400. Setting it to `paused` works on every plan.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.SequencesUpdateSubscription200Response"/></returns>
         /// <param name="body">The request body</param>
@@ -127,7 +127,7 @@ namespace Soenneker.Close.OpenApiClient.Sequence_subscription.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update a specific Subscription
+        /// Setting `status` to `active` restarts the Subscription, so it requires a plan that includes Workflow runs and otherwise returns a 400. Setting it to `paused` works on every plan.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

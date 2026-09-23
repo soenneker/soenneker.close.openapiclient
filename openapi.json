@@ -7907,7 +7907,7 @@
           "bulk_actions.sequence_subscriptions"
         ],
         "summary": "Initiate a new bulk sequence subscription",
-        "description": "`action_type` must be one of:\n\n- `subscribe` to create a new sequence subscription for contacts that have never received the given sequence.\n- `resume` to resume any paused sequence subscriptions for the given sequence or all sequences if `sequence_id` is not provided.\n- `resume_finished` to resume any finished sequence subscriptions for the given sequence or all sequences if `sequence_id` is not provided.\n- `pause` to pause any active sequence subscriptions for the given sequence or all sequences if `sequence_id` is not provided.\n\n`sequence_id`, `sender_account_id`, `sender_name`, `sender_email` and `contact_preference` are required if `action_type` is `subscribe`.\n\n`contact_preference` can be set to:\n\n- `lead` to only subscribe the primary/first contact email of the lead.\n- `contact` to subscribe the primary email of each contact of the lead.",
+        "description": "`action_type` must be one of:\n\n- `subscribe` to create a new sequence subscription for contacts that have never received the given sequence.\n- `resume` to resume any paused sequence subscriptions for the given sequence or all sequences if `sequence_id` is not provided.\n- `resume_finished` to resume any finished sequence subscriptions for the given sequence or all sequences if `sequence_id` is not provided.\n- `pause` to pause any active sequence subscriptions for the given sequence or all sequences if `sequence_id` is not provided.\n\n`sequence_id`, `sender_account_id`, `sender_name`, `sender_email` and `contact_preference` are required if `action_type` is `subscribe`.\n\n`contact_preference` can be set to:\n\n- `lead` to only subscribe the primary/first contact email of the lead.\n- `contact` to subscribe the primary email of each contact of the lead.\n\n`subscribe`, `resume` and `resume_finished` all start or restart Workflow\nruns, so they require a plan that includes them and otherwise return a 400.\n`pause` and `reassign` remain available on every plan.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -22995,6 +22995,7 @@
           "sequences"
         ],
         "summary": "Update a specific Subscription",
+        "description": "Setting `status` to `active` restarts the Subscription, so it requires a plan that includes Workflow runs and otherwise returns a 400. Setting it to `paused` works on every plan.",
         "parameters": [
           {
             "in": "path",
@@ -38739,6 +38740,7 @@
           "workflow-paused",
           "filter-not-matched",
           "insufficient-ai-credit-balance",
+          "plan-not-supported",
           "reply-received",
           "call-answered",
           "meeting-booked",

@@ -7372,7 +7372,7 @@
           "bulk_actions.sequence_subscriptions"
         ],
         "summary": "Initiate a new bulk sequence subscription",
-        "description": "\u0060action_type\u0060 must be one of:\n\n- \u0060subscribe\u0060 to create a new sequence subscription for contacts that have never received the given sequence.\n- \u0060resume\u0060 to resume any paused sequence subscriptions for the given sequence or all sequences if \u0060sequence_id\u0060 is not provided.\n- \u0060resume_finished\u0060 to resume any finished sequence subscriptions for the given sequence or all sequences if \u0060sequence_id\u0060 is not provided.\n- \u0060pause\u0060 to pause any active sequence subscriptions for the given sequence or all sequences if \u0060sequence_id\u0060 is not provided.\n\n\u0060sequence_id\u0060, \u0060sender_account_id\u0060, \u0060sender_name\u0060, \u0060sender_email\u0060 and \u0060contact_preference\u0060 are required if \u0060action_type\u0060 is \u0060subscribe\u0060.\n\n\u0060contact_preference\u0060 can be set to:\n\n- \u0060lead\u0060 to only subscribe the primary/first contact email of the lead.\n- \u0060contact\u0060 to subscribe the primary email of each contact of the lead.",
+        "description": "\u0060action_type\u0060 must be one of:\n\n- \u0060subscribe\u0060 to create a new sequence subscription for contacts that have never received the given sequence.\n- \u0060resume\u0060 to resume any paused sequence subscriptions for the given sequence or all sequences if \u0060sequence_id\u0060 is not provided.\n- \u0060resume_finished\u0060 to resume any finished sequence subscriptions for the given sequence or all sequences if \u0060sequence_id\u0060 is not provided.\n- \u0060pause\u0060 to pause any active sequence subscriptions for the given sequence or all sequences if \u0060sequence_id\u0060 is not provided.\n\n\u0060sequence_id\u0060, \u0060sender_account_id\u0060, \u0060sender_name\u0060, \u0060sender_email\u0060 and \u0060contact_preference\u0060 are required if \u0060action_type\u0060 is \u0060subscribe\u0060.\n\n\u0060contact_preference\u0060 can be set to:\n\n- \u0060lead\u0060 to only subscribe the primary/first contact email of the lead.\n- \u0060contact\u0060 to subscribe the primary email of each contact of the lead.\n\n\u0060subscribe\u0060, \u0060resume\u0060 and \u0060resume_finished\u0060 all start or restart Workflow\nruns, so they require a plan that includes them and otherwise return a 400.\n\u0060pause\u0060 and \u0060reassign\u0060 remain available on every plan.",
         "operationId": "BulkActionsSequenceSubscriptionsCreate",
         "requestBody": {
           "content": {
@@ -22477,6 +22477,7 @@
           "sequences"
         ],
         "summary": "Update a specific Subscription",
+        "description": "Setting \u0060status\u0060 to \u0060active\u0060 restarts the Subscription, so it requires a plan that includes Workflow runs and otherwise returns a 400. Setting it to \u0060paused\u0060 works on every plan.",
         "operationId": "SequencesUpdateSubscription",
         "parameters": [
           {
@@ -36370,6 +36371,7 @@
           "workflow-paused",
           "filter-not-matched",
           "insufficient-ai-credit-balance",
+          "plan-not-supported",
           "reply-received",
           "call-answered",
           "meeting-booked",
@@ -36433,6 +36435,10 @@
             {
               "value": "insufficient-ai-credit-balance",
               "name": "InsufficientAiCreditBalance"
+            },
+            {
+              "value": "plan-not-supported",
+              "name": "PlanNotSupported"
             },
             {
               "value": "reply-received",
