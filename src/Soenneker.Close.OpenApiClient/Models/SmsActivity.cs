@@ -35,10 +35,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The caller_id_mode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.CallerIdModeWrapper? CallerIdMode { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.CallerIdModeWrapper2? CallerIdMode { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.CallerIdModeWrapper CallerIdMode { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.CallerIdModeWrapper2 CallerIdMode { get; set; }
 #endif
         /// <summary>The caller_id_reason property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -290,7 +290,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "activity_at", n => { ActivityAt = n.GetDateTimeOffsetValue(); } },
                 { "agent_action_reason", n => { AgentActionReason = n.GetStringValue(); } },
                 { "agent_config_id", n => { AgentConfigId = n.GetStringValue(); } },
-                { "caller_id_mode", n => { CallerIdMode = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdModeWrapper>(global::Soenneker.Close.OpenApiClient.Models.CallerIdModeWrapper.CreateFromDiscriminatorValue); } },
+                { "caller_id_mode", n => { CallerIdMode = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdModeWrapper2>(global::Soenneker.Close.OpenApiClient.Models.CallerIdModeWrapper2.CreateFromDiscriminatorValue); } },
                 { "caller_id_reason", n => { CallerIdReason = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdReasonWrapper>(global::Soenneker.Close.OpenApiClient.Models.CallerIdReasonWrapper.CreateFromDiscriminatorValue); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
                 { "cost", n => { Cost = n.GetStringValue(); } },
@@ -336,7 +336,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("activity_at", ActivityAt);
             writer.WriteStringValue("agent_action_reason", AgentActionReason);
             writer.WriteStringValue("agent_config_id", AgentConfigId);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdModeWrapper>("caller_id_mode", CallerIdMode);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdModeWrapper2>("caller_id_mode", CallerIdMode);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdReasonWrapper>("caller_id_reason", CallerIdReason);
             writer.WriteStringValue("contact_id", ContactId);
             writer.WriteStringValue("cost", Cost);

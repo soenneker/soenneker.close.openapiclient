@@ -7305,6 +7305,7 @@
                   "data": [
                     {
                       "action_type": "subscribe",
+                      "caller_id_mode": null,
                       "calls_assigned_to": null,
                       "contact_preference": "lead",
                       "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
@@ -7436,6 +7437,7 @@
                 },
                 "example": {
                   "action_type": "subscribe",
+                  "caller_id_mode": null,
                   "calls_assigned_to": null,
                   "contact_preference": "lead",
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
@@ -7536,6 +7538,7 @@
                 },
                 "example": {
                   "action_type": "subscribe",
+                  "caller_id_mode": null,
                   "calls_assigned_to": null,
                   "contact_preference": "lead",
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
@@ -26962,6 +26965,7 @@
         "title": "BulkSequenceSubscriptionAction",
         "required": [
           "action_type",
+          "caller_id_mode",
           "calls_assigned_to",
           "contact_preference",
           "created_by",
@@ -26990,6 +26994,9 @@
         "properties": {
           "action_type": {
             "$ref": "#/components/schemas/BulkSequenceSubscriptionActionType"
+          },
+          "caller_id_mode": {
+            "$ref": "#/components/schemas/BulkSequenceSubscriptionActionCallerIdMode"
           },
           "calls_assigned_to": {
             "title": "Calls Assigned To",
@@ -38350,6 +38357,23 @@
           }
         }
       },
+      "BulkSequenceSubscriptionActionCallerIdMode": {
+        "title": "Caller ID Mode",
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/CallerIdModeWrapper"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/CallerIdMode"
+          }
+        }
+      },
       "BulkSequenceSubscriptionActionContactPreference": {
         "type": "object",
         "anyOf": [
@@ -39313,7 +39337,7 @@
         "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/CallerIdModeWrapper"
+            "$ref": "#/components/schemas/CallerIdModeWrapper2"
           },
           {
             "type": "null"
@@ -44757,6 +44781,17 @@
           }
         }
       },
+      "CallerIdModeWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/CallerIdMode"
+          }
+        }
+      },
       "BulkSequenceSubscriptionContactPreferenceWrapper": {
         "required": [
           "value"
@@ -44988,7 +45023,7 @@
           }
         }
       },
-      "CallerIdModeWrapper": {
+      "CallerIdModeWrapper2": {
         "required": [
           "value"
         ],

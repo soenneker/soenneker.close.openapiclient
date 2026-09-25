@@ -7820,6 +7820,7 @@
                   "data": [
                     {
                       "action_type": "subscribe",
+                      "caller_id_mode": null,
                       "calls_assigned_to": null,
                       "contact_preference": "lead",
                       "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
@@ -7962,6 +7963,7 @@
               "application/json": {
                 "example": {
                   "action_type": "subscribe",
+                  "caller_id_mode": null,
                   "calls_assigned_to": null,
                   "contact_preference": "lead",
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
@@ -8061,6 +8063,7 @@
               "application/json": {
                 "example": {
                   "action_type": "subscribe",
+                  "caller_id_mode": null,
                   "calls_assigned_to": null,
                   "contact_preference": "lead",
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
@@ -28090,6 +28093,17 @@
           "action_type": {
             "$ref": "#/components/schemas/BulkSequenceSubscriptionActionType"
           },
+          "caller_id_mode": {
+            "title": "Caller ID Mode",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CallerIdMode"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "calls_assigned_to": {
             "title": "Calls Assigned To",
             "anyOf": [
@@ -28305,6 +28319,7 @@
         },
         "required": [
           "action_type",
+          "caller_id_mode",
           "calls_assigned_to",
           "contact_preference",
           "created_by",
