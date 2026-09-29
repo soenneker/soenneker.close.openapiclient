@@ -34845,6 +34845,7 @@
         "title": "Permission",
         "enum": [
           "manage_organization",
+          "manage_own_api_keys",
           "manage_others_api_keys",
           "manage_customizations",
           "manage_group_numbers",
@@ -34888,6 +34889,10 @@
             {
               "value": "manage_organization",
               "name": "ManageOrganization"
+            },
+            {
+              "value": "manage_own_api_keys",
+              "name": "ManageOwnApiKeys"
             },
             {
               "value": "manage_others_api_keys",
