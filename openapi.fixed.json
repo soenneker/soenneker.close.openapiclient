@@ -8850,7 +8850,7 @@
                       "created_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
                       "date_created": "2020-07-27T21:28:39.765523",
                       "date_updated": "2020-07-27T21:28:39.765523",
-                      "description": "Heppens when the lead signs up for the newsletter",
+                      "description": "Happens when the lead signs up for the newsletter",
                       "editable_with_roles": [],
                       "fields": [
                         {
@@ -8994,7 +8994,7 @@
                   "created_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
                   "date_created": "2020-07-27T21:28:39.765523",
                   "date_updated": "2020-07-27T21:28:39.765523",
-                  "description": "Heppens when the lead signs up for the newsletter",
+                  "description": "Happens when the lead signs up for the newsletter",
                   "editable_with_roles": [],
                   "fields": [
                     {
@@ -30095,7 +30095,7 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/EmailActivitySendAttemptsItemProperty"
+              "$ref": "#/components/schemas/SendAttempt"
             },
             "default": null
           },
@@ -30621,7 +30621,7 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/EmailInThreadSendAttemptsItemProperty"
+              "$ref": "#/components/schemas/SendAttempt"
             },
             "default": null
           },
@@ -36136,6 +36136,32 @@
           ]
         }
       },
+      "SendAttempt": {
+        "title": "SendAttempt",
+        "required": [
+          "date",
+          "error_class",
+          "error_message"
+        ],
+        "type": "object",
+        "properties": {
+          "date": {
+            "title": "Date",
+            "type": "string"
+          },
+          "error_class": {
+            "title": "Error Class",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "error_message": {
+            "title": "Error Message",
+            "type": "string"
+          }
+        }
+      },
       "SetPinnedSavedView": {
         "title": "SetPinnedSavedView",
         "required": [
@@ -39715,12 +39741,6 @@
         ],
         "default": null
       },
-      "EmailActivitySendAttemptsItem": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        }
-      },
       "EmailInThreadAiDraft": {
         "title": "Ai Draft",
         "type": [
@@ -39735,12 +39755,6 @@
           "object"
         ],
         "default": null
-      },
-      "EmailInThreadSendAttemptsItem": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        }
       },
       "FormSubmissionActivityValues": {
         "title": "Values",
@@ -45849,23 +45863,11 @@
       "EmailActivityEnvelopeProperty": {
         "type": "object"
       },
-      "EmailActivitySendAttemptsItemProperty": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        }
-      },
       "EmailInThreadAiDraftProperty": {
         "type": "object"
       },
       "EmailInThreadEnvelopeProperty": {
         "type": "object"
-      },
-      "EmailInThreadSendAttemptsItemProperty": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        }
       },
       "ExportSortItem": {
         "type": "object",

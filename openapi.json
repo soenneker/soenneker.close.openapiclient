@@ -9378,7 +9378,7 @@
                       "created_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
                       "date_created": "2020-07-27T21:28:39.765523",
                       "date_updated": "2020-07-27T21:28:39.765523",
-                      "description": "Heppens when the lead signs up for the newsletter",
+                      "description": "Happens when the lead signs up for the newsletter",
                       "editable_with_roles": [],
                       "fields": [
                         {
@@ -9510,7 +9510,7 @@
                   "created_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
                   "date_created": "2020-07-27T21:28:39.765523",
                   "date_updated": "2020-07-27T21:28:39.765523",
-                  "description": "Heppens when the lead signs up for the newsletter",
+                  "description": "Happens when the lead signs up for the newsletter",
                   "editable_with_roles": [],
                   "fields": [
                     {
@@ -31685,10 +31685,7 @@
               {
                 "type": "array",
                 "items": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
+                  "$ref": "#/components/schemas/SendAttempt"
                 }
               },
               {
@@ -32401,10 +32398,7 @@
               {
                 "type": "array",
                 "items": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
+                  "$ref": "#/components/schemas/SendAttempt"
                 }
               },
               {
@@ -38585,6 +38579,36 @@
           "whatsapp_message",
           "custom_activity",
           "form_submission"
+        ]
+      },
+      "SendAttempt": {
+        "title": "SendAttempt",
+        "type": "object",
+        "properties": {
+          "date": {
+            "title": "Date",
+            "type": "string"
+          },
+          "error_class": {
+            "title": "Error Class",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "error_message": {
+            "title": "Error Message",
+            "type": "string"
+          }
+        },
+        "required": [
+          "date",
+          "error_class",
+          "error_message"
         ]
       },
       "SetPinnedSavedView": {
