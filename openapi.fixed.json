@@ -17750,6 +17750,7 @@
                       "number": "\u002B16503335555",
                       "number_formatted": "\u002B1 650-333-5555",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "participant_groups": [],
                       "participants": [],
                       "phone_numbers": [
                         "\u002B16508889898"
@@ -17794,6 +17795,7 @@
                       "number": "\u002B14151231234",
                       "number_formatted": "\u002B1 415-123-1234",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "participant_groups": [],
                       "participants": [],
                       "phone_numbers": [],
                       "phone_numbers_formatted": [],
@@ -17832,6 +17834,9 @@
                       "number": "\u002B16508881234",
                       "number_formatted": "\u002B1 650-888-1234",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "participant_groups": [
+                        "group_57P6QUf8b4BlepZJYgRj5W"
+                      ],
                       "participants": [
                         "user_OWiN4rEbBR04K2AKXe3jq5j1JWQqmTguuuZa1dG7qQr",
                         "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
@@ -17877,7 +17882,7 @@
           "phone_numbers"
         ],
         "summary": "Request an internal phone number",
-        "description": "Renting a phone number incurs a cost. You need the \u0022Manage Team Phone Numbers\u0022 permission to rent group numbers.\n\nIf a number was rented, a 201 response is returned with the new number. If no number was rented (4xx response code), the response contains a \u0060status\u0060 field which may contain one of the values below. New statuses may be added in the future.\n\n* \u0060has-voice-only\u0060: This country/prefix combination only has non-SMS-capable\n  numbers. You can attempt renting the number by passing \u0060with_sms\u0060 as \u0060false\u0060.\n* \u0060needs-more-info\u0060: More information (such as proof of address) is needed to\n  rent this number. This number can only be rented by contacting Close support.\n* \u0060billing-error\u0060: An error related to billing has occurred. For example, the\n  telephony budget has been reached, or there are not enough funds and recharging failed.\n* \u0060error\u0060: An error has occurred while renting this number. A human-readable\n  message is returned in the \u0060error\u0060 field.",
+        "description": "Renting a phone number incurs a cost. The new number is assigned to you unless you name other users via \u0060assign_to\u0060, which requires the \u0022Manage Team Phone Numbers\u0022 permission.\n\nIf a number was rented, a 201 response is returned with the new number. If no number was rented (4xx response code), the response contains a \u0060status\u0060 field which may contain one of the values below. New statuses may be added in the future.\n\n* \u0060has-voice-only\u0060: This country/prefix combination only has non-SMS-capable\n  numbers. You can attempt renting the number by passing \u0060with_sms\u0060 as \u0060false\u0060.\n* \u0060needs-more-info\u0060: More information (such as proof of address) is needed to\n  rent this number. This number can only be rented by contacting Close support.\n* \u0060billing-error\u0060: An error related to billing has occurred. For example, the\n  telephony budget has been reached, or there are not enough funds and recharging failed.\n* \u0060error\u0060: An error has occurred while renting this number. A human-readable\n  message is returned in the \u0060error\u0060 field.",
         "operationId": "PhoneNumbersCreate",
         "requestBody": {
           "content": {
@@ -17925,6 +17930,7 @@
                   "number": "\u002B16503335555",
                   "number_formatted": "\u002B1 650-333-5555",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "participant_groups": [],
                   "press_1_to_accept": false,
                   "sms_enabled": true,
                   "supports_mms_to_countries": [
@@ -18008,6 +18014,7 @@
                   "number": "\u002B16503335555",
                   "number_formatted": "\u002B1 650-333-5555",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "participant_groups": [],
                   "press_1_to_accept": false,
                   "sms_enabled": true,
                   "supports_mms_to_countries": [
@@ -18041,7 +18048,7 @@
           "phone_numbers"
         ],
         "summary": "Update a phone number",
-        "description": "You need the \u0022Manage Team Phone Numbers\u0022 permission to update a group number. You can only update your own personal numbers.\n\nYou can:\n\n- Change a \u0060label\u0060 of your number.\n- Set up call forwarding via \u0060forward_to\u0060 and \u0060forward_to_enabled\u0060.\n- Set up a voicemail greeting by including a URL of an mp3 recording in \u0060voicemail_greeting_url\u0060. We require the URL to be secure (i.e. starting with https://).\n- Modify which team members are part of a group number via \u0060participants\u0060. This should be a list of user IDs.\n- Modify which external phone numbers are part of a group number via \u0060phone_numbers\u0060. This should be a list of phone numbers in E.164 international format, e.g. \u0022\u002B16503334444\u0022.\n- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via \u0060inbound_ring_duration\u0060.",
+        "description": "You need the \u0022Manage Team Phone Numbers\u0022 permission to change most settings. If you\u0027re the only member of a number, you can change its \u0060label\u0060, voicemail greeting, and call forwarding without that permission.\n\nYou can:\n\n- Change the \u0060label\u0060 of the number.\n- Set up call forwarding via \u0060forward_to\u0060 and \u0060forward_to_enabled\u0060.\n- Set up a voicemail greeting by including a URL of an mp3 recording in \u0060voicemail_greeting_url\u0060. We require the URL to be secure (i.e. starting with https://).\n- Modify which users are members of the number via \u0060participants\u0060. This should be a list of user IDs.\n- Modify which Groups are assigned to the number via \u0060participant_groups\u0060. This should be a list of Group IDs from the Groups API.\n- Modify which external phone numbers the number dials via \u0060phone_numbers\u0060. This should be a list of phone numbers in E.164 international format, e.g. \u0022\u002B16503334444\u0022.\n- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via \u0060inbound_ring_duration\u0060.",
         "operationId": "PhoneNumbersUpdate",
         "parameters": [
           {
@@ -18101,6 +18108,7 @@
                   "number": "\u002B16503335555",
                   "number_formatted": "\u002B1 650-333-5555",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "participant_groups": [],
                   "press_1_to_accept": false,
                   "sms_enabled": true,
                   "supports_mms_to_countries": [
@@ -18134,7 +18142,7 @@
           "phone_numbers"
         ],
         "summary": "Delete a phone number",
-        "description": "You need the \u0022Manage Team Phone Numbers\u0022 permission to delete a group number. You can only delete your own personal numbers.",
+        "description": "If you\u0027re the only member of a number, you can delete it. Deleting any other number requires the \u0022Manage Team Phone Numbers\u0022 permission.",
         "operationId": "PhoneNumbersDelete",
         "parameters": [
           {
@@ -35094,6 +35102,7 @@
           "number",
           "number_formatted",
           "organization_id",
+          "participant_groups",
           "sms_enabled",
           "supports_mms_to_countries",
           "supports_sms_to_countries",
@@ -35217,6 +35226,14 @@
           "organization_id": {
             "title": "Organization ID",
             "type": "string"
+          },
+          "participant_groups": {
+            "title": "Participant Groups",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "IDs of the Groups assigned to this phone number. See the Groups API."
           },
           "participants": {
             "title": "Participants",
@@ -37578,6 +37595,13 @@
           "label": {
             "title": "Label",
             "type": "string"
+          },
+          "participant_groups": {
+            "title": "Participant Groups",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "participants": {
             "title": "Participants",
@@ -42815,6 +42839,12 @@
           "organization_id": {
             "type": "string"
           },
+          "participant_groups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PhoneNumbersCreate201ResponseParticipantGroupsItem"
+            }
+          },
           "press_1_to_accept": {
             "type": "boolean"
           },
@@ -47738,6 +47768,9 @@
             "type": "string"
           }
         }
+      },
+      "PhoneNumbersCreate201ResponseParticipantGroupsItem": {
+        "type": "object"
       },
       "ReportingGetActivityRequestDatetimeRange": {
         "type": "object",

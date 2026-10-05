@@ -131,6 +131,14 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string OrganizationId { get; set; }
 #endif
+        /// <summary>IDs of the Groups assigned to this phone number. See the Groups API.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? ParticipantGroups { get; set; }
+#nullable restore
+#else
+        public List<string> ParticipantGroups { get; set; }
+#endif
         /// <summary>Every member of the phone number, as user IDs. If this field is absent, see `user_id` for the sole member.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -243,6 +251,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "number", n => { Number = n.GetStringValue(); } },
                 { "number_formatted", n => { NumberFormatted = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
+                { "participant_groups", n => { ParticipantGroups = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "participants", n => { Participants = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "phone_numbers", n => { PhoneNumbers = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "phone_numbers_formatted", n => { PhoneNumbersFormatted = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -285,6 +294,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("number", Number);
             writer.WriteStringValue("number_formatted", NumberFormatted);
             writer.WriteStringValue("organization_id", OrganizationId);
+            writer.WriteCollectionOfPrimitiveValues<string>("participant_groups", ParticipantGroups);
             writer.WriteCollectionOfPrimitiveValues<string>("participants", Participants);
             writer.WriteCollectionOfPrimitiveValues<string>("phone_numbers", PhoneNumbers);
             writer.WriteCollectionOfPrimitiveValues<string>("phone_numbers_formatted", PhoneNumbersFormatted);

@@ -32,6 +32,14 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string Label { get; set; }
 #endif
+        /// <summary>The participant_groups property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? ParticipantGroups { get; set; }
+#nullable restore
+#else
+        public List<string> ParticipantGroups { get; set; }
+#endif
         /// <summary>The participants property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -80,6 +88,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "forward_to_enabled", n => { ForwardToEnabled = n.GetBoolValue(); } },
                 { "inbound_ring_duration", n => { InboundRingDuration = n.GetIntValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
+                { "participant_groups", n => { ParticipantGroups = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "participants", n => { Participants = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "phone_numbers", n => { PhoneNumbers = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "press_1_to_accept", n => { Press1ToAccept = n.GetBoolValue(); } },
@@ -97,6 +106,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteBoolValue("forward_to_enabled", ForwardToEnabled);
             writer.WriteIntValue("inbound_ring_duration", InboundRingDuration);
             writer.WriteStringValue("label", Label);
+            writer.WriteCollectionOfPrimitiveValues<string>("participant_groups", ParticipantGroups);
             writer.WriteCollectionOfPrimitiveValues<string>("participants", Participants);
             writer.WriteCollectionOfPrimitiveValues<string>("phone_numbers", PhoneNumbers);
             writer.WriteBoolValue("press_1_to_accept", Press1ToAccept);

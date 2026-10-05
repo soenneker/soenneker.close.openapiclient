@@ -34,7 +34,7 @@ namespace Soenneker.Close.OpenApiClient.Phone_number.Item
         {
         }
         /// <summary>
-        /// You need the &quot;Manage Team Phone Numbers&quot; permission to delete a group number. You can only delete your own personal numbers.
+        /// If you&apos;re the only member of a number, you can delete it. Deleting any other number requires the &quot;Manage Team Phone Numbers&quot; permission.
         /// </summary>
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -70,7 +70,7 @@ namespace Soenneker.Close.OpenApiClient.Phone_number.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.PhoneNumber>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.PhoneNumber.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// You need the &quot;Manage Team Phone Numbers&quot; permission to update a group number. You can only update your own personal numbers.You can:- Change a `label` of your number.- Set up call forwarding via `forward_to` and `forward_to_enabled`.- Set up a voicemail greeting by including a URL of an mp3 recording in `voicemail_greeting_url`. We require the URL to be secure (i.e. starting with https://).- Modify which team members are part of a group number via `participants`. This should be a list of user IDs.- Modify which external phone numbers are part of a group number via `phone_numbers`. This should be a list of phone numbers in E.164 international format, e.g. &quot;+16503334444&quot;.- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via `inbound_ring_duration`.
+        /// You need the &quot;Manage Team Phone Numbers&quot; permission to change most settings. If you&apos;re the only member of a number, you can change its `label`, voicemail greeting, and call forwarding without that permission.You can:- Change the `label` of the number.- Set up call forwarding via `forward_to` and `forward_to_enabled`.- Set up a voicemail greeting by including a URL of an mp3 recording in `voicemail_greeting_url`. We require the URL to be secure (i.e. starting with https://).- Modify which users are members of the number via `participants`. This should be a list of user IDs.- Modify which Groups are assigned to the number via `participant_groups`. This should be a list of Group IDs from the Groups API.- Modify which external phone numbers the number dials via `phone_numbers`. This should be a list of phone numbers in E.164 international format, e.g. &quot;+16503334444&quot;.- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via `inbound_ring_duration`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.PhoneNumber"/></returns>
         /// <param name="body">The request body</param>
@@ -90,7 +90,7 @@ namespace Soenneker.Close.OpenApiClient.Phone_number.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.PhoneNumber>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.PhoneNumber.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// You need the &quot;Manage Team Phone Numbers&quot; permission to delete a group number. You can only delete your own personal numbers.
+        /// If you&apos;re the only member of a number, you can delete it. Deleting any other number requires the &quot;Manage Team Phone Numbers&quot; permission.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -127,7 +127,7 @@ namespace Soenneker.Close.OpenApiClient.Phone_number.Item
             return requestInfo;
         }
         /// <summary>
-        /// You need the &quot;Manage Team Phone Numbers&quot; permission to update a group number. You can only update your own personal numbers.You can:- Change a `label` of your number.- Set up call forwarding via `forward_to` and `forward_to_enabled`.- Set up a voicemail greeting by including a URL of an mp3 recording in `voicemail_greeting_url`. We require the URL to be secure (i.e. starting with https://).- Modify which team members are part of a group number via `participants`. This should be a list of user IDs.- Modify which external phone numbers are part of a group number via `phone_numbers`. This should be a list of phone numbers in E.164 international format, e.g. &quot;+16503334444&quot;.- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via `inbound_ring_duration`.
+        /// You need the &quot;Manage Team Phone Numbers&quot; permission to change most settings. If you&apos;re the only member of a number, you can change its `label`, voicemail greeting, and call forwarding without that permission.You can:- Change the `label` of the number.- Set up call forwarding via `forward_to` and `forward_to_enabled`.- Set up a voicemail greeting by including a URL of an mp3 recording in `voicemail_greeting_url`. We require the URL to be secure (i.e. starting with https://).- Modify which users are members of the number via `participants`. This should be a list of user IDs.- Modify which Groups are assigned to the number via `participant_groups`. This should be a list of Group IDs from the Groups API.- Modify which external phone numbers the number dials via `phone_numbers`. This should be a list of phone numbers in E.164 international format, e.g. &quot;+16503334444&quot;.- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via `inbound_ring_duration`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
