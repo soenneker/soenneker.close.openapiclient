@@ -37363,6 +37363,7 @@
           "manage_own_api_keys",
           "manage_others_api_keys",
           "manage_customizations",
+          "manage_oauth_apps",
           "manage_group_numbers",
           "manage_team_smart_views",
           "manage_team_email_templates",
