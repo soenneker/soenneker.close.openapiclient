@@ -25,7 +25,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 #endif
         /// <summary>How this member&apos;s outbound caller ID is chosen. In `fixed` mode, outbound calls use `default_caller_id`. In `auto` mode, Close derives the number for each call and ignores `default_caller_id`.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.CallerIdMode? DefaultCallerIdMode { get; set; }
-        /// <summary>URL of the audio file used as this member&apos;s voicemail drop recording.</summary>
+        /// <summary>URL of the audio file used as this member&apos;s Voicemail Drop recording.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? HangupRecordingUrl { get; set; }

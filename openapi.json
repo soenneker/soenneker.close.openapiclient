@@ -35947,7 +35947,7 @@
           },
           "hangup_recording_url": {
             "title": "Hangup Recording URL",
-            "description": "URL of the audio file used as this member's voicemail drop recording.",
+            "description": "URL of the audio file used as this member's Voicemail Drop recording.",
             "anyOf": [
               {
                 "type": "string"

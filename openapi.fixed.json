@@ -33559,7 +33559,7 @@
               "null",
               "string"
             ],
-            "description": "URL of the audio file used as this member\u0027s voicemail drop recording."
+            "description": "URL of the audio file used as this member\u0027s Voicemail Drop recording."
           },
           "may_workflows_impersonate": {
             "title": "May Workflows Impersonate",
