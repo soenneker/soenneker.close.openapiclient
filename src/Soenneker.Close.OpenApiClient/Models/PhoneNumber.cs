@@ -86,7 +86,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 #endif
         /// <summary>Number of seconds we ring this number on inbound calls before moving on (e.g. to voicemail). `null` means the default of 30 seconds is used.</summary>
         public int? InboundRingDuration { get; set; }
-        /// <summary>This field is deprecated and will be removed in a future update. Until then, it is set to `false` when the phone number has exactly one member (as defined by the `participants` field) and doesn&apos;t have any of the &quot;shared&quot; configuration set up (e.g. a phone menu, lead-based routing, a non-default ring order, etc.), and `true` otherwise.</summary>
+        /// <summary>This field is deprecated and will be removed in a future update. Until then, it is set to `false` when `participants` has exactly one user and the phone number doesn&apos;t have any of the &quot;shared&quot; configuration set up (e.g. a phone menu, lead-based routing, a dial-out list, an assigned Group, a non-default ring order, etc.), and `true` otherwise.</summary>
         [Obsolete("")]
         public bool? IsGroupNumber { get; set; }
         /// <summary>The is_premium property</summary>
@@ -131,7 +131,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string OrganizationId { get; set; }
 #endif
-        /// <summary>IDs of the Groups assigned to this phone number. See the Groups API.</summary>
+        /// <summary>IDs of the Groups assigned to this phone number. Members of these Groups ring on inbound calls and receive notifications for the number. See the Groups API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? ParticipantGroups { get; set; }
@@ -139,7 +139,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public List<string> ParticipantGroups { get; set; }
 #endif
-        /// <summary>Every member of the phone number, as user IDs. If this field is absent, see `user_id` for the sole member.</summary>
+        /// <summary>IDs of the users assigned directly to this phone number. Members of the Groups in `participant_groups` also ring on inbound calls and receive notifications for the number.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Participants { get; set; }
@@ -147,7 +147,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public List<string> Participants { get; set; }
 #endif
-        /// <summary>Present unless the phone number has exactly one member and no shared-number configuration (a phone menu, lead-based routing, a dial-out list, or a non-default ring order).</summary>
+        /// <summary>Present unless `participants` has exactly one user and the phone number has no shared-number configuration (a phone menu, lead-based routing, a dial-out list, an assigned Group, or a non-default ring order).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? PhoneNumbers { get; set; }
@@ -185,7 +185,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 #endif
         /// <summary>The type property</summary>
         public global::Soenneker.Close.OpenApiClient.Models.PhoneNumberType? Type { get; set; }
-        /// <summary>This field is deprecated. See the `participants` field instead to learn who&apos;s assigned to this phone number. This `user_id` field will be removed in a future update. Until then, it is set to a specific user ID *only if* the given phone number has a single participant and no additional &quot;shared&quot; configuration (e.g. a phone menu, lead-based routing, a non-default ring order, etc.).</summary>
+        /// <summary>This field is deprecated. See the `participants` and `participant_groups` fields instead to learn who&apos;s assigned to this phone number. This `user_id` field will be removed in a future update. Until then, it is set to a specific user ID *only if* the given phone number has a single participant and no additional &quot;shared&quot; configuration (e.g. a phone menu, lead-based routing, a dial-out list, an assigned Group, a non-default ring order, etc.).</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

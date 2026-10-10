@@ -18048,7 +18048,7 @@
           "phone_numbers"
         ],
         "summary": "Update a phone number",
-        "description": "You need the \u0022Manage Team Phone Numbers\u0022 permission to change most settings. If you\u0027re the only member of a number, you can change its \u0060label\u0060, voicemail greeting, and call forwarding without that permission.\n\nYou can:\n\n- Change the \u0060label\u0060 of the number.\n- Set up call forwarding via \u0060forward_to\u0060 and \u0060forward_to_enabled\u0060.\n- Set up a voicemail greeting by including a URL of an mp3 recording in \u0060voicemail_greeting_url\u0060. We require the URL to be secure (i.e. starting with https://).\n- Modify which users are members of the number via \u0060participants\u0060. This should be a list of user IDs.\n- Modify which Groups are assigned to the number via \u0060participant_groups\u0060. This should be a list of Group IDs from the Groups API.\n- Modify which external phone numbers the number dials via \u0060phone_numbers\u0060. This should be a list of phone numbers in E.164 international format, e.g. \u0022\u002B16503334444\u0022.\n- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via \u0060inbound_ring_duration\u0060.",
+        "description": "You need the \u0022Manage Team Phone Numbers\u0022 permission to change most settings. If you\u0027re the only member of a number and no Group is assigned to it, you can change its \u0060label\u0060, voicemail greeting, and call forwarding without that permission.\n\nYou can:\n\n- Change the \u0060label\u0060 of the number.\n- Set up call forwarding via \u0060forward_to\u0060 and \u0060forward_to_enabled\u0060.\n- Set up a voicemail greeting by including a URL of an mp3 recording in \u0060voicemail_greeting_url\u0060. We require the URL to be secure (i.e. starting with https://).\n- Modify which users are assigned directly to the number via \u0060participants\u0060. This should be a list of user IDs.\n- Modify which Groups are assigned to the number via \u0060participant_groups\u0060. This should be a list of Group IDs from the Groups API. Members of these Groups ring on inbound calls and receive notifications for the number, including users added to a Group later. You can assign at most 40 Groups.\n- Modify which external phone numbers the number dials via \u0060phone_numbers\u0060. This should be a list of phone numbers in E.164 international format, e.g. \u0022\u002B16503334444\u0022.\n- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via \u0060inbound_ring_duration\u0060.\n\nYou can set at most 40 users and external phone numbers combined in \u0060participants\u0060 and \u0060phone_numbers\u0060.\n\nA number\u0027s ring order is set in Close. A number that rings its members all at once rings at most 40 users and external phone numbers per inbound call. The users in \u0060participants\u0060 and the external phone numbers in \u0060phone_numbers\u0060 take priority. Members of the number\u0027s Groups who are allowed to make calls are added, chosen at random for each call, until 40 users and external phone numbers are ringing.\n\nThe per-call limit does not apply to a number that rings its members one at a time (round-robin).",
         "operationId": "PhoneNumbersUpdate",
         "parameters": [
           {
@@ -18142,7 +18142,7 @@
           "phone_numbers"
         ],
         "summary": "Delete a phone number",
-        "description": "If you\u0027re the only member of a number, you can delete it. Deleting any other number requires the \u0022Manage Team Phone Numbers\u0022 permission.",
+        "description": "If you\u0027re the only member of a number and no Group is assigned to it, you can delete it. Deleting any other number requires the \u0022Manage Team Phone Numbers\u0022 permission.",
         "operationId": "PhoneNumbersDelete",
         "parameters": [
           {
@@ -35186,7 +35186,7 @@
           "is_group_number": {
             "title": "Is Group Number",
             "type": "boolean",
-            "description": "This field is deprecated and will be removed in a future update. Until then, it is set to \u0060false\u0060 when the phone number has exactly one member (as defined by the \u0060participants\u0060 field) and doesn\u0027t have any of the \u0022shared\u0022 configuration set up (e.g. a phone menu, lead-based routing, a non-default ring order, etc.), and \u0060true\u0060 otherwise.",
+            "description": "This field is deprecated and will be removed in a future update. Until then, it is set to \u0060false\u0060 when \u0060participants\u0060 has exactly one user and the phone number doesn\u0027t have any of the \u0022shared\u0022 configuration set up (e.g. a phone menu, lead-based routing, a dial-out list, an assigned Group, a non-default ring order, etc.), and \u0060true\u0060 otherwise.",
             "deprecated": true
           },
           "is_premium": {
@@ -35238,7 +35238,7 @@
             "items": {
               "type": "string"
             },
-            "description": "IDs of the Groups assigned to this phone number. See the Groups API."
+            "description": "IDs of the Groups assigned to this phone number. Members of these Groups ring on inbound calls and receive notifications for the number. See the Groups API."
           },
           "participants": {
             "title": "Participants",
@@ -35246,7 +35246,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Every member of the phone number, as user IDs. If this field is absent, see \u0060user_id\u0060 for the sole member."
+            "description": "IDs of the users assigned directly to this phone number. Members of the Groups in \u0060participant_groups\u0060 also ring on inbound calls and receive notifications for the number."
           },
           "phone_numbers": {
             "title": "Phone Numbers",
@@ -35254,7 +35254,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Present unless the phone number has exactly one member and no shared-number configuration (a phone menu, lead-based routing, a dial-out list, or a non-default ring order)."
+            "description": "Present unless \u0060participants\u0060 has exactly one user and the phone number has no shared-number configuration (a phone menu, lead-based routing, a dial-out list, an assigned Group, or a non-default ring order)."
           },
           "phone_numbers_formatted": {
             "title": "Phone Numbers Formatted",
@@ -35295,7 +35295,7 @@
               "null",
               "string"
             ],
-            "description": "This field is deprecated. See the \u0060participants\u0060 field instead to learn who\u0027s assigned to this phone number. This \u0060user_id\u0060 field will be removed in a future update. Until then, it is set to a specific user ID *only if* the given phone number has a single participant and no additional \u0022shared\u0022 configuration (e.g. a phone menu, lead-based routing, a non-default ring order, etc.).",
+            "description": "This field is deprecated. See the \u0060participants\u0060 and \u0060participant_groups\u0060 fields instead to learn who\u0027s assigned to this phone number. This \u0060user_id\u0060 field will be removed in a future update. Until then, it is set to a specific user ID *only if* the given phone number has a single participant and no additional \u0022shared\u0022 configuration (e.g. a phone menu, lead-based routing, a dial-out list, an assigned Group, a non-default ring order, etc.).",
             "deprecated": true
           },
           "voicemail_greeting_url": {
