@@ -2,7 +2,7 @@
   "descriptionHash": "59CB0FFECBA71887CF4642EDDB31DF015B599FD43150B29D54E303F84D6F38EECDB1B7E9D2CD1090F2CA19D4302A357E49E60DE421B956BD2D0E0A50F645E3DD",
   "descriptionLocation": "../../openapi.fixed.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.36.0",
+  "kiotaVersion": "1.36.1",
   "clientClassName": "CloseOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.Close.OpenApiClient",
