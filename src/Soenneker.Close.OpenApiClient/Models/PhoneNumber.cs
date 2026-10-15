@@ -103,10 +103,14 @@ namespace Soenneker.Close.OpenApiClient.Models
 #endif
         /// <summary>The last_billed_price property</summary>
         public double? LastBilledPrice { get; set; }
+        /// <summary>Whether Local Presence can pick this phone number by proximity for a call or SMS made as a user.</summary>
+        public bool? LocalPresenceEnabled { get; set; }
         /// <summary>The mms_enabled property</summary>
         public bool? MmsEnabled { get; set; }
         /// <summary>The next_billing_on property</summary>
         public DateTimeOffset? NextBillingOn { get; set; }
+        /// <summary>Whether users who are not members of this phone number can use it as their outbound caller ID.</summary>
+        public bool? NonMemberCallerIdEnabled { get; set; }
         /// <summary>The number property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -194,6 +198,8 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string UserId { get; set; }
 #endif
+        /// <summary>Whether voice agents can use this phone number as their outbound caller ID.</summary>
+        public bool? VoiceAgentCallerIdEnabled { get; set; }
         /// <summary>The voicemail_greeting_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -246,8 +252,10 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "is_verified", n => { IsVerified = n.GetBoolValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "last_billed_price", n => { LastBilledPrice = n.GetDoubleValue(); } },
+                { "local_presence_enabled", n => { LocalPresenceEnabled = n.GetBoolValue(); } },
                 { "mms_enabled", n => { MmsEnabled = n.GetBoolValue(); } },
                 { "next_billing_on", n => { NextBillingOn = n.GetDateTimeOffsetValue(); } },
+                { "non_member_caller_id_enabled", n => { NonMemberCallerIdEnabled = n.GetBoolValue(); } },
                 { "number", n => { Number = n.GetStringValue(); } },
                 { "number_formatted", n => { NumberFormatted = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
@@ -261,6 +269,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "supports_sms_to_countries", n => { SupportsSmsToCountries = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.PhoneNumberType>(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
+                { "voice_agent_caller_id_enabled", n => { VoiceAgentCallerIdEnabled = n.GetBoolValue(); } },
                 { "voicemail_greeting_url", n => { VoicemailGreetingUrl = n.GetStringValue(); } },
                 { "was_ported", n => { WasPorted = n.GetBoolValue(); } },
             };
@@ -289,8 +298,10 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteBoolValue("is_verified", IsVerified);
             writer.WriteStringValue("label", Label);
             writer.WriteDoubleValue("last_billed_price", LastBilledPrice);
+            writer.WriteBoolValue("local_presence_enabled", LocalPresenceEnabled);
             writer.WriteBoolValue("mms_enabled", MmsEnabled);
             writer.WriteDateTimeOffsetValue("next_billing_on", NextBillingOn);
+            writer.WriteBoolValue("non_member_caller_id_enabled", NonMemberCallerIdEnabled);
             writer.WriteStringValue("number", Number);
             writer.WriteStringValue("number_formatted", NumberFormatted);
             writer.WriteStringValue("organization_id", OrganizationId);
@@ -304,6 +315,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("supports_sms_to_countries", SupportsSmsToCountries);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.PhoneNumberType>("type", Type);
             writer.WriteStringValue("user_id", UserId);
+            writer.WriteBoolValue("voice_agent_caller_id_enabled", VoiceAgentCallerIdEnabled);
             writer.WriteStringValue("voicemail_greeting_url", VoicemailGreetingUrl);
             writer.WriteBoolValue("was_ported", WasPorted);
             writer.WriteAdditionalData(AdditionalData);

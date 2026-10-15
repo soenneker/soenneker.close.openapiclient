@@ -32,6 +32,10 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string Label { get; set; }
 #endif
+        /// <summary>Whether Local Presence can pick this phone number by proximity for a call or SMS made as a user.</summary>
+        public bool? LocalPresenceEnabled { get; set; }
+        /// <summary>Whether users who are not members of this phone number can use it as their outbound caller ID.</summary>
+        public bool? NonMemberCallerIdEnabled { get; set; }
         /// <summary>The participant_groups property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -58,6 +62,8 @@ namespace Soenneker.Close.OpenApiClient.Models
 #endif
         /// <summary>The press_1_to_accept property</summary>
         public bool? Press1ToAccept { get; set; }
+        /// <summary>Whether voice agents can use this phone number as their outbound caller ID.</summary>
+        public bool? VoiceAgentCallerIdEnabled { get; set; }
         /// <summary>The voicemail_greeting_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -88,10 +94,13 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "forward_to_enabled", n => { ForwardToEnabled = n.GetBoolValue(); } },
                 { "inbound_ring_duration", n => { InboundRingDuration = n.GetIntValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
+                { "local_presence_enabled", n => { LocalPresenceEnabled = n.GetBoolValue(); } },
+                { "non_member_caller_id_enabled", n => { NonMemberCallerIdEnabled = n.GetBoolValue(); } },
                 { "participant_groups", n => { ParticipantGroups = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "participants", n => { Participants = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "phone_numbers", n => { PhoneNumbers = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "press_1_to_accept", n => { Press1ToAccept = n.GetBoolValue(); } },
+                { "voice_agent_caller_id_enabled", n => { VoiceAgentCallerIdEnabled = n.GetBoolValue(); } },
                 { "voicemail_greeting_url", n => { VoicemailGreetingUrl = n.GetStringValue(); } },
             };
         }
@@ -106,10 +115,13 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteBoolValue("forward_to_enabled", ForwardToEnabled);
             writer.WriteIntValue("inbound_ring_duration", InboundRingDuration);
             writer.WriteStringValue("label", Label);
+            writer.WriteBoolValue("local_presence_enabled", LocalPresenceEnabled);
+            writer.WriteBoolValue("non_member_caller_id_enabled", NonMemberCallerIdEnabled);
             writer.WriteCollectionOfPrimitiveValues<string>("participant_groups", ParticipantGroups);
             writer.WriteCollectionOfPrimitiveValues<string>("participants", Participants);
             writer.WriteCollectionOfPrimitiveValues<string>("phone_numbers", PhoneNumbers);
             writer.WriteBoolValue("press_1_to_accept", Press1ToAccept);
+            writer.WriteBoolValue("voice_agent_caller_id_enabled", VoiceAgentCallerIdEnabled);
             writer.WriteStringValue("voicemail_greeting_url", VoicemailGreetingUrl);
         }
     }

@@ -18331,8 +18331,10 @@
                       "is_verified": true,
                       "label": "Primary Number",
                       "last_billed_price": null,
+                      "local_presence_enabled": true,
                       "mms_enabled": true,
                       "next_billing_on": null,
+                      "non_member_caller_id_enabled": false,
                       "number": "+16503335555",
                       "number_formatted": "+1 650-333-5555",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
@@ -18356,6 +18358,7 @@
                       ],
                       "type": "internal",
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "voice_agent_caller_id_enabled": false,
                       "voicemail_greeting_url": null,
                       "was_ported": false
                     },
@@ -18376,8 +18379,10 @@
                       "is_verified": true,
                       "label": "My Personal Cell",
                       "last_billed_price": null,
+                      "local_presence_enabled": true,
                       "mms_enabled": true,
                       "next_billing_on": null,
+                      "non_member_caller_id_enabled": false,
                       "number": "+14151231234",
                       "number_formatted": "+1 415-123-1234",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
@@ -18394,6 +18399,7 @@
                       "supports_sms_to_countries": [],
                       "type": "external",
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "voice_agent_caller_id_enabled": false,
                       "voicemail_greeting_url": null,
                       "was_ported": false
                     },
@@ -18415,8 +18421,10 @@
                       "is_verified": true,
                       "label": "Group Number",
                       "last_billed_price": null,
+                      "local_presence_enabled": true,
                       "mms_enabled": true,
                       "next_billing_on": null,
+                      "non_member_caller_id_enabled": true,
                       "number": "+16508881234",
                       "number_formatted": "+1 650-888-1234",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
@@ -18442,6 +18450,7 @@
                       ],
                       "type": "internal",
                       "user_id": null,
+                      "voice_agent_caller_id_enabled": true,
                       "voicemail_greeting_url": null
                     }
                   ],
@@ -18526,8 +18535,10 @@
                   "is_verified": true,
                   "label": null,
                   "last_billed_price": null,
+                  "local_presence_enabled": true,
                   "mms_enabled": true,
                   "next_billing_on": null,
+                  "non_member_caller_id_enabled": false,
                   "number": "+16503335555",
                   "number_formatted": "+1 650-333-5555",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
@@ -18545,6 +18556,7 @@
                   ],
                   "type": "internal",
                   "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "voice_agent_caller_id_enabled": false,
                   "voicemail_greeting_url": null
                 }
               }
@@ -18605,8 +18617,10 @@
                   "is_verified": true,
                   "label": "Primary Number",
                   "last_billed_price": null,
+                  "local_presence_enabled": true,
                   "mms_enabled": true,
                   "next_billing_on": null,
+                  "non_member_caller_id_enabled": false,
                   "number": "+16503335555",
                   "number_formatted": "+1 650-333-5555",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
@@ -18623,6 +18637,7 @@
                   ],
                   "type": "internal",
                   "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "voice_agent_caller_id_enabled": false,
                   "voicemail_greeting_url": null
                 },
                 "schema": {
@@ -18649,7 +18664,7 @@
           "phone_numbers"
         ],
         "summary": "Update a phone number",
-        "description": "You need the \"Manage Team Phone Numbers\" permission to change most settings. If you're the only member of a number and no Group is assigned to it, you can change its `label`, voicemail greeting, and call forwarding without that permission.\n\nYou can:\n\n- Change the `label` of the number.\n- Set up call forwarding via `forward_to` and `forward_to_enabled`.\n- Set up a voicemail greeting by including a URL of an mp3 recording in `voicemail_greeting_url`. We require the URL to be secure (i.e. starting with https://).\n- Modify which users are assigned directly to the number via `participants`. This should be a list of user IDs.\n- Modify which Groups are assigned to the number via `participant_groups`. This should be a list of Group IDs from the Groups API. Members of these Groups ring on inbound calls and receive notifications for the number, including users added to a Group later. You can assign at most 40 Groups.\n- Modify which external phone numbers the number dials via `phone_numbers`. This should be a list of phone numbers in E.164 international format, e.g. \"+16503334444\".\n- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via `inbound_ring_duration`.\n\nYou can set at most 40 users and external phone numbers combined in `participants` and `phone_numbers`.\n\nA number's ring order is set in Close. A number that rings its members all at once rings at most 40 users and external phone numbers per inbound call. The users in `participants` and the external phone numbers in `phone_numbers` take priority. Members of the number's Groups who are allowed to make calls are added, chosen at random for each call, until 40 users and external phone numbers are ringing.\n\nThe per-call limit does not apply to a number that rings its members one at a time (round-robin).",
+        "description": "You need the \"Manage Team Phone Numbers\" permission to change most settings. If you're the only member of a number and no Group is assigned to it, you can change its `label`, voicemail greeting, and call forwarding without that permission.\n\nYou can:\n\n- Change the `label` of the number.\n- Set up call forwarding via `forward_to` and `forward_to_enabled`.\n- Set up a voicemail greeting by including a URL of an mp3 recording in `voicemail_greeting_url`. We require the URL to be secure (i.e. starting with https://).\n- Modify which users are assigned directly to the number via `participants`. This should be a list of user IDs.\n- Modify which Groups are assigned to the number via `participant_groups`. This should be a list of Group IDs from the Groups API. Members of these Groups ring on inbound calls and receive notifications for the number, including users added to a Group later. You can assign at most 40 Groups.\n- Modify which external phone numbers the number dials via `phone_numbers`. This should be a list of phone numbers in E.164 international format, e.g. \"+16503334444\".\n- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via `inbound_ring_duration`.\n- Let users who are not members of the number use it as their outbound caller ID via `non_member_caller_id_enabled`.\n- Let voice agents use the number as their outbound caller ID via `voice_agent_caller_id_enabled`. You cannot disable this setting while a voice agent uses the number.\n- Let Local Presence pick the number by proximity for calls and SMS via `local_presence_enabled`.\n\nYou can set at most 40 users and external phone numbers combined in `participants` and `phone_numbers`.\n\nA number's ring order is set in Close. A number that rings its members all at once rings at most 40 users and external phone numbers per inbound call. The users in `participants` and the external phone numbers in `phone_numbers` take priority. Members of the number's Groups who are allowed to make calls are added, chosen at random for each call, until 40 users and external phone numbers are ringing.\n\nThe per-call limit does not apply to a number that rings its members one at a time (round-robin).",
         "parameters": [
           {
             "in": "path",
@@ -18668,6 +18683,7 @@
                 "forward_to_enabled": true,
                 "inbound_ring_duration": 45,
                 "label": "My number w/ forwarding",
+                "local_presence_enabled": false,
                 "voicemail_greeting_url": "https://s3.amazonaws.com/bucket/aaa-bbb-ccc.mp3"
               },
               "schema": {
@@ -18699,8 +18715,10 @@
                   "is_verified": true,
                   "label": "My number w/ forwarding",
                   "last_billed_price": null,
+                  "local_presence_enabled": false,
                   "mms_enabled": true,
                   "next_billing_on": null,
+                  "non_member_caller_id_enabled": false,
                   "number": "+16503335555",
                   "number_formatted": "+1 650-333-5555",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
@@ -18717,6 +18735,7 @@
                   ],
                   "type": "internal",
                   "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "voice_agent_caller_id_enabled": false,
                   "voicemail_greeting_url": "https://s3.amazonaws.com/bucket/aaa-bbb-ccc.mp3"
                 },
                 "schema": {
@@ -29749,14 +29768,16 @@
         "properties": {
           "name": {
             "title": "Name",
-            "type": "string"
+            "type": "string",
+            "minLength": 1
           },
           "type": {
             "$ref": "#/components/schemas/IntegrationLinkType"
           },
           "url": {
             "title": "Url",
-            "type": "string"
+            "type": "string",
+            "minLength": 1
           }
         },
         "required": [
@@ -37553,6 +37574,11 @@
               }
             ]
           },
+          "local_presence_enabled": {
+            "title": "Local Presence Enabled",
+            "description": "Whether Local Presence can pick this phone number by proximity for a call or SMS made as a user.",
+            "type": "boolean"
+          },
           "mms_enabled": {
             "title": "Mms Enabled",
             "type": "boolean"
@@ -37568,6 +37594,11 @@
                 "type": "null"
               }
             ]
+          },
+          "non_member_caller_id_enabled": {
+            "title": "Non-Member Caller ID Enabled",
+            "description": "Whether users who are not members of this phone number can use it as their outbound caller ID.",
+            "type": "boolean"
           },
           "number": {
             "title": "Number",
@@ -37651,6 +37682,11 @@
               }
             ]
           },
+          "voice_agent_caller_id_enabled": {
+            "title": "Voice Agent Caller ID Enabled",
+            "description": "Whether voice agents can use this phone number as their outbound caller ID.",
+            "type": "boolean"
+          },
           "voicemail_greeting_url": {
             "title": "Voicemail Greeting URL",
             "anyOf": [
@@ -37681,8 +37717,10 @@
           "is_verified",
           "label",
           "last_billed_price",
+          "local_presence_enabled",
           "mms_enabled",
           "next_billing_on",
+          "non_member_caller_id_enabled",
           "number",
           "number_formatted",
           "organization_id",
@@ -37691,7 +37729,8 @@
           "supports_mms_to_countries",
           "supports_sms_to_countries",
           "type",
-          "user_id"
+          "user_id",
+          "voice_agent_caller_id_enabled"
         ]
       },
       "PhoneNumberSharing": {
@@ -39615,7 +39654,8 @@
             "default": null,
             "anyOf": [
               {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               {
                 "type": "null"
@@ -39638,7 +39678,8 @@
             "default": null,
             "anyOf": [
               {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               {
                 "type": "null"
@@ -40022,6 +40063,16 @@
             "title": "Label",
             "type": "string"
           },
+          "local_presence_enabled": {
+            "title": "Local Presence Enabled",
+            "description": "Whether Local Presence can pick this phone number by proximity for a call or SMS made as a user.",
+            "type": "boolean"
+          },
+          "non_member_caller_id_enabled": {
+            "title": "Non-Member Caller ID Enabled",
+            "description": "Whether users who are not members of this phone number can use it as their outbound caller ID.",
+            "type": "boolean"
+          },
           "participant_groups": {
             "title": "Participant Groups",
             "type": "array",
@@ -40045,6 +40096,11 @@
           },
           "press_1_to_accept": {
             "title": "Press 1 To Accept",
+            "type": "boolean"
+          },
+          "voice_agent_caller_id_enabled": {
+            "title": "Voice Agent Caller ID Enabled",
+            "description": "Whether voice agents can use this phone number as their outbound caller ID.",
             "type": "boolean"
           },
           "voicemail_greeting_url": {
