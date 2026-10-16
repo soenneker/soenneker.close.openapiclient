@@ -15,9 +15,9 @@ namespace Soenneker.Close.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The annualized_expected_value property</summary>
+        /// <summary>Annualized expected value in cents.</summary>
         public int? AnnualizedExpectedValue { get; set; }
-        /// <summary>The annualized_value property</summary>
+        /// <summary>Annualized value in cents.</summary>
         public int? AnnualizedValue { get; set; }
         /// <summary>The attachments property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -77,7 +77,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public DateTimeOffset? DateUpdated { get; set; }
         /// <summary>The date_won property</summary>
         public Date? DateWon { get; set; }
-        /// <summary>The expected_value property</summary>
+        /// <summary>Value multiplied by confidence, in cents.</summary>
         public int? ExpectedValue { get; set; }
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -243,7 +243,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string UserName { get; set; }
 #endif
-        /// <summary>The value property</summary>
+        /// <summary>Monetary value of the opportunity in cents, e.g. `340000` for $3,400.00. See `value_formatted` for a human-readable version.</summary>
         public int? Value { get; set; }
         /// <summary>The value_currency property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

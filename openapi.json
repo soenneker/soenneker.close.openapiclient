@@ -30212,6 +30212,7 @@
           },
           "value": {
             "title": "Value",
+            "description": "Monetary value of the opportunity in cents, e.g. `340000` for $3,400.00. The currency is the organization's currency.",
             "default": null,
             "anyOf": [
               {
@@ -36351,6 +36352,7 @@
         "properties": {
           "annualized_expected_value": {
             "title": "Annualized Expected Value",
+            "description": "Annualized expected value in cents.",
             "anyOf": [
               {
                 "type": "integer"
@@ -36362,6 +36364,7 @@
           },
           "annualized_value": {
             "title": "Annualized Value",
+            "description": "Annualized value in cents.",
             "anyOf": [
               {
                 "type": "integer"
@@ -36473,6 +36476,7 @@
           },
           "expected_value": {
             "title": "Expected Value",
+            "description": "Value multiplied by confidence, in cents.",
             "anyOf": [
               {
                 "type": "integer"
@@ -36662,6 +36666,7 @@
           },
           "value": {
             "title": "Value",
+            "description": "Monetary value of the opportunity in cents, e.g. `340000` for $3,400.00. See `value_formatted` for a human-readable version.",
             "anyOf": [
               {
                 "type": "integer"
@@ -39935,6 +39940,7 @@
           },
           "value": {
             "title": "Value",
+            "description": "Monetary value of the opportunity in cents, e.g. `340000` for $3,400.00. The currency is the organization's currency.",
             "type": "integer"
           },
           "value_period": {

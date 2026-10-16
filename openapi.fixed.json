@@ -28851,6 +28851,7 @@
               "null",
               "integer"
             ],
+            "description": "Monetary value of the opportunity in cents, e.g. \u0060340000\u0060 for $3,400.00. The currency is the organization\u0027s currency.",
             "default": null
           },
           "value_period": {
@@ -33988,14 +33989,16 @@
             "type": [
               "null",
               "integer"
-            ]
+            ],
+            "description": "Annualized expected value in cents."
           },
           "annualized_value": {
             "title": "Annualized Value",
             "type": [
               "null",
               "integer"
-            ]
+            ],
+            "description": "Annualized value in cents."
           },
           "attachments": {
             "title": "Attachments",
@@ -34070,7 +34073,8 @@
             "type": [
               "null",
               "integer"
-            ]
+            ],
+            "description": "Value multiplied by confidence, in cents."
           },
           "id": {
             "title": "ID",
@@ -34195,7 +34199,8 @@
             "type": [
               "null",
               "integer"
-            ]
+            ],
+            "description": "Monetary value of the opportunity in cents, e.g. \u0060340000\u0060 for $3,400.00. See \u0060value_formatted\u0060 for a human-readable version."
           },
           "value_currency": {
             "title": "Value Currency",
@@ -37546,7 +37551,8 @@
           },
           "value": {
             "title": "Value",
-            "type": "integer"
+            "type": "integer",
+            "description": "Monetary value of the opportunity in cents, e.g. \u0060340000\u0060 for $3,400.00. The currency is the organization\u0027s currency."
           },
           "value_period": {
             "title": "Value Period",

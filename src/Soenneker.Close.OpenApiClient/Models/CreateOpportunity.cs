@@ -90,7 +90,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string UserId { get; set; }
 #endif
-        /// <summary>The value property</summary>
+        /// <summary>Monetary value of the opportunity in cents, e.g. `340000` for $3,400.00. The currency is the organization&apos;s currency.</summary>
         public int? Value { get; set; }
         /// <summary>The value_period property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
