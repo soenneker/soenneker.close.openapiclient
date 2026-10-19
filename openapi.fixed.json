@@ -32932,6 +32932,14 @@
               "integer"
             ]
           },
+          "agent_config_id": {
+            "title": "Agent Config ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
+          },
           "attached_call_ids": {
             "title": "Attached Call IDs",
             "type": "array",

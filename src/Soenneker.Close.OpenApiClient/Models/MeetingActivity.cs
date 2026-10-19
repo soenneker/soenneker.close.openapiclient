@@ -18,6 +18,14 @@ namespace Soenneker.Close.OpenApiClient.Models
         public int? ActualDuration { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The agent_config_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AgentConfigId { get; set; }
+#nullable restore
+#else
+        public string AgentConfigId { get; set; }
+#endif
         /// <summary>The attached_call_ids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -397,6 +405,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             {
                 { "activity_at", n => { ActivityAt = n.GetDateTimeOffsetValue(); } },
                 { "actual_duration", n => { ActualDuration = n.GetIntValue(); } },
+                { "agent_config_id", n => { AgentConfigId = n.GetStringValue(); } },
                 { "attached_call_ids", n => { AttachedCallIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "attendees", n => { Attendees = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingAttendee>(global::Soenneker.Close.OpenApiClient.Models.MeetingAttendee.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "calendar_event_link", n => { CalendarEventLink = n.GetStringValue(); } },
@@ -458,6 +467,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("activity_at", ActivityAt);
             writer.WriteIntValue("actual_duration", ActualDuration);
+            writer.WriteStringValue("agent_config_id", AgentConfigId);
             writer.WriteCollectionOfPrimitiveValues<string>("attached_call_ids", AttachedCallIds);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingAttendee>("attendees", Attendees);
             writer.WriteStringValue("calendar_event_link", CalendarEventLink);

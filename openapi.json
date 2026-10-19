@@ -35114,6 +35114,18 @@
               }
             ]
           },
+          "agent_config_id": {
+            "title": "Agent Config ID",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "attached_call_ids": {
             "title": "Attached Call IDs",
             "type": "array",
