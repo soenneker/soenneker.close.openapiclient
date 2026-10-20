@@ -134,7 +134,7 @@ namespace Soenneker.Close.OpenApiClient.Phone_number
             public string Number { get; set; }
             #pragma warning restore CS1591
 #endif
-            /// <summary>Return numbers the given user participates in, including both personal and group numbers they belong to.</summary>
+            /// <summary>Return numbers the given user is a member of, directly or through an assigned Group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("participant_user_id")]

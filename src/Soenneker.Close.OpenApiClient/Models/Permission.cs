@@ -28,6 +28,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         #pragma warning disable CS1591
         ManageOAuthApps,
         #pragma warning restore CS1591
+        [EnumMember(Value = "manage_oauth_connections")]
+        #pragma warning disable CS1591
+        ManageOAuthConnections,
+        #pragma warning restore CS1591
         [EnumMember(Value = "manage_group_numbers")]
         #pragma warning disable CS1591
         ManageGroupNumbers,

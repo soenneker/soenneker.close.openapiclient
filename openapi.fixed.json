@@ -17706,7 +17706,7 @@
           {
             "name": "participant_user_id",
             "in": "query",
-            "description": "Return numbers the given user participates in, including both personal and group numbers they belong to.",
+            "description": "Return numbers the given user is a member of, directly or through an assigned Group.",
             "schema": {
               "title": "Participant User ID",
               "type": [
@@ -18063,7 +18063,7 @@
           "phone_numbers"
         ],
         "summary": "Update a phone number",
-        "description": "You need the \u0022Manage Team Phone Numbers\u0022 permission to change most settings. If you\u0027re the only member of a number and no Group is assigned to it, you can change its \u0060label\u0060, voicemail greeting, and call forwarding without that permission.\n\nYou can:\n\n- Change the \u0060label\u0060 of the number.\n- Set up call forwarding via \u0060forward_to\u0060 and \u0060forward_to_enabled\u0060.\n- Set up a voicemail greeting by including a URL of an mp3 recording in \u0060voicemail_greeting_url\u0060. We require the URL to be secure (i.e. starting with https://).\n- Modify which users are assigned directly to the number via \u0060participants\u0060. This should be a list of user IDs.\n- Modify which Groups are assigned to the number via \u0060participant_groups\u0060. This should be a list of Group IDs from the Groups API. Members of these Groups ring on inbound calls and receive notifications for the number, including users added to a Group later. You can assign at most 40 Groups.\n- Modify which external phone numbers the number dials via \u0060phone_numbers\u0060. This should be a list of phone numbers in E.164 international format, e.g. \u0022\u002B16503334444\u0022.\n- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via \u0060inbound_ring_duration\u0060.\n- Let users who are not members of the number use it as their outbound caller ID via \u0060non_member_caller_id_enabled\u0060.\n- Let voice agents use the number as their outbound caller ID via \u0060voice_agent_caller_id_enabled\u0060. You cannot disable this setting while a voice agent uses the number.\n- Let Local Presence pick the number by proximity for calls and SMS via \u0060local_presence_enabled\u0060.\n\nYou can set at most 40 users and external phone numbers combined in \u0060participants\u0060 and \u0060phone_numbers\u0060.\n\nA number\u0027s ring order is set in Close. A number that rings its members all at once rings at most 40 users and external phone numbers per inbound call. The users in \u0060participants\u0060 and the external phone numbers in \u0060phone_numbers\u0060 take priority. Members of the number\u0027s Groups who are allowed to make calls are added, chosen at random for each call, until 40 users and external phone numbers are ringing.\n\nThe per-call limit does not apply to a number that rings its members one at a time (round-robin).",
+        "description": "You need the \u0022Manage Team Phone Numbers\u0022 permission to change most settings. If you\u0027re the only member of a number and no Group is assigned to it, you can change its \u0060label\u0060, voicemail greeting, and call forwarding without that permission.\n\nYou can:\n\n- Change the \u0060label\u0060 of the number.\n- Set up call forwarding via \u0060forward_to\u0060 and \u0060forward_to_enabled\u0060.\n- Set up a voicemail greeting by including a URL of an mp3 recording in \u0060voicemail_greeting_url\u0060. We require the URL to be secure (i.e. starting with https://).\n- Modify which users are assigned directly to the number via \u0060participants\u0060. This should be a list of user IDs.\n- Modify which Groups are assigned to the number via \u0060participant_groups\u0060. This should be a list of Group IDs from the Groups API. Members of these Groups, including users added to a Group later, ring on inbound calls, receive notifications for the number, and can use it as outbound caller ID. You can assign at most 40 Groups.\n- Modify which external phone numbers the number dials via \u0060phone_numbers\u0060. This should be a list of phone numbers in E.164 international format, e.g. \u0022\u002B16503334444\u0022.\n- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via \u0060inbound_ring_duration\u0060.\n- Let users who are not members of the number use it as their outbound caller ID via \u0060non_member_caller_id_enabled\u0060.\n- Let voice agents use the number as their outbound caller ID via \u0060voice_agent_caller_id_enabled\u0060. You cannot disable this setting while a voice agent uses the number.\n- Let Local Presence pick the number by proximity for calls and SMS via \u0060local_presence_enabled\u0060.\n\nYou can set at most 40 users and external phone numbers combined in \u0060participants\u0060 and \u0060phone_numbers\u0060.\n\nA number\u0027s ring order is set in Close. A number that rings its members all at once rings at most 40 users and external phone numbers per inbound call. The users in \u0060participants\u0060 and the external phone numbers in \u0060phone_numbers\u0060 take priority. Members of the number\u0027s Groups who are allowed to make calls are added, chosen at random for each call, until 40 users and external phone numbers are ringing.\n\nThe per-call limit does not apply to a number that rings its members one at a time (round-robin).",
         "operationId": "PhoneNumbersUpdate",
         "parameters": [
           {
@@ -34891,6 +34891,7 @@
           "manage_others_api_keys",
           "manage_customizations",
           "manage_oauth_apps",
+          "manage_oauth_connections",
           "manage_group_numbers",
           "manage_team_smart_views",
           "manage_team_email_templates",
@@ -34948,6 +34949,10 @@
             {
               "value": "manage_oauth_apps",
               "name": "ManageOAuthApps"
+            },
+            {
+              "value": "manage_oauth_connections",
+              "name": "ManageOAuthConnections"
             },
             {
               "value": "manage_group_numbers",
@@ -35285,7 +35290,7 @@
             "items": {
               "type": "string"
             },
-            "description": "IDs of the Groups assigned to this phone number. Members of these Groups ring on inbound calls and receive notifications for the number. See the Groups API."
+            "description": "IDs of the Groups assigned to this phone number. Members of these Groups ring on inbound calls, receive notifications for the number, and can use it as outbound caller ID. See the Groups API."
           },
           "participants": {
             "title": "Participants",
@@ -35293,7 +35298,7 @@
             "items": {
               "type": "string"
             },
-            "description": "IDs of the users assigned directly to this phone number. Members of the Groups in \u0060participant_groups\u0060 also ring on inbound calls and receive notifications for the number."
+            "description": "IDs of the users assigned directly to this phone number. Members of the Groups in \u0060participant_groups\u0060 also ring on inbound calls, receive notifications for the number, and can use it as outbound caller ID."
           },
           "phone_numbers": {
             "title": "Phone Numbers",

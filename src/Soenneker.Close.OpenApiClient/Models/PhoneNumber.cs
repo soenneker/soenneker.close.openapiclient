@@ -135,7 +135,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string OrganizationId { get; set; }
 #endif
-        /// <summary>IDs of the Groups assigned to this phone number. Members of these Groups ring on inbound calls and receive notifications for the number. See the Groups API.</summary>
+        /// <summary>IDs of the Groups assigned to this phone number. Members of these Groups ring on inbound calls, receive notifications for the number, and can use it as outbound caller ID. See the Groups API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? ParticipantGroups { get; set; }
@@ -143,7 +143,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public List<string> ParticipantGroups { get; set; }
 #endif
-        /// <summary>IDs of the users assigned directly to this phone number. Members of the Groups in `participant_groups` also ring on inbound calls and receive notifications for the number.</summary>
+        /// <summary>IDs of the users assigned directly to this phone number. Members of the Groups in `participant_groups` also ring on inbound calls, receive notifications for the number, and can use it as outbound caller ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Participants { get; set; }
