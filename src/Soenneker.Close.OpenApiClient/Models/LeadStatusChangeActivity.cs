@@ -100,14 +100,6 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string OrganizationId { get; set; }
 #endif
-        /// <summary>The paused_subscriptions property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.PausedSubscription>? PausedSubscriptions { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.Close.OpenApiClient.Models.PausedSubscription> PausedSubscriptions { get; set; }
-#endif
         /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -194,7 +186,6 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "old_status_id", n => { OldStatusId = n.GetStringValue(); } },
                 { "old_status_label", n => { OldStatusLabel = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
-                { "_paused_subscriptions", n => { PausedSubscriptions = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.PausedSubscription>(global::Soenneker.Close.OpenApiClient.Models.PausedSubscription.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "_type", n => { Type = n.GetStringValue(); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
                 { "updated_by_name", n => { UpdatedByName = n.GetStringValue(); } },
@@ -223,7 +214,6 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("old_status_id", OldStatusId);
             writer.WriteStringValue("old_status_label", OldStatusLabel);
             writer.WriteStringValue("organization_id", OrganizationId);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.PausedSubscription>("_paused_subscriptions", PausedSubscriptions);
             writer.WriteStringValue("_type", Type);
             writer.WriteStringValue("updated_by", UpdatedBy);
             writer.WriteStringValue("updated_by_name", UpdatedByName);

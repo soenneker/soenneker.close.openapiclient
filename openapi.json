@@ -34889,13 +34889,6 @@
         "title": "LeadStatusChangeActivity",
         "type": "object",
         "properties": {
-          "_paused_subscriptions": {
-            "title": "Paused Subscriptions",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/PausedSubscription"
-            }
-          },
           "_type": {
             "title": "Type",
             "type": "string"
@@ -35080,13 +35073,6 @@
         "title": "MeetingActivity",
         "type": "object",
         "properties": {
-          "_paused_subscriptions": {
-            "title": "Paused Subscriptions",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/MeetingPausedSubscription"
-            }
-          },
           "_type": {
             "title": "Type",
             "type": "string"
@@ -35689,58 +35675,6 @@
           "url"
         ]
       },
-      "MeetingPausedSubscription": {
-        "title": "MeetingPausedSubscription",
-        "type": "object",
-        "properties": {
-          "contact_id": {
-            "title": "Contact ID",
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "contact_name": {
-            "title": "Contact Name",
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "id": {
-            "title": "ID",
-            "type": "string"
-          },
-          "sequence_id": {
-            "title": "Sequence ID",
-            "type": "string"
-          },
-          "sequence_name": {
-            "title": "Sequence Name",
-            "type": "string"
-          },
-          "sequence_status": {
-            "title": "Sequence Status",
-            "type": "string"
-          }
-        },
-        "required": [
-          "contact_id",
-          "contact_name",
-          "id",
-          "sequence_id",
-          "sequence_name",
-          "sequence_status"
-        ]
-      },
       "MeetingSource": {
         "title": "MeetingSource",
         "type": "string",
@@ -35899,56 +35833,12 @@
           "text": {
             "title": "Text",
             "type": "string"
-          },
-          "words": {
-            "title": "Words",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/MeetingTranscriptWord"
-            }
           }
         },
         "required": [
           "end",
           "speaker_label",
           "speaker_side",
-          "start",
-          "text"
-        ]
-      },
-      "MeetingTranscriptWord": {
-        "title": "MeetingTranscriptWord",
-        "type": "object",
-        "properties": {
-          "end": {
-            "title": "End",
-            "anyOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "start": {
-            "title": "Start",
-            "anyOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "text": {
-            "title": "Text",
-            "type": "string"
-          }
-        },
-        "required": [
-          "end",
           "start",
           "text"
         ]
@@ -37339,58 +37229,6 @@
         "enum": [
           "vm-dropped",
           "custom"
-        ]
-      },
-      "PausedSubscription": {
-        "title": "PausedSubscription",
-        "type": "object",
-        "properties": {
-          "contact_id": {
-            "title": "Contact ID",
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "contact_name": {
-            "title": "Contact Name",
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "id": {
-            "title": "ID",
-            "type": "string"
-          },
-          "sequence_id": {
-            "title": "Sequence ID",
-            "type": "string"
-          },
-          "sequence_name": {
-            "title": "Sequence Name",
-            "type": "string"
-          },
-          "sequence_status": {
-            "title": "Sequence Status",
-            "type": "string"
-          }
-        },
-        "required": [
-          "contact_id",
-          "contact_name",
-          "id",
-          "sequence_id",
-          "sequence_name",
-          "sequence_status"
         ]
       },
       "Permission": {

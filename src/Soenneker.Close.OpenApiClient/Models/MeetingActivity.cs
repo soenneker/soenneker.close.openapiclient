@@ -220,14 +220,6 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public global::Soenneker.Close.OpenApiClient.Models.OutcomeReasonWrapper OutcomeReason { get; set; }
 #endif
-        /// <summary>The paused_subscriptions property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.MeetingPausedSubscription>? PausedSubscriptions { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.Close.OpenApiClient.Models.MeetingPausedSubscription> PausedSubscriptions { get; set; }
-#endif
         /// <summary>The playbook_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -434,7 +426,6 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "outcome_autofill_reasoning", n => { OutcomeAutofillReasoning = n.GetStringValue(); } },
                 { "outcome_id", n => { OutcomeId = n.GetStringValue(); } },
                 { "outcome_reason", n => { OutcomeReason = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.OutcomeReasonWrapper>(global::Soenneker.Close.OpenApiClient.Models.OutcomeReasonWrapper.CreateFromDiscriminatorValue); } },
-                { "_paused_subscriptions", n => { PausedSubscriptions = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingPausedSubscription>(global::Soenneker.Close.OpenApiClient.Models.MeetingPausedSubscription.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "playbook_id", n => { PlaybookId = n.GetStringValue(); } },
                 { "playbook_reason", n => { PlaybookReason = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.PlaybookReasonWrapper2>(global::Soenneker.Close.OpenApiClient.Models.PlaybookReasonWrapper2.CreateFromDiscriminatorValue); } },
                 { "provider_calendar_event_id", n => { ProviderCalendarEventId = n.GetStringValue(); } },
@@ -496,7 +487,6 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("outcome_autofill_reasoning", OutcomeAutofillReasoning);
             writer.WriteStringValue("outcome_id", OutcomeId);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OutcomeReasonWrapper>("outcome_reason", OutcomeReason);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingPausedSubscription>("_paused_subscriptions", PausedSubscriptions);
             writer.WriteStringValue("playbook_id", PlaybookId);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.PlaybookReasonWrapper2>("playbook_reason", PlaybookReason);
             writer.WriteStringValue("provider_calendar_event_id", ProviderCalendarEventId);

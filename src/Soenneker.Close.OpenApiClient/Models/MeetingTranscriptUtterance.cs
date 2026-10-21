@@ -42,14 +42,6 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string Text { get; set; }
 #endif
-        /// <summary>The words property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptWord>? Words { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptWord> Words { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptUtterance"/> and sets the default values.
         /// </summary>
@@ -80,7 +72,6 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "speaker_side", n => { SpeakerSide = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.SpeakerSideWrapper2>(global::Soenneker.Close.OpenApiClient.Models.SpeakerSideWrapper2.CreateFromDiscriminatorValue); } },
                 { "start", n => { Start = n.GetDoubleValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
-                { "words", n => { Words = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptWord>(global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptWord.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -95,7 +86,6 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.SpeakerSideWrapper2>("speaker_side", SpeakerSide);
             writer.WriteDoubleValue("start", Start);
             writer.WriteStringValue("text", Text);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptWord>("words", Words);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
