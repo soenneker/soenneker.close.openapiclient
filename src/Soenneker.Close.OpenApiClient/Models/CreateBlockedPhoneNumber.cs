@@ -12,7 +12,7 @@ namespace Soenneker.Close.OpenApiClient.Models
     public partial class CreateBlockedPhoneNumber : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The phone number (in E.164 format) that you wish to block.</summary>
+        /// <summary>The phone number that you wish to block.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Phone { get; set; }

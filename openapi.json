@@ -29034,7 +29034,7 @@
         "properties": {
           "phone": {
             "title": "Phone",
-            "description": "The phone number (in E.164 format) that you wish to block.",
+            "description": "The phone number that you wish to block.",
             "type": "string"
           },
           "reason": {
