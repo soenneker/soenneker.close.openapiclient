@@ -25,13 +25,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string SpeakerLabel { get; set; }
 #endif
         /// <summary>The speaker_side property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.SpeakerSideWrapper2? SpeakerSide { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.SpeakerSideWrapper2 SpeakerSide { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.SpeakerSide? SpeakerSide { get; set; }
         /// <summary>The start property</summary>
         public double? Start { get; set; }
         /// <summary>The text property</summary>
@@ -69,7 +63,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             {
                 { "end", n => { End = n.GetDoubleValue(); } },
                 { "speaker_label", n => { SpeakerLabel = n.GetStringValue(); } },
-                { "speaker_side", n => { SpeakerSide = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.SpeakerSideWrapper2>(global::Soenneker.Close.OpenApiClient.Models.SpeakerSideWrapper2.CreateFromDiscriminatorValue); } },
+                { "speaker_side", n => { SpeakerSide = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.SpeakerSide>(); } },
                 { "start", n => { Start = n.GetDoubleValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
             };
@@ -83,7 +77,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("end", End);
             writer.WriteStringValue("speaker_label", SpeakerLabel);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.SpeakerSideWrapper2>("speaker_side", SpeakerSide);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.SpeakerSide>("speaker_side", SpeakerSide);
             writer.WriteDoubleValue("start", Start);
             writer.WriteStringValue("text", Text);
             writer.WriteAdditionalData(AdditionalData);

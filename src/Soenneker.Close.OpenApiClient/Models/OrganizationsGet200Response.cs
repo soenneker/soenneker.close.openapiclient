@@ -49,10 +49,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The inactive_memberships property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.OrganizationsGet200ResponseInactiveMembershipsItem>? InactiveMemberships { get; set; }
+        public UntypedNode? InactiveMemberships { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.OrganizationsGet200ResponseInactiveMembershipsItem> InactiveMemberships { get; set; }
+        public UntypedNode InactiveMemberships { get; set; }
 #endif
         /// <summary>The lead_statuses property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -131,7 +131,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "date_created", n => { DateCreated = n.GetStringValue(); } },
                 { "date_updated", n => { DateUpdated = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "inactive_memberships", n => { InactiveMemberships = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.OrganizationsGet200ResponseInactiveMembershipsItem>(global::Soenneker.Close.OpenApiClient.Models.OrganizationsGet200ResponseInactiveMembershipsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "inactive_memberships", n => { InactiveMemberships = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "lead_statuses", n => { LeadStatuses = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.OrganizationsGet200ResponseLeadStatusesItem>(global::Soenneker.Close.OpenApiClient.Models.OrganizationsGet200ResponseLeadStatusesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "memberships", n => { Memberships = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.OrganizationsGet200ResponseMembershipsItem>(global::Soenneker.Close.OpenApiClient.Models.OrganizationsGet200ResponseMembershipsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -151,7 +151,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("date_created", DateCreated);
             writer.WriteStringValue("date_updated", DateUpdated);
             writer.WriteStringValue("id", Id);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.OrganizationsGet200ResponseInactiveMembershipsItem>("inactive_memberships", InactiveMemberships);
+            writer.WriteObjectValue<UntypedNode>("inactive_memberships", InactiveMemberships);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.OrganizationsGet200ResponseLeadStatusesItem>("lead_statuses", LeadStatuses);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.OrganizationsGet200ResponseMembershipsItem>("memberships", Memberships);
             writer.WriteStringValue("name", Name);

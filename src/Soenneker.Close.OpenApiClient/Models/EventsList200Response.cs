@@ -33,10 +33,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.EventsList200ResponseDataItem>? Data { get; set; }
+        public UntypedNode? Data { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.EventsList200ResponseDataItem> Data { get; set; }
+        public UntypedNode Data { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.EventsList200Response"/> and sets the default values.
@@ -65,7 +65,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             {
                 { "cursor_next", n => { CursorNext = n.GetStringValue(); } },
                 { "cursor_previous", n => { CursorPrevious = n.GetStringValue(); } },
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EventsList200ResponseDataItem>(global::Soenneker.Close.OpenApiClient.Models.EventsList200ResponseDataItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "data", n => { Data = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -77,7 +77,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("cursor_next", CursorNext);
             writer.WriteStringValue("cursor_previous", CursorPrevious);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EventsList200ResponseDataItem>("data", Data);
+            writer.WriteObjectValue<UntypedNode>("data", Data);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

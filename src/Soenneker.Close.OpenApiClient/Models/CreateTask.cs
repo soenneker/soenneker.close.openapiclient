@@ -39,11 +39,11 @@ namespace Soenneker.Close.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("_type")?.GetStringValue();
             var result = new global::Soenneker.Close.OpenApiClient.Models.CreateTask();
-            if("CreateCallTask".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("outgoing_call".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.CreateCallTask = new global::Soenneker.Close.OpenApiClient.Models.CreateCallTask();
             }
-            else if("CreateLeadTask".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("lead".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.CreateLeadTask = new global::Soenneker.Close.OpenApiClient.Models.CreateLeadTask();
             }

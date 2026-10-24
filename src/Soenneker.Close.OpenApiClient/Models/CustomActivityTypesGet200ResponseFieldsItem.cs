@@ -35,10 +35,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The editable_with_roles property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.CustomActivityTypesGet200ResponseFieldsItemEditableWithRolesItem>? EditableWithRoles { get; set; }
+        public UntypedNode? EditableWithRoles { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.CustomActivityTypesGet200ResponseFieldsItemEditableWithRolesItem> EditableWithRoles { get; set; }
+        public UntypedNode EditableWithRoles { get; set; }
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -94,7 +94,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "accepts_multiple_values", n => { AcceptsMultipleValues = n.GetBoolValue(); } },
                 { "converting_to_type", n => { ConvertingToType = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "editable_with_roles", n => { EditableWithRoles = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CustomActivityTypesGet200ResponseFieldsItemEditableWithRolesItem>(global::Soenneker.Close.OpenApiClient.Models.CustomActivityTypesGet200ResponseFieldsItemEditableWithRolesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "editable_with_roles", n => { EditableWithRoles = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "required", n => { Required = n.GetBoolValue(); } },
@@ -111,7 +111,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteBoolValue("accepts_multiple_values", AcceptsMultipleValues);
             writer.WriteObjectValue<UntypedNode>("converting_to_type", ConvertingToType);
             writer.WriteStringValue("description", Description);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CustomActivityTypesGet200ResponseFieldsItemEditableWithRolesItem>("editable_with_roles", EditableWithRoles);
+            writer.WriteObjectValue<UntypedNode>("editable_with_roles", EditableWithRoles);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("required", Required);

@@ -167,10 +167,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The participant_groups property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.PhoneNumbersCreate201ResponseParticipantGroupsItem>? ParticipantGroups { get; set; }
+        public UntypedNode? ParticipantGroups { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.PhoneNumbersCreate201ResponseParticipantGroupsItem> ParticipantGroups { get; set; }
+        public UntypedNode ParticipantGroups { get; set; }
 #endif
         /// <summary>The press_1_to_accept property</summary>
         public bool? Press1ToAccept { get; set; }
@@ -267,7 +267,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "number", n => { Number = n.GetStringValue(); } },
                 { "number_formatted", n => { NumberFormatted = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
-                { "participant_groups", n => { ParticipantGroups = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.PhoneNumbersCreate201ResponseParticipantGroupsItem>(global::Soenneker.Close.OpenApiClient.Models.PhoneNumbersCreate201ResponseParticipantGroupsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "participant_groups", n => { ParticipantGroups = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "press_1_to_accept", n => { Press1ToAccept = n.GetBoolValue(); } },
                 { "sms_enabled", n => { SmsEnabled = n.GetBoolValue(); } },
                 { "supports_mms_to_countries", n => { SupportsMmsToCountries = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -309,7 +309,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("number", Number);
             writer.WriteStringValue("number_formatted", NumberFormatted);
             writer.WriteStringValue("organization_id", OrganizationId);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.PhoneNumbersCreate201ResponseParticipantGroupsItem>("participant_groups", ParticipantGroups);
+            writer.WriteObjectValue<UntypedNode>("participant_groups", ParticipantGroups);
             writer.WriteBoolValue("press_1_to_accept", Press1ToAccept);
             writer.WriteBoolValue("sms_enabled", SmsEnabled);
             writer.WriteCollectionOfPrimitiveValues<string>("supports_mms_to_countries", SupportsMmsToCountries);

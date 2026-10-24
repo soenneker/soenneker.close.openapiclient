@@ -17,10 +17,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The attachments property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesList200ResponseDataItemAttachmentsItem>? Attachments { get; set; }
+        public UntypedNode? Attachments { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesList200ResponseDataItemAttachmentsItem> Attachments { get; set; }
+        public UntypedNode Attachments { get; set; }
 #endif
         /// <summary>The body property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -123,7 +123,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesList200ResponseDataItemAttachmentsItem>(global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesList200ResponseDataItemAttachmentsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "attachments", n => { Attachments = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "body", n => { Body = n.GetStringValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetStringValue(); } },
@@ -144,7 +144,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesList200ResponseDataItemAttachmentsItem>("attachments", Attachments);
+            writer.WriteObjectValue<UntypedNode>("attachments", Attachments);
             writer.WriteStringValue("body", Body);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteStringValue("date_created", DateCreated);

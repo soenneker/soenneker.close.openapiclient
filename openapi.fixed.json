@@ -11,7 +11,7 @@
     }
   ],
   "paths": {
-    "/activity": {
+    "/activity/": {
       "get": {
         "tags": [
           "activities"
@@ -343,7 +343,7 @@
         }
       }
     },
-    "/activity/call": {
+    "/activity/call/": {
       "get": {
         "tags": [
           "activities.calls"
@@ -561,7 +561,7 @@
         }
       }
     },
-    "/activity/call/{id}": {
+    "/activity/call/{id}/": {
       "get": {
         "tags": [
           "activities.calls"
@@ -761,7 +761,7 @@
         }
       }
     },
-    "/activity/created": {
+    "/activity/created/": {
       "get": {
         "tags": [
           "activities.creations"
@@ -876,7 +876,7 @@
         }
       }
     },
-    "/activity/created/{id}": {
+    "/activity/created/{id}/": {
       "get": {
         "tags": [
           "activities.creations"
@@ -939,7 +939,7 @@
         }
       }
     },
-    "/activity/custom": {
+    "/activity/custom/": {
       "get": {
         "tags": [
           "activities.custom_activities"
@@ -1182,7 +1182,7 @@
         }
       }
     },
-    "/activity/custom/{id}": {
+    "/activity/custom/{id}/": {
       "get": {
         "tags": [
           "activities.custom_activities"
@@ -1365,7 +1365,7 @@
         }
       }
     },
-    "/activity/email": {
+    "/activity/email/": {
       "get": {
         "tags": [
           "activities.emails"
@@ -1762,7 +1762,7 @@
         }
       }
     },
-    "/activity/email/{id}": {
+    "/activity/email/{id}/": {
       "get": {
         "tags": [
           "activities.emails"
@@ -2026,7 +2026,7 @@
         }
       }
     },
-    "/activity/emailthread": {
+    "/activity/emailthread/": {
       "get": {
         "tags": [
           "activities.email_threads"
@@ -2386,7 +2386,7 @@
         }
       }
     },
-    "/activity/emailthread/{id}": {
+    "/activity/emailthread/{id}/": {
       "get": {
         "tags": [
           "activities.email_threads"
@@ -2725,7 +2725,7 @@
         }
       }
     },
-    "/activity/form_submission": {
+    "/activity/form_submission/": {
       "get": {
         "tags": [
           "activities.form_submissions"
@@ -2908,7 +2908,7 @@
         }
       }
     },
-    "/activity/form_submission/{id}": {
+    "/activity/form_submission/{id}/": {
       "get": {
         "tags": [
           "activities.form_submissions"
@@ -3012,7 +3012,7 @@
         }
       }
     },
-    "/activity/import_update": {
+    "/activity/import_update/": {
       "get": {
         "tags": [
           "activities.import_updates"
@@ -3128,7 +3128,7 @@
         }
       }
     },
-    "/activity/import_update/{id}": {
+    "/activity/import_update/{id}/": {
       "get": {
         "tags": [
           "activities.import_updates"
@@ -3222,7 +3222,7 @@
         }
       }
     },
-    "/activity/lead_merge": {
+    "/activity/lead_merge/": {
       "get": {
         "tags": [
           "activities.lead_merges"
@@ -3341,7 +3341,7 @@
         }
       }
     },
-    "/activity/lead_merge/{id}": {
+    "/activity/lead_merge/{id}/": {
       "get": {
         "tags": [
           "activities.lead_merges"
@@ -3408,7 +3408,7 @@
         }
       }
     },
-    "/activity/meeting": {
+    "/activity/meeting/": {
       "get": {
         "tags": [
           "activities.meetings"
@@ -3583,7 +3583,7 @@
         }
       }
     },
-    "/activity/meeting/{id}": {
+    "/activity/meeting/{id}/": {
       "get": {
         "tags": [
           "activities.meetings"
@@ -3871,7 +3871,7 @@
         }
       }
     },
-    "/activity/meeting/{id}/integration": {
+    "/activity/meeting/{id}/integration/": {
       "post": {
         "tags": [
           "activities.meetings"
@@ -3940,7 +3940,7 @@
         }
       }
     },
-    "/activity/note": {
+    "/activity/note/": {
       "get": {
         "tags": [
           "activities.notes"
@@ -4144,7 +4144,7 @@
         }
       }
     },
-    "/activity/note/{id}": {
+    "/activity/note/{id}/": {
       "get": {
         "tags": [
           "activities.notes"
@@ -4330,7 +4330,7 @@
         }
       }
     },
-    "/activity/sms": {
+    "/activity/sms/": {
       "get": {
         "tags": [
           "activities.sms"
@@ -4563,7 +4563,7 @@
         }
       }
     },
-    "/activity/sms/{id}": {
+    "/activity/sms/{id}/": {
       "get": {
         "tags": [
           "activities.sms"
@@ -4768,7 +4768,7 @@
         }
       }
     },
-    "/activity/status_change/lead": {
+    "/activity/status_change/lead/": {
       "get": {
         "tags": [
           "activities.lead_status_changes"
@@ -4952,7 +4952,7 @@
         }
       }
     },
-    "/activity/status_change/lead/{id}": {
+    "/activity/status_change/lead/{id}/": {
       "get": {
         "tags": [
           "activities.lead_status_changes"
@@ -5049,7 +5049,7 @@
         }
       }
     },
-    "/activity/status_change/opportunity": {
+    "/activity/status_change/opportunity/": {
       "get": {
         "tags": [
           "activities.opportunity_status_changes"
@@ -5272,7 +5272,7 @@
         }
       }
     },
-    "/activity/status_change/opportunity/{id}": {
+    "/activity/status_change/opportunity/{id}/": {
       "get": {
         "tags": [
           "activities.opportunity_status_changes"
@@ -5382,7 +5382,7 @@
         }
       }
     },
-    "/activity/task_completed": {
+    "/activity/task_completed/": {
       "get": {
         "tags": [
           "activities.task_completions"
@@ -5498,7 +5498,7 @@
         }
       }
     },
-    "/activity/task_completed/{id}": {
+    "/activity/task_completed/{id}/": {
       "get": {
         "tags": [
           "activities.task_completions"
@@ -5593,7 +5593,7 @@
         }
       }
     },
-    "/activity/whatsapp_message": {
+    "/activity/whatsapp_message/": {
       "get": {
         "tags": [
           "activities.whatsapp_messages"
@@ -5823,7 +5823,7 @@
         }
       }
     },
-    "/activity/whatsapp_message/{id}": {
+    "/activity/whatsapp_message/{id}/": {
       "get": {
         "tags": [
           "activities.whatsapp_messages"
@@ -6010,7 +6010,7 @@
         }
       }
     },
-    "/blocked_phone_number": {
+    "/blocked_phone_number/": {
       "get": {
         "tags": [
           "blocked_phone_numbers"
@@ -6122,7 +6122,7 @@
         }
       }
     },
-    "/blocked_phone_number/settings": {
+    "/blocked_phone_number/settings/": {
       "get": {
         "tags": [
           "blocked_phone_numbers"
@@ -6199,7 +6199,7 @@
         }
       }
     },
-    "/blocked_phone_number/{id}": {
+    "/blocked_phone_number/{id}/": {
       "get": {
         "tags": [
           "blocked_phone_numbers"
@@ -6346,7 +6346,7 @@
         }
       }
     },
-    "/bulk_action/delete": {
+    "/bulk_action/delete/": {
       "get": {
         "tags": [
           "bulk_actions.delete"
@@ -6559,7 +6559,7 @@
         }
       }
     },
-    "/bulk_action/delete/{id}": {
+    "/bulk_action/delete/{id}/": {
       "get": {
         "tags": [
           "bulk_actions.delete"
@@ -6643,7 +6643,7 @@
         }
       }
     },
-    "/bulk_action/edit": {
+    "/bulk_action/edit/": {
       "get": {
         "tags": [
           "bulk_actions.edit"
@@ -6864,7 +6864,7 @@
         }
       }
     },
-    "/bulk_action/edit/{id}": {
+    "/bulk_action/edit/{id}/": {
       "get": {
         "tags": [
           "bulk_actions.edit"
@@ -6951,7 +6951,7 @@
         }
       }
     },
-    "/bulk_action/email": {
+    "/bulk_action/email/": {
       "get": {
         "tags": [
           "bulk_actions.email"
@@ -7185,7 +7185,7 @@
         }
       }
     },
-    "/bulk_action/email/{id}": {
+    "/bulk_action/email/{id}/": {
       "get": {
         "tags": [
           "bulk_actions.email"
@@ -7272,7 +7272,7 @@
         }
       }
     },
-    "/bulk_action/sequence_subscription": {
+    "/bulk_action/sequence_subscription/": {
       "get": {
         "tags": [
           "bulk_actions.sequence_subscriptions"
@@ -7507,7 +7507,7 @@
         }
       }
     },
-    "/bulk_action/sequence_subscription/{id}": {
+    "/bulk_action/sequence_subscription/{id}/": {
       "get": {
         "tags": [
           "bulk_actions.sequence_subscriptions"
@@ -7599,7 +7599,7 @@
         }
       }
     },
-    "/comment": {
+    "/comment/": {
       "get": {
         "tags": [
           "comments"
@@ -7734,7 +7734,7 @@
         }
       }
     },
-    "/comment/{id}": {
+    "/comment/{id}/": {
       "get": {
         "tags": [
           "comments"
@@ -7889,7 +7889,7 @@
         }
       }
     },
-    "/comment_thread": {
+    "/comment_thread/": {
       "get": {
         "tags": [
           "comments"
@@ -7982,7 +7982,7 @@
         }
       }
     },
-    "/comment_thread/{id}": {
+    "/comment_thread/{id}/": {
       "get": {
         "tags": [
           "comments"
@@ -8037,7 +8037,7 @@
         }
       }
     },
-    "/connected_account": {
+    "/connected_account/": {
       "get": {
         "tags": [
           "connected_accounts"
@@ -8177,7 +8177,7 @@
         }
       }
     },
-    "/connected_account/{id}": {
+    "/connected_account/{id}/": {
       "get": {
         "tags": [
           "connected_accounts"
@@ -8274,7 +8274,7 @@
         }
       }
     },
-    "/contact": {
+    "/contact/": {
       "get": {
         "tags": [
           "contacts"
@@ -8621,7 +8621,7 @@
         }
       }
     },
-    "/contact/{id}": {
+    "/contact/{id}/": {
       "get": {
         "tags": [
           "contacts"
@@ -8813,7 +8813,7 @@
         }
       }
     },
-    "/custom_activity": {
+    "/custom_activity/": {
       "get": {
         "tags": [
           "custom_activity_types"
@@ -8963,7 +8963,7 @@
         }
       }
     },
-    "/custom_activity/{id}": {
+    "/custom_activity/{id}/": {
       "get": {
         "tags": [
           "custom_activity_types"
@@ -9169,7 +9169,7 @@
         }
       }
     },
-    "/custom_field/activity": {
+    "/custom_field/activity/": {
       "get": {
         "tags": [
           "custom_fields.activity"
@@ -9318,7 +9318,7 @@
         }
       }
     },
-    "/custom_field/activity/{id}": {
+    "/custom_field/activity/{id}/": {
       "get": {
         "tags": [
           "custom_fields.activity"
@@ -9483,7 +9483,7 @@
         }
       }
     },
-    "/custom_field/contact": {
+    "/custom_field/contact/": {
       "get": {
         "tags": [
           "custom_fields.contact"
@@ -9620,7 +9620,7 @@
         }
       }
     },
-    "/custom_field/contact/{id}": {
+    "/custom_field/contact/{id}/": {
       "get": {
         "tags": [
           "custom_fields.contact"
@@ -9787,7 +9787,7 @@
         }
       }
     },
-    "/custom_field/custom_object_type": {
+    "/custom_field/custom_object_type/": {
       "get": {
         "tags": [
           "custom_fields.custom_object"
@@ -9921,7 +9921,7 @@
         }
       }
     },
-    "/custom_field/custom_object_type/{id}": {
+    "/custom_field/custom_object_type/{id}/": {
       "get": {
         "tags": [
           "custom_fields.custom_object"
@@ -10082,7 +10082,7 @@
         }
       }
     },
-    "/custom_field/lead": {
+    "/custom_field/lead/": {
       "get": {
         "tags": [
           "custom_fields.lead"
@@ -10283,7 +10283,7 @@
         }
       }
     },
-    "/custom_field/lead/{id}": {
+    "/custom_field/lead/{id}/": {
       "get": {
         "tags": [
           "custom_fields.lead"
@@ -10443,7 +10443,7 @@
         }
       }
     },
-    "/custom_field/opportunity": {
+    "/custom_field/opportunity/": {
       "get": {
         "tags": [
           "custom_fields.opportunity"
@@ -10567,7 +10567,7 @@
         }
       }
     },
-    "/custom_field/opportunity/{id}": {
+    "/custom_field/opportunity/{id}/": {
       "get": {
         "tags": [
           "custom_fields.opportunity"
@@ -10726,7 +10726,7 @@
         }
       }
     },
-    "/custom_field/shared": {
+    "/custom_field/shared/": {
       "get": {
         "tags": [
           "custom_fields.shared"
@@ -10886,7 +10886,7 @@
         }
       }
     },
-    "/custom_field/shared/{id}": {
+    "/custom_field/shared/{id}/": {
       "get": {
         "tags": [
           "custom_fields.shared"
@@ -11036,7 +11036,7 @@
         }
       }
     },
-    "/custom_field/shared/{scfId}/association": {
+    "/custom_field/shared/{id}/association/": {
       "post": {
         "tags": [
           "custom_fields.shared"
@@ -11046,7 +11046,7 @@
         "operationId": "CustomFieldsSharedCreateAssociation",
         "parameters": [
           {
-            "name": "scfId",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -11099,7 +11099,7 @@
         }
       }
     },
-    "/custom_field/shared/{scfId}/association/{objectType}": {
+    "/custom_field/shared/{id}/association/{objectType}/": {
       "get": {
         "tags": [
           "custom_fields.shared"
@@ -11108,7 +11108,7 @@
         "operationId": "CustomFieldsSharedGetAssociation",
         "parameters": [
           {
-            "name": "scfId",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -11148,7 +11148,7 @@
         "operationId": "CustomFieldsSharedUpdateAssociation",
         "parameters": [
           {
-            "name": "scfId",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -11221,7 +11221,7 @@
         "operationId": "CustomFieldsSharedDeleteAssociation",
         "parameters": [
           {
-            "name": "scfId",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -11253,7 +11253,7 @@
         }
       }
     },
-    "/custom_field_schema/{objectType}": {
+    "/custom_field_schema/{objectType}/": {
       "get": {
         "tags": [
           "custom_field_schemas"
@@ -11457,7 +11457,7 @@
         }
       }
     },
-    "/custom_object": {
+    "/custom_object/": {
       "get": {
         "tags": [
           "custom_objects"
@@ -11611,7 +11611,7 @@
         }
       }
     },
-    "/custom_object/{id}": {
+    "/custom_object/{id}/": {
       "get": {
         "tags": [
           "custom_objects"
@@ -11763,7 +11763,7 @@
         }
       }
     },
-    "/custom_object_type": {
+    "/custom_object_type/": {
       "get": {
         "tags": [
           "custom_object_types"
@@ -11953,7 +11953,7 @@
         }
       }
     },
-    "/custom_object_type/{id}": {
+    "/custom_object_type/{id}/": {
       "get": {
         "tags": [
           "custom_object_types"
@@ -12135,7 +12135,7 @@
         }
       }
     },
-    "/dialer": {
+    "/dialer/": {
       "get": {
         "tags": [
           "dialers"
@@ -12283,7 +12283,7 @@
         }
       }
     },
-    "/dialer/{id}": {
+    "/dialer/{id}/": {
       "get": {
         "tags": [
           "dialers"
@@ -12350,7 +12350,7 @@
         }
       }
     },
-    "/email_template": {
+    "/email_template/": {
       "get": {
         "tags": [
           "email_templates"
@@ -12508,7 +12508,7 @@
         }
       }
     },
-    "/email_template/{id}": {
+    "/email_template/{id}/": {
       "get": {
         "tags": [
           "email_templates"
@@ -12684,7 +12684,7 @@
         }
       }
     },
-    "/email_template/{id}/render": {
+    "/email_template/{id}/render/": {
       "get": {
         "tags": [
           "email_templates"
@@ -12845,7 +12845,7 @@
         }
       }
     },
-    "/enrich_field": {
+    "/enrich_field/": {
       "post": {
         "tags": [
           "field_enrichment"
@@ -12904,7 +12904,7 @@
         }
       }
     },
-    "/event": {
+    "/event/": {
       "get": {
         "tags": [
           "events"
@@ -13059,7 +13059,7 @@
         }
       }
     },
-    "/event/{id}": {
+    "/event/{id}/": {
       "get": {
         "tags": [
           "events"
@@ -13136,7 +13136,7 @@
         }
       }
     },
-    "/export": {
+    "/export/": {
       "get": {
         "tags": [
           "exports"
@@ -13389,7 +13389,7 @@
         }
       }
     },
-    "/export/lead": {
+    "/export/lead/": {
       "get": {
         "tags": [
           "exports"
@@ -13642,7 +13642,7 @@
         }
       }
     },
-    "/export/lead/{id}": {
+    "/export/lead/{id}/": {
       "get": {
         "tags": [
           "exports"
@@ -13745,7 +13745,7 @@
         }
       }
     },
-    "/export/opportunity": {
+    "/export/opportunity/": {
       "get": {
         "tags": [
           "exports"
@@ -13927,7 +13927,7 @@
         }
       }
     },
-    "/export/opportunity/{id}": {
+    "/export/opportunity/{id}/": {
       "get": {
         "tags": [
           "exports"
@@ -14014,7 +14014,7 @@
         }
       }
     },
-    "/export/{id}": {
+    "/export/{id}/": {
       "get": {
         "tags": [
           "exports"
@@ -14087,7 +14087,7 @@
         }
       }
     },
-    "/files/upload": {
+    "/files/upload/": {
       "post": {
         "tags": [
           "files"
@@ -14150,7 +14150,7 @@
         }
       }
     },
-    "/form": {
+    "/form/": {
       "get": {
         "tags": [
           "forms"
@@ -14245,7 +14245,7 @@
         }
       }
     },
-    "/form/{id}": {
+    "/form/{id}/": {
       "get": {
         "tags": [
           "forms"
@@ -14327,7 +14327,7 @@
         }
       }
     },
-    "/group": {
+    "/group/": {
       "get": {
         "tags": [
           "groups"
@@ -14428,7 +14428,7 @@
         }
       }
     },
-    "/group/{groupId}/member": {
+    "/group/{groupId}/member/": {
       "post": {
         "tags": [
           "groups"
@@ -14485,7 +14485,7 @@
         }
       }
     },
-    "/group/{groupId}/member/{userId}": {
+    "/group/{groupId}/member/{userId}/": {
       "delete": {
         "tags": [
           "groups"
@@ -14527,7 +14527,7 @@
         }
       }
     },
-    "/group/{id}": {
+    "/group/{groupId}/": {
       "get": {
         "tags": [
           "groups"
@@ -14536,7 +14536,7 @@
         "operationId": "GroupsGet",
         "parameters": [
           {
-            "name": "id",
+            "name": "groupId",
             "in": "path",
             "required": true,
             "schema": {
@@ -14589,7 +14589,7 @@
         "operationId": "GroupsUpdate",
         "parameters": [
           {
-            "name": "id",
+            "name": "groupId",
             "in": "path",
             "required": true,
             "schema": {
@@ -14655,7 +14655,7 @@
         "operationId": "GroupsDelete",
         "parameters": [
           {
-            "name": "id",
+            "name": "groupId",
             "in": "path",
             "required": true,
             "schema": {
@@ -14679,7 +14679,7 @@
         }
       }
     },
-    "/integration_link": {
+    "/integration_link/": {
       "get": {
         "tags": [
           "integration_links"
@@ -14790,7 +14790,7 @@
         }
       }
     },
-    "/integration_link/{id}": {
+    "/integration_link/{id}/": {
       "get": {
         "tags": [
           "integration_links"
@@ -14934,7 +14934,7 @@
         }
       }
     },
-    "/lead": {
+    "/lead/": {
       "get": {
         "tags": [
           "leads"
@@ -15246,7 +15246,7 @@
         }
       }
     },
-    "/lead/merge": {
+    "/lead/merge/": {
       "post": {
         "tags": [
           "leads"
@@ -15285,7 +15285,7 @@
         }
       }
     },
-    "/lead/{id}": {
+    "/lead/{id}/": {
       "get": {
         "tags": [
           "leads"
@@ -15576,7 +15576,7 @@
         }
       }
     },
-    "/lead/{id}/files": {
+    "/lead/{id}/files/": {
       "get": {
         "tags": [
           "leads"
@@ -15723,7 +15723,7 @@
         }
       }
     },
-    "/me": {
+    "/me/": {
       "get": {
         "tags": [
           "users"
@@ -15860,7 +15860,7 @@
         }
       }
     },
-    "/membership": {
+    "/membership/": {
       "post": {
         "tags": [
           "memberships"
@@ -15984,7 +15984,7 @@
         }
       }
     },
-    "/membership/{id}": {
+    "/membership/{id}/": {
       "put": {
         "tags": [
           "memberships"
@@ -16093,7 +16093,7 @@
         }
       }
     },
-    "/membership/{id}/pinned_views": {
+    "/membership/{id}/pinned_views/": {
       "get": {
         "tags": [
           "memberships"
@@ -16206,7 +16206,7 @@
         }
       }
     },
-    "/opportunity": {
+    "/opportunity/": {
       "get": {
         "tags": [
           "opportunities"
@@ -16859,7 +16859,7 @@
         }
       }
     },
-    "/opportunity/{id}": {
+    "/opportunity/{id}/": {
       "get": {
         "tags": [
           "opportunities"
@@ -17047,7 +17047,7 @@
         }
       }
     },
-    "/organization/{id}": {
+    "/organization/{id}/": {
       "get": {
         "tags": [
           "organizations"
@@ -17347,7 +17347,7 @@
         }
       }
     },
-    "/outcome": {
+    "/outcome/": {
       "get": {
         "tags": [
           "outcomes"
@@ -17485,7 +17485,7 @@
         }
       }
     },
-    "/outcome/{id}": {
+    "/outcome/{id}/": {
       "get": {
         "tags": [
           "outcomes"
@@ -17643,7 +17643,7 @@
         }
       }
     },
-    "/phone_number": {
+    "/phone_number/": {
       "get": {
         "tags": [
           "phone_numbers"
@@ -17885,7 +17885,7 @@
         }
       }
     },
-    "/phone_number/request/internal": {
+    "/phone_number/request/internal/": {
       "post": {
         "tags": [
           "phone_numbers"
@@ -17974,7 +17974,7 @@
         }
       }
     },
-    "/phone_number/{id}": {
+    "/phone_number/{id}/": {
       "get": {
         "tags": [
           "phone_numbers"
@@ -18189,7 +18189,7 @@
         }
       }
     },
-    "/pipeline": {
+    "/pipeline/": {
       "get": {
         "tags": [
           "pipelines"
@@ -18301,7 +18301,7 @@
         }
       }
     },
-    "/pipeline/{id}": {
+    "/pipeline/{id}/": {
       "get": {
         "tags": [
           "pipelines"
@@ -18488,7 +18488,7 @@
         }
       }
     },
-    "/playbook": {
+    "/playbook/": {
       "get": {
         "tags": [
           "playbooks"
@@ -18670,7 +18670,7 @@
         }
       }
     },
-    "/playbook/{id}": {
+    "/playbook/{id}/": {
       "get": {
         "tags": [
           "playbooks"
@@ -18838,7 +18838,7 @@
         }
       }
     },
-    "/playbook/{id}/archive": {
+    "/playbook/{id}/archive/": {
       "post": {
         "tags": [
           "playbooks"
@@ -18901,7 +18901,7 @@
         }
       }
     },
-    "/playbook/{id}/unarchive": {
+    "/playbook/{id}/unarchive/": {
       "post": {
         "tags": [
           "playbooks"
@@ -18964,7 +18964,7 @@
         }
       }
     },
-    "/report/activity": {
+    "/report/activity/": {
       "post": {
         "tags": [
           "reporting"
@@ -19081,7 +19081,7 @@
         }
       }
     },
-    "/report/activity/metrics": {
+    "/report/activity/metrics/": {
       "get": {
         "tags": [
           "reporting"
@@ -19367,7 +19367,7 @@
         }
       }
     },
-    "/report/custom/{orgId}": {
+    "/report/custom/{orgId}/": {
       "get": {
         "tags": [
           "reporting"
@@ -19457,7 +19457,7 @@
         }
       }
     },
-    "/report/funnel/opportunity/stages": {
+    "/report/funnel/opportunity/stages/": {
       "post": {
         "tags": [
           "reporting"
@@ -19642,7 +19642,7 @@
         }
       }
     },
-    "/report/funnel/opportunity/totals": {
+    "/report/funnel/opportunity/totals/": {
       "post": {
         "tags": [
           "reporting"
@@ -19743,7 +19743,7 @@
         }
       }
     },
-    "/report/sent_emails/{orgId}": {
+    "/report/sent_emails/{orgId}/": {
       "get": {
         "tags": [
           "reporting"
@@ -19842,7 +19842,7 @@
         }
       }
     },
-    "/report/statuses/lead/{orgId}": {
+    "/report/statuses/lead/{orgId}/": {
       "get": {
         "tags": [
           "reporting"
@@ -20063,7 +20063,7 @@
         }
       }
     },
-    "/report/statuses/opportunity/{orgId}": {
+    "/report/statuses/opportunity/{orgId}/": {
       "get": {
         "tags": [
           "reporting"
@@ -20322,7 +20322,7 @@
         }
       }
     },
-    "/role": {
+    "/role/": {
       "get": {
         "tags": [
           "roles"
@@ -20445,7 +20445,7 @@
         }
       }
     },
-    "/role/{id}": {
+    "/role/{id}/": {
       "get": {
         "tags": [
           "roles"
@@ -20597,7 +20597,7 @@
         }
       }
     },
-    "/saved_search": {
+    "/saved_search/": {
       "get": {
         "tags": [
           "smart_views"
@@ -20906,7 +20906,7 @@
         }
       }
     },
-    "/saved_search/{id}": {
+    "/saved_search/{id}/": {
       "get": {
         "tags": [
           "smart_views"
@@ -21066,7 +21066,7 @@
         }
       }
     },
-    "/scheduling_link": {
+    "/scheduling_link/": {
       "get": {
         "tags": [
           "scheduling_links"
@@ -21207,7 +21207,7 @@
         }
       }
     },
-    "/scheduling_link/integration": {
+    "/scheduling_link/integration/": {
       "post": {
         "tags": [
           "scheduling_links"
@@ -21273,7 +21273,7 @@
         }
       }
     },
-    "/scheduling_link/integration/{sourceId}": {
+    "/scheduling_link/integration/{sourceId}/": {
       "delete": {
         "tags": [
           "scheduling_links"
@@ -21307,7 +21307,7 @@
         }
       }
     },
-    "/scheduling_link/{id}": {
+    "/scheduling_link/{id}/": {
       "get": {
         "tags": [
           "scheduling_links"
@@ -21464,7 +21464,7 @@
         }
       }
     },
-    "/send_as": {
+    "/send_as/": {
       "get": {
         "tags": [
           "send_as"
@@ -21615,7 +21615,7 @@
         }
       }
     },
-    "/send_as/bulk": {
+    "/send_as/bulk/": {
       "post": {
         "tags": [
           "send_as"
@@ -21676,7 +21676,7 @@
         }
       }
     },
-    "/send_as/{id}": {
+    "/send_as/{id}/": {
       "get": {
         "tags": [
           "send_as"
@@ -21754,7 +21754,7 @@
         }
       }
     },
-    "/sequence": {
+    "/sequence/": {
       "get": {
         "tags": [
           "sequences"
@@ -22012,7 +22012,7 @@
         }
       }
     },
-    "/sequence/{id}": {
+    "/sequence/{id}/": {
       "get": {
         "tags": [
           "sequences"
@@ -22277,7 +22277,7 @@
         }
       }
     },
-    "/sequence_subscription": {
+    "/sequence_subscription/": {
       "get": {
         "tags": [
           "sequences"
@@ -22441,7 +22441,7 @@
         }
       }
     },
-    "/sequence_subscription/{id}": {
+    "/sequence_subscription/{id}/": {
       "get": {
         "tags": [
           "sequences"
@@ -22610,7 +22610,7 @@
         }
       }
     },
-    "/shared_scheduling_link": {
+    "/shared_scheduling_link/": {
       "get": {
         "tags": [
           "scheduling_links"
@@ -22732,7 +22732,7 @@
         }
       }
     },
-    "/shared_scheduling_link/{id}": {
+    "/shared_scheduling_link/{id}/": {
       "get": {
         "tags": [
           "scheduling_links"
@@ -22885,7 +22885,7 @@
         }
       }
     },
-    "/shared_scheduling_link_association": {
+    "/shared_scheduling_link_association/": {
       "post": {
         "tags": [
           "scheduling_links"
@@ -22974,7 +22974,7 @@
         }
       }
     },
-    "/shared_scheduling_link_association/unmap": {
+    "/shared_scheduling_link_association/unmap/": {
       "post": {
         "tags": [
           "scheduling_links"
@@ -23013,7 +23013,7 @@
         }
       }
     },
-    "/sms_template": {
+    "/sms_template/": {
       "get": {
         "tags": [
           "sms_templates"
@@ -23129,7 +23129,7 @@
         }
       }
     },
-    "/sms_template/{id}": {
+    "/sms_template/{id}/": {
       "get": {
         "tags": [
           "sms_templates"
@@ -23299,7 +23299,7 @@
         }
       }
     },
-    "/status/lead": {
+    "/status/lead/": {
       "get": {
         "tags": [
           "lead_statuses"
@@ -23405,7 +23405,7 @@
         }
       }
     },
-    "/status/lead/{id}": {
+    "/status/lead/{id}/": {
       "get": {
         "tags": [
           "lead_statuses"
@@ -23541,7 +23541,7 @@
         }
       }
     },
-    "/status/opportunity": {
+    "/status/opportunity/": {
       "get": {
         "tags": [
           "opportunity_statuses"
@@ -23667,7 +23667,7 @@
         }
       }
     },
-    "/status/opportunity/{id}": {
+    "/status/opportunity/{id}/": {
       "get": {
         "tags": [
           "opportunity_statuses"
@@ -23812,7 +23812,7 @@
         }
       }
     },
-    "/task": {
+    "/task/": {
       "get": {
         "tags": [
           "tasks"
@@ -24964,7 +24964,7 @@
         }
       }
     },
-    "/task/{id}": {
+    "/task/{id}/": {
       "get": {
         "tags": [
           "tasks"
@@ -25143,7 +25143,7 @@
         }
       }
     },
-    "/unsubscribe/email": {
+    "/unsubscribe/email/": {
       "get": {
         "tags": [
           "unsubscribed_emails"
@@ -25232,7 +25232,7 @@
         }
       }
     },
-    "/unsubscribe/email/{emailAddress}": {
+    "/unsubscribe/email/{emailAddress}/": {
       "delete": {
         "tags": [
           "unsubscribed_emails"
@@ -25276,7 +25276,7 @@
         }
       }
     },
-    "/user": {
+    "/user/": {
       "get": {
         "tags": [
           "users"
@@ -25354,7 +25354,7 @@
         }
       }
     },
-    "/user/availability": {
+    "/user/availability/": {
       "get": {
         "tags": [
           "users"
@@ -25489,7 +25489,7 @@
         }
       }
     },
-    "/user/{id}": {
+    "/user/{id}/": {
       "get": {
         "tags": [
           "users"
@@ -25557,7 +25557,7 @@
         }
       }
     },
-    "/webhook": {
+    "/webhook/": {
       "get": {
         "tags": [
           "webhooks"
@@ -25751,7 +25751,7 @@
         }
       }
     },
-    "/webhook/{id}": {
+    "/webhook/{id}/": {
       "get": {
         "tags": [
           "webhooks"
@@ -26216,7 +26216,8 @@
         "properties": {
           "content_type": {
             "title": "Content Type",
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "filename": {
             "title": "Filename",
@@ -26236,7 +26237,6 @@
           "unset"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "AutoRecordCalls",
           "modelAsString": false,
@@ -26401,7 +26401,6 @@
           "form_submission"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "BulkActionObjectType",
           "modelAsString": false,
@@ -26441,7 +26440,6 @@
           "error"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "BulkActionStatus",
           "modelAsString": false,
@@ -26757,7 +26755,6 @@
           "clear_custom_object_custom_field"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "BulkEditActionType",
           "modelAsString": false,
@@ -26968,7 +26965,6 @@
           "all"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "BulkEmailContactPreference",
           "modelAsString": false,
@@ -27176,7 +27172,6 @@
           "reassign"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "BulkSequenceSubscriptionActionType",
           "modelAsString": false,
@@ -27211,7 +27206,6 @@
           "contact"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "BulkSequenceSubscriptionContactPreference",
           "modelAsString": false,
@@ -27430,7 +27424,6 @@
           "timeout"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Current status of the call.",
         "x-ms-enum": {
           "name": "CallStatus",
@@ -27478,7 +27471,6 @@
           "auto"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "How a caller\u0027s outbound number is chosen. Fixed uses a single configured number; Auto lets Close select the best number per call/SMS (Managed by Close Caller ID).",
         "x-ms-enum": {
           "name": "CallerIdMode",
@@ -27503,7 +27495,6 @@
           "fallback"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Why a number was chosen in Auto mode: reused from a prior communication (context), picked for geographic proximity (local_presence), or the default/oldest fallback.",
         "x-ms-enum": {
           "name": "CallerIdReason",
@@ -27534,7 +27525,6 @@
           "shortcode"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CarrierNumberType",
           "modelAsString": false,
@@ -27587,7 +27577,6 @@
           "outgoing"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Direction of communication. Outgoing means the communication flowing from the user to the lead/contact. Inbound means the opposite.",
         "x-ms-enum": {
           "name": "CommunicationDirection",
@@ -27616,7 +27605,6 @@
           "GO_TO_MEETING"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ConferenceLinkType",
           "modelAsString": false,
@@ -28988,7 +28976,8 @@
             "title": "Prefix",
             "maxLength": 5,
             "type": "string",
-            "description": "A string with the phone number prefix or area code, not including the country code."
+            "description": "A string with the phone number prefix or area code, not including the country code.",
+            "default": ""
           },
           "sharing": {
             "description": "Deprecated. \u0060personal\u0060 for a number that belongs to an individual user, or \u0060group\u0060 for a group number. The distinction between personal and group numbers is being removed, and this field will be removed in a future update. When omitted, defaults to \u0060personal\u0060.",
@@ -29247,7 +29236,6 @@
         "required": [
           "_type"
         ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/CreateLeadTask"
@@ -29257,55 +29245,6 @@
           }
         ],
         "properties": {
-          "assigned_to": {
-            "title": "Assigned To",
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "created_by": {
-            "title": "Created By",
-            "type": "string"
-          },
-          "date_created": {
-            "$ref": "#/components/schemas/CreateLeadTaskDateCreated"
-          },
-          "disable_notification": {
-            "title": "Disable Notification",
-            "type": "boolean",
-            "default": false
-          },
-          "due_date": {
-            "$ref": "#/components/schemas/CreateLeadTaskDueDate"
-          },
-          "is_complete": {
-            "title": "Is Complete",
-            "type": "boolean"
-          },
-          "is_dateless": {
-            "title": "Is Dateless",
-            "type": "boolean"
-          },
-          "lead_id": {
-            "title": "Lead ID",
-            "type": "string"
-          },
-          "organization_id": {
-            "title": "Organization ID",
-            "type": "string"
-          },
-          "priority": {
-            "title": "Priority",
-            "$ref": "#/components/schemas/TaskPriority"
-          },
-          "agent_config_id": {
-            "title": "Agent Config ID",
-            "type": [
-              "null",
-              "string"
-            ]
-          },
           "_type": {
             "type": "string"
           }
@@ -29314,9 +29253,7 @@
           "propertyName": "_type",
           "mapping": {
             "lead": "#/components/schemas/CreateLeadTask",
-            "outgoing_call": "#/components/schemas/CreateCallTask",
-            "CreateLeadTask": "#/components/schemas/CreateLeadTask",
-            "CreateCallTask": "#/components/schemas/CreateCallTask"
+            "outgoing_call": "#/components/schemas/CreateCallTask"
           }
         }
       },
@@ -29594,7 +29531,6 @@
           "webform"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CreationSource",
           "modelAsString": false,
@@ -29829,7 +29765,6 @@
           "published"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CustomActivityStatus",
           "modelAsString": false,
@@ -31310,7 +31245,7 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/ExportSortItem"
+              "$ref": "#/components/schemas/JsonDict"
             },
             "default": null
           },
@@ -31337,7 +31272,6 @@
           "excel"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ExportDateFormat",
           "modelAsString": false,
@@ -31364,7 +31298,6 @@
           "json"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ExportFormat",
           "modelAsString": false,
@@ -31390,7 +31323,6 @@
           "error"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ExportStatus",
           "modelAsString": false,
@@ -31896,7 +31828,6 @@
           "unset-initial-default"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ImportantThreadReason",
           "modelAsString": false,
@@ -32023,7 +31954,6 @@
           "opportunity"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "IntegrationLinkType",
           "modelAsString": false,
@@ -32044,28 +31974,27 @@
         }
       },
       "Json": {
-        "type": "object",
         "anyOf": [
           {
-            "type": "object",
-            "additionalProperties": {
+            "$ref": "#/components/schemas/JsonDict"
+          },
+          {
+            "type": "array",
+            "items": {
               "$ref": "#/components/schemas/Json"
             }
           },
           {
-            "$ref": "#/components/schemas/JsonBranch2"
+            "type": "string"
           },
           {
-            "$ref": "#/components/schemas/JsonBranch3"
+            "type": "integer"
           },
           {
-            "$ref": "#/components/schemas/JsonBranch4"
+            "type": "number"
           },
           {
-            "$ref": "#/components/schemas/JsonBranch5"
-          },
-          {
-            "$ref": "#/components/schemas/JsonBranch6"
+            "type": "boolean"
           },
           {
             "type": "null"
@@ -32609,7 +32538,6 @@
           "errored"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "LeadMergeStatus",
           "modelAsString": false,
@@ -32706,6 +32634,14 @@
               "string"
             ]
           },
+          "created_by_agent_id": {
+            "title": "Created By Agent ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
+          },
           "created_by_name": {
             "title": "Created By Name",
             "type": [
@@ -32762,6 +32698,14 @@
               "string"
             ]
           },
+          "updated_by_agent_id": {
+            "title": "Updated By Agent ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
+          },
           "updated_by_name": {
             "title": "Updated By Name",
             "type": [
@@ -32807,7 +32751,6 @@
           "yellow"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "LeadStatusColor",
           "modelAsString": false,
@@ -33283,7 +33226,6 @@
           "manual"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "MeetingSource",
           "modelAsString": false,
@@ -33310,7 +33252,6 @@
           "declined-by-lead"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "MeetingStatus",
           "modelAsString": false,
@@ -33744,7 +33685,6 @@
           "error"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Status of a message, such as Email or SMS.",
         "x-ms-enum": {
           "name": "MessageStatus",
@@ -33821,7 +33761,6 @@
           "by-default"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "NotImportantThreadReason",
           "modelAsString": false,
@@ -33856,7 +33795,6 @@
           "skipped"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "NotificationResolution",
           "modelAsString": false,
@@ -34465,7 +34403,6 @@
           "active"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "OpportunityStatusType",
           "modelAsString": false,
@@ -34514,7 +34451,6 @@
           "annual"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "OpportunityValuePeriod",
           "modelAsString": false,
@@ -34650,7 +34586,6 @@
           "meetings"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "OutcomeAppliesTo",
           "modelAsString": false,
@@ -34674,7 +34609,6 @@
           "high"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "OutcomeAutofillConfidence",
           "modelAsString": false,
@@ -34702,7 +34636,6 @@
           "voicemail-dropped"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "OutcomeReason",
           "modelAsString": false,
@@ -34729,7 +34662,6 @@
           "custom"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "OutcomeType",
           "modelAsString": false,
@@ -34787,7 +34719,6 @@
           "manage_web_forms"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Permission",
           "modelAsString": false,
@@ -34950,7 +34881,6 @@
           "outbound"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Direction of a phone activity, such as a call or an SMS message.",
         "x-ms-enum": {
           "name": "PhoneActivityDirection",
@@ -34974,7 +34904,6 @@
           "External"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Source of a phone activity. Describes whether the phone activity (such as a call or an SMS) was handled by Close\u0027s telephony provider or handled externally by a 3rd party and is merely logged in Close.",
         "x-ms-enum": {
           "name": "PhoneActivitySource",
@@ -35237,7 +35166,6 @@
           "group"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "PhoneNumberSharing",
           "modelAsString": false,
@@ -35261,7 +35189,6 @@
           "virtual"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "PhoneNumberType",
           "modelAsString": false,
@@ -35471,7 +35398,6 @@
           "autodetected"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "PlaybookReason",
           "modelAsString": false,
@@ -35494,7 +35420,6 @@
           "microsoft"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ProviderCalendarType",
           "modelAsString": false,
@@ -35886,7 +35811,6 @@
           "archived"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "SmsTemplateStatus",
           "modelAsString": false,
@@ -36025,7 +35949,6 @@
           "form_submission"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "SavedSearchType",
           "modelAsString": false,
@@ -36191,7 +36114,6 @@
           "voice-agent"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "SpeakerSide",
           "modelAsString": false,
@@ -36241,7 +36163,6 @@
           "change_communication_method"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "StalledOpportunityActionTypeV1",
           "modelAsString": false,
@@ -36283,7 +36204,6 @@
           "follow_up_sms"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "StalledOpportunityActionTypeV2",
           "modelAsString": false,
@@ -36319,7 +36239,6 @@
           "no_communication_attempts"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "StalledOpportunityCommunicationIssue",
           "modelAsString": false,
@@ -36377,7 +36296,6 @@
           "email-ai-generation-failed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Reason for each higher level status on a Workflow run.",
         "x-ms-enum": {
           "name": "StatusReason",
@@ -36525,7 +36443,6 @@
           "negative"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "SummaryFeedbackRating",
           "modelAsString": false,
@@ -36550,7 +36467,6 @@
           "expired"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "SummaryStatus",
           "modelAsString": false,
@@ -36582,7 +36498,6 @@
           "blocked"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "TotpAuthState",
           "modelAsString": false,
@@ -36771,7 +36686,6 @@
           "medium"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "TaskPriority",
           "modelAsString": false,
@@ -36794,7 +36708,6 @@
           "plivo"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "UnderlyingCarrier",
           "modelAsString": false,
@@ -37579,7 +37492,8 @@
         "properties": {
           "name": {
             "title": "Name",
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "statuses": {
             "title": "Statuses",
@@ -37890,7 +37804,6 @@
           "paused"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "WebhookStatus",
           "modelAsString": false,
@@ -38180,7 +38093,6 @@
           "error"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "WorkflowRunStatus",
           "modelAsString": false,
@@ -38216,7 +38128,6 @@
           "draft"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "WorkflowStatus",
           "modelAsString": false,
@@ -38238,7 +38149,6 @@
       },
       "ActivityBaseCommentSummary": {
         "title": "Comment Summary",
-        "type": "object",
         "anyOf": [
           {
             "$ref": "#/components/schemas/CommentSummary"
@@ -38246,166 +38156,101 @@
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "comment_count": {
-            "title": "Comment Count",
-            "type": "integer"
-          },
-          "thread_id": {
-            "title": "Thread ID",
-            "type": "string"
-          }
-        }
+        ]
       },
       "ActivityBaseSource": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/CreationSourceWrapper"
+            "$ref": "#/components/schemas/CreationSource"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/CreationSource"
-          }
-        }
+        ]
       },
       "BasicSubscriptionInfoForContactSubscriptionStatusReason": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/StatusReasonWrapper"
+            "$ref": "#/components/schemas/StatusReason"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/StatusReason"
-          }
-        }
+        ]
       },
       "BulkDeleteActionStatus": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/BulkActionStatusWrapper"
+            "$ref": "#/components/schemas/BulkActionStatus"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/BulkActionStatus"
-          }
-        }
+        ]
       },
       "BulkEditActionStatus": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/BulkActionStatusWrapper2"
+            "$ref": "#/components/schemas/BulkActionStatus"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/BulkActionStatus"
-          }
-        }
+        ]
       },
       "BulkEmailActionContactPreference": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/BulkEmailContactPreferenceWrapper"
+            "$ref": "#/components/schemas/BulkEmailContactPreference"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/BulkEmailContactPreference"
-          }
-        }
+        ]
       },
       "BulkEmailActionStatus": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/BulkActionStatusWrapper3"
+            "$ref": "#/components/schemas/BulkActionStatus"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/BulkActionStatus"
-          }
-        }
+        ]
       },
       "BulkSequenceSubscriptionActionCallerIdMode": {
         "title": "Caller ID Mode",
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/CallerIdModeWrapper"
+            "$ref": "#/components/schemas/CallerIdMode"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/CallerIdMode"
-          }
-        }
+        ]
       },
       "BulkSequenceSubscriptionActionContactPreference": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/BulkSequenceSubscriptionContactPreferenceWrapper"
+            "$ref": "#/components/schemas/BulkSequenceSubscriptionContactPreference"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/BulkSequenceSubscriptionContactPreference"
-          }
-        }
+        ]
       },
       "BulkSequenceSubscriptionActionStatus": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/BulkActionStatusWrapper4"
+            "$ref": "#/components/schemas/BulkActionStatus"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/BulkActionStatus"
-          }
-        }
+        ]
       },
       "BulkUpdateNotificationsDate": {
         "title": "Date",
-        "type": "object",
         "anyOf": [
           {
             "type": "string",
@@ -38418,24 +38263,17 @@
         ]
       },
       "BulkUpdateNotificationsResolution": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/NotificationResolutionWrapper"
+            "$ref": "#/components/schemas/NotificationResolution"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/NotificationResolution"
-          }
-        }
+        ]
       },
       "CreateCallTaskDate": {
         "title": "Date",
-        "type": "object",
         "anyOf": [
           {
             "type": "string",
@@ -38449,7 +38287,6 @@
       },
       "CreateLeadTaskDate": {
         "title": "Date",
-        "type": "object",
         "anyOf": [
           {
             "type": "string",
@@ -38463,7 +38300,6 @@
       },
       "CreateLeadTaskDateCreated": {
         "title": "Date Created",
-        "type": "object",
         "anyOf": [
           {
             "type": "string",
@@ -38477,7 +38313,6 @@
       },
       "CreateLeadTaskDueDate": {
         "title": "Due Date",
-        "type": "object",
         "anyOf": [
           {
             "type": "string",
@@ -38490,56 +38325,37 @@
         ]
       },
       "CreateOpportunityValuePeriod": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/OpportunityValuePeriodWrapper"
+            "$ref": "#/components/schemas/OpportunityValuePeriod"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/OpportunityValuePeriod"
-          }
-        }
+        ]
       },
       "CreateOrUpdateLeadStatusColor": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/LeadStatusColorWrapper"
+            "$ref": "#/components/schemas/LeadStatusColor"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/LeadStatusColor"
-          }
-        }
+        ]
       },
       "CreatedActivitySource": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/CreationSourceWrapper2"
+            "$ref": "#/components/schemas/CreationSource"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/CreationSource"
-          }
-        }
+        ]
       },
       "CustomActivityCommentSummary": {
         "title": "Comment Summary",
-        "type": "object",
         "anyOf": [
           {
             "$ref": "#/components/schemas/CommentSummary"
@@ -38547,68 +38363,39 @@
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "comment_count": {
-            "title": "Comment Count",
-            "type": "integer"
-          },
-          "thread_id": {
-            "title": "Thread ID",
-            "type": "string"
-          }
-        }
+        ]
       },
       "CustomActivitySource": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/CreationSourceWrapper3"
+            "$ref": "#/components/schemas/CreationSource"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/CreationSource"
-          }
-        }
+        ]
       },
       "EmailActivityDirection": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/CommunicationDirectionWrapper"
+            "$ref": "#/components/schemas/CommunicationDirection"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/CommunicationDirection"
-          }
-        }
+        ]
       },
       "EmailInThreadDirection": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/CommunicationDirectionWrapper2"
+            "$ref": "#/components/schemas/CommunicationDirection"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/CommunicationDirection"
-          }
-        }
+        ]
       },
       "EmailPreviewEnvelope": {
-        "type": "object",
         "anyOf": [
           {
             "$ref": "#/components/schemas/EmailEnvelope"
@@ -38616,87 +38403,10 @@
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "bcc": {
-            "title": "BCC",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EmailIdentity"
-            }
-          },
-          "cc": {
-            "title": "CC",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EmailIdentity"
-            }
-          },
-          "date": {
-            "title": "Date",
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "from": {
-            "title": "From",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EmailIdentity"
-            }
-          },
-          "in_reply_to": {
-            "title": "In Reply To",
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "is_autoreply": {
-            "title": "Is Auto-Reply",
-            "type": "boolean"
-          },
-          "message_id": {
-            "title": "Message ID",
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "reply_to": {
-            "title": "Reply To",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EmailIdentity"
-            }
-          },
-          "sender": {
-            "title": "Sender",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EmailIdentity"
-            }
-          },
-          "subject": {
-            "title": "Subject",
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "to": {
-            "title": "To",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EmailIdentity"
-            }
-          }
-        }
+        ]
       },
       "EmailThreadActivityCommentSummary": {
         "title": "Comment Summary",
-        "type": "object",
         "anyOf": [
           {
             "$ref": "#/components/schemas/CommentSummary"
@@ -38704,33 +38414,28 @@
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "comment_count": {
-            "title": "Comment Count",
-            "type": "integer"
-          },
-          "thread_id": {
-            "title": "Thread ID",
-            "type": "string"
-          }
-        }
+        ]
       },
       "EmailThreadActivityImportance": {
         "title": "Importance",
-        "type": "object",
-        "anyOf": [
+        "oneOf": [
           {
             "$ref": "#/components/schemas/ImportantEmailThread"
           },
           {
             "$ref": "#/components/schemas/NotImportantEmailThread"
           }
-        ]
+        ],
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "important": "#/components/schemas/ImportantEmailThread",
+            "not_important": "#/components/schemas/NotImportantEmailThread"
+          }
+        }
       },
       "EmailThreadActivitySummary": {
         "title": "Summary",
-        "type": "object",
         "anyOf": [
           {
             "$ref": "#/components/schemas/EmailThreadSummary"
@@ -38738,72 +38443,29 @@
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "expired_at": {
-            "title": "Expired At",
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          },
-          "feedback": {
-            "title": "Feedback",
-            "$ref": "#/components/schemas/EmailThreadSummaryFeedback"
-          },
-          "generated_at": {
-            "title": "Generated At",
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          },
-          "status": {
-            "$ref": "#/components/schemas/SummaryStatus"
-          },
-          "summary_html": {
-            "title": "Summary HTML",
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "summary_text": {
-            "title": "Summary Text",
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "updated_at": {
-            "title": "Updated At",
-            "type": "string",
-            "format": "date-time"
-          }
-        }
+        ]
       },
       "ExportParams": {
-        "type": [
-          "null",
-          "object"
-        ],
-        "additionalProperties": {
-          "$ref": "#/components/schemas/Json"
-        }
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/JsonDict"
+          },
+          {
+            "type": "null"
+          }
+        ]
       },
       "ExportSQuery": {
-        "type": [
-          "null",
-          "object"
-        ],
-        "additionalProperties": {
-          "$ref": "#/components/schemas/Json"
-        }
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/JsonDict"
+          },
+          {
+            "type": "null"
+          }
+        ]
       },
       "FormSubmissionActivityValuesAdditionalProperties": {
-        "type": "object",
         "anyOf": [
           {
             "type": "string"
@@ -38817,7 +38479,6 @@
         ]
       },
       "FormSubmissionActivityValuesByNameAdditionalProperties": {
-        "type": "object",
         "anyOf": [
           {
             "type": "string"
@@ -38832,7 +38493,6 @@
       },
       "LeadPrimaryEmail": {
         "title": "Primary Email",
-        "type": "object",
         "anyOf": [
           {
             "$ref": "#/components/schemas/ContactEmail"
@@ -38840,25 +38500,10 @@
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "email": {
-            "title": "Email",
-            "type": "string"
-          },
-          "is_unsubscribed": {
-            "title": "Is Unsubscribed",
-            "type": "boolean"
-          },
-          "type": {
-            "title": "Type",
-            "type": "string"
-          }
-        }
+        ]
       },
       "LeadPrimaryPhone": {
         "title": "Primary Phone",
-        "type": "object",
         "anyOf": [
           {
             "$ref": "#/components/schemas/ContactPhone"
@@ -38866,59 +38511,20 @@
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "country": {
-            "title": "Country",
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "outbound_sms_blocked": {
-            "title": "Outbound SMS Blocked",
-            "type": "boolean"
-          },
-          "phone": {
-            "title": "Phone",
-            "type": "string"
-          },
-          "phone_formatted": {
-            "title": "Phone Formatted",
-            "type": "string"
-          },
-          "type": {
-            "title": "Type",
-            "type": "string"
-          },
-          "tz_ids": {
-            "title": "TZ IDs",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        }
+        ]
       },
       "LeadStatusColorComposed": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/LeadStatusColorWrapper2"
+            "$ref": "#/components/schemas/LeadStatusColor"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/LeadStatusColor"
-          }
-        }
+        ]
       },
       "MeetingActivityCommentSummary": {
         "title": "Comment Summary",
-        "type": "object",
         "anyOf": [
           {
             "$ref": "#/components/schemas/CommentSummary"
@@ -38926,116 +38532,69 @@
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "comment_count": {
-            "title": "Comment Count",
-            "type": "integer"
-          },
-          "thread_id": {
-            "title": "Thread ID",
-            "type": "string"
-          }
-        }
+        ]
       },
       "MeetingActivityConversationTypeReason": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/PlaybookReasonWrapper"
+            "$ref": "#/components/schemas/PlaybookReason"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/PlaybookReason"
-          }
-        }
+        ]
       },
       "MeetingActivityOutcomeAutofillConfidence": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/OutcomeAutofillConfidenceWrapper"
+            "$ref": "#/components/schemas/OutcomeAutofillConfidence"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/OutcomeAutofillConfidence"
-          }
-        }
+        ]
       },
       "MeetingActivityOutcomeReason": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/OutcomeReasonWrapper"
+            "$ref": "#/components/schemas/OutcomeReason"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/OutcomeReason"
-          }
-        }
+        ]
       },
       "MeetingActivityPlaybookReason": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/PlaybookReasonWrapper2"
+            "$ref": "#/components/schemas/PlaybookReason"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/PlaybookReason"
-          }
-        }
+        ]
       },
       "MeetingActivityProviderCalendarType": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/ProviderCalendarTypeWrapper"
+            "$ref": "#/components/schemas/ProviderCalendarType"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/ProviderCalendarType"
-          }
-        }
+        ]
       },
       "MeetingActivityStatus": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/MeetingStatusWrapper"
+            "$ref": "#/components/schemas/MeetingStatus"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/MeetingStatus"
-          }
-        }
+        ]
       },
       "MeetingActivitySummary": {
-        "type": "object",
         "anyOf": [
           {
             "$ref": "#/components/schemas/MeetingSummary"
@@ -39043,20 +38602,9 @@
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "html": {
-            "title": "Html",
-            "type": "string"
-          },
-          "text": {
-            "title": "Text",
-            "type": "string"
-          }
-        }
+        ]
       },
       "MeetingActivityTranscriptsItem": {
-        "type": "object",
         "anyOf": [
           {
             "$ref": "#/components/schemas/MeetingTranscript"
@@ -39064,81 +38612,30 @@
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "has_speaker_labels": {
-            "title": "Has Speaker Labels",
-            "type": "boolean"
-          },
-          "id": {
-            "title": "ID",
-            "type": "string"
-          },
-          "speakers": {
-            "title": "Speakers",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/MeetingTranscriptSpeaker"
-            }
-          },
-          "summary_html": {
-            "title": "Summary Html",
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "summary_text": {
-            "title": "Summary Text",
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "utterances": {
-            "title": "Utterances",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/MeetingTranscriptUtterance"
-            }
-          }
-        }
+        ]
       },
       "MeetingTranscriptSpeakerSpeakerSide": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/SpeakerSideWrapper"
+            "$ref": "#/components/schemas/SpeakerSide"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/SpeakerSide"
-          }
-        }
+        ]
       },
       "MeetingTranscriptUtteranceSpeakerSide": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/SpeakerSideWrapper2"
+            "$ref": "#/components/schemas/SpeakerSide"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/SpeakerSide"
-          }
-        }
+        ]
       },
       "OpportunityCommentSummary": {
         "title": "Comment Summary",
-        "type": "object",
         "anyOf": [
           {
             "$ref": "#/components/schemas/CommentSummary"
@@ -39146,21 +38643,10 @@
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "comment_count": {
-            "title": "Comment Count",
-            "type": "integer"
-          },
-          "thread_id": {
-            "title": "Thread ID",
-            "type": "string"
-          }
-        }
+        ]
       },
       "OpportunityLeadPrimaryEmail": {
         "title": "Lead Primary Email",
-        "type": "object",
         "anyOf": [
           {
             "$ref": "#/components/schemas/ContactEmail"
@@ -39168,25 +38654,10 @@
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "email": {
-            "title": "Email",
-            "type": "string"
-          },
-          "is_unsubscribed": {
-            "title": "Is Unsubscribed",
-            "type": "boolean"
-          },
-          "type": {
-            "title": "Type",
-            "type": "string"
-          }
-        }
+        ]
       },
       "OpportunityStallStatus": {
         "title": "Stall Status",
-        "type": "object",
         "anyOf": [
           {
             "$ref": "#/components/schemas/StalledOpportunityActionItems"
@@ -39194,21 +38665,10 @@
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "communication_issue": {
-            "description": "The communication issue that is causing the stalled opportunity. If there is no issue, set to NoIssue.",
-            "$ref": "#/components/schemas/StalledOpportunityCommunicationIssue"
-          },
-          "next_action": {
-            "description": "An action item recommended to progress or resolve the stalled opportunity.",
-            "$ref": "#/components/schemas/ActionItem"
-          }
-        }
+        ]
       },
       "OpportunitySuggestedActionComposed": {
         "title": "Suggested Action",
-        "type": "object",
         "anyOf": [
           {
             "$ref": "#/components/schemas/OpportunitySuggestedAction"
@@ -39216,40 +38676,21 @@
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "action": {
-            "$ref": "#/components/schemas/StalledOpportunityActionTypeV2"
-          },
-          "details": {
-            "$ref": "#/components/schemas/OpportunitySuggestedActionDetails"
-          },
-          "justification": {
-            "title": "Justification",
-            "type": "string"
-          }
-        }
+        ]
       },
       "OpportunityStatusChangeActivityOpportunityValuePeriod": {
         "title": "Opportunity Value Period",
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/OpportunityValuePeriodWrapper2"
+            "$ref": "#/components/schemas/OpportunityValuePeriod"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/OpportunityValuePeriod"
-          }
-        }
+        ]
       },
       "OpportunitySuggestedActionDetails": {
         "title": "Details",
-        "type": "object",
         "anyOf": [
           {
             "$ref": "#/components/schemas/OpportunityChangeStatusActionDetails"
@@ -39269,101 +38710,49 @@
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "status_id": {
-            "title": "Status ID",
-            "type": "string"
-          },
-          "contact_id": {
-            "title": "Contact ID",
-            "type": "string"
-          },
-          "message_draft": {
-            "title": "Message Draft",
-            "type": "string"
-          },
-          "subject_draft": {
-            "title": "Subject Draft",
-            "type": "string"
-          },
-          "call_plan": {
-            "title": "Call Plan",
-            "type": "string"
-          },
-          "close_date": {
-            "title": "Close Date",
-            "type": "string",
-            "format": "date"
-          }
-        }
+        ]
       },
       "PhoneNumberCarrier": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/UnderlyingCarrierWrapper"
+            "$ref": "#/components/schemas/UnderlyingCarrier"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/UnderlyingCarrier"
-          }
-        }
+        ]
       },
       "PhoneNumberCarrierType": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/CarrierNumberTypeWrapper"
+            "$ref": "#/components/schemas/CarrierNumberType"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/CarrierNumberType"
-          }
-        }
+        ]
       },
       "SmsActivityCallerIdMode": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/CallerIdModeWrapper2"
+            "$ref": "#/components/schemas/CallerIdMode"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/CallerIdMode"
-          }
-        }
+        ]
       },
       "SmsActivityCallerIdReason": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/CallerIdReasonWrapper"
+            "$ref": "#/components/schemas/CallerIdReason"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/CallerIdReason"
-          }
-        }
+        ]
       },
       "SavedSearchSharingSettings": {
-        "type": "object",
         "anyOf": [
           {
             "$ref": "#/components/schemas/SharingSettingsEmbeddedResponse"
@@ -39371,61 +38760,10 @@
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "created_at": {
-            "title": "Created At",
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          },
-          "created_by_id": {
-            "title": "Created By ID",
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "group_ids": {
-            "title": "Group IDs",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "updated_at": {
-            "title": "Updated At",
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          },
-          "updated_by_id": {
-            "title": "Updated By ID",
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "user_ids": {
-            "title": "User IDs",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "whole_org": {
-            "title": "Whole Org",
-            "type": "boolean"
-          }
-        }
+        ]
       },
       "TaskCompletedActivityCommentSummary": {
         "title": "Comment Summary",
-        "type": "object",
         "anyOf": [
           {
             "$ref": "#/components/schemas/CommentSummary"
@@ -39433,37 +38771,20 @@
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "comment_count": {
-            "title": "Comment Count",
-            "type": "integer"
-          },
-          "thread_id": {
-            "title": "Thread ID",
-            "type": "string"
-          }
-        }
+        ]
       },
       "UpdateIntegrationLinkType": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/IntegrationLinkTypeWrapper"
+            "$ref": "#/components/schemas/IntegrationLinkType"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/IntegrationLinkType"
-          }
-        }
+        ]
       },
       "UpdateNotificationDate": {
         "title": "Date",
-        "type": "object",
         "anyOf": [
           {
             "type": "string",
@@ -39477,7 +38798,6 @@
       },
       "UpdateNotificationDueDate": {
         "title": "Due Date",
-        "type": "object",
         "anyOf": [
           {
             "type": "string",
@@ -39490,53 +38810,35 @@
         ]
       },
       "UpdateNotificationResolution": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/NotificationResolutionWrapper2"
+            "$ref": "#/components/schemas/NotificationResolution"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/NotificationResolution"
-          }
-        }
+        ]
       },
       "UpdateOutcomeType": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/OutcomeTypeWrapper"
+            "$ref": "#/components/schemas/OutcomeType"
           },
           {
             "type": "null"
           }
         ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/OutcomeType"
-          }
-        },
         "description": "Set to \u0060vm-dropped\u0060 if this outcome should be automatically set on calls whenever a team member performs a Voicemail Drop. Otherwise, leave empty or explicitly set to \u0060custom\u0060 (default)."
       },
       "UpdateWebhookStatus": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/WebhookStatusWrapper"
+            "$ref": "#/components/schemas/WebhookStatus"
           },
           {
             "type": "null"
           }
-        ],
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/WebhookStatus"
-          }
-        }
+        ]
       },
       "BulkDeleteActionSQuery": {
         "title": "S Query",
@@ -40121,9 +39423,7 @@
           },
           "mentions": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CommentsCreate201ResponseMentionsItem"
-            }
+            "items": {}
           },
           "organization_id": {
             "type": "string"
@@ -40165,9 +39465,7 @@
           },
           "mentions": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CommentsGet200ResponseMentionsItem"
-            }
+            "items": {}
           },
           "organization_id": {
             "type": "string"
@@ -40209,9 +39507,7 @@
           },
           "mentions": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CommentsUpdate200ResponseMentionsItem"
-            }
+            "items": {}
           },
           "organization_id": {
             "type": "string"
@@ -40386,9 +39682,7 @@
           },
           "fields": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomActivityTypesCreate201ResponseFieldsItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -40427,9 +39721,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomActivityTypesGet200ResponseEditableWithRolesItem"
-            }
+            "items": {}
           },
           "fields": {
             "type": "array",
@@ -40491,9 +39783,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomActivityTypesUpdate200ResponseEditableWithRolesItem"
-            }
+            "items": {}
           },
           "fields": {
             "type": "array",
@@ -40543,9 +39833,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsActivityCreateRequestEditableWithRolesItem"
-            }
+            "items": {}
           },
           "name": {
             "type": "string"
@@ -40581,9 +39869,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsActivityCreate200ResponseEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -40634,9 +39920,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsActivityGet200ResponseEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -40689,9 +39973,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsActivityUpdate200ResponseEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -40773,9 +40055,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsContactCreate200ResponseEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -40820,9 +40100,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsContactGet200ResponseEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -40875,9 +40153,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsContactUpdate200ResponseEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -40953,9 +40229,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsCustomObjectCreate201ResponseEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -41006,9 +40280,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsCustomObjectGet200ResponseEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -41061,9 +40333,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsCustomObjectUpdate200ResponseEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -41133,9 +40403,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsLeadCreate200ResponseEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -41177,9 +40445,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsLeadGet200ResponseEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -41232,9 +40498,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsLeadUpdate200ResponseEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -41304,9 +40568,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsOpportunityCreate200ResponseEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -41348,9 +40610,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsOpportunityGet200ResponseEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -41400,9 +40660,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsOpportunityUpdate200ResponseEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -41457,9 +40715,7 @@
           },
           "associations": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsSharedCreate200ResponseAssociationsItem"
-            }
+            "items": {}
           },
           "choices": {
             "type": "null"
@@ -41550,9 +40806,7 @@
         "properties": {
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsSharedCreateAssociationRequestEditableWithRolesItem"
-            }
+            "items": {}
           },
           "object_type": {
             "type": "string"
@@ -41567,9 +40821,7 @@
         "properties": {
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsSharedCreateAssociation201ResponseEditableWithRolesItem"
-            }
+            "items": {}
           },
           "object_type": {
             "type": "string"
@@ -41868,9 +41120,7 @@
           },
           "back_reference_fields": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomObjectTypesCreate201ResponseBackReferenceFieldsItem"
-            }
+            "items": {}
           },
           "created_by": {
             "type": "string"
@@ -41892,9 +41142,7 @@
           },
           "fields": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomObjectTypesCreate201ResponseFieldsItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -41921,9 +41169,7 @@
           },
           "back_reference_fields": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomObjectTypesGet200ResponseBackReferenceFieldsItem"
-            }
+            "items": {}
           },
           "created_by": {
             "type": "string"
@@ -41939,9 +41185,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomObjectTypesGet200ResponseEditableWithRolesItem"
-            }
+            "items": {}
           },
           "fields": {
             "type": "array",
@@ -41985,9 +41229,7 @@
           },
           "back_reference_fields": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomObjectTypesUpdate200ResponseBackReferenceFieldsItem"
-            }
+            "items": {}
           },
           "created_by": {
             "type": "string"
@@ -42003,9 +41245,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomObjectTypesUpdate200ResponseEditableWithRolesItem"
-            }
+            "items": {}
           },
           "fields": {
             "type": "array",
@@ -42175,9 +41415,7 @@
           },
           "used_by_sequences": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EmailTemplatesCreate200ResponseUsedBySequencesItem"
-            }
+            "items": {}
           }
         }
       },
@@ -42186,9 +41424,7 @@
         "properties": {
           "attachments": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EmailTemplatesGet200ResponseAttachmentsItem"
-            }
+            "items": {}
           },
           "body": {
             "type": "string"
@@ -42244,9 +41480,7 @@
         "properties": {
           "attachments": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EmailTemplatesUpdate200ResponseAttachmentsItem"
-            }
+            "items": {}
           },
           "body": {
             "type": "string"
@@ -42283,9 +41517,7 @@
           },
           "used_by_sequences": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EmailTemplatesUpdate200ResponseUsedBySequencesItem"
-            }
+            "items": {}
           }
         }
       },
@@ -42352,9 +41584,7 @@
           },
           "data": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EventsList200ResponseDataItem"
-            }
+            "items": {}
           }
         }
       },
@@ -42366,9 +41596,7 @@
           },
           "changed_fields": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EventsGet200ResponseChangedFieldsItem"
-            }
+            "items": {}
           },
           "data": {
             "$ref": "#/components/schemas/EventsGet200ResponseData"
@@ -42629,9 +41857,7 @@
           },
           "inactive_memberships": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OrganizationsGet200ResponseInactiveMembershipsItem"
-            }
+            "items": {}
           },
           "lead_statuses": {
             "type": "array",
@@ -42789,9 +42015,7 @@
           },
           "participant_groups": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/PhoneNumbersCreate201ResponseParticipantGroupsItem"
-            }
+            "items": {}
           },
           "press_1_to_accept": {
             "type": "boolean"
@@ -44715,441 +43939,9 @@
           }
         }
       },
-      "CreationSourceWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/CreationSource"
-          }
-        }
-      },
-      "StatusReasonWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/StatusReason"
-          }
-        }
-      },
-      "BulkActionStatusWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/BulkActionStatus"
-          }
-        }
-      },
-      "BulkActionStatusWrapper2": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/BulkActionStatus"
-          }
-        }
-      },
-      "BulkEmailContactPreferenceWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/BulkEmailContactPreference"
-          }
-        }
-      },
-      "BulkActionStatusWrapper3": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/BulkActionStatus"
-          }
-        }
-      },
-      "CallerIdModeWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/CallerIdMode"
-          }
-        }
-      },
-      "BulkSequenceSubscriptionContactPreferenceWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/BulkSequenceSubscriptionContactPreference"
-          }
-        }
-      },
-      "BulkActionStatusWrapper4": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/BulkActionStatus"
-          }
-        }
-      },
-      "NotificationResolutionWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/NotificationResolution"
-          }
-        }
-      },
-      "OpportunityValuePeriodWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/OpportunityValuePeriod"
-          }
-        }
-      },
-      "LeadStatusColorWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/LeadStatusColor"
-          }
-        }
-      },
-      "CreationSourceWrapper2": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/CreationSource"
-          }
-        }
-      },
-      "CreationSourceWrapper3": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/CreationSource"
-          }
-        }
-      },
-      "CommunicationDirectionWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/CommunicationDirection"
-          }
-        }
-      },
-      "CommunicationDirectionWrapper2": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/CommunicationDirection"
-          }
-        }
-      },
-      "LeadStatusColorWrapper2": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/LeadStatusColor"
-          }
-        }
-      },
-      "PlaybookReasonWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/PlaybookReason"
-          }
-        }
-      },
-      "OutcomeAutofillConfidenceWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/OutcomeAutofillConfidence"
-          }
-        }
-      },
-      "OutcomeReasonWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/OutcomeReason"
-          }
-        }
-      },
-      "PlaybookReasonWrapper2": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/PlaybookReason"
-          }
-        }
-      },
-      "ProviderCalendarTypeWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/ProviderCalendarType"
-          }
-        }
-      },
-      "MeetingStatusWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/MeetingStatus"
-          }
-        }
-      },
-      "SpeakerSideWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/SpeakerSide"
-          }
-        }
-      },
-      "SpeakerSideWrapper2": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/SpeakerSide"
-          }
-        }
-      },
-      "OpportunityValuePeriodWrapper2": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/OpportunityValuePeriod"
-          }
-        }
-      },
-      "UnderlyingCarrierWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/UnderlyingCarrier"
-          }
-        }
-      },
-      "CarrierNumberTypeWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/CarrierNumberType"
-          }
-        }
-      },
-      "CallerIdModeWrapper2": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/CallerIdMode"
-          }
-        }
-      },
-      "CallerIdReasonWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/CallerIdReason"
-          }
-        }
-      },
-      "IntegrationLinkTypeWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/IntegrationLinkType"
-          }
-        }
-      },
-      "NotificationResolutionWrapper2": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/NotificationResolution"
-          }
-        }
-      },
-      "OutcomeTypeWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/OutcomeType"
-          }
-        }
-      },
-      "WebhookStatusWrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/WebhookStatus"
-          }
-        }
-      },
       "ExamplePayload": {
         "type": "object",
         "description": "Placeholder schema for path example refs"
-      },
-      "JsonBranch2": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Json"
-            }
-          }
-        }
-      },
-      "JsonBranch3": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string"
-          }
-        }
-      },
-      "JsonBranch4": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "integer"
-          }
-        }
-      },
-      "JsonBranch5": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "number"
-          }
-        }
-      },
-      "JsonBranch6": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "boolean"
-          }
-        }
       },
       "ActivitiesCallsList200Response": {
         "required": [
@@ -45818,51 +44610,65 @@
         }
       },
       "BulkDeleteActionSQueryProperty": {
+        "title": "S Query",
         "type": "object"
       },
       "BulkDeleteActionSortItemProperty": {
         "type": "object"
       },
       "BulkEditActionSQueryProperty": {
+        "title": "S Query",
         "type": "object"
       },
       "BulkEditActionSortItemProperty": {
         "type": "object"
       },
       "BulkEmailActionSQueryProperty": {
+        "title": "S Query",
         "type": "object"
       },
       "BulkEmailActionSortItemProperty": {
         "type": "object"
       },
       "BulkSequenceSubscriptionActionSQueryProperty": {
+        "title": "S Query",
         "type": "object"
       },
       "BulkSequenceSubscriptionActionSortItemProperty": {
         "type": "object"
       },
       "EmailActivityEnvelopeProperty": {
-        "type": "object"
+        "title": "Envelope",
+        "type": [
+          "null",
+          "object"
+        ],
+        "default": null
       },
       "EmailInThreadAiDraftProperty": {
-        "type": "object"
+        "title": "Ai Draft",
+        "type": [
+          "null",
+          "object"
+        ]
       },
       "EmailInThreadEnvelopeProperty": {
-        "type": "object"
-      },
-      "ExportSortItem": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/Json"
-        }
+        "title": "Envelope",
+        "type": [
+          "null",
+          "object"
+        ],
+        "default": null
       },
       "FormSubmissionActivityValuesProperty": {
+        "title": "Values",
         "type": "object",
         "additionalProperties": {
           "$ref": "#/components/schemas/FormSubmissionActivityValuesAdditionalProperties"
         }
       },
       "FormSubmissionActivityValuesByNameProperty": {
+        "title": "Values By Name",
         "type": "object",
         "additionalProperties": {
           "$ref": "#/components/schemas/FormSubmissionActivityValuesByNameAdditionalProperties"
@@ -45881,13 +44687,22 @@
         "type": "object"
       },
       "SavedSearchSQueryProperty": {
-        "type": "object"
+        "title": "S Query",
+        "type": [
+          "null",
+          "object"
+        ]
       },
       "SavedSearchSelectedFieldsItemProperty": {
         "type": "object"
       },
       "WebhookSubscriptionEventExtraFilterProperty": {
-        "type": "object"
+        "title": "Extra Filter",
+        "type": [
+          "null",
+          "object"
+        ],
+        "default": null
       },
       "ActivitiesList200ResponseDataItem": {
         "type": "object",
@@ -45945,15 +44760,11 @@
           },
           "attachments": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ActivitiesList200ResponseDataItemAttachmentsItem"
-            }
+            "items": {}
           },
           "bcc": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ActivitiesList200ResponseDataItemBccItem"
-            }
+            "items": {}
           },
           "body_html": {
             "type": "string"
@@ -45969,9 +44780,7 @@
           },
           "cc": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ActivitiesList200ResponseDataItemCcItem"
-            }
+            "items": {}
           },
           "direction": {
             "type": "string"
@@ -45981,15 +44790,11 @@
           },
           "opens": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ActivitiesList200ResponseDataItemOpensItem"
-            }
+            "items": {}
           },
           "send_attempts": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ActivitiesList200ResponseDataItemSendAttemptsItem"
-            }
+            "items": {}
           },
           "sender": {
             "type": "string"
@@ -46161,9 +44966,7 @@
           },
           "mentions": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CommentsList200ResponseDataItemMentionsItem"
-            }
+            "items": {}
           },
           "organization_id": {
             "type": "string"
@@ -46184,15 +44987,6 @@
             "type": "string"
           }
         }
-      },
-      "CommentsCreate201ResponseMentionsItem": {
-        "type": "object"
-      },
-      "CommentsGet200ResponseMentionsItem": {
-        "type": "object"
-      },
-      "CommentsUpdate200ResponseMentionsItem": {
-        "type": "object"
       },
       "CommentsListThreads200ResponseDataItem": {
         "type": "object",
@@ -46302,9 +45096,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomActivityTypesList200ResponseDataItemEditableWithRolesItem"
-            }
+            "items": {}
           },
           "fields": {
             "type": "array",
@@ -46329,12 +45121,6 @@
           }
         }
       },
-      "CustomActivityTypesCreate201ResponseFieldsItem": {
-        "type": "object"
-      },
-      "CustomActivityTypesGet200ResponseEditableWithRolesItem": {
-        "type": "object"
-      },
       "CustomActivityTypesGet200ResponseFieldsItem": {
         "type": "object",
         "properties": {
@@ -46352,9 +45138,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomActivityTypesGet200ResponseFieldsItemEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -46378,9 +45162,6 @@
           }
         }
       },
-      "CustomActivityTypesUpdate200ResponseEditableWithRolesItem": {
-        "type": "object"
-      },
       "CustomActivityTypesUpdate200ResponseFieldsItem": {
         "type": "object",
         "properties": {
@@ -46398,9 +45179,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomActivityTypesUpdate200ResponseFieldsItemEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -46442,9 +45221,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsActivityList200ResponseDataItemEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -46472,18 +45249,6 @@
           }
         }
       },
-      "CustomFieldsActivityCreateRequestEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomFieldsActivityCreate200ResponseEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomFieldsActivityGet200ResponseEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomFieldsActivityUpdate200ResponseEditableWithRolesItem": {
-        "type": "object"
-      },
       "CustomFieldsContactList200ResponseDataItem": {
         "type": "object",
         "properties": {
@@ -46510,9 +45275,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsContactList200ResponseDataItemEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -46530,15 +45293,6 @@
             "type": "string"
           }
         }
-      },
-      "CustomFieldsContactCreate200ResponseEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomFieldsContactGet200ResponseEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomFieldsContactUpdate200ResponseEditableWithRolesItem": {
-        "type": "object"
       },
       "CustomFieldsCustomObjectList200ResponseDataItem": {
         "type": "object",
@@ -46569,9 +45323,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsCustomObjectList200ResponseDataItemEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -46598,15 +45350,6 @@
             "type": "string"
           }
         }
-      },
-      "CustomFieldsCustomObjectCreate201ResponseEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomFieldsCustomObjectGet200ResponseEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomFieldsCustomObjectUpdate200ResponseEditableWithRolesItem": {
-        "type": "object"
       },
       "CustomFieldsLeadList200ResponseDataItem": {
         "type": "object",
@@ -46661,15 +45404,6 @@
           }
         }
       },
-      "CustomFieldsLeadCreate200ResponseEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomFieldsLeadGet200ResponseEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomFieldsLeadUpdate200ResponseEditableWithRolesItem": {
-        "type": "object"
-      },
       "CustomFieldsOpportunityList200ResponseDataItem": {
         "type": "object",
         "properties": {
@@ -46693,9 +45427,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsOpportunityList200ResponseDataItemEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -46713,15 +45445,6 @@
             "type": "string"
           }
         }
-      },
-      "CustomFieldsOpportunityCreate200ResponseEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomFieldsOpportunityGet200ResponseEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomFieldsOpportunityUpdate200ResponseEditableWithRolesItem": {
-        "type": "object"
       },
       "CustomFieldsSharedList200ResponseDataItem": {
         "type": "object",
@@ -46770,9 +45493,6 @@
           }
         }
       },
-      "CustomFieldsSharedCreate200ResponseAssociationsItem": {
-        "type": "object"
-      },
       "CustomFieldsSharedUpdate200ResponseAssociationsItem": {
         "type": "object",
         "properties": {
@@ -46781,9 +45501,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsSharedUpdate200ResponseAssociationsItemEditableWithRolesItem"
-            }
+            "items": {}
           },
           "object_type": {
             "type": "string"
@@ -46792,12 +45510,6 @@
             "type": "boolean"
           }
         }
-      },
-      "CustomFieldsSharedCreateAssociationRequestEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomFieldsSharedCreateAssociation201ResponseEditableWithRolesItem": {
-        "type": "object"
       },
       "CustomFieldSchemasGet200ResponseFieldsItem": {
         "type": "object",
@@ -46822,9 +45534,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldSchemasGet200ResponseFieldsItemEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -46901,9 +45611,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldSchemasUpdate200ResponseFieldsItemEditableWithRolesItem"
-            }
+            "items": {}
           }
         }
       },
@@ -46974,9 +45682,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomObjectTypesList200ResponseDataItemEditableWithRolesItem"
-            }
+            "items": {}
           },
           "fields": {
             "type": "array",
@@ -47001,18 +45707,6 @@
           }
         }
       },
-      "CustomObjectTypesCreate201ResponseBackReferenceFieldsItem": {
-        "type": "object"
-      },
-      "CustomObjectTypesCreate201ResponseFieldsItem": {
-        "type": "object"
-      },
-      "CustomObjectTypesGet200ResponseBackReferenceFieldsItem": {
-        "type": "object"
-      },
-      "CustomObjectTypesGet200ResponseEditableWithRolesItem": {
-        "type": "object"
-      },
       "CustomObjectTypesGet200ResponseFieldsItem": {
         "type": "object",
         "properties": {
@@ -47027,9 +45721,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomObjectTypesGet200ResponseFieldsItemEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -47048,12 +45740,6 @@
           }
         }
       },
-      "CustomObjectTypesUpdate200ResponseBackReferenceFieldsItem": {
-        "type": "object"
-      },
-      "CustomObjectTypesUpdate200ResponseEditableWithRolesItem": {
-        "type": "object"
-      },
       "CustomObjectTypesUpdate200ResponseFieldsItem": {
         "type": "object",
         "properties": {
@@ -47068,9 +45754,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomObjectTypesUpdate200ResponseFieldsItemEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -47161,9 +45845,7 @@
         "properties": {
           "attachments": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EmailTemplatesList200ResponseDataItemAttachmentsItem"
-            }
+            "items": {}
           },
           "body": {
             "type": "string"
@@ -47242,12 +45924,6 @@
           }
         }
       },
-      "EmailTemplatesCreate200ResponseUsedBySequencesItem": {
-        "type": "object"
-      },
-      "EmailTemplatesGet200ResponseAttachmentsItem": {
-        "type": "object"
-      },
       "EmailTemplatesGet200ResponseUsedBySequencesItem": {
         "type": "object",
         "properties": {
@@ -47258,18 +45934,6 @@
             "type": "string"
           }
         }
-      },
-      "EmailTemplatesUpdate200ResponseAttachmentsItem": {
-        "type": "object"
-      },
-      "EmailTemplatesUpdate200ResponseUsedBySequencesItem": {
-        "type": "object"
-      },
-      "EventsList200ResponseDataItem": {
-        "type": "object"
-      },
-      "EventsGet200ResponseChangedFieldsItem": {
-        "type": "object"
       },
       "EventsGet200ResponseData": {
         "type": "object",
@@ -47318,9 +45982,7 @@
           },
           "users": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EventsGet200ResponseDataUsersItem"
-            }
+            "items": {}
           }
         }
       },
@@ -47549,9 +46211,6 @@
           }
         }
       },
-      "OrganizationsGet200ResponseInactiveMembershipsItem": {
-        "type": "object"
-      },
       "OrganizationsGet200ResponseLeadStatusesItem": {
         "type": "object",
         "properties": {
@@ -47719,9 +46378,6 @@
             "type": "string"
           }
         }
-      },
-      "PhoneNumbersCreate201ResponseParticipantGroupsItem": {
-        "type": "object"
       },
       "ReportingGetActivityRequestDatetimeRange": {
         "type": "object",
@@ -49104,12 +47760,6 @@
           }
         }
       },
-      "ActivitiesList200ResponseDataItemAttachmentsItem": {
-        "type": "object"
-      },
-      "ActivitiesList200ResponseDataItemBccItem": {
-        "type": "object"
-      },
       "ActivitiesList200ResponseDataItemBodyTextQuotedItem": {
         "type": "object",
         "properties": {
@@ -49121,23 +47771,16 @@
           }
         }
       },
-      "ActivitiesList200ResponseDataItemCcItem": {
-        "type": "object"
-      },
       "ActivitiesList200ResponseDataItemEnvelope": {
         "type": "object",
         "properties": {
           "bcc": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ActivitiesList200ResponseDataItemEnvelopeBccItem"
-            }
+            "items": {}
           },
           "cc": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ActivitiesList200ResponseDataItemEnvelopeCcItem"
-            }
+            "items": {}
           },
           "date": {
             "type": "string"
@@ -49156,9 +47799,7 @@
           },
           "reply_to": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ActivitiesList200ResponseDataItemEnvelopeReplyToItem"
-            }
+            "items": {}
           },
           "sender": {
             "type": "array",
@@ -49176,12 +47817,6 @@
             }
           }
         }
-      },
-      "ActivitiesList200ResponseDataItemOpensItem": {
-        "type": "object"
-      },
-      "ActivitiesList200ResponseDataItemSendAttemptsItem": {
-        "type": "object"
       },
       "BulkActionsDeleteCreateRequestSQueryQueriesItem": {
         "type": "object",
@@ -49307,9 +47942,6 @@
           }
         }
       },
-      "CommentsList200ResponseDataItemMentionsItem": {
-        "type": "object"
-      },
       "ConnectedAccountsList200ResponseDataItemIdentitiesItem": {
         "type": "object",
         "properties": {
@@ -49339,9 +47971,6 @@
           }
         }
       },
-      "CustomActivityTypesList200ResponseDataItemEditableWithRolesItem": {
-        "type": "object"
-      },
       "CustomActivityTypesList200ResponseDataItemFieldsItem": {
         "type": "object",
         "properties": {
@@ -49359,9 +47988,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomActivityTypesList200ResponseDataItemFieldsItemEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -49377,32 +48004,12 @@
           }
         }
       },
-      "CustomActivityTypesGet200ResponseFieldsItemEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomActivityTypesUpdate200ResponseFieldsItemEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomFieldsActivityList200ResponseDataItemEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomFieldsContactList200ResponseDataItemEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomFieldsCustomObjectList200ResponseDataItemEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomFieldsOpportunityList200ResponseDataItemEditableWithRolesItem": {
-        "type": "object"
-      },
       "CustomFieldsSharedList200ResponseDataItemAssociationsItem": {
         "type": "object",
         "properties": {
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldsSharedList200ResponseDataItemAssociationsItemEditableWithRolesItem"
-            }
+            "items": {}
           },
           "object_type": {
             "type": "string"
@@ -49415,20 +48022,12 @@
           }
         }
       },
-      "CustomFieldsSharedUpdate200ResponseAssociationsItemEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomFieldSchemasGet200ResponseFieldsItemEditableWithRolesItem": {
-        "type": "object"
-      },
       "CustomFieldSchemasGet200ResponseFieldsItemAssociationsItem": {
         "type": "object",
         "properties": {
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldSchemasGet200ResponseFieldsItemAssociationsItemEditableWithRolesItem"
-            }
+            "items": {}
           },
           "object_type": {
             "type": "string"
@@ -49446,9 +48045,7 @@
         "properties": {
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomFieldSchemasUpdate200ResponseFieldsItemAssociationsItemEditableWithRolesItem"
-            }
+            "items": {}
           },
           "object_type": {
             "type": "string"
@@ -49460,9 +48057,6 @@
             "type": "string"
           }
         }
-      },
-      "CustomFieldSchemasUpdate200ResponseFieldsItemEditableWithRolesItem": {
-        "type": "object"
       },
       "CustomObjectTypesList200ResponseDataItemBackReferenceFieldsItem": {
         "type": "object",
@@ -49478,9 +48072,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomObjectTypesList200ResponseDataItemBackReferenceFieldsItemEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -49499,9 +48091,6 @@
           }
         }
       },
-      "CustomObjectTypesList200ResponseDataItemEditableWithRolesItem": {
-        "type": "object"
-      },
       "CustomObjectTypesList200ResponseDataItemFieldsItem": {
         "type": "object",
         "properties": {
@@ -49519,9 +48108,7 @@
           },
           "editable_with_roles": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomObjectTypesList200ResponseDataItemFieldsItemEditableWithRolesItem"
-            }
+            "items": {}
           },
           "id": {
             "type": "string"
@@ -49546,12 +48133,6 @@
           }
         }
       },
-      "CustomObjectTypesGet200ResponseFieldsItemEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomObjectTypesUpdate200ResponseFieldsItemEditableWithRolesItem": {
-        "type": "object"
-      },
       "DialersList200ResponseDataItemUsersItem": {
         "type": "object",
         "properties": {
@@ -49565,12 +48146,6 @@
             "type": "string"
           }
         }
-      },
-      "EmailTemplatesList200ResponseDataItemAttachmentsItem": {
-        "type": "object"
-      },
-      "EventsGet200ResponseDataUsersItem": {
-        "type": "object"
       },
       "ExportsCreateLeadRequestSQueryQueriesItem": {
         "type": "object",
@@ -50157,12 +48732,6 @@
           }
         }
       },
-      "ActivitiesList200ResponseDataItemEnvelopeBccItem": {
-        "type": "object"
-      },
-      "ActivitiesList200ResponseDataItemEnvelopeCcItem": {
-        "type": "object"
-      },
       "ActivitiesList200ResponseDataItemEnvelopeFromItem": {
         "type": "object",
         "properties": {
@@ -50173,9 +48742,6 @@
             "type": "string"
           }
         }
-      },
-      "ActivitiesList200ResponseDataItemEnvelopeReplyToItem": {
-        "type": "object"
       },
       "ActivitiesList200ResponseDataItemEnvelopeSenderItem": {
         "type": "object",
@@ -50310,24 +48876,6 @@
             "type": "string"
           }
         }
-      },
-      "CustomActivityTypesList200ResponseDataItemFieldsItemEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomFieldsSharedList200ResponseDataItemAssociationsItemEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomFieldSchemasGet200ResponseFieldsItemAssociationsItemEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomFieldSchemasUpdate200ResponseFieldsItemAssociationsItemEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomObjectTypesList200ResponseDataItemBackReferenceFieldsItemEditableWithRolesItem": {
-        "type": "object"
-      },
-      "CustomObjectTypesList200ResponseDataItemFieldsItemEditableWithRolesItem": {
-        "type": "object"
       },
       "ExportsCreateLeadRequestSQueryQueriesItemCondition": {
         "type": "object",
@@ -50490,7 +49038,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CreateCallActivityDirection",
           "modelAsString": false,
@@ -50516,7 +49063,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CreateCallActivitySource",
           "modelAsString": false,
@@ -50544,7 +49090,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CreateCallActivityStatus",
           "modelAsString": false,
@@ -50608,7 +49153,6 @@
           "published"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CreateCustomActivityStatus",
           "modelAsString": false,
@@ -50634,7 +49178,6 @@
           "error"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CreateEmailActivityStatus",
           "modelAsString": false,
@@ -50690,13 +49233,13 @@
           "local",
           "national",
           "mobile",
-          "tollfree"
+          "tollfree",
+          null
         ],
         "type": [
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CreatePhoneNumberRequestCarrierType",
           "modelAsString": false,
@@ -50730,7 +49273,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CreateSmsActivityCallerIdMode",
           "modelAsString": false,
@@ -50756,7 +49298,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CreateSmsActivityDirection",
           "modelAsString": false,
@@ -50782,7 +49323,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CreateSmsActivitySource",
           "modelAsString": false,
@@ -50804,7 +49344,6 @@
           "error"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CreateSmsActivityStatus",
           "modelAsString": false,
@@ -50846,7 +49385,6 @@
           "opportunities"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ExportType",
           "modelAsString": false,
@@ -50917,7 +49455,6 @@
           "contact"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "RunFieldEnrichmentObjectType",
           "modelAsString": false,
@@ -50949,7 +49486,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "UpdateCallActivityStatus",
           "modelAsString": false,
@@ -50995,7 +49531,6 @@
           "published"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "UpdateCustomActivityStatus",
           "modelAsString": false,
@@ -51021,7 +49556,6 @@
           "error"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "UpdateEmailActivityStatus",
           "modelAsString": false,
@@ -51063,7 +49597,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "UpdateSmsActivityCallerIdMode",
           "modelAsString": false,
@@ -51089,7 +49622,6 @@
           "error"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "UpdateSmsActivityStatus",
           "modelAsString": false,
@@ -51165,7 +49697,6 @@
           "video/webm"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CreateSmsActivityAttachmentsItemContentType",
           "modelAsString": false,
@@ -51377,7 +49908,6 @@
           "video/webm"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "UpdateSmsActivityAttachmentsItemContentType",
           "modelAsString": false,
@@ -51549,13 +50079,13 @@
         "title": "Source Type",
         "enum": [
           "saved-search",
-          "shared-entry"
+          "shared-entry",
+          null
         ],
         "type": [
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "DialersListSourceTypeParameter",
           "modelAsString": false,
@@ -51577,7 +50107,6 @@
           "contact"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "EmailTemplatesRenderBulkObjectTypeParameter",
           "modelAsString": false,
@@ -51600,7 +50129,6 @@
           "all"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "EmailTemplatesRenderContactPreferenceParameter",
           "modelAsString": false,
@@ -51626,7 +50154,6 @@
           "desc"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "EmailTemplatesRenderSortParameterItemDirection",
           "modelAsString": false,
@@ -51648,7 +50175,6 @@
           "contact"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "EmailTemplatesRenderModeParameter",
           "modelAsString": false,
@@ -51672,7 +50198,6 @@
           "max"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ReportingGetCustomTransformYParameter",
           "modelAsString": false,
@@ -51702,7 +50227,6 @@
           "first_name,last_name"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "UsersListOrderByParameter",
           "modelAsString": false,
@@ -51724,7 +50248,6 @@
           "first_name,last_name"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "UsersGetOrderByParameter",
           "modelAsString": false,

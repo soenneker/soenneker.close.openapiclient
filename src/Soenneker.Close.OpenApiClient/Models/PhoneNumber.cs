@@ -31,21 +31,9 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string BundleId { get; set; }
 #endif
         /// <summary>The carrier property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.UnderlyingCarrierWrapper? Carrier { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.UnderlyingCarrierWrapper Carrier { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.UnderlyingCarrier? Carrier { get; set; }
         /// <summary>The carrier_type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.CarrierNumberTypeWrapper? CarrierType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.CarrierNumberTypeWrapper CarrierType { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.CarrierNumberType? CarrierType { get; set; }
         /// <summary>The country property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -237,8 +225,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             {
                 { "address_id", n => { AddressId = n.GetStringValue(); } },
                 { "bundle_id", n => { BundleId = n.GetStringValue(); } },
-                { "carrier", n => { Carrier = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.UnderlyingCarrierWrapper>(global::Soenneker.Close.OpenApiClient.Models.UnderlyingCarrierWrapper.CreateFromDiscriminatorValue); } },
-                { "carrier_type", n => { CarrierType = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CarrierNumberTypeWrapper>(global::Soenneker.Close.OpenApiClient.Models.CarrierNumberTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "carrier", n => { Carrier = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.UnderlyingCarrier>(); } },
+                { "carrier_type", n => { CarrierType = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CarrierNumberType>(); } },
                 { "country", n => { Country = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetDateTimeOffsetValue(); } },
                 { "date_updated", n => { DateUpdated = n.GetDateTimeOffsetValue(); } },
@@ -283,8 +271,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("address_id", AddressId);
             writer.WriteStringValue("bundle_id", BundleId);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.UnderlyingCarrierWrapper>("carrier", Carrier);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CarrierNumberTypeWrapper>("carrier_type", CarrierType);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.UnderlyingCarrier>("carrier", Carrier);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CarrierNumberType>("carrier_type", CarrierType);
             writer.WriteStringValue("country", Country);
             writer.WriteDateTimeOffsetValue("date_created", DateCreated);
             writer.WriteDateTimeOffsetValue("date_updated", DateUpdated);

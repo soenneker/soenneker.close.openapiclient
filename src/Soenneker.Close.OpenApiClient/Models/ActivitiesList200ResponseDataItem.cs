@@ -25,18 +25,18 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The attachments property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemAttachmentsItem>? Attachments { get; set; }
+        public UntypedNode? Attachments { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemAttachmentsItem> Attachments { get; set; }
+        public UntypedNode Attachments { get; set; }
 #endif
         /// <summary>The bcc property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemBccItem>? Bcc { get; set; }
+        public UntypedNode? Bcc { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemBccItem> Bcc { get; set; }
+        public UntypedNode Bcc { get; set; }
 #endif
         /// <summary>The body_html property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -65,10 +65,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The cc property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemCcItem>? Cc { get; set; }
+        public UntypedNode? Cc { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemCcItem> Cc { get; set; }
+        public UntypedNode Cc { get; set; }
 #endif
         /// <summary>The contact_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -153,10 +153,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The opens property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemOpensItem>? Opens { get; set; }
+        public UntypedNode? Opens { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemOpensItem> Opens { get; set; }
+        public UntypedNode Opens { get; set; }
 #endif
         /// <summary>The organization_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -169,10 +169,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The send_attempts property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemSendAttemptsItem>? SendAttempts { get; set; }
+        public UntypedNode? SendAttempts { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemSendAttemptsItem> SendAttempts { get; set; }
+        public UntypedNode SendAttempts { get; set; }
 #endif
         /// <summary>The sender property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -288,12 +288,12 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "activity_at", n => { ActivityAt = n.GetStringValue(); } },
-                { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemAttachmentsItem>(global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemAttachmentsItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "bcc", n => { Bcc = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemBccItem>(global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemBccItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "attachments", n => { Attachments = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "bcc", n => { Bcc = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "body_html", n => { BodyHtml = n.GetStringValue(); } },
                 { "body_text", n => { BodyText = n.GetStringValue(); } },
                 { "body_text_quoted", n => { BodyTextQuoted = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemBodyTextQuotedItem>(global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemBodyTextQuotedItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "cc", n => { Cc = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemCcItem>(global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemCcItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "cc", n => { Cc = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "created_by_name", n => { CreatedByName = n.GetStringValue(); } },
@@ -304,9 +304,9 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "lead_id", n => { LeadId = n.GetStringValue(); } },
                 { "note", n => { Note = n.GetStringValue(); } },
-                { "opens", n => { Opens = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemOpensItem>(global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemOpensItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "opens", n => { Opens = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
-                { "send_attempts", n => { SendAttempts = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemSendAttemptsItem>(global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemSendAttemptsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "send_attempts", n => { SendAttempts = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "sender", n => { Sender = n.GetStringValue(); } },
                 { "source", n => { Source = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
@@ -328,12 +328,12 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("activity_at", ActivityAt);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemAttachmentsItem>("attachments", Attachments);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemBccItem>("bcc", Bcc);
+            writer.WriteObjectValue<UntypedNode>("attachments", Attachments);
+            writer.WriteObjectValue<UntypedNode>("bcc", Bcc);
             writer.WriteStringValue("body_html", BodyHtml);
             writer.WriteStringValue("body_text", BodyText);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemBodyTextQuotedItem>("body_text_quoted", BodyTextQuoted);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemCcItem>("cc", Cc);
+            writer.WriteObjectValue<UntypedNode>("cc", Cc);
             writer.WriteStringValue("contact_id", ContactId);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteStringValue("created_by_name", CreatedByName);
@@ -344,9 +344,9 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("lead_id", LeadId);
             writer.WriteStringValue("note", Note);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemOpensItem>("opens", Opens);
+            writer.WriteObjectValue<UntypedNode>("opens", Opens);
             writer.WriteStringValue("organization_id", OrganizationId);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemSendAttemptsItem>("send_attempts", SendAttempts);
+            writer.WriteObjectValue<UntypedNode>("send_attempts", SendAttempts);
             writer.WriteStringValue("sender", Sender);
             writer.WriteStringValue("source", Source);
             writer.WriteStringValue("status", Status);

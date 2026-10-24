@@ -34927,6 +34927,18 @@
               }
             ]
           },
+          "created_by_agent_id": {
+            "title": "Created By Agent ID",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "created_by_name": {
             "title": "Created By Name",
             "default": null,
@@ -34986,6 +34998,18 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "updated_by_agent_id": {
+            "title": "Updated By Agent ID",
+            "default": null,
             "anyOf": [
               {
                 "type": "string"

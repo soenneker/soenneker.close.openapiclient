@@ -57,10 +57,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The mentions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.CommentsCreate201ResponseMentionsItem>? Mentions { get; set; }
+        public UntypedNode? Mentions { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.CommentsCreate201ResponseMentionsItem> Mentions { get; set; }
+        public UntypedNode Mentions { get; set; }
 #endif
         /// <summary>The organization_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -140,7 +140,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "lead_id", n => { LeadId = n.GetStringValue(); } },
-                { "mentions", n => { Mentions = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CommentsCreate201ResponseMentionsItem>(global::Soenneker.Close.OpenApiClient.Models.CommentsCreate201ResponseMentionsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "mentions", n => { Mentions = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "removed_at", n => { RemovedAt = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "removed_by", n => { RemovedBy = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
@@ -161,7 +161,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("lead_id", LeadId);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CommentsCreate201ResponseMentionsItem>("mentions", Mentions);
+            writer.WriteObjectValue<UntypedNode>("mentions", Mentions);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteObjectValue<UntypedNode>("removed_at", RemovedAt);
             writer.WriteObjectValue<UntypedNode>("removed_by", RemovedBy);

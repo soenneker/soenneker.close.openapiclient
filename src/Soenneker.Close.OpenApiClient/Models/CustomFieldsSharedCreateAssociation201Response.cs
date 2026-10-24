@@ -17,10 +17,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The editable_with_roles property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedCreateAssociation201ResponseEditableWithRolesItem>? EditableWithRoles { get; set; }
+        public UntypedNode? EditableWithRoles { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedCreateAssociation201ResponseEditableWithRolesItem> EditableWithRoles { get; set; }
+        public UntypedNode EditableWithRoles { get; set; }
 #endif
         /// <summary>The object_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -57,7 +57,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "editable_with_roles", n => { EditableWithRoles = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedCreateAssociation201ResponseEditableWithRolesItem>(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedCreateAssociation201ResponseEditableWithRolesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "editable_with_roles", n => { EditableWithRoles = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "object_type", n => { ObjectType = n.GetStringValue(); } },
                 { "required", n => { Required = n.GetBoolValue(); } },
             };
@@ -69,7 +69,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedCreateAssociation201ResponseEditableWithRolesItem>("editable_with_roles", EditableWithRoles);
+            writer.WriteObjectValue<UntypedNode>("editable_with_roles", EditableWithRoles);
             writer.WriteStringValue("object_type", ObjectType);
             writer.WriteBoolValue("required", Required);
             writer.WriteAdditionalData(AdditionalData);

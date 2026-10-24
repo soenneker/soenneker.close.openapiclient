@@ -19,10 +19,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The associations property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedCreate200ResponseAssociationsItem>? Associations { get; set; }
+        public UntypedNode? Associations { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedCreate200ResponseAssociationsItem> Associations { get; set; }
+        public UntypedNode Associations { get; set; }
 #endif
         /// <summary>The choices property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -130,7 +130,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "accepts_multiple_values", n => { AcceptsMultipleValues = n.GetBoolValue(); } },
-                { "associations", n => { Associations = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedCreate200ResponseAssociationsItem>(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedCreate200ResponseAssociationsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "associations", n => { Associations = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "choices", n => { Choices = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetStringValue(); } },
@@ -151,7 +151,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("accepts_multiple_values", AcceptsMultipleValues);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedCreate200ResponseAssociationsItem>("associations", Associations);
+            writer.WriteObjectValue<UntypedNode>("associations", Associations);
             writer.WriteObjectValue<UntypedNode>("choices", Choices);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteStringValue("date_created", DateCreated);

@@ -145,13 +145,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The date_updated property</summary>
         public DateTimeOffset? DateUpdated { get; set; }
         /// <summary>The direction property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper2? Direction { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper2 Direction { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.CommunicationDirection? Direction { get; set; }
         /// <summary>The email_account_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -431,7 +425,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "date_scheduled", n => { DateScheduled = n.GetDateTimeOffsetValue(); } },
                 { "date_sent", n => { DateSent = n.GetDateTimeOffsetValue(); } },
                 { "date_updated", n => { DateUpdated = n.GetDateTimeOffsetValue(); } },
-                { "direction", n => { Direction = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper2>(global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper2.CreateFromDiscriminatorValue); } },
+                { "direction", n => { Direction = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CommunicationDirection>(); } },
                 { "email_account_id", n => { EmailAccountId = n.GetStringValue(); } },
                 { "envelope", n => { Envelope = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadEnvelopeProperty>(global::Soenneker.Close.OpenApiClient.Models.EmailInThreadEnvelopeProperty.CreateFromDiscriminatorValue); } },
                 { "followup_sequence_add_cc_bcc", n => { FollowupSequenceAddCcBcc = n.GetBoolValue(); } },
@@ -494,7 +488,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("date_scheduled", DateScheduled);
             writer.WriteDateTimeOffsetValue("date_sent", DateSent);
             writer.WriteDateTimeOffsetValue("date_updated", DateUpdated);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommunicationDirectionWrapper2>("direction", Direction);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CommunicationDirection>("direction", Direction);
             writer.WriteStringValue("email_account_id", EmailAccountId);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailInThreadEnvelopeProperty>("envelope", Envelope);
             writer.WriteBoolValue("followup_sequence_add_cc_bcc", FollowupSequenceAddCcBcc);

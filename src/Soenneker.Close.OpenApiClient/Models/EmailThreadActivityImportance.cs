@@ -37,9 +37,16 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivityImportance CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivityImportance();
-            result.ImportantEmailThread = new global::Soenneker.Close.OpenApiClient.Models.ImportantEmailThread();
-            result.NotImportantEmailThread = new global::Soenneker.Close.OpenApiClient.Models.NotImportantEmailThread();
+            if("important".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.ImportantEmailThread = new global::Soenneker.Close.OpenApiClient.Models.ImportantEmailThread();
+            }
+            else if("not_important".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.NotImportantEmailThread = new global::Soenneker.Close.OpenApiClient.Models.NotImportantEmailThread();
+            }
             return result;
         }
         /// <summary>
@@ -48,9 +55,13 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ImportantEmailThread != null || NotImportantEmailThread != null)
+            if(ImportantEmailThread != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ImportantEmailThread, NotImportantEmailThread);
+                return ImportantEmailThread.GetFieldDeserializers();
+            }
+            else if(NotImportantEmailThread != null)
+            {
+                return NotImportantEmailThread.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -61,7 +72,14 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.ImportantEmailThread>(null, ImportantEmailThread, NotImportantEmailThread);
+            if(ImportantEmailThread != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.ImportantEmailThread>(null, ImportantEmailThread);
+            }
+            else if(NotImportantEmailThread != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.NotImportantEmailThread>(null, NotImportantEmailThread);
+            }
         }
     }
 }

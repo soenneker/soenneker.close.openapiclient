@@ -59,10 +59,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The fields property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.CustomActivityTypesCreate201ResponseFieldsItem>? Fields { get; set; }
+        public UntypedNode? Fields { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.CustomActivityTypesCreate201ResponseFieldsItem> Fields { get; set; }
+        public UntypedNode Fields { get; set; }
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -129,7 +129,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "date_updated", n => { DateUpdated = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "editable_with_roles", n => { EditableWithRoles = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "fields", n => { Fields = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CustomActivityTypesCreate201ResponseFieldsItem>(global::Soenneker.Close.OpenApiClient.Models.CustomActivityTypesCreate201ResponseFieldsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "fields", n => { Fields = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "is_archived", n => { IsArchived = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -150,7 +150,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("date_updated", DateUpdated);
             writer.WriteStringValue("description", Description);
             writer.WriteCollectionOfPrimitiveValues<string>("editable_with_roles", EditableWithRoles);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CustomActivityTypesCreate201ResponseFieldsItem>("fields", Fields);
+            writer.WriteObjectValue<UntypedNode>("fields", Fields);
             writer.WriteStringValue("id", Id);
             writer.WriteBoolValue("is_archived", IsArchived);
             writer.WriteStringValue("name", Name);

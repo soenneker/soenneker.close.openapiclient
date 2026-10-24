@@ -19,10 +19,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The back_reference_fields property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdate200ResponseBackReferenceFieldsItem>? BackReferenceFields { get; set; }
+        public UntypedNode? BackReferenceFields { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdate200ResponseBackReferenceFieldsItem> BackReferenceFields { get; set; }
+        public UntypedNode BackReferenceFields { get; set; }
 #endif
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -59,10 +59,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The editable_with_roles property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdate200ResponseEditableWithRolesItem>? EditableWithRoles { get; set; }
+        public UntypedNode? EditableWithRoles { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdate200ResponseEditableWithRolesItem> EditableWithRoles { get; set; }
+        public UntypedNode EditableWithRoles { get; set; }
 #endif
         /// <summary>The fields property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -138,12 +138,12 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "api_create_only", n => { ApiCreateOnly = n.GetBoolValue(); } },
-                { "back_reference_fields", n => { BackReferenceFields = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdate200ResponseBackReferenceFieldsItem>(global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdate200ResponseBackReferenceFieldsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "back_reference_fields", n => { BackReferenceFields = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetStringValue(); } },
                 { "date_updated", n => { DateUpdated = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "editable_with_roles", n => { EditableWithRoles = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdate200ResponseEditableWithRolesItem>(global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdate200ResponseEditableWithRolesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "editable_with_roles", n => { EditableWithRoles = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "fields", n => { Fields = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdate200ResponseFieldsItem>(global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdate200ResponseFieldsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -160,12 +160,12 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("api_create_only", ApiCreateOnly);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdate200ResponseBackReferenceFieldsItem>("back_reference_fields", BackReferenceFields);
+            writer.WriteObjectValue<UntypedNode>("back_reference_fields", BackReferenceFields);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteStringValue("date_created", DateCreated);
             writer.WriteStringValue("date_updated", DateUpdated);
             writer.WriteStringValue("description", Description);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdate200ResponseEditableWithRolesItem>("editable_with_roles", EditableWithRoles);
+            writer.WriteObjectValue<UntypedNode>("editable_with_roles", EditableWithRoles);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesUpdate200ResponseFieldsItem>("fields", Fields);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);

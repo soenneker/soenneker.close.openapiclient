@@ -38,13 +38,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>Set to `vm-dropped` if this outcome should be automatically set on calls whenever a team member performs a Voicemail Drop. Otherwise, leave empty or explicitly set to `custom` (default).</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.OutcomeTypeWrapper? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.OutcomeTypeWrapper Type { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.OutcomeType? Type { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -66,7 +60,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "applies_to", n => { AppliesTo = n.GetCollectionOfEnumValues<global::Soenneker.Close.OpenApiClient.Models.OutcomeAppliesTo>()?.AsList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.OutcomeTypeWrapper>(global::Soenneker.Close.OpenApiClient.Models.OutcomeTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.OutcomeType>(); } },
             };
         }
         /// <summary>
@@ -79,7 +73,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteCollectionOfEnumValues<global::Soenneker.Close.OpenApiClient.Models.OutcomeAppliesTo>("applies_to", AppliesTo);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OutcomeTypeWrapper>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.OutcomeType>("type", Type);
         }
     }
 }

@@ -101,10 +101,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The used_by_sequences property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesCreate200ResponseUsedBySequencesItem>? UsedBySequences { get; set; }
+        public UntypedNode? UsedBySequences { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesCreate200ResponseUsedBySequencesItem> UsedBySequences { get; set; }
+        public UntypedNode UsedBySequences { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesCreate200Response"/> and sets the default values.
@@ -143,7 +143,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
-                { "used_by_sequences", n => { UsedBySequences = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesCreate200ResponseUsedBySequencesItem>(global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesCreate200ResponseUsedBySequencesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "used_by_sequences", n => { UsedBySequences = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -165,7 +165,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("subject", Subject);
             writer.WriteStringValue("updated_by", UpdatedBy);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesCreate200ResponseUsedBySequencesItem>("used_by_sequences", UsedBySequences);
+            writer.WriteObjectValue<UntypedNode>("used_by_sequences", UsedBySequences);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

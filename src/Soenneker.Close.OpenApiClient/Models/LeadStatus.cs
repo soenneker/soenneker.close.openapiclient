@@ -15,13 +15,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The color property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.LeadStatusColorWrapper2? Color { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.LeadStatusColorWrapper2 Color { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.LeadStatusColor? Color { get; set; }
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -71,7 +65,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "color", n => { Color = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.LeadStatusColorWrapper2>(global::Soenneker.Close.OpenApiClient.Models.LeadStatusColorWrapper2.CreateFromDiscriminatorValue); } },
+                { "color", n => { Color = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.LeadStatusColor>(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
@@ -84,7 +78,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.LeadStatusColorWrapper2>("color", Color);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.LeadStatusColor>("color", Color);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("label", Label);
             writer.WriteStringValue("organization_id", OrganizationId);

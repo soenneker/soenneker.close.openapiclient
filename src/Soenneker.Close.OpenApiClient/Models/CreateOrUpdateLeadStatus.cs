@@ -13,13 +13,7 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The color property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.LeadStatusColorWrapper? Color { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.LeadStatusColorWrapper Color { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.LeadStatusColor? Color { get; set; }
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -46,7 +40,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "color", n => { Color = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.LeadStatusColorWrapper>(global::Soenneker.Close.OpenApiClient.Models.LeadStatusColorWrapper.CreateFromDiscriminatorValue); } },
+                { "color", n => { Color = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.LeadStatusColor>(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
             };
         }
@@ -57,7 +51,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.LeadStatusColorWrapper>("color", Color);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.LeadStatusColor>("color", Color);
             writer.WriteStringValue("label", Label);
         }
     }

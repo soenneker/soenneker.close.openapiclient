@@ -129,10 +129,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The users property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.EventsGet200ResponseDataUsersItem>? Users { get; set; }
+        public UntypedNode? Users { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.EventsGet200ResponseDataUsersItem> Users { get; set; }
+        public UntypedNode Users { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.EventsGet200ResponseData"/> and sets the default values.
@@ -173,7 +173,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "updated_by_name", n => { UpdatedByName = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
                 { "user_name", n => { UserName = n.GetStringValue(); } },
-                { "users", n => { Users = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EventsGet200ResponseDataUsersItem>(global::Soenneker.Close.OpenApiClient.Models.EventsGet200ResponseDataUsersItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "users", n => { Users = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -197,7 +197,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("updated_by_name", UpdatedByName);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteStringValue("user_name", UserName);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EventsGet200ResponseDataUsersItem>("users", Users);
+            writer.WriteObjectValue<UntypedNode>("users", Users);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

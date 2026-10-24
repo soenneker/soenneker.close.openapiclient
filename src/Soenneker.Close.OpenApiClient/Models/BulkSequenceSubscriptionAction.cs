@@ -17,13 +17,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The caller_id_mode property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.CallerIdModeWrapper? CallerIdMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.CallerIdModeWrapper CallerIdMode { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.CallerIdMode? CallerIdMode { get; set; }
         /// <summary>The calls_assigned_to property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -33,13 +27,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<string> CallsAssignedTo { get; set; }
 #endif
         /// <summary>The contact_preference property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionContactPreferenceWrapper? ContactPreference { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionContactPreferenceWrapper ContactPreference { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionContactPreference? ContactPreference { get; set; }
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -145,13 +133,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionSQueryProperty SQuery { get; set; }
 #endif
         /// <summary>The status property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper4? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper4 Status { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.BulkActionStatus? Status { get; set; }
         /// <summary>The updated_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -186,9 +168,9 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "action_type", n => { ActionType = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionType>(); } },
-                { "caller_id_mode", n => { CallerIdMode = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdModeWrapper>(global::Soenneker.Close.OpenApiClient.Models.CallerIdModeWrapper.CreateFromDiscriminatorValue); } },
+                { "caller_id_mode", n => { CallerIdMode = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdMode>(); } },
                 { "calls_assigned_to", n => { CallsAssignedTo = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "contact_preference", n => { ContactPreference = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionContactPreferenceWrapper>(global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionContactPreferenceWrapper.CreateFromDiscriminatorValue); } },
+                { "contact_preference", n => { ContactPreference = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionContactPreference>(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetDateTimeOffsetValue(); } },
                 { "date_updated", n => { DateUpdated = n.GetDateTimeOffsetValue(); } },
@@ -208,7 +190,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "sender_name", n => { SenderName = n.GetStringValue(); } },
                 { "sequence_id", n => { SequenceId = n.GetStringValue(); } },
                 { "sort", n => { Sort = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionSortItemProperty>(global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionSortItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper4>(global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper4.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.BulkActionStatus>(); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
             };
         }
@@ -220,9 +202,9 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionType>("action_type", ActionType);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdModeWrapper>("caller_id_mode", CallerIdMode);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdMode>("caller_id_mode", CallerIdMode);
             writer.WriteCollectionOfPrimitiveValues<string>("calls_assigned_to", CallsAssignedTo);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionContactPreferenceWrapper>("contact_preference", ContactPreference);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionContactPreference>("contact_preference", ContactPreference);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteDateTimeOffsetValue("date_created", DateCreated);
             writer.WriteDateTimeOffsetValue("date_updated", DateUpdated);
@@ -242,7 +224,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("sequence_id", SequenceId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionSortItemProperty>("sort", Sort);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionSQueryProperty>("s_query", SQuery);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper4>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.BulkActionStatus>("status", Status);
             writer.WriteStringValue("updated_by", UpdatedBy);
             writer.WriteAdditionalData(AdditionalData);
         }

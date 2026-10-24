@@ -17,18 +17,18 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The bcc property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeBccItem>? Bcc { get; set; }
+        public UntypedNode? Bcc { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeBccItem> Bcc { get; set; }
+        public UntypedNode Bcc { get; set; }
 #endif
         /// <summary>The cc property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeCcItem>? Cc { get; set; }
+        public UntypedNode? Cc { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeCcItem> Cc { get; set; }
+        public UntypedNode Cc { get; set; }
 #endif
         /// <summary>The date property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -65,10 +65,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The reply_to property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeReplyToItem>? ReplyTo { get; set; }
+        public UntypedNode? ReplyTo { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeReplyToItem> ReplyTo { get; set; }
+        public UntypedNode ReplyTo { get; set; }
 #endif
         /// <summary>The sender property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -119,13 +119,13 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bcc", n => { Bcc = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeBccItem>(global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeBccItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "cc", n => { Cc = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeCcItem>(global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeCcItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "bcc", n => { Bcc = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "cc", n => { Cc = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "date", n => { Date = n.GetStringValue(); } },
                 { "from", n => { From = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeFromItem>(global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeFromItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "in_reply_to", n => { InReplyTo = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "message_id", n => { MessageId = n.GetStringValue(); } },
-                { "reply_to", n => { ReplyTo = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeReplyToItem>(global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeReplyToItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "reply_to", n => { ReplyTo = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "sender", n => { Sender = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeSenderItem>(global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeSenderItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
                 { "to", n => { To = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeToItem>(global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeToItem.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -138,13 +138,13 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeBccItem>("bcc", Bcc);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeCcItem>("cc", Cc);
+            writer.WriteObjectValue<UntypedNode>("bcc", Bcc);
+            writer.WriteObjectValue<UntypedNode>("cc", Cc);
             writer.WriteStringValue("date", Date);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeFromItem>("from", From);
             writer.WriteObjectValue<UntypedNode>("in_reply_to", InReplyTo);
             writer.WriteStringValue("message_id", MessageId);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeReplyToItem>("reply_to", ReplyTo);
+            writer.WriteObjectValue<UntypedNode>("reply_to", ReplyTo);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeSenderItem>("sender", Sender);
             writer.WriteStringValue("subject", Subject);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200ResponseDataItemEnvelopeToItem>("to", To);

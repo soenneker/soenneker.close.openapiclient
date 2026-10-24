@@ -37,10 +37,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The editable_with_roles property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesList200ResponseDataItemFieldsItemEditableWithRolesItem>? EditableWithRoles { get; set; }
+        public UntypedNode? EditableWithRoles { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesList200ResponseDataItemFieldsItemEditableWithRolesItem> EditableWithRoles { get; set; }
+        public UntypedNode EditableWithRoles { get; set; }
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -105,7 +105,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "back_reference_is_visible", n => { BackReferenceIsVisible = n.GetBoolValue(); } },
                 { "choices", n => { Choices = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "editable_with_roles", n => { EditableWithRoles = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesList200ResponseDataItemFieldsItemEditableWithRolesItem>(global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesList200ResponseDataItemFieldsItemEditableWithRolesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "editable_with_roles", n => { EditableWithRoles = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "referenced_custom_type_id", n => { ReferencedCustomTypeId = n.GetStringValue(); } },
@@ -124,7 +124,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteBoolValue("back_reference_is_visible", BackReferenceIsVisible);
             writer.WriteCollectionOfPrimitiveValues<string>("choices", Choices);
             writer.WriteStringValue("description", Description);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CustomObjectTypesList200ResponseDataItemFieldsItemEditableWithRolesItem>("editable_with_roles", EditableWithRoles);
+            writer.WriteObjectValue<UntypedNode>("editable_with_roles", EditableWithRoles);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("referenced_custom_type_id", ReferencedCustomTypeId);

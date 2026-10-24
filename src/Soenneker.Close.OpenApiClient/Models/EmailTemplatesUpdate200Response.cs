@@ -17,10 +17,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The attachments property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesUpdate200ResponseAttachmentsItem>? Attachments { get; set; }
+        public UntypedNode? Attachments { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesUpdate200ResponseAttachmentsItem> Attachments { get; set; }
+        public UntypedNode Attachments { get; set; }
 #endif
         /// <summary>The body property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -101,10 +101,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The used_by_sequences property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesUpdate200ResponseUsedBySequencesItem>? UsedBySequences { get; set; }
+        public UntypedNode? UsedBySequences { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesUpdate200ResponseUsedBySequencesItem> UsedBySequences { get; set; }
+        public UntypedNode UsedBySequences { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesUpdate200Response"/> and sets the default values.
@@ -131,7 +131,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesUpdate200ResponseAttachmentsItem>(global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesUpdate200ResponseAttachmentsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "attachments", n => { Attachments = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "body", n => { Body = n.GetStringValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetStringValue(); } },
@@ -143,7 +143,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
-                { "used_by_sequences", n => { UsedBySequences = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesUpdate200ResponseUsedBySequencesItem>(global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesUpdate200ResponseUsedBySequencesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "used_by_sequences", n => { UsedBySequences = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -153,7 +153,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesUpdate200ResponseAttachmentsItem>("attachments", Attachments);
+            writer.WriteObjectValue<UntypedNode>("attachments", Attachments);
             writer.WriteStringValue("body", Body);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteStringValue("date_created", DateCreated);
@@ -165,7 +165,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("subject", Subject);
             writer.WriteStringValue("updated_by", UpdatedBy);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesUpdate200ResponseUsedBySequencesItem>("used_by_sequences", UsedBySequences);
+            writer.WriteObjectValue<UntypedNode>("used_by_sequences", UsedBySequences);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

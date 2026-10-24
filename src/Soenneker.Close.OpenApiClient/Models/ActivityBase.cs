@@ -129,13 +129,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The pinned_at property</summary>
         public DateTimeOffset? PinnedAt { get; set; }
         /// <summary>The source property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.CreationSourceWrapper? Source { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.CreationSourceWrapper Source { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.CreationSource? Source { get; set; }
         /// <summary>The title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -235,7 +229,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "pinned", n => { Pinned = n.GetBoolValue(); } },
                 { "pinned_at", n => { PinnedAt = n.GetDateTimeOffsetValue(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreationSourceWrapper>(global::Soenneker.Close.OpenApiClient.Models.CreationSourceWrapper.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreationSource>(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "_type", n => { Type = n.GetStringValue(); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
@@ -270,7 +264,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteBoolValue("pinned", Pinned);
             writer.WriteDateTimeOffsetValue("pinned_at", PinnedAt);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreationSourceWrapper>("source", Source);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreationSource>("source", Source);
             writer.WriteStringValue("title", Title);
             writer.WriteStringValue("_type", Type);
             writer.WriteStringValue("updated_by", UpdatedBy);

@@ -99,13 +99,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ConversationTypeId { get; set; }
 #endif
         /// <summary>The conversation_type_reason property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.PlaybookReasonWrapper? ConversationTypeReason { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.PlaybookReasonWrapper ConversationTypeReason { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.PlaybookReason? ConversationTypeReason { get; set; }
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -189,13 +183,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string OrganizationId { get; set; }
 #endif
         /// <summary>The outcome_autofill_confidence property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.OutcomeAutofillConfidenceWrapper? OutcomeAutofillConfidence { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.OutcomeAutofillConfidenceWrapper OutcomeAutofillConfidence { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.OutcomeAutofillConfidence? OutcomeAutofillConfidence { get; set; }
         /// <summary>The outcome_autofill_reasoning property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -213,13 +201,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string OutcomeId { get; set; }
 #endif
         /// <summary>The outcome_reason property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.OutcomeReasonWrapper? OutcomeReason { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.OutcomeReasonWrapper OutcomeReason { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.OutcomeReason? OutcomeReason { get; set; }
         /// <summary>The playbook_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -229,13 +211,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string PlaybookId { get; set; }
 #endif
         /// <summary>The playbook_reason property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.PlaybookReasonWrapper2? PlaybookReason { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.PlaybookReasonWrapper2 PlaybookReason { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.PlaybookReason? PlaybookReason { get; set; }
         /// <summary>The provider_calendar_event_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -253,25 +229,13 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<string> ProviderCalendarIds { get; set; }
 #endif
         /// <summary>The provider_calendar_type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.ProviderCalendarTypeWrapper? ProviderCalendarType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.ProviderCalendarTypeWrapper ProviderCalendarType { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.ProviderCalendarType? ProviderCalendarType { get; set; }
         /// <summary>The source property</summary>
         public global::Soenneker.Close.OpenApiClient.Models.MeetingSource? Source { get; set; }
         /// <summary>The starts_at property</summary>
         public DateTimeOffset? StartsAt { get; set; }
         /// <summary>The status property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.MeetingStatusWrapper? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.MeetingStatusWrapper Status { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.MeetingStatus? Status { get; set; }
         /// <summary>The summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -407,7 +371,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "connected_account_id", n => { ConnectedAccountId = n.GetStringValue(); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
                 { "conversation_type_id", n => { ConversationTypeId = n.GetStringValue(); } },
-                { "conversation_type_reason", n => { ConversationTypeReason = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.PlaybookReasonWrapper>(global::Soenneker.Close.OpenApiClient.Models.PlaybookReasonWrapper.CreateFromDiscriminatorValue); } },
+                { "conversation_type_reason", n => { ConversationTypeReason = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.PlaybookReason>(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "created_by_name", n => { CreatedByName = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetDateTimeOffsetValue(); } },
@@ -422,18 +386,18 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "note", n => { Note = n.GetStringValue(); } },
                 { "notetaker_id", n => { NotetakerId = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
-                { "outcome_autofill_confidence", n => { OutcomeAutofillConfidence = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.OutcomeAutofillConfidenceWrapper>(global::Soenneker.Close.OpenApiClient.Models.OutcomeAutofillConfidenceWrapper.CreateFromDiscriminatorValue); } },
+                { "outcome_autofill_confidence", n => { OutcomeAutofillConfidence = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.OutcomeAutofillConfidence>(); } },
                 { "outcome_autofill_reasoning", n => { OutcomeAutofillReasoning = n.GetStringValue(); } },
                 { "outcome_id", n => { OutcomeId = n.GetStringValue(); } },
-                { "outcome_reason", n => { OutcomeReason = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.OutcomeReasonWrapper>(global::Soenneker.Close.OpenApiClient.Models.OutcomeReasonWrapper.CreateFromDiscriminatorValue); } },
+                { "outcome_reason", n => { OutcomeReason = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.OutcomeReason>(); } },
                 { "playbook_id", n => { PlaybookId = n.GetStringValue(); } },
-                { "playbook_reason", n => { PlaybookReason = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.PlaybookReasonWrapper2>(global::Soenneker.Close.OpenApiClient.Models.PlaybookReasonWrapper2.CreateFromDiscriminatorValue); } },
+                { "playbook_reason", n => { PlaybookReason = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.PlaybookReason>(); } },
                 { "provider_calendar_event_id", n => { ProviderCalendarEventId = n.GetStringValue(); } },
                 { "provider_calendar_ids", n => { ProviderCalendarIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "provider_calendar_type", n => { ProviderCalendarType = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.ProviderCalendarTypeWrapper>(global::Soenneker.Close.OpenApiClient.Models.ProviderCalendarTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "provider_calendar_type", n => { ProviderCalendarType = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.ProviderCalendarType>(); } },
                 { "source", n => { Source = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.MeetingSource>(); } },
                 { "starts_at", n => { StartsAt = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.MeetingStatusWrapper>(global::Soenneker.Close.OpenApiClient.Models.MeetingStatusWrapper.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.MeetingStatus>(); } },
                 { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.MeetingSummary>(global::Soenneker.Close.OpenApiClient.Models.MeetingSummary.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "transcripts", n => { Transcripts = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscript>(global::Soenneker.Close.OpenApiClient.Models.MeetingTranscript.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -468,7 +432,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("connected_account_id", ConnectedAccountId);
             writer.WriteStringValue("contact_id", ContactId);
             writer.WriteStringValue("conversation_type_id", ConversationTypeId);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.PlaybookReasonWrapper>("conversation_type_reason", ConversationTypeReason);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.PlaybookReason>("conversation_type_reason", ConversationTypeReason);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteStringValue("created_by_name", CreatedByName);
             writer.WriteDateTimeOffsetValue("date_created", DateCreated);
@@ -483,18 +447,18 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("note", Note);
             writer.WriteStringValue("notetaker_id", NotetakerId);
             writer.WriteStringValue("organization_id", OrganizationId);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OutcomeAutofillConfidenceWrapper>("outcome_autofill_confidence", OutcomeAutofillConfidence);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.OutcomeAutofillConfidence>("outcome_autofill_confidence", OutcomeAutofillConfidence);
             writer.WriteStringValue("outcome_autofill_reasoning", OutcomeAutofillReasoning);
             writer.WriteStringValue("outcome_id", OutcomeId);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OutcomeReasonWrapper>("outcome_reason", OutcomeReason);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.OutcomeReason>("outcome_reason", OutcomeReason);
             writer.WriteStringValue("playbook_id", PlaybookId);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.PlaybookReasonWrapper2>("playbook_reason", PlaybookReason);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.PlaybookReason>("playbook_reason", PlaybookReason);
             writer.WriteStringValue("provider_calendar_event_id", ProviderCalendarEventId);
             writer.WriteCollectionOfPrimitiveValues<string>("provider_calendar_ids", ProviderCalendarIds);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.ProviderCalendarTypeWrapper>("provider_calendar_type", ProviderCalendarType);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.ProviderCalendarType>("provider_calendar_type", ProviderCalendarType);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.MeetingSource>("source", Source);
             writer.WriteDateTimeOffsetValue("starts_at", StartsAt);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.MeetingStatusWrapper>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.MeetingStatus>("status", Status);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.MeetingSummary>("summary", Summary);
             writer.WriteStringValue("title", Title);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscript>("transcripts", Transcripts);

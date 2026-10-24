@@ -41,13 +41,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The priority property</summary>
         public global::Soenneker.Close.OpenApiClient.Models.TaskPriority? Priority { get; set; }
         /// <summary>The resolution property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.NotificationResolutionWrapper? Resolution { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.NotificationResolutionWrapper Resolution { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.NotificationResolution? Resolution { get; set; }
         /// <summary>The text property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -79,7 +73,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "is_complete", n => { IsComplete = n.GetBoolValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "priority", n => { Priority = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.TaskPriority>(); } },
-                { "resolution", n => { Resolution = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.NotificationResolutionWrapper>(global::Soenneker.Close.OpenApiClient.Models.NotificationResolutionWrapper.CreateFromDiscriminatorValue); } },
+                { "resolution", n => { Resolution = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.NotificationResolution>(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
             };
         }
@@ -95,7 +89,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteBoolValue("is_complete", IsComplete);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.TaskPriority>("priority", Priority);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.NotificationResolutionWrapper>("resolution", Resolution);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.NotificationResolution>("resolution", Resolution);
             writer.WriteStringValue("text", Text);
         }
     }

@@ -25,10 +25,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The changed_fields property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.EventsGet200ResponseChangedFieldsItem>? ChangedFields { get; set; }
+        public UntypedNode? ChangedFields { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.EventsGet200ResponseChangedFieldsItem> ChangedFields { get; set; }
+        public UntypedNode ChangedFields { get; set; }
 #endif
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -152,7 +152,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "action", n => { Action = n.GetStringValue(); } },
-                { "changed_fields", n => { ChangedFields = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EventsGet200ResponseChangedFieldsItem>(global::Soenneker.Close.OpenApiClient.Models.EventsGet200ResponseChangedFieldsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "changed_fields", n => { ChangedFields = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "data", n => { Data = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EventsGet200ResponseData>(global::Soenneker.Close.OpenApiClient.Models.EventsGet200ResponseData.CreateFromDiscriminatorValue); } },
                 { "date_created", n => { DateCreated = n.GetStringValue(); } },
                 { "date_updated", n => { DateUpdated = n.GetStringValue(); } },
@@ -175,7 +175,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("action", Action);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.EventsGet200ResponseChangedFieldsItem>("changed_fields", ChangedFields);
+            writer.WriteObjectValue<UntypedNode>("changed_fields", ChangedFields);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EventsGet200ResponseData>("data", Data);
             writer.WriteStringValue("date_created", DateCreated);
             writer.WriteStringValue("date_updated", DateUpdated);

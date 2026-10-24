@@ -81,13 +81,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public global::Soenneker.Close.OpenApiClient.Models.BulkDeleteActionSQueryProperty SQuery { get; set; }
 #endif
         /// <summary>The status property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper Status { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.BulkActionStatus? Status { get; set; }
         /// <summary>The updated_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -136,7 +130,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "s_query", n => { SQuery = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkDeleteActionSQueryProperty>(global::Soenneker.Close.OpenApiClient.Models.BulkDeleteActionSQueryProperty.CreateFromDiscriminatorValue); } },
                 { "send_done_email", n => { SendDoneEmail = n.GetBoolValue(); } },
                 { "sort", n => { Sort = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.BulkDeleteActionSortItemProperty>(global::Soenneker.Close.OpenApiClient.Models.BulkDeleteActionSortItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper>(global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.BulkActionStatus>(); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
             };
         }
@@ -162,7 +156,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteBoolValue("send_done_email", SendDoneEmail);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.BulkDeleteActionSortItemProperty>("sort", Sort);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkDeleteActionSQueryProperty>("s_query", SQuery);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkActionStatusWrapper>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.BulkActionStatus>("status", Status);
             writer.WriteStringValue("updated_by", UpdatedBy);
             writer.WriteAdditionalData(AdditionalData);
         }

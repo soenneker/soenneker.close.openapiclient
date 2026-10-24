@@ -77,13 +77,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string OrganizationId { get; set; }
 #endif
         /// <summary>The source property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.CreationSourceWrapper2? Source { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.CreationSourceWrapper2 Source { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.CreationSource? Source { get; set; }
         /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -167,7 +161,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "import_id", n => { ImportId = n.GetStringValue(); } },
                 { "lead_id", n => { LeadId = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreationSourceWrapper2>(global::Soenneker.Close.OpenApiClient.Models.CreationSourceWrapper2.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreationSource>(); } },
                 { "_type", n => { Type = n.GetStringValue(); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
                 { "updated_by_name", n => { UpdatedByName = n.GetStringValue(); } },
@@ -193,7 +187,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("import_id", ImportId);
             writer.WriteStringValue("lead_id", LeadId);
             writer.WriteStringValue("organization_id", OrganizationId);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreationSourceWrapper2>("source", Source);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreationSource>("source", Source);
             writer.WriteStringValue("_type", Type);
             writer.WriteStringValue("updated_by", UpdatedBy);
             writer.WriteStringValue("updated_by_name", UpdatedByName);

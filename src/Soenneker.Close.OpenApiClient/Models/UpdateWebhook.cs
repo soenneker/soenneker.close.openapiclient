@@ -21,13 +21,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<global::Soenneker.Close.OpenApiClient.Models.WebhookSubscriptionEvent> Events { get; set; }
 #endif
         /// <summary>The status property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.WebhookStatusWrapper? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.WebhookStatusWrapper Status { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.WebhookStatus? Status { get; set; }
         /// <summary>Destination URL for the webhook subscription</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -57,7 +51,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "events", n => { Events = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.WebhookSubscriptionEvent>(global::Soenneker.Close.OpenApiClient.Models.WebhookSubscriptionEvent.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.WebhookStatusWrapper>(global::Soenneker.Close.OpenApiClient.Models.WebhookStatusWrapper.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.WebhookStatus>(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
                 { "verify_ssl", n => { VerifySsl = n.GetBoolValue(); } },
             };
@@ -70,7 +64,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.WebhookSubscriptionEvent>("events", Events);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.WebhookStatusWrapper>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.WebhookStatus>("status", Status);
             writer.WriteStringValue("url", Url);
             writer.WriteBoolValue("verify_ssl", VerifySsl);
         }

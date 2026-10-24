@@ -93,13 +93,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>Monetary value of the opportunity in cents, e.g. `340000` for $3,400.00. The currency is the organization&apos;s currency.</summary>
         public int? Value { get; set; }
         /// <summary>The value_period property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.OpportunityValuePeriodWrapper? ValuePeriod { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.OpportunityValuePeriodWrapper ValuePeriod { get; set; }
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.OpportunityValuePeriod? ValuePeriod { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -131,7 +125,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "status_id", n => { StatusId = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
                 { "value", n => { Value = n.GetIntValue(); } },
-                { "value_period", n => { ValuePeriod = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityValuePeriodWrapper>(global::Soenneker.Close.OpenApiClient.Models.OpportunityValuePeriodWrapper.CreateFromDiscriminatorValue); } },
+                { "value_period", n => { ValuePeriod = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityValuePeriod>(); } },
             };
         }
         /// <summary>
@@ -154,7 +148,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("status_id", StatusId);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteIntValue("value", Value);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityValuePeriodWrapper>("value_period", ValuePeriod);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityValuePeriod>("value_period", ValuePeriod);
         }
     }
 }

@@ -71,10 +71,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The params property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.ExportParams? Params { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.JsonDict? Params { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.ExportParams Params { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.JsonDict Params { get; set; }
 #endif
         /// <summary>The query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -91,18 +91,18 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The sort property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.ExportSortItem>? Sort { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.JsonDict>? Sort { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.ExportSortItem> Sort { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.JsonDict> Sort { get; set; }
 #endif
         /// <summary>The s_query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.ExportSQuery? SQuery { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.JsonDict? SQuery { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.ExportSQuery SQuery { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.JsonDict SQuery { get; set; }
 #endif
         /// <summary>The status property</summary>
         public global::Soenneker.Close.OpenApiClient.Models.ExportStatus? Status { get; set; }
@@ -153,12 +153,12 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "n_docs", n => { NDocs = n.GetIntValue(); } },
                 { "n_docs_processed", n => { NDocsProcessed = n.GetIntValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
-                { "params", n => { Params = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.ExportParams>(global::Soenneker.Close.OpenApiClient.Models.ExportParams.CreateFromDiscriminatorValue); } },
+                { "params", n => { Params = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.JsonDict>(global::Soenneker.Close.OpenApiClient.Models.JsonDict.CreateFromDiscriminatorValue); } },
                 { "query", n => { Query = n.GetStringValue(); } },
                 { "results_limit", n => { ResultsLimit = n.GetIntValue(); } },
-                { "s_query", n => { SQuery = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.ExportSQuery>(global::Soenneker.Close.OpenApiClient.Models.ExportSQuery.CreateFromDiscriminatorValue); } },
+                { "s_query", n => { SQuery = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.JsonDict>(global::Soenneker.Close.OpenApiClient.Models.JsonDict.CreateFromDiscriminatorValue); } },
                 { "send_done_email", n => { SendDoneEmail = n.GetBoolValue(); } },
-                { "sort", n => { Sort = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ExportSortItem>(global::Soenneker.Close.OpenApiClient.Models.ExportSortItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "sort", n => { Sort = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.JsonDict>(global::Soenneker.Close.OpenApiClient.Models.JsonDict.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.ExportStatus>(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.ExportType>(); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
@@ -183,12 +183,12 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteIntValue("n_docs", NDocs);
             writer.WriteIntValue("n_docs_processed", NDocsProcessed);
             writer.WriteStringValue("organization_id", OrganizationId);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.ExportParams>("params", Params);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.JsonDict>("params", Params);
             writer.WriteStringValue("query", Query);
             writer.WriteIntValue("results_limit", ResultsLimit);
             writer.WriteBoolValue("send_done_email", SendDoneEmail);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ExportSortItem>("sort", Sort);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.ExportSQuery>("s_query", SQuery);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.JsonDict>("sort", Sort);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.JsonDict>("s_query", SQuery);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.ExportStatus>("status", Status);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.ExportType>("type", Type);
             writer.WriteStringValue("updated_by", UpdatedBy);
