@@ -186,8 +186,11 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string UserId { get; set; }
 #endif
-        /// <summary>Whether voice agents can use this phone number as their outbound caller ID.</summary>
+        /// <summary>Deprecated. Use `voice_agents_local_presence_enabled`. This field has the same value as `voice_agents_local_presence_enabled`, and it will be removed in a future update.</summary>
+        [Obsolete("")]
         public bool? VoiceAgentCallerIdEnabled { get; set; }
+        /// <summary>Whether Local Presence can pick this phone number for calls and SMS that voice agents make in Auto caller ID mode.</summary>
+        public bool? VoiceAgentsLocalPresenceEnabled { get; set; }
         /// <summary>The voicemail_greeting_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -258,6 +261,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.PhoneNumberType>(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
                 { "voice_agent_caller_id_enabled", n => { VoiceAgentCallerIdEnabled = n.GetBoolValue(); } },
+                { "voice_agents_local_presence_enabled", n => { VoiceAgentsLocalPresenceEnabled = n.GetBoolValue(); } },
                 { "voicemail_greeting_url", n => { VoicemailGreetingUrl = n.GetStringValue(); } },
                 { "was_ported", n => { WasPorted = n.GetBoolValue(); } },
             };
@@ -304,6 +308,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.PhoneNumberType>("type", Type);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteBoolValue("voice_agent_caller_id_enabled", VoiceAgentCallerIdEnabled);
+            writer.WriteBoolValue("voice_agents_local_presence_enabled", VoiceAgentsLocalPresenceEnabled);
             writer.WriteStringValue("voicemail_greeting_url", VoicemailGreetingUrl);
             writer.WriteBoolValue("was_ported", WasPorted);
             writer.WriteAdditionalData(AdditionalData);

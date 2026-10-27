@@ -210,6 +210,8 @@ namespace Soenneker.Close.OpenApiClient.Models
 #endif
         /// <summary>The voice_agent_caller_id_enabled property</summary>
         public bool? VoiceAgentCallerIdEnabled { get; set; }
+        /// <summary>The voice_agents_local_presence_enabled property</summary>
+        public bool? VoiceAgentsLocalPresenceEnabled { get; set; }
         /// <summary>The voicemail_greeting_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -275,6 +277,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "type", n => { Type = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
                 { "voice_agent_caller_id_enabled", n => { VoiceAgentCallerIdEnabled = n.GetBoolValue(); } },
+                { "voice_agents_local_presence_enabled", n => { VoiceAgentsLocalPresenceEnabled = n.GetBoolValue(); } },
                 { "voicemail_greeting_url", n => { VoicemailGreetingUrl = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
@@ -317,6 +320,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("type", Type);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteBoolValue("voice_agent_caller_id_enabled", VoiceAgentCallerIdEnabled);
+            writer.WriteBoolValue("voice_agents_local_presence_enabled", VoiceAgentsLocalPresenceEnabled);
             writer.WriteObjectValue<UntypedNode>("voicemail_greeting_url", VoicemailGreetingUrl);
             writer.WriteAdditionalData(AdditionalData);
         }

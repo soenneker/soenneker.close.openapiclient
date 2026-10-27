@@ -62,8 +62,11 @@ namespace Soenneker.Close.OpenApiClient.Models
 #endif
         /// <summary>The press_1_to_accept property</summary>
         public bool? Press1ToAccept { get; set; }
-        /// <summary>Whether voice agents can use this phone number as their outbound caller ID.</summary>
+        /// <summary>Deprecated. Use `voice_agents_local_presence_enabled`. This field is an alias of `voice_agents_local_presence_enabled`, and it will be removed in a future update. If you send both fields, they must have the same value.</summary>
+        [Obsolete("")]
         public bool? VoiceAgentCallerIdEnabled { get; set; }
+        /// <summary>Whether Local Presence can pick this phone number for calls and SMS that voice agents make in Auto caller ID mode.</summary>
+        public bool? VoiceAgentsLocalPresenceEnabled { get; set; }
         /// <summary>The voicemail_greeting_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -101,6 +104,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "phone_numbers", n => { PhoneNumbers = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "press_1_to_accept", n => { Press1ToAccept = n.GetBoolValue(); } },
                 { "voice_agent_caller_id_enabled", n => { VoiceAgentCallerIdEnabled = n.GetBoolValue(); } },
+                { "voice_agents_local_presence_enabled", n => { VoiceAgentsLocalPresenceEnabled = n.GetBoolValue(); } },
                 { "voicemail_greeting_url", n => { VoicemailGreetingUrl = n.GetStringValue(); } },
             };
         }
@@ -122,6 +126,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("phone_numbers", PhoneNumbers);
             writer.WriteBoolValue("press_1_to_accept", Press1ToAccept);
             writer.WriteBoolValue("voice_agent_caller_id_enabled", VoiceAgentCallerIdEnabled);
+            writer.WriteBoolValue("voice_agents_local_presence_enabled", VoiceAgentsLocalPresenceEnabled);
             writer.WriteStringValue("voicemail_greeting_url", VoicemailGreetingUrl);
         }
     }

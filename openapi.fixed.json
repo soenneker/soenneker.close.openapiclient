@@ -12135,6 +12135,565 @@
         }
       }
     },
+    "/data/search/": {
+      "post": {
+        "tags": [
+          "advanced_filtering"
+        ],
+        "summary": "Search objects with filters",
+        "description": "Find Leads, Contacts, Opportunities, Activities, Tasks and other objects matching any combination of filters. This is the API behind the filters on the Leads, Contacts and Opportunities pages in Close, and the query language used by Smart Views (\u0060s_query\u0060) and bulk actions.\n\nSearching doesn\u0027t change any data.\n\n### Building a query\n\nA query is a tree of objects, each with a \u0060type\u0060:\n\n1. Start with an \u0060and\u0060 query.\n2. Add an \u0060object_type\u0060 query for the type of objects you want, e.g. \u0060{\u0022type\u0022: \u0022object_type\u0022, \u0022object_type\u0022: \u0022lead\u0022}\u0060.\n3. Add a \u0060field_condition\u0060 query for each filter. It combines a \u0060field\u0060 with a \u0060condition\u0060:\n    - Built-in fields are \u0060regular_field\u0060s. Their \u0060object_type\u0060 must be the type you\u0027re searching for, e.g. \u0060title\u0060 on \u0060contact\u0060.\n    - Custom fields are referenced by ID as \u0060custom_field\u0060s. List them with the custom field endpoints, e.g. \u0060GET /custom_field/lead/\u0060.\n    - The condition depends on the field\u0027s type: \u0060text\u0060 for text, \u0060term\u0060 for choices and fixed values, \u0060reference\u0060 for IDs (statuses, users, ...), \u0060number_range\u0060 for numbers, \u0060moment_range\u0060 for dates. See \u0060FieldCondition\u0060.\n4. To filter by related objects, use \u0060has_related\u0060. For example, Leads with a Contact whose title contains \u0022CEO\u0022, or Contacts whose Lead is in a status.\n\nUse \u0060or\u0060 for alternatives and set \u0060negate: true\u0060 on any query to exclude what it matches.\n\nYou can also build a filter on the Leads, Contacts or Opportunities page in Close and copy its JSON with **Copy Filters** in the page\u0027s menu.\n\n### Dates\n\nRelative dates are resolved when the search runs. For example, \u0022in the last 30 days\u0022 is a \u0060moment_range\u0060 condition starting at an \u0060offset\u0060 moment of 30 days in the past. Dates without a timezone use the timezone from the \u0060X-TZ-Name\u0060 header (an IANA name like \u0060America/New_York\u0060), or UTC.\n\n### Results\n\nResults only contain each object\u0027s \u0060id\u0060 and \u0060__object_type\u0060 unless you list the fields you want in \u0060_fields\u0060, e.g. \u0060{\u0022lead\u0022: [\u0022id\u0022, \u0022display_name\u0022]}\u0060. Field names are the same as in the object type\u0027s own endpoint.\n\n### Pagination and limits\n\n- Each page has up to \u0060_limit\u0060 results (at most 200). Pass the response\u0027s \u0060cursor\u0060 to get the next page. The last page has a \u0060null\u0060 cursor. Cursors expire after 30 seconds.\n- Pagination stops after 10,000 results. To go through more, split the search, e.g. by \u0060date_created\u0060 ranges.\n- Sort by a field that rarely changes, like \u0060date_created\u0060, while paginating.\n- \u0060results_limit\u0060 caps the total number of results. Set it to \u00600\u0060 with \u0060include_counts: true\u0060 to only count matches.\n- The request body can be at most 50 KB. Overly complex queries are rejected.",
+        "operationId": "AdvancedFilteringSearch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DataSearchRequest"
+              },
+              "examples": {
+                "contactsByTitle": {
+                  "summary": "Contacts with a title",
+                  "description": "Find Contacts whose title contains the word CEO.",
+                  "value": {
+                    "_fields": {
+                      "contact": [
+                        "id",
+                        "lead_id",
+                        "name",
+                        "title"
+                      ]
+                    },
+                    "query": {
+                      "queries": [
+                        {
+                          "object_type": "contact",
+                          "type": "object_type"
+                        },
+                        {
+                          "condition": {
+                            "mode": "full_words",
+                            "type": "text",
+                            "value": "CEO"
+                          },
+                          "field": {
+                            "field_name": "title",
+                            "object_type": "contact",
+                            "type": "regular_field"
+                          },
+                          "type": "field_condition"
+                        }
+                      ],
+                      "type": "and"
+                    }
+                  }
+                },
+                "leadsInStatus": {
+                  "summary": "Leads in a status, newest first",
+                  "description": "Find Leads in a Lead Status, sorted by creation date. Status IDs come from \u0060GET /status/lead/\u0060.",
+                  "value": {
+                    "_fields": {
+                      "lead": [
+                        "display_name",
+                        "id",
+                        "status_label"
+                      ]
+                    },
+                    "_limit": 2,
+                    "query": {
+                      "queries": [
+                        {
+                          "object_type": "lead",
+                          "type": "object_type"
+                        },
+                        {
+                          "condition": {
+                            "object_ids": [
+                              "stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk"
+                            ],
+                            "reference_type": "status.lead",
+                            "type": "reference"
+                          },
+                          "field": {
+                            "field_name": "status_id",
+                            "object_type": "lead",
+                            "type": "regular_field"
+                          },
+                          "type": "field_condition"
+                        }
+                      ],
+                      "type": "and"
+                    },
+                    "sort": [
+                      {
+                        "direction": "desc",
+                        "field": {
+                          "field_name": "date_created",
+                          "object_type": "lead",
+                          "type": "regular_field"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "myRecentLeads": {
+                  "summary": "My Leads created in the last 30 days, with a count",
+                  "description": "Find Leads the requesting user created in the last 30 days, and count them.",
+                  "value": {
+                    "_fields": {
+                      "lead": [
+                        "date_created",
+                        "display_name",
+                        "id"
+                      ]
+                    },
+                    "include_counts": true,
+                    "query": {
+                      "queries": [
+                        {
+                          "object_type": "lead",
+                          "type": "object_type"
+                        },
+                        {
+                          "condition": {
+                            "type": "current_user"
+                          },
+                          "field": {
+                            "field_name": "created_by",
+                            "object_type": "lead",
+                            "type": "regular_field"
+                          },
+                          "type": "field_condition"
+                        },
+                        {
+                          "condition": {
+                            "on_or_after": {
+                              "direction": "past",
+                              "offset": {
+                                "days": 30
+                              },
+                              "type": "offset"
+                            },
+                            "type": "moment_range"
+                          },
+                          "field": {
+                            "field_name": "date_created",
+                            "object_type": "lead",
+                            "type": "regular_field"
+                          },
+                          "type": "field_condition"
+                        }
+                      ],
+                      "type": "and"
+                    }
+                  }
+                },
+                "leadsByCustomField": {
+                  "summary": "Leads by a choice custom field",
+                  "description": "Find Leads whose Industry custom field is one of two choices. Custom field IDs come from \u0060GET /custom_field/lead/\u0060.",
+                  "value": {
+                    "_fields": {
+                      "lead": [
+                        "custom.cf_B57sofuEB7OBneH86SJctTr7hfiAiQcgkGRbAQfha0Z",
+                        "display_name",
+                        "id"
+                      ]
+                    },
+                    "query": {
+                      "queries": [
+                        {
+                          "object_type": "lead",
+                          "type": "object_type"
+                        },
+                        {
+                          "condition": {
+                            "type": "term",
+                            "values": [
+                              "Fintech",
+                              "Software as a service"
+                            ]
+                          },
+                          "field": {
+                            "custom_field_id": "cf_B57sofuEB7OBneH86SJctTr7hfiAiQcgkGRbAQfha0Z",
+                            "type": "custom_field"
+                          },
+                          "type": "field_condition"
+                        }
+                      ],
+                      "type": "and"
+                    }
+                  }
+                },
+                "leadsWithCeoContact": {
+                  "summary": "Leads with a CEO Contact",
+                  "description": "Filter Leads by their Contacts\u0027 fields with a \u0060has_related\u0060 query.",
+                  "value": {
+                    "query": {
+                      "queries": [
+                        {
+                          "object_type": "lead",
+                          "type": "object_type"
+                        },
+                        {
+                          "related_object_type": "contact",
+                          "related_query": {
+                            "condition": {
+                              "mode": "full_words",
+                              "type": "text",
+                              "value": "CEO"
+                            },
+                            "field": {
+                              "field_name": "title",
+                              "object_type": "contact",
+                              "type": "regular_field"
+                            },
+                            "type": "field_condition"
+                          },
+                          "this_object_type": "lead",
+                          "type": "has_related"
+                        }
+                      ],
+                      "type": "and"
+                    }
+                  }
+                },
+                "leadsWithoutRecentCommunication": {
+                  "summary": "Leads not contacted in the last 2 weeks",
+                  "description": "Find Leads with no communication in the last 14 days, including Leads that were never contacted.",
+                  "value": {
+                    "_fields": {
+                      "lead": [
+                        "display_name",
+                        "id"
+                      ]
+                    },
+                    "query": {
+                      "queries": [
+                        {
+                          "object_type": "lead",
+                          "type": "object_type"
+                        },
+                        {
+                          "condition": {
+                            "on_or_after": {
+                              "direction": "past",
+                              "offset": {
+                                "days": 14
+                              },
+                              "type": "offset"
+                            },
+                            "type": "moment_range"
+                          },
+                          "field": {
+                            "field_name": "last_communication_date",
+                            "object_type": "lead",
+                            "type": "regular_field"
+                          },
+                          "negate": true,
+                          "type": "field_condition"
+                        }
+                      ],
+                      "type": "and"
+                    }
+                  }
+                },
+                "leadsWithOutboundCallLastWeek": {
+                  "summary": "Leads with an outbound call last week",
+                  "description": "Filter Leads by their Activities.",
+                  "value": {
+                    "query": {
+                      "queries": [
+                        {
+                          "object_type": "lead",
+                          "type": "object_type"
+                        },
+                        {
+                          "related_object_type": "activity.call",
+                          "related_query": {
+                            "queries": [
+                              {
+                                "condition": {
+                                  "type": "term",
+                                  "values": [
+                                    "outbound"
+                                  ]
+                                },
+                                "field": {
+                                  "field_name": "direction",
+                                  "object_type": "activity.call",
+                                  "type": "regular_field"
+                                },
+                                "type": "field_condition"
+                              },
+                              {
+                                "condition": {
+                                  "type": "predefined_relative_date_range",
+                                  "value": "last-week"
+                                },
+                                "field": {
+                                  "field_name": "date_created",
+                                  "object_type": "activity.call",
+                                  "type": "regular_field"
+                                },
+                                "type": "field_condition"
+                              }
+                            ],
+                            "type": "and"
+                          },
+                          "this_object_type": "lead",
+                          "type": "has_related"
+                        }
+                      ],
+                      "type": "and"
+                    }
+                  }
+                },
+                "wonOpportunitiesOverAmount": {
+                  "summary": "Won Opportunities over $1,000",
+                  "description": "Opportunity values are in cents.",
+                  "value": {
+                    "_fields": {
+                      "opportunity": [
+                        "id",
+                        "lead_name",
+                        "status_label",
+                        "value"
+                      ]
+                    },
+                    "query": {
+                      "queries": [
+                        {
+                          "object_type": "opportunity",
+                          "type": "object_type"
+                        },
+                        {
+                          "condition": {
+                            "type": "term",
+                            "values": [
+                              "won"
+                            ]
+                          },
+                          "field": {
+                            "field_name": "status_type",
+                            "object_type": "opportunity",
+                            "type": "regular_field"
+                          },
+                          "type": "field_condition"
+                        },
+                        {
+                          "condition": {
+                            "gt": 100000,
+                            "type": "number_range"
+                          },
+                          "field": {
+                            "field_name": "value",
+                            "object_type": "opportunity",
+                            "type": "regular_field"
+                          },
+                          "type": "field_condition"
+                        }
+                      ],
+                      "type": "and"
+                    }
+                  }
+                },
+                "countOnly": {
+                  "summary": "Count matching Leads",
+                  "description": "Set \u0060results_limit\u0060 to 0 to get only the number of matches.",
+                  "value": {
+                    "include_counts": true,
+                    "query": {
+                      "queries": [
+                        {
+                          "object_type": "lead",
+                          "type": "object_type"
+                        }
+                      ],
+                      "type": "and"
+                    },
+                    "results_limit": 0
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataSearchResponse"
+                },
+                "examples": {
+                  "contactsByTitle": {
+                    "summary": "Contacts with a title",
+                    "description": "Find Contacts whose title contains the word CEO.",
+                    "value": {
+                      "cursor": null,
+                      "data": [
+                        {
+                          "__object_type": "contact",
+                          "id": "cont_PtENYt1P6sRWkcnqoGnIj6hcZammGPdVbTXJWqdTvpV",
+                          "lead_id": "lead_Wj0mVbjRrAhVeqOTnMHXdpcUBHAOPtmFbzoxK0U2Mn0",
+                          "name": "Lucille Bluth",
+                          "title": "CEO"
+                        },
+                        {
+                          "__object_type": "contact",
+                          "id": "cont_HjTcJFiNli2AKf5fioygQDVSpA9nJILI9SkKv3nBk0A",
+                          "lead_id": "lead_ViJkLOWx4ZOa9q3eIMuxbBtT1EuNrQhw6DQ0XDm6lxs",
+                          "name": "Steli Efti",
+                          "title": "CEO \u0026 Co-Founder"
+                        }
+                      ]
+                    }
+                  },
+                  "leadsInStatus": {
+                    "summary": "Leads in a status, newest first",
+                    "description": "Find Leads in a Lead Status, sorted by creation date. Status IDs come from \u0060GET /status/lead/\u0060.",
+                    "value": {
+                      "cursor": "eyJza2lwIjoyfQ.ZxH1kg.1lTbZ8qz3cX0v8K0QO5O3oJm9yM",
+                      "data": [
+                        {
+                          "__object_type": "lead",
+                          "display_name": "Bluth Company",
+                          "id": "lead_Wj0mVbjRrAhVeqOTnMHXdpcUBHAOPtmFbzoxK0U2Mn0",
+                          "status_label": "Qualified"
+                        },
+                        {
+                          "__object_type": "lead",
+                          "display_name": "Close",
+                          "id": "lead_ViJkLOWx4ZOa9q3eIMuxbBtT1EuNrQhw6DQ0XDm6lxs",
+                          "status_label": "Qualified"
+                        }
+                      ]
+                    }
+                  },
+                  "myRecentLeads": {
+                    "summary": "My Leads created in the last 30 days, with a count",
+                    "description": "Find Leads the requesting user created in the last 30 days, and count them.",
+                    "value": {
+                      "count": {
+                        "limited": 1,
+                        "total": 1
+                      },
+                      "cursor": null,
+                      "data": [
+                        {
+                          "__object_type": "lead",
+                          "date_created": "2024-05-02T14:12:31.217000\u002B00:00",
+                          "display_name": "Bluth Company",
+                          "id": "lead_Wj0mVbjRrAhVeqOTnMHXdpcUBHAOPtmFbzoxK0U2Mn0"
+                        }
+                      ]
+                    }
+                  },
+                  "leadsByCustomField": {
+                    "summary": "Leads by a choice custom field",
+                    "description": "Find Leads whose Industry custom field is one of two choices. Custom field IDs come from \u0060GET /custom_field/lead/\u0060.",
+                    "value": {
+                      "cursor": null,
+                      "data": [
+                        {
+                          "__object_type": "lead",
+                          "custom.cf_B57sofuEB7OBneH86SJctTr7hfiAiQcgkGRbAQfha0Z": "Software as a service",
+                          "display_name": "Close",
+                          "id": "lead_ViJkLOWx4ZOa9q3eIMuxbBtT1EuNrQhw6DQ0XDm6lxs"
+                        }
+                      ]
+                    }
+                  },
+                  "leadsWithCeoContact": {
+                    "summary": "Leads with a CEO Contact",
+                    "description": "Filter Leads by their Contacts\u0027 fields with a \u0060has_related\u0060 query.",
+                    "value": {
+                      "cursor": null,
+                      "data": [
+                        {
+                          "__object_type": "lead",
+                          "id": "lead_Wj0mVbjRrAhVeqOTnMHXdpcUBHAOPtmFbzoxK0U2Mn0"
+                        }
+                      ]
+                    }
+                  },
+                  "leadsWithoutRecentCommunication": {
+                    "summary": "Leads not contacted in the last 2 weeks",
+                    "description": "Find Leads with no communication in the last 14 days, including Leads that were never contacted.",
+                    "value": {
+                      "cursor": null,
+                      "data": [
+                        {
+                          "__object_type": "lead",
+                          "display_name": "Close",
+                          "id": "lead_ViJkLOWx4ZOa9q3eIMuxbBtT1EuNrQhw6DQ0XDm6lxs"
+                        }
+                      ]
+                    }
+                  },
+                  "leadsWithOutboundCallLastWeek": {
+                    "summary": "Leads with an outbound call last week",
+                    "description": "Filter Leads by their Activities.",
+                    "value": {
+                      "cursor": null,
+                      "data": [
+                        {
+                          "__object_type": "lead",
+                          "id": "lead_Wj0mVbjRrAhVeqOTnMHXdpcUBHAOPtmFbzoxK0U2Mn0"
+                        }
+                      ]
+                    }
+                  },
+                  "wonOpportunitiesOverAmount": {
+                    "summary": "Won Opportunities over $1,000",
+                    "description": "Opportunity values are in cents.",
+                    "value": {
+                      "cursor": null,
+                      "data": [
+                        {
+                          "__object_type": "opportunity",
+                          "id": "oppo_8eB77gAdf8FMy6GsNHEy84f7uoeEWv55slvUjKQZpJt",
+                          "lead_name": "Bluth Company",
+                          "status_label": "Won",
+                          "value": 250000
+                        }
+                      ]
+                    }
+                  },
+                  "countOnly": {
+                    "summary": "Count matching Leads",
+                    "description": "Set \u0060results_limit\u0060 to 0 to get only the number of matches.",
+                    "value": {
+                      "count": {
+                        "limited": 0,
+                        "total": 1532
+                      },
+                      "cursor": null,
+                      "data": []
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "The user can\u0027t access the organization."
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "429": {
+            "description": "Too many requests."
+          }
+        }
+      }
+    },
     "/dialer/": {
       "get": {
         "tags": [
@@ -17773,6 +18332,7 @@
                       "type": "internal",
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "voice_agent_caller_id_enabled": false,
+                      "voice_agents_local_presence_enabled": false,
                       "voicemail_greeting_url": null,
                       "was_ported": false
                     },
@@ -17814,6 +18374,7 @@
                       "type": "external",
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "voice_agent_caller_id_enabled": false,
+                      "voice_agents_local_presence_enabled": false,
                       "voicemail_greeting_url": null,
                       "was_ported": false
                     },
@@ -17865,6 +18426,7 @@
                       "type": "internal",
                       "user_id": null,
                       "voice_agent_caller_id_enabled": true,
+                      "voice_agents_local_presence_enabled": true,
                       "voicemail_greeting_url": null
                     }
                   ],
@@ -17956,6 +18518,7 @@
                   "type": "internal",
                   "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                   "voice_agent_caller_id_enabled": false,
+                  "voice_agents_local_presence_enabled": false,
                   "voicemail_greeting_url": null
                 },
                 "x-schema-inferred-from-examples": true
@@ -18042,6 +18605,7 @@
                   "type": "internal",
                   "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                   "voice_agent_caller_id_enabled": false,
+                  "voice_agents_local_presence_enabled": false,
                   "voicemail_greeting_url": null
                 }
               }
@@ -18063,7 +18627,7 @@
           "phone_numbers"
         ],
         "summary": "Update a phone number",
-        "description": "You need the \u0022Manage Team Phone Numbers\u0022 permission to change most settings. If you\u0027re the only member of a number and no Group is assigned to it, you can change its \u0060label\u0060, voicemail greeting, and call forwarding without that permission.\n\nYou can:\n\n- Change the \u0060label\u0060 of the number.\n- Set up call forwarding via \u0060forward_to\u0060 and \u0060forward_to_enabled\u0060.\n- Set up a voicemail greeting by including a URL of an mp3 recording in \u0060voicemail_greeting_url\u0060. We require the URL to be secure (i.e. starting with https://).\n- Modify which users are assigned directly to the number via \u0060participants\u0060. This should be a list of user IDs.\n- Modify which Groups are assigned to the number via \u0060participant_groups\u0060. This should be a list of Group IDs from the Groups API. Members of these Groups, including users added to a Group later, ring on inbound calls, receive notifications for the number, and can use it as outbound caller ID. You can assign at most 40 Groups.\n- Modify which external phone numbers the number dials via \u0060phone_numbers\u0060. This should be a list of phone numbers in E.164 international format, e.g. \u0022\u002B16503334444\u0022.\n- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via \u0060inbound_ring_duration\u0060.\n- Let users who are not members of the number use it as their outbound caller ID via \u0060non_member_caller_id_enabled\u0060.\n- Let voice agents use the number as their outbound caller ID via \u0060voice_agent_caller_id_enabled\u0060. You cannot disable this setting while a voice agent uses the number.\n- Let Local Presence pick the number by proximity for calls and SMS via \u0060local_presence_enabled\u0060.\n\nYou can set at most 40 users and external phone numbers combined in \u0060participants\u0060 and \u0060phone_numbers\u0060.\n\nA number\u0027s ring order is set in Close. A number that rings its members all at once rings at most 40 users and external phone numbers per inbound call. The users in \u0060participants\u0060 and the external phone numbers in \u0060phone_numbers\u0060 take priority. Members of the number\u0027s Groups who are allowed to make calls are added, chosen at random for each call, until 40 users and external phone numbers are ringing.\n\nThe per-call limit does not apply to a number that rings its members one at a time (round-robin).",
+        "description": "You need the \u0022Manage Team Phone Numbers\u0022 permission to change most settings. If you\u0027re the only member of a number and no Group is assigned to it, you can change its \u0060label\u0060, voicemail greeting, and call forwarding without that permission.\n\nYou can:\n\n- Change the \u0060label\u0060 of the number.\n- Set up call forwarding via \u0060forward_to\u0060 and \u0060forward_to_enabled\u0060.\n- Set up a voicemail greeting by including a URL of an mp3 recording in \u0060voicemail_greeting_url\u0060. We require the URL to be secure (i.e. starting with https://).\n- Modify which users are assigned directly to the number via \u0060participants\u0060. This should be a list of user IDs.\n- Modify which Groups are assigned to the number via \u0060participant_groups\u0060. This should be a list of Group IDs from the Groups API. Members of these Groups, including users added to a Group later, ring on inbound calls, receive notifications for the number, and can use it as outbound caller ID. You can assign at most 40 Groups.\n- Modify which external phone numbers the number dials via \u0060phone_numbers\u0060. This should be a list of phone numbers in E.164 international format, e.g. \u0022\u002B16503334444\u0022.\n- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via \u0060inbound_ring_duration\u0060.\n- Let users who are not members of the number use it as their outbound caller ID via \u0060non_member_caller_id_enabled\u0060.\n- Let Local Presence pick the number for calls and SMS that voice agents make in Auto caller ID mode via \u0060voice_agents_local_presence_enabled\u0060. You cannot disable this setting while a voice agent uses the number.\n- Let Local Presence pick the number by proximity for calls and SMS via \u0060local_presence_enabled\u0060.\n\nYou can set at most 40 users and external phone numbers combined in \u0060participants\u0060 and \u0060phone_numbers\u0060.\n\nA number\u0027s ring order is set in Close. A number that rings its members all at once rings at most 40 users and external phone numbers per inbound call. The users in \u0060participants\u0060 and the external phone numbers in \u0060phone_numbers\u0060 take priority. Members of the number\u0027s Groups who are allowed to make calls are added, chosen at random for each call, until 40 users and external phone numbers are ringing.\n\nThe per-call limit does not apply to a number that rings its members one at a time (round-robin).",
         "operationId": "PhoneNumbersUpdate",
         "parameters": [
           {
@@ -18140,6 +18704,7 @@
                   "type": "internal",
                   "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                   "voice_agent_caller_id_enabled": false,
+                  "voice_agents_local_presence_enabled": false,
                   "voicemail_greeting_url": "https://s3.amazonaws.com/bucket/aaa-bbb-ccc.mp3"
                 }
               }
@@ -26162,6 +26727,63 @@
           }
         }
       },
+      "AndQuery": {
+        "title": "AndQuery",
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "negate": {
+            "title": "Negate",
+            "type": "boolean",
+            "description": "Match objects that do NOT match this query instead.",
+            "default": false
+          },
+          "queries": {
+            "title": "Queries",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchQuery"
+            },
+            "description": "The queries that must all match.",
+            "default": []
+          },
+          "type": {
+            "$ref": "#/components/schemas/AndType"
+          }
+        },
+        "description": "Matches objects matching all the given queries."
+      },
+      "AnyOfSavedSearchQuery": {
+        "title": "AnyOfSavedSearchQuery",
+        "required": [
+          "saved_search_ids",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "negate": {
+            "title": "Negate",
+            "type": "boolean",
+            "description": "Match objects that do NOT match this query instead.",
+            "default": false
+          },
+          "saved_search_ids": {
+            "title": "Saved Search IDs",
+            "type": "array",
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "description": "IDs of the Smart Views. At most 10."
+          },
+          "type": {
+            "$ref": "#/components/schemas/AnyOfSavedSearchType"
+          }
+        },
+        "description": "Matches objects matching at least one of the given Smart Views."
+      },
       "Attachment": {
         "title": "Attachment",
         "required": [
@@ -26390,6 +27012,25 @@
             "type": "boolean"
           }
         }
+      },
+      "BooleanCondition": {
+        "title": "BooleanCondition",
+        "required": [
+          "type",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/BooleanType"
+          },
+          "value": {
+            "title": "Value",
+            "type": "boolean",
+            "description": "The value to match."
+          }
+        },
+        "description": "Matches boolean fields with the given value."
       },
       "BulkActionObjectType": {
         "title": "BulkActionObjectType",
@@ -27252,6 +27893,59 @@
           }
         },
         "additionalProperties": false
+      },
+      "CalendarPeriod": {
+        "title": "CalendarPeriod",
+        "enum": [
+          "second",
+          "minute",
+          "hour",
+          "day",
+          "week",
+          "month",
+          "quarter",
+          "year"
+        ],
+        "type": "string",
+        "description": "A calendar period. Weeks start on the user\u0027s week start day.",
+        "x-ms-enum": {
+          "name": "CalendarPeriod",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "second",
+              "name": "Second"
+            },
+            {
+              "value": "minute",
+              "name": "Minute"
+            },
+            {
+              "value": "hour",
+              "name": "Hour"
+            },
+            {
+              "value": "day",
+              "name": "Day"
+            },
+            {
+              "value": "week",
+              "name": "Week"
+            },
+            {
+              "value": "month",
+              "name": "Month"
+            },
+            {
+              "value": "quarter",
+              "name": "Quarter"
+            },
+            {
+              "value": "year",
+              "name": "Year"
+            }
+          ]
+        }
       },
       "CallActivity": {
         "title": "CallActivity",
@@ -29586,6 +30280,19 @@
           ]
         }
       },
+      "CurrentUserCondition": {
+        "title": "CurrentUserCondition",
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/CurrentUserType"
+          }
+        },
+        "description": "Matches user reference fields pointing at the user making the request.\n\nFor example, Leads created by \u0022me\u0022."
+      },
       "CustomActivity": {
         "title": "CustomActivity",
         "required": [
@@ -29779,6 +30486,228 @@
             }
           ]
         }
+      },
+      "CustomSearchField": {
+        "title": "CustomSearchField",
+        "required": [
+          "custom_field_id",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "custom_field_id": {
+            "title": "Custom Field ID",
+            "type": "string",
+            "description": "ID of the custom field, e.g. \u0060cf_abc123\u0060."
+          },
+          "type": {
+            "$ref": "#/components/schemas/CustomFieldType"
+          }
+        },
+        "description": "A custom field, referenced by its ID.\n\nWorks for Lead, Contact, Opportunity, Activity and Custom Object custom\nfields as well as shared custom fields."
+      },
+      "DataSearchRequest": {
+        "title": "DataSearchRequest",
+        "type": "object",
+        "properties": {
+          "_fields": {
+            "$ref": "#/components/schemas/DataSearchRequestFieldsProperty"
+          },
+          "_limit": {
+            "title": "Limit",
+            "maximum": 200,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Number of results per page.",
+            "default": 10
+          },
+          "cursor": {
+            "title": "Cursor",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The \u0060cursor\u0060 from the previous page\u0027s response. Cursors expire after 30 seconds.",
+            "default": null
+          },
+          "include_counts": {
+            "title": "Include Counts",
+            "type": "boolean",
+            "description": "Whether to include the number of matches in \u0060count\u0060.",
+            "default": false
+          },
+          "query": {
+            "description": "The query objects must match. Start with an \u0060and\u0060 query that contains an \u0060object_type\u0060 query for the type of objects to return.",
+            "default": {
+              "type": "match_all"
+            },
+            "title": "Query",
+            "$ref": "#/components/schemas/SearchQuery"
+          },
+          "results_limit": {
+            "title": "Results Limit",
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Maximum number of results across all pages, e.g. to act only on the first 100 matches. Use \u00600\u0060 with \u0060include_counts\u0060 to only count matches.",
+            "default": null
+          },
+          "sort": {
+            "title": "Sort",
+            "maxItems": 3,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchSort"
+            },
+            "description": "Fields to sort results by. When paginating, sort by a field that rarely changes, like \u0060date_created\u0060, so no results are skipped.",
+            "default": []
+          }
+        },
+        "additionalProperties": false
+      },
+      "DataSearchResponse": {
+        "title": "DataSearchResponse",
+        "required": [
+          "cursor",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "count": {
+            "description": "Number of matches. Only included with \u0060include_counts\u0060.",
+            "title": "Count",
+            "$ref": "#/components/schemas/SearchResultCount"
+          },
+          "cursor": {
+            "title": "Cursor",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Pass it as \u0060cursor\u0060 to get the next page. \u0060null\u0060 on the last page."
+          },
+          "data": {
+            "title": "Data",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchResult"
+            },
+            "description": "The matching objects on this page."
+          }
+        }
+      },
+      "DateRangeCondition": {
+        "title": "DateRangeCondition",
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "gt": {
+            "title": "Gt",
+            "type": "string",
+            "description": "Greater than.",
+            "format": "date"
+          },
+          "gte": {
+            "title": "Gte",
+            "type": "string",
+            "description": "Greater than or equal.",
+            "format": "date"
+          },
+          "lt": {
+            "title": "Lt",
+            "type": "string",
+            "description": "Less than.",
+            "format": "date"
+          },
+          "lte": {
+            "title": "Lte",
+            "type": "string",
+            "description": "Less than or equal.",
+            "format": "date"
+          },
+          "type": {
+            "$ref": "#/components/schemas/FixedDateRangeType"
+          }
+        },
+        "description": "Matches dates within a fixed range of ISO 8601 dates.\n\nAt least one bound is required."
+      },
+      "Duration": {
+        "title": "Duration",
+        "type": "object",
+        "properties": {
+          "days": {
+            "title": "Days",
+            "type": "integer",
+            "default": 0
+          },
+          "hours": {
+            "title": "Hours",
+            "type": "integer",
+            "default": 0
+          },
+          "minutes": {
+            "title": "Minutes",
+            "type": "integer",
+            "default": 0
+          },
+          "months": {
+            "title": "Months",
+            "type": "integer",
+            "default": 0
+          },
+          "seconds": {
+            "title": "Seconds",
+            "type": "integer",
+            "default": 0
+          },
+          "weeks": {
+            "title": "Weeks",
+            "type": "integer",
+            "default": 0
+          },
+          "years": {
+            "title": "Years",
+            "type": "integer",
+            "default": 0
+          }
+        },
+        "description": "A calendar-aware duration. All given parts are added together."
+      },
+      "DurationRangeCondition": {
+        "title": "DurationRangeCondition",
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "gt": {
+            "description": "Greater than.",
+            "title": "Gt",
+            "$ref": "#/components/schemas/Duration"
+          },
+          "gte": {
+            "description": "Greater than or equal.",
+            "title": "Gte",
+            "$ref": "#/components/schemas/Duration"
+          },
+          "lt": {
+            "description": "Less than.",
+            "title": "Lt",
+            "$ref": "#/components/schemas/Duration"
+          },
+          "lte": {
+            "description": "Less than or equal.",
+            "title": "Lte",
+            "$ref": "#/components/schemas/Duration"
+          },
+          "type": {
+            "$ref": "#/components/schemas/DurationRangeType"
+          }
+        },
+        "description": "Matches durations, like a call\u0027s \u0060duration\u0060, within a range.\n\nAt least one bound is required."
       },
       "EmailActivity": {
         "title": "EmailActivity",
@@ -31113,6 +32042,25 @@
           }
         }
       },
+      "ExactMomentCondition": {
+        "title": "ExactMomentCondition",
+        "required": [
+          "at",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "at": {
+            "description": "The moment to match.",
+            "title": "At",
+            "$ref": "#/components/schemas/Moment"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ExactMomentType"
+          }
+        },
+        "description": "Matches dates and datetimes equal to a moment."
+      },
       "ExistingPipelineOpportunityStatus": {
         "title": "ExistingPipelineOpportunityStatus",
         "required": [
@@ -31126,6 +32074,19 @@
             "description": "ID of an existing Opportunity Status. May belong to a different Pipeline, in which case the status is moved into this one."
           }
         }
+      },
+      "ExistsCondition": {
+        "title": "ExistsCondition",
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/ExistsType"
+          }
+        },
+        "description": "Matches if the field has any value.\n\nNegate the query to find objects where the field is empty."
       },
       "Export": {
         "title": "Export",
@@ -31350,6 +32311,190 @@
           ]
         }
       },
+      "FieldCondition": {
+        "title": "FieldCondition",
+        "required": [
+          "type"
+        ],
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ReferenceCondition"
+          },
+          {
+            "$ref": "#/components/schemas/CurrentUserCondition"
+          },
+          {
+            "$ref": "#/components/schemas/ExistsCondition"
+          },
+          {
+            "$ref": "#/components/schemas/RelativeDateRangeCondition"
+          },
+          {
+            "$ref": "#/components/schemas/TextCondition"
+          },
+          {
+            "$ref": "#/components/schemas/TermCondition"
+          },
+          {
+            "$ref": "#/components/schemas/BooleanCondition"
+          },
+          {
+            "$ref": "#/components/schemas/DateRangeCondition"
+          },
+          {
+            "$ref": "#/components/schemas/NumberRangeCondition"
+          },
+          {
+            "$ref": "#/components/schemas/DurationRangeCondition"
+          },
+          {
+            "$ref": "#/components/schemas/NumberCondition"
+          },
+          {
+            "$ref": "#/components/schemas/TimezoneNameCondition"
+          },
+          {
+            "$ref": "#/components/schemas/LocalTimeCondition"
+          },
+          {
+            "$ref": "#/components/schemas/MomentRangeCondition"
+          },
+          {
+            "$ref": "#/components/schemas/ExactMomentCondition"
+          },
+          {
+            "$ref": "#/components/schemas/MultipleNumbersCondition"
+          },
+          {
+            "$ref": "#/components/schemas/MultipleTextCondition"
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
+        "description": "A condition a field value must satisfy.\n\nWhich conditions apply depends on the field\u0027s type:\n\n- Text, email, phone and URL fields: \u0060text\u0060, \u0060multiple_text\u0060.\n- Fields with a fixed set of values and choice custom fields: \u0060term\u0060.\n- References to other objects (IDs): \u0060reference\u0060. For user fields also\n  \u0060current_user\u0060.\n- Numbers: \u0060number_range\u0060, \u0060number\u0060, \u0060multiple_numbers\u0060.\n- Durations: \u0060duration_range\u0060.\n- Dates and datetimes: \u0060moment_range\u0060, \u0060predefined_relative_date_range\u0060,\n  \u0060fixed_date_range\u0060, \u0060exact_moment\u0060.\n- Booleans: \u0060boolean\u0060.\n- Timezones: \u0060timezone_name\u0060, \u0060local_time\u0060.\n- Any field: \u0060exists\u0060.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "boolean": "#/components/schemas/BooleanCondition",
+            "current_user": "#/components/schemas/CurrentUserCondition",
+            "duration_range": "#/components/schemas/DurationRangeCondition",
+            "exact_moment": "#/components/schemas/ExactMomentCondition",
+            "exists": "#/components/schemas/ExistsCondition",
+            "fixed_date_range": "#/components/schemas/DateRangeCondition",
+            "local_time": "#/components/schemas/LocalTimeCondition",
+            "moment_range": "#/components/schemas/MomentRangeCondition",
+            "multiple_numbers": "#/components/schemas/MultipleNumbersCondition",
+            "multiple_text": "#/components/schemas/MultipleTextCondition",
+            "number": "#/components/schemas/NumberCondition",
+            "number_range": "#/components/schemas/NumberRangeCondition",
+            "predefined_relative_date_range": "#/components/schemas/RelativeDateRangeCondition",
+            "reference": "#/components/schemas/ReferenceCondition",
+            "term": "#/components/schemas/TermCondition",
+            "text": "#/components/schemas/TextCondition",
+            "timezone_name": "#/components/schemas/TimezoneNameCondition"
+          }
+        }
+      },
+      "FieldConditionQuery": {
+        "title": "FieldConditionQuery",
+        "required": [
+          "condition",
+          "field",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "condition": {
+            "description": "The condition the field value must satisfy.",
+            "title": "Condition",
+            "$ref": "#/components/schemas/FieldCondition"
+          },
+          "field": {
+            "description": "The field to check.",
+            "title": "Field",
+            "$ref": "#/components/schemas/SearchField"
+          },
+          "negate": {
+            "title": "Negate",
+            "type": "boolean",
+            "description": "Match objects that do NOT match this query instead.",
+            "default": false
+          },
+          "type": {
+            "$ref": "#/components/schemas/FieldConditionType"
+          }
+        },
+        "description": "Matches objects whose field value satisfies a condition."
+      },
+      "FixedLocalDateMoment": {
+        "title": "FixedLocalDateMoment",
+        "required": [
+          "type",
+          "value",
+          "which"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/FixedLocalDateType"
+          },
+          "value": {
+            "title": "Value",
+            "type": "string",
+            "description": "ISO 8601 date, e.g. \u00602024-01-31\u0060.",
+            "format": "date"
+          },
+          "which": {
+            "description": "Whether to use the start or the end of the day.",
+            "title": "Which",
+            "$ref": "#/components/schemas/StartEnd"
+          }
+        },
+        "description": "The start or end of a specific day in the request\u0027s timezone."
+      },
+      "FixedLocalMoment": {
+        "title": "FixedLocalMoment",
+        "required": [
+          "type",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/FixedLocalType"
+          },
+          "value": {
+            "title": "Value",
+            "type": "string",
+            "description": "ISO 8601 datetime without a timezone, e.g. \u00602024-01-31T14:00:00\u0060.",
+            "format": "date-time"
+          }
+        },
+        "description": "A specific date and time in the request\u0027s timezone."
+      },
+      "FixedUtcMoment": {
+        "title": "FixedUTCMoment",
+        "required": [
+          "type",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/FixedUtcType"
+          },
+          "value": {
+            "title": "Value",
+            "type": "string",
+            "description": "ISO 8601 datetime, e.g. \u00602024-01-31T14:00:00Z\u0060. A value without a timezone is treated as UTC. Other timezones are rejected.",
+            "format": "date-time"
+          }
+        },
+        "description": "A specific point in time in UTC."
+      },
       "Form": {
         "title": "Form",
         "required": [
@@ -31449,6 +32594,25 @@
             "type": "string"
           }
         }
+      },
+      "FormFieldSearchField": {
+        "title": "FormFieldSearchField",
+        "required": [
+          "form_field_id",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "form_field_id": {
+            "title": "Form Field ID",
+            "type": "string",
+            "description": "ID of the form field."
+          },
+          "type": {
+            "$ref": "#/components/schemas/FormFieldType"
+          }
+        },
+        "description": "A field of a form submission, referenced by its ID."
       },
       "FormSubmissionActivity": {
         "title": "FormSubmissionActivity",
@@ -31671,6 +32835,70 @@
           }
         }
       },
+      "HasRelatedQuery": {
+        "title": "HasRelatedQuery",
+        "required": [
+          "related_object_type",
+          "this_object_type",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "negate": {
+            "title": "Negate",
+            "type": "boolean",
+            "description": "Match objects that do NOT match this query instead.",
+            "default": false
+          },
+          "related_object_type": {
+            "description": "The type of the related objects.",
+            "title": "Related Object Type",
+            "$ref": "#/components/schemas/SearchObjectType"
+          },
+          "related_query": {
+            "description": "The query a related object must match. Fields in it belong to the related object type.",
+            "default": {
+              "type": "match_all"
+            },
+            "title": "Related Query",
+            "$ref": "#/components/schemas/SearchQuery"
+          },
+          "this_object_type": {
+            "description": "The type of the objects being filtered.",
+            "title": "This Object Type",
+            "$ref": "#/components/schemas/SearchObjectType"
+          },
+          "type": {
+            "$ref": "#/components/schemas/HasRelatedType"
+          }
+        },
+        "description": "Matches objects with at least one related object matching a query.\n\nUse it to filter by fields of other objects, e.g. Leads with a Contact\nwho has a title, Contacts whose Lead is in a status, or Leads with a call\nin the last week."
+      },
+      "IdQuery": {
+        "title": "IdQuery",
+        "required": [
+          "type",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "negate": {
+            "title": "Negate",
+            "type": "boolean",
+            "description": "Match objects that do NOT match this query instead.",
+            "default": false
+          },
+          "type": {
+            "$ref": "#/components/schemas/IdType"
+          },
+          "value": {
+            "title": "Value",
+            "type": "string",
+            "description": "The object ID, e.g. \u0060lead_abc123\u0060."
+          }
+        },
+        "description": "Matches a single object by its ID."
+      },
       "ImportUpdateActivity": {
         "title": "ImportUpdateActivity",
         "required": [
@@ -31862,6 +33090,45 @@
             }
           ]
         }
+      },
+      "InStatusQuery": {
+        "title": "InStatusQuery",
+        "required": [
+          "status_ids",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "before": {
+            "description": "End of the period (exclusive).",
+            "title": "Before",
+            "$ref": "#/components/schemas/Moment"
+          },
+          "negate": {
+            "title": "Negate",
+            "type": "boolean",
+            "description": "Match objects that do NOT match this query instead.",
+            "default": false
+          },
+          "on_or_after": {
+            "description": "Start of the period (inclusive).",
+            "title": "On Or After",
+            "$ref": "#/components/schemas/Moment"
+          },
+          "status_ids": {
+            "title": "Status IDs",
+            "type": "array",
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "description": "IDs of Lead or Opportunity statuses."
+          },
+          "type": {
+            "$ref": "#/components/schemas/InStatusType"
+          }
+        },
+        "description": "Matches Leads or Opportunities that were in any of the given statuses.\n\nWithout a period, matches objects that were ever in the statuses."
       },
       "InlineLeadStatusPayload": {
         "title": "InlineLeadStatusPayload",
@@ -32790,6 +34057,51 @@
           ]
         }
       },
+      "LocalTimeCondition": {
+        "title": "LocalTimeCondition",
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "before": {
+            "title": "Before",
+            "type": "string",
+            "description": "End of the range (exclusive), e.g. \u006017:00\u0060. Defaults to the end of the day.",
+            "format": "time"
+          },
+          "on_or_after": {
+            "title": "On Or After",
+            "type": "string",
+            "description": "Start of the range (inclusive), e.g. \u006009:00\u0060. Defaults to midnight.",
+            "format": "time",
+            "default": "00:00:00"
+          },
+          "type": {
+            "$ref": "#/components/schemas/LocalTimeType"
+          }
+        },
+        "description": "Matches if the current time in a timezone field is within a range.\n\nFor example, Contacts for whom it\u0027s currently business hours."
+      },
+      "MatchAllQuery": {
+        "title": "MatchAllQuery",
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "negate": {
+            "title": "Negate",
+            "type": "boolean",
+            "description": "Match objects that do NOT match this query instead.",
+            "default": false
+          },
+          "type": {
+            "$ref": "#/components/schemas/MatchAllType"
+          }
+        },
+        "description": "Matches every object. When negated, matches nothing."
+      },
       "MeetingActivity": {
         "title": "MeetingActivity",
         "required": [
@@ -33717,6 +35029,127 @@
           ]
         }
       },
+      "Moment": {
+        "title": "Moment",
+        "required": [
+          "type"
+        ],
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/NowMoment"
+          },
+          {
+            "$ref": "#/components/schemas/FixedUtcMoment"
+          },
+          {
+            "$ref": "#/components/schemas/FixedLocalMoment"
+          },
+          {
+            "$ref": "#/components/schemas/FixedLocalDateMoment"
+          },
+          {
+            "$ref": "#/components/schemas/StartEndOfPeriodMoment"
+          },
+          {
+            "$ref": "#/components/schemas/StartEndOfPredefinedRelativePeriodMoment"
+          },
+          {
+            "$ref": "#/components/schemas/OffsetMoment"
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
+        "description": "A point in time, evaluated when the search runs.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "fixed_local": "#/components/schemas/FixedLocalMoment",
+            "fixed_local_date": "#/components/schemas/FixedLocalDateMoment",
+            "fixed_utc": "#/components/schemas/FixedUtcMoment",
+            "now": "#/components/schemas/NowMoment",
+            "offset": "#/components/schemas/OffsetMoment",
+            "start_end_of_period": "#/components/schemas/StartEndOfPeriodMoment",
+            "start_end_of_predefined_relative_period": "#/components/schemas/StartEndOfPredefinedRelativePeriodMoment"
+          }
+        }
+      },
+      "MomentRangeCondition": {
+        "title": "MomentRangeCondition",
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "before": {
+            "description": "End of the range (exclusive).",
+            "title": "Before",
+            "$ref": "#/components/schemas/Moment"
+          },
+          "on_or_after": {
+            "description": "Start of the range (inclusive).",
+            "title": "On Or After",
+            "$ref": "#/components/schemas/Moment"
+          },
+          "type": {
+            "$ref": "#/components/schemas/MomentRangeType"
+          }
+        },
+        "description": "Matches dates and datetimes between two moments.\n\nThis is the most flexible date condition: moments can be fixed dates or\nrelative to now, e.g. \u0022in the last 30 days\u0022."
+      },
+      "MultipleNumbersCondition": {
+        "title": "MultipleNumbersCondition",
+        "required": [
+          "type",
+          "values"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/MultipleNumbersType"
+          },
+          "values": {
+            "title": "Values",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MultipleNumbersConditionValuesItem"
+            },
+            "description": "Matches any of these values. At most 800."
+          }
+        },
+        "description": "Matches numeric fields equal to any of the given values."
+      },
+      "MultipleTextCondition": {
+        "title": "MultipleTextCondition",
+        "required": [
+          "mode",
+          "type",
+          "values"
+        ],
+        "type": "object",
+        "properties": {
+          "mode": {
+            "description": "How to match the texts.",
+            "title": "Mode",
+            "$ref": "#/components/schemas/TextMatchMode"
+          },
+          "type": {
+            "$ref": "#/components/schemas/MultipleTextType"
+          },
+          "values": {
+            "title": "Values",
+            "type": "array",
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "description": "Matches any of these texts. At most 800, each at most 200 characters long."
+          }
+        },
+        "description": "Matches text fields containing any of the given texts."
+      },
       "NewPipelineOpportunityStatus": {
         "title": "NewPipelineOpportunityStatus",
         "required": [
@@ -33809,6 +35242,148 @@
             }
           ]
         }
+      },
+      "NowMoment": {
+        "title": "NowMoment",
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/NowType"
+          }
+        },
+        "description": "The current time."
+      },
+      "NumberCondition": {
+        "title": "NumberCondition",
+        "required": [
+          "type",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/NumberType"
+          },
+          "value": {
+            "$ref": "#/components/schemas/NumberConditionValue"
+          }
+        },
+        "description": "Matches numeric fields equal to the given value."
+      },
+      "NumberRangeCondition": {
+        "title": "NumberRangeCondition",
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "gt": {
+            "$ref": "#/components/schemas/NumberRangeConditionGt"
+          },
+          "gte": {
+            "$ref": "#/components/schemas/NumberRangeConditionGte"
+          },
+          "lt": {
+            "$ref": "#/components/schemas/NumberRangeConditionLt"
+          },
+          "lte": {
+            "$ref": "#/components/schemas/NumberRangeConditionLte"
+          },
+          "type": {
+            "$ref": "#/components/schemas/NumberRangeType"
+          }
+        },
+        "description": "Matches numbers within a range. At least one bound is required.\n\nMoney values like an Opportunity\u0027s \u0060value\u0060 are in cents."
+      },
+      "ObjectTypeQuery": {
+        "title": "ObjectTypeQuery",
+        "required": [
+          "object_type",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "negate": {
+            "title": "Negate",
+            "type": "boolean",
+            "description": "Match objects that do NOT match this query instead.",
+            "default": false
+          },
+          "object_type": {
+            "description": "The object type.",
+            "title": "Object Type",
+            "$ref": "#/components/schemas/SearchObjectType"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ObjectTypeType"
+          }
+        },
+        "description": "Matches objects of the given type.\n\nInclude one in every search to choose what kind of objects to return."
+      },
+      "OffsetDirection": {
+        "title": "OffsetDirection",
+        "enum": [
+          "future",
+          "past"
+        ],
+        "type": "string",
+        "description": "Direction in time, into the past or the future.",
+        "x-ms-enum": {
+          "name": "OffsetDirection",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "future",
+              "name": "Future"
+            },
+            {
+              "value": "past",
+              "name": "Past"
+            }
+          ]
+        }
+      },
+      "OffsetMoment": {
+        "title": "OffsetMoment",
+        "required": [
+          "direction",
+          "offset",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "direction": {
+            "description": "Whether to shift into the past or the future.",
+            "title": "Direction",
+            "$ref": "#/components/schemas/OffsetDirection"
+          },
+          "moment": {
+            "description": "The moment to shift. Defaults to now.",
+            "default": {
+              "type": "now"
+            },
+            "title": "Moment",
+            "$ref": "#/components/schemas/Moment"
+          },
+          "offset": {
+            "description": "How far to shift the moment.",
+            "title": "Offset",
+            "$ref": "#/components/schemas/Duration"
+          },
+          "type": {
+            "$ref": "#/components/schemas/OffsetType"
+          },
+          "which_day_end": {
+            "description": "If the offset includes days, weeks, months or years, the moment is first moved to the start or end of its day.",
+            "default": "start",
+            "title": "Which Day End",
+            "$ref": "#/components/schemas/StartEnd"
+          }
+        },
+        "description": "A moment shifted into the past or future by a duration.\n\nFor example, 30 days ago is\n\u0060{\u0022type\u0022: \u0022offset\u0022, \u0022offset\u0022: {\u0022days\u0022: 30}, \u0022direction\u0022: \u0022past\u0022}\u0060."
       },
       "Opportunity": {
         "title": "Opportunity",
@@ -34237,6 +35812,14 @@
               "string"
             ]
           },
+          "created_by_agent_id": {
+            "title": "Created By Agent ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
+          },
           "created_by_name": {
             "title": "Created By Name",
             "type": [
@@ -34363,6 +35946,14 @@
               "string"
             ]
           },
+          "updated_by_agent_id": {
+            "title": "Updated By Agent ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
+          },
           "updated_by_name": {
             "title": "Updated By Name",
             "type": [
@@ -34469,6 +36060,34 @@
             }
           ]
         }
+      },
+      "OrQuery": {
+        "title": "OrQuery",
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "negate": {
+            "title": "Negate",
+            "type": "boolean",
+            "description": "Match objects that do NOT match this query instead.",
+            "default": false
+          },
+          "queries": {
+            "title": "Queries",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchQuery"
+            },
+            "description": "The queries of which at least one must match.",
+            "default": []
+          },
+          "type": {
+            "$ref": "#/components/schemas/OrType"
+          }
+        },
+        "description": "Matches objects matching at least one of the given queries."
       },
       "Organization": {
         "title": "Organization",
@@ -34945,7 +36564,8 @@
           "supports_sms_to_countries",
           "type",
           "user_id",
-          "voice_agent_caller_id_enabled"
+          "voice_agent_caller_id_enabled",
+          "voice_agents_local_presence_enabled"
         ],
         "type": "object",
         "properties": {
@@ -35144,7 +36764,13 @@
           "voice_agent_caller_id_enabled": {
             "title": "Voice Agent Caller ID Enabled",
             "type": "boolean",
-            "description": "Whether voice agents can use this phone number as their outbound caller ID."
+            "description": "Deprecated. Use \u0060voice_agents_local_presence_enabled\u0060. This field has the same value as \u0060voice_agents_local_presence_enabled\u0060, and it will be removed in a future update.",
+            "deprecated": true
+          },
+          "voice_agents_local_presence_enabled": {
+            "title": "Voice Agents Local Presence Enabled",
+            "type": "boolean",
+            "description": "Whether Local Presence can pick this phone number for calls and SMS that voice agents make in Auto caller ID mode."
           },
           "voicemail_greeting_url": {
             "title": "Voicemail Greeting URL",
@@ -35413,6 +37039,134 @@
           ]
         }
       },
+      "PredefinedRelativeDatetimeRange": {
+        "title": "PredefinedRelativeDatetimeRange",
+        "enum": [
+          "yesterday",
+          "last-week",
+          "last-month",
+          "last-quarter",
+          "last-year",
+          "today",
+          "this-week",
+          "this-month",
+          "this-quarter",
+          "this-year",
+          "tomorrow",
+          "next-week",
+          "next-month",
+          "next-quarter",
+          "next-year",
+          "closest-monday",
+          "closest-tuesday",
+          "closest-wednesday",
+          "closest-thursday",
+          "closest-friday",
+          "closest-saturday",
+          "closest-sunday",
+          "all-time"
+        ],
+        "type": "string",
+        "description": "Relative datetime range options, in the user\u0027s timezone:\n\n- \u0060yesterday\u0060, \u0060today\u0060, \u0060tomorrow\u0060: The whole day.\n- \u0060last-*\u0060, \u0060this-*\u0060, \u0060next-*\u0060 with \u0060week\u0060, \u0060month\u0060, \u0060quarter\u0060 or \u0060year\u0060: The whole previous, current or next calendar period, e.g. \u0060this-month\u0060.\n- \u0060closest-monday\u0060 to \u0060closest-sunday\u0060: The whole day of the next given weekday, or today if it\u0027s that weekday.\n- \u0060all-time\u0060: Any date.",
+        "x-ms-enum": {
+          "name": "PredefinedRelativeDatetimeRange",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "yesterday",
+              "name": "Yesterday"
+            },
+            {
+              "value": "last-week",
+              "name": "LastWeek"
+            },
+            {
+              "value": "last-month",
+              "name": "LastMonth"
+            },
+            {
+              "value": "last-quarter",
+              "name": "LastQuarter"
+            },
+            {
+              "value": "last-year",
+              "name": "LastYear"
+            },
+            {
+              "value": "today",
+              "name": "Today"
+            },
+            {
+              "value": "this-week",
+              "name": "ThisWeek"
+            },
+            {
+              "value": "this-month",
+              "name": "ThisMonth"
+            },
+            {
+              "value": "this-quarter",
+              "name": "ThisQuarter"
+            },
+            {
+              "value": "this-year",
+              "name": "ThisYear"
+            },
+            {
+              "value": "tomorrow",
+              "name": "Tomorrow"
+            },
+            {
+              "value": "next-week",
+              "name": "NextWeek"
+            },
+            {
+              "value": "next-month",
+              "name": "NextMonth"
+            },
+            {
+              "value": "next-quarter",
+              "name": "NextQuarter"
+            },
+            {
+              "value": "next-year",
+              "name": "NextYear"
+            },
+            {
+              "value": "closest-monday",
+              "name": "ClosestMonday"
+            },
+            {
+              "value": "closest-tuesday",
+              "name": "ClosestTuesday"
+            },
+            {
+              "value": "closest-wednesday",
+              "name": "ClosestWednesday"
+            },
+            {
+              "value": "closest-thursday",
+              "name": "ClosestThursday"
+            },
+            {
+              "value": "closest-friday",
+              "name": "ClosestFriday"
+            },
+            {
+              "value": "closest-saturday",
+              "name": "ClosestSaturday"
+            },
+            {
+              "value": "closest-sunday",
+              "name": "ClosestSunday"
+            },
+            {
+              "value": "all-time",
+              "name": "AllTime"
+            }
+          ]
+        }
+      },
       "ProviderCalendarType": {
         "title": "ProviderCalendarType",
         "enum": [
@@ -35470,6 +37224,472 @@
             "type": "string"
           }
         }
+      },
+      "ReferenceCondition": {
+        "title": "ReferenceCondition",
+        "required": [
+          "object_ids",
+          "reference_type",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "object_ids": {
+            "title": "Object IDs",
+            "type": "array",
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "description": "IDs of the referenced objects. Matches any of them."
+          },
+          "reference_type": {
+            "description": "The type of the referenced objects.",
+            "title": "Reference Type",
+            "$ref": "#/components/schemas/ReferenceType"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ReferenceConditionType"
+          }
+        },
+        "description": "Matches reference fields pointing at any of the given objects.\n\nFor example, Leads in some statuses or assigned to some users."
+      },
+      "ReferenceType": {
+        "title": "ReferenceType",
+        "enum": [
+          "activity.call",
+          "activity.created",
+          "activity.custom_activity",
+          "activity.email",
+          "activity.email_thread",
+          "activity.form_submission",
+          "activity.import_update",
+          "activity.lead_merge",
+          "activity.lead_status_change",
+          "activity.meeting",
+          "activity.note",
+          "activity.opportunity_status_change",
+          "activity.sms",
+          "activity.task_completed",
+          "activity.whatsapp_message",
+          "contact",
+          "custom_fields.contact",
+          "custom_fields.lead",
+          "custom_fields.opportunity",
+          "email_template",
+          "sms_template",
+          "lead",
+          "opportunity",
+          "saved_search",
+          "status.lead",
+          "status.opportunity",
+          "task.answered_detached_call",
+          "task.email_followup",
+          "task.incoming_email",
+          "task.lead_suggestion_incoming_email",
+          "task.incoming_sms",
+          "task.incoming_whatsapp_message",
+          "task.lead",
+          "task.outbound_call",
+          "task.draft_email",
+          "task.draft_sms",
+          "task.missed_call",
+          "task.opportunity_due",
+          "task.opportunities_awaiting_action",
+          "task.voicemail",
+          "sequence_subscription",
+          "subscription_history",
+          "custom_object",
+          "lead_file",
+          "comment_thread",
+          "comment",
+          "lead_summary",
+          "agent_call_grade",
+          "agent_config",
+          "any_agent",
+          "user",
+          "group",
+          "user_or_group",
+          "user_or_agent",
+          "user_or_any_agent",
+          "user_or_group_or_agent",
+          "user_or_group_or_any_agent",
+          "sequence",
+          "sequence_step",
+          "pipeline",
+          "custom_activity_type",
+          "bulk_action.email",
+          "bulk_action.edit",
+          "bulk_action.delete",
+          "bulk_action.sequence_subscription",
+          "connected_account",
+          "dialer",
+          "import",
+          "membership",
+          "custom_object_type",
+          "phone_number",
+          "custom_fields.activity",
+          "outcome",
+          "form",
+          "form_configuration",
+          "conversation_type"
+        ],
+        "type": "string",
+        "description": "Type of the objects a reference field points to. For example, use \u0060user\u0060 for fields like \u0060created_by\u0060 or \u0060assigned_to\u0060, \u0060status.lead\u0060 for a Lead\u0027s \u0060status_id\u0060, and \u0060sequence\u0060 for Workflow IDs.",
+        "x-ms-enum": {
+          "name": "ReferenceType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "activity.call",
+              "name": "ActivityCall"
+            },
+            {
+              "value": "activity.created",
+              "name": "ActivityCreated"
+            },
+            {
+              "value": "activity.custom_activity",
+              "name": "ActivityCustomActivity"
+            },
+            {
+              "value": "activity.email",
+              "name": "ActivityEmail"
+            },
+            {
+              "value": "activity.email_thread",
+              "name": "ActivityEmailThread"
+            },
+            {
+              "value": "activity.form_submission",
+              "name": "ActivityFormSubmission"
+            },
+            {
+              "value": "activity.import_update",
+              "name": "ActivityImportUpdate"
+            },
+            {
+              "value": "activity.lead_merge",
+              "name": "ActivityLeadMerge"
+            },
+            {
+              "value": "activity.lead_status_change",
+              "name": "ActivityLeadStatusChange"
+            },
+            {
+              "value": "activity.meeting",
+              "name": "ActivityMeeting"
+            },
+            {
+              "value": "activity.note",
+              "name": "ActivityNote"
+            },
+            {
+              "value": "activity.opportunity_status_change",
+              "name": "ActivityOpportunityStatusChange"
+            },
+            {
+              "value": "activity.sms",
+              "name": "ActivitySms"
+            },
+            {
+              "value": "activity.task_completed",
+              "name": "ActivityTaskCompleted"
+            },
+            {
+              "value": "activity.whatsapp_message",
+              "name": "ActivityWhatsappMessage"
+            },
+            {
+              "value": "contact",
+              "name": "Contact"
+            },
+            {
+              "value": "custom_fields.contact",
+              "name": "CustomFieldsContact"
+            },
+            {
+              "value": "custom_fields.lead",
+              "name": "CustomFieldsLead"
+            },
+            {
+              "value": "custom_fields.opportunity",
+              "name": "CustomFieldsOpportunity"
+            },
+            {
+              "value": "email_template",
+              "name": "EmailTemplate"
+            },
+            {
+              "value": "sms_template",
+              "name": "SmsTemplate"
+            },
+            {
+              "value": "lead",
+              "name": "Lead"
+            },
+            {
+              "value": "opportunity",
+              "name": "Opportunity"
+            },
+            {
+              "value": "saved_search",
+              "name": "SavedSearch"
+            },
+            {
+              "value": "status.lead",
+              "name": "StatusLead"
+            },
+            {
+              "value": "status.opportunity",
+              "name": "StatusOpportunity"
+            },
+            {
+              "value": "task.answered_detached_call",
+              "name": "TaskAnsweredDetachedCall"
+            },
+            {
+              "value": "task.email_followup",
+              "name": "TaskEmailFollowup"
+            },
+            {
+              "value": "task.incoming_email",
+              "name": "TaskIncomingEmail"
+            },
+            {
+              "value": "task.lead_suggestion_incoming_email",
+              "name": "TaskLeadSuggestionIncomingEmail"
+            },
+            {
+              "value": "task.incoming_sms",
+              "name": "TaskIncomingSms"
+            },
+            {
+              "value": "task.incoming_whatsapp_message",
+              "name": "TaskIncomingWhatsappMessage"
+            },
+            {
+              "value": "task.lead",
+              "name": "TaskLead"
+            },
+            {
+              "value": "task.outbound_call",
+              "name": "TaskOutboundCall"
+            },
+            {
+              "value": "task.draft_email",
+              "name": "TaskDraftEmail"
+            },
+            {
+              "value": "task.draft_sms",
+              "name": "TaskDraftSms"
+            },
+            {
+              "value": "task.missed_call",
+              "name": "TaskMissedCall"
+            },
+            {
+              "value": "task.opportunity_due",
+              "name": "TaskOpportunityDue"
+            },
+            {
+              "value": "task.opportunities_awaiting_action",
+              "name": "TaskOpportunitiesAwaitingAction"
+            },
+            {
+              "value": "task.voicemail",
+              "name": "TaskVoicemail"
+            },
+            {
+              "value": "sequence_subscription",
+              "name": "SequenceSubscription"
+            },
+            {
+              "value": "subscription_history",
+              "name": "SubscriptionHistory"
+            },
+            {
+              "value": "custom_object",
+              "name": "CustomObject"
+            },
+            {
+              "value": "lead_file",
+              "name": "LeadFile"
+            },
+            {
+              "value": "comment_thread",
+              "name": "CommentThread"
+            },
+            {
+              "value": "comment",
+              "name": "Comment"
+            },
+            {
+              "value": "lead_summary",
+              "name": "LeadSummary"
+            },
+            {
+              "value": "agent_call_grade",
+              "name": "AgentCallGrade"
+            },
+            {
+              "value": "agent_config",
+              "name": "AgentConfig"
+            },
+            {
+              "value": "any_agent",
+              "name": "AnyAgent"
+            },
+            {
+              "value": "user",
+              "name": "User"
+            },
+            {
+              "value": "group",
+              "name": "Group"
+            },
+            {
+              "value": "user_or_group",
+              "name": "UserOrGroup"
+            },
+            {
+              "value": "user_or_agent",
+              "name": "UserOrAgent"
+            },
+            {
+              "value": "user_or_any_agent",
+              "name": "UserOrAnyAgent"
+            },
+            {
+              "value": "user_or_group_or_agent",
+              "name": "UserOrGroupOrAgent"
+            },
+            {
+              "value": "user_or_group_or_any_agent",
+              "name": "UserOrGroupOrAnyAgent"
+            },
+            {
+              "value": "sequence",
+              "name": "Sequence"
+            },
+            {
+              "value": "sequence_step",
+              "name": "SequenceStep"
+            },
+            {
+              "value": "pipeline",
+              "name": "Pipeline"
+            },
+            {
+              "value": "custom_activity_type",
+              "name": "CustomActivityType"
+            },
+            {
+              "value": "bulk_action.email",
+              "name": "BulkActionEmail"
+            },
+            {
+              "value": "bulk_action.edit",
+              "name": "BulkActionEdit"
+            },
+            {
+              "value": "bulk_action.delete",
+              "name": "BulkActionDelete"
+            },
+            {
+              "value": "bulk_action.sequence_subscription",
+              "name": "BulkActionSequenceSubscription"
+            },
+            {
+              "value": "connected_account",
+              "name": "ConnectedAccount"
+            },
+            {
+              "value": "dialer",
+              "name": "Dialer"
+            },
+            {
+              "value": "import",
+              "name": "Import"
+            },
+            {
+              "value": "membership",
+              "name": "Membership"
+            },
+            {
+              "value": "custom_object_type",
+              "name": "CustomObjectType"
+            },
+            {
+              "value": "phone_number",
+              "name": "PhoneNumber"
+            },
+            {
+              "value": "custom_fields.activity",
+              "name": "CustomFieldsActivity"
+            },
+            {
+              "value": "outcome",
+              "name": "Outcome"
+            },
+            {
+              "value": "form",
+              "name": "Form"
+            },
+            {
+              "value": "form_configuration",
+              "name": "FormConfiguration"
+            },
+            {
+              "value": "conversation_type",
+              "name": "ConversationType"
+            }
+          ]
+        }
+      },
+      "RegularSearchField": {
+        "title": "RegularSearchField",
+        "required": [
+          "field_name",
+          "object_type",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "field_name": {
+            "title": "Field Name",
+            "type": "string",
+            "description": "Name of the field, e.g. \u0060display_name\u0060 on \u0060lead\u0060 or \u0060title\u0060 on \u0060contact\u0060."
+          },
+          "object_type": {
+            "description": "The object type the field belongs to. It must match the object type being filtered, use a \u0060has_related\u0060 query to filter by fields of related objects.",
+            "title": "Object Type",
+            "$ref": "#/components/schemas/SearchObjectType"
+          },
+          "type": {
+            "$ref": "#/components/schemas/RegularFieldType"
+          }
+        },
+        "description": "A built-in field of an object type."
+      },
+      "RelativeDateRangeCondition": {
+        "title": "RelativeDateRangeCondition",
+        "required": [
+          "type",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/PredefinedRelativeDateRangeType"
+          },
+          "value": {
+            "description": "The predefined relative range.",
+            "title": "Value",
+            "$ref": "#/components/schemas/PredefinedRelativeDatetimeRange"
+          }
+        },
+        "description": "Matches dates and datetimes within a range like \u0060this-week\u0060."
       },
       "RenderedIntegrationLink": {
         "title": "RenderedIntegrationLink",
@@ -35933,6 +38153,31 @@
           }
         }
       },
+      "SavedSearchQuery": {
+        "title": "SavedSearchQuery",
+        "required": [
+          "saved_search_id",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "negate": {
+            "title": "Negate",
+            "type": "boolean",
+            "description": "Match objects that do NOT match this query instead.",
+            "default": false
+          },
+          "saved_search_id": {
+            "title": "Saved Search ID",
+            "type": "string",
+            "description": "ID of the Smart View, e.g. \u0060save_abc123\u0060."
+          },
+          "type": {
+            "$ref": "#/components/schemas/SavedSearchQueryType"
+          }
+        },
+        "description": "Matches objects matching a Smart View\u0027s query."
+      },
       "SavedSearchType": {
         "title": "SavedSearchType",
         "enum": [
@@ -35999,6 +38244,437 @@
             }
           ]
         }
+      },
+      "SearchField": {
+        "title": "SearchField",
+        "required": [
+          "type"
+        ],
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/RegularSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/CustomSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/FormFieldSearchField"
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
+        "description": "A field to filter or sort by.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "custom_field": "#/components/schemas/CustomSearchField",
+            "form_field": "#/components/schemas/FormFieldSearchField",
+            "regular_field": "#/components/schemas/RegularSearchField"
+          }
+        }
+      },
+      "SearchObjectType": {
+        "title": "SearchObjectType",
+        "enum": [
+          "activity.call",
+          "activity.created",
+          "activity.custom_activity",
+          "activity.email",
+          "activity.email_thread",
+          "activity.form_submission",
+          "activity.import_update",
+          "activity.lead_merge",
+          "activity.lead_status_change",
+          "activity.meeting",
+          "activity.note",
+          "activity.opportunity_status_change",
+          "activity.sms",
+          "activity.task_completed",
+          "activity.whatsapp_message",
+          "contact",
+          "custom_fields.contact",
+          "custom_fields.lead",
+          "custom_fields.opportunity",
+          "email_template",
+          "sms_template",
+          "lead",
+          "opportunity",
+          "saved_search",
+          "status.lead",
+          "status.opportunity",
+          "task.answered_detached_call",
+          "task.email_followup",
+          "task.incoming_email",
+          "task.lead_suggestion_incoming_email",
+          "task.incoming_sms",
+          "task.incoming_whatsapp_message",
+          "task.lead",
+          "task.outbound_call",
+          "task.draft_email",
+          "task.draft_sms",
+          "task.missed_call",
+          "task.opportunity_due",
+          "task.opportunities_awaiting_action",
+          "task.voicemail",
+          "sequence_subscription",
+          "subscription_history",
+          "custom_object",
+          "lead_file",
+          "comment_thread",
+          "comment",
+          "lead_summary",
+          "agent_call_grade",
+          "address",
+          "contact_email",
+          "contact_phone",
+          "contact_url"
+        ],
+        "type": "string",
+        "description": "Type of a searchable object.\n\n- \u0060lead\u0060, \u0060contact\u0060, \u0060opportunity\u0060: Leads, Contacts and Opportunities.\n- \u0060address\u0060, \u0060contact_email\u0060, \u0060contact_phone\u0060, \u0060contact_url\u0060: a Lead\u0027s addresses and a Contact\u0027s email addresses, phone numbers and URLs. They\u0027re not searchable on their own, only as the \u0060object_type\u0060 of a field or the \u0060related_object_type\u0060 of a \u0060has_related\u0060 query.\n- \u0060activity.*\u0060: Activities, e.g. \u0060activity.call\u0060, \u0060activity.email\u0060, \u0060activity.meeting\u0060, \u0060activity.note\u0060.\n- \u0060task.*\u0060: Tasks, e.g. \u0060task.lead\u0060 for regular tasks or \u0060task.outbound_call\u0060 for call tasks.\n- \u0060sequence_subscription\u0060: Workflow subscriptions of Contacts.\n- \u0060custom_object\u0060, \u0060lead_file\u0060, \u0060comment_thread\u0060, \u0060comment\u0060: Custom Objects, files, comment threads and comments.\n- Other types describe configuration, e.g. \u0060status.lead\u0060 or \u0060custom_fields.lead\u0060.",
+        "x-ms-enum": {
+          "name": "SearchObjectType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "activity.call",
+              "name": "ActivityCall"
+            },
+            {
+              "value": "activity.created",
+              "name": "ActivityCreated"
+            },
+            {
+              "value": "activity.custom_activity",
+              "name": "ActivityCustomActivity"
+            },
+            {
+              "value": "activity.email",
+              "name": "ActivityEmail"
+            },
+            {
+              "value": "activity.email_thread",
+              "name": "ActivityEmailThread"
+            },
+            {
+              "value": "activity.form_submission",
+              "name": "ActivityFormSubmission"
+            },
+            {
+              "value": "activity.import_update",
+              "name": "ActivityImportUpdate"
+            },
+            {
+              "value": "activity.lead_merge",
+              "name": "ActivityLeadMerge"
+            },
+            {
+              "value": "activity.lead_status_change",
+              "name": "ActivityLeadStatusChange"
+            },
+            {
+              "value": "activity.meeting",
+              "name": "ActivityMeeting"
+            },
+            {
+              "value": "activity.note",
+              "name": "ActivityNote"
+            },
+            {
+              "value": "activity.opportunity_status_change",
+              "name": "ActivityOpportunityStatusChange"
+            },
+            {
+              "value": "activity.sms",
+              "name": "ActivitySms"
+            },
+            {
+              "value": "activity.task_completed",
+              "name": "ActivityTaskCompleted"
+            },
+            {
+              "value": "activity.whatsapp_message",
+              "name": "ActivityWhatsappMessage"
+            },
+            {
+              "value": "contact",
+              "name": "Contact"
+            },
+            {
+              "value": "custom_fields.contact",
+              "name": "CustomFieldsContact"
+            },
+            {
+              "value": "custom_fields.lead",
+              "name": "CustomFieldsLead"
+            },
+            {
+              "value": "custom_fields.opportunity",
+              "name": "CustomFieldsOpportunity"
+            },
+            {
+              "value": "email_template",
+              "name": "EmailTemplate"
+            },
+            {
+              "value": "sms_template",
+              "name": "SmsTemplate"
+            },
+            {
+              "value": "lead",
+              "name": "Lead"
+            },
+            {
+              "value": "opportunity",
+              "name": "Opportunity"
+            },
+            {
+              "value": "saved_search",
+              "name": "SavedSearch"
+            },
+            {
+              "value": "status.lead",
+              "name": "StatusLead"
+            },
+            {
+              "value": "status.opportunity",
+              "name": "StatusOpportunity"
+            },
+            {
+              "value": "task.answered_detached_call",
+              "name": "TaskAnsweredDetachedCall"
+            },
+            {
+              "value": "task.email_followup",
+              "name": "TaskEmailFollowup"
+            },
+            {
+              "value": "task.incoming_email",
+              "name": "TaskIncomingEmail"
+            },
+            {
+              "value": "task.lead_suggestion_incoming_email",
+              "name": "TaskLeadSuggestionIncomingEmail"
+            },
+            {
+              "value": "task.incoming_sms",
+              "name": "TaskIncomingSms"
+            },
+            {
+              "value": "task.incoming_whatsapp_message",
+              "name": "TaskIncomingWhatsappMessage"
+            },
+            {
+              "value": "task.lead",
+              "name": "TaskLead"
+            },
+            {
+              "value": "task.outbound_call",
+              "name": "TaskOutboundCall"
+            },
+            {
+              "value": "task.draft_email",
+              "name": "TaskDraftEmail"
+            },
+            {
+              "value": "task.draft_sms",
+              "name": "TaskDraftSms"
+            },
+            {
+              "value": "task.missed_call",
+              "name": "TaskMissedCall"
+            },
+            {
+              "value": "task.opportunity_due",
+              "name": "TaskOpportunityDue"
+            },
+            {
+              "value": "task.opportunities_awaiting_action",
+              "name": "TaskOpportunitiesAwaitingAction"
+            },
+            {
+              "value": "task.voicemail",
+              "name": "TaskVoicemail"
+            },
+            {
+              "value": "sequence_subscription",
+              "name": "SequenceSubscription"
+            },
+            {
+              "value": "subscription_history",
+              "name": "SubscriptionHistory"
+            },
+            {
+              "value": "custom_object",
+              "name": "CustomObject"
+            },
+            {
+              "value": "lead_file",
+              "name": "LeadFile"
+            },
+            {
+              "value": "comment_thread",
+              "name": "CommentThread"
+            },
+            {
+              "value": "comment",
+              "name": "Comment"
+            },
+            {
+              "value": "lead_summary",
+              "name": "LeadSummary"
+            },
+            {
+              "value": "agent_call_grade",
+              "name": "AgentCallGrade"
+            },
+            {
+              "value": "address",
+              "name": "Address"
+            },
+            {
+              "value": "contact_email",
+              "name": "ContactEmail"
+            },
+            {
+              "value": "contact_phone",
+              "name": "ContactPhone"
+            },
+            {
+              "value": "contact_url",
+              "name": "ContactUrl"
+            }
+          ]
+        }
+      },
+      "SearchQuery": {
+        "title": "SearchQuery",
+        "required": [
+          "type"
+        ],
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/AndQuery"
+          },
+          {
+            "$ref": "#/components/schemas/OrQuery"
+          },
+          {
+            "$ref": "#/components/schemas/ObjectTypeQuery"
+          },
+          {
+            "$ref": "#/components/schemas/FieldConditionQuery"
+          },
+          {
+            "$ref": "#/components/schemas/HasRelatedQuery"
+          },
+          {
+            "$ref": "#/components/schemas/TextQuery"
+          },
+          {
+            "$ref": "#/components/schemas/IdQuery"
+          },
+          {
+            "$ref": "#/components/schemas/MatchAllQuery"
+          },
+          {
+            "$ref": "#/components/schemas/SavedSearchQuery"
+          },
+          {
+            "$ref": "#/components/schemas/AnyOfSavedSearchQuery"
+          },
+          {
+            "$ref": "#/components/schemas/InStatusQuery"
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
+        "description": "A search query. Queries are distinguished by their \u0060type\u0060.\n\nCombine queries with \u0060and\u0060 and \u0060or\u0060, and use \u0060negate\u0060 on any query to\nexclude what it matches.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "and": "#/components/schemas/AndQuery",
+            "any_of_saved_search": "#/components/schemas/AnyOfSavedSearchQuery",
+            "field_condition": "#/components/schemas/FieldConditionQuery",
+            "has_related": "#/components/schemas/HasRelatedQuery",
+            "id": "#/components/schemas/IdQuery",
+            "in_status": "#/components/schemas/InStatusQuery",
+            "match_all": "#/components/schemas/MatchAllQuery",
+            "object_type": "#/components/schemas/ObjectTypeQuery",
+            "or": "#/components/schemas/OrQuery",
+            "saved_search": "#/components/schemas/SavedSearchQuery",
+            "text": "#/components/schemas/TextQuery"
+          }
+        }
+      },
+      "SearchResult": {
+        "patternProperties": {
+          "^custom\\.": {}
+        },
+        "title": "SearchResult",
+        "required": [
+          "__object_type"
+        ],
+        "type": "object",
+        "properties": {
+          "__object_type": {
+            "description": "The type of the object.",
+            "title": "Object Type",
+            "$ref": "#/components/schemas/SearchObjectType"
+          },
+          "id": {
+            "title": "ID",
+            "type": "string",
+            "description": "ID of the object, e.g. \u0060lead_abc123\u0060. When requesting specific \u0060_fields\u0060, include \u0060id\u0060 to get it."
+          }
+        },
+        "description": "A matching object.\n\nContains the fields requested in \u0060_fields\u0060 for its object type, in the\nsame format as the object type\u0027s own endpoint, including custom fields as\n\u0060custom.cf_abc123\u0060 keys."
+      },
+      "SearchResultCount": {
+        "title": "SearchResultCount",
+        "required": [
+          "limited",
+          "total"
+        ],
+        "type": "object",
+        "properties": {
+          "limited": {
+            "title": "Limited",
+            "type": "integer",
+            "description": "Number of matching objects available through pagination, i.e. \u0060total\u0060 capped at \u0060results_limit\u0060."
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer",
+            "description": "Number of objects matching the query."
+          }
+        }
+      },
+      "SearchSort": {
+        "title": "SearchSort",
+        "required": [
+          "direction",
+          "field"
+        ],
+        "type": "object",
+        "properties": {
+          "direction": {
+            "description": "The sort direction.",
+            "title": "Direction",
+            "$ref": "#/components/schemas/SortDirection"
+          },
+          "field": {
+            "description": "The field to sort by. Only number, date and text fields of the returned object type can be used.",
+            "title": "Field",
+            "$ref": "#/components/schemas/SearchField"
+          }
+        },
+        "description": "A field to sort results by."
       },
       "SendAttempt": {
         "title": "SendAttempt",
@@ -36104,6 +38780,29 @@
             "title": "Whole Org",
             "type": "boolean"
           }
+        }
+      },
+      "SortDirection": {
+        "title": "SortDirection",
+        "enum": [
+          "asc",
+          "desc"
+        ],
+        "type": "string",
+        "description": "\nItems can be ordered either ascending (smallest value first)\nor descending (largest value first).",
+        "x-ms-enum": {
+          "name": "SortDirection",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "asc",
+              "name": "Asc"
+            },
+            {
+              "value": "desc",
+              "name": "Desc"
+            }
+          ]
         }
       },
       "SpeakerSide": {
@@ -36257,6 +38956,87 @@
             }
           ]
         }
+      },
+      "StartEnd": {
+        "title": "StartEnd",
+        "enum": [
+          "start",
+          "end"
+        ],
+        "type": "string",
+        "description": "The start or the end of a period.",
+        "x-ms-enum": {
+          "name": "StartEnd",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "start",
+              "name": "Start"
+            },
+            {
+              "value": "end",
+              "name": "End"
+            }
+          ]
+        }
+      },
+      "StartEndOfPeriodMoment": {
+        "title": "StartEndOfPeriodMoment",
+        "required": [
+          "period",
+          "type",
+          "which"
+        ],
+        "type": "object",
+        "properties": {
+          "moment": {
+            "description": "The moment whose period is used. Defaults to now.",
+            "default": {
+              "type": "now"
+            },
+            "title": "Moment",
+            "$ref": "#/components/schemas/Moment"
+          },
+          "period": {
+            "description": "The calendar period.",
+            "title": "Period",
+            "$ref": "#/components/schemas/CalendarPeriod"
+          },
+          "type": {
+            "$ref": "#/components/schemas/StartEndOfPeriodType"
+          },
+          "which": {
+            "description": "Whether to use the start or the end of the period.",
+            "title": "Which",
+            "$ref": "#/components/schemas/StartEnd"
+          }
+        },
+        "description": "The start or end of the calendar period containing another moment.\n\nFor example, the start of the current week."
+      },
+      "StartEndOfPredefinedRelativePeriodMoment": {
+        "title": "StartEndOfPredefinedRelativePeriodMoment",
+        "required": [
+          "range",
+          "type",
+          "which"
+        ],
+        "type": "object",
+        "properties": {
+          "range": {
+            "description": "The predefined relative range.",
+            "title": "Range",
+            "$ref": "#/components/schemas/PredefinedRelativeDatetimeRange"
+          },
+          "type": {
+            "$ref": "#/components/schemas/StartEndOfPredefinedRelativePeriodType"
+          },
+          "which": {
+            "description": "Whether to use the start or the end of the range.",
+            "title": "Which",
+            "$ref": "#/components/schemas/StartEnd"
+          }
+        },
+        "description": "The start or end of a predefined relative range like \u0060last-week\u0060."
       },
       "StatusReason": {
         "title": "StatusReason",
@@ -36700,6 +39480,141 @@
             }
           ]
         }
+      },
+      "TermCondition": {
+        "title": "TermCondition",
+        "required": [
+          "type",
+          "values"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/TermType"
+          },
+          "values": {
+            "title": "Values",
+            "type": "array",
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "description": "Matches any of these values."
+          }
+        },
+        "description": "Matches fields equal to any of the given values.\n\nUse it for choice custom fields and fields with a fixed set of values,\nlike a call\u0027s \u0060direction\u0060."
+      },
+      "TextCondition": {
+        "title": "TextCondition",
+        "required": [
+          "mode",
+          "type",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "mode": {
+            "description": "How to match the text.",
+            "title": "Mode",
+            "$ref": "#/components/schemas/TextMatchMode"
+          },
+          "type": {
+            "$ref": "#/components/schemas/TextType"
+          },
+          "value": {
+            "title": "Value",
+            "type": "string",
+            "description": "The text to look for."
+          }
+        },
+        "description": "Matches text fields containing the given text."
+      },
+      "TextMatchMode": {
+        "title": "TextMatchMode",
+        "enum": [
+          "full_words",
+          "phrase",
+          "beginning_of_words",
+          "exact_value"
+        ],
+        "type": "string",
+        "description": "How to match text:\n\n- \u0060full_words\u0060: All the words appear, in any order.\n- \u0060phrase\u0060: The words appear next to each other, in the given order.\n- \u0060beginning_of_words\u0060: All the words appear as the beginning of words, e.g. \u0060ste\u0060 matches \u0022Steli\u0022.\n- \u0060exact_value\u0060: The whole value equals the text.",
+        "x-ms-enum": {
+          "name": "TextMatchMode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "full_words",
+              "name": "FullWords"
+            },
+            {
+              "value": "phrase",
+              "name": "Phrase"
+            },
+            {
+              "value": "beginning_of_words",
+              "name": "BeginningOfWords"
+            },
+            {
+              "value": "exact_value",
+              "name": "ExactValue"
+            }
+          ]
+        }
+      },
+      "TextQuery": {
+        "title": "TextQuery",
+        "required": [
+          "mode",
+          "type",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "mode": {
+            "description": "How to match the text.",
+            "title": "Mode",
+            "$ref": "#/components/schemas/TextMatchMode"
+          },
+          "negate": {
+            "title": "Negate",
+            "type": "boolean",
+            "description": "Match objects that do NOT match this query instead.",
+            "default": false
+          },
+          "type": {
+            "$ref": "#/components/schemas/TextQueryType"
+          },
+          "value": {
+            "title": "Value",
+            "type": "string",
+            "description": "The text to look for."
+          }
+        },
+        "description": "Matches objects containing the given text in any of their text fields.\n\nThis works like the search bar in Close."
+      },
+      "TimezoneNameCondition": {
+        "title": "TimezoneNameCondition",
+        "required": [
+          "type",
+          "values"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/TimezoneNameType"
+          },
+          "values": {
+            "title": "Values",
+            "type": "array",
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "description": "IANA timezone names, e.g. \u0060America/New_York\u0060."
+          }
+        },
+        "description": "Matches timezone fields with any of the given timezones."
       },
       "UnderlyingCarrier": {
         "title": "UnderlyingCarrier",
@@ -37474,7 +40389,13 @@
           "voice_agent_caller_id_enabled": {
             "title": "Voice Agent Caller ID Enabled",
             "type": "boolean",
-            "description": "Whether voice agents can use this phone number as their outbound caller ID."
+            "description": "Deprecated. Use \u0060voice_agents_local_presence_enabled\u0060. This field is an alias of \u0060voice_agents_local_presence_enabled\u0060, and it will be removed in a future update. If you send both fields, they must have the same value.",
+            "deprecated": true
+          },
+          "voice_agents_local_presence_enabled": {
+            "title": "Voice Agents Local Presence Enabled",
+            "type": "boolean",
+            "description": "Whether Local Presence can pick this phone number for calls and SMS that voice agents make in Auto caller ID mode."
           },
           "voicemail_greeting_url": {
             "title": "Voicemail Greeting URL",
@@ -38634,6 +41555,76 @@
           }
         ]
       },
+      "MultipleNumbersConditionValuesItem": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "number"
+          }
+        ]
+      },
+      "NumberConditionValue": {
+        "title": "Value",
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "description": "The value to match."
+      },
+      "NumberRangeConditionGt": {
+        "title": "Gt",
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "description": "Greater than."
+      },
+      "NumberRangeConditionGte": {
+        "title": "Gte",
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "description": "Greater than or equal."
+      },
+      "NumberRangeConditionLt": {
+        "title": "Lt",
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "description": "Less than."
+      },
+      "NumberRangeConditionLte": {
+        "title": "Lte",
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "description": "Less than or equal."
+      },
       "OpportunityCommentSummary": {
         "title": "Comment Summary",
         "anyOf": [
@@ -39000,6 +41991,24 @@
             "type": "string"
           }
         }
+      },
+      "DataSearchRequestFields": {
+        "propertyNames": {
+          "$ref": "#/components/schemas/SearchObjectType"
+        },
+        "title": "Fields By Type",
+        "type": "object",
+        "additionalProperties": {
+          "maxItems": 100,
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "description": "Fields to return for each object type. The field names are the same as in the object type\u0027s own endpoint, e.g. \u0060{\u0022lead\u0022: [\u0022id\u0022, \u0022display_name\u0022]}\u0060. Custom fields use \u0060custom.cf_abc123\u0060. Without it, results only contain \u0060id\u0060 and \u0060__object_type\u0060."
       },
       "EmailActivityEnvelope": {
         "title": "Envelope",
@@ -42044,6 +45053,9 @@
           "voice_agent_caller_id_enabled": {
             "type": "boolean"
           },
+          "voice_agents_local_presence_enabled": {
+            "type": "boolean"
+          },
           "voicemail_greeting_url": {
             "type": "null"
           }
@@ -44636,6 +47648,24 @@
       },
       "BulkSequenceSubscriptionActionSortItemProperty": {
         "type": "object"
+      },
+      "DataSearchRequestFieldsProperty": {
+        "propertyNames": {
+          "$ref": "#/components/schemas/SearchObjectType"
+        },
+        "title": "Fields By Type",
+        "type": "object",
+        "additionalProperties": {
+          "maxItems": 100,
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "description": "Fields to return for each object type. The field names are the same as in the object type\u0027s own endpoint, e.g. \u0060{\u0022lead\u0022: [\u0022id\u0022, \u0022display_name\u0022]}\u0060. Custom fields use \u0060custom.cf_abc123\u0060. Without it, results only contain \u0060id\u0060 and \u0060__object_type\u0060."
       },
       "EmailActivityEnvelopeProperty": {
         "title": "Envelope",
@@ -49028,6 +52058,60 @@
           }
         }
       },
+      "AndType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "and"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AndType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "and",
+              "name": "And"
+            }
+          ]
+        }
+      },
+      "AnyOfSavedSearchType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "any_of_saved_search"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AnyOfSavedSearchType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "any_of_saved_search",
+              "name": "AnyOfSavedSearch"
+            }
+          ]
+        }
+      },
+      "BooleanType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "boolean"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "BooleanType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "boolean",
+              "name": "Boolean"
+            }
+          ]
+        }
+      },
       "CreateCallActivityDirection": {
         "enum": [
           "inbound",
@@ -49375,6 +52459,114 @@
           ]
         }
       },
+      "CurrentUserType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "current_user"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "CurrentUserType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "current_user",
+              "name": "CurrentUser"
+            }
+          ]
+        }
+      },
+      "CustomFieldType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "custom_field"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "CustomFieldType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "custom_field",
+              "name": "CustomField"
+            }
+          ]
+        }
+      },
+      "FixedDateRangeType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "fixed_date_range"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "FixedDateRangeType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "fixed_date_range",
+              "name": "FixedDateRange"
+            }
+          ]
+        }
+      },
+      "DurationRangeType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "duration_range"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "DurationRangeType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "duration_range",
+              "name": "DurationRange"
+            }
+          ]
+        }
+      },
+      "ExactMomentType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "exact_moment"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "ExactMomentType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "exact_moment",
+              "name": "ExactMoment"
+            }
+          ]
+        }
+      },
+      "ExistsType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "exists"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "ExistsType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "exists",
+              "name": "Exists"
+            }
+          ]
+        }
+      },
       "ExportType": {
         "title": "Type",
         "enum": [
@@ -49412,6 +52604,132 @@
           ]
         }
       },
+      "FieldConditionType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "field_condition"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "FieldConditionType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "field_condition",
+              "name": "FieldCondition"
+            }
+          ]
+        }
+      },
+      "FixedLocalDateType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "fixed_local_date"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "FixedLocalDateType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "fixed_local_date",
+              "name": "FixedLocalDate"
+            }
+          ]
+        }
+      },
+      "FixedLocalType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "fixed_local"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "FixedLocalType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "fixed_local",
+              "name": "FixedLocal"
+            }
+          ]
+        }
+      },
+      "FixedUtcType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "fixed_utc"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "FixedUtcType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "fixed_utc",
+              "name": "FixedUtc"
+            }
+          ]
+        }
+      },
+      "FormFieldType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "form_field"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "FormFieldType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "form_field",
+              "name": "FormField"
+            }
+          ]
+        }
+      },
+      "HasRelatedType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "has_related"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "HasRelatedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "has_related",
+              "name": "HasRelated"
+            }
+          ]
+        }
+      },
+      "IdType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "id"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "IdType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "id",
+              "name": "Id"
+            }
+          ]
+        }
+      },
       "ImportantType": {
         "const": null,
         "title": "Type",
@@ -49426,6 +52744,114 @@
             {
               "value": "important",
               "name": "Important"
+            }
+          ]
+        }
+      },
+      "InStatusType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "in_status"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "InStatusType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "in_status",
+              "name": "InStatus"
+            }
+          ]
+        }
+      },
+      "LocalTimeType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "local_time"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "LocalTimeType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "local_time",
+              "name": "LocalTime"
+            }
+          ]
+        }
+      },
+      "MatchAllType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "match_all"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "MatchAllType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "match_all",
+              "name": "MatchAll"
+            }
+          ]
+        }
+      },
+      "MomentRangeType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "moment_range"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "MomentRangeType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "moment_range",
+              "name": "MomentRange"
+            }
+          ]
+        }
+      },
+      "MultipleNumbersType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "multiple_numbers"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "MultipleNumbersType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "multiple_numbers",
+              "name": "MultipleNumbers"
+            }
+          ]
+        }
+      },
+      "MultipleTextType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "multiple_text"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "MultipleTextType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "multiple_text",
+              "name": "MultipleText"
             }
           ]
         }
@@ -49448,6 +52874,168 @@
           ]
         }
       },
+      "NowType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "now"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "NowType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "now",
+              "name": "Now"
+            }
+          ]
+        }
+      },
+      "NumberType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "number"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "NumberType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "number",
+              "name": "Number"
+            }
+          ]
+        }
+      },
+      "NumberRangeType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "number_range"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "NumberRangeType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "number_range",
+              "name": "NumberRange"
+            }
+          ]
+        }
+      },
+      "ObjectTypeType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "object_type"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "ObjectTypeType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "object_type",
+              "name": "ObjectType"
+            }
+          ]
+        }
+      },
+      "OffsetType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "offset"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "OffsetType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "offset",
+              "name": "Offset"
+            }
+          ]
+        }
+      },
+      "OrType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "or"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "OrType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "or",
+              "name": "Or"
+            }
+          ]
+        }
+      },
+      "ReferenceConditionType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "reference"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "ReferenceConditionType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "reference",
+              "name": "Reference"
+            }
+          ]
+        }
+      },
+      "RegularFieldType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "regular_field"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "RegularFieldType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "regular_field",
+              "name": "RegularField"
+            }
+          ]
+        }
+      },
+      "PredefinedRelativeDateRangeType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "predefined_relative_date_range"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "PredefinedRelativeDateRangeType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "predefined_relative_date_range",
+              "name": "PredefinedRelativeDateRange"
+            }
+          ]
+        }
+      },
       "RunFieldEnrichmentObjectType": {
         "title": "Object Type",
         "enum": [
@@ -49466,6 +53054,132 @@
             {
               "value": "contact",
               "name": "Contact"
+            }
+          ]
+        }
+      },
+      "SavedSearchQueryType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "saved_search"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "SavedSearchQueryType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "saved_search",
+              "name": "SavedSearch"
+            }
+          ]
+        }
+      },
+      "StartEndOfPeriodType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "start_end_of_period"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "StartEndOfPeriodType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "start_end_of_period",
+              "name": "StartEndOfPeriod"
+            }
+          ]
+        }
+      },
+      "StartEndOfPredefinedRelativePeriodType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "start_end_of_predefined_relative_period"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "StartEndOfPredefinedRelativePeriodType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "start_end_of_predefined_relative_period",
+              "name": "StartEndOfPredefinedRelativePeriod"
+            }
+          ]
+        }
+      },
+      "TermType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "term"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "TermType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "term",
+              "name": "Term"
+            }
+          ]
+        }
+      },
+      "TextType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "text"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "TextType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "text",
+              "name": "Text"
+            }
+          ]
+        }
+      },
+      "TextQueryType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "text"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "TextQueryType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "text",
+              "name": "Text"
+            }
+          ]
+        }
+      },
+      "TimezoneNameType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "timezone_name"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "TimezoneNameType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "timezone_name",
+              "name": "TimezoneName"
             }
           ]
         }
@@ -50668,6 +54382,12 @@
       "name": "activities.whatsapp_messages",
       "externalDocs": {
         "url": "https://developer.close.com/api/resources/activities/whatsapp"
+      }
+    },
+    {
+      "name": "advanced_filtering",
+      "externalDocs": {
+        "url": "https://developer.close.com/api/resources/advanced-filtering"
       }
     },
     {

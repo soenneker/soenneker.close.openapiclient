@@ -18,6 +18,7 @@ using Soenneker.Close.OpenApiClient.Custom_field;
 using Soenneker.Close.OpenApiClient.Custom_field_schema;
 using Soenneker.Close.OpenApiClient.Custom_object;
 using Soenneker.Close.OpenApiClient.Custom_object_type;
+using Soenneker.Close.OpenApiClient.Data;
 using Soenneker.Close.OpenApiClient.Dialer;
 using Soenneker.Close.OpenApiClient.Email_template;
 using Soenneker.Close.OpenApiClient.Enrich_field;
@@ -122,6 +123,11 @@ namespace Soenneker.Close.OpenApiClient
         public global::Soenneker.Close.OpenApiClient.Custom_object_type.Custom_object_typeRequestBuilder Custom_object_type
         {
             get => new global::Soenneker.Close.OpenApiClient.Custom_object_type.Custom_object_typeRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The data property</summary>
+        public global::Soenneker.Close.OpenApiClient.Data.DataRequestBuilder Data
+        {
+            get => new global::Soenneker.Close.OpenApiClient.Data.DataRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The dialer property</summary>
         public global::Soenneker.Close.OpenApiClient.Dialer.DialerRequestBuilder Dialer
