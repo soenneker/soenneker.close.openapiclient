@@ -40,6 +40,14 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string CreatedBy { get; set; }
 #endif
+        /// <summary>The created_by_agent_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CreatedByAgentId { get; set; }
+#nullable restore
+#else
+        public string CreatedByAgentId { get; set; }
+#endif
         /// <summary>The created_by_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -120,6 +128,14 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string UpdatedBy { get; set; }
 #endif
+        /// <summary>The updated_by_agent_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UpdatedByAgentId { get; set; }
+#nullable restore
+#else
+        public string UpdatedByAgentId { get; set; }
+#endif
         /// <summary>The updated_by_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -181,6 +197,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "comment_summary", n => { CommentSummary = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommentSummary>(global::Soenneker.Close.OpenApiClient.Models.CommentSummary.CreateFromDiscriminatorValue); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
+                { "created_by_agent_id", n => { CreatedByAgentId = n.GetStringValue(); } },
                 { "created_by_name", n => { CreatedByName = n.GetStringValue(); } },
                 { "custom_activity_type_id", n => { CustomActivityTypeId = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetDateTimeOffsetValue(); } },
@@ -197,6 +214,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CustomActivityStatus>(); } },
                 { "_type", n => { Type = n.GetStringValue(); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
+                { "updated_by_agent_id", n => { UpdatedByAgentId = n.GetStringValue(); } },
                 { "updated_by_name", n => { UpdatedByName = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
                 { "user_name", n => { UserName = n.GetStringValue(); } },
@@ -214,6 +232,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommentSummary>("comment_summary", CommentSummary);
             writer.WriteStringValue("contact_id", ContactId);
             writer.WriteStringValue("created_by", CreatedBy);
+            writer.WriteStringValue("created_by_agent_id", CreatedByAgentId);
             writer.WriteStringValue("created_by_name", CreatedByName);
             writer.WriteStringValue("custom_activity_type_id", CustomActivityTypeId);
             writer.WriteDateTimeOffsetValue("date_created", DateCreated);
@@ -230,6 +249,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CustomActivityStatus>("status", Status);
             writer.WriteStringValue("_type", Type);
             writer.WriteStringValue("updated_by", UpdatedBy);
+            writer.WriteStringValue("updated_by_agent_id", UpdatedByAgentId);
             writer.WriteStringValue("updated_by_name", UpdatedByName);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteStringValue("user_name", UserName);

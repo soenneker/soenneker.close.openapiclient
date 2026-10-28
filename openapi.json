@@ -27604,6 +27604,8 @@
           },
           "agent_config_id": {
             "title": "Agent Config ID",
+            "description": "Deprecated. Use `created_by_agent_id` instead.",
+            "deprecated": true,
             "default": null,
             "anyOf": [
               {
@@ -27645,6 +27647,18 @@
           },
           "created_by": {
             "title": "Created By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_by_agent_id": {
+            "title": "Created By Agent ID",
+            "default": null,
             "anyOf": [
               {
                 "type": "string"
@@ -27749,6 +27763,18 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "updated_by_agent_id": {
+            "title": "Updated By Agent ID",
+            "default": null,
             "anyOf": [
               {
                 "type": "string"
@@ -27975,91 +28001,6 @@
           "enabled",
           "disabled",
           "unset"
-        ]
-      },
-      "BasicSubscriptionInfoForContact": {
-        "title": "BasicSubscriptionInfoForContact",
-        "type": "object",
-        "properties": {
-          "contact_email": {
-            "title": "Contact Email",
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "date_created": {
-            "title": "Date Created",
-            "type": "string",
-            "format": "date-time"
-          },
-          "initial_email_id": {
-            "title": "Initial Email ID",
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "sequence_id": {
-            "title": "Sequence ID",
-            "type": "string"
-          },
-          "sequence_name": {
-            "title": "Sequence Name",
-            "type": "string"
-          },
-          "sequence_status": {
-            "$ref": "#/components/schemas/WorkflowStatus"
-          },
-          "start_date": {
-            "title": "Start Date",
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "date-time"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "subscription_id": {
-            "title": "Subscription ID",
-            "type": "string"
-          },
-          "subscription_status": {
-            "$ref": "#/components/schemas/WorkflowRunStatus"
-          },
-          "subscription_status_reason": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/StatusReason"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          }
-        },
-        "required": [
-          "contact_email",
-          "date_created",
-          "initial_email_id",
-          "sequence_id",
-          "sequence_name",
-          "sequence_status",
-          "start_date",
-          "subscription_id",
-          "subscription_status",
-          "subscription_status_reason"
         ]
       },
       "BlockedPhoneNumber": {
@@ -29460,17 +29401,6 @@
               }
             ]
           },
-          "lead_suggestions_operation_id": {
-            "title": "Lead Suggestions Operation ID",
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "name": {
             "title": "Name",
             "anyOf": [
@@ -29491,20 +29421,6 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ContactPhone"
-            }
-          },
-          "recent_calls": {
-            "title": "Recent Calls",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ContactRecentCall"
-            }
-          },
-          "subscriptions": {
-            "title": "Subscriptions",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/BasicSubscriptionInfoForContact"
             }
           },
           "timezone": {
@@ -29636,46 +29552,6 @@
         "required": [
           "phone",
           "type"
-        ]
-      },
-      "ContactRecentCall": {
-        "title": "ContactRecentCall",
-        "type": "object",
-        "properties": {
-          "dialer_id": {
-            "title": "Dialer ID",
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "duration": {
-            "title": "Duration",
-            "type": "integer"
-          },
-          "finish_timestamp": {
-            "title": "Finish Timestamp",
-            "type": "string",
-            "format": "date-time"
-          },
-          "id": {
-            "title": "ID",
-            "type": "string"
-          },
-          "status": {
-            "$ref": "#/components/schemas/CallStatus"
-          }
-        },
-        "required": [
-          "dialer_id",
-          "duration",
-          "finish_timestamp",
-          "id",
-          "status"
         ]
       },
       "ContactUrl": {
@@ -31864,6 +31740,18 @@
               }
             ]
           },
+          "created_by_agent_id": {
+            "title": "Created By Agent ID",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "created_by_name": {
             "title": "Created By Name",
             "default": null,
@@ -31971,6 +31859,18 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "updated_by_agent_id": {
+            "title": "Updated By Agent ID",
+            "default": null,
             "anyOf": [
               {
                 "type": "string"
@@ -32344,6 +32244,8 @@
           },
           "agent_config_id": {
             "title": "Agent Config ID",
+            "description": "Deprecated. Use `created_by_agent_id` instead.",
+            "deprecated": true,
             "default": null,
             "anyOf": [
               {
@@ -32441,6 +32343,18 @@
           },
           "created_by": {
             "title": "Created By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_by_agent_id": {
+            "title": "Created By Agent ID",
+            "default": null,
             "anyOf": [
               {
                 "type": "string"
@@ -33017,6 +32931,8 @@
           },
           "agent_config_id": {
             "title": "Agent Config ID",
+            "description": "Deprecated. Use `created_by_agent_id` instead.",
+            "deprecated": true,
             "default": null,
             "anyOf": [
               {
@@ -33154,6 +33070,18 @@
           },
           "created_by": {
             "title": "Created By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_by_agent_id": {
+            "title": "Created By Agent ID",
+            "default": null,
             "anyOf": [
               {
                 "type": "string"
@@ -36464,6 +36392,8 @@
           },
           "agent_config_id": {
             "title": "Agent Config ID",
+            "description": "Deprecated. Use `created_by_agent_id` instead.",
+            "deprecated": true,
             "default": null,
             "anyOf": [
               {
@@ -36569,6 +36499,18 @@
           },
           "created_by": {
             "title": "Created By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_by_agent_id": {
+            "title": "Created By Agent ID",
+            "default": null,
             "anyOf": [
               {
                 "type": "string"
@@ -39888,6 +39830,8 @@
           },
           "agent_config_id": {
             "title": "Agent Config ID",
+            "description": "Deprecated. Use `created_by_agent_id` instead.",
+            "deprecated": true,
             "default": null,
             "anyOf": [
               {
@@ -39942,6 +39886,18 @@
           },
           "created_by": {
             "title": "Created By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_by_agent_id": {
+            "title": "Created By Agent ID",
+            "default": null,
             "anyOf": [
               {
                 "type": "string"
@@ -40911,46 +40867,6 @@
           "range",
           "type",
           "which"
-        ]
-      },
-      "StatusReason": {
-        "title": "StatusReason",
-        "description": "Reason for each higher level status on a Workflow run.",
-        "type": "string",
-        "enum": [
-          "manual",
-          "pending-call-timed-out",
-          "bulk-action",
-          "rate-limited",
-          "sequence-deleted",
-          "workflow-paused",
-          "filter-not-matched",
-          "insufficient-ai-credit-balance",
-          "plan-not-supported",
-          "reply-received",
-          "call-answered",
-          "meeting-booked",
-          "lead-status-changed",
-          "outcome-met",
-          "account-invalid",
-          "account-failures",
-          "sending-throttled-too-long",
-          "membership-inactive",
-          "send-as-error",
-          "email-bounced",
-          "call-failed",
-          "sms-failed",
-          "no-user-phone",
-          "billing-error",
-          "assignment-field-invalid",
-          "lead-status-field-invalid",
-          "assignees-missing",
-          "run-as-disabled",
-          "lead-not-visible",
-          "internal-error",
-          "field-mapping-error",
-          "filter-config-invalid",
-          "email-ai-generation-failed"
         ]
       },
       "SummaryFeedbackRating": {
@@ -43098,26 +43014,6 @@
           "updated_by",
           "user_id",
           "users"
-        ]
-      },
-      "WorkflowRunStatus": {
-        "title": "WorkflowRunStatus",
-        "type": "string",
-        "enum": [
-          "active",
-          "paused",
-          "finished",
-          "goal",
-          "error"
-        ]
-      },
-      "WorkflowStatus": {
-        "title": "WorkflowStatus",
-        "type": "string",
-        "enum": [
-          "active",
-          "paused",
-          "draft"
         ]
       }
     }

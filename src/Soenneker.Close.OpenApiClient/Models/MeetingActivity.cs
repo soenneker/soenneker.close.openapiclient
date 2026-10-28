@@ -18,7 +18,8 @@ namespace Soenneker.Close.OpenApiClient.Models
         public int? ActualDuration { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The agent_config_id property</summary>
+        /// <summary>Deprecated. Use `created_by_agent_id` instead.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AgentConfigId { get; set; }
@@ -107,6 +108,14 @@ namespace Soenneker.Close.OpenApiClient.Models
 #nullable restore
 #else
         public string CreatedBy { get; set; }
+#endif
+        /// <summary>The created_by_agent_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CreatedByAgentId { get; set; }
+#nullable restore
+#else
+        public string CreatedByAgentId { get; set; }
 #endif
         /// <summary>The created_by_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -373,6 +382,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "conversation_type_id", n => { ConversationTypeId = n.GetStringValue(); } },
                 { "conversation_type_reason", n => { ConversationTypeReason = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.PlaybookReason>(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
+                { "created_by_agent_id", n => { CreatedByAgentId = n.GetStringValue(); } },
                 { "created_by_name", n => { CreatedByName = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetDateTimeOffsetValue(); } },
                 { "date_updated", n => { DateUpdated = n.GetDateTimeOffsetValue(); } },
@@ -434,6 +444,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("conversation_type_id", ConversationTypeId);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.PlaybookReason>("conversation_type_reason", ConversationTypeReason);
             writer.WriteStringValue("created_by", CreatedBy);
+            writer.WriteStringValue("created_by_agent_id", CreatedByAgentId);
             writer.WriteStringValue("created_by_name", CreatedByName);
             writer.WriteDateTimeOffsetValue("date_created", DateCreated);
             writer.WriteDateTimeOffsetValue("date_updated", DateUpdated);

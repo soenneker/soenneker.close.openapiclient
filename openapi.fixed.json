@@ -26592,7 +26592,9 @@
               "null",
               "string"
             ],
-            "default": null
+            "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead.",
+            "default": null,
+            "deprecated": true
           },
           "attachments": {
             "title": "Attachments",
@@ -26617,6 +26619,14 @@
               "null",
               "string"
             ]
+          },
+          "created_by_agent_id": {
+            "title": "Created By Agent ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
           },
           "created_by_name": {
             "title": "Created By Name",
@@ -26694,6 +26704,14 @@
               "null",
               "string"
             ]
+          },
+          "updated_by_agent_id": {
+            "title": "Updated By Agent ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
           },
           "updated_by_name": {
             "title": "Updated By Name",
@@ -26876,72 +26894,6 @@
               "name": "Unset"
             }
           ]
-        }
-      },
-      "BasicSubscriptionInfoForContact": {
-        "title": "BasicSubscriptionInfoForContact",
-        "required": [
-          "contact_email",
-          "date_created",
-          "initial_email_id",
-          "sequence_id",
-          "sequence_name",
-          "sequence_status",
-          "start_date",
-          "subscription_id",
-          "subscription_status",
-          "subscription_status_reason"
-        ],
-        "type": "object",
-        "properties": {
-          "contact_email": {
-            "title": "Contact Email",
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "date_created": {
-            "title": "Date Created",
-            "type": "string",
-            "format": "date-time"
-          },
-          "initial_email_id": {
-            "title": "Initial Email ID",
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "sequence_id": {
-            "title": "Sequence ID",
-            "type": "string"
-          },
-          "sequence_name": {
-            "title": "Sequence Name",
-            "type": "string"
-          },
-          "sequence_status": {
-            "$ref": "#/components/schemas/WorkflowStatus"
-          },
-          "start_date": {
-            "title": "Start Date",
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          },
-          "subscription_id": {
-            "title": "Subscription ID",
-            "type": "string"
-          },
-          "subscription_status": {
-            "$ref": "#/components/schemas/WorkflowRunStatus"
-          },
-          "subscription_status_reason": {
-            "$ref": "#/components/schemas/BasicSubscriptionInfoForContactSubscriptionStatusReason"
-          }
         }
       },
       "BlockedPhoneNumber": {
@@ -28396,13 +28348,6 @@
             ],
             "default": null
           },
-          "lead_suggestions_operation_id": {
-            "title": "Lead Suggestions Operation ID",
-            "type": [
-              "null",
-              "string"
-            ]
-          },
           "name": {
             "title": "Name",
             "type": [
@@ -28419,20 +28364,6 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ContactPhone"
-            }
-          },
-          "recent_calls": {
-            "title": "Recent Calls",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ContactRecentCall"
-            }
-          },
-          "subscriptions": {
-            "title": "Subscriptions",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/BasicSubscriptionInfoForContact"
             }
           },
           "timezone": {
@@ -28532,43 +28463,6 @@
             "items": {
               "type": "string"
             }
-          }
-        }
-      },
-      "ContactRecentCall": {
-        "title": "ContactRecentCall",
-        "required": [
-          "dialer_id",
-          "duration",
-          "finish_timestamp",
-          "id",
-          "status"
-        ],
-        "type": "object",
-        "properties": {
-          "dialer_id": {
-            "title": "Dialer ID",
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "duration": {
-            "title": "Duration",
-            "type": "integer"
-          },
-          "finish_timestamp": {
-            "title": "Finish Timestamp",
-            "type": "string",
-            "format": "date-time"
-          },
-          "id": {
-            "title": "ID",
-            "type": "string"
-          },
-          "status": {
-            "description": "Current status of the call.",
-            "$ref": "#/components/schemas/CallStatus"
           }
         }
       },
@@ -30348,6 +30242,14 @@
               "string"
             ]
           },
+          "created_by_agent_id": {
+            "title": "Created By Agent ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
+          },
           "created_by_name": {
             "title": "Created By Name",
             "type": [
@@ -30432,6 +30334,14 @@
               "null",
               "string"
             ]
+          },
+          "updated_by_agent_id": {
+            "title": "Updated By Agent ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
           },
           "updated_by_name": {
             "title": "Updated By Name",
@@ -30776,7 +30686,9 @@
               "null",
               "string"
             ],
-            "default": null
+            "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead.",
+            "default": null,
+            "deprecated": true
           },
           "attachments": {
             "title": "Attachments",
@@ -30845,6 +30757,14 @@
               "null",
               "string"
             ]
+          },
+          "created_by_agent_id": {
+            "title": "Created By Agent ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
           },
           "created_by_name": {
             "title": "Created By Name",
@@ -31279,7 +31199,9 @@
               "null",
               "string"
             ],
-            "default": null
+            "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead.",
+            "default": null,
+            "deprecated": true
           },
           "ai_draft": {
             "$ref": "#/components/schemas/EmailInThreadAiDraftProperty"
@@ -31371,6 +31293,14 @@
               "null",
               "string"
             ]
+          },
+          "created_by_agent_id": {
+            "title": "Created By Agent ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
           },
           "created_by_name": {
             "title": "Created By Name",
@@ -34179,7 +34109,9 @@
               "null",
               "string"
             ],
-            "default": null
+            "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead.",
+            "default": null,
+            "deprecated": true
           },
           "attached_call_ids": {
             "title": "Attached Call IDs",
@@ -34249,6 +34181,14 @@
               "null",
               "string"
             ]
+          },
+          "created_by_agent_id": {
+            "title": "Created By Agent ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
           },
           "created_by_name": {
             "title": "Created By Name",
@@ -37808,7 +37748,9 @@
               "null",
               "string"
             ],
-            "default": null
+            "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead.",
+            "default": null,
+            "deprecated": true
           },
           "caller_id_mode": {
             "$ref": "#/components/schemas/SmsActivityCallerIdMode"
@@ -37836,6 +37778,14 @@
               "null",
               "string"
             ]
+          },
+          "created_by_agent_id": {
+            "title": "Created By Agent ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
           },
           "created_by_name": {
             "title": "Created By Name",
@@ -39037,184 +38987,6 @@
           }
         },
         "description": "The start or end of a predefined relative range like \u0060last-week\u0060."
-      },
-      "StatusReason": {
-        "title": "StatusReason",
-        "enum": [
-          "manual",
-          "pending-call-timed-out",
-          "bulk-action",
-          "rate-limited",
-          "sequence-deleted",
-          "workflow-paused",
-          "filter-not-matched",
-          "insufficient-ai-credit-balance",
-          "plan-not-supported",
-          "reply-received",
-          "call-answered",
-          "meeting-booked",
-          "lead-status-changed",
-          "outcome-met",
-          "account-invalid",
-          "account-failures",
-          "sending-throttled-too-long",
-          "membership-inactive",
-          "send-as-error",
-          "email-bounced",
-          "call-failed",
-          "sms-failed",
-          "no-user-phone",
-          "billing-error",
-          "assignment-field-invalid",
-          "lead-status-field-invalid",
-          "assignees-missing",
-          "run-as-disabled",
-          "lead-not-visible",
-          "internal-error",
-          "field-mapping-error",
-          "filter-config-invalid",
-          "email-ai-generation-failed"
-        ],
-        "type": "string",
-        "description": "Reason for each higher level status on a Workflow run.",
-        "x-ms-enum": {
-          "name": "StatusReason",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "manual",
-              "name": "Manual"
-            },
-            {
-              "value": "pending-call-timed-out",
-              "name": "PendingCallTimedOut"
-            },
-            {
-              "value": "bulk-action",
-              "name": "BulkAction"
-            },
-            {
-              "value": "rate-limited",
-              "name": "RateLimited"
-            },
-            {
-              "value": "sequence-deleted",
-              "name": "SequenceDeleted"
-            },
-            {
-              "value": "workflow-paused",
-              "name": "WorkflowPaused"
-            },
-            {
-              "value": "filter-not-matched",
-              "name": "FilterNotMatched"
-            },
-            {
-              "value": "insufficient-ai-credit-balance",
-              "name": "InsufficientAiCreditBalance"
-            },
-            {
-              "value": "plan-not-supported",
-              "name": "PlanNotSupported"
-            },
-            {
-              "value": "reply-received",
-              "name": "ReplyReceived"
-            },
-            {
-              "value": "call-answered",
-              "name": "CallAnswered"
-            },
-            {
-              "value": "meeting-booked",
-              "name": "MeetingBooked"
-            },
-            {
-              "value": "lead-status-changed",
-              "name": "LeadStatusChanged"
-            },
-            {
-              "value": "outcome-met",
-              "name": "OutcomeMet"
-            },
-            {
-              "value": "account-invalid",
-              "name": "AccountInvalid"
-            },
-            {
-              "value": "account-failures",
-              "name": "AccountFailures"
-            },
-            {
-              "value": "sending-throttled-too-long",
-              "name": "SendingThrottledTooLong"
-            },
-            {
-              "value": "membership-inactive",
-              "name": "MembershipInactive"
-            },
-            {
-              "value": "send-as-error",
-              "name": "SendAsError"
-            },
-            {
-              "value": "email-bounced",
-              "name": "EmailBounced"
-            },
-            {
-              "value": "call-failed",
-              "name": "CallFailed"
-            },
-            {
-              "value": "sms-failed",
-              "name": "SmsFailed"
-            },
-            {
-              "value": "no-user-phone",
-              "name": "NoUserPhone"
-            },
-            {
-              "value": "billing-error",
-              "name": "BillingError"
-            },
-            {
-              "value": "assignment-field-invalid",
-              "name": "AssignmentFieldInvalid"
-            },
-            {
-              "value": "lead-status-field-invalid",
-              "name": "LeadStatusFieldInvalid"
-            },
-            {
-              "value": "assignees-missing",
-              "name": "AssigneesMissing"
-            },
-            {
-              "value": "run-as-disabled",
-              "name": "RunAsDisabled"
-            },
-            {
-              "value": "lead-not-visible",
-              "name": "LeadNotVisible"
-            },
-            {
-              "value": "internal-error",
-              "name": "InternalError"
-            },
-            {
-              "value": "field-mapping-error",
-              "name": "FieldMappingError"
-            },
-            {
-              "value": "filter-config-invalid",
-              "name": "FilterConfigInvalid"
-            },
-            {
-              "value": "email-ai-generation-failed",
-              "name": "EmailAiGenerationFailed"
-            }
-          ]
-        }
       },
       "SummaryFeedbackRating": {
         "title": "SummaryFeedbackRating",
@@ -41004,70 +40776,6 @@
           }
         }
       },
-      "WorkflowRunStatus": {
-        "title": "WorkflowRunStatus",
-        "enum": [
-          "active",
-          "paused",
-          "finished",
-          "goal",
-          "error"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "WorkflowRunStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "active",
-              "name": "Active"
-            },
-            {
-              "value": "paused",
-              "name": "Paused"
-            },
-            {
-              "value": "finished",
-              "name": "Finished"
-            },
-            {
-              "value": "goal",
-              "name": "Goal"
-            },
-            {
-              "value": "error",
-              "name": "Error"
-            }
-          ]
-        }
-      },
-      "WorkflowStatus": {
-        "title": "WorkflowStatus",
-        "enum": [
-          "active",
-          "paused",
-          "draft"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "WorkflowStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "active",
-              "name": "Active"
-            },
-            {
-              "value": "paused",
-              "name": "Paused"
-            },
-            {
-              "value": "draft",
-              "name": "Draft"
-            }
-          ]
-        }
-      },
       "ActivityBaseCommentSummary": {
         "title": "Comment Summary",
         "anyOf": [
@@ -41083,16 +40791,6 @@
         "anyOf": [
           {
             "$ref": "#/components/schemas/CreationSource"
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "BasicSubscriptionInfoForContactSubscriptionStatusReason": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/StatusReason"
           },
           {
             "type": "null"

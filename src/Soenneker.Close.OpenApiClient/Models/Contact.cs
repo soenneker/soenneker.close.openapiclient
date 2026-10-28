@@ -66,14 +66,6 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string LeadId { get; set; }
 #endif
-        /// <summary>The lead_suggestions_operation_id property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? LeadSuggestionsOperationId { get; set; }
-#nullable restore
-#else
-        public string LeadSuggestionsOperationId { get; set; }
-#endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -97,22 +89,6 @@ namespace Soenneker.Close.OpenApiClient.Models
 #nullable restore
 #else
         public List<global::Soenneker.Close.OpenApiClient.Models.ContactPhone> Phones { get; set; }
-#endif
-        /// <summary>The recent_calls property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.ContactRecentCall>? RecentCalls { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.Close.OpenApiClient.Models.ContactRecentCall> RecentCalls { get; set; }
-#endif
-        /// <summary>The subscriptions property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.BasicSubscriptionInfoForContact>? Subscriptions { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.Close.OpenApiClient.Models.BasicSubscriptionInfoForContact> Subscriptions { get; set; }
 #endif
         /// <summary>The timezone property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -187,12 +163,9 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "integration_links", n => { IntegrationLinks = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.RenderedIntegrationLink>(global::Soenneker.Close.OpenApiClient.Models.RenderedIntegrationLink.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "lead_id", n => { LeadId = n.GetStringValue(); } },
-                { "lead_suggestions_operation_id", n => { LeadSuggestionsOperationId = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "phones", n => { Phones = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ContactPhone>(global::Soenneker.Close.OpenApiClient.Models.ContactPhone.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "recent_calls", n => { RecentCalls = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ContactRecentCall>(global::Soenneker.Close.OpenApiClient.Models.ContactRecentCall.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "subscriptions", n => { Subscriptions = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.BasicSubscriptionInfoForContact>(global::Soenneker.Close.OpenApiClient.Models.BasicSubscriptionInfoForContact.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "timezone", n => { Timezone = n.GetStringValue(); } },
                 { "timezone_source", n => { TimezoneSource = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -215,12 +188,9 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.RenderedIntegrationLink>("integration_links", IntegrationLinks);
             writer.WriteStringValue("lead_id", LeadId);
-            writer.WriteStringValue("lead_suggestions_operation_id", LeadSuggestionsOperationId);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ContactPhone>("phones", Phones);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ContactRecentCall>("recent_calls", RecentCalls);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.BasicSubscriptionInfoForContact>("subscriptions", Subscriptions);
             writer.WriteStringValue("timezone", Timezone);
             writer.WriteStringValue("timezone_source", TimezoneSource);
             writer.WriteStringValue("title", Title);

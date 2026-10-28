@@ -24,7 +24,8 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string AgentActionReason { get; set; }
 #endif
-        /// <summary>The agent_config_id property</summary>
+        /// <summary>Deprecated. Use `created_by_agent_id` instead.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AgentConfigId { get; set; }
@@ -127,6 +128,14 @@ namespace Soenneker.Close.OpenApiClient.Models
 #nullable restore
 #else
         public string CreatedBy { get; set; }
+#endif
+        /// <summary>The created_by_agent_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CreatedByAgentId { get; set; }
+#nullable restore
+#else
+        public string CreatedByAgentId { get; set; }
 #endif
         /// <summary>The created_by_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -420,6 +429,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "cc", n => { Cc = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
+                { "created_by_agent_id", n => { CreatedByAgentId = n.GetStringValue(); } },
                 { "created_by_name", n => { CreatedByName = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetDateTimeOffsetValue(); } },
                 { "date_scheduled", n => { DateScheduled = n.GetDateTimeOffsetValue(); } },
@@ -483,6 +493,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("cc", Cc);
             writer.WriteStringValue("contact_id", ContactId);
             writer.WriteStringValue("created_by", CreatedBy);
+            writer.WriteStringValue("created_by_agent_id", CreatedByAgentId);
             writer.WriteStringValue("created_by_name", CreatedByName);
             writer.WriteDateTimeOffsetValue("date_created", DateCreated);
             writer.WriteDateTimeOffsetValue("date_scheduled", DateScheduled);
