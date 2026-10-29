@@ -39,6 +39,8 @@ namespace Soenneker.Close.OpenApiClient.Activity.Whatsapp_message
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesWhatsappMessagesList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivitiesWhatsappMessagesList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Whatsapp_message.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +51,12 @@ namespace Soenneker.Close.OpenApiClient.Activity.Whatsapp_message
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesWhatsappMessagesList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesWhatsappMessagesList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesWhatsappMessagesList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesWhatsappMessagesList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// `external_whatsapp_message_id` must be the ID of the message inside WhatsApp. You can filter by this field to find messages in Close to update or delete based on updates or deletions in WhatsApp.`message_markdown` must be the body of the message in the WhatsApp Markdown format. The `message_html` read-only field will return the HTML representation of this message.To include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename`, and `content_type`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin with `https://app.close.com/go/file/`.`integration_link` (optional) is a URL string that can be provided by the integration partner creating the WhatsApp message. This can be used to link back to the message in the external system.`response_to_id` (optional) is the Close activity ID of another WhatsApp message activity (not the WhatsApp native message ID) that this message is replying to. This field creates a thread relationship between messages, allowing you to track conversation flow and message replies within WhatsApp threads. The ID must be a valid WhatsApp message activity ID in Close (e.g., `acti_...`).Only WhatsApp Markdown messages and file attachments are supported. No support is provided for Polls, Events, Locations, etc.**Important**: The total size of all attachments for a single WhatsApp message activity cannot exceed 25MB.When creating a new WhatsApp message with the direction set to `incoming`, you can pass the query parameter `send_to_inbox` with the value of `true` to create a corresponding Inbox Notification for the message.
@@ -58,6 +65,8 @@ namespace Soenneker.Close.OpenApiClient.Activity.Whatsapp_message
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.WhatsAppMessageActivity?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateWhatsAppMessage body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Whatsapp_message.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -69,7 +78,12 @@ namespace Soenneker.Close.OpenApiClient.Activity.Whatsapp_message
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.WhatsAppMessageActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.WhatsAppMessageActivity.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.WhatsAppMessageActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.WhatsAppMessageActivity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Filter by `external_whatsapp_message_id` to find messages to update or delete based on changes in WhatsApp.

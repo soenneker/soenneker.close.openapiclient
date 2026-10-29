@@ -39,6 +39,9 @@ namespace Soenneker.Close.OpenApiClient.Report.Custom.Item
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<Stream?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Report.Custom.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +52,13 @@ namespace Soenneker.Close.OpenApiClient.Report.Custom.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// This endpoint returns data that allows graphing of arbitrary metrics and is what powers &quot;Explorer&quot; in the UI. - `query` is an optional search query filter. When reporting on leads, any regular lead search query may be used. When reporting on activities or opportunities, only properties of the chosen object type may be used. For example, `direction:incoming` may be used if `x` starts with `email.`. Defaults to `*`, which includes all objects. - `y` is made up of the object type and field which is reported on the Y axis. For example the value `lead.count` (used by default) may be used to graph the number of leads, or a numeric field may be used. Examples: `call.duration` (for call length), `opportunity.value` (for value of opportunities). - `x` is the field which is reported on the X axis, for example &quot;lead.custom.MRR&quot; or &quot;opportunity.date_created&quot;. - `interval`: Graph interval, i.e. the precision of the X axis. For time based graphs (`x` is a date field), one of `auto`, `hour`, `day`, `week`, `month`, `quarter`, `year` (defaults to `auto`, which is chosen based on `start` and `end`). For graphs with a numeric X axis, an integer number can be specified to indicate the histogram interval (`auto` by default). - `group_by`: Optional field name by which the report will be grouped. When grouping, a separate series will be returned for each group. By default no grouping is applied. - `transform_y`: Transformation function that gets applied to the `y` parameter. One of `sum` (default), `avg`, `min`, or `max`. Does not apply for `.count` `y` values if `x` is of the same object type. - `start`: Date or integer of the start of the X axis range. For dates, defaults to the date of creation of your organization. - `end`: Date or integer of the end of the X axis range. For dates, defaults to now. To get a full list of fields that can be used, do a GET to `/report/custom/fields/`. Only the `number` data type can be used for the `y` parameter.
@@ -67,6 +76,7 @@ namespace Soenneker.Close.OpenApiClient.Report.Custom.Item
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>

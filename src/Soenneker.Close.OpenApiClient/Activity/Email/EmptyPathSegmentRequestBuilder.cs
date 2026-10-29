@@ -39,6 +39,8 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesEmailsList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivitiesEmailsList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Email.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +51,12 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesEmailsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesEmailsList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesEmailsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesEmailsList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// *status* must be one of the following: - `inbox` to log an already received email. - `draft` to create a draft email. - `scheduled` to send an email at a scheduled date and time, which must be specified in the `date_scheduled` field. - `outbox` to actually **send** an email. To delay email sending by a few seconds (to allow undo), specify `send_in` in seconds (must be less than 60). - `sent` to log an already sent email.Only drafts can be modified, and their status can be changed to `scheduled` (to send later) or `outbox` (to send immediately). Scheduled emails, or emails in outbox that weren&apos;t sent yet can be canceled by setting the status back to `draft`.For scheduled, outbox, or sent emails, a `followup_date` may be posted, which will have Close create an email followup task if no response was received.We&apos;ll render an Email Template server-side if you include a `template_id` _without_ including `body_text` or `body_html` in your POST.To specify both a sender name and a sender email address when posting an email, you can use the `sender` field with the format `&quot;sender&quot;: &quot;&quot;John Smith&quot; &lt;emailaddress@example.com&gt;&quot;`The `sender` field is **required** for emails with status `inbox`, `scheduled`, `outbox`, or `error`. It may be omitted for `draft` (since the sender can be specified later before sending) and `sent` (where it defaults to the email address of the `user` associated with the email or the owner of the API key).To include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename`, `content_type`, and `size`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin `https://app.close.com/go/file/`.
@@ -58,6 +65,8 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.EmailActivity?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateEmailActivity body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -69,7 +78,12 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.EmailActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.EmailActivity.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.EmailActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.EmailActivity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// You&apos;ll get one object per email message.

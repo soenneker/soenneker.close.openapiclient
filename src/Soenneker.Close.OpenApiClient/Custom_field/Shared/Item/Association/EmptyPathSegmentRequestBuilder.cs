@@ -40,6 +40,9 @@ namespace Soenneker.Close.OpenApiClient.Custom_field.Shared.Item.Association
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedCreateAssociation201Response?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedCreateAssociationRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -51,7 +54,13 @@ namespace Soenneker.Close.OpenApiClient.Custom_field.Shared.Item.Association
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedCreateAssociation201Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedCreateAssociation201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedCreateAssociation201Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedCreateAssociation201Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Associates a Shared Custom Field with an object type such as Lead, Contact, or Custom Activity Type. Once associated, the Shared Custom Field can be set on objects of that type.This endpoint accepts the following attributes:- `object_type` – can be one of: `lead`, `contact`, `opportunity`, `custom_activity_type`,  `custom_object_type`.- `custom_activity_type_id` – ID of the Custom Activity Type that you want to  associate this Shared Field with. Only relevant if you chose the `object_type` of `custom_activity_type`.- `custom_object_type_id` – ID of the Custom Object Type that you want to  associate this Shared Field with. Only relevant if you chose the `object_type` of `custom_object_type`.- `editable_with_roles` – list of [Roles](https://developer.close.com/api/resources/roles) that can edit the values of  this Field on the given object. Note that this is a per-association setting, meaning that editing of the Shared Custom Field can be restricted on one object and not restricted on another.- `required` – whether a value *must* be provided for this Field on the given  object. Only relevant if you chose the `object_type` of `custom_activity_type` or `custom_object_type`. Note that this is a per-association setting, meaning that this Shared Custom Field can be required on one object and not required on another.

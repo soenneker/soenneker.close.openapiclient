@@ -39,6 +39,8 @@ namespace Soenneker.Close.OpenApiClient.Lead
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.LeadsList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.LeadsList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Lead.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +51,12 @@ namespace Soenneker.Close.OpenApiClient.Lead
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.LeadsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.LeadsList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.LeadsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.LeadsList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Contacts, addresses, and custom fields can all be nested in the lead. Activities, tasks, and opportunities must be posted separately.**status / status_id** (optional): Post either `status` or `status_id` (but not both). If neither is provided, the organization&apos;s default (first) status will be used. Using `status_id` is recommended so that users can rename statuses in the UI without breaking your implementation.**custom.FIELD_ID** (optional): Set custom fields by setting `custom.FIELD_ID` to the field value, where FIELD_ID is the ID of the custom field, e.g.:```json{ &quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c&quot;: &quot;value&quot;, &quot;custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F&quot;: &quot;other value&quot; }```If a custom field has `accepts_multiple_values: true`, the entire value will be replaced. For example, given a Lead has a Custom Choice Field with value `[&quot;A&quot;, &quot;B&quot;]`, adding choice `&quot;C&quot;` would mean setting the value to `[&quot;A&quot;, &quot;B&quot;, &quot;C&quot;]`.Note that using the `custom` field dict or the `custom.FIELD_NAME` syntax (instead of custom field IDs) is deprecated and will be removed from the API. See [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.
@@ -58,6 +65,8 @@ namespace Soenneker.Close.OpenApiClient.Lead
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.Lead?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.LeadsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -69,7 +78,12 @@ namespace Soenneker.Close.OpenApiClient.Lead
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.Lead>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.Lead.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.Lead>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.Lead.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List Leads

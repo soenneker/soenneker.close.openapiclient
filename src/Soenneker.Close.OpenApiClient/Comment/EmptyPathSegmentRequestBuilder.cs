@@ -39,6 +39,8 @@ namespace Soenneker.Close.OpenApiClient.Comment
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CommentsList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.CommentsList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Comment.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +51,12 @@ namespace Soenneker.Close.OpenApiClient.Comment
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CommentsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CommentsList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CommentsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CommentsList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a comment on an object. If a comment thread already exists on that object, a new comment is added to the existing thread. If no thread exists yet, one is created automatically.
@@ -58,6 +65,8 @@ namespace Soenneker.Close.OpenApiClient.Comment
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.CommentsCreate201Response?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateComment body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -69,7 +78,12 @@ namespace Soenneker.Close.OpenApiClient.Comment
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CommentsCreate201Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CommentsCreate201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CommentsCreate201Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CommentsCreate201Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Comments may be fetched by `object_id` (the object that was commented on) or by `thread_id`. Exactly one of those filters must be provided.Comments on leads the requestor cannot see are omitted from the response.

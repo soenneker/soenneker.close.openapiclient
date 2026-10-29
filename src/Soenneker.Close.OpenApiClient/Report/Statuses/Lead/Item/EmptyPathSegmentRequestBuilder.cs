@@ -39,6 +39,9 @@ namespace Soenneker.Close.OpenApiClient.Report.Statuses.Lead.Item
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Report.Statuses.Lead.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +52,13 @@ namespace Soenneker.Close.OpenApiClient.Report.Statuses.Lead.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get a lead status change report.The date range is optional. A report may be requestedfor a specific time period or overall. You can specifyeither a `query` or `smart_view_id` (but not both) tofilter leads included in the report.The following fields are returned (when requesting anoverall report, some inapplicable fields will not bereturned):* `status_overview`: A list of all statuses with:    * `status_id`, `status_label`,      `status_is_deleted`: The ID and label of the      status, and whether it was deleted.    * `started`: Number of leads in this status at      the start of the period.    * `ended`: Number in this status at the end.    * `change`: Net change during the period      (`ended` minus `started`).    * `change_percent`: Net change in percent.    * `gained`: Number that were not in this status      at the beginning but were at the end.    * `lost`: Number that were in this status at the      beginning but were not at the end.    * `entered`: Number that entered this status at      some point during the period.    * `left`: Number that left this status at some      point during the period.    * `_queries`: A dictionary containing search      queries for the different states (`started`,      `ended`, `gained`, `lost`, `entered`, `left`).    * `_leads_page_urls`: A dictionary containing      paths to the lead search UI page.* `status_transitions`: A list of all status  transitions (aggregated by start/end status) for  the given period with:    * `from_status_id`, `from_status_label`,      `from_status_is_deleted`: Starting status      (null for created leads).    * `to_status_id`, `to_status_label`,      `to_status_is_deleted`: Ending status.    * `count`: The number that transitioned.    * `_query`: The search query for those records.    * `_leads_page_url`: Path to the search UI page.* `status_transitions_summary`: Status transitions  summarized for the period. E.g. a lead that went  A→B→C is counted as A→C.

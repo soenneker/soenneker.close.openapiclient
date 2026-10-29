@@ -40,6 +40,8 @@ namespace Soenneker.Close.OpenApiClient.Enrich_field
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.FieldEnrichmentCreate200Response?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.RunFieldEnrichment body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -51,7 +53,12 @@ namespace Soenneker.Close.OpenApiClient.Enrich_field
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.FieldEnrichmentCreate200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.FieldEnrichmentCreate200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.FieldEnrichmentCreate200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.FieldEnrichmentCreate200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// This endpoint uses AI to enrich (populate or enhance) a specific field on a lead or contact. The enrichment process analyzes existing data and external sources to provide intelligent field values.**Parameters:**- `organization_id` (required): The organization ID- `object_type` (required): Either &quot;lead&quot; or &quot;contact&quot;- `object_id` (required): The ID of the lead or contact to enrich- `field_id` (required): The ID of the custom field to enrich- `set_new_value` (optional): Whether to update the field with the enriched value (default: true)- `overwrite_existing_value` (optional): Whether to overwrite existing field values (default: false)

@@ -39,6 +39,8 @@ namespace Soenneker.Close.OpenApiClient.Activity.Import_update
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesImportUpdatesList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivitiesImportUpdatesList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Import_update.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +51,12 @@ namespace Soenneker.Close.OpenApiClient.Activity.Import_update
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesImportUpdatesList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesImportUpdatesList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesImportUpdatesList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesImportUpdatesList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get a list of ImportUpdate activities, which record bulk import operations that modified existing leads. Each ImportUpdate is associated with a bulk import (`import_id`) and indicates whether the change has been reverted.

@@ -39,6 +39,8 @@ namespace Soenneker.Close.OpenApiClient.Bulk_action.Sequence_subscription
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.BulkActionsSequenceSubscriptionsList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.BulkActionsSequenceSubscriptionsList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Bulk_action.Sequence_subscription.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +51,12 @@ namespace Soenneker.Close.OpenApiClient.Bulk_action.Sequence_subscription
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.BulkActionsSequenceSubscriptionsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.BulkActionsSequenceSubscriptionsList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.BulkActionsSequenceSubscriptionsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.BulkActionsSequenceSubscriptionsList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// `action_type` must be one of:- `subscribe` to create a new sequence subscription for contacts that have never received the given sequence.- `resume` to resume any paused sequence subscriptions for the given sequence or all sequences if `sequence_id` is not provided.- `resume_finished` to resume any finished sequence subscriptions for the given sequence or all sequences if `sequence_id` is not provided.- `pause` to pause any active sequence subscriptions for the given sequence or all sequences if `sequence_id` is not provided.`sequence_id`, `sender_account_id`, `sender_name`, `sender_email` and `contact_preference` are required if `action_type` is `subscribe`.`contact_preference` can be set to:- `lead` to only subscribe the primary/first contact email of the lead.- `contact` to subscribe the primary email of each contact of the lead.`subscribe`, `resume` and `resume_finished` all start or restart Workflowruns, so they require a plan that includes them and otherwise return a 400.`pause` and `reassign` remain available on every plan.
@@ -58,6 +65,8 @@ namespace Soenneker.Close.OpenApiClient.Bulk_action.Sequence_subscription
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionAction?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.BulkActionsSequenceSubscriptionsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -69,7 +78,12 @@ namespace Soenneker.Close.OpenApiClient.Bulk_action.Sequence_subscription
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionAction>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionAction.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionAction>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionAction.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List bulk sequence subscriptions

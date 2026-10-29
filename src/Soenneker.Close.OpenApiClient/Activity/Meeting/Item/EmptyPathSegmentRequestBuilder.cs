@@ -39,6 +39,9 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +52,13 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Meeting transcripts can be accessed using this API but are not loaded by default. To load transcripts, use the `_fields` parameter with `transcripts` value.The `transcripts` field is an array of objects for each Close Notetaker bot that joined the meeting. Typically, there will be only one transcript. Transcripts are ordered by the time bots joined the meeting.Example transcripts in response:```json{ &quot;transcripts&quot;: [ { &quot;utterances&quot;: [ { &quot;speaker_label&quot;: &quot;John Lead&quot;, &quot;speaker_side&quot;: &quot;contact&quot;, &quot;start&quot;: 0.1, &quot;end&quot;: 1.2, &quot;text&quot;: &quot;Hey, what&apos;s up? How is it going?&quot; }, { &quot;speaker_label&quot;: &quot;Jane User&quot;, &quot;speaker_side&quot;: &quot;close-user&quot;, &quot;start&quot;: 1.3, &quot;end&quot;: 2.4, &quot;text&quot;: &quot;Hey John, I&apos;m doing great. How about you?&quot; } ], &quot;summary_text&quot;: &quot;Summary text&quot;, &quot;summary_html&quot;: &quot;&lt;p&gt;Summary text&lt;/p&gt;&quot; } ] }```
@@ -57,6 +66,9 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.MeetingActivity"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.MeetingActivity?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Meeting.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -67,7 +79,13 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.MeetingActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.MeetingActivity.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.MeetingActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.MeetingActivity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Most commonly this can be used to update a meetings&apos;s `user_note_html` or `outcome_id`.
@@ -76,6 +94,9 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.MeetingActivity?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -87,7 +108,13 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.MeetingActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.MeetingActivity.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.MeetingActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.MeetingActivity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete a Meeting activity
@@ -105,6 +132,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>

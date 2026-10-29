@@ -55,10 +55,6 @@ namespace Soenneker.Close.OpenApiClient.Models
             {
                 result.FormFieldSearchField = new global::Soenneker.Close.OpenApiClient.Models.FormFieldSearchField();
             }
-            else if("regular_field".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.RegularSearchField = new global::Soenneker.Close.OpenApiClient.Models.RegularSearchField();
-            }
             return result;
         }
         /// <summary>

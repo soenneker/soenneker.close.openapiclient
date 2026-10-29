@@ -7,24 +7,23 @@ using System.IO;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
-    /// <summary>
-    /// A built-in field of an object type.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class RegularSearchField : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Name of the field, e.g. `display_name` on `lead` or `title` on `contact`.</summary>
+        /// <summary>Name of the field. See the [fields of each object type](https://developer.close.com/api/resources/advanced-filtering-fields).</summary>
+        public global::Soenneker.Close.OpenApiClient.Models.ActivityCallSearchFieldName? FieldName { get; set; }
+        /// <summary>The object_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FieldName { get; set; }
+        public string? ObjectType { get; set; }
 #nullable restore
 #else
-        public string FieldName { get; set; }
+        public string ObjectType { get; set; }
 #endif
-        /// <summary>The object type the field belongs to. It must match the object type being filtered, use a `has_related` query to filter by fields of related objects.</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.SearchObjectType? ObjectType { get; set; }
         /// <summary>The type property</summary>
         public global::Soenneker.Close.OpenApiClient.Models.RegularFieldType? Type { get; set; }
         /// <summary>
@@ -52,8 +51,8 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "field_name", n => { FieldName = n.GetStringValue(); } },
-                { "object_type", n => { ObjectType = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.SearchObjectType>(); } },
+                { "field_name", n => { FieldName = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.ActivityCallSearchFieldName>(); } },
+                { "object_type", n => { ObjectType = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.RegularFieldType>(); } },
             };
         }
@@ -64,8 +63,8 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("field_name", FieldName);
-            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.SearchObjectType>("object_type", ObjectType);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.ActivityCallSearchFieldName>("field_name", FieldName);
+            writer.WriteStringValue("object_type", ObjectType);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.RegularFieldType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

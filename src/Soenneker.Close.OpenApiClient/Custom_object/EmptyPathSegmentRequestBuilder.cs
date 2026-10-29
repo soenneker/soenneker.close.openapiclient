@@ -39,6 +39,8 @@ namespace Soenneker.Close.OpenApiClient.Custom_object
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CustomObjectsList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomObjectsList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Custom_object.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +51,12 @@ namespace Soenneker.Close.OpenApiClient.Custom_object
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CustomObjectsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CustomObjectsList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CustomObjectsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CustomObjectsList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Custom Field values can be set using the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object).The following fields are required:  - `custom_object_type_id`: The type of Custom Object you are creating determines the Custom Fields that can be used.  - `lead_id`: The Lead that this Custom Object instance will belong to.  - `name`: Each Custom Object has a name, used for display.
@@ -58,6 +65,8 @@ namespace Soenneker.Close.OpenApiClient.Custom_object
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.CustomObjectsCreate201Response?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CustomObjectsCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -69,7 +78,12 @@ namespace Soenneker.Close.OpenApiClient.Custom_object
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CustomObjectsCreate201Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CustomObjectsCreate201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CustomObjectsCreate201Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CustomObjectsCreate201Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The `lead_id` parameter is required. If you want to retrieve all Custom Object instances regardless of the lead, you will need to use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering).Custom Fields values appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object).Back references to each Custom Object are not collected in this response. If you need to access this information, please use the `back_reference_fields` on the Custom Object Type and [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) to search for objects that reference the Custom Object Instance.

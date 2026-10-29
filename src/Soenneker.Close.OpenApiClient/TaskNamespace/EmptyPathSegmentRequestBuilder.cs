@@ -39,6 +39,8 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.TasksList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.TasksList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +51,12 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.TasksList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.TasksList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.TasksList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.TasksList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Provide the type of task to be created in the `_type` field. Currently only tasks of type `lead` and `outgoing_call` can be created.
@@ -58,6 +65,8 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.TasksCreate200Response?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateTask body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -69,7 +78,12 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.TasksCreate200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.TasksCreate200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.TasksCreate200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.TasksCreate200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Any of the filters of the GET endpoint may be used as query parameters or passed in the request body (see [Filter Parameters](https://developer.close.com/api/overview/filter-parameters)). For example:```json{&quot;_params&quot;: {&quot;id__in&quot;: &quot;task_A,task_B,task_C&quot;}, &quot;is_complete&quot;: true}```Only the `assigned_to`, `date` and `is_complete` fields may be updated.
@@ -78,6 +92,8 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.TasksBulkUpdate200Response?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotifications body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -89,7 +105,12 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.TasksBulkUpdate200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.TasksBulkUpdate200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.TasksBulkUpdate200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.TasksBulkUpdate200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The `view` parameter can be used to conveniently access the different task views. It accepts one of the following values:* `inbox`: Shows incomplete tasks up to the end of the user&apos;s day only (taking the time zone into account).* `future`: Shows incomplete tasks starting from the user&apos;s tomorrow only (taking the time zone into account).* `archive`: Shows complete tasks only.Note that a `view` value of `inbox` or `future` will override any `date__lt` or `date__gte` parameters included in the same request.The `_order_by` field allows ordering by `date` or `date_created` (descending order by prepending a minus, e.g. `_order_by=-date`).

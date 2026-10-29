@@ -40,6 +40,8 @@ namespace Soenneker.Close.OpenApiClient.Report.Activity
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.ReportingGetActivity200Response?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.ReportingGetActivityRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -51,7 +53,12 @@ namespace Soenneker.Close.OpenApiClient.Report.Activity
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ReportingGetActivity200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ReportingGetActivity200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ReportingGetActivity200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ReportingGetActivity200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The activity report returns the organization&apos;s metrics per time period (**overview** report) or user (**comparison** report).Every report accepts the following parameters:* `datetime_range`: a time range to fetch data for. Either this field or `relative_range` needs to be specified.* `relative_range`: a relative time range to fetch data for. The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`. Either this field or `datetime_range` needs to be specified.* `query`: a query to apply to the report to filter out data.  The value of the field is a dictionary with the key `type` and any type-specific keys. For now only the type `saved_search` is allowed which takes the extra key `saved_search_id` to specify the ID of a saved search. This parameter is *optional*.* `users`: a list of user IDs to limit the report results to. This parameter is *optional*.* `type`: the type of the report. The available values are `overview` and `comparison`.  This parameter is *mandatory*.* `metrics`: a list of metrics (see [List Activity Metrics](/api/resources/reporting/list-activity-metrics)) to fetch for the report. This parameter is *mandatory*.The report can be requested either in a JSON format or in a CSV file. The format can be specified with the `accept` header.

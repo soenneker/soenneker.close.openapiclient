@@ -39,6 +39,9 @@ namespace Soenneker.Close.OpenApiClient.Phone_number.Item
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +52,13 @@ namespace Soenneker.Close.OpenApiClient.Phone_number.Item
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve a single phone number
@@ -57,6 +66,9 @@ namespace Soenneker.Close.OpenApiClient.Phone_number.Item
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.PhoneNumber"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.PhoneNumber?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Phone_number.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -67,7 +79,13 @@ namespace Soenneker.Close.OpenApiClient.Phone_number.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.PhoneNumber>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.PhoneNumber.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.PhoneNumber>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.PhoneNumber.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// You need the &quot;Manage Team Phone Numbers&quot; permission to change most settings. If you&apos;re the only member of a number and no Group is assigned to it, you can change its `label`, voicemail greeting, and call forwarding without that permission.You can:- Change the `label` of the number.- Set up call forwarding via `forward_to` and `forward_to_enabled`.- Set up a voicemail greeting by including a URL of an mp3 recording in `voicemail_greeting_url`. We require the URL to be secure (i.e. starting with https://).- Modify which users are assigned directly to the number via `participants`. This should be a list of user IDs.- Modify which Groups are assigned to the number via `participant_groups`. This should be a list of Group IDs from the Groups API. Members of these Groups, including users added to a Group later, ring on inbound calls, receive notifications for the number, and can use it as outbound caller ID. You can assign at most 40 Groups.- Modify which external phone numbers the number dials via `phone_numbers`. This should be a list of phone numbers in E.164 international format, e.g. &quot;+16503334444&quot;.- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via `inbound_ring_duration`.- Let users who are not members of the number use it as their outbound caller ID via `non_member_caller_id_enabled`.- Let Local Presence pick the number for calls and SMS that voice agents make in Auto caller ID mode via `voice_agents_local_presence_enabled`. You cannot disable this setting while a voice agent uses the number.- Let Local Presence pick the number by proximity for calls and SMS via `local_presence_enabled`.You can set at most 40 users and external phone numbers combined in `participants` and `phone_numbers`.A number&apos;s ring order is set in Close. A number that rings its members all at once rings at most 40 users and external phone numbers per inbound call. The users in `participants` and the external phone numbers in `phone_numbers` take priority. Members of the number&apos;s Groups who are allowed to make calls are added, chosen at random for each call, until 40 users and external phone numbers are ringing.The per-call limit does not apply to a number that rings its members one at a time (round-robin).
@@ -76,6 +94,9 @@ namespace Soenneker.Close.OpenApiClient.Phone_number.Item
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.PhoneNumber?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdatePhoneNumber body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -87,7 +108,13 @@ namespace Soenneker.Close.OpenApiClient.Phone_number.Item
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.PhoneNumber>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.PhoneNumber.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.PhoneNumber>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.PhoneNumber.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// If you&apos;re the only member of a number and no Group is assigned to it, you can delete it. Deleting any other number requires the &quot;Manage Team Phone Numbers&quot; permission.
@@ -105,6 +132,7 @@ namespace Soenneker.Close.OpenApiClient.Phone_number.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>

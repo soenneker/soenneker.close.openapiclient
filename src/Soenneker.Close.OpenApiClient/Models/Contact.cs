@@ -22,6 +22,14 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string CreatedBy { get; set; }
 #endif
+        /// <summary>The created_by_agent_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CreatedByAgentId { get; set; }
+#nullable restore
+#else
+        public string CreatedByAgentId { get; set; }
+#endif
         /// <summary>The date_created property</summary>
         public DateTimeOffset? DateCreated { get; set; }
         /// <summary>The date_updated property</summary>
@@ -122,6 +130,14 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string UpdatedBy { get; set; }
 #endif
+        /// <summary>The updated_by_agent_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UpdatedByAgentId { get; set; }
+#nullable restore
+#else
+        public string UpdatedByAgentId { get; set; }
+#endif
         /// <summary>The urls property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -156,6 +172,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
+                { "created_by_agent_id", n => { CreatedByAgentId = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetDateTimeOffsetValue(); } },
                 { "date_updated", n => { DateUpdated = n.GetDateTimeOffsetValue(); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
@@ -170,6 +187,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "timezone_source", n => { TimezoneSource = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
+                { "updated_by_agent_id", n => { UpdatedByAgentId = n.GetStringValue(); } },
                 { "urls", n => { Urls = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ContactUrl>(global::Soenneker.Close.OpenApiClient.Models.ContactUrl.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -181,6 +199,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("created_by", CreatedBy);
+            writer.WriteStringValue("created_by_agent_id", CreatedByAgentId);
             writer.WriteDateTimeOffsetValue("date_created", DateCreated);
             writer.WriteDateTimeOffsetValue("date_updated", DateUpdated);
             writer.WriteStringValue("display_name", DisplayName);
@@ -195,6 +214,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("timezone_source", TimezoneSource);
             writer.WriteStringValue("title", Title);
             writer.WriteStringValue("updated_by", UpdatedBy);
+            writer.WriteStringValue("updated_by_agent_id", UpdatedByAgentId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ContactUrl>("urls", Urls);
             writer.WriteAdditionalData(AdditionalData);
         }

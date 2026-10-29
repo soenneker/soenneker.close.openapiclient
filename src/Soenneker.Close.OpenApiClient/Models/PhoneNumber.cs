@@ -77,7 +77,8 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>This field is deprecated and will be removed in a future update. Until then, it is set to `false` when `participants` has exactly one user and the phone number doesn&apos;t have any of the &quot;shared&quot; configuration set up (e.g. a phone menu, lead-based routing, a dial-out list, an assigned Group, a non-default ring order, etc.), and `true` otherwise.</summary>
         [Obsolete("")]
         public bool? IsGroupNumber { get; set; }
-        /// <summary>The is_premium property</summary>
+        /// <summary>This field is deprecated and will be removed in a future update. Until then, it is always `false`.</summary>
+        [Obsolete("")]
         public bool? IsPremium { get; set; }
         /// <summary>The is_verified property</summary>
         public bool? IsVerified { get; set; }

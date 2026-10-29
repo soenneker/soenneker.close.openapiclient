@@ -55,6 +55,14 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string CreatedBy { get; set; }
 #endif
+        /// <summary>ID of the agent that created the lead, or null if no agent created it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CreatedByAgentId { get; set; }
+#nullable restore
+#else
+        public string CreatedByAgentId { get; set; }
+#endif
         /// <summary>The created_by_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -222,6 +230,14 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string UpdatedBy { get; set; }
 #endif
+        /// <summary>ID of the agent that last updated the lead, or null if the last update wasn&apos;t made by an agent.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UpdatedByAgentId { get; set; }
+#nullable restore
+#else
+        public string UpdatedByAgentId { get; set; }
+#endif
         /// <summary>The updated_by_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -268,6 +284,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "contacts", n => { Contacts = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.Contact>(global::Soenneker.Close.OpenApiClient.Models.Contact.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "contacts_summary", n => { ContactsSummary = n.GetStringValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
+                { "created_by_agent_id", n => { CreatedByAgentId = n.GetStringValue(); } },
                 { "created_by_name", n => { CreatedByName = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetDateTimeOffsetValue(); } },
                 { "date_updated", n => { DateUpdated = n.GetDateTimeOffsetValue(); } },
@@ -291,6 +308,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "summaries", n => { Summaries = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.LeadSummariesItemProperty>(global::Soenneker.Close.OpenApiClient.Models.LeadSummariesItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "tasks", n => { Tasks = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.LeadTasksItemProperty>(global::Soenneker.Close.OpenApiClient.Models.LeadTasksItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
+                { "updated_by_agent_id", n => { UpdatedByAgentId = n.GetStringValue(); } },
                 { "updated_by_name", n => { UpdatedByName = n.GetStringValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
@@ -307,6 +325,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.Contact>("contacts", Contacts);
             writer.WriteStringValue("contacts_summary", ContactsSummary);
             writer.WriteStringValue("created_by", CreatedBy);
+            writer.WriteStringValue("created_by_agent_id", CreatedByAgentId);
             writer.WriteStringValue("created_by_name", CreatedByName);
             writer.WriteDateTimeOffsetValue("date_created", DateCreated);
             writer.WriteDateTimeOffsetValue("date_updated", DateUpdated);
@@ -330,6 +349,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.LeadSummariesItemProperty>("summaries", Summaries);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.LeadTasksItemProperty>("tasks", Tasks);
             writer.WriteStringValue("updated_by", UpdatedBy);
+            writer.WriteStringValue("updated_by_agent_id", UpdatedByAgentId);
             writer.WriteStringValue("updated_by_name", UpdatedByName);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);

@@ -39,6 +39,8 @@ namespace Soenneker.Close.OpenApiClient.Activity.Sms
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesSmsList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivitiesSmsList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Sms.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +51,12 @@ namespace Soenneker.Close.OpenApiClient.Activity.Sms
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesSmsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesSmsList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesSmsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesSmsList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// *status* must be one of the following: - `inbox` to log an already received SMS. - `draft` to create a draft SMS. - `scheduled` to send an SMS at a scheduled date and time, which must be specified in the `date_scheduled` field. - `outbox` to actually **send** an SMS. To delay SMS sending by a few seconds (to allow undo), specify `send_in` in seconds (must be less than 60). - `sent` to log an already sent SMS.Only drafts can be modified, and their status can be changed to `scheduled` (to send later) or `outbox` (to send immediately). Scheduled SMS, or SMS in outbox that weren&apos;t sent yet can be canceled by setting the status back to `draft`.You have to provide a `local_phone` that will be used to send the SMS. The number you choose has to be associated with a Phone Number of type `internal`. See the [Phone Numbers](https://developer.close.com/api/resources/phone-numbers) paragraph for more details.A `template_id` referencing an SMS Template may be provided instead of `text` to automatically render that template and use the content as `text`.When `direction` is not provided, but `status=&quot;inbox&quot;`, `direction` will default to &quot;inbound&quot;. Otherwise, `direction` defaults to &quot;outbound&quot;.When creating a new SMS with the status set to `inbox`, you can pass the query parameter `send_to_inbox` with the value of `true`  to create a corresponding Inbox Notification for the SMS.
@@ -58,6 +65,8 @@ namespace Soenneker.Close.OpenApiClient.Activity.Sms
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.SmsActivity?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Sms.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -69,7 +78,12 @@ namespace Soenneker.Close.OpenApiClient.Activity.Sms
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.SmsActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.SmsActivity.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.SmsActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.SmsActivity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get a list of matching SMS activities.MMS messages are considered SMS messages with attachments. Attachments have identical fields to email attachments (`url`, `filename`, `size` and `content_type`), a `media_id` uniquely identifying an attachment, and if Close was able to generate a thumbnail, a `thumbnail_url` too.Accessing `url` or `thumbnail_url` requires an authenticated session and leads to a temporarily signed S3 URL.

@@ -40,6 +40,9 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item.Integration
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200Response?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegrationRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -51,7 +54,13 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item.Integration
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Please note that only OAuth apps can perform this operation. Using API key will result in an error. See [Authentication with OAuth](https://developer.close.com/api/overview/oauth-authentication) for more information.Third party integrations are presented as tabs titled with OAuth app name in the activity feed. When invoked for the first time with a given OAuth app a new integration is created, subsequent calls with the same OAuth app will update an existing integration. Submitting an empty JSON body does nothing.

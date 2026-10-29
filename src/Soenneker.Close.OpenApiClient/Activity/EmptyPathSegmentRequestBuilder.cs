@@ -39,6 +39,8 @@ namespace Soenneker.Close.OpenApiClient.Activity
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +51,12 @@ namespace Soenneker.Close.OpenApiClient.Activity
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// To list only a specific activity type (e.g., only `Call` or `LeadStatusChange`), use the other resources listed separately. When querying activities for a single lead (using the `lead_id` parameter), you can ask for multiple activity types using `_type__in`.When listing [Custom Activities](https://developer.close.com/api/resources/activities/custom-activities), `_type` and `_type__in` can include Custom Activity Type ids (e.g. `actitype_1h5m6uHM9BZOpwVhyRJb4Y`) to filter by a specific custom activity type or `Custom` to list custom activities of any type.The following filtering parameters can only be used for listing activities on a single lead (using the `lead_id` parameter): `user_id`, `user_id__in`, `contact_id`, `contact_id__in`, `_type`, `_type__in`.All activities have two sortable datetime fields: `date_created` and `activity_at`. `date_created` denotes when an activity was created or synced into Close and `activity_at` denotes when that activity actually occurred. For example, on outgoing Email activities, `date_created` is equal to when the email was first created in Close, and `activity_at` is equal to when the email was actually sent. For Meeting activities, `activity_at` is equal to the scheduled time of the meeting. On custom activities, users are able to update the `activity_at` field at any time.Sorting by `-activity_at` can only be used when listing activities on a single lead using the `lead_id` parameter. In addition, you can only use the date-based filters of the field you&apos;re currently sorting on. This means that if you want to use `activity_at__lt` and `activity_at__gt` as filters, you need to include `_order_by=-activity_at` in your request.`thread_emails` parameter: - (Default) when this parameter is not present, `Email` objects will be returned for each email message. - A value of `true` will return `EmailThread` objects representing email conversations. Stripped-down version of `Email` objects will also be returned. - A value of `only` will return `EmailThread` objects representing email conversations. `Email` objects will not be returned.

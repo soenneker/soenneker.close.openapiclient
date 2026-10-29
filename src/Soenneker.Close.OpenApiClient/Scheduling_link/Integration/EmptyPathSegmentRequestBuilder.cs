@@ -40,6 +40,8 @@ namespace Soenneker.Close.OpenApiClient.Scheduling_link.Integration
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Close.OpenApiClient.Models.SchedulingLinksCreateIntegration200Response?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.SchedulingLinksCreateIntegrationRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -51,7 +53,12 @@ namespace Soenneker.Close.OpenApiClient.Scheduling_link.Integration
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.SchedulingLinksCreateIntegration200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.SchedulingLinksCreateIntegration200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.SchedulingLinksCreateIntegration200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.SchedulingLinksCreateIntegration200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Please note that only OAuth apps can perform this operation. Using API key will result in an error. See [Authentication with OAuth](https://developer.close.com/api/overview/oauth-authentication) for more information.Create or update a user scheduling link, managed by your application. Uses the integration-provided `source_id` field to identify and merge duplicate resources created by the same OAuth Application. If a scheduling link created by your OAuth application with the specified `source_id` does not exist, a new one will be created. Otherwise, the scheduling link resource will be updated. Requires authentication via OAuth.
