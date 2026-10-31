@@ -6696,6 +6696,27 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlockedPhoneNumber"
+                },
+                "example": {
+                  "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "date_created": "2026-03-01T12:00:00.000000\u002B00:00",
+                  "date_updated": "2026-03-01T12:00:00.000000\u002B00:00",
+                  "id": "blkph_3wMz8Tc8NRE2YzDT5vNb1h",
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "phone": "\u002B15553334444",
+                  "reason": "Unwanted Caller",
+                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -8469,6 +8490,32 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentsCreate201Response"
+                },
+                "example": {
+                  "body": "\u003Cbody\u003E\u003Cp\u003EReal nice activity you\u0027ve got here.\u003C/p\u003E\u003C/body\u003E",
+                  "created_at": "2024-03-27T18:57:02.770240\u002B00:00",
+                  "created_by": "user_abc123",
+                  "id": "comm_abc123",
+                  "lead_id": "lead_abc123",
+                  "mentions": [],
+                  "organization_id": "orga_abc123",
+                  "removed_at": null,
+                  "removed_by": null,
+                  "thread_id": "comthr_abc123",
+                  "updated_at": "2024-03-27T18:57:02.770240\u002B00:00",
+                  "updated_by": "user_abc123"
+                },
+                "x-schema-inferred-from-examples": true
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -9831,6 +9878,34 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomActivityTypesCreate201Response"
+                },
+                "example": {
+                  "api_create_only": false,
+                  "created_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                  "date_created": "2020-08-07T15:18:33.797245",
+                  "date_updated": "2020-08-07T15:18:33.797245",
+                  "description": "Lead requested a product demo.",
+                  "editable_with_roles": [
+                    "admin"
+                  ],
+                  "fields": [],
+                  "id": "actitype_4cvujO1jQQkVYGPCiMsqMW",
+                  "is_archived": false,
+                  "name": "Demo Requested",
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "updated_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk"
+                },
+                "x-schema-inferred-from-examples": true
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -10930,6 +11005,33 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomFieldsCustomObjectCreate201Response"
+                },
+                "example": {
+                  "accepts_multiple_values": false,
+                  "created_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                  "custom_object_type_id": "cotype_1h5m6uHM9BZOpwVhyRJb4Y",
+                  "date_created": "2020-08-07T17:11:44.299904",
+                  "date_updated": "2020-08-07T17:11:44.299904",
+                  "description": "Number of users belonging to this Account.",
+                  "editable_with_roles": [],
+                  "id": "cf_1nkEcnaoAiTJBfYmTBsOQqFCuIkqc82Q f4yKUx01e0K",
+                  "name": "User Count",
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "required": true,
+                  "type": "number",
+                  "updated_ by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk"
+                },
+                "x-schema-inferred-from-examples": true
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -12293,6 +12395,23 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomFieldsSharedCreateAssociation201Response"
+                },
+                "example": {
+                  "editable_with_roles": [],
+                  "object_type": "lead",
+                  "required": false
+                },
+                "x-schema-inferred-from-examples": true
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -12874,6 +12993,35 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomObjectsCreate201Response"
+                },
+                "example": {
+                  "created_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                  "custom.cf_UpyNBvr6Rw8UBHh7zRboL3PYhbOVJl3XvwgPm3jg64S": [
+                    "Conference",
+                    "Meeting"
+                  ],
+                  "custom.cf_cSh3fWT3rEJ1BFSezme2YAG6bPrZV5wUWKKrW4iN19g": "Software",
+                  "custom.cf_jnxTQDKnSxCEBtD5dvZdNgTzC3CqeyWUyU349PBA9Wf": "custobj_v0VS1AZAg8LjnpBm1hZz83UZ3yWK0n9SdVV5i8yC6he",
+                  "custom_object_type_id": "cotype_1h5m6uHM9BZOpwVhyRJb4Y",
+                  "date_created": "2020-08-04T16:45:35.367000\u002B00:00",
+                  "date_updated": "2020-08-04T17:37:56.439000\u002B00:00",
+                  "id": "custobj_5J7mimiIKB1tQ3gVduP0c4UhXbNj5ptMLteAWRJu7Sf",
+                  "lead_id": "lead_hwnL36A2iEMSLIlmGhsdrcmOJzTUzqEHwr66wrA1K2T",
+                  "name": "Resource",
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "updated_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk"
+                },
+                "x-schema-inferred-from-examples": true
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -13263,6 +13411,35 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomObjectTypesCreate201Response"
+                },
+                "example": {
+                  "api_create_only": false,
+                  "back_reference_fields": [],
+                  "created_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                  "date_created": "2020-08-07T15:18:33.797245",
+                  "date_updated": "2020-08-07T15:18:33.797245",
+                  "description": "An account managed by this client",
+                  "editable_with_roles": [
+                    "admin"
+                  ],
+                  "fields": [],
+                  "id": "cotype_4hQsScWF3hnUOyngoaAV00",
+                  "name": "Account",
+                  "name_plural": "Accounts",
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "updated_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk"
+                },
+                "x-schema-inferred-from-examples": true
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -16559,6 +16736,23 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Group"
+                },
+                "example": {
+                  "id": "group_57P6QUf8b4BlepZJYgRj5W",
+                  "members": [],
+                  "name": "Support",
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -16627,6 +16821,20 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupMember"
+                },
+                "example": {
+                  "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -18032,6 +18240,35 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadFile"
+                },
+                "example": {
+                  "checksum": "d41d8cd98f00b204e9800998ecf8427e",
+                  "content_type": "application/pdf",
+                  "date_created": "2024-03-07T16:07:00\u002B00:00",
+                  "date_updated": "2024-03-07T16:07:00\u002B00:00",
+                  "download_url": "https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/activity.email/acti_5rV2n1Ub/1Zx0AlY1DwBXzKKrVwpAoj/contract.pdf/",
+                  "id": "file_2Lm4kZ8Qqwe0rTaPnB6yXcVd9sHgKfJoMuIlN3vBz1A",
+                  "is_pinned": false,
+                  "last_activity_at": "2024-03-07T16:07:00\u002B00:00",
+                  "last_object_id": "acti_5rV2n1UbQ8mLkJhGfDsAwErTyUiOpZxCvBnM3aQ",
+                  "last_object_type": "activity.email",
+                  "lead_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
+                  "name": "contract.pdf",
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "size": 20480,
+                  "thumbnail_url": null,
+                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -19951,6 +20188,32 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Outcome"
+                },
+                "example": {
+                  "applies_to": [
+                    "calls",
+                    "meetings"
+                  ],
+                  "created_by": "user_a6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "date_created": "2025-07-29T10:30:00.000000\u002B00:00",
+                  "date_updated": "2025-07-29T10:30:00.000000\u002B00:00",
+                  "description": "Prospect declined our offer",
+                  "id": "outcome_03oUxZfoO6e2vHmcz1DiHR",
+                  "name": "Not Interested",
+                  "organization_id": "orga_rbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "type": "custom",
+                  "updated_by": "user_a6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -20491,6 +20754,61 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PhoneNumbersCreate201Response"
+                },
+                "example": {
+                  "address_id": null,
+                  "bundle_id": null,
+                  "carrier": null,
+                  "carrier_type": null,
+                  "country": "US",
+                  "date_created": "2021-03-17T11:45:56.651057",
+                  "date_updated": "2021-03-17T11:45:56.651057",
+                  "forward_to": null,
+                  "forward_to_enabled": false,
+                  "forward_to_formatted": null,
+                  "id": "phon_MiLNdBqo8utNOf1U78RaZgQB1Iq6rRGftiDW5C8B9uL",
+                  "inbound_ring_duration": null,
+                  "is_group_number": false,
+                  "is_premium": false,
+                  "is_verified": true,
+                  "label": null,
+                  "last_billed_price": null,
+                  "local_presence_enabled": true,
+                  "mms_enabled": true,
+                  "next_billing_on": null,
+                  "non_member_caller_id_enabled": false,
+                  "number": "\u002B16503335555",
+                  "number_formatted": "\u002B1 650-333-5555",
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "participant_groups": [],
+                  "press_1_to_accept": false,
+                  "sms_enabled": true,
+                  "supports_mms_to_countries": [
+                    "CA",
+                    "US"
+                  ],
+                  "supports_sms_to_countries": [
+                    "CA",
+                    "PR",
+                    "US"
+                  ],
+                  "type": "internal",
+                  "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "voice_agent_caller_id_enabled": false,
+                  "voice_agents_local_presence_enabled": false,
+                  "voicemail_greeting_url": null
+                },
+                "x-schema-inferred-from-examples": true
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -20867,6 +21185,27 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pipeline"
+                },
+                "example": {
+                  "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "date_created": "2019-11-04T11:04:13.014979",
+                  "date_updated": "2019-11-13T14:12:13.051542",
+                  "id": "pipe_6gV01if4wo7r2YTVQDWP2j",
+                  "name": "Success",
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "statuses": [],
+                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -21283,6 +21622,39 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Playbook"
+                },
+                "example": {
+                  "archived_at": null,
+                  "archived_by_id": null,
+                  "created_at": "2025-07-29T10:30:00.000000\u002B00:00",
+                  "created_by_id": "user_A6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "custom_field_ids": [
+                    "cf_aU54Bvr6Rw8UBHh7zRboL3PYhbOVJl3XvwgPm3jgaKq",
+                    "cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c"
+                  ],
+                  "description": "Initial discovery call with prospect.",
+                  "id": "convtyp_03oUxZfoO6e2vHmcz1DiHR",
+                  "name": "Discovery Call",
+                  "organization_id": "orga_AbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "outcome_ids": [
+                    "outcome_030Xl5QwKi7tPRLRtnuef3",
+                    "outcome_03oUxZfoO6e2vHmcz1DiHR"
+                  ],
+                  "position": 0,
+                  "summary_guidance": "Summarize the prospect\u0027s pain points and next steps.",
+                  "updated_at": "2025-07-29T10:30:00.000000\u002B00:00",
+                  "updated_by_id": "user_A6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -23199,6 +23571,29 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RolesCreate201Response"
+                },
+                "example": {
+                  "editable": true,
+                  "id": "role_y6eLquXvRUdmwqi61tsmgCJUU7uGfxaRbDuLoONZL9p",
+                  "name": "Account Manager",
+                  "permissions": [
+                    "bulk_edit",
+                    "export"
+                  ],
+                  "visibility_user_lcf_behavior": null,
+                  "visibility_user_lcf_ids": null
+                },
+                "x-schema-inferred-from-examples": true
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -24055,6 +24450,33 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SchedulingLinksCreate201Response"
+                },
+                "example": {
+                  "description": "Description of Example Scheduling Link",
+                  "duration_in_minutes": null,
+                  "id": "schlnk_2xfNHpU6cjThMuhioZ3GjX",
+                  "name": "Example Scheduling Link",
+                  "oauth_client_id": null,
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "source": "MANUAL",
+                  "source_id": null,
+                  "source_type": null,
+                  "template_tag": null,
+                  "type": "USER",
+                  "url": "https://example.com/schedule",
+                  "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                },
+                "x-schema-inferred-from-examples": true
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -24488,6 +24910,24 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendAsCreate201Response"
+                },
+                "example": {
+                  "allowed_user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "allowing_user_id": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                  "id": "sdas_3KlXHOKx4afZ19TfpxMISa",
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
+                },
+                "x-schema-inferred-from-examples": true
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       },
@@ -25451,6 +25891,39 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SequencesCreateSubscription201Response"
+                },
+                "example": {
+                  "calls_assigned_to": [
+                    "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                  ],
+                  "contact_email": "contact@example.org",
+                  "contact_id": "cont_MEe412YKyJBXuTqbttZBbcofXr3uydwKEhhBJjyu3O3",
+                  "created_by_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "date_created": "2022-03-10T14:40:27.442448",
+                  "date_updated": "2022-03-10T14:40:27.442451",
+                  "id": "sub_71lcl74wTWvv7Erx6uYWno",
+                  "lead_id": "lead_iuSXNk1x3446ggPVwQS7ynmp8pGRIDieRYiCnuo4yFb",
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "sender_account_id": "emailacct_0oCdHYhxtl5sV9j3ZwrJI1sUhbOK4FoZjDuTG9I2hej",
+                  "sender_email": "john@salesteam.com",
+                  "sender_name": "John Doe",
+                  "sequence_id": "seq_1BTljGuCooX0nbFoPihl07",
+                  "start_date": null,
+                  "status": "active",
+                  "status_reason": null,
+                  "updated_by_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                },
+                "x-schema-inferred-from-examples": true
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -25789,6 +26262,32 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SchedulingLinksCreateShared201Response"
+                },
+                "example": {
+                  "description": "Description",
+                  "duration_in_minutes": null,
+                  "id": "schlnk_3knjle4iOiymsYjiJHZraq",
+                  "name": "Name",
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "source": "MANUAL",
+                  "source_id": null,
+                  "source_type": null,
+                  "template_tag": "name",
+                  "type": "SHARED",
+                  "url": null,
+                  "user_id": null
+                },
+                "x-schema-inferred-from-examples": true
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -26071,6 +26570,42 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SchedulingLinksCreateSharedAssociation201Response"
+                },
+                "examples": {
+                  "mapToUserSchedulingLink": {
+                    "summary": "Map to User Scheduling Link",
+                    "description": "Map a Shared Scheduling Link to a specific user\u0027s scheduling link.",
+                    "value": {
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "shared_scheduling_link_id": "schlnk_5VhB72iVnX3NAn3XJ0o9Ph",
+                      "url": null,
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_scheduling_link_id": "schlnk_6m84x0gYn3eSSRJg8sfSQX"
+                    }
+                  },
+                  "mapToUrl": {
+                    "summary": "Map to URL",
+                    "description": "Map a Shared Scheduling Link to an external URL.",
+                    "value": {
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "shared_scheduling_link_id": "schlnk_5VhB72iVnX3NAn3XJ0o9Ph",
+                      "url": "https://example.com",
+                      "user_id": null,
+                      "user_scheduling_link_id": "schlnk_6m84x0gYn3eSSRJg8sfSQX"
+                    }
+                  }
+                },
+                "x-schema-inferred-from-examples": true
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -26247,6 +26782,31 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SmsTemplatesCreate201Response"
+                },
+                "example": {
+                  "created_by": "user_l2RN00c7kDGBRRV7nfUsyWhMfRHu6OP9YCKP9UwQDXY",
+                  "date_created": "2022-09-26T15:08:02.179681",
+                  "date_updated": "2022-09-26T15:08:02.179681",
+                  "id": "smstmpl_0Yu13KOvH2cj1GSFzG9VRH",
+                  "is_shared": false,
+                  "name": "Cold 1",
+                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                  "owned_by": "user_l2RN00c7kDGBRRV7nfUsyWhMfRHu6OP9YCKP9UwQDXY",
+                  "status": "active",
+                  "text": "Hey {{ contact.first_name }}, ever considered Close?",
+                  "updated_by": "user_l2RN00c7kDGBRRV7nfUsyWhMfRHu6OP9YCKP9UwQDXY"
+                },
+                "x-schema-inferred-from-examples": true
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -28545,6 +29105,21 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnsubscribedEmailsCreate201Response"
+                },
+                "example": {
+                  "email": "steve@example.com"
+                },
+                "x-schema-inferred-from-examples": true
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -29114,6 +29689,94 @@
           "429": {
             "description": "Too many requests. The global API rate limiter returns an empty body. Other rate and operation limits return a \u0060RateLimitError\u0060 body. Wait for the number of seconds in the \u0060retry-after\u0060 header before retrying.",
             "$ref": "#/components/responses/TooManyRequests"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebhooksCreate201Response"
+                },
+                "examples": {
+                  "basic": {
+                    "summary": "Basic webhook subscription",
+                    "value": {
+                      "counters": {},
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "date_created": "2018-12-06T19:15:09.590432",
+                      "date_updated": "2018-12-06T19:15:09.590439",
+                      "events": [
+                        {
+                          "action": "created",
+                          "object_type": "lead"
+                        },
+                        {
+                          "action": "updated",
+                          "object_type": "lead"
+                        },
+                        {
+                          "action": "created",
+                          "object_type": "activity.call"
+                        },
+                        {
+                          "action": "created",
+                          "object_type": "activity.note"
+                        },
+                        {
+                          "action": "updated",
+                          "object_type": "activity.note"
+                        }
+                      ],
+                      "health_status": "healthy",
+                      "id": "whsub_6un6NQjYTaFdgtIZsTDXP6",
+                      "latest_error": null,
+                      "pause_reason": null,
+                      "recent_consecutive_fail_buckets_cnt": 0,
+                      "signature_key": "058bfb6a3d8cfdc4da7c3be5901b16ae11da982b46a25fb2cd7016e97a140a1c",
+                      "status": "active",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "url": "https://test.example.com",
+                      "verify_ssl": true
+                    }
+                  },
+                  "withFilter": {
+                    "summary": "Webhook subscription with event filter",
+                    "value": {
+                      "counters": {},
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "date_created": "2018-12-06T19:15:09.590432",
+                      "date_updated": "2018-12-06T19:15:09.590439",
+                      "events": [
+                        {
+                          "action": "created",
+                          "extra_filter": {
+                            "field": "user_id",
+                            "filter": {
+                              "type": "equals",
+                              "value": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                            },
+                            "type": "field_accessor"
+                          },
+                          "object_type": "lead"
+                        }
+                      ],
+                      "health_status": "healthy",
+                      "id": "whsub_6un6NQjYTaFdgtIZsTDXP6",
+                      "latest_error": null,
+                      "pause_reason": null,
+                      "recent_consecutive_fail_buckets_cnt": 0,
+                      "signature_key": "058bfb6a3d8cfdc4da7c3be5901b16ae11da982b46a25fb2cd7016e97a140a1c",
+                      "status": "active",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "url": "https://test.example.com",
+                      "verify_ssl": true
+                    }
+                  }
+                },
+                "x-schema-inferred-from-examples": true
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -46977,9 +47640,6 @@
       },
       "SearchField": {
         "title": "SearchField",
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/RegularSearchField"
@@ -46991,13 +47651,8 @@
             "$ref": "#/components/schemas/FormFieldSearchField"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "A field to filter or sort by.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "custom_field": "#/components/schemas/CustomSearchField",
@@ -66842,6 +67497,223 @@
           "lead_id",
           "_type"
         ]
+      },
+      "SearchFieldOneOf1": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ActivityCallSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/ActivityCreatedSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/ActivityCustomActivitySearchField"
+          },
+          {
+            "$ref": "#/components/schemas/ActivityEmailSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/ActivityEmailThreadSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/ActivityFormSubmissionSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/ActivityImportUpdateSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/ActivityLeadMergeSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/ActivityLeadStatusChangeSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/ActivityMeetingSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/ActivityNoteSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/ActivityOpportunityStatusChangeSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/ActivitySmsSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/ActivityTaskCompletedSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/ActivityWhatsappMessageSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/AddressSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/AgentCallGradeSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/CommentSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/CommentThreadSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/ContactSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/ContactEmailSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/ContactPhoneSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/ContactUrlSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/CustomFieldsContactSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/CustomFieldsLeadSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/CustomFieldsOpportunitySearchField"
+          },
+          {
+            "$ref": "#/components/schemas/CustomObjectSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/EmailTemplateSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/LeadSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/LeadFileSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/LeadSummarySearchField"
+          },
+          {
+            "$ref": "#/components/schemas/OpportunitySearchField"
+          },
+          {
+            "$ref": "#/components/schemas/SavedSearchSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/SequenceSubscriptionSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/SmsTemplateSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/StatusLeadSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/StatusOpportunitySearchField"
+          },
+          {
+            "$ref": "#/components/schemas/SubscriptionHistorySearchField"
+          },
+          {
+            "$ref": "#/components/schemas/TaskAnsweredDetachedCallSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/TaskDraftEmailSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/TaskDraftSmsSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/TaskEmailFollowupSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/TaskIncomingEmailSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/TaskIncomingSmsSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/TaskIncomingWhatsappMessageSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/TaskLeadSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/TaskLeadSuggestionIncomingEmailSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/TaskMissedCallSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/TaskOpportunitiesAwaitingActionSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/TaskOpportunityDueSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/TaskOutboundCallSearchField"
+          },
+          {
+            "$ref": "#/components/schemas/TaskVoicemailSearchField"
+          }
+        ],
+        "x-client-original-discriminator": {
+          "propertyName": "object_type",
+          "mapping": {
+            "activity.call": "#/components/schemas/ActivityCallSearchField",
+            "activity.created": "#/components/schemas/ActivityCreatedSearchField",
+            "activity.custom_activity": "#/components/schemas/ActivityCustomActivitySearchField",
+            "activity.email": "#/components/schemas/ActivityEmailSearchField",
+            "activity.email_thread": "#/components/schemas/ActivityEmailThreadSearchField",
+            "activity.form_submission": "#/components/schemas/ActivityFormSubmissionSearchField",
+            "activity.import_update": "#/components/schemas/ActivityImportUpdateSearchField",
+            "activity.lead_merge": "#/components/schemas/ActivityLeadMergeSearchField",
+            "activity.lead_status_change": "#/components/schemas/ActivityLeadStatusChangeSearchField",
+            "activity.meeting": "#/components/schemas/ActivityMeetingSearchField",
+            "activity.note": "#/components/schemas/ActivityNoteSearchField",
+            "activity.opportunity_status_change": "#/components/schemas/ActivityOpportunityStatusChangeSearchField",
+            "activity.sms": "#/components/schemas/ActivitySmsSearchField",
+            "activity.task_completed": "#/components/schemas/ActivityTaskCompletedSearchField",
+            "activity.whatsapp_message": "#/components/schemas/ActivityWhatsappMessageSearchField",
+            "address": "#/components/schemas/AddressSearchField",
+            "agent_call_grade": "#/components/schemas/AgentCallGradeSearchField",
+            "comment": "#/components/schemas/CommentSearchField",
+            "comment_thread": "#/components/schemas/CommentThreadSearchField",
+            "contact": "#/components/schemas/ContactSearchField",
+            "contact_email": "#/components/schemas/ContactEmailSearchField",
+            "contact_phone": "#/components/schemas/ContactPhoneSearchField",
+            "contact_url": "#/components/schemas/ContactUrlSearchField",
+            "custom_fields.contact": "#/components/schemas/CustomFieldsContactSearchField",
+            "custom_fields.lead": "#/components/schemas/CustomFieldsLeadSearchField",
+            "custom_fields.opportunity": "#/components/schemas/CustomFieldsOpportunitySearchField",
+            "custom_object": "#/components/schemas/CustomObjectSearchField",
+            "email_template": "#/components/schemas/EmailTemplateSearchField",
+            "lead": "#/components/schemas/LeadSearchField",
+            "lead_file": "#/components/schemas/LeadFileSearchField",
+            "lead_summary": "#/components/schemas/LeadSummarySearchField",
+            "opportunity": "#/components/schemas/OpportunitySearchField",
+            "saved_search": "#/components/schemas/SavedSearchSearchField",
+            "sequence_subscription": "#/components/schemas/SequenceSubscriptionSearchField",
+            "sms_template": "#/components/schemas/SmsTemplateSearchField",
+            "status.lead": "#/components/schemas/StatusLeadSearchField",
+            "status.opportunity": "#/components/schemas/StatusOpportunitySearchField",
+            "subscription_history": "#/components/schemas/SubscriptionHistorySearchField",
+            "task.answered_detached_call": "#/components/schemas/TaskAnsweredDetachedCallSearchField",
+            "task.draft_email": "#/components/schemas/TaskDraftEmailSearchField",
+            "task.draft_sms": "#/components/schemas/TaskDraftSmsSearchField",
+            "task.email_followup": "#/components/schemas/TaskEmailFollowupSearchField",
+            "task.incoming_email": "#/components/schemas/TaskIncomingEmailSearchField",
+            "task.incoming_sms": "#/components/schemas/TaskIncomingSmsSearchField",
+            "task.incoming_whatsapp_message": "#/components/schemas/TaskIncomingWhatsappMessageSearchField",
+            "task.lead": "#/components/schemas/TaskLeadSearchField",
+            "task.lead_suggestion_incoming_email": "#/components/schemas/TaskLeadSuggestionIncomingEmailSearchField",
+            "task.missed_call": "#/components/schemas/TaskMissedCallSearchField",
+            "task.opportunities_awaiting_action": "#/components/schemas/TaskOpportunitiesAwaitingActionSearchField",
+            "task.opportunity_due": "#/components/schemas/TaskOpportunityDueSearchField",
+            "task.outbound_call": "#/components/schemas/TaskOutboundCallSearchField",
+            "task.voicemail": "#/components/schemas/TaskVoicemailSearchField"
+          }
+        }
       },
       "CommentsListThreads403ResponseError": {
         "type": "object",
