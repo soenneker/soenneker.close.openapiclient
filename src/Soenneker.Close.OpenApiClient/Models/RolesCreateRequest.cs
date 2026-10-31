@@ -11,40 +11,63 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RolesCreateRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("permissions") is null) { _explicitNullValuePermissions = default!; _explicitNullProperties?.Remove("permissions"); }
+            else if (parseNode.GetChildNode("permissions") is { } nullNodePermissions && nullNodePermissions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Permissions = null;
+            if (parseNode.GetChildNode("visibility_user_lcf_behavior") is null) { _explicitNullValueVisibilityUserLcfBehavior = default!; _explicitNullProperties?.Remove("visibility_user_lcf_behavior"); }
+            else if (parseNode.GetChildNode("visibility_user_lcf_behavior") is { } nullNodeVisibilityUserLcfBehavior && nullNodeVisibilityUserLcfBehavior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VisibilityUserLcfBehavior = null;
+            if (parseNode.GetChildNode("visibility_user_lcf_ids") is null) { _explicitNullValueVisibilityUserLcfIds = default!; _explicitNullProperties?.Remove("visibility_user_lcf_ids"); }
+            else if (parseNode.GetChildNode("visibility_user_lcf_ids") is { } nullNodeVisibilityUserLcfIds && nullNodeVisibilityUserLcfIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VisibilityUserLcfIds = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>The permissions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Permissions { get; set; }
+        public List<string>? Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; AdditionalData?.Remove("permissions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
+        private List<string>? _explicitNullValuePermissions = default!;
 #nullable restore
 #else
-        public List<string> Permissions { get; set; }
+        public List<string> Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; AdditionalData?.Remove("permissions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
+        private List<string> _explicitNullValuePermissions = default!;
 #endif
         /// <summary>The visibility_user_lcf_behavior property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? VisibilityUserLcfBehavior { get; set; }
+        public UntypedNode? VisibilityUserLcfBehavior { get => _explicitNullValueVisibilityUserLcfBehavior; set { _explicitNullValueVisibilityUserLcfBehavior = value; AdditionalData?.Remove("visibility_user_lcf_behavior"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visibility_user_lcf_behavior"); else _explicitNullProperties?.Remove("visibility_user_lcf_behavior"); } }
+        private UntypedNode? _explicitNullValueVisibilityUserLcfBehavior = default!;
 #nullable restore
 #else
-        public UntypedNode VisibilityUserLcfBehavior { get; set; }
+        public UntypedNode VisibilityUserLcfBehavior { get => _explicitNullValueVisibilityUserLcfBehavior; set { _explicitNullValueVisibilityUserLcfBehavior = value; AdditionalData?.Remove("visibility_user_lcf_behavior"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visibility_user_lcf_behavior"); else _explicitNullProperties?.Remove("visibility_user_lcf_behavior"); } }
+        private UntypedNode _explicitNullValueVisibilityUserLcfBehavior = default!;
 #endif
         /// <summary>The visibility_user_lcf_ids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? VisibilityUserLcfIds { get; set; }
+        public UntypedNode? VisibilityUserLcfIds { get => _explicitNullValueVisibilityUserLcfIds; set { _explicitNullValueVisibilityUserLcfIds = value; AdditionalData?.Remove("visibility_user_lcf_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visibility_user_lcf_ids"); else _explicitNullProperties?.Remove("visibility_user_lcf_ids"); } }
+        private UntypedNode? _explicitNullValueVisibilityUserLcfIds = default!;
 #nullable restore
 #else
-        public UntypedNode VisibilityUserLcfIds { get; set; }
+        public UntypedNode VisibilityUserLcfIds { get => _explicitNullValueVisibilityUserLcfIds; set { _explicitNullValueVisibilityUserLcfIds = value; AdditionalData?.Remove("visibility_user_lcf_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visibility_user_lcf_ids"); else _explicitNullProperties?.Remove("visibility_user_lcf_ids"); } }
+        private UntypedNode _explicitNullValueVisibilityUserLcfIds = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.RolesCreateRequest"/> and sets the default values.
@@ -61,7 +84,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.RolesCreateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.RolesCreateRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.RolesCreateRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -88,6 +111,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("permissions", Permissions);
             writer.WriteObjectValue<UntypedNode>("visibility_user_lcf_behavior", VisibilityUserLcfBehavior);
             writer.WriteObjectValue<UntypedNode>("visibility_user_lcf_ids", VisibilityUserLcfIds);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

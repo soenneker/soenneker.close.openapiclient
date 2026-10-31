@@ -12,39 +12,70 @@ namespace Soenneker.Close.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Membership : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("auto_record_calls") is null) { _explicitNullValueAutoRecordCalls = default!; _explicitNullProperties?.Remove("auto_record_calls"); }
+            else if (parseNode.GetChildNode("auto_record_calls") is { } nullNodeAutoRecordCalls && nullNodeAutoRecordCalls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoRecordCalls = null;
+            if (parseNode.GetChildNode("default_caller_id") is null) { _explicitNullValueDefaultCallerId = default!; _explicitNullProperties?.Remove("default_caller_id"); }
+            else if (parseNode.GetChildNode("default_caller_id") is { } nullNodeDefaultCallerId && nullNodeDefaultCallerId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultCallerId = null;
+            if (parseNode.GetChildNode("default_caller_id_mode") is null) { _explicitNullValueDefaultCallerIdMode = default!; _explicitNullProperties?.Remove("default_caller_id_mode"); }
+            else if (parseNode.GetChildNode("default_caller_id_mode") is { } nullNodeDefaultCallerIdMode && nullNodeDefaultCallerIdMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultCallerIdMode = null;
+            if (parseNode.GetChildNode("hangup_recording_url") is null) { _explicitNullValueHangupRecordingUrl = default!; _explicitNullProperties?.Remove("hangup_recording_url"); }
+            else if (parseNode.GetChildNode("hangup_recording_url") is { } nullNodeHangupRecordingUrl && nullNodeHangupRecordingUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HangupRecordingUrl = null;
+            if (parseNode.GetChildNode("may_workflows_impersonate") is null) { _explicitNullValueMayWorkflowsImpersonate = default!; _explicitNullProperties?.Remove("may_workflows_impersonate"); }
+            else if (parseNode.GetChildNode("may_workflows_impersonate") is { } nullNodeMayWorkflowsImpersonate && nullNodeMayWorkflowsImpersonate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MayWorkflowsImpersonate = null;
+            if (parseNode.GetChildNode("role_id") is null) { _explicitNullValueRoleId = default!; _explicitNullProperties?.Remove("role_id"); }
+            else if (parseNode.GetChildNode("role_id") is { } nullNodeRoleId && nullNodeRoleId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RoleId = null;
+            if (parseNode.GetChildNode("track_email_opens") is null) { _explicitNullValueTrackEmailOpens = default!; _explicitNullProperties?.Remove("track_email_opens"); }
+            else if (parseNode.GetChildNode("track_email_opens") is { } nullNodeTrackEmailOpens && nullNodeTrackEmailOpens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrackEmailOpens = null;
+        }
+
         /// <summary>Whether this member&apos;s calls are automatically recorded. Starts as `unset` and can be set to `enabled` or `disabled`.</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.AutoRecordCalls? AutoRecordCalls { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.AutoRecordCalls? AutoRecordCalls { get => _explicitNullValueAutoRecordCalls; set { _explicitNullValueAutoRecordCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_record_calls"); else _explicitNullProperties?.Remove("auto_record_calls"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.AutoRecordCalls? _explicitNullValueAutoRecordCalls = default!;
         /// <summary>ID of the phone number to use as this member&apos;s default outbound caller ID. Close keeps this value while `default_caller_id_mode` is `auto`, but outbound calls do not use it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultCallerId { get; set; }
+        public string? DefaultCallerId { get => _explicitNullValueDefaultCallerId; set { _explicitNullValueDefaultCallerId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_caller_id"); else _explicitNullProperties?.Remove("default_caller_id"); } }
+        private string? _explicitNullValueDefaultCallerId = default!;
 #nullable restore
 #else
-        public string DefaultCallerId { get; set; }
+        public string DefaultCallerId { get => _explicitNullValueDefaultCallerId; set { _explicitNullValueDefaultCallerId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_caller_id"); else _explicitNullProperties?.Remove("default_caller_id"); } }
+        private string _explicitNullValueDefaultCallerId = default!;
 #endif
         /// <summary>How this member&apos;s outbound caller ID is chosen. In `fixed` mode, outbound calls use `default_caller_id`. In `auto` mode, Close derives the number for each call and ignores `default_caller_id`.</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.CallerIdMode? DefaultCallerIdMode { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.CallerIdMode? DefaultCallerIdMode { get => _explicitNullValueDefaultCallerIdMode; set { _explicitNullValueDefaultCallerIdMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_caller_id_mode"); else _explicitNullProperties?.Remove("default_caller_id_mode"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.CallerIdMode? _explicitNullValueDefaultCallerIdMode = default!;
         /// <summary>URL of the audio file used as this member&apos;s Voicemail Drop recording.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HangupRecordingUrl { get; set; }
+        public string? HangupRecordingUrl { get => _explicitNullValueHangupRecordingUrl; set { _explicitNullValueHangupRecordingUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hangup_recording_url"); else _explicitNullProperties?.Remove("hangup_recording_url"); } }
+        private string? _explicitNullValueHangupRecordingUrl = default!;
 #nullable restore
 #else
-        public string HangupRecordingUrl { get; set; }
+        public string HangupRecordingUrl { get => _explicitNullValueHangupRecordingUrl; set { _explicitNullValueHangupRecordingUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hangup_recording_url"); else _explicitNullProperties?.Remove("hangup_recording_url"); } }
+        private string _explicitNullValueHangupRecordingUrl = default!;
 #endif
         /// <summary>Whether Workflows may send emails on this member&apos;s behalf.</summary>
-        public bool? MayWorkflowsImpersonate { get; set; }
+        public bool? MayWorkflowsImpersonate { get => _explicitNullValueMayWorkflowsImpersonate; set { _explicitNullValueMayWorkflowsImpersonate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("may_workflows_impersonate"); else _explicitNullProperties?.Remove("may_workflows_impersonate"); } }
+        private bool? _explicitNullValueMayWorkflowsImpersonate = default!;
         /// <summary>One of `admin`, `superuser`, `user`, or `restricteduser` for the corresponding predefined role, or the ID of a custom [Role](https://developer.close.com/api/resources/roles).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RoleId { get; set; }
+        public string? RoleId { get => _explicitNullValueRoleId; set { _explicitNullValueRoleId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role_id"); else _explicitNullProperties?.Remove("role_id"); } }
+        private string? _explicitNullValueRoleId = default!;
 #nullable restore
 #else
-        public string RoleId { get; set; }
+        public string RoleId { get => _explicitNullValueRoleId; set { _explicitNullValueRoleId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role_id"); else _explicitNullProperties?.Remove("role_id"); } }
+        private string _explicitNullValueRoleId = default!;
 #endif
         /// <summary>Whether email opens are tracked for emails this member sends.</summary>
-        public bool? TrackEmailOpens { get; set; }
+        public bool? TrackEmailOpens { get => _explicitNullValueTrackEmailOpens; set { _explicitNullValueTrackEmailOpens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("track_email_opens"); else _explicitNullProperties?.Remove("track_email_opens"); } }
+        private bool? _explicitNullValueTrackEmailOpens = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -53,7 +84,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.Membership CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.Membership();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.Membership(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -85,7 +116,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("hangup_recording_url", HangupRecordingUrl);
             writer.WriteBoolValue("may_workflows_impersonate", MayWorkflowsImpersonate);
             writer.WriteStringValue("role_id", RoleId);
-            writer.WriteBoolValue("track_email_opens", TrackEmailOpens);
+            writer.WriteBoolValue("track_email_opens", TrackEmailOpens);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

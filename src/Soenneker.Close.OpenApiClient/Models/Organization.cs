@@ -12,35 +12,60 @@ namespace Soenneker.Close.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Organization : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("currency") is null) { _explicitNullValueCurrency = default!; _explicitNullProperties?.Remove("currency"); }
+            else if (parseNode.GetChildNode("currency") is { } nullNodeCurrency && nullNodeCurrency.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Currency = null;
+            if (parseNode.GetChildNode("enable_unsubscribe_link") is null) { _explicitNullValueEnableUnsubscribeLink = default!; _explicitNullProperties?.Remove("enable_unsubscribe_link"); }
+            else if (parseNode.GetChildNode("enable_unsubscribe_link") is { } nullNodeEnableUnsubscribeLink && nullNodeEnableUnsubscribeLink.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnableUnsubscribeLink = null;
+            if (parseNode.GetChildNode("lead_statuses") is null) { _explicitNullValueLeadStatuses = default!; _explicitNullProperties?.Remove("lead_statuses"); }
+            else if (parseNode.GetChildNode("lead_statuses") is { } nullNodeLeadStatuses && nullNodeLeadStatuses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LeadStatuses = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("require_unsubscribe_link") is null) { _explicitNullValueRequireUnsubscribeLink = default!; _explicitNullProperties?.Remove("require_unsubscribe_link"); }
+            else if (parseNode.GetChildNode("require_unsubscribe_link") is { } nullNodeRequireUnsubscribeLink && nullNodeRequireUnsubscribeLink.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequireUnsubscribeLink = null;
+        }
+
         /// <summary>Default currency as a three-letter [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Currency { get; set; }
+        public string? Currency { get => _explicitNullValueCurrency; set { _explicitNullValueCurrency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("currency"); else _explicitNullProperties?.Remove("currency"); } }
+        private string? _explicitNullValueCurrency = default!;
 #nullable restore
 #else
-        public string Currency { get; set; }
+        public string Currency { get => _explicitNullValueCurrency; set { _explicitNullValueCurrency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("currency"); else _explicitNullProperties?.Remove("currency"); } }
+        private string _explicitNullValueCurrency = default!;
 #endif
         /// <summary>Enable the unsubscribe link by default in new email templates.</summary>
-        public bool? EnableUnsubscribeLink { get; set; }
+        public bool? EnableUnsubscribeLink { get => _explicitNullValueEnableUnsubscribeLink; set { _explicitNullValueEnableUnsubscribeLink = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enable_unsubscribe_link"); else _explicitNullProperties?.Remove("enable_unsubscribe_link"); } }
+        private bool? _explicitNullValueEnableUnsubscribeLink = default!;
         /// <summary>The organization&apos;s lead statuses. Provide the full list in the desired order to reorder them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.InlineLeadStatusPayload>? LeadStatuses { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.InlineLeadStatusPayload>? LeadStatuses { get => _explicitNullValueLeadStatuses; set { _explicitNullValueLeadStatuses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_statuses"); else _explicitNullProperties?.Remove("lead_statuses"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.InlineLeadStatusPayload>? _explicitNullValueLeadStatuses = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.InlineLeadStatusPayload> LeadStatuses { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.InlineLeadStatusPayload> LeadStatuses { get => _explicitNullValueLeadStatuses; set { _explicitNullValueLeadStatuses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_statuses"); else _explicitNullProperties?.Remove("lead_statuses"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.InlineLeadStatusPayload> _explicitNullValueLeadStatuses = default!;
 #endif
         /// <summary>The organization&apos;s name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Require an unsubscribe link in Bulk Emails and Workflows.</summary>
-        public bool? RequireUnsubscribeLink { get; set; }
+        public bool? RequireUnsubscribeLink { get => _explicitNullValueRequireUnsubscribeLink; set { _explicitNullValueRequireUnsubscribeLink = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("require_unsubscribe_link"); else _explicitNullProperties?.Remove("require_unsubscribe_link"); } }
+        private bool? _explicitNullValueRequireUnsubscribeLink = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -49,7 +74,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.Organization CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.Organization();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.Organization(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,7 +102,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteBoolValue("enable_unsubscribe_link", EnableUnsubscribeLink);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.InlineLeadStatusPayload>("lead_statuses", LeadStatuses);
             writer.WriteStringValue("name", Name);
-            writer.WriteBoolValue("require_unsubscribe_link", RequireUnsubscribeLink);
+            writer.WriteBoolValue("require_unsubscribe_link", RequireUnsubscribeLink);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

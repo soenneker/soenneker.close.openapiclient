@@ -13,22 +13,42 @@ namespace Soenneker.Close.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LocalTimeCondition : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("before") is null) { _explicitNullValueBefore = default!; _explicitNullProperties?.Remove("before"); }
+            else if (parseNode.GetChildNode("before") is { } nullNodeBefore && nullNodeBefore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Before = null;
+            if (parseNode.GetChildNode("on_or_after") is null) { _explicitNullValueOnOrAfter = default!; _explicitNullProperties?.Remove("on_or_after"); }
+            else if (parseNode.GetChildNode("on_or_after") is { } nullNodeOnOrAfter && nullNodeOnOrAfter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OnOrAfter = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>End of the range (exclusive), e.g. `17:00`. Defaults to the end of the day.</summary>
-        public Time? Before { get; set; }
+#nullable enable
+        public string? Before { get => _explicitNullValueBefore; set { _explicitNullValueBefore = value; AdditionalData?.Remove("before"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before"); else _explicitNullProperties?.Remove("before"); } }
+        private string? _explicitNullValueBefore = default!;
+#nullable restore
         /// <summary>Start of the range (inclusive), e.g. `09:00`. Defaults to midnight.</summary>
-        public Time? OnOrAfter { get; set; }
+#nullable enable
+        public string? OnOrAfter { get => _explicitNullValueOnOrAfter; set { _explicitNullValueOnOrAfter = value; AdditionalData?.Remove("on_or_after"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("on_or_after"); else _explicitNullProperties?.Remove("on_or_after"); } }
+        private string? _explicitNullValueOnOrAfter = default!;
+#nullable restore
         /// <summary>The type property</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.LocalTimeType? Type { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.LocalTimeType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.LocalTimeType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.LocalTimeCondition"/> and sets the default values.
         /// </summary>
         public LocalTimeCondition()
         {
             AdditionalData = new Dictionary<string, object>();
-            OnOrAfter = new Time(DateTimeOffset.Parse("00:00:00").DateTime);
+            OnOrAfter = "00:00:00";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -38,7 +58,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.LocalTimeCondition CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.LocalTimeCondition();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.LocalTimeCondition(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -48,9 +68,9 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "before", n => { Before = n.GetTimeValue(); } },
-                { "on_or_after", n => { OnOrAfter = n.GetTimeValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.LocalTimeType>(); } },
+                { "before", n => { Before = n.GetStringValue(); } },
+                { "on_or_after", n => { OnOrAfter = n.GetStringValue(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.LocalTimeType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
         /// <summary>
@@ -60,9 +80,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteTimeValue("before", Before);
-            writer.WriteTimeValue("on_or_after", OnOrAfter);
+            writer.WriteStringValue("before", Before);
+            writer.WriteStringValue("on_or_after", OnOrAfter);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.LocalTimeType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

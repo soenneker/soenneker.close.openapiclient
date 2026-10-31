@@ -11,41 +11,72 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class EmailThreadSummary : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("expired_at") is null) { _explicitNullValueExpiredAt = default!; _explicitNullProperties?.Remove("expired_at"); }
+            else if (parseNode.GetChildNode("expired_at") is { } nullNodeExpiredAt && nullNodeExpiredAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpiredAt = null;
+            if (parseNode.GetChildNode("feedback") is null) { _explicitNullValueFeedback = default!; _explicitNullProperties?.Remove("feedback"); }
+            else if (parseNode.GetChildNode("feedback") is { } nullNodeFeedback && nullNodeFeedback.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Feedback = null;
+            if (parseNode.GetChildNode("generated_at") is null) { _explicitNullValueGeneratedAt = default!; _explicitNullProperties?.Remove("generated_at"); }
+            else if (parseNode.GetChildNode("generated_at") is { } nullNodeGeneratedAt && nullNodeGeneratedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GeneratedAt = null;
+            if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
+            else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("summary_html") is null) { _explicitNullValueSummaryHtml = default!; _explicitNullProperties?.Remove("summary_html"); }
+            else if (parseNode.GetChildNode("summary_html") is { } nullNodeSummaryHtml && nullNodeSummaryHtml.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SummaryHtml = null;
+            if (parseNode.GetChildNode("summary_text") is null) { _explicitNullValueSummaryText = default!; _explicitNullProperties?.Remove("summary_text"); }
+            else if (parseNode.GetChildNode("summary_text") is { } nullNodeSummaryText && nullNodeSummaryText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SummaryText = null;
+            if (parseNode.GetChildNode("updated_at") is null) { _explicitNullValueUpdatedAt = default!; _explicitNullProperties?.Remove("updated_at"); }
+            else if (parseNode.GetChildNode("updated_at") is { } nullNodeUpdatedAt && nullNodeUpdatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdatedAt = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The expired_at property</summary>
-        public DateTimeOffset? ExpiredAt { get; set; }
+        public DateTimeOffset? ExpiredAt { get => _explicitNullValueExpiredAt; set { _explicitNullValueExpiredAt = value; AdditionalData?.Remove("expired_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expired_at"); else _explicitNullProperties?.Remove("expired_at"); } }
+        private DateTimeOffset? _explicitNullValueExpiredAt = default!;
         /// <summary>The feedback property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.EmailThreadSummaryFeedback? Feedback { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.EmailThreadSummaryFeedback? Feedback { get => _explicitNullValueFeedback; set { _explicitNullValueFeedback = value; AdditionalData?.Remove("feedback"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feedback"); else _explicitNullProperties?.Remove("feedback"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.EmailThreadSummaryFeedback? _explicitNullValueFeedback = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.EmailThreadSummaryFeedback Feedback { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.EmailThreadSummaryFeedback Feedback { get => _explicitNullValueFeedback; set { _explicitNullValueFeedback = value; AdditionalData?.Remove("feedback"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feedback"); else _explicitNullProperties?.Remove("feedback"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.EmailThreadSummaryFeedback _explicitNullValueFeedback = default!;
 #endif
         /// <summary>The generated_at property</summary>
-        public DateTimeOffset? GeneratedAt { get; set; }
+        public DateTimeOffset? GeneratedAt { get => _explicitNullValueGeneratedAt; set { _explicitNullValueGeneratedAt = value; AdditionalData?.Remove("generated_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generated_at"); else _explicitNullProperties?.Remove("generated_at"); } }
+        private DateTimeOffset? _explicitNullValueGeneratedAt = default!;
         /// <summary>The status property</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.SummaryStatus? Status { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.SummaryStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.SummaryStatus? _explicitNullValueStatus = default!;
         /// <summary>The summary_html property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SummaryHtml { get; set; }
+        public string? SummaryHtml { get => _explicitNullValueSummaryHtml; set { _explicitNullValueSummaryHtml = value; AdditionalData?.Remove("summary_html"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_html"); else _explicitNullProperties?.Remove("summary_html"); } }
+        private string? _explicitNullValueSummaryHtml = default!;
 #nullable restore
 #else
-        public string SummaryHtml { get; set; }
+        public string SummaryHtml { get => _explicitNullValueSummaryHtml; set { _explicitNullValueSummaryHtml = value; AdditionalData?.Remove("summary_html"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_html"); else _explicitNullProperties?.Remove("summary_html"); } }
+        private string _explicitNullValueSummaryHtml = default!;
 #endif
         /// <summary>The summary_text property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SummaryText { get; set; }
+        public string? SummaryText { get => _explicitNullValueSummaryText; set { _explicitNullValueSummaryText = value; AdditionalData?.Remove("summary_text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_text"); else _explicitNullProperties?.Remove("summary_text"); } }
+        private string? _explicitNullValueSummaryText = default!;
 #nullable restore
 #else
-        public string SummaryText { get; set; }
+        public string SummaryText { get => _explicitNullValueSummaryText; set { _explicitNullValueSummaryText = value; AdditionalData?.Remove("summary_text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_text"); else _explicitNullProperties?.Remove("summary_text"); } }
+        private string _explicitNullValueSummaryText = default!;
 #endif
         /// <summary>The updated_at property</summary>
-        public DateTimeOffset? UpdatedAt { get; set; }
+        public DateTimeOffset? UpdatedAt { get => _explicitNullValueUpdatedAt; set { _explicitNullValueUpdatedAt = value; AdditionalData?.Remove("updated_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_at"); else _explicitNullProperties?.Remove("updated_at"); } }
+        private DateTimeOffset? _explicitNullValueUpdatedAt = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.EmailThreadSummary"/> and sets the default values.
         /// </summary>
@@ -61,7 +92,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.EmailThreadSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.EmailThreadSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.EmailThreadSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -74,7 +105,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "expired_at", n => { ExpiredAt = n.GetDateTimeOffsetValue(); } },
                 { "feedback", n => { Feedback = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailThreadSummaryFeedback>(global::Soenneker.Close.OpenApiClient.Models.EmailThreadSummaryFeedback.CreateFromDiscriminatorValue); } },
                 { "generated_at", n => { GeneratedAt = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.SummaryStatus>(); } },
+                { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.SummaryStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
                 { "summary_html", n => { SummaryHtml = n.GetStringValue(); } },
                 { "summary_text", n => { SummaryText = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -94,6 +125,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("summary_html", SummaryHtml);
             writer.WriteStringValue("summary_text", SummaryText);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

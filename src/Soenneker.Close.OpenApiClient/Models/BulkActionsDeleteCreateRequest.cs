@@ -11,32 +11,51 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BulkActionsDeleteCreateRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("results_limit") is null) { _explicitNullValueResultsLimit = default!; _explicitNullProperties?.Remove("results_limit"); }
+            else if (parseNode.GetChildNode("results_limit") is { } nullNodeResultsLimit && nullNodeResultsLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResultsLimit = null;
+            if (parseNode.GetChildNode("sort") is null) { _explicitNullValueSort = default!; _explicitNullProperties?.Remove("sort"); }
+            else if (parseNode.GetChildNode("sort") is { } nullNodeSort && nullNodeSort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sort = null;
+            if (parseNode.GetChildNode("s_query") is null) { _explicitNullValueSQuery = default!; _explicitNullProperties?.Remove("s_query"); }
+            else if (parseNode.GetChildNode("s_query") is { } nullNodeSQuery && nullNodeSQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SQuery = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The results_limit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ResultsLimit { get; set; }
+        public UntypedNode? ResultsLimit { get => _explicitNullValueResultsLimit; set { _explicitNullValueResultsLimit = value; AdditionalData?.Remove("results_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results_limit"); else _explicitNullProperties?.Remove("results_limit"); } }
+        private UntypedNode? _explicitNullValueResultsLimit = default!;
 #nullable restore
 #else
-        public UntypedNode ResultsLimit { get; set; }
+        public UntypedNode ResultsLimit { get => _explicitNullValueResultsLimit; set { _explicitNullValueResultsLimit = value; AdditionalData?.Remove("results_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results_limit"); else _explicitNullProperties?.Remove("results_limit"); } }
+        private UntypedNode _explicitNullValueResultsLimit = default!;
 #endif
         /// <summary>The sort property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequestSortItem>? Sort { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequestSortItem>? Sort { get => _explicitNullValueSort; set { _explicitNullValueSort = value; AdditionalData?.Remove("sort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sort"); else _explicitNullProperties?.Remove("sort"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequestSortItem>? _explicitNullValueSort = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequestSortItem> Sort { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequestSortItem> Sort { get => _explicitNullValueSort; set { _explicitNullValueSort = value; AdditionalData?.Remove("sort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sort"); else _explicitNullProperties?.Remove("sort"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequestSortItem> _explicitNullValueSort = default!;
 #endif
         /// <summary>The s_query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequestSQuery? SQuery { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequestSQuery? SQuery { get => _explicitNullValueSQuery; set { _explicitNullValueSQuery = value; AdditionalData?.Remove("s_query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("s_query"); else _explicitNullProperties?.Remove("s_query"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequestSQuery? _explicitNullValueSQuery = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequestSQuery SQuery { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequestSQuery SQuery { get => _explicitNullValueSQuery; set { _explicitNullValueSQuery = value; AdditionalData?.Remove("s_query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("s_query"); else _explicitNullProperties?.Remove("s_query"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequestSQuery _explicitNullValueSQuery = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequest"/> and sets the default values.
@@ -53,7 +72,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +97,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteObjectValue<UntypedNode>("results_limit", ResultsLimit);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequestSortItem>("sort", Sort);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkActionsDeleteCreateRequestSQuery>("s_query", SQuery);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -13,19 +13,41 @@ namespace Soenneker.Close.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DateRangeCondition : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("gt") is null) { _explicitNullValueGt = default!; _explicitNullProperties?.Remove("gt"); }
+            else if (parseNode.GetChildNode("gt") is { } nullNodeGt && nullNodeGt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Gt = null;
+            if (parseNode.GetChildNode("gte") is null) { _explicitNullValueGte = default!; _explicitNullProperties?.Remove("gte"); }
+            else if (parseNode.GetChildNode("gte") is { } nullNodeGte && nullNodeGte.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Gte = null;
+            if (parseNode.GetChildNode("lt") is null) { _explicitNullValueLt = default!; _explicitNullProperties?.Remove("lt"); }
+            else if (parseNode.GetChildNode("lt") is { } nullNodeLt && nullNodeLt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lt = null;
+            if (parseNode.GetChildNode("lte") is null) { _explicitNullValueLte = default!; _explicitNullProperties?.Remove("lte"); }
+            else if (parseNode.GetChildNode("lte") is { } nullNodeLte && nullNodeLte.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lte = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Greater than.</summary>
-        public Date? Gt { get; set; }
+        public Date? Gt { get => _explicitNullValueGt; set { _explicitNullValueGt = value; AdditionalData?.Remove("gt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gt"); else _explicitNullProperties?.Remove("gt"); } }
+        private Date? _explicitNullValueGt = default!;
         /// <summary>Greater than or equal.</summary>
-        public Date? Gte { get; set; }
+        public Date? Gte { get => _explicitNullValueGte; set { _explicitNullValueGte = value; AdditionalData?.Remove("gte"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gte"); else _explicitNullProperties?.Remove("gte"); } }
+        private Date? _explicitNullValueGte = default!;
         /// <summary>Less than.</summary>
-        public Date? Lt { get; set; }
+        public Date? Lt { get => _explicitNullValueLt; set { _explicitNullValueLt = value; AdditionalData?.Remove("lt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lt"); else _explicitNullProperties?.Remove("lt"); } }
+        private Date? _explicitNullValueLt = default!;
         /// <summary>Less than or equal.</summary>
-        public Date? Lte { get; set; }
+        public Date? Lte { get => _explicitNullValueLte; set { _explicitNullValueLte = value; AdditionalData?.Remove("lte"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lte"); else _explicitNullProperties?.Remove("lte"); } }
+        private Date? _explicitNullValueLte = default!;
         /// <summary>The type property</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.FixedDateRangeType? Type { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.FixedDateRangeType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.FixedDateRangeType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.DateRangeCondition"/> and sets the default values.
         /// </summary>
@@ -41,7 +63,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.DateRangeCondition CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.DateRangeCondition();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.DateRangeCondition(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,7 +77,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "gte", n => { Gte = n.GetDateValue(); } },
                 { "lt", n => { Lt = n.GetDateValue(); } },
                 { "lte", n => { Lte = n.GetDateValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.FixedDateRangeType>(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.FixedDateRangeType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
         /// <summary>
@@ -70,6 +92,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteDateValue("lt", Lt);
             writer.WriteDateValue("lte", Lte);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.FixedDateRangeType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

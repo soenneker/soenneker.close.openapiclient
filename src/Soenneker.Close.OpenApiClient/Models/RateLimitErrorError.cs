@@ -11,28 +11,49 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RateLimitErrorError : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("allowed_limit") is null) { _explicitNullValueAllowedLimit = default!; _explicitNullProperties?.Remove("allowed_limit"); }
+            else if (parseNode.GetChildNode("allowed_limit") is { } nullNodeAllowedLimit && nullNodeAllowedLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedLimit = null;
+            if (parseNode.GetChildNode("bulk_action_count") is null) { _explicitNullValueBulkActionCount = default!; _explicitNullProperties?.Remove("bulk_action_count"); }
+            else if (parseNode.GetChildNode("bulk_action_count") is { } nullNodeBulkActionCount && nullNodeBulkActionCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BulkActionCount = null;
+            if (parseNode.GetChildNode("message") is null) { _explicitNullValueMessage = default!; _explicitNullProperties?.Remove("message"); }
+            else if (parseNode.GetChildNode("message") is { } nullNodeMessage && nullNodeMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Message = null;
+            if (parseNode.GetChildNode("rate_reset") is null) { _explicitNullValueRateReset = default!; _explicitNullProperties?.Remove("rate_reset"); }
+            else if (parseNode.GetChildNode("rate_reset") is { } nullNodeRateReset && nullNodeRateReset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RateReset = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Maximum number of bulk actions allowed. Present when the bulk action limit was hit.</summary>
-        public int? AllowedLimit { get; set; }
+        public int? AllowedLimit { get => _explicitNullValueAllowedLimit; set { _explicitNullValueAllowedLimit = value; AdditionalData?.Remove("allowed_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_limit"); else _explicitNullProperties?.Remove("allowed_limit"); } }
+        private int? _explicitNullValueAllowedLimit = default!;
         /// <summary>Number of bulk actions running. Present when the bulk action limit was hit.</summary>
-        public int? BulkActionCount { get; set; }
+        public int? BulkActionCount { get => _explicitNullValueBulkActionCount; set { _explicitNullValueBulkActionCount = value; AdditionalData?.Remove("bulk_action_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bulk_action_count"); else _explicitNullProperties?.Remove("bulk_action_count"); } }
+        private int? _explicitNullValueBulkActionCount = default!;
         /// <summary>The message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Message { get; set; }
+        public string? Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; AdditionalData?.Remove("message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        private string? _explicitNullValueMessage = default!;
 #nullable restore
 #else
-        public string Message { get; set; }
+        public string Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; AdditionalData?.Remove("message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        private string _explicitNullValueMessage = default!;
 #endif
         /// <summary>Number of seconds until the rate limit resets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RateReset { get; set; }
+        public string? RateReset { get => _explicitNullValueRateReset; set { _explicitNullValueRateReset = value; AdditionalData?.Remove("rate_reset"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rate_reset"); else _explicitNullProperties?.Remove("rate_reset"); } }
+        private string? _explicitNullValueRateReset = default!;
 #nullable restore
 #else
-        public string RateReset { get; set; }
+        public string RateReset { get => _explicitNullValueRateReset; set { _explicitNullValueRateReset = value; AdditionalData?.Remove("rate_reset"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rate_reset"); else _explicitNullProperties?.Remove("rate_reset"); } }
+        private string _explicitNullValueRateReset = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitErrorError"/> and sets the default values.
@@ -49,7 +70,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.RateLimitErrorError CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.RateLimitErrorError();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.RateLimitErrorError(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,6 +97,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteIntValue("bulk_action_count", BulkActionCount);
             writer.WriteStringValue("message", Message);
             writer.WriteStringValue("rate_reset", RateReset);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

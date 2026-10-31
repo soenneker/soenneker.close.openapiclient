@@ -11,24 +11,39 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ActivitiesMeetingsUpdateRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("outcome_id") is null) { _explicitNullValueOutcomeId = default!; _explicitNullProperties?.Remove("outcome_id"); }
+            else if (parseNode.GetChildNode("outcome_id") is { } nullNodeOutcomeId && nullNodeOutcomeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutcomeId = null;
+            if (parseNode.GetChildNode("user_note_html") is null) { _explicitNullValueUserNoteHtml = default!; _explicitNullProperties?.Remove("user_note_html"); }
+            else if (parseNode.GetChildNode("user_note_html") is { } nullNodeUserNoteHtml && nullNodeUserNoteHtml.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserNoteHtml = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The outcome_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OutcomeId { get; set; }
+        public string? OutcomeId { get => _explicitNullValueOutcomeId; set { _explicitNullValueOutcomeId = value; AdditionalData?.Remove("outcome_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome_id"); else _explicitNullProperties?.Remove("outcome_id"); } }
+        private string? _explicitNullValueOutcomeId = default!;
 #nullable restore
 #else
-        public string OutcomeId { get; set; }
+        public string OutcomeId { get => _explicitNullValueOutcomeId; set { _explicitNullValueOutcomeId = value; AdditionalData?.Remove("outcome_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome_id"); else _explicitNullProperties?.Remove("outcome_id"); } }
+        private string _explicitNullValueOutcomeId = default!;
 #endif
         /// <summary>The user_note_html property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UserNoteHtml { get; set; }
+        public string? UserNoteHtml { get => _explicitNullValueUserNoteHtml; set { _explicitNullValueUserNoteHtml = value; AdditionalData?.Remove("user_note_html"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_note_html"); else _explicitNullProperties?.Remove("user_note_html"); } }
+        private string? _explicitNullValueUserNoteHtml = default!;
 #nullable restore
 #else
-        public string UserNoteHtml { get; set; }
+        public string UserNoteHtml { get => _explicitNullValueUserNoteHtml; set { _explicitNullValueUserNoteHtml = value; AdditionalData?.Remove("user_note_html"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_note_html"); else _explicitNullProperties?.Remove("user_note_html"); } }
+        private string _explicitNullValueUserNoteHtml = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest"/> and sets the default values.
@@ -45,7 +60,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +83,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("outcome_id", OutcomeId);
             writer.WriteStringValue("user_note_html", UserNoteHtml);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

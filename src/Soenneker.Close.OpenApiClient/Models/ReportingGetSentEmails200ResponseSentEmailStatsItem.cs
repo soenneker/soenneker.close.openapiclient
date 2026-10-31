@@ -11,53 +11,94 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReportingGetSentEmails200ResponseSentEmailStatsItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("is_shared") is null) { _explicitNullValueIsShared = default!; _explicitNullProperties?.Remove("is_shared"); }
+            else if (parseNode.GetChildNode("is_shared") is { } nullNodeIsShared && nullNodeIsShared.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsShared = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("opened") is null) { _explicitNullValueOpened = default!; _explicitNullProperties?.Remove("opened"); }
+            else if (parseNode.GetChildNode("opened") is { } nullNodeOpened && nullNodeOpened.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Opened = null;
+            if (parseNode.GetChildNode("percentage_opened") is null) { _explicitNullValuePercentageOpened = default!; _explicitNullProperties?.Remove("percentage_opened"); }
+            else if (parseNode.GetChildNode("percentage_opened") is { } nullNodePercentageOpened && nullNodePercentageOpened.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PercentageOpened = null;
+            if (parseNode.GetChildNode("percentage_responded") is null) { _explicitNullValuePercentageResponded = default!; _explicitNullProperties?.Remove("percentage_responded"); }
+            else if (parseNode.GetChildNode("percentage_responded") is { } nullNodePercentageResponded && nullNodePercentageResponded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PercentageResponded = null;
+            if (parseNode.GetChildNode("_queries") is null) { _explicitNullValueQueries = default!; _explicitNullProperties?.Remove("_queries"); }
+            else if (parseNode.GetChildNode("_queries") is { } nullNodeQueries && nullNodeQueries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Queries = null;
+            if (parseNode.GetChildNode("responded") is null) { _explicitNullValueResponded = default!; _explicitNullProperties?.Remove("responded"); }
+            else if (parseNode.GetChildNode("responded") is { } nullNodeResponded && nullNodeResponded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Responded = null;
+            if (parseNode.GetChildNode("template_id") is null) { _explicitNullValueTemplateId = default!; _explicitNullProperties?.Remove("template_id"); }
+            else if (parseNode.GetChildNode("template_id") is { } nullNodeTemplateId && nullNodeTemplateId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TemplateId = null;
+            if (parseNode.GetChildNode("template_url") is null) { _explicitNullValueTemplateUrl = default!; _explicitNullProperties?.Remove("template_url"); }
+            else if (parseNode.GetChildNode("template_url") is { } nullNodeTemplateUrl && nullNodeTemplateUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TemplateUrl = null;
+            if (parseNode.GetChildNode("total") is null) { _explicitNullValueTotal = default!; _explicitNullProperties?.Remove("total"); }
+            else if (parseNode.GetChildNode("total") is { } nullNodeTotal && nullNodeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Total = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The is_shared property</summary>
-        public bool? IsShared { get; set; }
+        public bool? IsShared { get => _explicitNullValueIsShared; set { _explicitNullValueIsShared = value; AdditionalData?.Remove("is_shared"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_shared"); else _explicitNullProperties?.Remove("is_shared"); } }
+        private bool? _explicitNullValueIsShared = default!;
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>The opened property</summary>
-        public long? Opened { get; set; }
+        public long? Opened { get => _explicitNullValueOpened; set { _explicitNullValueOpened = value; AdditionalData?.Remove("opened"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("opened"); else _explicitNullProperties?.Remove("opened"); } }
+        private long? _explicitNullValueOpened = default!;
         /// <summary>The percentage_opened property</summary>
-        public long? PercentageOpened { get; set; }
+        public long? PercentageOpened { get => _explicitNullValuePercentageOpened; set { _explicitNullValuePercentageOpened = value; AdditionalData?.Remove("percentage_opened"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("percentage_opened"); else _explicitNullProperties?.Remove("percentage_opened"); } }
+        private long? _explicitNullValuePercentageOpened = default!;
         /// <summary>The percentage_responded property</summary>
-        public long? PercentageResponded { get; set; }
+        public long? PercentageResponded { get => _explicitNullValuePercentageResponded; set { _explicitNullValuePercentageResponded = value; AdditionalData?.Remove("percentage_responded"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("percentage_responded"); else _explicitNullProperties?.Remove("percentage_responded"); } }
+        private long? _explicitNullValuePercentageResponded = default!;
         /// <summary>The queries property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.ReportingGetSentEmails200ResponseSentEmailStatsItemQueries? Queries { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.ReportingGetSentEmails200ResponseSentEmailStatsItemQueries? Queries { get => _explicitNullValueQueries; set { _explicitNullValueQueries = value; AdditionalData?.Remove("_queries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_queries"); else _explicitNullProperties?.Remove("_queries"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.ReportingGetSentEmails200ResponseSentEmailStatsItemQueries? _explicitNullValueQueries = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.ReportingGetSentEmails200ResponseSentEmailStatsItemQueries Queries { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.ReportingGetSentEmails200ResponseSentEmailStatsItemQueries Queries { get => _explicitNullValueQueries; set { _explicitNullValueQueries = value; AdditionalData?.Remove("_queries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_queries"); else _explicitNullProperties?.Remove("_queries"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.ReportingGetSentEmails200ResponseSentEmailStatsItemQueries _explicitNullValueQueries = default!;
 #endif
         /// <summary>The responded property</summary>
-        public long? Responded { get; set; }
+        public long? Responded { get => _explicitNullValueResponded; set { _explicitNullValueResponded = value; AdditionalData?.Remove("responded"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("responded"); else _explicitNullProperties?.Remove("responded"); } }
+        private long? _explicitNullValueResponded = default!;
         /// <summary>The template_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TemplateId { get; set; }
+        public string? TemplateId { get => _explicitNullValueTemplateId; set { _explicitNullValueTemplateId = value; AdditionalData?.Remove("template_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("template_id"); else _explicitNullProperties?.Remove("template_id"); } }
+        private string? _explicitNullValueTemplateId = default!;
 #nullable restore
 #else
-        public string TemplateId { get; set; }
+        public string TemplateId { get => _explicitNullValueTemplateId; set { _explicitNullValueTemplateId = value; AdditionalData?.Remove("template_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("template_id"); else _explicitNullProperties?.Remove("template_id"); } }
+        private string _explicitNullValueTemplateId = default!;
 #endif
         /// <summary>The template_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TemplateUrl { get; set; }
+        public string? TemplateUrl { get => _explicitNullValueTemplateUrl; set { _explicitNullValueTemplateUrl = value; AdditionalData?.Remove("template_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("template_url"); else _explicitNullProperties?.Remove("template_url"); } }
+        private string? _explicitNullValueTemplateUrl = default!;
 #nullable restore
 #else
-        public string TemplateUrl { get; set; }
+        public string TemplateUrl { get => _explicitNullValueTemplateUrl; set { _explicitNullValueTemplateUrl = value; AdditionalData?.Remove("template_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("template_url"); else _explicitNullProperties?.Remove("template_url"); } }
+        private string _explicitNullValueTemplateUrl = default!;
 #endif
         /// <summary>The total property</summary>
-        public long? Total { get; set; }
+        public long? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; AdditionalData?.Remove("total"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
+        private long? _explicitNullValueTotal = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.ReportingGetSentEmails200ResponseSentEmailStatsItem"/> and sets the default values.
         /// </summary>
@@ -73,7 +114,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.ReportingGetSentEmails200ResponseSentEmailStatsItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.ReportingGetSentEmails200ResponseSentEmailStatsItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.ReportingGetSentEmails200ResponseSentEmailStatsItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -112,6 +153,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("template_id", TemplateId);
             writer.WriteStringValue("template_url", TemplateUrl);
             writer.WriteLongValue("total", Total);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

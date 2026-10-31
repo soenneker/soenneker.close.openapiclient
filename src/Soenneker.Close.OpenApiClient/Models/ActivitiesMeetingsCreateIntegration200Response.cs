@@ -11,40 +11,63 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ActivitiesMeetingsCreateIntegration200Response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("integration_data") is null) { _explicitNullValueIntegrationData = default!; _explicitNullProperties?.Remove("integration_data"); }
+            else if (parseNode.GetChildNode("integration_data") is { } nullNodeIntegrationData && nullNodeIntegrationData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntegrationData = null;
+            if (parseNode.GetChildNode("integration_name") is null) { _explicitNullValueIntegrationName = default!; _explicitNullProperties?.Remove("integration_name"); }
+            else if (parseNode.GetChildNode("integration_name") is { } nullNodeIntegrationName && nullNodeIntegrationName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntegrationName = null;
+            if (parseNode.GetChildNode("oauth_client") is null) { _explicitNullValueOauthClient = default!; _explicitNullProperties?.Remove("oauth_client"); }
+            else if (parseNode.GetChildNode("oauth_client") is { } nullNodeOauthClient && nullNodeOauthClient.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OauthClient = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>The integration_data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200ResponseIntegrationData? IntegrationData { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200ResponseIntegrationData? IntegrationData { get => _explicitNullValueIntegrationData; set { _explicitNullValueIntegrationData = value; AdditionalData?.Remove("integration_data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_data"); else _explicitNullProperties?.Remove("integration_data"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200ResponseIntegrationData? _explicitNullValueIntegrationData = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200ResponseIntegrationData IntegrationData { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200ResponseIntegrationData IntegrationData { get => _explicitNullValueIntegrationData; set { _explicitNullValueIntegrationData = value; AdditionalData?.Remove("integration_data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_data"); else _explicitNullProperties?.Remove("integration_data"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200ResponseIntegrationData _explicitNullValueIntegrationData = default!;
 #endif
         /// <summary>The integration_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IntegrationName { get; set; }
+        public string? IntegrationName { get => _explicitNullValueIntegrationName; set { _explicitNullValueIntegrationName = value; AdditionalData?.Remove("integration_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_name"); else _explicitNullProperties?.Remove("integration_name"); } }
+        private string? _explicitNullValueIntegrationName = default!;
 #nullable restore
 #else
-        public string IntegrationName { get; set; }
+        public string IntegrationName { get => _explicitNullValueIntegrationName; set { _explicitNullValueIntegrationName = value; AdditionalData?.Remove("integration_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_name"); else _explicitNullProperties?.Remove("integration_name"); } }
+        private string _explicitNullValueIntegrationName = default!;
 #endif
         /// <summary>The oauth_client property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200ResponseOAuthClient? OauthClient { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200ResponseOAuthClient? OauthClient { get => _explicitNullValueOauthClient; set { _explicitNullValueOauthClient = value; AdditionalData?.Remove("oauth_client"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oauth_client"); else _explicitNullProperties?.Remove("oauth_client"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200ResponseOAuthClient? _explicitNullValueOauthClient = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200ResponseOAuthClient OauthClient { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200ResponseOAuthClient OauthClient { get => _explicitNullValueOauthClient; set { _explicitNullValueOauthClient = value; AdditionalData?.Remove("oauth_client"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oauth_client"); else _explicitNullProperties?.Remove("oauth_client"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200ResponseOAuthClient _explicitNullValueOauthClient = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200Response"/> and sets the default values.
@@ -61,7 +84,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200Response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200Response();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200Response(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -88,6 +111,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200ResponseIntegrationData>("integration_data", IntegrationData);
             writer.WriteStringValue("integration_name", IntegrationName);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsCreateIntegration200ResponseOAuthClient>("oauth_client", OauthClient);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

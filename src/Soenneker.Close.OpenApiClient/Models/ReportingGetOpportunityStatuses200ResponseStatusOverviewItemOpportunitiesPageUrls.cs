@@ -11,56 +11,87 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReportingGetOpportunityStatuses200ResponseStatusOverviewItemOpportunitiesPageUrls : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("ended") is null) { _explicitNullValueEnded = default!; _explicitNullProperties?.Remove("ended"); }
+            else if (parseNode.GetChildNode("ended") is { } nullNodeEnded && nullNodeEnded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ended = null;
+            if (parseNode.GetChildNode("entered") is null) { _explicitNullValueEntered = default!; _explicitNullProperties?.Remove("entered"); }
+            else if (parseNode.GetChildNode("entered") is { } nullNodeEntered && nullNodeEntered.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Entered = null;
+            if (parseNode.GetChildNode("gained") is null) { _explicitNullValueGained = default!; _explicitNullProperties?.Remove("gained"); }
+            else if (parseNode.GetChildNode("gained") is { } nullNodeGained && nullNodeGained.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Gained = null;
+            if (parseNode.GetChildNode("left") is null) { _explicitNullValueLeft = default!; _explicitNullProperties?.Remove("left"); }
+            else if (parseNode.GetChildNode("left") is { } nullNodeLeft && nullNodeLeft.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Left = null;
+            if (parseNode.GetChildNode("lost") is null) { _explicitNullValueLost = default!; _explicitNullProperties?.Remove("lost"); }
+            else if (parseNode.GetChildNode("lost") is { } nullNodeLost && nullNodeLost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lost = null;
+            if (parseNode.GetChildNode("started") is null) { _explicitNullValueStarted = default!; _explicitNullProperties?.Remove("started"); }
+            else if (parseNode.GetChildNode("started") is { } nullNodeStarted && nullNodeStarted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Started = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ended property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Ended { get; set; }
+        public string? Ended { get => _explicitNullValueEnded; set { _explicitNullValueEnded = value; AdditionalData?.Remove("ended"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ended"); else _explicitNullProperties?.Remove("ended"); } }
+        private string? _explicitNullValueEnded = default!;
 #nullable restore
 #else
-        public string Ended { get; set; }
+        public string Ended { get => _explicitNullValueEnded; set { _explicitNullValueEnded = value; AdditionalData?.Remove("ended"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ended"); else _explicitNullProperties?.Remove("ended"); } }
+        private string _explicitNullValueEnded = default!;
 #endif
         /// <summary>The entered property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Entered { get; set; }
+        public string? Entered { get => _explicitNullValueEntered; set { _explicitNullValueEntered = value; AdditionalData?.Remove("entered"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entered"); else _explicitNullProperties?.Remove("entered"); } }
+        private string? _explicitNullValueEntered = default!;
 #nullable restore
 #else
-        public string Entered { get; set; }
+        public string Entered { get => _explicitNullValueEntered; set { _explicitNullValueEntered = value; AdditionalData?.Remove("entered"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entered"); else _explicitNullProperties?.Remove("entered"); } }
+        private string _explicitNullValueEntered = default!;
 #endif
         /// <summary>The gained property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Gained { get; set; }
+        public string? Gained { get => _explicitNullValueGained; set { _explicitNullValueGained = value; AdditionalData?.Remove("gained"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gained"); else _explicitNullProperties?.Remove("gained"); } }
+        private string? _explicitNullValueGained = default!;
 #nullable restore
 #else
-        public string Gained { get; set; }
+        public string Gained { get => _explicitNullValueGained; set { _explicitNullValueGained = value; AdditionalData?.Remove("gained"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gained"); else _explicitNullProperties?.Remove("gained"); } }
+        private string _explicitNullValueGained = default!;
 #endif
         /// <summary>The left property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Left { get; set; }
+        public string? Left { get => _explicitNullValueLeft; set { _explicitNullValueLeft = value; AdditionalData?.Remove("left"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("left"); else _explicitNullProperties?.Remove("left"); } }
+        private string? _explicitNullValueLeft = default!;
 #nullable restore
 #else
-        public string Left { get; set; }
+        public string Left { get => _explicitNullValueLeft; set { _explicitNullValueLeft = value; AdditionalData?.Remove("left"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("left"); else _explicitNullProperties?.Remove("left"); } }
+        private string _explicitNullValueLeft = default!;
 #endif
         /// <summary>The lost property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Lost { get; set; }
+        public string? Lost { get => _explicitNullValueLost; set { _explicitNullValueLost = value; AdditionalData?.Remove("lost"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lost"); else _explicitNullProperties?.Remove("lost"); } }
+        private string? _explicitNullValueLost = default!;
 #nullable restore
 #else
-        public string Lost { get; set; }
+        public string Lost { get => _explicitNullValueLost; set { _explicitNullValueLost = value; AdditionalData?.Remove("lost"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lost"); else _explicitNullProperties?.Remove("lost"); } }
+        private string _explicitNullValueLost = default!;
 #endif
         /// <summary>The started property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Started { get; set; }
+        public string? Started { get => _explicitNullValueStarted; set { _explicitNullValueStarted = value; AdditionalData?.Remove("started"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("started"); else _explicitNullProperties?.Remove("started"); } }
+        private string? _explicitNullValueStarted = default!;
 #nullable restore
 #else
-        public string Started { get; set; }
+        public string Started { get => _explicitNullValueStarted; set { _explicitNullValueStarted = value; AdditionalData?.Remove("started"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("started"); else _explicitNullProperties?.Remove("started"); } }
+        private string _explicitNullValueStarted = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.ReportingGetOpportunityStatuses200ResponseStatusOverviewItemOpportunitiesPageUrls"/> and sets the default values.
@@ -77,7 +108,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.ReportingGetOpportunityStatuses200ResponseStatusOverviewItemOpportunitiesPageUrls CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.ReportingGetOpportunityStatuses200ResponseStatusOverviewItemOpportunitiesPageUrls();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.ReportingGetOpportunityStatuses200ResponseStatusOverviewItemOpportunitiesPageUrls(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -108,6 +139,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("left", Left);
             writer.WriteStringValue("lost", Lost);
             writer.WriteStringValue("started", Started);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

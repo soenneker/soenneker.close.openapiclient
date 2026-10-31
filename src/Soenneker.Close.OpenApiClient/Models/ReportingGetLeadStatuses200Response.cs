@@ -11,32 +11,51 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReportingGetLeadStatuses200Response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("status_overview") is null) { _explicitNullValueStatusOverview = default!; _explicitNullProperties?.Remove("status_overview"); }
+            else if (parseNode.GetChildNode("status_overview") is { } nullNodeStatusOverview && nullNodeStatusOverview.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusOverview = null;
+            if (parseNode.GetChildNode("status_transitions") is null) { _explicitNullValueStatusTransitions = default!; _explicitNullProperties?.Remove("status_transitions"); }
+            else if (parseNode.GetChildNode("status_transitions") is { } nullNodeStatusTransitions && nullNodeStatusTransitions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusTransitions = null;
+            if (parseNode.GetChildNode("status_transitions_summary") is null) { _explicitNullValueStatusTransitionsSummary = default!; _explicitNullProperties?.Remove("status_transitions_summary"); }
+            else if (parseNode.GetChildNode("status_transitions_summary") is { } nullNodeStatusTransitionsSummary && nullNodeStatusTransitionsSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusTransitionsSummary = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The status_overview property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusOverviewItem>? StatusOverview { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusOverviewItem>? StatusOverview { get => _explicitNullValueStatusOverview; set { _explicitNullValueStatusOverview = value; AdditionalData?.Remove("status_overview"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_overview"); else _explicitNullProperties?.Remove("status_overview"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusOverviewItem>? _explicitNullValueStatusOverview = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusOverviewItem> StatusOverview { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusOverviewItem> StatusOverview { get => _explicitNullValueStatusOverview; set { _explicitNullValueStatusOverview = value; AdditionalData?.Remove("status_overview"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_overview"); else _explicitNullProperties?.Remove("status_overview"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusOverviewItem> _explicitNullValueStatusOverview = default!;
 #endif
         /// <summary>The status_transitions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusTransitionsItem>? StatusTransitions { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusTransitionsItem>? StatusTransitions { get => _explicitNullValueStatusTransitions; set { _explicitNullValueStatusTransitions = value; AdditionalData?.Remove("status_transitions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_transitions"); else _explicitNullProperties?.Remove("status_transitions"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusTransitionsItem>? _explicitNullValueStatusTransitions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusTransitionsItem> StatusTransitions { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusTransitionsItem> StatusTransitions { get => _explicitNullValueStatusTransitions; set { _explicitNullValueStatusTransitions = value; AdditionalData?.Remove("status_transitions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_transitions"); else _explicitNullProperties?.Remove("status_transitions"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusTransitionsItem> _explicitNullValueStatusTransitions = default!;
 #endif
         /// <summary>The status_transitions_summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusTransitionsSummaryItem>? StatusTransitionsSummary { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusTransitionsSummaryItem>? StatusTransitionsSummary { get => _explicitNullValueStatusTransitionsSummary; set { _explicitNullValueStatusTransitionsSummary = value; AdditionalData?.Remove("status_transitions_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_transitions_summary"); else _explicitNullProperties?.Remove("status_transitions_summary"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusTransitionsSummaryItem>? _explicitNullValueStatusTransitionsSummary = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusTransitionsSummaryItem> StatusTransitionsSummary { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusTransitionsSummaryItem> StatusTransitionsSummary { get => _explicitNullValueStatusTransitionsSummary; set { _explicitNullValueStatusTransitionsSummary = value; AdditionalData?.Remove("status_transitions_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_transitions_summary"); else _explicitNullProperties?.Remove("status_transitions_summary"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusTransitionsSummaryItem> _explicitNullValueStatusTransitionsSummary = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200Response"/> and sets the default values.
@@ -53,7 +72,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200Response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200Response();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200Response(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +97,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusOverviewItem>("status_overview", StatusOverview);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusTransitionsItem>("status_transitions", StatusTransitions);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ReportingGetLeadStatuses200ResponseStatusTransitionsSummaryItem>("status_transitions_summary", StatusTransitionsSummary);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

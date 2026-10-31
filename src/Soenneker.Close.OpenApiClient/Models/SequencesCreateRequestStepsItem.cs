@@ -11,36 +11,61 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SequencesCreateRequestStepsItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("delay") is null) { _explicitNullValueDelay = default!; _explicitNullProperties?.Remove("delay"); }
+            else if (parseNode.GetChildNode("delay") is { } nullNodeDelay && nullNodeDelay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Delay = null;
+            if (parseNode.GetChildNode("email_template_id") is null) { _explicitNullValueEmailTemplateId = default!; _explicitNullProperties?.Remove("email_template_id"); }
+            else if (parseNode.GetChildNode("email_template_id") is { } nullNodeEmailTemplateId && nullNodeEmailTemplateId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailTemplateId = null;
+            if (parseNode.GetChildNode("required") is null) { _explicitNullValueRequired = default!; _explicitNullProperties?.Remove("required"); }
+            else if (parseNode.GetChildNode("required") is { } nullNodeRequired && nullNodeRequired.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Required = null;
+            if (parseNode.GetChildNode("step_type") is null) { _explicitNullValueStepType = default!; _explicitNullProperties?.Remove("step_type"); }
+            else if (parseNode.GetChildNode("step_type") is { } nullNodeStepType && nullNodeStepType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StepType = null;
+            if (parseNode.GetChildNode("threading") is null) { _explicitNullValueThreading = default!; _explicitNullProperties?.Remove("threading"); }
+            else if (parseNode.GetChildNode("threading") is { } nullNodeThreading && nullNodeThreading.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Threading = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The delay property</summary>
-        public long? Delay { get; set; }
+        public long? Delay { get => _explicitNullValueDelay; set { _explicitNullValueDelay = value; AdditionalData?.Remove("delay"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delay"); else _explicitNullProperties?.Remove("delay"); } }
+        private long? _explicitNullValueDelay = default!;
         /// <summary>The email_template_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EmailTemplateId { get; set; }
+        public string? EmailTemplateId { get => _explicitNullValueEmailTemplateId; set { _explicitNullValueEmailTemplateId = value; AdditionalData?.Remove("email_template_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_template_id"); else _explicitNullProperties?.Remove("email_template_id"); } }
+        private string? _explicitNullValueEmailTemplateId = default!;
 #nullable restore
 #else
-        public string EmailTemplateId { get; set; }
+        public string EmailTemplateId { get => _explicitNullValueEmailTemplateId; set { _explicitNullValueEmailTemplateId = value; AdditionalData?.Remove("email_template_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_template_id"); else _explicitNullProperties?.Remove("email_template_id"); } }
+        private string _explicitNullValueEmailTemplateId = default!;
 #endif
         /// <summary>The required property</summary>
-        public bool? Required { get; set; }
+        public bool? Required { get => _explicitNullValueRequired; set { _explicitNullValueRequired = value; AdditionalData?.Remove("required"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("required"); else _explicitNullProperties?.Remove("required"); } }
+        private bool? _explicitNullValueRequired = default!;
         /// <summary>The step_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StepType { get; set; }
+        public string? StepType { get => _explicitNullValueStepType; set { _explicitNullValueStepType = value; AdditionalData?.Remove("step_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_type"); else _explicitNullProperties?.Remove("step_type"); } }
+        private string? _explicitNullValueStepType = default!;
 #nullable restore
 #else
-        public string StepType { get; set; }
+        public string StepType { get => _explicitNullValueStepType; set { _explicitNullValueStepType = value; AdditionalData?.Remove("step_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_type"); else _explicitNullProperties?.Remove("step_type"); } }
+        private string _explicitNullValueStepType = default!;
 #endif
         /// <summary>The threading property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Threading { get; set; }
+        public string? Threading { get => _explicitNullValueThreading; set { _explicitNullValueThreading = value; AdditionalData?.Remove("threading"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("threading"); else _explicitNullProperties?.Remove("threading"); } }
+        private string? _explicitNullValueThreading = default!;
 #nullable restore
 #else
-        public string Threading { get; set; }
+        public string Threading { get => _explicitNullValueThreading; set { _explicitNullValueThreading = value; AdditionalData?.Remove("threading"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("threading"); else _explicitNullProperties?.Remove("threading"); } }
+        private string _explicitNullValueThreading = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.SequencesCreateRequestStepsItem"/> and sets the default values.
@@ -57,7 +82,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.SequencesCreateRequestStepsItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.SequencesCreateRequestStepsItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.SequencesCreateRequestStepsItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -86,6 +111,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteBoolValue("required", Required);
             writer.WriteStringValue("step_type", StepType);
             writer.WriteStringValue("threading", Threading);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

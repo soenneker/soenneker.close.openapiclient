@@ -11,50 +11,80 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BulkActionsEmailCreateRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("contact_preference") is null) { _explicitNullValueContactPreference = default!; _explicitNullProperties?.Remove("contact_preference"); }
+            else if (parseNode.GetChildNode("contact_preference") is { } nullNodeContactPreference && nullNodeContactPreference.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContactPreference = null;
+            if (parseNode.GetChildNode("results_limit") is null) { _explicitNullValueResultsLimit = default!; _explicitNullProperties?.Remove("results_limit"); }
+            else if (parseNode.GetChildNode("results_limit") is { } nullNodeResultsLimit && nullNodeResultsLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResultsLimit = null;
+            if (parseNode.GetChildNode("send_done_email") is null) { _explicitNullValueSendDoneEmail = default!; _explicitNullProperties?.Remove("send_done_email"); }
+            else if (parseNode.GetChildNode("send_done_email") is { } nullNodeSendDoneEmail && nullNodeSendDoneEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SendDoneEmail = null;
+            if (parseNode.GetChildNode("sort") is null) { _explicitNullValueSort = default!; _explicitNullProperties?.Remove("sort"); }
+            else if (parseNode.GetChildNode("sort") is { } nullNodeSort && nullNodeSort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sort = null;
+            if (parseNode.GetChildNode("s_query") is null) { _explicitNullValueSQuery = default!; _explicitNullProperties?.Remove("s_query"); }
+            else if (parseNode.GetChildNode("s_query") is { } nullNodeSQuery && nullNodeSQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SQuery = null;
+            if (parseNode.GetChildNode("template_id") is null) { _explicitNullValueTemplateId = default!; _explicitNullProperties?.Remove("template_id"); }
+            else if (parseNode.GetChildNode("template_id") is { } nullNodeTemplateId && nullNodeTemplateId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TemplateId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The contact_preference property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ContactPreference { get; set; }
+        public string? ContactPreference { get => _explicitNullValueContactPreference; set { _explicitNullValueContactPreference = value; AdditionalData?.Remove("contact_preference"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact_preference"); else _explicitNullProperties?.Remove("contact_preference"); } }
+        private string? _explicitNullValueContactPreference = default!;
 #nullable restore
 #else
-        public string ContactPreference { get; set; }
+        public string ContactPreference { get => _explicitNullValueContactPreference; set { _explicitNullValueContactPreference = value; AdditionalData?.Remove("contact_preference"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact_preference"); else _explicitNullProperties?.Remove("contact_preference"); } }
+        private string _explicitNullValueContactPreference = default!;
 #endif
         /// <summary>The results_limit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ResultsLimit { get; set; }
+        public UntypedNode? ResultsLimit { get => _explicitNullValueResultsLimit; set { _explicitNullValueResultsLimit = value; AdditionalData?.Remove("results_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results_limit"); else _explicitNullProperties?.Remove("results_limit"); } }
+        private UntypedNode? _explicitNullValueResultsLimit = default!;
 #nullable restore
 #else
-        public UntypedNode ResultsLimit { get; set; }
+        public UntypedNode ResultsLimit { get => _explicitNullValueResultsLimit; set { _explicitNullValueResultsLimit = value; AdditionalData?.Remove("results_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results_limit"); else _explicitNullProperties?.Remove("results_limit"); } }
+        private UntypedNode _explicitNullValueResultsLimit = default!;
 #endif
         /// <summary>The send_done_email property</summary>
-        public bool? SendDoneEmail { get; set; }
+        public bool? SendDoneEmail { get => _explicitNullValueSendDoneEmail; set { _explicitNullValueSendDoneEmail = value; AdditionalData?.Remove("send_done_email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("send_done_email"); else _explicitNullProperties?.Remove("send_done_email"); } }
+        private bool? _explicitNullValueSendDoneEmail = default!;
         /// <summary>The sort property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.BulkActionsEmailCreateRequestSortItem>? Sort { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.BulkActionsEmailCreateRequestSortItem>? Sort { get => _explicitNullValueSort; set { _explicitNullValueSort = value; AdditionalData?.Remove("sort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sort"); else _explicitNullProperties?.Remove("sort"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.BulkActionsEmailCreateRequestSortItem>? _explicitNullValueSort = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.BulkActionsEmailCreateRequestSortItem> Sort { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.BulkActionsEmailCreateRequestSortItem> Sort { get => _explicitNullValueSort; set { _explicitNullValueSort = value; AdditionalData?.Remove("sort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sort"); else _explicitNullProperties?.Remove("sort"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.BulkActionsEmailCreateRequestSortItem> _explicitNullValueSort = default!;
 #endif
         /// <summary>The s_query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.BulkActionsEmailCreateRequestSQuery? SQuery { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.BulkActionsEmailCreateRequestSQuery? SQuery { get => _explicitNullValueSQuery; set { _explicitNullValueSQuery = value; AdditionalData?.Remove("s_query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("s_query"); else _explicitNullProperties?.Remove("s_query"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.BulkActionsEmailCreateRequestSQuery? _explicitNullValueSQuery = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.BulkActionsEmailCreateRequestSQuery SQuery { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.BulkActionsEmailCreateRequestSQuery SQuery { get => _explicitNullValueSQuery; set { _explicitNullValueSQuery = value; AdditionalData?.Remove("s_query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("s_query"); else _explicitNullProperties?.Remove("s_query"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.BulkActionsEmailCreateRequestSQuery _explicitNullValueSQuery = default!;
 #endif
         /// <summary>The template_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TemplateId { get; set; }
+        public string? TemplateId { get => _explicitNullValueTemplateId; set { _explicitNullValueTemplateId = value; AdditionalData?.Remove("template_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("template_id"); else _explicitNullProperties?.Remove("template_id"); } }
+        private string? _explicitNullValueTemplateId = default!;
 #nullable restore
 #else
-        public string TemplateId { get; set; }
+        public string TemplateId { get => _explicitNullValueTemplateId; set { _explicitNullValueTemplateId = value; AdditionalData?.Remove("template_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("template_id"); else _explicitNullProperties?.Remove("template_id"); } }
+        private string _explicitNullValueTemplateId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.BulkActionsEmailCreateRequest"/> and sets the default values.
@@ -71,7 +101,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.BulkActionsEmailCreateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.BulkActionsEmailCreateRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.BulkActionsEmailCreateRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -102,6 +132,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.BulkActionsEmailCreateRequestSortItem>("sort", Sort);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkActionsEmailCreateRequestSQuery>("s_query", SQuery);
             writer.WriteStringValue("template_id", TemplateId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

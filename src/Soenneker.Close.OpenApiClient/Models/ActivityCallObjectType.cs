@@ -3,14 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>The object type the field belongs to.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public enum LeadType
-    #pragma warning restore CS1591
+    public enum ActivityCallObjectType
     {
-        [EnumMember(Value = "lead")]
+        [EnumMember(Value = "activity.call")]
         #pragma warning disable CS1591
-        Lead,
+        ActivityCall,
         #pragma warning restore CS1591
     }
 }

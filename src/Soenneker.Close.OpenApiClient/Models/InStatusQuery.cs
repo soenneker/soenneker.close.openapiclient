@@ -12,37 +12,62 @@ namespace Soenneker.Close.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class InStatusQuery : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("before") is null) { _explicitNullValueBefore = default!; _explicitNullProperties?.Remove("before"); }
+            else if (parseNode.GetChildNode("before") is { } nullNodeBefore && nullNodeBefore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Before = null;
+            if (parseNode.GetChildNode("negate") is null) { _explicitNullValueNegate = default!; _explicitNullProperties?.Remove("negate"); }
+            else if (parseNode.GetChildNode("negate") is { } nullNodeNegate && nullNodeNegate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Negate = null;
+            if (parseNode.GetChildNode("on_or_after") is null) { _explicitNullValueOnOrAfter = default!; _explicitNullProperties?.Remove("on_or_after"); }
+            else if (parseNode.GetChildNode("on_or_after") is { } nullNodeOnOrAfter && nullNodeOnOrAfter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OnOrAfter = null;
+            if (parseNode.GetChildNode("status_ids") is null) { _explicitNullValueStatusIds = default!; _explicitNullProperties?.Remove("status_ids"); }
+            else if (parseNode.GetChildNode("status_ids") is { } nullNodeStatusIds && nullNodeStatusIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusIds = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>End of the period (exclusive).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.Moment? Before { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.Moment? Before { get => _explicitNullValueBefore; set { _explicitNullValueBefore = value; AdditionalData?.Remove("before"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before"); else _explicitNullProperties?.Remove("before"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.Moment? _explicitNullValueBefore = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.Moment Before { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.Moment Before { get => _explicitNullValueBefore; set { _explicitNullValueBefore = value; AdditionalData?.Remove("before"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before"); else _explicitNullProperties?.Remove("before"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.Moment _explicitNullValueBefore = default!;
 #endif
         /// <summary>Match objects that do NOT match this query instead.</summary>
-        public bool? Negate { get; set; }
+        public bool? Negate { get => _explicitNullValueNegate; set { _explicitNullValueNegate = value; AdditionalData?.Remove("negate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("negate"); else _explicitNullProperties?.Remove("negate"); } }
+        private bool? _explicitNullValueNegate = default!;
         /// <summary>Start of the period (inclusive).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.Moment? OnOrAfter { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.Moment? OnOrAfter { get => _explicitNullValueOnOrAfter; set { _explicitNullValueOnOrAfter = value; AdditionalData?.Remove("on_or_after"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("on_or_after"); else _explicitNullProperties?.Remove("on_or_after"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.Moment? _explicitNullValueOnOrAfter = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.Moment OnOrAfter { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.Moment OnOrAfter { get => _explicitNullValueOnOrAfter; set { _explicitNullValueOnOrAfter = value; AdditionalData?.Remove("on_or_after"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("on_or_after"); else _explicitNullProperties?.Remove("on_or_after"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.Moment _explicitNullValueOnOrAfter = default!;
 #endif
         /// <summary>IDs of Lead or Opportunity statuses.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? StatusIds { get; set; }
+        public List<string>? StatusIds { get => _explicitNullValueStatusIds; set { _explicitNullValueStatusIds = value; AdditionalData?.Remove("status_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_ids"); else _explicitNullProperties?.Remove("status_ids"); } }
+        private List<string>? _explicitNullValueStatusIds = default!;
 #nullable restore
 #else
-        public List<string> StatusIds { get; set; }
+        public List<string> StatusIds { get => _explicitNullValueStatusIds; set { _explicitNullValueStatusIds = value; AdditionalData?.Remove("status_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_ids"); else _explicitNullProperties?.Remove("status_ids"); } }
+        private List<string> _explicitNullValueStatusIds = default!;
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.InStatusType? Type { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.InStatusType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.InStatusType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.InStatusQuery"/> and sets the default values.
         /// </summary>
@@ -59,7 +84,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.InStatusQuery CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.InStatusQuery();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.InStatusQuery(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,7 +98,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "negate", n => { Negate = n.GetBoolValue(); } },
                 { "on_or_after", n => { OnOrAfter = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.Moment>(global::Soenneker.Close.OpenApiClient.Models.Moment.CreateFromDiscriminatorValue); } },
                 { "status_ids", n => { StatusIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.InStatusType>(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.InStatusType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
         /// <summary>
@@ -88,6 +113,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.Moment>("on_or_after", OnOrAfter);
             writer.WriteCollectionOfPrimitiveValues<string>("status_ids", StatusIds);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.InStatusType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

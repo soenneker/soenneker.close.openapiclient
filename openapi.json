@@ -30547,6 +30547,18 @@
         "title": "Attachment",
         "type": "object",
         "properties": {
+          "content_id": {
+            "title": "Content ID",
+            "description": "MIME Content-ID field, referenced from the body HTML as a `cid:` link",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "content_type": {
             "title": "Content Type",
             "anyOf": [
@@ -30568,6 +30580,11 @@
                 "type": "null"
               }
             ]
+          },
+          "inline_only": {
+            "title": "Inline Only",
+            "description": "Whether the attachment is embedded in the body HTML (e.g. a signature logo) rather than being standalone",
+            "type": "boolean"
           },
           "size": {
             "title": "Size",
@@ -43271,7 +43288,7 @@
       },
       "PredefinedRelativeDatetimeRange": {
         "title": "PredefinedRelativeDatetimeRange",
-        "description": "Relative datetime range options, in the user's timezone:\n\n- `yesterday`, `today`, `tomorrow`: The whole day.\n- `last-*`, `this-*`, `next-*` with `week`, `month`, `quarter` or `year`: The whole previous, current or next calendar period, e.g. `this-month`.\n- `closest-monday` to `closest-sunday`: The whole day of the next given weekday, or today if it's that weekday.\n- `all-time`: Any date.",
+        "description": "Relative datetime range options, in the user's timezone.",
         "type": "string",
         "enum": [
           "yesterday",
@@ -43297,7 +43314,78 @@
           "closest-saturday",
           "closest-sunday",
           "all-time"
-        ]
+        ],
+        "x-fern-enum": {
+          "all-time": {
+            "description": "Any date."
+          },
+          "closest-friday": {
+            "description": "The whole next Friday, or today if it's Friday."
+          },
+          "closest-monday": {
+            "description": "The whole next Monday, or today if it's Monday."
+          },
+          "closest-saturday": {
+            "description": "The whole next Saturday, or today if it's Saturday."
+          },
+          "closest-sunday": {
+            "description": "The whole next Sunday, or today if it's Sunday."
+          },
+          "closest-thursday": {
+            "description": "The whole next Thursday, or today if it's Thursday."
+          },
+          "closest-tuesday": {
+            "description": "The whole next Tuesday, or today if it's Tuesday."
+          },
+          "closest-wednesday": {
+            "description": "The whole next Wednesday, or today if it's Wednesday."
+          },
+          "last-month": {
+            "description": "The whole previous calendar month."
+          },
+          "last-quarter": {
+            "description": "The whole previous calendar quarter."
+          },
+          "last-week": {
+            "description": "The whole previous calendar week."
+          },
+          "last-year": {
+            "description": "The whole previous calendar year."
+          },
+          "next-month": {
+            "description": "The whole next calendar month."
+          },
+          "next-quarter": {
+            "description": "The whole next calendar quarter."
+          },
+          "next-week": {
+            "description": "The whole next calendar week."
+          },
+          "next-year": {
+            "description": "The whole next calendar year."
+          },
+          "this-month": {
+            "description": "The whole current calendar month."
+          },
+          "this-quarter": {
+            "description": "The whole current calendar quarter."
+          },
+          "this-week": {
+            "description": "The whole current calendar week."
+          },
+          "this-year": {
+            "description": "The whole current calendar year."
+          },
+          "today": {
+            "description": "The whole current day."
+          },
+          "tomorrow": {
+            "description": "The whole next day."
+          },
+          "yesterday": {
+            "description": "The whole previous day."
+          }
+        }
       },
       "ProviderCalendarType": {
         "title": "ProviderCalendarType",
@@ -46237,14 +46325,28 @@
       },
       "TextMatchMode": {
         "title": "TextMatchMode",
-        "description": "How to match text:\n\n- `full_words`: All the words appear, in any order.\n- `phrase`: The words appear next to each other, in the given order.\n- `beginning_of_words`: All the words appear as the beginning of words, e.g. `ste` matches \"Steli\".\n- `exact_value`: The whole value equals the text.",
+        "description": "How to match text.",
         "type": "string",
         "enum": [
           "full_words",
           "phrase",
           "beginning_of_words",
           "exact_value"
-        ]
+        ],
+        "x-fern-enum": {
+          "beginning_of_words": {
+            "description": "All the words appear as the beginning of words, e.g. `ste` matches \"Steli\"."
+          },
+          "exact_value": {
+            "description": "The whole value equals the text."
+          },
+          "full_words": {
+            "description": "All the words appear, in any order."
+          },
+          "phrase": {
+            "description": "The words appear next to each other, in the given order."
+          }
+        }
       },
       "TextQuery": {
         "title": "TextQuery",

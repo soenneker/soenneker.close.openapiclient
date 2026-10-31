@@ -12,31 +12,55 @@ namespace Soenneker.Close.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OffsetMoment : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("direction") is null) { _explicitNullValueDirection = default!; _explicitNullProperties?.Remove("direction"); }
+            else if (parseNode.GetChildNode("direction") is { } nullNodeDirection && nullNodeDirection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Direction = null;
+            if (parseNode.GetChildNode("moment") is null) { _explicitNullValueMoment = default!; _explicitNullProperties?.Remove("moment"); }
+            else if (parseNode.GetChildNode("moment") is { } nullNodeMoment && nullNodeMoment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Moment = null;
+            if (parseNode.GetChildNode("offset") is null) { _explicitNullValueOffset = default!; _explicitNullProperties?.Remove("offset"); }
+            else if (parseNode.GetChildNode("offset") is { } nullNodeOffset && nullNodeOffset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Offset = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("which_day_end") is null) { _explicitNullValueWhichDayEnd = default!; _explicitNullProperties?.Remove("which_day_end"); }
+            else if (parseNode.GetChildNode("which_day_end") is { } nullNodeWhichDayEnd && nullNodeWhichDayEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WhichDayEnd = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether to shift into the past or the future.</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.OffsetDirection? Direction { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.OffsetDirection? Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; AdditionalData?.Remove("direction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.OffsetDirection? _explicitNullValueDirection = default!;
         /// <summary>The moment to shift. Defaults to now.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.Moment? Moment { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.Moment? Moment { get => _explicitNullValueMoment; set { _explicitNullValueMoment = value; AdditionalData?.Remove("moment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("moment"); else _explicitNullProperties?.Remove("moment"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.Moment? _explicitNullValueMoment = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.Moment Moment { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.Moment Moment { get => _explicitNullValueMoment; set { _explicitNullValueMoment = value; AdditionalData?.Remove("moment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("moment"); else _explicitNullProperties?.Remove("moment"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.Moment _explicitNullValueMoment = default!;
 #endif
         /// <summary>How far to shift the moment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.Duration? Offset { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.Duration? Offset { get => _explicitNullValueOffset; set { _explicitNullValueOffset = value; AdditionalData?.Remove("offset"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("offset"); else _explicitNullProperties?.Remove("offset"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.Duration? _explicitNullValueOffset = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.Duration Offset { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.Duration Offset { get => _explicitNullValueOffset; set { _explicitNullValueOffset = value; AdditionalData?.Remove("offset"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("offset"); else _explicitNullProperties?.Remove("offset"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.Duration _explicitNullValueOffset = default!;
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.OffsetType? Type { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.OffsetType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.OffsetType? _explicitNullValueType = default!;
         /// <summary>If the offset includes days, weeks, months or years, the moment is first moved to the start or end of its day.</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.StartEnd? WhichDayEnd { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.StartEnd? WhichDayEnd { get => _explicitNullValueWhichDayEnd; set { _explicitNullValueWhichDayEnd = value; AdditionalData?.Remove("which_day_end"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("which_day_end"); else _explicitNullProperties?.Remove("which_day_end"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.StartEnd? _explicitNullValueWhichDayEnd = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.OffsetMoment"/> and sets the default values.
         /// </summary>
@@ -53,7 +77,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.OffsetMoment CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.OffsetMoment();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.OffsetMoment(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -63,11 +87,11 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "direction", n => { Direction = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.OffsetDirection>(); } },
+                { "direction", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.OffsetDirection>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDirection = default; _explicitNullProperties?.Remove("direction"); AdditionalData["direction"] = unknown; } else { Direction = parsed; AdditionalData.Remove("direction"); } } },
                 { "moment", n => { Moment = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.Moment>(global::Soenneker.Close.OpenApiClient.Models.Moment.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.Duration>(global::Soenneker.Close.OpenApiClient.Models.Duration.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.OffsetType>(); } },
-                { "which_day_end", n => { WhichDayEnd = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.StartEnd>(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.OffsetType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
+                { "which_day_end", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.StartEnd>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueWhichDayEnd = default; _explicitNullProperties?.Remove("which_day_end"); AdditionalData["which_day_end"] = unknown; } else { WhichDayEnd = parsed; AdditionalData.Remove("which_day_end"); } } },
             };
         }
         /// <summary>
@@ -82,6 +106,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.Duration>("offset", Offset);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.OffsetType>("type", Type);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.StartEnd>("which_day_end", WhichDayEnd);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

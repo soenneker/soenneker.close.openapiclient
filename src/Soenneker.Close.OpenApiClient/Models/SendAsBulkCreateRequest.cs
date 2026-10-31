@@ -11,24 +11,39 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SendAsBulkCreateRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("allowed_user_ids") is null) { _explicitNullValueAllowedUserIds = default!; _explicitNullProperties?.Remove("allowed_user_ids"); }
+            else if (parseNode.GetChildNode("allowed_user_ids") is { } nullNodeAllowedUserIds && nullNodeAllowedUserIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedUserIds = null;
+            if (parseNode.GetChildNode("disallowed_user_ids") is null) { _explicitNullValueDisallowedUserIds = default!; _explicitNullProperties?.Remove("disallowed_user_ids"); }
+            else if (parseNode.GetChildNode("disallowed_user_ids") is { } nullNodeDisallowedUserIds && nullNodeDisallowedUserIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisallowedUserIds = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The allowed_user_ids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AllowedUserIds { get; set; }
+        public List<string>? AllowedUserIds { get => _explicitNullValueAllowedUserIds; set { _explicitNullValueAllowedUserIds = value; AdditionalData?.Remove("allowed_user_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_user_ids"); else _explicitNullProperties?.Remove("allowed_user_ids"); } }
+        private List<string>? _explicitNullValueAllowedUserIds = default!;
 #nullable restore
 #else
-        public List<string> AllowedUserIds { get; set; }
+        public List<string> AllowedUserIds { get => _explicitNullValueAllowedUserIds; set { _explicitNullValueAllowedUserIds = value; AdditionalData?.Remove("allowed_user_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_user_ids"); else _explicitNullProperties?.Remove("allowed_user_ids"); } }
+        private List<string> _explicitNullValueAllowedUserIds = default!;
 #endif
         /// <summary>The disallowed_user_ids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? DisallowedUserIds { get; set; }
+        public List<string>? DisallowedUserIds { get => _explicitNullValueDisallowedUserIds; set { _explicitNullValueDisallowedUserIds = value; AdditionalData?.Remove("disallowed_user_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disallowed_user_ids"); else _explicitNullProperties?.Remove("disallowed_user_ids"); } }
+        private List<string>? _explicitNullValueDisallowedUserIds = default!;
 #nullable restore
 #else
-        public List<string> DisallowedUserIds { get; set; }
+        public List<string> DisallowedUserIds { get => _explicitNullValueDisallowedUserIds; set { _explicitNullValueDisallowedUserIds = value; AdditionalData?.Remove("disallowed_user_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disallowed_user_ids"); else _explicitNullProperties?.Remove("disallowed_user_ids"); } }
+        private List<string> _explicitNullValueDisallowedUserIds = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.SendAsBulkCreateRequest"/> and sets the default values.
@@ -45,7 +60,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.SendAsBulkCreateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.SendAsBulkCreateRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.SendAsBulkCreateRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +83,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_user_ids", AllowedUserIds);
             writer.WriteCollectionOfPrimitiveValues<string>("disallowed_user_ids", DisallowedUserIds);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

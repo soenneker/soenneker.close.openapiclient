@@ -12,23 +12,43 @@ namespace Soenneker.Close.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class StartEndOfPeriodMoment : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("moment") is null) { _explicitNullValueMoment = default!; _explicitNullProperties?.Remove("moment"); }
+            else if (parseNode.GetChildNode("moment") is { } nullNodeMoment && nullNodeMoment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Moment = null;
+            if (parseNode.GetChildNode("period") is null) { _explicitNullValuePeriod = default!; _explicitNullProperties?.Remove("period"); }
+            else if (parseNode.GetChildNode("period") is { } nullNodePeriod && nullNodePeriod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Period = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("which") is null) { _explicitNullValueWhich = default!; _explicitNullProperties?.Remove("which"); }
+            else if (parseNode.GetChildNode("which") is { } nullNodeWhich && nullNodeWhich.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Which = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The moment whose period is used. Defaults to now.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.Moment? Moment { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.Moment? Moment { get => _explicitNullValueMoment; set { _explicitNullValueMoment = value; AdditionalData?.Remove("moment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("moment"); else _explicitNullProperties?.Remove("moment"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.Moment? _explicitNullValueMoment = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.Moment Moment { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.Moment Moment { get => _explicitNullValueMoment; set { _explicitNullValueMoment = value; AdditionalData?.Remove("moment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("moment"); else _explicitNullProperties?.Remove("moment"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.Moment _explicitNullValueMoment = default!;
 #endif
         /// <summary>The calendar period.</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.CalendarPeriod? Period { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.CalendarPeriod? Period { get => _explicitNullValuePeriod; set { _explicitNullValuePeriod = value; AdditionalData?.Remove("period"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("period"); else _explicitNullProperties?.Remove("period"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.CalendarPeriod? _explicitNullValuePeriod = default!;
         /// <summary>The type property</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.StartEndOfPeriodType? Type { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.StartEndOfPeriodType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.StartEndOfPeriodType? _explicitNullValueType = default!;
         /// <summary>Whether to use the start or the end of the period.</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.StartEnd? Which { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.StartEnd? Which { get => _explicitNullValueWhich; set { _explicitNullValueWhich = value; AdditionalData?.Remove("which"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("which"); else _explicitNullProperties?.Remove("which"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.StartEnd? _explicitNullValueWhich = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.StartEndOfPeriodMoment"/> and sets the default values.
         /// </summary>
@@ -44,7 +64,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.StartEndOfPeriodMoment CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.StartEndOfPeriodMoment();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.StartEndOfPeriodMoment(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,9 +75,9 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "moment", n => { Moment = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.Moment>(global::Soenneker.Close.OpenApiClient.Models.Moment.CreateFromDiscriminatorValue); } },
-                { "period", n => { Period = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CalendarPeriod>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.StartEndOfPeriodType>(); } },
-                { "which", n => { Which = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.StartEnd>(); } },
+                { "period", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CalendarPeriod>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValuePeriod = default; _explicitNullProperties?.Remove("period"); AdditionalData["period"] = unknown; } else { Period = parsed; AdditionalData.Remove("period"); } } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.StartEndOfPeriodType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
+                { "which", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.StartEnd>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueWhich = default; _explicitNullProperties?.Remove("which"); AdditionalData["which"] = unknown; } else { Which = parsed; AdditionalData.Remove("which"); } } },
             };
         }
         /// <summary>
@@ -71,6 +91,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CalendarPeriod>("period", Period);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.StartEndOfPeriodType>("type", Type);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.StartEnd>("which", Which);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

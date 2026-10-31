@@ -11,70 +11,114 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReportingGetOpportunityStatuses200ResponseStatusTransitionsItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("count") is null) { _explicitNullValueCount = default!; _explicitNullProperties?.Remove("count"); }
+            else if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("from_status_id") is null) { _explicitNullValueFromStatusId = default!; _explicitNullProperties?.Remove("from_status_id"); }
+            else if (parseNode.GetChildNode("from_status_id") is { } nullNodeFromStatusId && nullNodeFromStatusId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FromStatusId = null;
+            if (parseNode.GetChildNode("from_status_is_deleted") is null) { _explicitNullValueFromStatusIsDeleted = default!; _explicitNullProperties?.Remove("from_status_is_deleted"); }
+            else if (parseNode.GetChildNode("from_status_is_deleted") is { } nullNodeFromStatusIsDeleted && nullNodeFromStatusIsDeleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FromStatusIsDeleted = null;
+            if (parseNode.GetChildNode("from_status_label") is null) { _explicitNullValueFromStatusLabel = default!; _explicitNullProperties?.Remove("from_status_label"); }
+            else if (parseNode.GetChildNode("from_status_label") is { } nullNodeFromStatusLabel && nullNodeFromStatusLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FromStatusLabel = null;
+            if (parseNode.GetChildNode("_leads_page_url") is null) { _explicitNullValueLeadsPageUrl = default!; _explicitNullProperties?.Remove("_leads_page_url"); }
+            else if (parseNode.GetChildNode("_leads_page_url") is { } nullNodeLeadsPageUrl && nullNodeLeadsPageUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LeadsPageUrl = null;
+            if (parseNode.GetChildNode("_opportunities_page_url") is null) { _explicitNullValueOpportunitiesPageUrl = default!; _explicitNullProperties?.Remove("_opportunities_page_url"); }
+            else if (parseNode.GetChildNode("_opportunities_page_url") is { } nullNodeOpportunitiesPageUrl && nullNodeOpportunitiesPageUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpportunitiesPageUrl = null;
+            if (parseNode.GetChildNode("_query") is null) { _explicitNullValueQuery = default!; _explicitNullProperties?.Remove("_query"); }
+            else if (parseNode.GetChildNode("_query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
+            if (parseNode.GetChildNode("to_status_id") is null) { _explicitNullValueToStatusId = default!; _explicitNullProperties?.Remove("to_status_id"); }
+            else if (parseNode.GetChildNode("to_status_id") is { } nullNodeToStatusId && nullNodeToStatusId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToStatusId = null;
+            if (parseNode.GetChildNode("to_status_is_deleted") is null) { _explicitNullValueToStatusIsDeleted = default!; _explicitNullProperties?.Remove("to_status_is_deleted"); }
+            else if (parseNode.GetChildNode("to_status_is_deleted") is { } nullNodeToStatusIsDeleted && nullNodeToStatusIsDeleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToStatusIsDeleted = null;
+            if (parseNode.GetChildNode("to_status_label") is null) { _explicitNullValueToStatusLabel = default!; _explicitNullProperties?.Remove("to_status_label"); }
+            else if (parseNode.GetChildNode("to_status_label") is { } nullNodeToStatusLabel && nullNodeToStatusLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToStatusLabel = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The count property</summary>
-        public long? Count { get; set; }
+        public long? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; AdditionalData?.Remove("count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        private long? _explicitNullValueCount = default!;
         /// <summary>The from_status_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FromStatusId { get; set; }
+        public string? FromStatusId { get => _explicitNullValueFromStatusId; set { _explicitNullValueFromStatusId = value; AdditionalData?.Remove("from_status_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("from_status_id"); else _explicitNullProperties?.Remove("from_status_id"); } }
+        private string? _explicitNullValueFromStatusId = default!;
 #nullable restore
 #else
-        public string FromStatusId { get; set; }
+        public string FromStatusId { get => _explicitNullValueFromStatusId; set { _explicitNullValueFromStatusId = value; AdditionalData?.Remove("from_status_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("from_status_id"); else _explicitNullProperties?.Remove("from_status_id"); } }
+        private string _explicitNullValueFromStatusId = default!;
 #endif
         /// <summary>The from_status_is_deleted property</summary>
-        public bool? FromStatusIsDeleted { get; set; }
+        public bool? FromStatusIsDeleted { get => _explicitNullValueFromStatusIsDeleted; set { _explicitNullValueFromStatusIsDeleted = value; AdditionalData?.Remove("from_status_is_deleted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("from_status_is_deleted"); else _explicitNullProperties?.Remove("from_status_is_deleted"); } }
+        private bool? _explicitNullValueFromStatusIsDeleted = default!;
         /// <summary>The from_status_label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FromStatusLabel { get; set; }
+        public string? FromStatusLabel { get => _explicitNullValueFromStatusLabel; set { _explicitNullValueFromStatusLabel = value; AdditionalData?.Remove("from_status_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("from_status_label"); else _explicitNullProperties?.Remove("from_status_label"); } }
+        private string? _explicitNullValueFromStatusLabel = default!;
 #nullable restore
 #else
-        public string FromStatusLabel { get; set; }
+        public string FromStatusLabel { get => _explicitNullValueFromStatusLabel; set { _explicitNullValueFromStatusLabel = value; AdditionalData?.Remove("from_status_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("from_status_label"); else _explicitNullProperties?.Remove("from_status_label"); } }
+        private string _explicitNullValueFromStatusLabel = default!;
 #endif
         /// <summary>The leads_page_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LeadsPageUrl { get; set; }
+        public string? LeadsPageUrl { get => _explicitNullValueLeadsPageUrl; set { _explicitNullValueLeadsPageUrl = value; AdditionalData?.Remove("_leads_page_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_leads_page_url"); else _explicitNullProperties?.Remove("_leads_page_url"); } }
+        private string? _explicitNullValueLeadsPageUrl = default!;
 #nullable restore
 #else
-        public string LeadsPageUrl { get; set; }
+        public string LeadsPageUrl { get => _explicitNullValueLeadsPageUrl; set { _explicitNullValueLeadsPageUrl = value; AdditionalData?.Remove("_leads_page_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_leads_page_url"); else _explicitNullProperties?.Remove("_leads_page_url"); } }
+        private string _explicitNullValueLeadsPageUrl = default!;
 #endif
         /// <summary>The opportunities_page_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OpportunitiesPageUrl { get; set; }
+        public string? OpportunitiesPageUrl { get => _explicitNullValueOpportunitiesPageUrl; set { _explicitNullValueOpportunitiesPageUrl = value; AdditionalData?.Remove("_opportunities_page_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_opportunities_page_url"); else _explicitNullProperties?.Remove("_opportunities_page_url"); } }
+        private string? _explicitNullValueOpportunitiesPageUrl = default!;
 #nullable restore
 #else
-        public string OpportunitiesPageUrl { get; set; }
+        public string OpportunitiesPageUrl { get => _explicitNullValueOpportunitiesPageUrl; set { _explicitNullValueOpportunitiesPageUrl = value; AdditionalData?.Remove("_opportunities_page_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_opportunities_page_url"); else _explicitNullProperties?.Remove("_opportunities_page_url"); } }
+        private string _explicitNullValueOpportunitiesPageUrl = default!;
 #endif
         /// <summary>The query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Query { get; set; }
+        public string? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("_query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_query"); else _explicitNullProperties?.Remove("_query"); } }
+        private string? _explicitNullValueQuery = default!;
 #nullable restore
 #else
-        public string Query { get; set; }
+        public string Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("_query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_query"); else _explicitNullProperties?.Remove("_query"); } }
+        private string _explicitNullValueQuery = default!;
 #endif
         /// <summary>The to_status_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ToStatusId { get; set; }
+        public string? ToStatusId { get => _explicitNullValueToStatusId; set { _explicitNullValueToStatusId = value; AdditionalData?.Remove("to_status_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("to_status_id"); else _explicitNullProperties?.Remove("to_status_id"); } }
+        private string? _explicitNullValueToStatusId = default!;
 #nullable restore
 #else
-        public string ToStatusId { get; set; }
+        public string ToStatusId { get => _explicitNullValueToStatusId; set { _explicitNullValueToStatusId = value; AdditionalData?.Remove("to_status_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("to_status_id"); else _explicitNullProperties?.Remove("to_status_id"); } }
+        private string _explicitNullValueToStatusId = default!;
 #endif
         /// <summary>The to_status_is_deleted property</summary>
-        public bool? ToStatusIsDeleted { get; set; }
+        public bool? ToStatusIsDeleted { get => _explicitNullValueToStatusIsDeleted; set { _explicitNullValueToStatusIsDeleted = value; AdditionalData?.Remove("to_status_is_deleted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("to_status_is_deleted"); else _explicitNullProperties?.Remove("to_status_is_deleted"); } }
+        private bool? _explicitNullValueToStatusIsDeleted = default!;
         /// <summary>The to_status_label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ToStatusLabel { get; set; }
+        public string? ToStatusLabel { get => _explicitNullValueToStatusLabel; set { _explicitNullValueToStatusLabel = value; AdditionalData?.Remove("to_status_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("to_status_label"); else _explicitNullProperties?.Remove("to_status_label"); } }
+        private string? _explicitNullValueToStatusLabel = default!;
 #nullable restore
 #else
-        public string ToStatusLabel { get; set; }
+        public string ToStatusLabel { get => _explicitNullValueToStatusLabel; set { _explicitNullValueToStatusLabel = value; AdditionalData?.Remove("to_status_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("to_status_label"); else _explicitNullProperties?.Remove("to_status_label"); } }
+        private string _explicitNullValueToStatusLabel = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.ReportingGetOpportunityStatuses200ResponseStatusTransitionsItem"/> and sets the default values.
@@ -91,7 +135,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.ReportingGetOpportunityStatuses200ResponseStatusTransitionsItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.ReportingGetOpportunityStatuses200ResponseStatusTransitionsItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.ReportingGetOpportunityStatuses200ResponseStatusTransitionsItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -130,6 +174,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("to_status_id", ToStatusId);
             writer.WriteBoolValue("to_status_is_deleted", ToStatusIsDeleted);
             writer.WriteStringValue("to_status_label", ToStatusLabel);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,7 +12,12 @@ namespace Soenneker.Close.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OpportunitySuggestedActionDetails : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunityAdjustCloseDateActionDetails"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -70,13 +75,33 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedActionDetails();
-            result.OpportunityAdjustCloseDateActionDetails = new global::Soenneker.Close.OpenApiClient.Models.OpportunityAdjustCloseDateActionDetails();
-            result.OpportunityChangeStatusActionDetails = new global::Soenneker.Close.OpenApiClient.Models.OpportunityChangeStatusActionDetails();
-            result.OpportunityFollowUpCallActionDetails = new global::Soenneker.Close.OpenApiClient.Models.OpportunityFollowUpCallActionDetails();
-            result.OpportunityFollowUpEmailActionDetails = new global::Soenneker.Close.OpenApiClient.Models.OpportunityFollowUpEmailActionDetails();
-            result.OpportunityFollowUpSmsActionDetails = new global::Soenneker.Close.OpenApiClient.Models.OpportunityFollowUpSmsActionDetails();
-            result.OpportunitySuggestedActionDetailsMember1 = new global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedActionDetailsMember1();
-            return result;
+            
+            
+            
+            
+            
+            
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("status_id") && (!shapeMembers1.ContainsKey("status_id") || (((shapeMembers1["status_id"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))))))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("contact_id") && shapeMembers1.ContainsKey("message_draft") && shapeMembers1.ContainsKey("subject_draft") && (!shapeMembers1.ContainsKey("contact_id") || (((shapeMembers1["contact_id"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("message_draft") || (((shapeMembers1["message_draft"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("subject_draft") || (((shapeMembers1["subject_draft"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))))))))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("contact_id") && shapeMembers1.ContainsKey("message_draft") && (!shapeMembers1.ContainsKey("contact_id") || (((shapeMembers1["contact_id"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("message_draft") || (((shapeMembers1["message_draft"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))))))))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("call_plan") && shapeMembers1.ContainsKey("contact_id") && (!shapeMembers1.ContainsKey("call_plan") || (((shapeMembers1["call_plan"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("contact_id") || (((shapeMembers1["contact_id"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))))))))();
+            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("close_date") && (!shapeMembers1.ContainsKey("close_date") || (((shapeMembers1["close_date"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))))))))();
+            int matchingUnionBranches = 0;
+            if (matchesUnionBranch0) matchingUnionBranches++;
+            if (matchesUnionBranch1) matchingUnionBranches++;
+            if (matchesUnionBranch2) matchingUnionBranches++;
+            if (matchesUnionBranch3) matchingUnionBranches++;
+            if (matchesUnionBranch4) matchingUnionBranches++;
+            bool noSelectedUnionBranch = result.OpportunityAdjustCloseDateActionDetails == null && result.OpportunityChangeStatusActionDetails == null && result.OpportunityFollowUpCallActionDetails == null && result.OpportunityFollowUpEmailActionDetails == null && result.OpportunityFollowUpSmsActionDetails == null && result.OpportunitySuggestedActionDetailsMember1 == null;
+            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.OpportunityChangeStatusActionDetails = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.OpportunityChangeStatusActionDetails(), parseNode);
+            if (noSelectedUnionBranch && matchesUnionBranch1 && matchingUnionBranches == 1) result.OpportunityFollowUpEmailActionDetails = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.OpportunityFollowUpEmailActionDetails(), parseNode);
+            if (noSelectedUnionBranch && matchesUnionBranch2 && matchingUnionBranches == 1) result.OpportunityFollowUpSmsActionDetails = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.OpportunityFollowUpSmsActionDetails(), parseNode);
+            if (noSelectedUnionBranch && matchesUnionBranch3 && matchingUnionBranches == 1) result.OpportunityFollowUpCallActionDetails = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.OpportunityFollowUpCallActionDetails(), parseNode);
+            if (noSelectedUnionBranch && matchesUnionBranch4 && matchingUnionBranches == 1) result.OpportunityAdjustCloseDateActionDetails = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.OpportunityAdjustCloseDateActionDetails(), parseNode);
+            if (result.OpportunityAdjustCloseDateActionDetails == null && result.OpportunityChangeStatusActionDetails == null && result.OpportunityFollowUpCallActionDetails == null && result.OpportunityFollowUpEmailActionDetails == null && result.OpportunityFollowUpSmsActionDetails == null && result.OpportunitySuggestedActionDetailsMember1 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -84,6 +109,8 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
+            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
+
             if(OpportunityAdjustCloseDateActionDetails != null || OpportunityChangeStatusActionDetails != null || OpportunityFollowUpCallActionDetails != null || OpportunityFollowUpEmailActionDetails != null || OpportunityFollowUpSmsActionDetails != null || OpportunitySuggestedActionDetailsMember1 != null)
             {
                 return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(OpportunityAdjustCloseDateActionDetails, OpportunityChangeStatusActionDetails, OpportunityFollowUpCallActionDetails, OpportunityFollowUpEmailActionDetails, OpportunityFollowUpSmsActionDetails, OpportunitySuggestedActionDetailsMember1);
@@ -96,6 +123,22 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (OpportunityAdjustCloseDateActionDetails == null && OpportunityChangeStatusActionDetails == null && OpportunityFollowUpCallActionDetails == null && OpportunityFollowUpEmailActionDetails == null && OpportunityFollowUpSmsActionDetails == null && OpportunitySuggestedActionDetailsMember1 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            int selectedUnionBranches = 0;
+            if (OpportunityAdjustCloseDateActionDetails != null) selectedUnionBranches++;
+            if (OpportunityChangeStatusActionDetails != null) selectedUnionBranches++;
+            if (OpportunityFollowUpCallActionDetails != null) selectedUnionBranches++;
+            if (OpportunityFollowUpEmailActionDetails != null) selectedUnionBranches++;
+            if (OpportunityFollowUpSmsActionDetails != null) selectedUnionBranches++;
+            if (OpportunitySuggestedActionDetailsMember1 != null) selectedUnionBranches++;
+            if (OpportunityAdjustCloseDateActionDetails != null && selectedUnionBranches == 1) { if (OpportunityAdjustCloseDateActionDetails is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, OpportunityAdjustCloseDateActionDetails); return; }
+            if (OpportunityChangeStatusActionDetails != null && selectedUnionBranches == 1) { if (OpportunityChangeStatusActionDetails is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, OpportunityChangeStatusActionDetails); return; }
+            if (OpportunityFollowUpCallActionDetails != null && selectedUnionBranches == 1) { if (OpportunityFollowUpCallActionDetails is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, OpportunityFollowUpCallActionDetails); return; }
+            if (OpportunityFollowUpEmailActionDetails != null && selectedUnionBranches == 1) { if (OpportunityFollowUpEmailActionDetails is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, OpportunityFollowUpEmailActionDetails); return; }
+            if (OpportunityFollowUpSmsActionDetails != null && selectedUnionBranches == 1) { if (OpportunityFollowUpSmsActionDetails is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, OpportunityFollowUpSmsActionDetails); return; }
+            if (OpportunitySuggestedActionDetailsMember1 != null && selectedUnionBranches == 1) { if (OpportunitySuggestedActionDetailsMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, OpportunitySuggestedActionDetailsMember1); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityAdjustCloseDateActionDetails>(null, OpportunityAdjustCloseDateActionDetails, OpportunityChangeStatusActionDetails, OpportunityFollowUpCallActionDetails, OpportunityFollowUpEmailActionDetails, OpportunityFollowUpSmsActionDetails, OpportunitySuggestedActionDetailsMember1);
         }

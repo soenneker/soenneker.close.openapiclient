@@ -5,12 +5,12 @@ namespace Soenneker.Close.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum OutgoingCallType
+    public enum CreateTaskOneOf1_type
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "outgoing_call")]
+        [EnumMember(Value = "lead")]
         #pragma warning disable CS1591
-        OutgoingCall,
+        Lead,
         #pragma warning restore CS1591
     }
 }

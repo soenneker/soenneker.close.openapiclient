@@ -11,23 +11,43 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MeetingTranscriptSpeaker : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("speaker_label") is null) { _explicitNullValueSpeakerLabel = default!; _explicitNullProperties?.Remove("speaker_label"); }
+            else if (parseNode.GetChildNode("speaker_label") is { } nullNodeSpeakerLabel && nullNodeSpeakerLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpeakerLabel = null;
+            if (parseNode.GetChildNode("speaker_side") is null) { _explicitNullValueSpeakerSide = default!; _explicitNullProperties?.Remove("speaker_side"); }
+            else if (parseNode.GetChildNode("speaker_side") is { } nullNodeSpeakerSide && nullNodeSpeakerSide.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpeakerSide = null;
+            if (parseNode.GetChildNode("talk_percentage") is null) { _explicitNullValueTalkPercentage = default!; _explicitNullProperties?.Remove("talk_percentage"); }
+            else if (parseNode.GetChildNode("talk_percentage") is { } nullNodeTalkPercentage && nullNodeTalkPercentage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TalkPercentage = null;
+            if (parseNode.GetChildNode("talk_time") is null) { _explicitNullValueTalkTime = default!; _explicitNullProperties?.Remove("talk_time"); }
+            else if (parseNode.GetChildNode("talk_time") is { } nullNodeTalkTime && nullNodeTalkTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TalkTime = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The speaker_label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SpeakerLabel { get; set; }
+        public string? SpeakerLabel { get => _explicitNullValueSpeakerLabel; set { _explicitNullValueSpeakerLabel = value; AdditionalData?.Remove("speaker_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speaker_label"); else _explicitNullProperties?.Remove("speaker_label"); } }
+        private string? _explicitNullValueSpeakerLabel = default!;
 #nullable restore
 #else
-        public string SpeakerLabel { get; set; }
+        public string SpeakerLabel { get => _explicitNullValueSpeakerLabel; set { _explicitNullValueSpeakerLabel = value; AdditionalData?.Remove("speaker_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speaker_label"); else _explicitNullProperties?.Remove("speaker_label"); } }
+        private string _explicitNullValueSpeakerLabel = default!;
 #endif
         /// <summary>The speaker_side property</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.SpeakerSide? SpeakerSide { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.SpeakerSide? SpeakerSide { get => _explicitNullValueSpeakerSide; set { _explicitNullValueSpeakerSide = value; AdditionalData?.Remove("speaker_side"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speaker_side"); else _explicitNullProperties?.Remove("speaker_side"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.SpeakerSide? _explicitNullValueSpeakerSide = default!;
         /// <summary>The talk_percentage property</summary>
-        public double? TalkPercentage { get; set; }
+        public double? TalkPercentage { get => _explicitNullValueTalkPercentage; set { _explicitNullValueTalkPercentage = value; AdditionalData?.Remove("talk_percentage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("talk_percentage"); else _explicitNullProperties?.Remove("talk_percentage"); } }
+        private double? _explicitNullValueTalkPercentage = default!;
         /// <summary>The talk_time property</summary>
-        public double? TalkTime { get; set; }
+        public double? TalkTime { get => _explicitNullValueTalkTime; set { _explicitNullValueTalkTime = value; AdditionalData?.Remove("talk_time"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("talk_time"); else _explicitNullProperties?.Remove("talk_time"); } }
+        private double? _explicitNullValueTalkTime = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptSpeaker"/> and sets the default values.
         /// </summary>
@@ -43,7 +63,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptSpeaker CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptSpeaker();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptSpeaker(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -54,7 +74,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "speaker_label", n => { SpeakerLabel = n.GetStringValue(); } },
-                { "speaker_side", n => { SpeakerSide = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.SpeakerSide>(); } },
+                { "speaker_side", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.SpeakerSide>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSpeakerSide = default; _explicitNullProperties?.Remove("speaker_side"); AdditionalData["speaker_side"] = unknown; } else { SpeakerSide = parsed; AdditionalData.Remove("speaker_side"); } } },
                 { "talk_percentage", n => { TalkPercentage = n.GetDoubleValue(); } },
                 { "talk_time", n => { TalkTime = n.GetDoubleValue(); } },
             };
@@ -70,6 +90,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.SpeakerSide>("speaker_side", SpeakerSide);
             writer.WriteDoubleValue("talk_percentage", TalkPercentage);
             writer.WriteDoubleValue("talk_time", TalkTime);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

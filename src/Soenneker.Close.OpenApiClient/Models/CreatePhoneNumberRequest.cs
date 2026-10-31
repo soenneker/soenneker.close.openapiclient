@@ -11,48 +11,83 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CreatePhoneNumberRequest : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("assign_to") is null) { _explicitNullValueAssignTo = default!; _explicitNullProperties?.Remove("assign_to"); }
+            else if (parseNode.GetChildNode("assign_to") is { } nullNodeAssignTo && nullNodeAssignTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssignTo = null;
+            if (parseNode.GetChildNode("bundle_id") is null) { _explicitNullValueBundleId = default!; _explicitNullProperties?.Remove("bundle_id"); }
+            else if (parseNode.GetChildNode("bundle_id") is { } nullNodeBundleId && nullNodeBundleId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BundleId = null;
+            if (parseNode.GetChildNode("carrier_type") is null) { _explicitNullValueCarrierType = default!; _explicitNullProperties?.Remove("carrier_type"); }
+            else if (parseNode.GetChildNode("carrier_type") is { } nullNodeCarrierType && nullNodeCarrierType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CarrierType = null;
+            if (parseNode.GetChildNode("country") is null) { _explicitNullValueCountry = default!; _explicitNullProperties?.Remove("country"); }
+            else if (parseNode.GetChildNode("country") is { } nullNodeCountry && nullNodeCountry.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Country = null;
+            if (parseNode.GetChildNode("prefix") is null) { _explicitNullValuePrefix = default!; _explicitNullProperties?.Remove("prefix"); }
+            else if (parseNode.GetChildNode("prefix") is { } nullNodePrefix && nullNodePrefix.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Prefix = null;
+            if (parseNode.GetChildNode("sharing") is null) { _explicitNullValueSharing = default!; _explicitNullProperties?.Remove("sharing"); }
+            else if (parseNode.GetChildNode("sharing") is { } nullNodeSharing && nullNodeSharing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sharing = null;
+            if (parseNode.GetChildNode("with_mms") is null) { _explicitNullValueWithMms = default!; _explicitNullProperties?.Remove("with_mms"); }
+            else if (parseNode.GetChildNode("with_mms") is { } nullNodeWithMms && nullNodeWithMms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WithMms = null;
+            if (parseNode.GetChildNode("with_sms") is null) { _explicitNullValueWithSms = default!; _explicitNullProperties?.Remove("with_sms"); }
+            else if (parseNode.GetChildNode("with_sms") is { } nullNodeWithSms && nullNodeWithSms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WithSms = null;
+        }
+
         /// <summary>IDs of the users the new phone number is assigned to. When omitted, the number is assigned to the user making the request. Assigning it to anyone else requires the &quot;Manage Team Phone Numbers&quot; permission, and every user must be an active member of the organization who is allowed to make calls.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AssignTo { get; set; }
+        public List<string>? AssignTo { get => _explicitNullValueAssignTo; set { _explicitNullValueAssignTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assign_to"); else _explicitNullProperties?.Remove("assign_to"); } }
+        private List<string>? _explicitNullValueAssignTo = default!;
 #nullable restore
 #else
-        public List<string> AssignTo { get; set; }
+        public List<string> AssignTo { get => _explicitNullValueAssignTo; set { _explicitNullValueAssignTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assign_to"); else _explicitNullProperties?.Remove("assign_to"); } }
+        private List<string> _explicitNullValueAssignTo = default!;
 #endif
         /// <summary>The bundle_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BundleId { get; set; }
+        public string? BundleId { get => _explicitNullValueBundleId; set { _explicitNullValueBundleId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bundle_id"); else _explicitNullProperties?.Remove("bundle_id"); } }
+        private string? _explicitNullValueBundleId = default!;
 #nullable restore
 #else
-        public string BundleId { get; set; }
+        public string BundleId { get => _explicitNullValueBundleId; set { _explicitNullValueBundleId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bundle_id"); else _explicitNullProperties?.Remove("bundle_id"); } }
+        private string _explicitNullValueBundleId = default!;
 #endif
         /// <summary>The carrier_type property</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType? CarrierType { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType? CarrierType { get => _explicitNullValueCarrierType; set { _explicitNullValueCarrierType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("carrier_type"); else _explicitNullProperties?.Remove("carrier_type"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType? _explicitNullValueCarrierType = default!;
         /// <summary>A two letter ISO country code (e.g. `US` for United States).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Country { get; set; }
+        public string? Country { get => _explicitNullValueCountry; set { _explicitNullValueCountry = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("country"); else _explicitNullProperties?.Remove("country"); } }
+        private string? _explicitNullValueCountry = default!;
 #nullable restore
 #else
-        public string Country { get; set; }
+        public string Country { get => _explicitNullValueCountry; set { _explicitNullValueCountry = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("country"); else _explicitNullProperties?.Remove("country"); } }
+        private string _explicitNullValueCountry = default!;
 #endif
         /// <summary>A string with the phone number prefix or area code, not including the country code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Prefix { get; set; }
+        public string? Prefix { get => _explicitNullValuePrefix; set { _explicitNullValuePrefix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prefix"); else _explicitNullProperties?.Remove("prefix"); } }
+        private string? _explicitNullValuePrefix = default!;
 #nullable restore
 #else
-        public string Prefix { get; set; }
+        public string Prefix { get => _explicitNullValuePrefix; set { _explicitNullValuePrefix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prefix"); else _explicitNullProperties?.Remove("prefix"); } }
+        private string _explicitNullValuePrefix = default!;
 #endif
         /// <summary>Deprecated. `personal` for a number that belongs to an individual user, or `group` for a group number. The distinction between personal and group numbers is being removed, and this field will be removed in a future update. When omitted, defaults to `personal`.</summary>
         [Obsolete("")]
-        public global::Soenneker.Close.OpenApiClient.Models.PhoneNumberSharing? Sharing { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.PhoneNumberSharing? Sharing { get => _explicitNullValueSharing; set { _explicitNullValueSharing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sharing"); else _explicitNullProperties?.Remove("sharing"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.PhoneNumberSharing? _explicitNullValueSharing = default!;
         /// <summary>By default, MMS-capable numbers are rented if Close supports MMS for the given country. Renting an MMS-capable number can be forced by setting this flag to `true`. If set to `false`, certain prefixes that don&apos;t support MMS can be rented in countries where Close supports MMS. In most scenarios, this flag should not be passed. When you request an MMS number, you must set `with_sms` to `true` as well.</summary>
-        public bool? WithMms { get; set; }
+        public bool? WithMms { get => _explicitNullValueWithMms; set { _explicitNullValueWithMms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("with_mms"); else _explicitNullProperties?.Remove("with_mms"); } }
+        private bool? _explicitNullValueWithMms = default!;
         /// <summary>By default, SMS-capable numbers are rented if Close supports SMS for the given country. Renting an SMS-capable number can be forced by setting this flag to `true`. If set to `false`, certain prefixes that don&apos;t support SMS can be rented in countries where Close supports SMS. In most scenarios, this flag should not be passed unless a `has-voice-only` error status is received.</summary>
-        public bool? WithSms { get; set; }
+        public bool? WithSms { get => _explicitNullValueWithSms; set { _explicitNullValueWithSms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("with_sms"); else _explicitNullProperties?.Remove("with_sms"); } }
+        private bool? _explicitNullValueWithSms = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequest"/> and sets the default values.
         /// </summary>
@@ -68,7 +103,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -102,7 +137,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("prefix", Prefix);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.PhoneNumberSharing>("sharing", Sharing);
             writer.WriteBoolValue("with_mms", WithMms);
-            writer.WriteBoolValue("with_sms", WithSms);
+            writer.WriteBoolValue("with_sms", WithSms);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

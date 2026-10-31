@@ -12,7 +12,12 @@ namespace Soenneker.Close.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EmailThreadActivityImportance : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Close.OpenApiClient.Models.ImportantEmailThread"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -41,13 +46,24 @@ namespace Soenneker.Close.OpenApiClient.Models
             var result = new global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivityImportance();
             if("important".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ImportantEmailThread = new global::Soenneker.Close.OpenApiClient.Models.ImportantEmailThread();
+                
             }
             else if("not_important".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.NotImportantEmailThread = new global::Soenneker.Close.OpenApiClient.Models.NotImportantEmailThread();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("reason") && shapeMembers1.ContainsKey("type") && (!shapeMembers1.ContainsKey("reason") || (((shapeMembers1["reason"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["reason"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal2 && "manual".Equals(literal2.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["reason"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal3 && "contains-manual-message".Equals(literal3.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["reason"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "most-recent-communication".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["reason"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal5 && "has-response".Equals(literal5.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["reason"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal6 && "whitelisted".Equals(literal6.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["reason"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal7 && "by-default".Equals(literal7.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["reason"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal8 && "unset-initial-default".Equals(literal8.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("type") || (((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && (shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal11 && "important".Equals(literal11.GetValue(), global::System.StringComparison.Ordinal)) && ((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal12 && "important".Equals(literal12.GetValue(), global::System.StringComparison.Ordinal))))))))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("reason") && shapeMembers1.ContainsKey("type") && (!shapeMembers1.ContainsKey("reason") || (((shapeMembers1["reason"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["reason"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal2 && "manual".Equals(literal2.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["reason"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal3 && "scheduling-emails".Equals(literal3.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["reason"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "automated-outbound".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["reason"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal5 && "marketing-or-transactional".Equals(literal5.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["reason"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal6 && "by-default".Equals(literal6.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("type") || (((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && (shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal9 && "not_important".Equals(literal9.GetValue(), global::System.StringComparison.Ordinal)) && ((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal10 && "not_important".Equals(literal10.GetValue(), global::System.StringComparison.Ordinal))))))))))();
+            int matchingUnionBranches = 0;
+            if (matchesUnionBranch0) matchingUnionBranches++;
+            if (matchesUnionBranch1) matchingUnionBranches++;
+            bool noSelectedUnionBranch = result.ImportantEmailThread == null && result.NotImportantEmailThread == null;
+            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.ImportantEmailThread = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.ImportantEmailThread(), parseNode);
+            if (noSelectedUnionBranch && matchesUnionBranch1 && matchingUnionBranches == 1) result.NotImportantEmailThread = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.NotImportantEmailThread(), parseNode);
+            if (result.ImportantEmailThread == null && result.NotImportantEmailThread == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,6 +71,8 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
+            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
+
             if(ImportantEmailThread != null)
             {
                 return ImportantEmailThread.GetFieldDeserializers();
@@ -71,13 +89,23 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (ImportantEmailThread == null && NotImportantEmailThread == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            int selectedUnionBranches = 0;
+            if (ImportantEmailThread != null) selectedUnionBranches++;
+            if (NotImportantEmailThread != null) selectedUnionBranches++;
+            if (ImportantEmailThread != null && selectedUnionBranches == 1) { if (ImportantEmailThread is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ImportantEmailThread); return; }
+            if (NotImportantEmailThread != null && selectedUnionBranches == 1) { if (NotImportantEmailThread is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, NotImportantEmailThread); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(ImportantEmailThread != null)
             {
+                if (ImportantEmailThread is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.ImportantEmailThread>(null, ImportantEmailThread);
             }
             else if(NotImportantEmailThread != null)
             {
+                if (NotImportantEmailThread is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.NotImportantEmailThread>(null, NotImportantEmailThread);
             }
         }

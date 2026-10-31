@@ -11,14 +11,25 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SetPinnedSavedView : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("saved_view_ids") is null) { _explicitNullValueSavedViewIds = default!; _explicitNullProperties?.Remove("saved_view_ids"); }
+            else if (parseNode.GetChildNode("saved_view_ids") is { } nullNodeSavedViewIds && nullNodeSavedViewIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SavedViewIds = null;
+        }
+
         /// <summary>The saved_view_ids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SavedViewIds { get; set; }
+        public List<string>? SavedViewIds { get => _explicitNullValueSavedViewIds; set { _explicitNullValueSavedViewIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saved_view_ids"); else _explicitNullProperties?.Remove("saved_view_ids"); } }
+        private List<string>? _explicitNullValueSavedViewIds = default!;
 #nullable restore
 #else
-        public List<string> SavedViewIds { get; set; }
+        public List<string> SavedViewIds { get => _explicitNullValueSavedViewIds; set { _explicitNullValueSavedViewIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saved_view_ids"); else _explicitNullProperties?.Remove("saved_view_ids"); } }
+        private List<string> _explicitNullValueSavedViewIds = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -28,7 +39,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.SetPinnedSavedView CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.SetPinnedSavedView();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.SetPinnedSavedView(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -48,7 +59,8 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfPrimitiveValues<string>("saved_view_ids", SavedViewIds);
+            writer.WriteCollectionOfPrimitiveValues<string>("saved_view_ids", SavedViewIds);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

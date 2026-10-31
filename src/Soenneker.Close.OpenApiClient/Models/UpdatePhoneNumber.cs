@@ -11,69 +11,121 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class UpdatePhoneNumber : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("forward_to") is null) { _explicitNullValueForwardTo = default!; _explicitNullProperties?.Remove("forward_to"); }
+            else if (parseNode.GetChildNode("forward_to") is { } nullNodeForwardTo && nullNodeForwardTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ForwardTo = null;
+            if (parseNode.GetChildNode("forward_to_enabled") is null) { _explicitNullValueForwardToEnabled = default!; _explicitNullProperties?.Remove("forward_to_enabled"); }
+            else if (parseNode.GetChildNode("forward_to_enabled") is { } nullNodeForwardToEnabled && nullNodeForwardToEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ForwardToEnabled = null;
+            if (parseNode.GetChildNode("inbound_ring_duration") is null) { _explicitNullValueInboundRingDuration = default!; _explicitNullProperties?.Remove("inbound_ring_duration"); }
+            else if (parseNode.GetChildNode("inbound_ring_duration") is { } nullNodeInboundRingDuration && nullNodeInboundRingDuration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InboundRingDuration = null;
+            if (parseNode.GetChildNode("label") is null) { _explicitNullValueLabel = default!; _explicitNullProperties?.Remove("label"); }
+            else if (parseNode.GetChildNode("label") is { } nullNodeLabel && nullNodeLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Label = null;
+            if (parseNode.GetChildNode("local_presence_enabled") is null) { _explicitNullValueLocalPresenceEnabled = default!; _explicitNullProperties?.Remove("local_presence_enabled"); }
+            else if (parseNode.GetChildNode("local_presence_enabled") is { } nullNodeLocalPresenceEnabled && nullNodeLocalPresenceEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LocalPresenceEnabled = null;
+            if (parseNode.GetChildNode("non_member_caller_id_enabled") is null) { _explicitNullValueNonMemberCallerIdEnabled = default!; _explicitNullProperties?.Remove("non_member_caller_id_enabled"); }
+            else if (parseNode.GetChildNode("non_member_caller_id_enabled") is { } nullNodeNonMemberCallerIdEnabled && nullNodeNonMemberCallerIdEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NonMemberCallerIdEnabled = null;
+            if (parseNode.GetChildNode("participant_groups") is null) { _explicitNullValueParticipantGroups = default!; _explicitNullProperties?.Remove("participant_groups"); }
+            else if (parseNode.GetChildNode("participant_groups") is { } nullNodeParticipantGroups && nullNodeParticipantGroups.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParticipantGroups = null;
+            if (parseNode.GetChildNode("participants") is null) { _explicitNullValueParticipants = default!; _explicitNullProperties?.Remove("participants"); }
+            else if (parseNode.GetChildNode("participants") is { } nullNodeParticipants && nullNodeParticipants.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Participants = null;
+            if (parseNode.GetChildNode("phone_numbers") is null) { _explicitNullValuePhoneNumbers = default!; _explicitNullProperties?.Remove("phone_numbers"); }
+            else if (parseNode.GetChildNode("phone_numbers") is { } nullNodePhoneNumbers && nullNodePhoneNumbers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PhoneNumbers = null;
+            if (parseNode.GetChildNode("press_1_to_accept") is null) { _explicitNullValuePress1ToAccept = default!; _explicitNullProperties?.Remove("press_1_to_accept"); }
+            else if (parseNode.GetChildNode("press_1_to_accept") is { } nullNodePress1ToAccept && nullNodePress1ToAccept.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Press1ToAccept = null;
+            if (parseNode.GetChildNode("voice_agent_caller_id_enabled") is null) { _explicitNullValueVoiceAgentCallerIdEnabled = default!; _explicitNullProperties?.Remove("voice_agent_caller_id_enabled"); }
+            else if (parseNode.GetChildNode("voice_agent_caller_id_enabled") is { } nullNodeVoiceAgentCallerIdEnabled && nullNodeVoiceAgentCallerIdEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VoiceAgentCallerIdEnabled = null;
+            if (parseNode.GetChildNode("voice_agents_local_presence_enabled") is null) { _explicitNullValueVoiceAgentsLocalPresenceEnabled = default!; _explicitNullProperties?.Remove("voice_agents_local_presence_enabled"); }
+            else if (parseNode.GetChildNode("voice_agents_local_presence_enabled") is { } nullNodeVoiceAgentsLocalPresenceEnabled && nullNodeVoiceAgentsLocalPresenceEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VoiceAgentsLocalPresenceEnabled = null;
+            if (parseNode.GetChildNode("voicemail_greeting_url") is null) { _explicitNullValueVoicemailGreetingUrl = default!; _explicitNullProperties?.Remove("voicemail_greeting_url"); }
+            else if (parseNode.GetChildNode("voicemail_greeting_url") is { } nullNodeVoicemailGreetingUrl && nullNodeVoicemailGreetingUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VoicemailGreetingUrl = null;
+        }
+
         /// <summary>The forward_to property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ForwardTo { get; set; }
+        public string? ForwardTo { get => _explicitNullValueForwardTo; set { _explicitNullValueForwardTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forward_to"); else _explicitNullProperties?.Remove("forward_to"); } }
+        private string? _explicitNullValueForwardTo = default!;
 #nullable restore
 #else
-        public string ForwardTo { get; set; }
+        public string ForwardTo { get => _explicitNullValueForwardTo; set { _explicitNullValueForwardTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forward_to"); else _explicitNullProperties?.Remove("forward_to"); } }
+        private string _explicitNullValueForwardTo = default!;
 #endif
         /// <summary>The forward_to_enabled property</summary>
-        public bool? ForwardToEnabled { get; set; }
+        public bool? ForwardToEnabled { get => _explicitNullValueForwardToEnabled; set { _explicitNullValueForwardToEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forward_to_enabled"); else _explicitNullProperties?.Remove("forward_to_enabled"); } }
+        private bool? _explicitNullValueForwardToEnabled = default!;
         /// <summary>Number of seconds (15-90) to ring this number on inbound calls before moving on (e.g. to voicemail).</summary>
-        public int? InboundRingDuration { get; set; }
+        public int? InboundRingDuration { get => _explicitNullValueInboundRingDuration; set { _explicitNullValueInboundRingDuration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inbound_ring_duration"); else _explicitNullProperties?.Remove("inbound_ring_duration"); } }
+        private int? _explicitNullValueInboundRingDuration = default!;
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Label { get; set; }
+        public string? Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        private string? _explicitNullValueLabel = default!;
 #nullable restore
 #else
-        public string Label { get; set; }
+        public string Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        private string _explicitNullValueLabel = default!;
 #endif
         /// <summary>Whether Local Presence can pick this phone number by proximity for a call or SMS made as a user.</summary>
-        public bool? LocalPresenceEnabled { get; set; }
+        public bool? LocalPresenceEnabled { get => _explicitNullValueLocalPresenceEnabled; set { _explicitNullValueLocalPresenceEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("local_presence_enabled"); else _explicitNullProperties?.Remove("local_presence_enabled"); } }
+        private bool? _explicitNullValueLocalPresenceEnabled = default!;
         /// <summary>Whether users who are not members of this phone number can use it as their outbound caller ID.</summary>
-        public bool? NonMemberCallerIdEnabled { get; set; }
+        public bool? NonMemberCallerIdEnabled { get => _explicitNullValueNonMemberCallerIdEnabled; set { _explicitNullValueNonMemberCallerIdEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("non_member_caller_id_enabled"); else _explicitNullProperties?.Remove("non_member_caller_id_enabled"); } }
+        private bool? _explicitNullValueNonMemberCallerIdEnabled = default!;
         /// <summary>The participant_groups property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ParticipantGroups { get; set; }
+        public List<string>? ParticipantGroups { get => _explicitNullValueParticipantGroups; set { _explicitNullValueParticipantGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("participant_groups"); else _explicitNullProperties?.Remove("participant_groups"); } }
+        private List<string>? _explicitNullValueParticipantGroups = default!;
 #nullable restore
 #else
-        public List<string> ParticipantGroups { get; set; }
+        public List<string> ParticipantGroups { get => _explicitNullValueParticipantGroups; set { _explicitNullValueParticipantGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("participant_groups"); else _explicitNullProperties?.Remove("participant_groups"); } }
+        private List<string> _explicitNullValueParticipantGroups = default!;
 #endif
         /// <summary>The participants property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Participants { get; set; }
+        public List<string>? Participants { get => _explicitNullValueParticipants; set { _explicitNullValueParticipants = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("participants"); else _explicitNullProperties?.Remove("participants"); } }
+        private List<string>? _explicitNullValueParticipants = default!;
 #nullable restore
 #else
-        public List<string> Participants { get; set; }
+        public List<string> Participants { get => _explicitNullValueParticipants; set { _explicitNullValueParticipants = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("participants"); else _explicitNullProperties?.Remove("participants"); } }
+        private List<string> _explicitNullValueParticipants = default!;
 #endif
         /// <summary>The phone_numbers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? PhoneNumbers { get; set; }
+        public List<string>? PhoneNumbers { get => _explicitNullValuePhoneNumbers; set { _explicitNullValuePhoneNumbers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phone_numbers"); else _explicitNullProperties?.Remove("phone_numbers"); } }
+        private List<string>? _explicitNullValuePhoneNumbers = default!;
 #nullable restore
 #else
-        public List<string> PhoneNumbers { get; set; }
+        public List<string> PhoneNumbers { get => _explicitNullValuePhoneNumbers; set { _explicitNullValuePhoneNumbers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phone_numbers"); else _explicitNullProperties?.Remove("phone_numbers"); } }
+        private List<string> _explicitNullValuePhoneNumbers = default!;
 #endif
         /// <summary>The press_1_to_accept property</summary>
-        public bool? Press1ToAccept { get; set; }
+        public bool? Press1ToAccept { get => _explicitNullValuePress1ToAccept; set { _explicitNullValuePress1ToAccept = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("press_1_to_accept"); else _explicitNullProperties?.Remove("press_1_to_accept"); } }
+        private bool? _explicitNullValuePress1ToAccept = default!;
         /// <summary>Deprecated. Use `voice_agents_local_presence_enabled`. This field is an alias of `voice_agents_local_presence_enabled`, and it will be removed in a future update. If you send both fields, they must have the same value.</summary>
         [Obsolete("")]
-        public bool? VoiceAgentCallerIdEnabled { get; set; }
+        public bool? VoiceAgentCallerIdEnabled { get => _explicitNullValueVoiceAgentCallerIdEnabled; set { _explicitNullValueVoiceAgentCallerIdEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voice_agent_caller_id_enabled"); else _explicitNullProperties?.Remove("voice_agent_caller_id_enabled"); } }
+        private bool? _explicitNullValueVoiceAgentCallerIdEnabled = default!;
         /// <summary>Whether Local Presence can pick this phone number for calls and SMS that voice agents make in Auto caller ID mode.</summary>
-        public bool? VoiceAgentsLocalPresenceEnabled { get; set; }
+        public bool? VoiceAgentsLocalPresenceEnabled { get => _explicitNullValueVoiceAgentsLocalPresenceEnabled; set { _explicitNullValueVoiceAgentsLocalPresenceEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voice_agents_local_presence_enabled"); else _explicitNullProperties?.Remove("voice_agents_local_presence_enabled"); } }
+        private bool? _explicitNullValueVoiceAgentsLocalPresenceEnabled = default!;
         /// <summary>The voicemail_greeting_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VoicemailGreetingUrl { get; set; }
+        public string? VoicemailGreetingUrl { get => _explicitNullValueVoicemailGreetingUrl; set { _explicitNullValueVoicemailGreetingUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voicemail_greeting_url"); else _explicitNullProperties?.Remove("voicemail_greeting_url"); } }
+        private string? _explicitNullValueVoicemailGreetingUrl = default!;
 #nullable restore
 #else
-        public string VoicemailGreetingUrl { get; set; }
+        public string VoicemailGreetingUrl { get => _explicitNullValueVoicemailGreetingUrl; set { _explicitNullValueVoicemailGreetingUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voicemail_greeting_url"); else _explicitNullProperties?.Remove("voicemail_greeting_url"); } }
+        private string _explicitNullValueVoicemailGreetingUrl = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -83,7 +135,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.UpdatePhoneNumber CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.UpdatePhoneNumber();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.UpdatePhoneNumber(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -127,7 +179,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteBoolValue("press_1_to_accept", Press1ToAccept);
             writer.WriteBoolValue("voice_agent_caller_id_enabled", VoiceAgentCallerIdEnabled);
             writer.WriteBoolValue("voice_agents_local_presence_enabled", VoiceAgentsLocalPresenceEnabled);
-            writer.WriteStringValue("voicemail_greeting_url", VoicemailGreetingUrl);
+            writer.WriteStringValue("voicemail_greeting_url", VoicemailGreetingUrl);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

@@ -11,16 +11,27 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CustomFieldsSharedUpdateAssociationRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("editable_with_roles") is null) { _explicitNullValueEditableWithRoles = default!; _explicitNullProperties?.Remove("editable_with_roles"); }
+            else if (parseNode.GetChildNode("editable_with_roles") is { } nullNodeEditableWithRoles && nullNodeEditableWithRoles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EditableWithRoles = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The editable_with_roles property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? EditableWithRoles { get; set; }
+        public List<string>? EditableWithRoles { get => _explicitNullValueEditableWithRoles; set { _explicitNullValueEditableWithRoles = value; AdditionalData?.Remove("editable_with_roles"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("editable_with_roles"); else _explicitNullProperties?.Remove("editable_with_roles"); } }
+        private List<string>? _explicitNullValueEditableWithRoles = default!;
 #nullable restore
 #else
-        public List<string> EditableWithRoles { get; set; }
+        public List<string> EditableWithRoles { get => _explicitNullValueEditableWithRoles; set { _explicitNullValueEditableWithRoles = value; AdditionalData?.Remove("editable_with_roles"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("editable_with_roles"); else _explicitNullProperties?.Remove("editable_with_roles"); } }
+        private List<string> _explicitNullValueEditableWithRoles = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedUpdateAssociationRequest"/> and sets the default values.
@@ -37,7 +48,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedUpdateAssociationRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedUpdateAssociationRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.CustomFieldsSharedUpdateAssociationRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -58,6 +69,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("editable_with_roles", EditableWithRoles);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

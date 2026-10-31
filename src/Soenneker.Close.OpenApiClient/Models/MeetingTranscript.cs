@@ -11,50 +11,80 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MeetingTranscript : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("has_speaker_labels") is null) { _explicitNullValueHasSpeakerLabels = default!; _explicitNullProperties?.Remove("has_speaker_labels"); }
+            else if (parseNode.GetChildNode("has_speaker_labels") is { } nullNodeHasSpeakerLabels && nullNodeHasSpeakerLabels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasSpeakerLabels = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("speakers") is null) { _explicitNullValueSpeakers = default!; _explicitNullProperties?.Remove("speakers"); }
+            else if (parseNode.GetChildNode("speakers") is { } nullNodeSpeakers && nullNodeSpeakers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Speakers = null;
+            if (parseNode.GetChildNode("summary_html") is null) { _explicitNullValueSummaryHtml = default!; _explicitNullProperties?.Remove("summary_html"); }
+            else if (parseNode.GetChildNode("summary_html") is { } nullNodeSummaryHtml && nullNodeSummaryHtml.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SummaryHtml = null;
+            if (parseNode.GetChildNode("summary_text") is null) { _explicitNullValueSummaryText = default!; _explicitNullProperties?.Remove("summary_text"); }
+            else if (parseNode.GetChildNode("summary_text") is { } nullNodeSummaryText && nullNodeSummaryText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SummaryText = null;
+            if (parseNode.GetChildNode("utterances") is null) { _explicitNullValueUtterances = default!; _explicitNullProperties?.Remove("utterances"); }
+            else if (parseNode.GetChildNode("utterances") is { } nullNodeUtterances && nullNodeUtterances.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Utterances = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The has_speaker_labels property</summary>
-        public bool? HasSpeakerLabels { get; set; }
+        public bool? HasSpeakerLabels { get => _explicitNullValueHasSpeakerLabels; set { _explicitNullValueHasSpeakerLabels = value; AdditionalData?.Remove("has_speaker_labels"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_speaker_labels"); else _explicitNullProperties?.Remove("has_speaker_labels"); } }
+        private bool? _explicitNullValueHasSpeakerLabels = default!;
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>The speakers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptSpeaker>? Speakers { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptSpeaker>? Speakers { get => _explicitNullValueSpeakers; set { _explicitNullValueSpeakers = value; AdditionalData?.Remove("speakers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speakers"); else _explicitNullProperties?.Remove("speakers"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptSpeaker>? _explicitNullValueSpeakers = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptSpeaker> Speakers { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptSpeaker> Speakers { get => _explicitNullValueSpeakers; set { _explicitNullValueSpeakers = value; AdditionalData?.Remove("speakers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speakers"); else _explicitNullProperties?.Remove("speakers"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptSpeaker> _explicitNullValueSpeakers = default!;
 #endif
         /// <summary>The summary_html property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SummaryHtml { get; set; }
+        public string? SummaryHtml { get => _explicitNullValueSummaryHtml; set { _explicitNullValueSummaryHtml = value; AdditionalData?.Remove("summary_html"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_html"); else _explicitNullProperties?.Remove("summary_html"); } }
+        private string? _explicitNullValueSummaryHtml = default!;
 #nullable restore
 #else
-        public string SummaryHtml { get; set; }
+        public string SummaryHtml { get => _explicitNullValueSummaryHtml; set { _explicitNullValueSummaryHtml = value; AdditionalData?.Remove("summary_html"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_html"); else _explicitNullProperties?.Remove("summary_html"); } }
+        private string _explicitNullValueSummaryHtml = default!;
 #endif
         /// <summary>The summary_text property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SummaryText { get; set; }
+        public string? SummaryText { get => _explicitNullValueSummaryText; set { _explicitNullValueSummaryText = value; AdditionalData?.Remove("summary_text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_text"); else _explicitNullProperties?.Remove("summary_text"); } }
+        private string? _explicitNullValueSummaryText = default!;
 #nullable restore
 #else
-        public string SummaryText { get; set; }
+        public string SummaryText { get => _explicitNullValueSummaryText; set { _explicitNullValueSummaryText = value; AdditionalData?.Remove("summary_text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_text"); else _explicitNullProperties?.Remove("summary_text"); } }
+        private string _explicitNullValueSummaryText = default!;
 #endif
         /// <summary>The utterances property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptUtterance>? Utterances { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptUtterance>? Utterances { get => _explicitNullValueUtterances; set { _explicitNullValueUtterances = value; AdditionalData?.Remove("utterances"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("utterances"); else _explicitNullProperties?.Remove("utterances"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptUtterance>? _explicitNullValueUtterances = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptUtterance> Utterances { get; set; }
+        public List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptUtterance> Utterances { get => _explicitNullValueUtterances; set { _explicitNullValueUtterances = value; AdditionalData?.Remove("utterances"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("utterances"); else _explicitNullProperties?.Remove("utterances"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptUtterance> _explicitNullValueUtterances = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.MeetingTranscript"/> and sets the default values.
@@ -71,7 +101,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.MeetingTranscript CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.MeetingTranscript();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.MeetingTranscript(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -102,6 +132,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("summary_html", SummaryHtml);
             writer.WriteStringValue("summary_text", SummaryText);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptUtterance>("utterances", Utterances);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

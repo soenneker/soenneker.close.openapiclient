@@ -8752,7 +8752,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CommentsListThreads403Response"
+                  "$ref": "#/components/schemas/CommentsListThreads403ResponseError"
                 }
               }
             }
@@ -14036,7 +14036,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AdvancedFilteringSearch403Response"
+                  "$ref": "#/components/schemas/AdvancedFilteringSearch403ResponseError"
                 }
               }
             }
@@ -18248,7 +18248,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MembershipsCreate400Response"
+                  "$ref": "#/components/schemas/MembershipsCreate400ResponseError"
                 }
               }
             }
@@ -18262,7 +18262,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MembershipsCreate403Response"
+                  "$ref": "#/components/schemas/MembershipsCreate403ResponseError"
                 }
               }
             }
@@ -32267,6 +32267,14 @@
         ],
         "type": "object",
         "properties": {
+          "content_id": {
+            "title": "Content ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "MIME Content-ID field, referenced from the body HTML as a \u0060cid:\u0060 link"
+          },
           "content_type": {
             "title": "Content Type",
             "type": [
@@ -32280,6 +32288,11 @@
               "null",
               "string"
             ]
+          },
+          "inline_only": {
+            "title": "Inline Only",
+            "type": "boolean",
+            "description": "Whether the attachment is embedded in the body HTML (e.g. a signature logo) rather than being standalone"
           },
           "size": {
             "title": "Size",
@@ -32771,7 +32784,7 @@
             }
           },
           "status": {
-            "$ref": "#/components/schemas/BulkEditActionStatus"
+            "$ref": "#/components/schemas/BulkDeleteActionStatus"
           },
           "type": {
             "$ref": "#/components/schemas/BulkEditActionType"
@@ -32987,7 +33000,7 @@
             }
           },
           "status": {
-            "$ref": "#/components/schemas/BulkEmailActionStatus"
+            "$ref": "#/components/schemas/BulkDeleteActionStatus"
           },
           "template_id": {
             "title": "Template ID",
@@ -33199,7 +33212,7 @@
             }
           },
           "status": {
-            "$ref": "#/components/schemas/BulkSequenceSubscriptionActionStatus"
+            "$ref": "#/components/schemas/BulkDeleteActionStatus"
           },
           "updated_by": {
             "title": "Updated By",
@@ -34600,7 +34613,7 @@
             "type": "string"
           },
           "date": {
-            "$ref": "#/components/schemas/CreateCallTaskDate"
+            "$ref": "#/components/schemas/BulkUpdateNotificationsDate"
           },
           "is_complete": {
             "title": "Is Complete",
@@ -35089,7 +35102,7 @@
             "type": "string"
           },
           "date": {
-            "$ref": "#/components/schemas/CreateLeadTaskDate"
+            "$ref": "#/components/schemas/BulkUpdateNotificationsDate"
           },
           "date_created": {
             "$ref": "#/components/schemas/CreateLeadTaskDateCreated"
@@ -35752,23 +35765,15 @@
       },
       "CreateTask": {
         "title": "CreateTask",
-        "required": [
-          "_type"
-        ],
         "oneOf": [
           {
-            "$ref": "#/components/schemas/CreateLeadTask"
+            "$ref": "#/components/schemas/CreateTaskOneOf1"
           },
           {
-            "$ref": "#/components/schemas/CreateCallTask"
+            "$ref": "#/components/schemas/CreateTaskOneOf2"
           }
         ],
-        "properties": {
-          "_type": {
-            "type": "string"
-          }
-        },
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "_type",
           "mapping": {
             "lead": "#/components/schemas/CreateLeadTask",
@@ -35992,7 +35997,7 @@
             "type": "string"
           },
           "source": {
-            "$ref": "#/components/schemas/CreatedActivitySource"
+            "$ref": "#/components/schemas/ActivityBaseSource"
           },
           "updated_by": {
             "title": "Updated By",
@@ -36157,7 +36162,7 @@
             "format": "date-time"
           },
           "comment_summary": {
-            "$ref": "#/components/schemas/CustomActivityCommentSummary"
+            "$ref": "#/components/schemas/ActivityBaseCommentSummary"
           },
           "contact_id": {
             "title": "Contact ID",
@@ -36254,7 +36259,7 @@
             "format": "date-time"
           },
           "source": {
-            "$ref": "#/components/schemas/CustomActivitySource"
+            "$ref": "#/components/schemas/ActivityBaseSource"
           },
           "status": {
             "$ref": "#/components/schemas/CustomActivityStatus"
@@ -37518,7 +37523,7 @@
             "format": "date-time"
           },
           "direction": {
-            "$ref": "#/components/schemas/EmailInThreadDirection"
+            "$ref": "#/components/schemas/EmailActivityDirection"
           },
           "email_account_id": {
             "title": "Email Account ID",
@@ -38007,7 +38012,7 @@
             "format": "date-time"
           },
           "comment_summary": {
-            "$ref": "#/components/schemas/EmailThreadActivityCommentSummary"
+            "$ref": "#/components/schemas/ActivityBaseCommentSummary"
           },
           "contact_id": {
             "title": "Contact ID",
@@ -38382,7 +38387,7 @@
             "default": null
           },
           "s_query": {
-            "$ref": "#/components/schemas/ExportSQuery"
+            "$ref": "#/components/schemas/ExportParams"
           },
           "send_done_email": {
             "title": "Send Done Email",
@@ -38502,9 +38507,6 @@
       },
       "FieldCondition": {
         "title": "FieldCondition",
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/ReferenceCondition"
@@ -38558,13 +38560,8 @@
             "$ref": "#/components/schemas/MultipleTextCondition"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "A condition a field value must satisfy.\n\nWhich conditions apply depends on the field\u0027s type:\n\n- Text, email, phone and URL fields: \u0060text\u0060, \u0060multiple_text\u0060.\n- Fields with a fixed set of values and choice custom fields: \u0060term\u0060.\n- References to other objects (IDs): \u0060reference\u0060. For user fields also\n  \u0060current_user\u0060.\n- Numbers: \u0060number_range\u0060, \u0060number\u0060, \u0060multiple_numbers\u0060.\n- Durations: \u0060duration_range\u0060.\n- Dates and datetimes: \u0060moment_range\u0060, \u0060predefined_relative_date_range\u0060,\n  \u0060fixed_date_range\u0060, \u0060exact_moment\u0060.\n- Booleans: \u0060boolean\u0060.\n- Timezones: \u0060timezone_name\u0060, \u0060local_time\u0060.\n- Any field: \u0060exists\u0060.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "boolean": "#/components/schemas/BooleanCondition",
@@ -39442,9 +39439,6 @@
           },
           {
             "type": "string"
-          },
-          {
-            "type": "integer"
           },
           {
             "type": "number"
@@ -41929,7 +41923,7 @@
         "type": "object",
         "properties": {
           "color": {
-            "$ref": "#/components/schemas/LeadStatusColorComposed"
+            "$ref": "#/components/schemas/CreateOrUpdateLeadStatusColor"
           },
           "id": {
             "title": "ID",
@@ -42377,7 +42371,7 @@
             }
           },
           "comment_summary": {
-            "$ref": "#/components/schemas/MeetingActivityCommentSummary"
+            "$ref": "#/components/schemas/ActivityBaseCommentSummary"
           },
           "conference_links": {
             "title": "Conference Links",
@@ -42521,7 +42515,7 @@
             ]
           },
           "playbook_reason": {
-            "$ref": "#/components/schemas/MeetingActivityPlaybookReason"
+            "$ref": "#/components/schemas/MeetingActivityConversationTypeReason"
           },
           "provider_calendar_event_id": {
             "title": "Provider Calendar Event ID",
@@ -42884,7 +42878,7 @@
             "type": "string"
           },
           "speaker_side": {
-            "$ref": "#/components/schemas/MeetingTranscriptUtteranceSpeakerSide"
+            "$ref": "#/components/schemas/MeetingTranscriptSpeakerSpeakerSide"
           },
           "start": {
             "title": "Start",
@@ -43206,9 +43200,6 @@
       },
       "Moment": {
         "title": "Moment",
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/NowMoment"
@@ -43232,13 +43223,8 @@
             "$ref": "#/components/schemas/OffsetMoment"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "A point in time, evaluated when the search runs.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "fixed_local": "#/components/schemas/FixedLocalMoment",
@@ -43626,7 +43612,7 @@
             }
           },
           "comment_summary": {
-            "$ref": "#/components/schemas/OpportunityCommentSummary"
+            "$ref": "#/components/schemas/ActivityBaseCommentSummary"
           },
           "confidence": {
             "title": "Confidence",
@@ -45456,7 +45442,78 @@
           "all-time"
         ],
         "type": "string",
-        "description": "Relative datetime range options, in the user\u0027s timezone:\n\n- \u0060yesterday\u0060, \u0060today\u0060, \u0060tomorrow\u0060: The whole day.\n- \u0060last-*\u0060, \u0060this-*\u0060, \u0060next-*\u0060 with \u0060week\u0060, \u0060month\u0060, \u0060quarter\u0060 or \u0060year\u0060: The whole previous, current or next calendar period, e.g. \u0060this-month\u0060.\n- \u0060closest-monday\u0060 to \u0060closest-sunday\u0060: The whole day of the next given weekday, or today if it\u0027s that weekday.\n- \u0060all-time\u0060: Any date.",
+        "description": "Relative datetime range options, in the user\u0027s timezone.",
+        "x-fern-enum": {
+          "all-time": {
+            "description": "Any date."
+          },
+          "closest-friday": {
+            "description": "The whole next Friday, or today if it\u0027s Friday."
+          },
+          "closest-monday": {
+            "description": "The whole next Monday, or today if it\u0027s Monday."
+          },
+          "closest-saturday": {
+            "description": "The whole next Saturday, or today if it\u0027s Saturday."
+          },
+          "closest-sunday": {
+            "description": "The whole next Sunday, or today if it\u0027s Sunday."
+          },
+          "closest-thursday": {
+            "description": "The whole next Thursday, or today if it\u0027s Thursday."
+          },
+          "closest-tuesday": {
+            "description": "The whole next Tuesday, or today if it\u0027s Tuesday."
+          },
+          "closest-wednesday": {
+            "description": "The whole next Wednesday, or today if it\u0027s Wednesday."
+          },
+          "last-month": {
+            "description": "The whole previous calendar month."
+          },
+          "last-quarter": {
+            "description": "The whole previous calendar quarter."
+          },
+          "last-week": {
+            "description": "The whole previous calendar week."
+          },
+          "last-year": {
+            "description": "The whole previous calendar year."
+          },
+          "next-month": {
+            "description": "The whole next calendar month."
+          },
+          "next-quarter": {
+            "description": "The whole next calendar quarter."
+          },
+          "next-week": {
+            "description": "The whole next calendar week."
+          },
+          "next-year": {
+            "description": "The whole next calendar year."
+          },
+          "this-month": {
+            "description": "The whole current calendar month."
+          },
+          "this-quarter": {
+            "description": "The whole current calendar quarter."
+          },
+          "this-week": {
+            "description": "The whole current calendar week."
+          },
+          "this-year": {
+            "description": "The whole current calendar year."
+          },
+          "today": {
+            "description": "The whole current day."
+          },
+          "tomorrow": {
+            "description": "The whole next day."
+          },
+          "yesterday": {
+            "description": "The whole previous day."
+          }
+        },
         "x-ms-enum": {
           "name": "PredefinedRelativeDatetimeRange",
           "modelAsString": false,
@@ -46049,9 +46106,6 @@
         }
       },
       "RegularSearchField": {
-        "required": [
-          "object_type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/ActivityCallSearchField"
@@ -46210,12 +46264,7 @@
             "$ref": "#/components/schemas/TaskVoicemailSearchField"
           }
         ],
-        "properties": {
-          "object_type": {
-            "type": "string"
-          }
-        },
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "object_type",
           "mapping": {
             "activity.call": "#/components/schemas/ActivityCallSearchField",
@@ -47232,9 +47281,6 @@
       },
       "SearchQuery": {
         "title": "SearchQuery",
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/AndQuery"
@@ -47270,13 +47316,8 @@
             "$ref": "#/components/schemas/InStatusQuery"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "A search query. Queries are distinguished by their \u0060type\u0060.\n\nCombine queries with \u0060and\u0060 and \u0060or\u0060, and use \u0060negate\u0060 on any query to\nexclude what it matches.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "and": "#/components/schemas/AndQuery",
@@ -48377,7 +48418,7 @@
             "format": "date-time"
           },
           "comment_summary": {
-            "$ref": "#/components/schemas/TaskCompletedActivityCommentSummary"
+            "$ref": "#/components/schemas/ActivityBaseCommentSummary"
           },
           "created_by": {
             "title": "Created By",
@@ -50236,7 +50277,21 @@
           "exact_value"
         ],
         "type": "string",
-        "description": "How to match text:\n\n- \u0060full_words\u0060: All the words appear, in any order.\n- \u0060phrase\u0060: The words appear next to each other, in the given order.\n- \u0060beginning_of_words\u0060: All the words appear as the beginning of words, e.g. \u0060ste\u0060 matches \u0022Steli\u0022.\n- \u0060exact_value\u0060: The whole value equals the text.",
+        "description": "How to match text.",
+        "x-fern-enum": {
+          "beginning_of_words": {
+            "description": "All the words appear as the beginning of words, e.g. \u0060ste\u0060 matches \u0022Steli\u0022."
+          },
+          "exact_value": {
+            "description": "The whole value equals the text."
+          },
+          "full_words": {
+            "description": "All the words appear, in any order."
+          },
+          "phrase": {
+            "description": "The words appear next to each other, in the given order."
+          }
+        },
         "x-ms-enum": {
           "name": "TextMatchMode",
           "modelAsString": false,
@@ -50849,10 +50904,10 @@
             "type": "string"
           },
           "date": {
-            "$ref": "#/components/schemas/UpdateNotificationDate"
+            "$ref": "#/components/schemas/BulkUpdateNotificationsDate"
           },
           "due_date": {
-            "$ref": "#/components/schemas/UpdateNotificationDueDate"
+            "$ref": "#/components/schemas/CreateLeadTaskDueDate"
           },
           "is_complete": {
             "title": "Is Complete",
@@ -50874,7 +50929,7 @@
             "$ref": "#/components/schemas/TaskPriority"
           },
           "resolution": {
-            "$ref": "#/components/schemas/UpdateNotificationResolution"
+            "$ref": "#/components/schemas/BulkUpdateNotificationsResolution"
           },
           "text": {
             "title": "Text",
@@ -52218,73 +52273,31 @@
         ]
       },
       "MultipleNumbersConditionValuesItem": {
-        "anyOf": [
-          {
-            "type": "integer"
-          },
-          {
-            "type": "number"
-          }
-        ]
+        "type": "number"
       },
       "NumberConditionValue": {
+        "type": "number",
         "title": "Value",
-        "anyOf": [
-          {
-            "type": "integer"
-          },
-          {
-            "type": "number"
-          }
-        ],
         "description": "The value to match."
       },
       "NumberRangeConditionGt": {
+        "type": "number",
         "title": "Gt",
-        "anyOf": [
-          {
-            "type": "integer"
-          },
-          {
-            "type": "number"
-          }
-        ],
         "description": "Greater than."
       },
       "NumberRangeConditionGte": {
+        "type": "number",
         "title": "Gte",
-        "anyOf": [
-          {
-            "type": "integer"
-          },
-          {
-            "type": "number"
-          }
-        ],
         "description": "Greater than or equal."
       },
       "NumberRangeConditionLt": {
+        "type": "number",
         "title": "Lt",
-        "anyOf": [
-          {
-            "type": "integer"
-          },
-          {
-            "type": "number"
-          }
-        ],
         "description": "Less than."
       },
       "NumberRangeConditionLte": {
+        "type": "number",
         "title": "Lte",
-        "anyOf": [
-          {
-            "type": "integer"
-          },
-          {
-            "type": "number"
-          }
-        ],
         "description": "Less than or equal."
       },
       "OpportunityCommentSummary": {
@@ -52706,7 +52719,7 @@
         "title": "Values By Name",
         "type": "object",
         "additionalProperties": {
-          "$ref": "#/components/schemas/FormSubmissionActivityValuesByNameAdditionalProperties"
+          "$ref": "#/components/schemas/FormSubmissionActivityValuesAdditionalProperties"
         }
       },
       "LeadRecentCallsItem": {
@@ -58463,7 +58476,7 @@
         "title": "Values By Name",
         "type": "object",
         "additionalProperties": {
-          "$ref": "#/components/schemas/FormSubmissionActivityValuesByNameAdditionalProperties"
+          "$ref": "#/components/schemas/FormSubmissionActivityValuesAdditionalProperties"
         }
       },
       "LeadRecentCallsItemProperty": {
@@ -62844,12 +62857,12 @@
         }
       },
       "RegularFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "RegularFieldType",
           "modelAsString": false,
@@ -62881,12 +62894,12 @@
         }
       },
       "ActivityCreatedSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "ActivityCreatedSearchFieldType",
           "modelAsString": false,
@@ -62918,12 +62931,12 @@
         }
       },
       "ActivityCustomActivitySearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "ActivityCustomActivitySearchFieldType",
           "modelAsString": false,
@@ -62955,12 +62968,12 @@
         }
       },
       "ActivityEmailSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "ActivityEmailSearchFieldType",
           "modelAsString": false,
@@ -62992,12 +63005,12 @@
         }
       },
       "ActivityEmailThreadSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "ActivityEmailThreadSearchFieldType",
           "modelAsString": false,
@@ -63029,12 +63042,12 @@
         }
       },
       "ActivityFormSubmissionSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "ActivityFormSubmissionSearchFieldType",
           "modelAsString": false,
@@ -63066,12 +63079,12 @@
         }
       },
       "ActivityImportUpdateSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "ActivityImportUpdateSearchFieldType",
           "modelAsString": false,
@@ -63103,12 +63116,12 @@
         }
       },
       "ActivityLeadMergeSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "ActivityLeadMergeSearchFieldType",
           "modelAsString": false,
@@ -63140,12 +63153,12 @@
         }
       },
       "ActivityLeadStatusChangeSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "ActivityLeadStatusChangeSearchFieldType",
           "modelAsString": false,
@@ -63177,12 +63190,12 @@
         }
       },
       "ActivityMeetingSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "ActivityMeetingSearchFieldType",
           "modelAsString": false,
@@ -63214,12 +63227,12 @@
         }
       },
       "ActivityNoteSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "ActivityNoteSearchFieldType",
           "modelAsString": false,
@@ -63251,12 +63264,12 @@
         }
       },
       "ActivityOpportunityStatusChangeSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "ActivityOpportunityStatusChangeSearchFieldType",
           "modelAsString": false,
@@ -63288,12 +63301,12 @@
         }
       },
       "ActivitySmsSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "ActivitySmsSearchFieldType",
           "modelAsString": false,
@@ -63325,12 +63338,12 @@
         }
       },
       "ActivityTaskCompletedSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "ActivityTaskCompletedSearchFieldType",
           "modelAsString": false,
@@ -63362,12 +63375,12 @@
         }
       },
       "ActivityWhatsappMessageSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "ActivityWhatsappMessageSearchFieldType",
           "modelAsString": false,
@@ -63399,12 +63412,12 @@
         }
       },
       "AddressSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "AddressSearchFieldType",
           "modelAsString": false,
@@ -63436,12 +63449,12 @@
         }
       },
       "AgentCallGradeSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "AgentCallGradeSearchFieldType",
           "modelAsString": false,
@@ -63454,12 +63467,12 @@
         }
       },
       "AndType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "and"
         ],
         "type": "string",
+        "x-client-original-const": "and",
         "x-ms-enum": {
           "name": "AndType",
           "modelAsString": false,
@@ -63472,12 +63485,12 @@
         }
       },
       "AnyOfSavedSearchType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "any_of_saved_search"
         ],
         "type": "string",
+        "x-client-original-const": "any_of_saved_search",
         "x-ms-enum": {
           "name": "AnyOfSavedSearchType",
           "modelAsString": false,
@@ -63511,12 +63524,12 @@
         }
       },
       "BooleanType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "boolean"
         ],
         "type": "string",
+        "x-client-original-const": "boolean",
         "x-ms-enum": {
           "name": "BooleanType",
           "modelAsString": false,
@@ -63548,12 +63561,12 @@
         }
       },
       "CommentSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "CommentSearchFieldType",
           "modelAsString": false,
@@ -63585,12 +63598,12 @@
         }
       },
       "CommentThreadSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "CommentThreadSearchFieldType",
           "modelAsString": false,
@@ -63622,12 +63635,12 @@
         }
       },
       "ContactEmailSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "ContactEmailSearchFieldType",
           "modelAsString": false,
@@ -63659,12 +63672,12 @@
         }
       },
       "ContactPhoneSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "ContactPhoneSearchFieldType",
           "modelAsString": false,
@@ -63696,12 +63709,12 @@
         }
       },
       "ContactSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "ContactSearchFieldType",
           "modelAsString": false,
@@ -63733,12 +63746,12 @@
         }
       },
       "ContactUrlSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "ContactUrlSearchFieldType",
           "modelAsString": false,
@@ -63852,12 +63865,12 @@
         }
       },
       "OutgoingCallType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "outgoing_call"
         ],
         "type": "string",
+        "x-client-original-const": "outgoing_call",
         "x-ms-enum": {
           "name": "OutgoingCallType",
           "modelAsString": false,
@@ -63932,12 +63945,12 @@
         }
       },
       "LeadType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "lead"
         ],
         "type": "string",
+        "x-client-original-const": "lead",
         "x-ms-enum": {
           "name": "LeadType",
           "modelAsString": false,
@@ -64098,12 +64111,12 @@
         }
       },
       "CurrentUserType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "current_user"
         ],
         "type": "string",
+        "x-client-original-const": "current_user",
         "x-ms-enum": {
           "name": "CurrentUserType",
           "modelAsString": false,
@@ -64135,12 +64148,12 @@
         }
       },
       "CustomFieldsContactSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "CustomFieldsContactSearchFieldType",
           "modelAsString": false,
@@ -64172,12 +64185,12 @@
         }
       },
       "CustomFieldsLeadSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "CustomFieldsLeadSearchFieldType",
           "modelAsString": false,
@@ -64209,12 +64222,12 @@
         }
       },
       "CustomFieldsOpportunitySearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "CustomFieldsOpportunitySearchFieldType",
           "modelAsString": false,
@@ -64246,12 +64259,12 @@
         }
       },
       "CustomObjectSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "CustomObjectSearchFieldType",
           "modelAsString": false,
@@ -64264,12 +64277,12 @@
         }
       },
       "CustomFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "custom_field"
         ],
         "type": "string",
+        "x-client-original-const": "custom_field",
         "x-ms-enum": {
           "name": "CustomFieldType",
           "modelAsString": false,
@@ -64282,12 +64295,12 @@
         }
       },
       "FixedDateRangeType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "fixed_date_range"
         ],
         "type": "string",
+        "x-client-original-const": "fixed_date_range",
         "x-ms-enum": {
           "name": "FixedDateRangeType",
           "modelAsString": false,
@@ -64300,12 +64313,12 @@
         }
       },
       "DurationRangeType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "duration_range"
         ],
         "type": "string",
+        "x-client-original-const": "duration_range",
         "x-ms-enum": {
           "name": "DurationRangeType",
           "modelAsString": false,
@@ -64337,12 +64350,12 @@
         }
       },
       "EmailTemplateSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "EmailTemplateSearchFieldType",
           "modelAsString": false,
@@ -64355,12 +64368,12 @@
         }
       },
       "ExactMomentType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "exact_moment"
         ],
         "type": "string",
+        "x-client-original-const": "exact_moment",
         "x-ms-enum": {
           "name": "ExactMomentType",
           "modelAsString": false,
@@ -64373,12 +64386,12 @@
         }
       },
       "ExistsType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "exists"
         ],
         "type": "string",
+        "x-client-original-const": "exists",
         "x-ms-enum": {
           "name": "ExistsType",
           "modelAsString": false,
@@ -64428,12 +64441,12 @@
         }
       },
       "FieldConditionType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "field_condition"
         ],
         "type": "string",
+        "x-client-original-const": "field_condition",
         "x-ms-enum": {
           "name": "FieldConditionType",
           "modelAsString": false,
@@ -64446,12 +64459,12 @@
         }
       },
       "FixedLocalDateType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "fixed_local_date"
         ],
         "type": "string",
+        "x-client-original-const": "fixed_local_date",
         "x-ms-enum": {
           "name": "FixedLocalDateType",
           "modelAsString": false,
@@ -64464,12 +64477,12 @@
         }
       },
       "FixedLocalType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "fixed_local"
         ],
         "type": "string",
+        "x-client-original-const": "fixed_local",
         "x-ms-enum": {
           "name": "FixedLocalType",
           "modelAsString": false,
@@ -64482,12 +64495,12 @@
         }
       },
       "FixedUtcType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "fixed_utc"
         ],
         "type": "string",
+        "x-client-original-const": "fixed_utc",
         "x-ms-enum": {
           "name": "FixedUtcType",
           "modelAsString": false,
@@ -64500,12 +64513,12 @@
         }
       },
       "FormFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "form_field"
         ],
         "type": "string",
+        "x-client-original-const": "form_field",
         "x-ms-enum": {
           "name": "FormFieldType",
           "modelAsString": false,
@@ -64518,12 +64531,12 @@
         }
       },
       "HasRelatedType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "has_related"
         ],
         "type": "string",
+        "x-client-original-const": "has_related",
         "x-ms-enum": {
           "name": "HasRelatedType",
           "modelAsString": false,
@@ -64536,12 +64549,12 @@
         }
       },
       "IdType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "id"
         ],
         "type": "string",
+        "x-client-original-const": "id",
         "x-ms-enum": {
           "name": "IdType",
           "modelAsString": false,
@@ -64554,12 +64567,12 @@
         }
       },
       "ImportantType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "important"
         ],
         "type": "string",
+        "x-client-original-const": "important",
         "x-ms-enum": {
           "name": "ImportantType",
           "modelAsString": false,
@@ -64572,12 +64585,12 @@
         }
       },
       "InStatusType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "in_status"
         ],
         "type": "string",
+        "x-client-original-const": "in_status",
         "x-ms-enum": {
           "name": "InStatusType",
           "modelAsString": false,
@@ -64609,12 +64622,12 @@
         }
       },
       "LeadFileSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "LeadFileSearchFieldType",
           "modelAsString": false,
@@ -64646,12 +64659,12 @@
         }
       },
       "LeadSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "LeadSearchFieldType",
           "modelAsString": false,
@@ -64683,12 +64696,12 @@
         }
       },
       "LeadSummarySearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "LeadSummarySearchFieldType",
           "modelAsString": false,
@@ -64701,12 +64714,12 @@
         }
       },
       "LocalTimeType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "local_time"
         ],
         "type": "string",
+        "x-client-original-const": "local_time",
         "x-ms-enum": {
           "name": "LocalTimeType",
           "modelAsString": false,
@@ -64719,12 +64732,12 @@
         }
       },
       "MatchAllType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "match_all"
         ],
         "type": "string",
+        "x-client-original-const": "match_all",
         "x-ms-enum": {
           "name": "MatchAllType",
           "modelAsString": false,
@@ -64737,12 +64750,12 @@
         }
       },
       "MomentRangeType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "moment_range"
         ],
         "type": "string",
+        "x-client-original-const": "moment_range",
         "x-ms-enum": {
           "name": "MomentRangeType",
           "modelAsString": false,
@@ -64755,12 +64768,12 @@
         }
       },
       "MultipleNumbersType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "multiple_numbers"
         ],
         "type": "string",
+        "x-client-original-const": "multiple_numbers",
         "x-ms-enum": {
           "name": "MultipleNumbersType",
           "modelAsString": false,
@@ -64773,12 +64786,12 @@
         }
       },
       "MultipleTextType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "multiple_text"
         ],
         "type": "string",
+        "x-client-original-const": "multiple_text",
         "x-ms-enum": {
           "name": "MultipleTextType",
           "modelAsString": false,
@@ -64791,12 +64804,12 @@
         }
       },
       "NotImportantType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "not_important"
         ],
         "type": "string",
+        "x-client-original-const": "not_important",
         "x-ms-enum": {
           "name": "NotImportantType",
           "modelAsString": false,
@@ -64809,12 +64822,12 @@
         }
       },
       "NowType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "now"
         ],
         "type": "string",
+        "x-client-original-const": "now",
         "x-ms-enum": {
           "name": "NowType",
           "modelAsString": false,
@@ -64827,12 +64840,12 @@
         }
       },
       "NumberType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "number"
         ],
         "type": "string",
+        "x-client-original-const": "number",
         "x-ms-enum": {
           "name": "NumberType",
           "modelAsString": false,
@@ -64845,12 +64858,12 @@
         }
       },
       "NumberRangeType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "number_range"
         ],
         "type": "string",
+        "x-client-original-const": "number_range",
         "x-ms-enum": {
           "name": "NumberRangeType",
           "modelAsString": false,
@@ -64863,12 +64876,12 @@
         }
       },
       "ObjectTypeType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "object_type"
         ],
         "type": "string",
+        "x-client-original-const": "object_type",
         "x-ms-enum": {
           "name": "ObjectTypeType",
           "modelAsString": false,
@@ -64881,12 +64894,12 @@
         }
       },
       "OffsetType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "offset"
         ],
         "type": "string",
+        "x-client-original-const": "offset",
         "x-ms-enum": {
           "name": "OffsetType",
           "modelAsString": false,
@@ -64918,12 +64931,12 @@
         }
       },
       "OpportunitySearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "OpportunitySearchFieldType",
           "modelAsString": false,
@@ -64936,12 +64949,12 @@
         }
       },
       "OrType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "or"
         ],
         "type": "string",
+        "x-client-original-const": "or",
         "x-ms-enum": {
           "name": "OrType",
           "modelAsString": false,
@@ -64954,12 +64967,12 @@
         }
       },
       "ReferenceConditionType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "reference"
         ],
         "type": "string",
+        "x-client-original-const": "reference",
         "x-ms-enum": {
           "name": "ReferenceConditionType",
           "modelAsString": false,
@@ -64972,12 +64985,12 @@
         }
       },
       "PredefinedRelativeDateRangeType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "predefined_relative_date_range"
         ],
         "type": "string",
+        "x-client-original-const": "predefined_relative_date_range",
         "x-ms-enum": {
           "name": "PredefinedRelativeDateRangeType",
           "modelAsString": false,
@@ -65012,12 +65025,12 @@
         }
       },
       "SavedSearchQueryType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "saved_search"
         ],
         "type": "string",
+        "x-client-original-const": "saved_search",
         "x-ms-enum": {
           "name": "SavedSearchQueryType",
           "modelAsString": false,
@@ -65049,12 +65062,12 @@
         }
       },
       "SavedSearchSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "SavedSearchSearchFieldType",
           "modelAsString": false,
@@ -65086,12 +65099,12 @@
         }
       },
       "SequenceSubscriptionSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "SequenceSubscriptionSearchFieldType",
           "modelAsString": false,
@@ -65123,12 +65136,12 @@
         }
       },
       "SmsTemplateSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "SmsTemplateSearchFieldType",
           "modelAsString": false,
@@ -65141,12 +65154,12 @@
         }
       },
       "StartEndOfPeriodType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "start_end_of_period"
         ],
         "type": "string",
+        "x-client-original-const": "start_end_of_period",
         "x-ms-enum": {
           "name": "StartEndOfPeriodType",
           "modelAsString": false,
@@ -65159,12 +65172,12 @@
         }
       },
       "StartEndOfPredefinedRelativePeriodType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "start_end_of_predefined_relative_period"
         ],
         "type": "string",
+        "x-client-original-const": "start_end_of_predefined_relative_period",
         "x-ms-enum": {
           "name": "StartEndOfPredefinedRelativePeriodType",
           "modelAsString": false,
@@ -65196,12 +65209,12 @@
         }
       },
       "StatusLeadSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "StatusLeadSearchFieldType",
           "modelAsString": false,
@@ -65233,12 +65246,12 @@
         }
       },
       "StatusOpportunitySearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "StatusOpportunitySearchFieldType",
           "modelAsString": false,
@@ -65270,12 +65283,12 @@
         }
       },
       "SubscriptionHistorySearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "SubscriptionHistorySearchFieldType",
           "modelAsString": false,
@@ -65307,12 +65320,12 @@
         }
       },
       "TaskAnsweredDetachedCallSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "TaskAnsweredDetachedCallSearchFieldType",
           "modelAsString": false,
@@ -65344,12 +65357,12 @@
         }
       },
       "TaskDraftEmailSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "TaskDraftEmailSearchFieldType",
           "modelAsString": false,
@@ -65381,12 +65394,12 @@
         }
       },
       "TaskDraftSmsSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "TaskDraftSmsSearchFieldType",
           "modelAsString": false,
@@ -65418,12 +65431,12 @@
         }
       },
       "TaskEmailFollowupSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "TaskEmailFollowupSearchFieldType",
           "modelAsString": false,
@@ -65455,12 +65468,12 @@
         }
       },
       "TaskIncomingEmailSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "TaskIncomingEmailSearchFieldType",
           "modelAsString": false,
@@ -65492,12 +65505,12 @@
         }
       },
       "TaskIncomingSmsSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "TaskIncomingSmsSearchFieldType",
           "modelAsString": false,
@@ -65529,12 +65542,12 @@
         }
       },
       "TaskIncomingWhatsappMessageSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "TaskIncomingWhatsappMessageSearchFieldType",
           "modelAsString": false,
@@ -65566,12 +65579,12 @@
         }
       },
       "TaskLeadSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "TaskLeadSearchFieldType",
           "modelAsString": false,
@@ -65603,12 +65616,12 @@
         }
       },
       "TaskLeadSuggestionIncomingEmailSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "TaskLeadSuggestionIncomingEmailSearchFieldType",
           "modelAsString": false,
@@ -65640,12 +65653,12 @@
         }
       },
       "TaskMissedCallSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "TaskMissedCallSearchFieldType",
           "modelAsString": false,
@@ -65677,12 +65690,12 @@
         }
       },
       "TaskOpportunitiesAwaitingActionSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "TaskOpportunitiesAwaitingActionSearchFieldType",
           "modelAsString": false,
@@ -65714,12 +65727,12 @@
         }
       },
       "TaskOpportunityDueSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "TaskOpportunityDueSearchFieldType",
           "modelAsString": false,
@@ -65751,12 +65764,12 @@
         }
       },
       "TaskOutboundCallSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "TaskOutboundCallSearchFieldType",
           "modelAsString": false,
@@ -65788,12 +65801,12 @@
         }
       },
       "TaskVoicemailSearchFieldType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "regular_field"
         ],
         "type": "string",
+        "x-client-original-const": "regular_field",
         "x-ms-enum": {
           "name": "TaskVoicemailSearchFieldType",
           "modelAsString": false,
@@ -65806,12 +65819,12 @@
         }
       },
       "TermType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "term"
         ],
         "type": "string",
+        "x-client-original-const": "term",
         "x-ms-enum": {
           "name": "TermType",
           "modelAsString": false,
@@ -65824,12 +65837,12 @@
         }
       },
       "TextType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "text"
         ],
         "type": "string",
+        "x-client-original-const": "text",
         "x-ms-enum": {
           "name": "TextType",
           "modelAsString": false,
@@ -65842,12 +65855,12 @@
         }
       },
       "TextQueryType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "text"
         ],
         "type": "string",
+        "x-client-original-const": "text",
         "x-ms-enum": {
           "name": "TextQueryType",
           "modelAsString": false,
@@ -65860,12 +65873,12 @@
         }
       },
       "TimezoneNameType": {
-        "const": null,
         "title": "Type",
         "enum": [
           "timezone_name"
         ],
         "type": "string",
+        "x-client-original-const": "timezone_name",
         "x-ms-enum": {
           "name": "TimezoneNameType",
           "modelAsString": false,
@@ -66669,6 +66682,265 @@
             }
           ]
         }
+      },
+      "CreateTaskOneOf1": {
+        "type": "object",
+        "properties": {
+          "_type": {
+            "title": "Type",
+            "enum": [
+              "lead"
+            ],
+            "type": "string",
+            "x-client-original-const": "lead",
+            "x-ms-enum": {
+              "name": "Type",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "lead",
+                  "name": "Lead"
+                }
+              ]
+            }
+          },
+          "assigned_to": {
+            "title": "Assigned To",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "contact_id": {
+            "title": "Contact ID",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "created_by": {
+            "title": "Created By",
+            "type": "string"
+          },
+          "date": {
+            "$ref": "#/components/schemas/BulkUpdateNotificationsDate"
+          },
+          "date_created": {
+            "$ref": "#/components/schemas/CreateLeadTaskDateCreated"
+          },
+          "disable_notification": {
+            "title": "Disable Notification",
+            "type": "boolean",
+            "default": false
+          },
+          "due_date": {
+            "$ref": "#/components/schemas/CreateLeadTaskDueDate"
+          },
+          "is_complete": {
+            "title": "Is Complete",
+            "type": "boolean"
+          },
+          "is_dateless": {
+            "title": "Is Dateless",
+            "type": "boolean"
+          },
+          "lead_id": {
+            "title": "Lead ID",
+            "type": "string"
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "priority": {
+            "title": "Priority",
+            "$ref": "#/components/schemas/TaskPriority"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "lead_id",
+          "text",
+          "_type"
+        ]
+      },
+      "CreateTaskOneOf2": {
+        "type": "object",
+        "properties": {
+          "_type": {
+            "title": "Type",
+            "enum": [
+              "outgoing_call"
+            ],
+            "type": "string",
+            "x-client-original-const": "outgoing_call",
+            "x-ms-enum": {
+              "name": "Type",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "outgoing_call",
+                  "name": "OutgoingCall"
+                }
+              ]
+            }
+          },
+          "agent_config_id": {
+            "title": "Agent Config ID",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "assigned_to": {
+            "title": "Assigned To",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "contact_id": {
+            "title": "Contact ID",
+            "type": "string"
+          },
+          "created_by": {
+            "title": "Created By",
+            "type": "string"
+          },
+          "date": {
+            "$ref": "#/components/schemas/BulkUpdateNotificationsDate"
+          },
+          "is_complete": {
+            "title": "Is Complete",
+            "type": "boolean"
+          },
+          "lead_id": {
+            "title": "Lead ID",
+            "type": "string"
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string"
+          },
+          "priority": {
+            "title": "Priority",
+            "$ref": "#/components/schemas/TaskPriority"
+          },
+          "text": {
+            "title": "Text",
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "contact_id",
+          "lead_id",
+          "_type"
+        ]
+      },
+      "CommentsListThreads403ResponseError": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message."
+          },
+          "error_code": {
+            "$ref": "#/components/schemas/ApiKeyErrorErrorCode"
+          },
+          "required_scope": {
+            "type": "string",
+            "description": "API key scope the request requires. Present when \u0060error_code\u0060 is \u0060insufficient_scope\u0060."
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/CommentsListThreads403Response"
+        }
+      },
+      "AdvancedFilteringSearch403ResponseError": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message."
+          },
+          "error_code": {
+            "$ref": "#/components/schemas/ApiKeyErrorErrorCode"
+          },
+          "required_scope": {
+            "type": "string",
+            "description": "API key scope the request requires. Present when \u0060error_code\u0060 is \u0060insufficient_scope\u0060."
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/AdvancedFilteringSearch403Response"
+        }
+      },
+      "MembershipsCreate400ResponseError": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message."
+          },
+          "errors": {
+            "x-client-untyped-value": true,
+            "x-client-original-field-schemas": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ValidationErrorsErrorsItem"
+                }
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Errors that don\u0027t apply to a single field."
+              }
+            ]
+          },
+          "field-errors": {
+            "$ref": "#/components/schemas/NestedValidationErrorsFieldErrorsProperty"
+          }
+        },
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/MembershipsCreate400Response"
+        }
+      },
+      "MembershipsCreate403ResponseError": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message."
+          },
+          "error_code": {
+            "$ref": "#/components/schemas/ApiKeyErrorErrorCode"
+          },
+          "required_scope": {
+            "type": "string",
+            "description": "API key scope the request requires. Present when \u0060error_code\u0060 is \u0060insufficient_scope\u0060."
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/MembershipsCreate403Response"
+        }
       }
     },
     "responses": {
@@ -66687,7 +66959,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ForbiddenResponse"
+              "$ref": "#/components/schemas/AdvancedFilteringSearch403Response"
             }
           }
         }

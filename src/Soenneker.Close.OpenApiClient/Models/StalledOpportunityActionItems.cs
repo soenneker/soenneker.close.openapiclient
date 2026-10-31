@@ -12,19 +12,33 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class StalledOpportunityActionItems : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("communication_issue") is null) { _explicitNullValueCommunicationIssue = default!; _explicitNullProperties?.Remove("communication_issue"); }
+            else if (parseNode.GetChildNode("communication_issue") is { } nullNodeCommunicationIssue && nullNodeCommunicationIssue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CommunicationIssue = null;
+            if (parseNode.GetChildNode("next_action") is null) { _explicitNullValueNextAction = default!; _explicitNullProperties?.Remove("next_action"); }
+            else if (parseNode.GetChildNode("next_action") is { } nullNodeNextAction && nullNodeNextAction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextAction = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The communication issue that is causing the stalled opportunity. If there is no issue, set to NoIssue.</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.StalledOpportunityCommunicationIssue? CommunicationIssue { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.StalledOpportunityCommunicationIssue? CommunicationIssue { get => _explicitNullValueCommunicationIssue; set { _explicitNullValueCommunicationIssue = value; AdditionalData?.Remove("communication_issue"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("communication_issue"); else _explicitNullProperties?.Remove("communication_issue"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.StalledOpportunityCommunicationIssue? _explicitNullValueCommunicationIssue = default!;
         /// <summary>An action item recommended to progress or resolve the stalled opportunity.</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.ActionItem? NextAction { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.ActionItem? NextAction { get => _explicitNullValueNextAction; set { _explicitNullValueNextAction = value; AdditionalData?.Remove("next_action"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_action"); else _explicitNullProperties?.Remove("next_action"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.ActionItem? _explicitNullValueNextAction = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.ActionItem NextAction { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.ActionItem NextAction { get => _explicitNullValueNextAction; set { _explicitNullValueNextAction = value; AdditionalData?.Remove("next_action"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_action"); else _explicitNullProperties?.Remove("next_action"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.ActionItem _explicitNullValueNextAction = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.StalledOpportunityActionItems"/> and sets the default values.
@@ -41,7 +55,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.StalledOpportunityActionItems CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.StalledOpportunityActionItems();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.StalledOpportunityActionItems(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -51,7 +65,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "communication_issue", n => { CommunicationIssue = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.StalledOpportunityCommunicationIssue>(); } },
+                { "communication_issue", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.StalledOpportunityCommunicationIssue>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCommunicationIssue = default; _explicitNullProperties?.Remove("communication_issue"); AdditionalData["communication_issue"] = unknown; } else { CommunicationIssue = parsed; AdditionalData.Remove("communication_issue"); } } },
                 { "next_action", n => { NextAction = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.ActionItem>(global::Soenneker.Close.OpenApiClient.Models.ActionItem.CreateFromDiscriminatorValue); } },
             };
         }
@@ -64,6 +78,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.StalledOpportunityCommunicationIssue>("communication_issue", CommunicationIssue);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.ActionItem>("next_action", NextAction);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

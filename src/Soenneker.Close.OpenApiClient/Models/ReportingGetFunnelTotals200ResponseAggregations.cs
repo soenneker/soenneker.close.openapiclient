@@ -11,29 +11,66 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReportingGetFunnelTotals200ResponseAggregations : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("average_time_to_win") is null) { _explicitNullValueAverageTimeToWin = default!; _explicitNullProperties?.Remove("average_time_to_win"); }
+            else if (parseNode.GetChildNode("average_time_to_win") is { } nullNodeAverageTimeToWin && nullNodeAverageTimeToWin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AverageTimeToWin = null;
+            if (parseNode.GetChildNode("average_value_annualized_per_won_opportunity") is null) { _explicitNullValueAverageValueAnnualizedPerWonOpportunity = default!; _explicitNullProperties?.Remove("average_value_annualized_per_won_opportunity"); }
+            else if (parseNode.GetChildNode("average_value_annualized_per_won_opportunity") is { } nullNodeAverageValueAnnualizedPerWonOpportunity && nullNodeAverageValueAnnualizedPerWonOpportunity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AverageValueAnnualizedPerWonOpportunity = null;
+            if (parseNode.GetChildNode("count") is null) { _explicitNullValueCount = default!; _explicitNullProperties?.Remove("count"); }
+            else if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("count_total_complete") is null) { _explicitNullValueCountTotalComplete = default!; _explicitNullProperties?.Remove("count_total_complete"); }
+            else if (parseNode.GetChildNode("count_total_complete") is { } nullNodeCountTotalComplete && nullNodeCountTotalComplete.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CountTotalComplete = null;
+            if (parseNode.GetChildNode("count_total_won") is null) { _explicitNullValueCountTotalWon = default!; _explicitNullProperties?.Remove("count_total_won"); }
+            else if (parseNode.GetChildNode("count_total_won") is { } nullNodeCountTotalWon && nullNodeCountTotalWon.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CountTotalWon = null;
+            if (parseNode.GetChildNode("count_win_rate") is null) { _explicitNullValueCountWinRate = default!; _explicitNullProperties?.Remove("count_win_rate"); }
+            else if (parseNode.GetChildNode("count_win_rate") is { } nullNodeCountWinRate && nullNodeCountWinRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CountWinRate = null;
+            if (parseNode.GetChildNode("sales_velocity") is null) { _explicitNullValueSalesVelocity = default!; _explicitNullProperties?.Remove("sales_velocity"); }
+            else if (parseNode.GetChildNode("sales_velocity") is { } nullNodeSalesVelocity && nullNodeSalesVelocity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SalesVelocity = null;
+            if (parseNode.GetChildNode("value_total_complete") is null) { _explicitNullValueValueTotalComplete = default!; _explicitNullProperties?.Remove("value_total_complete"); }
+            else if (parseNode.GetChildNode("value_total_complete") is { } nullNodeValueTotalComplete && nullNodeValueTotalComplete.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValueTotalComplete = null;
+            if (parseNode.GetChildNode("value_total_won") is null) { _explicitNullValueValueTotalWon = default!; _explicitNullProperties?.Remove("value_total_won"); }
+            else if (parseNode.GetChildNode("value_total_won") is { } nullNodeValueTotalWon && nullNodeValueTotalWon.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValueTotalWon = null;
+            if (parseNode.GetChildNode("value_win_rate") is null) { _explicitNullValueValueWinRate = default!; _explicitNullProperties?.Remove("value_win_rate"); }
+            else if (parseNode.GetChildNode("value_win_rate") is { } nullNodeValueWinRate && nullNodeValueWinRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValueWinRate = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The average_time_to_win property</summary>
-        public long? AverageTimeToWin { get; set; }
+        public long? AverageTimeToWin { get => _explicitNullValueAverageTimeToWin; set { _explicitNullValueAverageTimeToWin = value; AdditionalData?.Remove("average_time_to_win"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("average_time_to_win"); else _explicitNullProperties?.Remove("average_time_to_win"); } }
+        private long? _explicitNullValueAverageTimeToWin = default!;
         /// <summary>The average_value_annualized_per_won_opportunity property</summary>
-        public long? AverageValueAnnualizedPerWonOpportunity { get; set; }
+        public long? AverageValueAnnualizedPerWonOpportunity { get => _explicitNullValueAverageValueAnnualizedPerWonOpportunity; set { _explicitNullValueAverageValueAnnualizedPerWonOpportunity = value; AdditionalData?.Remove("average_value_annualized_per_won_opportunity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("average_value_annualized_per_won_opportunity"); else _explicitNullProperties?.Remove("average_value_annualized_per_won_opportunity"); } }
+        private long? _explicitNullValueAverageValueAnnualizedPerWonOpportunity = default!;
         /// <summary>The count property</summary>
-        public long? Count { get; set; }
+        public long? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; AdditionalData?.Remove("count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        private long? _explicitNullValueCount = default!;
         /// <summary>The count_total_complete property</summary>
-        public long? CountTotalComplete { get; set; }
+        public long? CountTotalComplete { get => _explicitNullValueCountTotalComplete; set { _explicitNullValueCountTotalComplete = value; AdditionalData?.Remove("count_total_complete"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count_total_complete"); else _explicitNullProperties?.Remove("count_total_complete"); } }
+        private long? _explicitNullValueCountTotalComplete = default!;
         /// <summary>The count_total_won property</summary>
-        public long? CountTotalWon { get; set; }
+        public long? CountTotalWon { get => _explicitNullValueCountTotalWon; set { _explicitNullValueCountTotalWon = value; AdditionalData?.Remove("count_total_won"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count_total_won"); else _explicitNullProperties?.Remove("count_total_won"); } }
+        private long? _explicitNullValueCountTotalWon = default!;
         /// <summary>The count_win_rate property</summary>
-        public double? CountWinRate { get; set; }
+        public double? CountWinRate { get => _explicitNullValueCountWinRate; set { _explicitNullValueCountWinRate = value; AdditionalData?.Remove("count_win_rate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count_win_rate"); else _explicitNullProperties?.Remove("count_win_rate"); } }
+        private double? _explicitNullValueCountWinRate = default!;
         /// <summary>The sales_velocity property</summary>
-        public long? SalesVelocity { get; set; }
+        public long? SalesVelocity { get => _explicitNullValueSalesVelocity; set { _explicitNullValueSalesVelocity = value; AdditionalData?.Remove("sales_velocity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sales_velocity"); else _explicitNullProperties?.Remove("sales_velocity"); } }
+        private long? _explicitNullValueSalesVelocity = default!;
         /// <summary>The value_total_complete property</summary>
-        public long? ValueTotalComplete { get; set; }
+        public long? ValueTotalComplete { get => _explicitNullValueValueTotalComplete; set { _explicitNullValueValueTotalComplete = value; AdditionalData?.Remove("value_total_complete"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_total_complete"); else _explicitNullProperties?.Remove("value_total_complete"); } }
+        private long? _explicitNullValueValueTotalComplete = default!;
         /// <summary>The value_total_won property</summary>
-        public long? ValueTotalWon { get; set; }
+        public long? ValueTotalWon { get => _explicitNullValueValueTotalWon; set { _explicitNullValueValueTotalWon = value; AdditionalData?.Remove("value_total_won"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_total_won"); else _explicitNullProperties?.Remove("value_total_won"); } }
+        private long? _explicitNullValueValueTotalWon = default!;
         /// <summary>The value_win_rate property</summary>
-        public double? ValueWinRate { get; set; }
+        public double? ValueWinRate { get => _explicitNullValueValueWinRate; set { _explicitNullValueValueWinRate = value; AdditionalData?.Remove("value_win_rate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_win_rate"); else _explicitNullProperties?.Remove("value_win_rate"); } }
+        private double? _explicitNullValueValueWinRate = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.ReportingGetFunnelTotals200ResponseAggregations"/> and sets the default values.
         /// </summary>
@@ -49,7 +86,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.ReportingGetFunnelTotals200ResponseAggregations CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.ReportingGetFunnelTotals200ResponseAggregations();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.ReportingGetFunnelTotals200ResponseAggregations(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -88,6 +125,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteLongValue("value_total_complete", ValueTotalComplete);
             writer.WriteLongValue("value_total_won", ValueTotalWon);
             writer.WriteDoubleValue("value_win_rate", ValueWinRate);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

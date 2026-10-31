@@ -12,43 +12,41 @@ namespace Soenneker.Close.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class NumberRangeCondition : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("gt") is null) { _explicitNullValueGt = default!; _explicitNullProperties?.Remove("gt"); }
+            else if (parseNode.GetChildNode("gt") is { } nullNodeGt && nullNodeGt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Gt = null;
+            if (parseNode.GetChildNode("gte") is null) { _explicitNullValueGte = default!; _explicitNullProperties?.Remove("gte"); }
+            else if (parseNode.GetChildNode("gte") is { } nullNodeGte && nullNodeGte.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Gte = null;
+            if (parseNode.GetChildNode("lt") is null) { _explicitNullValueLt = default!; _explicitNullProperties?.Remove("lt"); }
+            else if (parseNode.GetChildNode("lt") is { } nullNodeLt && nullNodeLt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lt = null;
+            if (parseNode.GetChildNode("lte") is null) { _explicitNullValueLte = default!; _explicitNullProperties?.Remove("lte"); }
+            else if (parseNode.GetChildNode("lte") is { } nullNodeLte && nullNodeLte.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lte = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Greater than.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.NumberRangeConditionGt? Gt { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.NumberRangeConditionGt Gt { get; set; }
-#endif
+        public double? Gt { get => _explicitNullValueGt; set { _explicitNullValueGt = value; AdditionalData?.Remove("gt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gt"); else _explicitNullProperties?.Remove("gt"); } }
+        private double? _explicitNullValueGt = default!;
         /// <summary>Greater than or equal.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.NumberRangeConditionGte? Gte { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.NumberRangeConditionGte Gte { get; set; }
-#endif
+        public double? Gte { get => _explicitNullValueGte; set { _explicitNullValueGte = value; AdditionalData?.Remove("gte"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gte"); else _explicitNullProperties?.Remove("gte"); } }
+        private double? _explicitNullValueGte = default!;
         /// <summary>Less than.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.NumberRangeConditionLt? Lt { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.NumberRangeConditionLt Lt { get; set; }
-#endif
+        public double? Lt { get => _explicitNullValueLt; set { _explicitNullValueLt = value; AdditionalData?.Remove("lt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lt"); else _explicitNullProperties?.Remove("lt"); } }
+        private double? _explicitNullValueLt = default!;
         /// <summary>Less than or equal.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.NumberRangeConditionLte? Lte { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.NumberRangeConditionLte Lte { get; set; }
-#endif
+        public double? Lte { get => _explicitNullValueLte; set { _explicitNullValueLte = value; AdditionalData?.Remove("lte"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lte"); else _explicitNullProperties?.Remove("lte"); } }
+        private double? _explicitNullValueLte = default!;
         /// <summary>The type property</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.NumberRangeType? Type { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.NumberRangeType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.NumberRangeType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.NumberRangeCondition"/> and sets the default values.
         /// </summary>
@@ -64,7 +62,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.NumberRangeCondition CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.NumberRangeCondition();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.NumberRangeCondition(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -74,11 +72,11 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "gt", n => { Gt = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.NumberRangeConditionGt>(global::Soenneker.Close.OpenApiClient.Models.NumberRangeConditionGt.CreateFromDiscriminatorValue); } },
-                { "gte", n => { Gte = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.NumberRangeConditionGte>(global::Soenneker.Close.OpenApiClient.Models.NumberRangeConditionGte.CreateFromDiscriminatorValue); } },
-                { "lt", n => { Lt = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.NumberRangeConditionLt>(global::Soenneker.Close.OpenApiClient.Models.NumberRangeConditionLt.CreateFromDiscriminatorValue); } },
-                { "lte", n => { Lte = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.NumberRangeConditionLte>(global::Soenneker.Close.OpenApiClient.Models.NumberRangeConditionLte.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.NumberRangeType>(); } },
+                { "gt", n => { Gt = n.GetDoubleValue(); } },
+                { "gte", n => { Gte = n.GetDoubleValue(); } },
+                { "lt", n => { Lt = n.GetDoubleValue(); } },
+                { "lte", n => { Lte = n.GetDoubleValue(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.NumberRangeType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
         /// <summary>
@@ -88,11 +86,12 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.NumberRangeConditionGt>("gt", Gt);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.NumberRangeConditionGte>("gte", Gte);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.NumberRangeConditionLt>("lt", Lt);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.NumberRangeConditionLte>("lte", Lte);
+            writer.WriteDoubleValue("gt", Gt);
+            writer.WriteDoubleValue("gte", Gte);
+            writer.WriteDoubleValue("lt", Lt);
+            writer.WriteDoubleValue("lte", Lte);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.NumberRangeType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

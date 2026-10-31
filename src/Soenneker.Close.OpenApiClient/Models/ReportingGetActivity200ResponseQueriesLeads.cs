@@ -11,24 +11,39 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReportingGetActivity200ResponseQueriesLeads : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("calls.outbound.all.count") is null) { _explicitNullValueCallsOutboundAllCount = default!; _explicitNullProperties?.Remove("calls.outbound.all.count"); }
+            else if (parseNode.GetChildNode("calls.outbound.all.count") is { } nullNodeCallsOutboundAllCount && nullNodeCallsOutboundAllCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CallsOutboundAllCount = null;
+            if (parseNode.GetChildNode("emails.sent.all.count") is null) { _explicitNullValueEmailsSentAllCount = default!; _explicitNullProperties?.Remove("emails.sent.all.count"); }
+            else if (parseNode.GetChildNode("emails.sent.all.count") is { } nullNodeEmailsSentAllCount && nullNodeEmailsSentAllCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailsSentAllCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The callsOutboundAllCount property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? CallsOutboundAllCount { get; set; }
+        public List<string>? CallsOutboundAllCount { get => _explicitNullValueCallsOutboundAllCount; set { _explicitNullValueCallsOutboundAllCount = value; AdditionalData?.Remove("calls.outbound.all.count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calls.outbound.all.count"); else _explicitNullProperties?.Remove("calls.outbound.all.count"); } }
+        private List<string>? _explicitNullValueCallsOutboundAllCount = default!;
 #nullable restore
 #else
-        public List<string> CallsOutboundAllCount { get; set; }
+        public List<string> CallsOutboundAllCount { get => _explicitNullValueCallsOutboundAllCount; set { _explicitNullValueCallsOutboundAllCount = value; AdditionalData?.Remove("calls.outbound.all.count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calls.outbound.all.count"); else _explicitNullProperties?.Remove("calls.outbound.all.count"); } }
+        private List<string> _explicitNullValueCallsOutboundAllCount = default!;
 #endif
         /// <summary>The emailsSentAllCount property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? EmailsSentAllCount { get; set; }
+        public List<string>? EmailsSentAllCount { get => _explicitNullValueEmailsSentAllCount; set { _explicitNullValueEmailsSentAllCount = value; AdditionalData?.Remove("emails.sent.all.count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emails.sent.all.count"); else _explicitNullProperties?.Remove("emails.sent.all.count"); } }
+        private List<string>? _explicitNullValueEmailsSentAllCount = default!;
 #nullable restore
 #else
-        public List<string> EmailsSentAllCount { get; set; }
+        public List<string> EmailsSentAllCount { get => _explicitNullValueEmailsSentAllCount; set { _explicitNullValueEmailsSentAllCount = value; AdditionalData?.Remove("emails.sent.all.count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emails.sent.all.count"); else _explicitNullProperties?.Remove("emails.sent.all.count"); } }
+        private List<string> _explicitNullValueEmailsSentAllCount = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.ReportingGetActivity200ResponseQueriesLeads"/> and sets the default values.
@@ -45,7 +60,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.ReportingGetActivity200ResponseQueriesLeads CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.ReportingGetActivity200ResponseQueriesLeads();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.ReportingGetActivity200ResponseQueriesLeads(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +83,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("calls.outbound.all.count", CallsOutboundAllCount);
             writer.WriteCollectionOfPrimitiveValues<string>("emails.sent.all.count", EmailsSentAllCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

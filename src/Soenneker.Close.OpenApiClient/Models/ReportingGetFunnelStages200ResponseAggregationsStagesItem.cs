@@ -11,39 +11,83 @@ namespace Soenneker.Close.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReportingGetFunnelStages200ResponseAggregationsStagesItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("average_time_to_advance") is null) { _explicitNullValueAverageTimeToAdvance = default!; _explicitNullProperties?.Remove("average_time_to_advance"); }
+            else if (parseNode.GetChildNode("average_time_to_advance") is { } nullNodeAverageTimeToAdvance && nullNodeAverageTimeToAdvance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AverageTimeToAdvance = null;
+            if (parseNode.GetChildNode("count") is null) { _explicitNullValueCount = default!; _explicitNullProperties?.Remove("count"); }
+            else if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("count_conversion_rate") is null) { _explicitNullValueCountConversionRate = default!; _explicitNullProperties?.Remove("count_conversion_rate"); }
+            else if (parseNode.GetChildNode("count_conversion_rate") is { } nullNodeCountConversionRate && nullNodeCountConversionRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CountConversionRate = null;
+            if (parseNode.GetChildNode("count_lost") is null) { _explicitNullValueCountLost = default!; _explicitNullProperties?.Remove("count_lost"); }
+            else if (parseNode.GetChildNode("count_lost") is { } nullNodeCountLost && nullNodeCountLost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CountLost = null;
+            if (parseNode.GetChildNode("count_lost_ratio") is null) { _explicitNullValueCountLostRatio = default!; _explicitNullProperties?.Remove("count_lost_ratio"); }
+            else if (parseNode.GetChildNode("count_lost_ratio") is { } nullNodeCountLostRatio && nullNodeCountLostRatio.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CountLostRatio = null;
+            if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
+            else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("value") is null) { _explicitNullValueValue = default!; _explicitNullProperties?.Remove("value"); }
+            else if (parseNode.GetChildNode("value") is { } nullNodeValue && nullNodeValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Value = null;
+            if (parseNode.GetChildNode("value_conversion_rate") is null) { _explicitNullValueValueConversionRate = default!; _explicitNullProperties?.Remove("value_conversion_rate"); }
+            else if (parseNode.GetChildNode("value_conversion_rate") is { } nullNodeValueConversionRate && nullNodeValueConversionRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValueConversionRate = null;
+            if (parseNode.GetChildNode("value_lost") is null) { _explicitNullValueValueLost = default!; _explicitNullProperties?.Remove("value_lost"); }
+            else if (parseNode.GetChildNode("value_lost") is { } nullNodeValueLost && nullNodeValueLost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValueLost = null;
+            if (parseNode.GetChildNode("value_lost_ratio") is null) { _explicitNullValueValueLostRatio = default!; _explicitNullProperties?.Remove("value_lost_ratio"); }
+            else if (parseNode.GetChildNode("value_lost_ratio") is { } nullNodeValueLostRatio && nullNodeValueLostRatio.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValueLostRatio = null;
+            if (parseNode.GetChildNode("weighted_value") is null) { _explicitNullValueWeightedValue = default!; _explicitNullProperties?.Remove("weighted_value"); }
+            else if (parseNode.GetChildNode("weighted_value") is { } nullNodeWeightedValue && nullNodeWeightedValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WeightedValue = null;
+            if (parseNode.GetChildNode("weighted_value_conversion_rate") is null) { _explicitNullValueWeightedValueConversionRate = default!; _explicitNullProperties?.Remove("weighted_value_conversion_rate"); }
+            else if (parseNode.GetChildNode("weighted_value_conversion_rate") is { } nullNodeWeightedValueConversionRate && nullNodeWeightedValueConversionRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WeightedValueConversionRate = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The average_time_to_advance property</summary>
-        public long? AverageTimeToAdvance { get; set; }
+        public long? AverageTimeToAdvance { get => _explicitNullValueAverageTimeToAdvance; set { _explicitNullValueAverageTimeToAdvance = value; AdditionalData?.Remove("average_time_to_advance"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("average_time_to_advance"); else _explicitNullProperties?.Remove("average_time_to_advance"); } }
+        private long? _explicitNullValueAverageTimeToAdvance = default!;
         /// <summary>The count property</summary>
-        public long? Count { get; set; }
+        public long? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; AdditionalData?.Remove("count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        private long? _explicitNullValueCount = default!;
         /// <summary>The count_conversion_rate property</summary>
-        public double? CountConversionRate { get; set; }
+        public double? CountConversionRate { get => _explicitNullValueCountConversionRate; set { _explicitNullValueCountConversionRate = value; AdditionalData?.Remove("count_conversion_rate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count_conversion_rate"); else _explicitNullProperties?.Remove("count_conversion_rate"); } }
+        private double? _explicitNullValueCountConversionRate = default!;
         /// <summary>The count_lost property</summary>
-        public long? CountLost { get; set; }
+        public long? CountLost { get => _explicitNullValueCountLost; set { _explicitNullValueCountLost = value; AdditionalData?.Remove("count_lost"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count_lost"); else _explicitNullProperties?.Remove("count_lost"); } }
+        private long? _explicitNullValueCountLost = default!;
         /// <summary>The count_lost_ratio property</summary>
-        public double? CountLostRatio { get; set; }
+        public double? CountLostRatio { get => _explicitNullValueCountLostRatio; set { _explicitNullValueCountLostRatio = value; AdditionalData?.Remove("count_lost_ratio"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count_lost_ratio"); else _explicitNullProperties?.Remove("count_lost_ratio"); } }
+        private double? _explicitNullValueCountLostRatio = default!;
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.ReportingGetFunnelStages200ResponseAggregationsStagesItemStatus? Status { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.ReportingGetFunnelStages200ResponseAggregationsStagesItemStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.ReportingGetFunnelStages200ResponseAggregationsStagesItemStatus? _explicitNullValueStatus = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.ReportingGetFunnelStages200ResponseAggregationsStagesItemStatus Status { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.ReportingGetFunnelStages200ResponseAggregationsStagesItemStatus Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.ReportingGetFunnelStages200ResponseAggregationsStagesItemStatus _explicitNullValueStatus = default!;
 #endif
         /// <summary>The value property</summary>
-        public long? Value { get; set; }
+        public long? Value { get => _explicitNullValueValue; set { _explicitNullValueValue = value; AdditionalData?.Remove("value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value"); else _explicitNullProperties?.Remove("value"); } }
+        private long? _explicitNullValueValue = default!;
         /// <summary>The value_conversion_rate property</summary>
-        public double? ValueConversionRate { get; set; }
+        public double? ValueConversionRate { get => _explicitNullValueValueConversionRate; set { _explicitNullValueValueConversionRate = value; AdditionalData?.Remove("value_conversion_rate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_conversion_rate"); else _explicitNullProperties?.Remove("value_conversion_rate"); } }
+        private double? _explicitNullValueValueConversionRate = default!;
         /// <summary>The value_lost property</summary>
-        public long? ValueLost { get; set; }
+        public long? ValueLost { get => _explicitNullValueValueLost; set { _explicitNullValueValueLost = value; AdditionalData?.Remove("value_lost"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_lost"); else _explicitNullProperties?.Remove("value_lost"); } }
+        private long? _explicitNullValueValueLost = default!;
         /// <summary>The value_lost_ratio property</summary>
-        public double? ValueLostRatio { get; set; }
+        public double? ValueLostRatio { get => _explicitNullValueValueLostRatio; set { _explicitNullValueValueLostRatio = value; AdditionalData?.Remove("value_lost_ratio"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_lost_ratio"); else _explicitNullProperties?.Remove("value_lost_ratio"); } }
+        private double? _explicitNullValueValueLostRatio = default!;
         /// <summary>The weighted_value property</summary>
-        public long? WeightedValue { get; set; }
+        public long? WeightedValue { get => _explicitNullValueWeightedValue; set { _explicitNullValueWeightedValue = value; AdditionalData?.Remove("weighted_value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("weighted_value"); else _explicitNullProperties?.Remove("weighted_value"); } }
+        private long? _explicitNullValueWeightedValue = default!;
         /// <summary>The weighted_value_conversion_rate property</summary>
-        public long? WeightedValueConversionRate { get; set; }
+        public long? WeightedValueConversionRate { get => _explicitNullValueWeightedValueConversionRate; set { _explicitNullValueWeightedValueConversionRate = value; AdditionalData?.Remove("weighted_value_conversion_rate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("weighted_value_conversion_rate"); else _explicitNullProperties?.Remove("weighted_value_conversion_rate"); } }
+        private long? _explicitNullValueWeightedValueConversionRate = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.ReportingGetFunnelStages200ResponseAggregationsStagesItem"/> and sets the default values.
         /// </summary>
@@ -59,7 +103,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.ReportingGetFunnelStages200ResponseAggregationsStagesItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.ReportingGetFunnelStages200ResponseAggregationsStagesItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.ReportingGetFunnelStages200ResponseAggregationsStagesItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -102,6 +146,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteDoubleValue("value_lost_ratio", ValueLostRatio);
             writer.WriteLongValue("weighted_value", WeightedValue);
             writer.WriteLongValue("weighted_value_conversion_rate", WeightedValueConversionRate);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

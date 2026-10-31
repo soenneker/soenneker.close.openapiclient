@@ -12,15 +12,31 @@ namespace Soenneker.Close.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class StartEndOfPredefinedRelativePeriodMoment : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("range") is null) { _explicitNullValueRange = default!; _explicitNullProperties?.Remove("range"); }
+            else if (parseNode.GetChildNode("range") is { } nullNodeRange && nullNodeRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Range = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("which") is null) { _explicitNullValueWhich = default!; _explicitNullProperties?.Remove("which"); }
+            else if (parseNode.GetChildNode("which") is { } nullNodeWhich && nullNodeWhich.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Which = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The predefined relative range.</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.PredefinedRelativeDatetimeRange? Range { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.PredefinedRelativeDatetimeRange? Range { get => _explicitNullValueRange; set { _explicitNullValueRange = value; AdditionalData?.Remove("range"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("range"); else _explicitNullProperties?.Remove("range"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.PredefinedRelativeDatetimeRange? _explicitNullValueRange = default!;
         /// <summary>The type property</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.StartEndOfPredefinedRelativePeriodType? Type { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.StartEndOfPredefinedRelativePeriodType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.StartEndOfPredefinedRelativePeriodType? _explicitNullValueType = default!;
         /// <summary>Whether to use the start or the end of the range.</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.StartEnd? Which { get; set; }
+        public global::Soenneker.Close.OpenApiClient.Models.StartEnd? Which { get => _explicitNullValueWhich; set { _explicitNullValueWhich = value; AdditionalData?.Remove("which"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("which"); else _explicitNullProperties?.Remove("which"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.StartEnd? _explicitNullValueWhich = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.StartEndOfPredefinedRelativePeriodMoment"/> and sets the default values.
         /// </summary>
@@ -36,7 +52,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.StartEndOfPredefinedRelativePeriodMoment CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Close.OpenApiClient.Models.StartEndOfPredefinedRelativePeriodMoment();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.StartEndOfPredefinedRelativePeriodMoment(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -46,9 +62,9 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "range", n => { Range = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.PredefinedRelativeDatetimeRange>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.StartEndOfPredefinedRelativePeriodType>(); } },
-                { "which", n => { Which = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.StartEnd>(); } },
+                { "range", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.PredefinedRelativeDatetimeRange>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRange = default; _explicitNullProperties?.Remove("range"); AdditionalData["range"] = unknown; } else { Range = parsed; AdditionalData.Remove("range"); } } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.StartEndOfPredefinedRelativePeriodType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
+                { "which", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.StartEnd>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueWhich = default; _explicitNullProperties?.Remove("which"); AdditionalData["which"] = unknown; } else { Which = parsed; AdditionalData.Remove("which"); } } },
             };
         }
         /// <summary>
@@ -61,6 +77,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.PredefinedRelativeDatetimeRange>("range", Range);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.StartEndOfPredefinedRelativePeriodType>("type", Type);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.StartEnd>("which", Which);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
