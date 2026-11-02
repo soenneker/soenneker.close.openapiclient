@@ -269,22 +269,22 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The primary_email property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.ContactEmail? PrimaryEmail { get => _explicitNullValuePrimaryEmail; set { _explicitNullValuePrimaryEmail = value; AdditionalData?.Remove("primary_email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_email"); else _explicitNullProperties?.Remove("primary_email"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.ContactEmail? _explicitNullValuePrimaryEmail = default!;
+        public global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryEmail? PrimaryEmail { get => _explicitNullValuePrimaryEmail; set { _explicitNullValuePrimaryEmail = value; AdditionalData?.Remove("primary_email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_email"); else _explicitNullProperties?.Remove("primary_email"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryEmail? _explicitNullValuePrimaryEmail = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.ContactEmail PrimaryEmail { get => _explicitNullValuePrimaryEmail; set { _explicitNullValuePrimaryEmail = value; AdditionalData?.Remove("primary_email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_email"); else _explicitNullProperties?.Remove("primary_email"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.ContactEmail _explicitNullValuePrimaryEmail = default!;
+        public global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryEmail PrimaryEmail { get => _explicitNullValuePrimaryEmail; set { _explicitNullValuePrimaryEmail = value; AdditionalData?.Remove("primary_email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_email"); else _explicitNullProperties?.Remove("primary_email"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryEmail _explicitNullValuePrimaryEmail = default!;
 #endif
         /// <summary>The primary_phone property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.ContactPhone? PrimaryPhone { get => _explicitNullValuePrimaryPhone; set { _explicitNullValuePrimaryPhone = value; AdditionalData?.Remove("primary_phone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_phone"); else _explicitNullProperties?.Remove("primary_phone"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.ContactPhone? _explicitNullValuePrimaryPhone = default!;
+        public global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryPhone? PrimaryPhone { get => _explicitNullValuePrimaryPhone; set { _explicitNullValuePrimaryPhone = value; AdditionalData?.Remove("primary_phone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_phone"); else _explicitNullProperties?.Remove("primary_phone"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryPhone? _explicitNullValuePrimaryPhone = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.ContactPhone PrimaryPhone { get => _explicitNullValuePrimaryPhone; set { _explicitNullValuePrimaryPhone = value; AdditionalData?.Remove("primary_phone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_phone"); else _explicitNullProperties?.Remove("primary_phone"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.ContactPhone _explicitNullValuePrimaryPhone = default!;
+        public global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryPhone PrimaryPhone { get => _explicitNullValuePrimaryPhone; set { _explicitNullValuePrimaryPhone = value; AdditionalData?.Remove("primary_phone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_phone"); else _explicitNullProperties?.Remove("primary_phone"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryPhone _explicitNullValuePrimaryPhone = default!;
 #endif
         /// <summary>The recent_calls property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -431,8 +431,8 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "primary_address_full", n => { PrimaryAddressFull = n.GetStringValue(); } },
                 { "primary_address_summary", n => { PrimaryAddressSummary = n.GetStringValue(); } },
-                { "primary_email", n => { PrimaryEmail = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.ContactEmail>(global::Soenneker.Close.OpenApiClient.Models.ContactEmail.CreateFromDiscriminatorValue); } },
-                { "primary_phone", n => { PrimaryPhone = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.ContactPhone>(global::Soenneker.Close.OpenApiClient.Models.ContactPhone.CreateFromDiscriminatorValue); } },
+                { "primary_email", n => { PrimaryEmail = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryEmail>(global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryEmail.CreateFromDiscriminatorValue); } },
+                { "primary_phone", n => { PrimaryPhone = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryPhone>(global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryPhone.CreateFromDiscriminatorValue); } },
                 { "recent_calls", n => { RecentCalls = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.LeadRecentCallsItemProperty>(global::Soenneker.Close.OpenApiClient.Models.LeadRecentCallsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "source", n => { Source = n.GetStringValue(); } },
                 { "status_id", n => { StatusId = n.GetStringValue(); } },
@@ -472,8 +472,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("primary_address_full", PrimaryAddressFull);
             writer.WriteStringValue("primary_address_summary", PrimaryAddressSummary);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.ContactEmail>("primary_email", PrimaryEmail);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.ContactPhone>("primary_phone", PrimaryPhone);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryEmail>("primary_email", PrimaryEmail);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryPhone>("primary_phone", PrimaryPhone);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.LeadRecentCallsItemProperty>("recent_calls", RecentCalls);
             writer.WriteStringValue("source", Source);
             writer.WriteStringValue("status_id", StatusId);

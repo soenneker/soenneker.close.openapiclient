@@ -156,8 +156,15 @@ namespace Soenneker.Close.OpenApiClient.Models
         private string _explicitNullValueRecordingUrl = default!;
 #endif
         /// <summary>The status property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Close.OpenApiClient.Models.UpdateCallActivityStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.Close.OpenApiClient.Models.UpdateCallActivityStatus? _explicitNullValueStatus = default!;
+#nullable restore
+#else
+        public global::Soenneker.Close.OpenApiClient.Models.UpdateCallActivityStatus Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.UpdateCallActivityStatus _explicitNullValueStatus = default!;
+#endif
         /// <summary>The user_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -208,7 +215,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "playbook_id", n => { PlaybookId = n.GetStringValue(); } },
                 { "quality_info", n => { QualityInfo = n.GetStringValue(); } },
                 { "recording_url", n => { RecordingUrl = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.UpdateCallActivityStatus>(); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.UpdateCallActivityStatus>(global::Soenneker.Close.OpenApiClient.Models.UpdateCallActivityStatus.CreateFromDiscriminatorValue); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
                 { "voicemail_url", n => { VoicemailUrl = n.GetStringValue(); } },
             };
@@ -232,7 +239,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("playbook_id", PlaybookId);
             writer.WriteStringValue("quality_info", QualityInfo);
             writer.WriteStringValue("recording_url", RecordingUrl);
-            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.UpdateCallActivityStatus>("status", Status);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.UpdateCallActivityStatus>("status", Status);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteStringValue("voicemail_url", VoicemailUrl);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             

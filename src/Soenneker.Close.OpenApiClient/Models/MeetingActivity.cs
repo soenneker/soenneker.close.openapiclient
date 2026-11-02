@@ -187,12 +187,12 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The comment_summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.CommentSummary? CommentSummary { get => _explicitNullValueCommentSummary; set { _explicitNullValueCommentSummary = value; AdditionalData?.Remove("comment_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment_summary"); else _explicitNullProperties?.Remove("comment_summary"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.CommentSummary? _explicitNullValueCommentSummary = default!;
+        public global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary? CommentSummary { get => _explicitNullValueCommentSummary; set { _explicitNullValueCommentSummary = value; AdditionalData?.Remove("comment_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment_summary"); else _explicitNullProperties?.Remove("comment_summary"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary? _explicitNullValueCommentSummary = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.CommentSummary CommentSummary { get => _explicitNullValueCommentSummary; set { _explicitNullValueCommentSummary = value; AdditionalData?.Remove("comment_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment_summary"); else _explicitNullProperties?.Remove("comment_summary"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.CommentSummary _explicitNullValueCommentSummary = default!;
+        public global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary CommentSummary { get => _explicitNullValueCommentSummary; set { _explicitNullValueCommentSummary = value; AdditionalData?.Remove("comment_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment_summary"); else _explicitNullProperties?.Remove("comment_summary"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary _explicitNullValueCommentSummary = default!;
 #endif
         /// <summary>The conference_links property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -426,12 +426,12 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.MeetingSummary? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.MeetingSummary? _explicitNullValueSummary = default!;
+        public global::Soenneker.Close.OpenApiClient.Models.MeetingActivitySummary? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.MeetingActivitySummary? _explicitNullValueSummary = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.MeetingSummary Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.MeetingSummary _explicitNullValueSummary = default!;
+        public global::Soenneker.Close.OpenApiClient.Models.MeetingActivitySummary Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.MeetingActivitySummary _explicitNullValueSummary = default!;
 #endif
         /// <summary>The title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -446,12 +446,12 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The transcripts property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscript>? Transcripts { get => _explicitNullValueTranscripts; set { _explicitNullValueTranscripts = value; AdditionalData?.Remove("transcripts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transcripts"); else _explicitNullProperties?.Remove("transcripts"); } }
-        private List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscript>? _explicitNullValueTranscripts = default!;
+        public List<global::Soenneker.Close.OpenApiClient.Models.MeetingActivityTranscriptsItem>? Transcripts { get => _explicitNullValueTranscripts; set { _explicitNullValueTranscripts = value; AdditionalData?.Remove("transcripts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transcripts"); else _explicitNullProperties?.Remove("transcripts"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.MeetingActivityTranscriptsItem>? _explicitNullValueTranscripts = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscript> Transcripts { get => _explicitNullValueTranscripts; set { _explicitNullValueTranscripts = value; AdditionalData?.Remove("transcripts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transcripts"); else _explicitNullProperties?.Remove("transcripts"); } }
-        private List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscript> _explicitNullValueTranscripts = default!;
+        public List<global::Soenneker.Close.OpenApiClient.Models.MeetingActivityTranscriptsItem> Transcripts { get => _explicitNullValueTranscripts; set { _explicitNullValueTranscripts = value; AdditionalData?.Remove("transcripts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transcripts"); else _explicitNullProperties?.Remove("transcripts"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.MeetingActivityTranscriptsItem> _explicitNullValueTranscripts = default!;
 #endif
         /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -578,7 +578,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "attendees", n => { Attendees = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingAttendee>(global::Soenneker.Close.OpenApiClient.Models.MeetingAttendee.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "calendar_event_link", n => { CalendarEventLink = n.GetStringValue(); } },
                 { "calendar_event_uids", n => { CalendarEventUids = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "comment_summary", n => { CommentSummary = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommentSummary>(global::Soenneker.Close.OpenApiClient.Models.CommentSummary.CreateFromDiscriminatorValue); } },
+                { "comment_summary", n => { CommentSummary = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary>(global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary.CreateFromDiscriminatorValue); } },
                 { "conference_links", n => { ConferenceLinks = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingConferenceLink>(global::Soenneker.Close.OpenApiClient.Models.MeetingConferenceLink.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "connected_account_id", n => { ConnectedAccountId = n.GetStringValue(); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
@@ -611,9 +611,9 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "source", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.MeetingSource>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSource = default; _explicitNullProperties?.Remove("source"); AdditionalData["source"] = unknown; } else { Source = parsed; AdditionalData.Remove("source"); } } },
                 { "starts_at", n => { StartsAt = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.MeetingStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
-                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.MeetingSummary>(global::Soenneker.Close.OpenApiClient.Models.MeetingSummary.CreateFromDiscriminatorValue); } },
+                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.MeetingActivitySummary>(global::Soenneker.Close.OpenApiClient.Models.MeetingActivitySummary.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },
-                { "transcripts", n => { Transcripts = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscript>(global::Soenneker.Close.OpenApiClient.Models.MeetingTranscript.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "transcripts", n => { Transcripts = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingActivityTranscriptsItem>(global::Soenneker.Close.OpenApiClient.Models.MeetingActivityTranscriptsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "_type", n => { Type = n.GetStringValue(); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
                 { "updated_by_name", n => { UpdatedByName = n.GetStringValue(); } },
@@ -640,7 +640,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingAttendee>("attendees", Attendees);
             writer.WriteStringValue("calendar_event_link", CalendarEventLink);
             writer.WriteCollectionOfPrimitiveValues<string>("calendar_event_uids", CalendarEventUids);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CommentSummary>("comment_summary", CommentSummary);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary>("comment_summary", CommentSummary);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingConferenceLink>("conference_links", ConferenceLinks);
             writer.WriteStringValue("connected_account_id", ConnectedAccountId);
             writer.WriteStringValue("contact_id", ContactId);
@@ -673,9 +673,9 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.MeetingSource>("source", Source);
             writer.WriteDateTimeOffsetValue("starts_at", StartsAt);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.MeetingStatus>("status", Status);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.MeetingSummary>("summary", Summary);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.MeetingActivitySummary>("summary", Summary);
             writer.WriteStringValue("title", Title);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscript>("transcripts", Transcripts);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingActivityTranscriptsItem>("transcripts", Transcripts);
             writer.WriteStringValue("_type", Type);
             writer.WriteStringValue("updated_by", UpdatedBy);
             writer.WriteStringValue("updated_by_name", UpdatedByName);

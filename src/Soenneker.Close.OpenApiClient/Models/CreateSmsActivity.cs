@@ -65,8 +65,15 @@ namespace Soenneker.Close.OpenApiClient.Models
         private List<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityAttachmentsItem> _explicitNullValueAttachments = default!;
 #endif
         /// <summary>The caller_id_mode property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityCallerIdMode? CallerIdMode { get => _explicitNullValueCallerIdMode; set { _explicitNullValueCallerIdMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("caller_id_mode"); else _explicitNullProperties?.Remove("caller_id_mode"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityCallerIdMode? _explicitNullValueCallerIdMode = default!;
+#nullable restore
+#else
+        public global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityCallerIdMode CallerIdMode { get => _explicitNullValueCallerIdMode; set { _explicitNullValueCallerIdMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("caller_id_mode"); else _explicitNullProperties?.Remove("caller_id_mode"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityCallerIdMode _explicitNullValueCallerIdMode = default!;
+#endif
         /// <summary>The contact_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -91,8 +98,15 @@ namespace Soenneker.Close.OpenApiClient.Models
         public DateTimeOffset? DateCreated { get => _explicitNullValueDateCreated; set { _explicitNullValueDateCreated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_created"); else _explicitNullProperties?.Remove("date_created"); } }
         private DateTimeOffset? _explicitNullValueDateCreated = default!;
         /// <summary>The direction property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityDirection? Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityDirection? _explicitNullValueDirection = default!;
+#nullable restore
+#else
+        public global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityDirection Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityDirection _explicitNullValueDirection = default!;
+#endif
         /// <summary>The lead_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -134,8 +148,15 @@ namespace Soenneker.Close.OpenApiClient.Models
         private string _explicitNullValueRemotePhone = default!;
 #endif
         /// <summary>The source property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivitySource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivitySource? _explicitNullValueSource = default!;
+#nullable restore
+#else
+        public global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivitySource Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivitySource _explicitNullValueSource = default!;
+#endif
         /// <summary>The status property</summary>
         public global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityStatus? _explicitNullValueStatus = default!;
@@ -189,16 +210,16 @@ namespace Soenneker.Close.OpenApiClient.Models
             {
                 { "activity_at", n => { ActivityAt = n.GetDateTimeOffsetValue(); } },
                 { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityAttachmentsItem>(global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityAttachmentsItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "caller_id_mode", n => { CallerIdMode = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityCallerIdMode>(); } },
+                { "caller_id_mode", n => { CallerIdMode = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityCallerIdMode>(global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityCallerIdMode.CreateFromDiscriminatorValue); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetDateTimeOffsetValue(); } },
-                { "direction", n => { Direction = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityDirection>(); } },
+                { "direction", n => { Direction = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityDirection>(global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityDirection.CreateFromDiscriminatorValue); } },
                 { "lead_id", n => { LeadId = n.GetStringValue(); } },
                 { "local_phone", n => { LocalPhone = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "remote_phone", n => { RemotePhone = n.GetStringValue(); } },
-                { "source", n => { Source = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivitySource>(); } },
+                { "source", n => { Source = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivitySource>(global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivitySource.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityStatus>(); } },
                 { "template_id", n => { TemplateId = n.GetStringValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
@@ -214,16 +235,16 @@ namespace Soenneker.Close.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("activity_at", ActivityAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityAttachmentsItem>("attachments", Attachments);
-            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityCallerIdMode>("caller_id_mode", CallerIdMode);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityCallerIdMode>("caller_id_mode", CallerIdMode);
             writer.WriteStringValue("contact_id", ContactId);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteDateTimeOffsetValue("date_created", DateCreated);
-            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityDirection>("direction", Direction);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityDirection>("direction", Direction);
             writer.WriteStringValue("lead_id", LeadId);
             writer.WriteStringValue("local_phone", LocalPhone);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("remote_phone", RemotePhone);
-            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivitySource>("source", Source);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivitySource>("source", Source);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityStatus>("status", Status);
             writer.WriteStringValue("template_id", TemplateId);
             writer.WriteStringValue("text", Text);

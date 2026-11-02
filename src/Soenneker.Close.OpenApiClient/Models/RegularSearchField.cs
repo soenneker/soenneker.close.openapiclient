@@ -17,29 +17,22 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("field_name") is null) { _explicitNullValueFieldName = default!; _explicitNullProperties?.Remove("field_name"); }
-            else if (parseNode.GetChildNode("field_name") is { } nullNodeFieldName && nullNodeFieldName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FieldName = null;
             if (parseNode.GetChildNode("object_type") is null) { _explicitNullValueObjectType = default!; _explicitNullProperties?.Remove("object_type"); }
             else if (parseNode.GetChildNode("object_type") is { } nullNodeObjectType && nullNodeObjectType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ObjectType = null;
-            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
-            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Name of the field. See the [fields of each object type](https://developer.close.com/api/resources/advanced-filtering-fields).</summary>
-#nullable enable
-        public string? FieldName { get => _explicitNullValueFieldName; set { _explicitNullValueFieldName = value; AdditionalData?.Remove("field_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field_name"); else _explicitNullProperties?.Remove("field_name"); } }
-        private string? _explicitNullValueFieldName = default!;
-#nullable restore
-        /// <summary>The object type the field belongs to.</summary>
+        /// <summary>The object_type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ObjectType { get => _explicitNullValueObjectType; set { _explicitNullValueObjectType = value; AdditionalData?.Remove("object_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object_type"); else _explicitNullProperties?.Remove("object_type"); } }
         private string? _explicitNullValueObjectType = default!;
 #nullable restore
-        /// <summary>The type property</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.RegularFieldType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.RegularFieldType? _explicitNullValueType = default!;
+#else
+        public string ObjectType { get => _explicitNullValueObjectType; set { _explicitNullValueObjectType = value; AdditionalData?.Remove("object_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object_type"); else _explicitNullProperties?.Remove("object_type"); } }
+        private string _explicitNullValueObjectType = default!;
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.RegularSearchField"/> and sets the default values.
         /// </summary>
@@ -55,7 +48,63 @@ namespace Soenneker.Close.OpenApiClient.Models
         public static global::Soenneker.Close.OpenApiClient.Models.RegularSearchField CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.RegularSearchField(), parseNode);
+            var mappingValue = parseNode.GetChildNode("object_type")?.GetStringValue();
+            return mappingValue switch
+            {
+                "activity.call" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldActivityCallSearchField(),
+                "activity.created" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldActivityCreatedSearchField(),
+                "activity.custom_activity" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldActivityCustomActivitySearchField(),
+                "activity.email" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldActivityEmailSearchField(),
+                "activity.email_thread" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldActivityEmailThreadSearchField(),
+                "activity.form_submission" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldActivityFormSubmissionSearchField(),
+                "activity.import_update" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldActivityImportUpdateSearchField(),
+                "activity.lead_merge" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldActivityLeadMergeSearchField(),
+                "activity.lead_status_change" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldActivityLeadStatusChangeSearchField(),
+                "activity.meeting" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldActivityMeetingSearchField(),
+                "activity.note" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldActivityNoteSearchField(),
+                "activity.opportunity_status_change" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldActivityOpportunityStatusChangeSearchField(),
+                "activity.sms" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldActivitySmsSearchField(),
+                "activity.task_completed" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldActivityTaskCompletedSearchField(),
+                "activity.whatsapp_message" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldActivityWhatsappMessageSearchField(),
+                "address" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldAddressSearchField(),
+                "agent_call_grade" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldAgentCallGradeSearchField(),
+                "comment" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldCommentSearchField(),
+                "comment_thread" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldCommentThreadSearchField(),
+                "contact" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldContactSearchField(),
+                "contact_email" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldContactEmailSearchField(),
+                "contact_phone" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldContactPhoneSearchField(),
+                "contact_url" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldContactUrlSearchField(),
+                "custom_fields.contact" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldCustomFieldsContactSearchField(),
+                "custom_fields.lead" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldCustomFieldsLeadSearchField(),
+                "custom_fields.opportunity" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldCustomFieldsOpportunitySearchField(),
+                "custom_object" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldCustomObjectSearchField(),
+                "email_template" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldEmailTemplateSearchField(),
+                "lead" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldLeadSearchField(),
+                "lead_file" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldLeadFileSearchField(),
+                "lead_summary" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldLeadSummarySearchField(),
+                "opportunity" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldOpportunitySearchField(),
+                "saved_search" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldSavedSearchSearchField(),
+                "sequence_subscription" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldSequenceSubscriptionSearchField(),
+                "sms_template" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldSmsTemplateSearchField(),
+                "status.lead" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldStatusLeadSearchField(),
+                "status.opportunity" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldStatusOpportunitySearchField(),
+                "subscription_history" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldSubscriptionHistorySearchField(),
+                "task.answered_detached_call" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldTaskAnsweredDetachedCallSearchField(),
+                "task.draft_email" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldTaskDraftEmailSearchField(),
+                "task.draft_sms" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldTaskDraftSmsSearchField(),
+                "task.email_followup" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldTaskEmailFollowupSearchField(),
+                "task.incoming_email" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldTaskIncomingEmailSearchField(),
+                "task.incoming_sms" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldTaskIncomingSmsSearchField(),
+                "task.incoming_whatsapp_message" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldTaskIncomingWhatsappMessageSearchField(),
+                "task.lead" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldTaskLeadSearchField(),
+                "task.lead_suggestion_incoming_email" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldTaskLeadSuggestionIncomingEmailSearchField(),
+                "task.missed_call" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldTaskMissedCallSearchField(),
+                "task.opportunities_awaiting_action" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldTaskOpportunitiesAwaitingActionSearchField(),
+                "task.opportunity_due" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldTaskOpportunityDueSearchField(),
+                "task.outbound_call" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldTaskOutboundCallSearchField(),
+                "task.voicemail" => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchFieldTaskVoicemailSearchField(),
+                _ => new global::Soenneker.Close.OpenApiClient.Models.RegularSearchField(),
+            };
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,9 +114,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "field_name", n => { FieldName = n.GetStringValue(); } },
                 { "object_type", n => { ObjectType = n.GetStringValue(); } },
-                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.RegularFieldType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
         /// <summary>
@@ -77,9 +124,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("field_name", FieldName);
             writer.WriteStringValue("object_type", ObjectType);
-            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.RegularFieldType>("type", Type);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

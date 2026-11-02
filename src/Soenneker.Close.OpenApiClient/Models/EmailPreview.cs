@@ -100,12 +100,12 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The envelope property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.EmailEnvelope? Envelope { get => _explicitNullValueEnvelope; set { _explicitNullValueEnvelope = value; AdditionalData?.Remove("envelope"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("envelope"); else _explicitNullProperties?.Remove("envelope"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.EmailEnvelope? _explicitNullValueEnvelope = default!;
+        public global::Soenneker.Close.OpenApiClient.Models.EmailPreviewEnvelope? Envelope { get => _explicitNullValueEnvelope; set { _explicitNullValueEnvelope = value; AdditionalData?.Remove("envelope"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("envelope"); else _explicitNullProperties?.Remove("envelope"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.EmailPreviewEnvelope? _explicitNullValueEnvelope = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.EmailEnvelope Envelope { get => _explicitNullValueEnvelope; set { _explicitNullValueEnvelope = value; AdditionalData?.Remove("envelope"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("envelope"); else _explicitNullProperties?.Remove("envelope"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.EmailEnvelope _explicitNullValueEnvelope = default!;
+        public global::Soenneker.Close.OpenApiClient.Models.EmailPreviewEnvelope Envelope { get => _explicitNullValueEnvelope; set { _explicitNullValueEnvelope = value; AdditionalData?.Remove("envelope"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("envelope"); else _explicitNullProperties?.Remove("envelope"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.EmailPreviewEnvelope _explicitNullValueEnvelope = default!;
 #endif
         /// <summary>The has_attachments property</summary>
         public bool? HasAttachments { get => _explicitNullValueHasAttachments; set { _explicitNullValueHasAttachments = value; AdditionalData?.Remove("has_attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_attachments"); else _explicitNullProperties?.Remove("has_attachments"); } }
@@ -215,7 +215,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "date_sent", n => { DateSent = n.GetDateTimeOffsetValue(); } },
                 { "date_updated", n => { DateUpdated = n.GetDateTimeOffsetValue(); } },
                 { "direction", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CommunicationDirection>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDirection = default; _explicitNullProperties?.Remove("direction"); AdditionalData["direction"] = unknown; } else { Direction = parsed; AdditionalData.Remove("direction"); } } },
-                { "envelope", n => { Envelope = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailEnvelope>(global::Soenneker.Close.OpenApiClient.Models.EmailEnvelope.CreateFromDiscriminatorValue); } },
+                { "envelope", n => { Envelope = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailPreviewEnvelope>(global::Soenneker.Close.OpenApiClient.Models.EmailPreviewEnvelope.CreateFromDiscriminatorValue); } },
                 { "has_attachments", n => { HasAttachments = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "opens_summary", n => { OpensSummary = n.GetStringValue(); } },
@@ -241,7 +241,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("date_sent", DateSent);
             writer.WriteDateTimeOffsetValue("date_updated", DateUpdated);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CommunicationDirection>("direction", Direction);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailEnvelope>("envelope", Envelope);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.EmailPreviewEnvelope>("envelope", Envelope);
             writer.WriteBoolValue("has_attachments", HasAttachments);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("opens_summary", OpensSummary);

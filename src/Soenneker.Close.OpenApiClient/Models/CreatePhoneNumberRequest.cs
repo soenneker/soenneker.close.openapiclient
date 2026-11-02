@@ -56,8 +56,15 @@ namespace Soenneker.Close.OpenApiClient.Models
         private string _explicitNullValueBundleId = default!;
 #endif
         /// <summary>The carrier_type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType? CarrierType { get => _explicitNullValueCarrierType; set { _explicitNullValueCarrierType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("carrier_type"); else _explicitNullProperties?.Remove("carrier_type"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType? _explicitNullValueCarrierType = default!;
+#nullable restore
+#else
+        public global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType CarrierType { get => _explicitNullValueCarrierType; set { _explicitNullValueCarrierType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("carrier_type"); else _explicitNullProperties?.Remove("carrier_type"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType _explicitNullValueCarrierType = default!;
+#endif
         /// <summary>A two letter ISO country code (e.g. `US` for United States).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -115,7 +122,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             {
                 { "assign_to", n => { AssignTo = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "bundle_id", n => { BundleId = n.GetStringValue(); } },
-                { "carrier_type", n => { CarrierType = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType>(); } },
+                { "carrier_type", n => { CarrierType = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType>(global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType.CreateFromDiscriminatorValue); } },
                 { "country", n => { Country = n.GetStringValue(); } },
                 { "prefix", n => { Prefix = n.GetStringValue(); } },
                 { "sharing", n => { Sharing = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.PhoneNumberSharing>(); } },
@@ -132,7 +139,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("assign_to", AssignTo);
             writer.WriteStringValue("bundle_id", BundleId);
-            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType>("carrier_type", CarrierType);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType>("carrier_type", CarrierType);
             writer.WriteStringValue("country", Country);
             writer.WriteStringValue("prefix", Prefix);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.PhoneNumberSharing>("sharing", Sharing);
