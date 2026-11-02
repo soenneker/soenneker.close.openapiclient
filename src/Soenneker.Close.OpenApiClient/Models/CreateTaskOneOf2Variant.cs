@@ -9,7 +9,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class CreateTaskCreateTaskOneOf2 : global::Soenneker.Close.OpenApiClient.Models.CreateTask, IParsable
+    public partial class CreateTaskOneOf2Variant : global::Soenneker.Close.OpenApiClient.Models.CreateTask, IParsable
     #pragma warning restore CS1591
     {
         // Track explicitly assigned nulls separately from absent properties.
@@ -129,12 +129,12 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CreateTaskCreateTaskOneOf2"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CreateTaskOneOf2Variant"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.Close.OpenApiClient.Models.CreateTaskCreateTaskOneOf2 CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Soenneker.Close.OpenApiClient.Models.CreateTaskOneOf2Variant CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.CreateTaskCreateTaskOneOf2(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.CreateTaskOneOf2Variant(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model

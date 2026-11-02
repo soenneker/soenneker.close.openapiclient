@@ -39320,8 +39320,8 @@
         "discriminator": {
           "propertyName": "_type",
           "mapping": {
-            "lead": "#/components/schemas/CreateTaskCreateTaskOneOf1",
-            "outgoing_call": "#/components/schemas/CreateTaskCreateTaskOneOf2"
+            "lead": "#/components/schemas/CreateTaskOneOf1Variant",
+            "outgoing_call": "#/components/schemas/CreateTaskOneOf2Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -69061,7 +69061,7 @@
           "$ref": "#/components/schemas/MembershipsCreate403Response"
         }
       },
-      "CreateTaskCreateTaskOneOf1": {
+      "CreateTaskOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateTask"
@@ -69152,7 +69152,7 @@
           }
         ]
       },
-      "CreateTaskCreateTaskOneOf2": {
+      "CreateTaskOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateTask"

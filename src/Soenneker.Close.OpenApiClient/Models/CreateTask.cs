@@ -51,8 +51,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("_type")?.GetStringValue();
             return mappingValue switch
             {
-                "lead" => new global::Soenneker.Close.OpenApiClient.Models.CreateTaskCreateTaskOneOf1(),
-                "outgoing_call" => new global::Soenneker.Close.OpenApiClient.Models.CreateTaskCreateTaskOneOf2(),
+                "lead" => new global::Soenneker.Close.OpenApiClient.Models.CreateTaskOneOf1Variant(),
+                "outgoing_call" => new global::Soenneker.Close.OpenApiClient.Models.CreateTaskOneOf2Variant(),
                 _ => new global::Soenneker.Close.OpenApiClient.Models.CreateTask(),
             };
         }
