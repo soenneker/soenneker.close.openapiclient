@@ -35,7 +35,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; AdditionalData?.Remove("label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
         private string _explicitNullValueLabel = default!;
 #endif
-        /// <summary>The type property</summary>
+        /// <summary>Type of an Opportunity Status: `active` for open Opportunities, `won` or `lost` for closed ones.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusType? _explicitNullValueType = default!;
         /// <summary>

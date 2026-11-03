@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
-    /// <summary>The type of the object.</summary>
+    /// <summary>The object type.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SearchObjectType
     {

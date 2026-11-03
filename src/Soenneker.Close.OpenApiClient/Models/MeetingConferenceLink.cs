@@ -25,7 +25,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The type property</summary>
+        /// <summary>The video conferencing service of a Meeting&apos;s link.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.ConferenceLinkType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.Close.OpenApiClient.Models.ConferenceLinkType? _explicitNullValueType = default!;
         /// <summary>The url property</summary>

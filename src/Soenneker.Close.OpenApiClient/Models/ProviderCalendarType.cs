@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>The calendar provider a Meeting was synced from.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum ProviderCalendarType
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "google")]
         #pragma warning disable CS1591

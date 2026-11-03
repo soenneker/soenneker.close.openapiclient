@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>How the Outcome was set: `autofilled` by AI, `user-selected` by a user, or `voicemail-dropped` automatically after a voicemail drop.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum OutcomeReason
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "autofilled")]
         #pragma warning disable CS1591

@@ -120,7 +120,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>Monetary value of the opportunity in cents, e.g. `340000` for $3,400.00. The currency is the organization&apos;s currency.</summary>
         public int? Value { get => _explicitNullValueValue; set { _explicitNullValueValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value"); else _explicitNullProperties?.Remove("value"); } }
         private int? _explicitNullValueValue = default!;
-        /// <summary>The value_period property</summary>
+        /// <summary>How often the Opportunity&apos;s value is paid: `one_time`, `monthly` or `annual`.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.OpportunityValuePeriod? ValuePeriod { get => _explicitNullValueValuePeriod; set { _explicitNullValueValuePeriod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_period"); else _explicitNullProperties?.Remove("value_period"); } }
         private global::Soenneker.Close.OpenApiClient.Models.OpportunityValuePeriod? _explicitNullValueValuePeriod = default!;
         /// <summary>

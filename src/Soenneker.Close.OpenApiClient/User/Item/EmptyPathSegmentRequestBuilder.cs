@@ -22,7 +22,7 @@ namespace Soenneker.Close.OpenApiClient.User.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user/{id}/{?_limit*,_order_by*,_skip*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user/{id}/{?_order_by*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Close.OpenApiClient.User.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user/{id}/{?_limit*,_order_by*,_skip*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user/{id}/{?_order_by*}", rawUrl)
         {
         }
         /// <summary>
@@ -100,16 +100,10 @@ namespace Soenneker.Close.OpenApiClient.User.Item
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         {
-            /// <summary>Number of results to return.</summary>
-            [QueryParameter("_limit")]
-            public int? Limit { get; set; }
             #pragma warning disable CS1591
             [QueryParameter("_order_by")]
             public global::Soenneker.Close.OpenApiClient.Models.UsersGetOrderByParameter? OrderBy { get; set; }
             #pragma warning restore CS1591
-            /// <summary>Number of results to skip before returning, for pagination.</summary>
-            [QueryParameter("_skip")]
-            public int? Skip { get; set; }
         }
     }
 }

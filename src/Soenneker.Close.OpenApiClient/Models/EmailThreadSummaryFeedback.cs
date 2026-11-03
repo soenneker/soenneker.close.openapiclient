@@ -40,7 +40,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The given_at property</summary>
         public DateTimeOffset? GivenAt { get => _explicitNullValueGivenAt; set { _explicitNullValueGivenAt = value; AdditionalData?.Remove("given_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("given_at"); else _explicitNullProperties?.Remove("given_at"); } }
         private DateTimeOffset? _explicitNullValueGivenAt = default!;
-        /// <summary>The rating property</summary>
+        /// <summary>A user&apos;s rating of an AI summary.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.SummaryFeedbackRating? Rating { get => _explicitNullValueRating; set { _explicitNullValueRating = value; AdditionalData?.Remove("rating"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rating"); else _explicitNullProperties?.Remove("rating"); } }
         private global::Soenneker.Close.OpenApiClient.Models.SummaryFeedbackRating? _explicitNullValueRating = default!;
         /// <summary>

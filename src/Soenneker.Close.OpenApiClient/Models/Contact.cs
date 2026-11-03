@@ -57,7 +57,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The created_by property</summary>
+        /// <summary>ID of the user who created the contact, e.g. `user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
@@ -67,7 +67,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
         private string _explicitNullValueCreatedBy = default!;
 #endif
-        /// <summary>The created_by_agent_id property</summary>
+        /// <summary>ID of the agent that created the contact, or null if no agent created it</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatedByAgentId { get => _explicitNullValueCreatedByAgentId; set { _explicitNullValueCreatedByAgentId = value; AdditionalData?.Remove("created_by_agent_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by_agent_id"); else _explicitNullProperties?.Remove("created_by_agent_id"); } }
@@ -77,13 +77,13 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string CreatedByAgentId { get => _explicitNullValueCreatedByAgentId; set { _explicitNullValueCreatedByAgentId = value; AdditionalData?.Remove("created_by_agent_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by_agent_id"); else _explicitNullProperties?.Remove("created_by_agent_id"); } }
         private string _explicitNullValueCreatedByAgentId = default!;
 #endif
-        /// <summary>The date_created property</summary>
+        /// <summary>When the contact was created, as an ISO 8601 timestamp in UTC</summary>
         public DateTimeOffset? DateCreated { get => _explicitNullValueDateCreated; set { _explicitNullValueDateCreated = value; AdditionalData?.Remove("date_created"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_created"); else _explicitNullProperties?.Remove("date_created"); } }
         private DateTimeOffset? _explicitNullValueDateCreated = default!;
-        /// <summary>The date_updated property</summary>
+        /// <summary>When the contact was last updated, as an ISO 8601 timestamp in UTC</summary>
         public DateTimeOffset? DateUpdated { get => _explicitNullValueDateUpdated; set { _explicitNullValueDateUpdated = value; AdditionalData?.Remove("date_updated"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_updated"); else _explicitNullProperties?.Remove("date_updated"); } }
         private DateTimeOffset? _explicitNullValueDateUpdated = default!;
-        /// <summary>The display_name property</summary>
+        /// <summary>Name to display for the contact: the contact&apos;s `name` if set, otherwise the first email address, then the first phone number in international format, then `Unnamed`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; AdditionalData?.Remove("display_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
@@ -93,7 +93,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; AdditionalData?.Remove("display_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
         private string _explicitNullValueDisplayName = default!;
 #endif
-        /// <summary>The emails property</summary>
+        /// <summary>Email addresses of the contact</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.ContactEmail>? Emails { get => _explicitNullValueEmails; set { _explicitNullValueEmails = value; AdditionalData?.Remove("emails"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emails"); else _explicitNullProperties?.Remove("emails"); } }
@@ -103,7 +103,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<global::Soenneker.Close.OpenApiClient.Models.ContactEmail> Emails { get => _explicitNullValueEmails; set { _explicitNullValueEmails = value; AdditionalData?.Remove("emails"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emails"); else _explicitNullProperties?.Remove("emails"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.ContactEmail> _explicitNullValueEmails = default!;
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>The contact&apos;s ID, e.g. `cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
@@ -113,7 +113,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
-        /// <summary>The integration_links property</summary>
+        /// <summary>The organization&apos;s contact integration links, rendered with this contact&apos;s data</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.RenderedIntegrationLink>? IntegrationLinks { get => _explicitNullValueIntegrationLinks; set { _explicitNullValueIntegrationLinks = value; AdditionalData?.Remove("integration_links"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_links"); else _explicitNullProperties?.Remove("integration_links"); } }
@@ -123,7 +123,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<global::Soenneker.Close.OpenApiClient.Models.RenderedIntegrationLink> IntegrationLinks { get => _explicitNullValueIntegrationLinks; set { _explicitNullValueIntegrationLinks = value; AdditionalData?.Remove("integration_links"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_links"); else _explicitNullProperties?.Remove("integration_links"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.RenderedIntegrationLink> _explicitNullValueIntegrationLinks = default!;
 #endif
-        /// <summary>The lead_id property</summary>
+        /// <summary>The owning lead&apos;s ID, e.g. `lead_etYl6PwL12hkj14567kjolJwZuZehb9b85EDH9CKuAI`. Every contact belongs to exactly one lead. Always returned, even when not requested in `_fields`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LeadId { get => _explicitNullValueLeadId; set { _explicitNullValueLeadId = value; AdditionalData?.Remove("lead_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_id"); else _explicitNullProperties?.Remove("lead_id"); } }
@@ -133,7 +133,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string LeadId { get => _explicitNullValueLeadId; set { _explicitNullValueLeadId = value; AdditionalData?.Remove("lead_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_id"); else _explicitNullProperties?.Remove("lead_id"); } }
         private string _explicitNullValueLeadId = default!;
 #endif
-        /// <summary>The name property</summary>
+        /// <summary>Full name of the contact, or null if unnamed</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
@@ -143,7 +143,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
-        /// <summary>The organization_id property</summary>
+        /// <summary>The owning organization&apos;s ID, e.g. `orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
@@ -153,7 +153,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string _explicitNullValueOrganizationId = default!;
 #endif
-        /// <summary>The phones property</summary>
+        /// <summary>Phone numbers of the contact</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.ContactPhone>? Phones { get => _explicitNullValuePhones; set { _explicitNullValuePhones = value; AdditionalData?.Remove("phones"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phones"); else _explicitNullProperties?.Remove("phones"); } }
@@ -163,7 +163,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<global::Soenneker.Close.OpenApiClient.Models.ContactPhone> Phones { get => _explicitNullValuePhones; set { _explicitNullValuePhones = value; AdditionalData?.Remove("phones"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phones"); else _explicitNullProperties?.Remove("phones"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.ContactPhone> _explicitNullValuePhones = default!;
 #endif
-        /// <summary>The timezone property</summary>
+        /// <summary>IANA timezone ID of the contact, e.g. `America/New_York`. Set manually, or else inferred from the contact&apos;s phone numbers. Null if neither is available. See `timezone_source`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Timezone { get => _explicitNullValueTimezone; set { _explicitNullValueTimezone = value; AdditionalData?.Remove("timezone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timezone"); else _explicitNullProperties?.Remove("timezone"); } }
@@ -173,7 +173,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Timezone { get => _explicitNullValueTimezone; set { _explicitNullValueTimezone = value; AdditionalData?.Remove("timezone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timezone"); else _explicitNullProperties?.Remove("timezone"); } }
         private string _explicitNullValueTimezone = default!;
 #endif
-        /// <summary>The timezone_source property</summary>
+        /// <summary>Where `timezone` came from: `manual` if set explicitly, `inferred_from_phone_number` if derived from the contact&apos;s phone numbers, or null if `timezone` is null</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TimezoneSource { get => _explicitNullValueTimezoneSource; set { _explicitNullValueTimezoneSource = value; AdditionalData?.Remove("timezone_source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timezone_source"); else _explicitNullProperties?.Remove("timezone_source"); } }
@@ -183,7 +183,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string TimezoneSource { get => _explicitNullValueTimezoneSource; set { _explicitNullValueTimezoneSource = value; AdditionalData?.Remove("timezone_source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timezone_source"); else _explicitNullProperties?.Remove("timezone_source"); } }
         private string _explicitNullValueTimezoneSource = default!;
 #endif
-        /// <summary>The title property</summary>
+        /// <summary>Job title of the contact, e.g. `CEO`, or null if unset</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; AdditionalData?.Remove("title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
@@ -193,7 +193,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; AdditionalData?.Remove("title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
         private string _explicitNullValueTitle = default!;
 #endif
-        /// <summary>The updated_by property</summary>
+        /// <summary>ID of the user who last updated the contact, e.g. `user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UpdatedBy { get => _explicitNullValueUpdatedBy; set { _explicitNullValueUpdatedBy = value; AdditionalData?.Remove("updated_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_by"); else _explicitNullProperties?.Remove("updated_by"); } }
@@ -203,7 +203,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string UpdatedBy { get => _explicitNullValueUpdatedBy; set { _explicitNullValueUpdatedBy = value; AdditionalData?.Remove("updated_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_by"); else _explicitNullProperties?.Remove("updated_by"); } }
         private string _explicitNullValueUpdatedBy = default!;
 #endif
-        /// <summary>The updated_by_agent_id property</summary>
+        /// <summary>ID of the agent that last updated the contact, or null if the last update wasn&apos;t made by an agent</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UpdatedByAgentId { get => _explicitNullValueUpdatedByAgentId; set { _explicitNullValueUpdatedByAgentId = value; AdditionalData?.Remove("updated_by_agent_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_by_agent_id"); else _explicitNullProperties?.Remove("updated_by_agent_id"); } }
@@ -213,7 +213,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string UpdatedByAgentId { get => _explicitNullValueUpdatedByAgentId; set { _explicitNullValueUpdatedByAgentId = value; AdditionalData?.Remove("updated_by_agent_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_by_agent_id"); else _explicitNullProperties?.Remove("updated_by_agent_id"); } }
         private string _explicitNullValueUpdatedByAgentId = default!;
 #endif
-        /// <summary>The urls property</summary>
+        /// <summary>URLs associated with the contact</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.ContactUrl>? Urls { get => _explicitNullValueUrls; set { _explicitNullValueUrls = value; AdditionalData?.Remove("urls"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("urls"); else _explicitNullProperties?.Remove("urls"); } }

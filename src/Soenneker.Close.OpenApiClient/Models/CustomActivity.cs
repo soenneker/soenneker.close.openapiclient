@@ -197,7 +197,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The source property</summary>
         public global::Soenneker.Close.OpenApiClient.Models.CreationSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CreationSource? _explicitNullValueSource = default!;
-        /// <summary>The status property</summary>
+        /// <summary>Status of a Custom Activity. `draft` activities don&apos;t require their required fields to be filled in yet.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.CustomActivityStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CustomActivityStatus? _explicitNullValueStatus = default!;
         /// <summary>The type property</summary>

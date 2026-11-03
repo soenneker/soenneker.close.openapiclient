@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>Status of a Custom Activity. `draft` activities don&apos;t require their required fields to be filled in yet.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum CustomActivityStatus
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "draft")]
         #pragma warning disable CS1591

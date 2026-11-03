@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>The video conferencing service of a Meeting&apos;s link.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum ConferenceLinkType
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "ZOOM")]
         #pragma warning disable CS1591

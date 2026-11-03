@@ -22,7 +22,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
         }
 
-        /// <summary>The reason property</summary>
+        /// <summary>Why an Email Thread is considered important.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.ImportantThreadReason? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
         private global::Soenneker.Close.OpenApiClient.Models.ImportantThreadReason? _explicitNullValueReason = default!;
         /// <summary>

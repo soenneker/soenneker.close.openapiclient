@@ -297,7 +297,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string SequenceSubscriptionId { get => _explicitNullValueSequenceSubscriptionId; set { _explicitNullValueSequenceSubscriptionId = value; AdditionalData?.Remove("sequence_subscription_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sequence_subscription_id"); else _explicitNullProperties?.Remove("sequence_subscription_id"); } }
         private string _explicitNullValueSequenceSubscriptionId = default!;
 #endif
-        /// <summary>The source property</summary>
+        /// <summary>How the object was created, e.g. `ui` in the Close app, `api` through the API, `import` by a bulk import, or by an integration.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.CreationSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CreationSource? _explicitNullValueSource = default!;
         /// <summary>The text property</summary>

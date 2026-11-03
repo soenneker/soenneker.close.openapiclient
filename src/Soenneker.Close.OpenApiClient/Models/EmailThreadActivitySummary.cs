@@ -51,7 +51,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The generated_at property</summary>
         public DateTimeOffset? GeneratedAt { get => _explicitNullValueGeneratedAt; set { _explicitNullValueGeneratedAt = value; AdditionalData?.Remove("generated_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generated_at"); else _explicitNullProperties?.Remove("generated_at"); } }
         private DateTimeOffset? _explicitNullValueGeneratedAt = default!;
-        /// <summary>The status property</summary>
+        /// <summary>Status of an AI summary. `expired` means newer activity made the summary out of date.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.SummaryStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.Close.OpenApiClient.Models.SummaryStatus? _explicitNullValueStatus = default!;
         /// <summary>The summary_html property</summary>

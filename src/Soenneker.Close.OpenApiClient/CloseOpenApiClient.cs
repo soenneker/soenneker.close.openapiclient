@@ -47,6 +47,7 @@ using Soenneker.Close.OpenApiClient.Sequence_subscription;
 using Soenneker.Close.OpenApiClient.Shared_scheduling_link;
 using Soenneker.Close.OpenApiClient.Shared_scheduling_link_association;
 using Soenneker.Close.OpenApiClient.Sms_template;
+using Soenneker.Close.OpenApiClient.Standard_object_label;
 using Soenneker.Close.OpenApiClient.Status;
 using Soenneker.Close.OpenApiClient.TaskNamespace;
 using Soenneker.Close.OpenApiClient.Unsubscribe;
@@ -268,6 +269,11 @@ namespace Soenneker.Close.OpenApiClient
         public global::Soenneker.Close.OpenApiClient.Sms_template.Sms_templateRequestBuilder Sms_template
         {
             get => new global::Soenneker.Close.OpenApiClient.Sms_template.Sms_templateRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The standard_object_label property</summary>
+        public global::Soenneker.Close.OpenApiClient.Standard_object_label.Standard_object_labelRequestBuilder Standard_object_label
+        {
+            get => new global::Soenneker.Close.OpenApiClient.Standard_object_label.Standard_object_labelRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The status property</summary>
         public global::Soenneker.Close.OpenApiClient.Status.StatusRequestBuilder Status

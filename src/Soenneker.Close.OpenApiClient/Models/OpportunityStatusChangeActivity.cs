@@ -198,7 +198,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string NewStatusLabel { get => _explicitNullValueNewStatusLabel; set { _explicitNullValueNewStatusLabel = value; AdditionalData?.Remove("new_status_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("new_status_label"); else _explicitNullProperties?.Remove("new_status_label"); } }
         private string _explicitNullValueNewStatusLabel = default!;
 #endif
-        /// <summary>The new_status_type property</summary>
+        /// <summary>Type of an Opportunity Status: `active` for open Opportunities, `won` or `lost` for closed ones.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusType? NewStatusType { get => _explicitNullValueNewStatusType; set { _explicitNullValueNewStatusType = value; AdditionalData?.Remove("new_status_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("new_status_type"); else _explicitNullProperties?.Remove("new_status_type"); } }
         private global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusType? _explicitNullValueNewStatusType = default!;
         /// <summary>The old_pipeline_id property</summary>
@@ -241,7 +241,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string OldStatusLabel { get => _explicitNullValueOldStatusLabel; set { _explicitNullValueOldStatusLabel = value; AdditionalData?.Remove("old_status_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("old_status_label"); else _explicitNullProperties?.Remove("old_status_label"); } }
         private string _explicitNullValueOldStatusLabel = default!;
 #endif
-        /// <summary>The old_status_type property</summary>
+        /// <summary>Type of an Opportunity Status: `active` for open Opportunities, `won` or `lost` for closed ones.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusType? OldStatusType { get => _explicitNullValueOldStatusType; set { _explicitNullValueOldStatusType = value; AdditionalData?.Remove("old_status_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("old_status_type"); else _explicitNullProperties?.Remove("old_status_type"); } }
         private global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusType? _explicitNullValueOldStatusType = default!;
         /// <summary>The opportunity_confidence property</summary>

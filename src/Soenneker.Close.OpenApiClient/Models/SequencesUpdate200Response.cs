@@ -17,6 +17,8 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("created_by_agent_id") is null) { _explicitNullValueCreatedByAgentId = default!; _explicitNullProperties?.Remove("created_by_agent_id"); }
+            else if (parseNode.GetChildNode("created_by_agent_id") is { } nullNodeCreatedByAgentId && nullNodeCreatedByAgentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedByAgentId = null;
             if (parseNode.GetChildNode("created_by_id") is null) { _explicitNullValueCreatedById = default!; _explicitNullProperties?.Remove("created_by_id"); }
             else if (parseNode.GetChildNode("created_by_id") is { } nullNodeCreatedById && nullNodeCreatedById.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedById = null;
             if (parseNode.GetChildNode("date_created") is null) { _explicitNullValueDateCreated = default!; _explicitNullProperties?.Remove("date_created"); }
@@ -39,12 +41,24 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("subscription_counts_by_status") is { } nullNodeSubscriptionCountsByStatus && nullNodeSubscriptionCountsByStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubscriptionCountsByStatus = null;
             if (parseNode.GetChildNode("timezone") is null) { _explicitNullValueTimezone = default!; _explicitNullProperties?.Remove("timezone"); }
             else if (parseNode.GetChildNode("timezone") is { } nullNodeTimezone && nullNodeTimezone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timezone = null;
+            if (parseNode.GetChildNode("updated_by_agent_id") is null) { _explicitNullValueUpdatedByAgentId = default!; _explicitNullProperties?.Remove("updated_by_agent_id"); }
+            else if (parseNode.GetChildNode("updated_by_agent_id") is { } nullNodeUpdatedByAgentId && nullNodeUpdatedByAgentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdatedByAgentId = null;
             if (parseNode.GetChildNode("updated_by_id") is null) { _explicitNullValueUpdatedById = default!; _explicitNullProperties?.Remove("updated_by_id"); }
             else if (parseNode.GetChildNode("updated_by_id") is { } nullNodeUpdatedById && nullNodeUpdatedById.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdatedById = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The created_by_agent_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public UntypedNode? CreatedByAgentId { get => _explicitNullValueCreatedByAgentId; set { _explicitNullValueCreatedByAgentId = value; AdditionalData?.Remove("created_by_agent_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by_agent_id"); else _explicitNullProperties?.Remove("created_by_agent_id"); } }
+        private UntypedNode? _explicitNullValueCreatedByAgentId = default!;
+#nullable restore
+#else
+        public UntypedNode CreatedByAgentId { get => _explicitNullValueCreatedByAgentId; set { _explicitNullValueCreatedByAgentId = value; AdditionalData?.Remove("created_by_agent_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by_agent_id"); else _explicitNullProperties?.Remove("created_by_agent_id"); } }
+        private UntypedNode _explicitNullValueCreatedByAgentId = default!;
+#endif
         /// <summary>The created_by_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -155,6 +169,16 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Timezone { get => _explicitNullValueTimezone; set { _explicitNullValueTimezone = value; AdditionalData?.Remove("timezone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timezone"); else _explicitNullProperties?.Remove("timezone"); } }
         private string _explicitNullValueTimezone = default!;
 #endif
+        /// <summary>The updated_by_agent_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public UntypedNode? UpdatedByAgentId { get => _explicitNullValueUpdatedByAgentId; set { _explicitNullValueUpdatedByAgentId = value; AdditionalData?.Remove("updated_by_agent_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_by_agent_id"); else _explicitNullProperties?.Remove("updated_by_agent_id"); } }
+        private UntypedNode? _explicitNullValueUpdatedByAgentId = default!;
+#nullable restore
+#else
+        public UntypedNode UpdatedByAgentId { get => _explicitNullValueUpdatedByAgentId; set { _explicitNullValueUpdatedByAgentId = value; AdditionalData?.Remove("updated_by_agent_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_by_agent_id"); else _explicitNullProperties?.Remove("updated_by_agent_id"); } }
+        private UntypedNode _explicitNullValueUpdatedByAgentId = default!;
+#endif
         /// <summary>The updated_by_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -190,6 +214,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "created_by_agent_id", n => { CreatedByAgentId = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "created_by_id", n => { CreatedById = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetStringValue(); } },
                 { "date_updated", n => { DateUpdated = n.GetStringValue(); } },
@@ -201,6 +226,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "steps", n => { Steps = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.SequencesUpdate200ResponseStepsItem>(global::Soenneker.Close.OpenApiClient.Models.SequencesUpdate200ResponseStepsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "subscription_counts_by_status", n => { SubscriptionCountsByStatus = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.SequencesUpdate200ResponseSubscriptionCountsByStatus>(global::Soenneker.Close.OpenApiClient.Models.SequencesUpdate200ResponseSubscriptionCountsByStatus.CreateFromDiscriminatorValue); } },
                 { "timezone", n => { Timezone = n.GetStringValue(); } },
+                { "updated_by_agent_id", n => { UpdatedByAgentId = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "updated_by_id", n => { UpdatedById = n.GetStringValue(); } },
             };
         }
@@ -211,6 +237,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<UntypedNode>("created_by_agent_id", CreatedByAgentId);
             writer.WriteStringValue("created_by_id", CreatedById);
             writer.WriteStringValue("date_created", DateCreated);
             writer.WriteStringValue("date_updated", DateUpdated);
@@ -222,6 +249,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.SequencesUpdate200ResponseStepsItem>("steps", Steps);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.SequencesUpdate200ResponseSubscriptionCountsByStatus>("subscription_counts_by_status", SubscriptionCountsByStatus);
             writer.WriteStringValue("timezone", Timezone);
+            writer.WriteObjectValue<UntypedNode>("updated_by_agent_id", UpdatedByAgentId);
             writer.WriteStringValue("updated_by_id", UpdatedById);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

@@ -22,7 +22,7 @@ namespace Soenneker.Close.OpenApiClient.Event
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/event/{?_limit*,_skip*,action*,date_updated__gt*,date_updated__gte*,date_updated__lt*,date_updated__lte*,lead_id*,object_id*,object_type*,user_id*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/event/{?_limit*,action*,date_updated__gt*,date_updated__gte*,date_updated__lt*,date_updated__lte*,lead_id*,object_id*,object_type*,user_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Close.OpenApiClient.Event
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/event/{?_limit*,_skip*,action*,date_updated__gt*,date_updated__gte*,date_updated__lt*,date_updated__lte*,lead_id*,object_id*,object_type*,user_id*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/event/{?_limit*,action*,date_updated__gt*,date_updated__gte*,date_updated__lt*,date_updated__lte*,lead_id*,object_id*,object_type*,user_id*}", rawUrl)
         {
         }
         /// <summary>
@@ -205,9 +205,6 @@ namespace Soenneker.Close.OpenApiClient.Event
             public string ObjectType { get; set; }
             #pragma warning restore CS1591
 #endif
-            /// <summary>Number of results to skip before returning, for pagination.</summary>
-            [QueryParameter("_skip")]
-            public int? Skip { get; set; }
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             #pragma warning disable CS1591

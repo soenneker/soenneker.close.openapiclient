@@ -98,7 +98,7 @@ namespace Soenneker.Close.OpenApiClient.Dialer
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         {
-            /// <summary>Number of results to return.</summary>
+            /// <summary>Number of results to return. Larger values are treated as 100.</summary>
             [QueryParameter("_limit")]
             public int? Limit { get; set; }
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

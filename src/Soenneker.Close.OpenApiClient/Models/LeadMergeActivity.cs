@@ -152,7 +152,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string LeadId { get => _explicitNullValueLeadId; set { _explicitNullValueLeadId = value; AdditionalData?.Remove("lead_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_id"); else _explicitNullProperties?.Remove("lead_id"); } }
         private string _explicitNullValueLeadId = default!;
 #endif
-        /// <summary>The merge_status property</summary>
+        /// <summary>Progress of a Lead merge.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.LeadMergeStatus? MergeStatus { get => _explicitNullValueMergeStatus; set { _explicitNullValueMergeStatus = value; AdditionalData?.Remove("merge_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_status"); else _explicitNullProperties?.Remove("merge_status"); } }
         private global::Soenneker.Close.OpenApiClient.Models.LeadMergeStatus? _explicitNullValueMergeStatus = default!;
         /// <summary>The organization_id property</summary>

@@ -166,7 +166,7 @@ namespace Soenneker.Close.OpenApiClient.Lead
             /// <summary>Number of results to return.</summary>
             [QueryParameter("_limit")]
             public int? Limit { get; set; }
-            /// <summary>Number of results to skip before returning, for pagination.</summary>
+            /// <summary>Number of results to skip before returning, for pagination. The maximum is 35,000 for some organizations.</summary>
             [QueryParameter("_skip")]
             public int? Skip { get; set; }
         }

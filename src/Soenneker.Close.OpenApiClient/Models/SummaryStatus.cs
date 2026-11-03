@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>Status of an AI summary. `expired` means newer activity made the summary out of date.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum SummaryStatus
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "pending")]
         #pragma warning disable CS1591

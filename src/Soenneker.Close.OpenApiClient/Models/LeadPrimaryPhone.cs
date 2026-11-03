@@ -19,21 +19,17 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("country") is null) { _explicitNullValueCountry = default!; _explicitNullProperties?.Remove("country"); }
             else if (parseNode.GetChildNode("country") is { } nullNodeCountry && nullNodeCountry.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Country = null;
-            if (parseNode.GetChildNode("outbound_sms_blocked") is null) { _explicitNullValueOutboundSmsBlocked = default!; _explicitNullProperties?.Remove("outbound_sms_blocked"); }
-            else if (parseNode.GetChildNode("outbound_sms_blocked") is { } nullNodeOutboundSmsBlocked && nullNodeOutboundSmsBlocked.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutboundSmsBlocked = null;
             if (parseNode.GetChildNode("phone") is null) { _explicitNullValuePhone = default!; _explicitNullProperties?.Remove("phone"); }
             else if (parseNode.GetChildNode("phone") is { } nullNodePhone && nullNodePhone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Phone = null;
             if (parseNode.GetChildNode("phone_formatted") is null) { _explicitNullValuePhoneFormatted = default!; _explicitNullProperties?.Remove("phone_formatted"); }
             else if (parseNode.GetChildNode("phone_formatted") is { } nullNodePhoneFormatted && nullNodePhoneFormatted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PhoneFormatted = null;
             if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
             else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
-            if (parseNode.GetChildNode("tz_ids") is null) { _explicitNullValueTzIds = default!; _explicitNullProperties?.Remove("tz_ids"); }
-            else if (parseNode.GetChildNode("tz_ids") is { } nullNodeTzIds && nullNodeTzIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TzIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The country property</summary>
+        /// <summary>Country code inferred from the phone number in ISO 3166-1 alpha-2 format, e.g. `US`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Country { get => _explicitNullValueCountry; set { _explicitNullValueCountry = value; AdditionalData?.Remove("country"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("country"); else _explicitNullProperties?.Remove("country"); } }
@@ -43,10 +39,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Country { get => _explicitNullValueCountry; set { _explicitNullValueCountry = value; AdditionalData?.Remove("country"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("country"); else _explicitNullProperties?.Remove("country"); } }
         private string _explicitNullValueCountry = default!;
 #endif
-        /// <summary>The outbound_sms_blocked property</summary>
-        public bool? OutboundSmsBlocked { get => _explicitNullValueOutboundSmsBlocked; set { _explicitNullValueOutboundSmsBlocked = value; AdditionalData?.Remove("outbound_sms_blocked"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outbound_sms_blocked"); else _explicitNullProperties?.Remove("outbound_sms_blocked"); } }
-        private bool? _explicitNullValueOutboundSmsBlocked = default!;
-        /// <summary>The phone property</summary>
+        /// <summary>Phone number in E.164 format, e.g. `+16503334444`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Phone { get => _explicitNullValuePhone; set { _explicitNullValuePhone = value; AdditionalData?.Remove("phone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phone"); else _explicitNullProperties?.Remove("phone"); } }
@@ -56,7 +49,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Phone { get => _explicitNullValuePhone; set { _explicitNullValuePhone = value; AdditionalData?.Remove("phone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phone"); else _explicitNullProperties?.Remove("phone"); } }
         private string _explicitNullValuePhone = default!;
 #endif
-        /// <summary>The phone_formatted property</summary>
+        /// <summary>Phone number formatted for display, with the country code, e.g. `+1 650-333-4444`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PhoneFormatted { get => _explicitNullValuePhoneFormatted; set { _explicitNullValuePhoneFormatted = value; AdditionalData?.Remove("phone_formatted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phone_formatted"); else _explicitNullProperties?.Remove("phone_formatted"); } }
@@ -66,7 +59,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string PhoneFormatted { get => _explicitNullValuePhoneFormatted; set { _explicitNullValuePhoneFormatted = value; AdditionalData?.Remove("phone_formatted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phone_formatted"); else _explicitNullProperties?.Remove("phone_formatted"); } }
         private string _explicitNullValuePhoneFormatted = default!;
 #endif
-        /// <summary>The type property</summary>
+        /// <summary>Label for the phone number, e.g. `office`, `mobile`, or `home`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
@@ -75,16 +68,6 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private string _explicitNullValueType = default!;
-#endif
-        /// <summary>The tz_ids property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? TzIds { get => _explicitNullValueTzIds; set { _explicitNullValueTzIds = value; AdditionalData?.Remove("tz_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tz_ids"); else _explicitNullProperties?.Remove("tz_ids"); } }
-        private List<string>? _explicitNullValueTzIds = default!;
-#nullable restore
-#else
-        public List<string> TzIds { get => _explicitNullValueTzIds; set { _explicitNullValueTzIds = value; AdditionalData?.Remove("tz_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tz_ids"); else _explicitNullProperties?.Remove("tz_ids"); } }
-        private List<string> _explicitNullValueTzIds = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryPhone"/> and sets the default values.
@@ -114,11 +97,9 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "country", n => { Country = n.GetStringValue(); } },
-                { "outbound_sms_blocked", n => { OutboundSmsBlocked = n.GetBoolValue(); } },
                 { "phone", n => { Phone = n.GetStringValue(); } },
                 { "phone_formatted", n => { PhoneFormatted = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
-                { "tz_ids", n => { TzIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -129,11 +110,9 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("country", Country);
-            writer.WriteBoolValue("outbound_sms_blocked", OutboundSmsBlocked);
             writer.WriteStringValue("phone", Phone);
             writer.WriteStringValue("phone_formatted", PhoneFormatted);
             writer.WriteStringValue("type", Type);
-            writer.WriteCollectionOfPrimitiveValues<string>("tz_ids", TzIds);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

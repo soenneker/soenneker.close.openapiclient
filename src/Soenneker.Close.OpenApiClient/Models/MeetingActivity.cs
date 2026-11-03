@@ -414,7 +414,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The provider_calendar_type property</summary>
         public global::Soenneker.Close.OpenApiClient.Models.ProviderCalendarType? ProviderCalendarType { get => _explicitNullValueProviderCalendarType; set { _explicitNullValueProviderCalendarType = value; AdditionalData?.Remove("provider_calendar_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_calendar_type"); else _explicitNullProperties?.Remove("provider_calendar_type"); } }
         private global::Soenneker.Close.OpenApiClient.Models.ProviderCalendarType? _explicitNullValueProviderCalendarType = default!;
-        /// <summary>The source property</summary>
+        /// <summary>How the Meeting got into Close: `calendar` if it was synced from a connected calendar, `manual` if it was created in Close.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.MeetingSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
         private global::Soenneker.Close.OpenApiClient.Models.MeetingSource? _explicitNullValueSource = default!;
         /// <summary>The starts_at property</summary>

@@ -22,7 +22,7 @@ namespace Soenneker.Close.OpenApiClient.Sequence.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/sequence/{id}/{?_limit*,_skip*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/sequence/{id}/", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Close.OpenApiClient.Sequence.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/sequence/{id}/{?_limit*,_skip*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/sequence/{id}/", rawUrl)
         {
         }
         /// <summary>
@@ -79,11 +79,11 @@ namespace Soenneker.Close.OpenApiClient.Sequence.Item
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.SequencesGet200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Sequence.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.SequencesGet200Response?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.SequencesGet200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Sequence.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.SequencesGet200Response> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -160,11 +160,11 @@ namespace Soenneker.Close.OpenApiClient.Sequence.Item
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Sequence.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Sequence.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -202,19 +202,6 @@ namespace Soenneker.Close.OpenApiClient.Sequence.Item
         public global::Soenneker.Close.OpenApiClient.Sequence.Item.EmptyPathSegmentRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Close.OpenApiClient.Sequence.Item.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
-        }
-        /// <summary>
-        /// Fetch a Sequence
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
-        {
-            /// <summary>Number of results to return.</summary>
-            [QueryParameter("_limit")]
-            public int? Limit { get; set; }
-            /// <summary>Number of results to skip before returning, for pagination.</summary>
-            [QueryParameter("_skip")]
-            public int? Skip { get; set; }
         }
     }
 }

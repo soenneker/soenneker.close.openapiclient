@@ -423,7 +423,7 @@ namespace Soenneker.Close.OpenApiClient.Opportunity
             public string LeadSavedSearchId { get; set; }
             #pragma warning restore CS1591
 #endif
-            /// <summary>Number of results to return.</summary>
+            /// <summary>Number of results to return. The maximum is 250 for requests authenticated with an API key.</summary>
             [QueryParameter("_limit")]
             public int? Limit { get; set; }
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -465,7 +465,7 @@ namespace Soenneker.Close.OpenApiClient.Opportunity
             public string Query { get; set; }
             #pragma warning restore CS1591
 #endif
-            /// <summary>Number of results to skip before returning, for pagination.</summary>
+            /// <summary>Number of results to skip before returning, for pagination. The maximum is 35,000 for some organizations.</summary>
             [QueryParameter("_skip")]
             public int? Skip { get; set; }
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

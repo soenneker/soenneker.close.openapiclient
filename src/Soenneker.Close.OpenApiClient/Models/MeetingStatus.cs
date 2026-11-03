@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>Status of the Meeting. `canceled` means it was removed from the synced calendars or has no Lead participants left. `declined-by-org` means every Close user declined it, `declined-by-lead` that a Lead participant declined it and none accepted.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum MeetingStatus
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "upcoming")]
         #pragma warning disable CS1591

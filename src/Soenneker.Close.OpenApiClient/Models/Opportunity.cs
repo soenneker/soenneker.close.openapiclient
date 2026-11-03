@@ -317,12 +317,12 @@ namespace Soenneker.Close.OpenApiClient.Models
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.OpportunityStallStatus? StallStatus { get => _explicitNullValueStallStatus; set { _explicitNullValueStallStatus = value; AdditionalData?.Remove("stall_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stall_status"); else _explicitNullProperties?.Remove("stall_status"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.OpportunityStallStatus? _explicitNullValueStallStatus = default!;
+        public global::Soenneker.Close.OpenApiClient.Models.OpportunitySearchResultStallStatus? StallStatus { get => _explicitNullValueStallStatus; set { _explicitNullValueStallStatus = value; AdditionalData?.Remove("stall_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stall_status"); else _explicitNullProperties?.Remove("stall_status"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.OpportunitySearchResultStallStatus? _explicitNullValueStallStatus = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.OpportunityStallStatus StallStatus { get => _explicitNullValueStallStatus; set { _explicitNullValueStallStatus = value; AdditionalData?.Remove("stall_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stall_status"); else _explicitNullProperties?.Remove("stall_status"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.OpportunityStallStatus _explicitNullValueStallStatus = default!;
+        public global::Soenneker.Close.OpenApiClient.Models.OpportunitySearchResultStallStatus StallStatus { get => _explicitNullValueStallStatus; set { _explicitNullValueStallStatus = value; AdditionalData?.Remove("stall_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stall_status"); else _explicitNullProperties?.Remove("stall_status"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.OpportunitySearchResultStallStatus _explicitNullValueStallStatus = default!;
 #endif
         /// <summary>The status_display_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -354,18 +354,18 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string StatusLabel { get => _explicitNullValueStatusLabel; set { _explicitNullValueStatusLabel = value; AdditionalData?.Remove("status_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_label"); else _explicitNullProperties?.Remove("status_label"); } }
         private string _explicitNullValueStatusLabel = default!;
 #endif
-        /// <summary>The status_type property</summary>
+        /// <summary>Type of an Opportunity Status: `active` for open Opportunities, `won` or `lost` for closed ones.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusType? StatusType { get => _explicitNullValueStatusType; set { _explicitNullValueStatusType = value; AdditionalData?.Remove("status_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_type"); else _explicitNullProperties?.Remove("status_type"); } }
         private global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusType? _explicitNullValueStatusType = default!;
         /// <summary>The suggested_action property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedActionComposed? SuggestedAction { get => _explicitNullValueSuggestedAction; set { _explicitNullValueSuggestedAction = value; AdditionalData?.Remove("suggested_action"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_action"); else _explicitNullProperties?.Remove("suggested_action"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedActionComposed? _explicitNullValueSuggestedAction = default!;
+        public global::Soenneker.Close.OpenApiClient.Models.OpportunitySearchResultSuggestedAction? SuggestedAction { get => _explicitNullValueSuggestedAction; set { _explicitNullValueSuggestedAction = value; AdditionalData?.Remove("suggested_action"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_action"); else _explicitNullProperties?.Remove("suggested_action"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.OpportunitySearchResultSuggestedAction? _explicitNullValueSuggestedAction = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedActionComposed SuggestedAction { get => _explicitNullValueSuggestedAction; set { _explicitNullValueSuggestedAction = value; AdditionalData?.Remove("suggested_action"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_action"); else _explicitNullProperties?.Remove("suggested_action"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedActionComposed _explicitNullValueSuggestedAction = default!;
+        public global::Soenneker.Close.OpenApiClient.Models.OpportunitySearchResultSuggestedAction SuggestedAction { get => _explicitNullValueSuggestedAction; set { _explicitNullValueSuggestedAction = value; AdditionalData?.Remove("suggested_action"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_action"); else _explicitNullProperties?.Remove("suggested_action"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.OpportunitySearchResultSuggestedAction _explicitNullValueSuggestedAction = default!;
 #endif
         /// <summary>The updated_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -440,7 +440,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ValueFormatted { get => _explicitNullValueValueFormatted; set { _explicitNullValueValueFormatted = value; AdditionalData?.Remove("value_formatted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_formatted"); else _explicitNullProperties?.Remove("value_formatted"); } }
         private string _explicitNullValueValueFormatted = default!;
 #endif
-        /// <summary>The value_period property</summary>
+        /// <summary>How often the Opportunity&apos;s value is paid: `one_time`, `monthly` or `annual`.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.OpportunityValuePeriod? ValuePeriod { get => _explicitNullValueValuePeriod; set { _explicitNullValueValuePeriod = value; AdditionalData?.Remove("value_period"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_period"); else _explicitNullProperties?.Remove("value_period"); } }
         private global::Soenneker.Close.OpenApiClient.Models.OpportunityValuePeriod? _explicitNullValueValuePeriod = default!;
         /// <summary>
@@ -495,12 +495,12 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "pipeline_id", n => { PipelineId = n.GetStringValue(); } },
                 { "pipeline_name", n => { PipelineName = n.GetStringValue(); } },
-                { "stall_status", n => { StallStatus = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityStallStatus>(global::Soenneker.Close.OpenApiClient.Models.OpportunityStallStatus.CreateFromDiscriminatorValue); } },
+                { "stall_status", n => { StallStatus = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunitySearchResultStallStatus>(global::Soenneker.Close.OpenApiClient.Models.OpportunitySearchResultStallStatus.CreateFromDiscriminatorValue); } },
                 { "status_display_name", n => { StatusDisplayName = n.GetStringValue(); } },
                 { "status_id", n => { StatusId = n.GetStringValue(); } },
                 { "status_label", n => { StatusLabel = n.GetStringValue(); } },
                 { "status_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatusType = default; _explicitNullProperties?.Remove("status_type"); AdditionalData["status_type"] = unknown; } else { StatusType = parsed; AdditionalData.Remove("status_type"); } } },
-                { "suggested_action", n => { SuggestedAction = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedActionComposed>(global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedActionComposed.CreateFromDiscriminatorValue); } },
+                { "suggested_action", n => { SuggestedAction = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunitySearchResultSuggestedAction>(global::Soenneker.Close.OpenApiClient.Models.OpportunitySearchResultSuggestedAction.CreateFromDiscriminatorValue); } },
                 { "updated_by", n => { UpdatedBy = n.GetStringValue(); } },
                 { "updated_by_agent_id", n => { UpdatedByAgentId = n.GetStringValue(); } },
                 { "updated_by_name", n => { UpdatedByName = n.GetStringValue(); } },
@@ -546,12 +546,12 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("pipeline_id", PipelineId);
             writer.WriteStringValue("pipeline_name", PipelineName);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityStallStatus>("stall_status", StallStatus);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunitySearchResultStallStatus>("stall_status", StallStatus);
             writer.WriteStringValue("status_display_name", StatusDisplayName);
             writer.WriteStringValue("status_id", StatusId);
             writer.WriteStringValue("status_label", StatusLabel);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusType>("status_type", StatusType);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunitySuggestedActionComposed>("suggested_action", SuggestedAction);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.OpportunitySearchResultSuggestedAction>("suggested_action", SuggestedAction);
             writer.WriteStringValue("updated_by", UpdatedBy);
             writer.WriteStringValue("updated_by_agent_id", UpdatedByAgentId);
             writer.WriteStringValue("updated_by_name", UpdatedByName);

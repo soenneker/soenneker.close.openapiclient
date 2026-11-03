@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>How the value was chosen: `user-selected` by a user, or `autodetected` by AI.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum PlaybookReason
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "user-selected")]
         #pragma warning disable CS1591
