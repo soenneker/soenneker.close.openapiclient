@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
-    /// <summary>Why a number was chosen in Auto mode: reused from a prior communication (context), picked for geographic proximity (local_presence), or the default/oldest fallback.</summary>
+    /// <summary>Why a number was chosen in Auto mode: reused from a prior communication (context), picked for geographic proximity (local_presence), the default/oldest fallback (fallback), or the same fallback because the plan does not include Local Presence (plan_fallback).</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum CallerIdReason
     {
@@ -18,6 +18,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         [EnumMember(Value = "fallback")]
         #pragma warning disable CS1591
         Fallback,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "plan_fallback")]
+        #pragma warning disable CS1591
+        PlanFallback,
         #pragma warning restore CS1591
     }
 }

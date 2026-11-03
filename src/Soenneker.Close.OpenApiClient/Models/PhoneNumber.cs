@@ -199,7 +199,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The last_billed_price property</summary>
         public double? LastBilledPrice { get => _explicitNullValueLastBilledPrice; set { _explicitNullValueLastBilledPrice = value; AdditionalData?.Remove("last_billed_price"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_billed_price"); else _explicitNullProperties?.Remove("last_billed_price"); } }
         private double? _explicitNullValueLastBilledPrice = default!;
-        /// <summary>Whether Local Presence can pick this phone number by proximity for a call or SMS made as a user.</summary>
+        /// <summary>Whether Local Presence can pick this phone number by proximity for a call or SMS made as a user. It has no effect on a plan that doesn&apos;t include Local Presence.</summary>
         public bool? LocalPresenceEnabled { get => _explicitNullValueLocalPresenceEnabled; set { _explicitNullValueLocalPresenceEnabled = value; AdditionalData?.Remove("local_presence_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("local_presence_enabled"); else _explicitNullProperties?.Remove("local_presence_enabled"); } }
         private bool? _explicitNullValueLocalPresenceEnabled = default!;
         /// <summary>The mms_enabled property</summary>

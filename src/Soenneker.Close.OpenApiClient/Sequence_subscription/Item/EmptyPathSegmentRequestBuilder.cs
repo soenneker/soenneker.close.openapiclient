@@ -100,7 +100,7 @@ namespace Soenneker.Close.OpenApiClient.Sequence_subscription.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.SequencesGetSubscription200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.SequencesGetSubscription200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Setting `status` to `active` restarts the Subscription, so it requires a plan that includes Workflow runs and otherwise returns a 400. Setting it to `paused` works on every plan.
+        /// Setting `status` to `active` restarts the Subscription, so it requires a plan that includes Workflow runs and otherwise returns a 400. Setting it to `paused` works on every plan.A switch of `caller_id_mode` to `auto` requires a plan that includes Local Presence. A Subscription that already uses `auto` keeps it on every plan.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.SequencesUpdateSubscription200Response"/></returns>
         /// <param name="body">The request body</param>
@@ -173,7 +173,7 @@ namespace Soenneker.Close.OpenApiClient.Sequence_subscription.Item
             return requestInfo;
         }
         /// <summary>
-        /// Setting `status` to `active` restarts the Subscription, so it requires a plan that includes Workflow runs and otherwise returns a 400. Setting it to `paused` works on every plan.
+        /// Setting `status` to `active` restarts the Subscription, so it requires a plan that includes Workflow runs and otherwise returns a 400. Setting it to `paused` works on every plan.A switch of `caller_id_mode` to `auto` requires a plan that includes Local Presence. A Subscription that already uses `auto` keeps it on every plan.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

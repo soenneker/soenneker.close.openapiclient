@@ -65,7 +65,7 @@ namespace Soenneker.Close.OpenApiClient.Sequence_subscription
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.SequencesListSubscriptions200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.SequencesListSubscriptions200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Subscribe a Contact to a Sequence
+        /// `caller_id_mode` sets how the Subscription picks the phone number of its SMS steps. `auto` requires a plan that includes Local Presence.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.SequencesCreateSubscription201Response"/></returns>
         /// <param name="body">The request body</param>
@@ -117,7 +117,7 @@ namespace Soenneker.Close.OpenApiClient.Sequence_subscription
             return requestInfo;
         }
         /// <summary>
-        /// Subscribe a Contact to a Sequence
+        /// `caller_id_mode` sets how the Subscription picks the phone number of its SMS steps. `auto` requires a plan that includes Local Presence.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

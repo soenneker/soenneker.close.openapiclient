@@ -34,7 +34,7 @@ namespace Soenneker.Close.OpenApiClient.Contact.Item
         {
         }
         /// <summary>
-        /// Delete a contact
+        /// Delete a contact by ID. The contact is removed from its lead.Returns `404` if the contact doesn&apos;t exist, or `403` if you can&apos;t access its lead.Deleting a contact also deletes its [workflow subscriptions](https://developer.close.com/api/resources/sequences/list-subscriptions). That cleanup runs in the background shortly after the request returns.A successful request returns an empty object.
         /// </summary>
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -67,7 +67,7 @@ namespace Soenneker.Close.OpenApiClient.Contact.Item
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Fetch a single contact
+        /// Fetch a single contact by ID.Returns `404` if the contact doesn&apos;t exist or you can&apos;t access its lead.Use `_fields` to return only the fields you need. `lead_id` is always returned. Custom field values appear as `custom.{custom_field_id}` keys.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.Contact"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -135,7 +135,7 @@ namespace Soenneker.Close.OpenApiClient.Contact.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.Contact>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.Contact.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete a contact
+        /// Delete a contact by ID. The contact is removed from its lead.Returns `404` if the contact doesn&apos;t exist, or `403` if you can&apos;t access its lead.Deleting a contact also deletes its [workflow subscriptions](https://developer.close.com/api/resources/sequences/list-subscriptions). That cleanup runs in the background shortly after the request returns.A successful request returns an empty object.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -154,7 +154,7 @@ namespace Soenneker.Close.OpenApiClient.Contact.Item
             return requestInfo;
         }
         /// <summary>
-        /// Fetch a single contact
+        /// Fetch a single contact by ID.Returns `404` if the contact doesn&apos;t exist or you can&apos;t access its lead.Use `_fields` to return only the fields you need. `lead_id` is always returned. Custom field values appear as `custom.{custom_field_id}` keys.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -204,7 +204,7 @@ namespace Soenneker.Close.OpenApiClient.Contact.Item
             return new global::Soenneker.Close.OpenApiClient.Contact.Item.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Fetch a single contact
+        /// Fetch a single contact by ID.Returns `404` if the contact doesn&apos;t exist or you can&apos;t access its lead.Use `_fields` to return only the fields you need. `lead_id` is always returned. Custom field values appear as `custom.{custom_field_id}` keys.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 

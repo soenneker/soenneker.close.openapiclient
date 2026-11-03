@@ -34,7 +34,7 @@ namespace Soenneker.Close.OpenApiClient.Contact
         {
         }
         /// <summary>
-        /// List contacts
+        /// List the contacts in your organization, newest first (by `date_created`).To list the contacts on a single lead, pass `lead_id`. If you don&apos;t have the &quot;View All Leads&quot; permission, `lead_id` is required: without it, the request fails with `403`. It also returns `403` if you can&apos;t access the lead you named.Use `_fields` to return only the fields you need. `lead_id` is always returned. Custom field values appear as `custom.{custom_field_id}` keys.Results are paginated with `_limit` and `_skip`.To filter by criteria other than `lead_id`, use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering).To retrieve more contacts than this endpoint allows, use [Exports](https://developer.close.com/api/resources/exports).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ContactsList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -98,7 +98,7 @@ namespace Soenneker.Close.OpenApiClient.Contact
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.Contact>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.Contact.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List contacts
+        /// List the contacts in your organization, newest first (by `date_created`).To list the contacts on a single lead, pass `lead_id`. If you don&apos;t have the &quot;View All Leads&quot; permission, `lead_id` is required: without it, the request fails with `403`. It also returns `403` if you can&apos;t access the lead you named.Use `_fields` to return only the fields you need. `lead_id` is always returned. Custom field values appear as `custom.{custom_field_id}` keys.Results are paginated with `_limit` and `_skip`.To filter by criteria other than `lead_id`, use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering).To retrieve more contacts than this endpoint allows, use [Exports](https://developer.close.com/api/resources/exports).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -148,7 +148,7 @@ namespace Soenneker.Close.OpenApiClient.Contact
             return new global::Soenneker.Close.OpenApiClient.Contact.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List contacts
+        /// List the contacts in your organization, newest first (by `date_created`).To list the contacts on a single lead, pass `lead_id`. If you don&apos;t have the &quot;View All Leads&quot; permission, `lead_id` is required: without it, the request fails with `403`. It also returns `403` if you can&apos;t access the lead you named.Use `_fields` to return only the fields you need. `lead_id` is always returned. Custom field values appear as `custom.{custom_field_id}` keys.Results are paginated with `_limit` and `_skip`.To filter by criteria other than `lead_id`, use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering).To retrieve more contacts than this endpoint allows, use [Exports](https://developer.close.com/api/resources/exports).
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
@@ -163,18 +163,15 @@ namespace Soenneker.Close.OpenApiClient.Contact
             [QueryParameter("_fields")]
             public string Fields { get; set; }
 #endif
+            /// <summary>Only return contacts on this lead, e.g. `lead_etYl6PwL12hkj14567kjolJwZuZehb9b85EDH9CKuAI`. Required if you don&apos;t have the &quot;View All Leads&quot; permission.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("lead_id")]
             public string? LeadId { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("lead_id")]
             public string LeadId { get; set; }
-            #pragma warning restore CS1591
 #endif
             /// <summary>Number of results to return.</summary>
             [QueryParameter("_limit")]

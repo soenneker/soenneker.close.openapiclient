@@ -100,7 +100,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Sms.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.SmsActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.SmsActivity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// This can be used to modify a draft or send it once the draft is complete.To send an SMS immediately, you can update its `status` to `outbox`. To send it at a later time, change the `status` to `scheduled` and provide the desired date &amp; time in the `date_scheduled` field.
+        /// This can be used to modify a draft or send it once the draft is complete.To send an SMS immediately, you can update its `status` to `outbox`. To send it at a later time, change the `status` to `scheduled` and provide the desired date &amp; time in the `date_scheduled` field.A switch of `caller_id_mode` to `auto` requires a plan that includes Local Presence. On a plan without it, a draft can use `auto` only if the draft already uses `auto`. It can also switch to `auto` if the sender&apos;s [Membership](https://developer.close.com/api/resources/memberships) has `default_caller_id_mode` set to `auto`. The sender is the user in `user_id`. If the request has no `user_id`, the sender is the user of the draft, else the authenticated user. On a plan without Local Presence, Close sends an `auto` SMS from the `default_caller_id` of the sender&apos;s Membership. If `default_caller_id` is unset or cannot send the SMS, Close uses the oldest number that the sender can send from.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.SmsActivity"/></returns>
         /// <param name="body">The request body</param>
@@ -173,7 +173,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Sms.Item
             return requestInfo;
         }
         /// <summary>
-        /// This can be used to modify a draft or send it once the draft is complete.To send an SMS immediately, you can update its `status` to `outbox`. To send it at a later time, change the `status` to `scheduled` and provide the desired date &amp; time in the `date_scheduled` field.
+        /// This can be used to modify a draft or send it once the draft is complete.To send an SMS immediately, you can update its `status` to `outbox`. To send it at a later time, change the `status` to `scheduled` and provide the desired date &amp; time in the `date_scheduled` field.A switch of `caller_id_mode` to `auto` requires a plan that includes Local Presence. On a plan without it, a draft can use `auto` only if the draft already uses `auto`. It can also switch to `auto` if the sender&apos;s [Membership](https://developer.close.com/api/resources/memberships) has `default_caller_id_mode` set to `auto`. The sender is the user in `user_id`. If the request has no `user_id`, the sender is the user of the draft, else the authenticated user. On a plan without Local Presence, Close sends an `auto` SMS from the `default_caller_id` of the sender&apos;s Membership. If `default_caller_id` is unset or cannot send the SMS, Close uses the oldest number that the sender can send from.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

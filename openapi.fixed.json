@@ -5475,7 +5475,7 @@
           "activities.sms"
         ],
         "summary": "Create an SMS activity",
-        "description": "*status* must be one of the following:\n\n - \u0060inbox\u0060 to log an already received SMS.\n - \u0060draft\u0060 to create a draft SMS.\n - \u0060scheduled\u0060 to send an SMS at a scheduled date and time, which must be specified in the \u0060date_scheduled\u0060 field.\n - \u0060outbox\u0060 to actually **send** an SMS. To delay SMS sending by a few seconds (to allow undo), specify \u0060send_in\u0060 in seconds (must be less than 60).\n - \u0060sent\u0060 to log an already sent SMS.\n\nOnly drafts can be modified, and their status can be changed to \u0060scheduled\u0060 (to send later) or \u0060outbox\u0060 (to send immediately). Scheduled SMS, or SMS in outbox that weren\u0027t sent yet can be canceled by setting the status back to \u0060draft\u0060.\n\nYou have to provide a \u0060local_phone\u0060 that will be used to send the SMS. The number you choose has to be associated with a Phone Number of type \u0060internal\u0060. See the [Phone Numbers](https://developer.close.com/api/resources/phone-numbers) paragraph for more details.\n\nA \u0060template_id\u0060 referencing an SMS Template may be provided instead of \u0060text\u0060 to automatically render that template and use the content as \u0060text\u0060.\n\nWhen \u0060direction\u0060 is not provided, but \u0060status=\u0022inbox\u0022\u0060, \u0060direction\u0060 will default to \u0022inbound\u0022. Otherwise, \u0060direction\u0060 defaults to \u0022outbound\u0022.\n\nWhen creating a new SMS with the status set to \u0060inbox\u0060, you can pass the query parameter \u0060send_to_inbox\u0060 with the value of \u0060true\u0060  to create a corresponding Inbox Notification for the SMS.",
+        "description": "*status* must be one of the following:\n\n - \u0060inbox\u0060 to log an already received SMS.\n - \u0060draft\u0060 to create a draft SMS.\n - \u0060scheduled\u0060 to send an SMS at a scheduled date and time, which must be specified in the \u0060date_scheduled\u0060 field.\n - \u0060outbox\u0060 to actually **send** an SMS. To delay SMS sending by a few seconds (to allow undo), specify \u0060send_in\u0060 in seconds (must be less than 60).\n - \u0060sent\u0060 to log an already sent SMS.\n\nOnly drafts can be modified, and their status can be changed to \u0060scheduled\u0060 (to send later) or \u0060outbox\u0060 (to send immediately). Scheduled SMS, or SMS in outbox that weren\u0027t sent yet can be canceled by setting the status back to \u0060draft\u0060.\n\nYou have to provide a \u0060local_phone\u0060 that will be used to send the SMS. The number you choose has to be associated with a Phone Number of type \u0060internal\u0060. See the [Phone Numbers](https://developer.close.com/api/resources/phone-numbers) paragraph for more details.\n\nSet \u0060caller_id_mode\u0060 to \u0060auto\u0060 to let Close pick \u0060local_phone\u0060 for the SMS. \u0060auto\u0060 requires a plan that includes Local Presence. On a plan without it, Close accepts \u0060auto\u0060 only if the sender\u0027s [Membership](https://developer.close.com/api/resources/memberships) has \u0060default_caller_id_mode\u0060 set to \u0060auto\u0060. The sender is the user in \u0060user_id\u0060, or the authenticated user if \u0060user_id\u0060 is absent. Close then sends the SMS from the \u0060default_caller_id\u0060 of that Membership. If \u0060default_caller_id\u0060 is unset or cannot send the SMS, Close uses the oldest number that the sender can send from.\n\nA \u0060template_id\u0060 referencing an SMS Template may be provided instead of \u0060text\u0060 to automatically render that template and use the content as \u0060text\u0060.\n\nWhen \u0060direction\u0060 is not provided, but \u0060status=\u0022inbox\u0022\u0060, \u0060direction\u0060 will default to \u0022inbound\u0022. Otherwise, \u0060direction\u0060 defaults to \u0022outbound\u0022.\n\nWhen creating a new SMS with the status set to \u0060inbox\u0060, you can pass the query parameter \u0060send_to_inbox\u0060 with the value of \u0060true\u0060  to create a corresponding Inbox Notification for the SMS.",
         "operationId": "ActivitiesSmsCreate",
         "parameters": [
           {
@@ -5697,7 +5697,7 @@
           "activities.sms"
         ],
         "summary": "Update an SMS activity",
-        "description": "This can be used to modify a draft or send it once the draft is complete.\n\nTo send an SMS immediately, you can update its \u0060status\u0060 to \u0060outbox\u0060. To send it at a later time, change the \u0060status\u0060 to \u0060scheduled\u0060 and provide the desired date \u0026 time in the \u0060date_scheduled\u0060 field.",
+        "description": "This can be used to modify a draft or send it once the draft is complete.\n\nTo send an SMS immediately, you can update its \u0060status\u0060 to \u0060outbox\u0060. To send it at a later time, change the \u0060status\u0060 to \u0060scheduled\u0060 and provide the desired date \u0026 time in the \u0060date_scheduled\u0060 field.\n\nA switch of \u0060caller_id_mode\u0060 to \u0060auto\u0060 requires a plan that includes Local Presence. On a plan without it, a draft can use \u0060auto\u0060 only if the draft already uses \u0060auto\u0060. It can also switch to \u0060auto\u0060 if the sender\u0027s [Membership](https://developer.close.com/api/resources/memberships) has \u0060default_caller_id_mode\u0060 set to \u0060auto\u0060. The sender is the user in \u0060user_id\u0060. If the request has no \u0060user_id\u0060, the sender is the user of the draft, else the authenticated user. On a plan without Local Presence, Close sends an \u0060auto\u0060 SMS from the \u0060default_caller_id\u0060 of the sender\u0027s Membership. If \u0060default_caller_id\u0060 is unset or cannot send the SMS, Close uses the oldest number that the sender can send from.",
         "operationId": "ActivitiesSmsUpdate",
         "parameters": [
           {
@@ -9277,7 +9277,7 @@
           "bulk_actions.sequence_subscriptions"
         ],
         "summary": "Initiate a new bulk sequence subscription",
-        "description": "\u0060action_type\u0060 must be one of:\n\n- \u0060subscribe\u0060 to create a new sequence subscription for contacts that have never received the given sequence.\n- \u0060resume\u0060 to resume any paused sequence subscriptions for the given sequence or all sequences if \u0060sequence_id\u0060 is not provided.\n- \u0060resume_finished\u0060 to resume any finished sequence subscriptions for the given sequence or all sequences if \u0060sequence_id\u0060 is not provided.\n- \u0060pause\u0060 to pause any active sequence subscriptions for the given sequence or all sequences if \u0060sequence_id\u0060 is not provided.\n\n\u0060sequence_id\u0060, \u0060sender_account_id\u0060, \u0060sender_name\u0060, \u0060sender_email\u0060 and \u0060contact_preference\u0060 are required if \u0060action_type\u0060 is \u0060subscribe\u0060.\n\n\u0060contact_preference\u0060 can be set to:\n\n- \u0060lead\u0060 to only subscribe the primary/first contact email of the lead.\n- \u0060contact\u0060 to subscribe the primary email of each contact of the lead.\n\n\u0060subscribe\u0060, \u0060resume\u0060 and \u0060resume_finished\u0060 all start or restart Workflow\nruns, so they require a plan that includes them and otherwise return a 400.\n\u0060pause\u0060 and \u0060reassign\u0060 remain available on every plan.",
+        "description": "\u0060action_type\u0060 must be one of:\n\n- \u0060subscribe\u0060 to create a new sequence subscription for contacts that have never received the given sequence.\n- \u0060resume\u0060 to resume any paused sequence subscriptions for the given sequence or all sequences if \u0060sequence_id\u0060 is not provided.\n- \u0060resume_finished\u0060 to resume any finished sequence subscriptions for the given sequence or all sequences if \u0060sequence_id\u0060 is not provided.\n- \u0060pause\u0060 to pause any active sequence subscriptions for the given sequence or all sequences if \u0060sequence_id\u0060 is not provided.\n\n\u0060sequence_id\u0060, \u0060sender_account_id\u0060, \u0060sender_name\u0060, \u0060sender_email\u0060 and \u0060contact_preference\u0060 are required if \u0060action_type\u0060 is \u0060subscribe\u0060.\n\n\u0060contact_preference\u0060 can be set to:\n\n- \u0060lead\u0060 to only subscribe the primary/first contact email of the lead.\n- \u0060contact\u0060 to subscribe the primary email of each contact of the lead.\n\n\u0060subscribe\u0060, \u0060resume\u0060 and \u0060resume_finished\u0060 all start or restart Workflow\nruns, so they require a plan that includes them and otherwise return a 400.\n\u0060pause\u0060 and \u0060reassign\u0060 remain available on every plan.\n\n\u0060caller_id_mode\u0060 sets how the new Workflow runs pick the phone number of their\nSMS steps. \u0060auto\u0060 requires a plan that includes Local Presence.",
         "operationId": "BulkActionsSequenceSubscriptionsCreate",
         "requestBody": {
           "content": {
@@ -10452,6 +10452,7 @@
           "contacts"
         ],
         "summary": "List contacts",
+        "description": "List the contacts in your organization, newest first (by \u0060date_created\u0060).\n\nTo list the contacts on a single lead, pass \u0060lead_id\u0060. If you don\u0027t have the \u0022View All Leads\u0022 permission, \u0060lead_id\u0060 is required: without it, the request fails with \u0060403\u0060. It also returns \u0060403\u0060 if you can\u0027t access the lead you named.\n\nUse \u0060_fields\u0060 to return only the fields you need. \u0060lead_id\u0060 is always returned. Custom field values appear as \u0060custom.{custom_field_id}\u0060 keys.\n\nResults are paginated with \u0060_limit\u0060 and \u0060_skip\u0060.\n\nTo filter by criteria other than \u0060lead_id\u0060, use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering).\nTo retrieve more contacts than this endpoint allows, use [Exports](https://developer.close.com/api/resources/exports).",
         "operationId": "ContactsList",
         "parameters": [
           {
@@ -10481,8 +10482,14 @@
           {
             "name": "lead_id",
             "in": "query",
+            "description": "Only return contacts on this lead, e.g. \u0060lead_etYl6PwL12hkj14567kjolJwZuZehb9b85EDH9CKuAI\u0060. Required if you don\u0027t have the \u0022View All Leads\u0022 permission.",
             "schema": {
-              "type": "string"
+              "title": "Lead ID",
+              "type": [
+                "null",
+                "string"
+              ],
+              "default": null
             }
           }
         ],
@@ -10497,26 +10504,77 @@
                 "example": {
                   "data": [
                     {
-                      "created_by": null,
-                      "date_created": "2013-02-01T00:54:51.300000\u002B00:00",
-                      "date_updated": "2013-02-06T20:53:09.334000\u002B00:00",
-                      "display_name": "Tobias F\u00FCnke",
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_agent_id": null,
+                      "date_created": "2013-02-20T05:44:35.625000\u002B00:00",
+                      "date_updated": "2013-02-20T05:44:35.625000\u002B00:00",
+                      "display_name": "Gob",
                       "emails": [
                         {
-                          "email": "tobiasfunke@close.com",
+                          "email": "gob@example.com",
                           "is_unsubscribed": false,
                           "type": "office"
                         }
                       ],
-                      "id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
-                      "name": "Tobias F\u00FCnke",
+                      "id": "cont_3lUrUYmceYjzeqrIqF5jpSppZemyxvgquE8Oq1kM6p0",
+                      "integration_links": [
+                        {
+                          "name": "Google search",
+                          "url": "https://www.google.com/search?q=Gob"
+                        }
+                      ],
+                      "lead_id": "lead_etYl6PwL12hkj14567kjolJwZuZehb9b85EDH9CKuAI",
+                      "name": "Gob",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "phones": [
+                        {
+                          "country": "US",
+                          "phone": "\u002B18004445555",
+                          "phone_formatted": "\u002B1 800-444-5555",
+                          "type": "office"
+                        }
+                      ],
+                      "timezone": null,
+                      "timezone_source": null,
+                      "title": "sr. vice president",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_agent_id": null,
+                      "urls": []
+                    },
+                    {
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_agent_id": null,
+                      "date_created": "2013-02-08T05:02:39.552000\u002B00:00",
+                      "date_updated": "2013-02-08T05:02:39.552000\u002B00:00",
+                      "display_name": "phil",
+                      "emails": [
+                        {
+                          "email": "phil@close.com",
+                          "is_unsubscribed": false,
+                          "type": "office"
+                        }
+                      ],
+                      "id": "cont_eXZwc2SVL4G3xSR85jnfPny2ykvoAQndSyi1Doa2YLO",
+                      "integration_links": [
+                        {
+                          "name": "Google search",
+                          "url": "https://www.google.com/search?q=phil"
+                        }
+                      ],
+                      "lead_id": "lead_QyNaWw4fdSwxl5Mc5daMFf3Y27PpIcH0awPbC9l7uyo",
+                      "name": "phil",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "phones": [],
-                      "title": "Blue Man Group (Understudy)",
-                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                      "timezone": null,
+                      "timezone_source": null,
+                      "title": "",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_agent_id": null,
+                      "urls": []
                     },
                     {
                       "created_by": null,
+                      "created_by_agent_id": null,
                       "custom.cf_j0P7kHmgFTZZnYBFtyPSZ3uQw4dpW8xKcW7Krps8atj": "CEO",
                       "date_created": "2013-02-01T00:54:51.331000\u002B00:00",
                       "date_updated": "2013-02-06T20:53:01.954000\u002B00:00",
@@ -10529,6 +10587,13 @@
                         }
                       ],
                       "id": "cont_o0kP3Nqyq0wxr5DLWIEm8mVr6ZpI0AhonKLDG0V5Qjh",
+                      "integration_links": [
+                        {
+                          "name": "Google search",
+                          "url": "https://www.google.com/search?q=Bruce%20Wayne"
+                        }
+                      ],
+                      "lead_id": "lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h",
                       "name": "Bruce Wayne",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "phones": [
@@ -10539,30 +10604,47 @@
                           "type": "office"
                         }
                       ],
+                      "timezone": "America/Los_Angeles",
+                      "timezone_source": "inferred_from_phone_number",
                       "title": "The Dark Knight",
-                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_agent_id": null,
+                      "urls": []
                     },
                     {
                       "created_by": null,
-                      "date_created": "2013-02-01T00:54:51.298000\u002B00:00",
-                      "date_updated": "2013-02-06T20:48:55.240000\u002B00:00",
-                      "display_name": "Gob Bluth",
+                      "created_by_agent_id": null,
+                      "date_created": "2013-02-01T00:54:51.300000\u002B00:00",
+                      "date_updated": "2013-02-06T20:53:09.334000\u002B00:00",
+                      "display_name": "Tobias F\u00FCnke",
                       "emails": [
                         {
-                          "email": "bluth@close.com",
+                          "email": "tobiasfunke@close.com",
                           "is_unsubscribed": false,
                           "type": "office"
                         }
                       ],
-                      "id": "cont_E7dYM0ecRoFQosxiPFz8IxazhN4k11uW8Sh1UsXjNjo",
-                      "name": "Gob Bluth",
+                      "id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
+                      "integration_links": [
+                        {
+                          "name": "Google search",
+                          "url": "https://www.google.com/search?q=Tobias%20F%C3%BCnke"
+                        }
+                      ],
+                      "lead_id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
+                      "name": "Tobias F\u00FCnke",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "phones": [],
-                      "title": "Magician",
-                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                      "timezone": "America/New_York",
+                      "timezone_source": "manual",
+                      "title": "Blue Man Group (Understudy)",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_agent_id": null,
+                      "urls": []
                     },
                     {
                       "created_by": null,
+                      "created_by_agent_id": null,
                       "date_created": "2013-02-01T00:54:51.203000\u002B00:00",
                       "date_updated": "2013-02-01T00:59:33.689000\u002B00:00",
                       "display_name": "Close Support",
@@ -10574,116 +10656,34 @@
                         }
                       ],
                       "id": "cont_uw6ONU4iBcQg4TyqOKAwl0F1amULG9ZZsY57kHHdJNE",
+                      "integration_links": [
+                        {
+                          "name": "Google search",
+                          "url": "https://www.google.com/search?q=Close%20Support"
+                        }
+                      ],
+                      "lead_id": "lead_QyNaWw4fdSwxl5Mc5daMFf3Y27PpIcH0awPbC9l7uyo",
                       "name": "Close Support",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "phones": [
                         {
                           "country": "US",
-                          "is_unsubscribed": false,
                           "phone": "\u002B18552567346",
                           "phone_formatted": "\u002B1 855-256-7346",
                           "type": "office"
                         }
                       ],
+                      "timezone": null,
+                      "timezone_source": null,
                       "title": null,
-                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
-                    },
-                    {
-                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                      "date_created": "2013-02-08T05:02:39.552000\u002B00:00",
-                      "date_updated": "2013-02-08T05:02:39.552000\u002B00:00",
-                      "display_name": "phil",
-                      "emails": [
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_agent_id": null,
+                      "urls": [
                         {
-                          "email": "phil@close.com",
-                          "is_unsubscribed": false,
-                          "type": "office"
+                          "type": "url",
+                          "url": "https://close.com"
                         }
-                      ],
-                      "id": "cont_eXZwc2SVL4G3xSR85jnfPny2ykvoAQndSyi1Doa2YLO",
-                      "name": "phil",
-                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                      "phones": [],
-                      "title": "",
-                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
-                    },
-                    {
-                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                      "date_created": "2013-02-20T05:30:24.844000\u002B00:00",
-                      "date_updated": "2013-02-20T05:44:14.700000\u002B00:00",
-                      "display_name": "Gob",
-                      "emails": [
-                        {
-                          "email": "gob@example.com",
-                          "is_unsubscribed": false,
-                          "type": "office"
-                        }
-                      ],
-                      "id": "cont_qpjDKxbN3WWsuhaJjg2Qr9pkqHqe1yviZ5BS0dEyz05",
-                      "name": "Gob",
-                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                      "phones": [
-                        {
-                          "country": "US",
-                          "phone": "\u002B18004445555",
-                          "phone_formatted": "\u002B1 800-444-5555",
-                          "type": "office"
-                        }
-                      ],
-                      "title": "sr. vice president",
-                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
-                    },
-                    {
-                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                      "date_created": "2013-02-20T05:44:31.929000\u002B00:00",
-                      "date_updated": "2013-02-20T05:44:31.929000\u002B00:00",
-                      "display_name": "Gob",
-                      "emails": [
-                        {
-                          "email": "gob@example.com",
-                          "is_unsubscribed": false,
-                          "type": "office"
-                        }
-                      ],
-                      "id": "cont_kfaRMPzwQ9yAOn96gVGUxKRKqsYv6QJStoLhlDEpquY",
-                      "name": "Gob",
-                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                      "phones": [
-                        {
-                          "country": "US",
-                          "phone": "\u002B18004445555",
-                          "phone_formatted": "\u002B1 800-444-5555",
-                          "type": "office"
-                        }
-                      ],
-                      "title": "sr. vice president",
-                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
-                    },
-                    {
-                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                      "date_created": "2013-02-20T05:44:35.625000\u002B00:00",
-                      "date_updated": "2013-02-20T05:44:35.625000\u002B00:00",
-                      "display_name": "Gob",
-                      "emails": [
-                        {
-                          "email": "gob@example.com",
-                          "is_unsubscribed": false,
-                          "type": "office"
-                        }
-                      ],
-                      "id": "cont_3lUrUYmceYjzeqrIqF5jpSppZemyxvgquE8Oq1kM6p0",
-                      "name": "Gob",
-                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                      "phones": [
-                        {
-                          "country": "US",
-                          "phone": "\u002B18004445555",
-                          "phone_formatted": "\u002B1 800-444-5555",
-                          "type": "office"
-                        }
-                      ],
-                      "title": "sr. vice president",
-                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                      ]
                     }
                   ],
                   "has_more": false
@@ -10849,6 +10849,7 @@
           "contacts"
         ],
         "summary": "Fetch a single contact",
+        "description": "Fetch a single contact by ID.\n\nReturns \u0060404\u0060 if the contact doesn\u0027t exist or you can\u0027t access its lead.\n\nUse \u0060_fields\u0060 to return only the fields you need. \u0060lead_id\u0060 is always returned. Custom field values appear as \u0060custom.{custom_field_id}\u0060 keys.",
         "operationId": "ContactsGet",
         "parameters": [
           {
@@ -10874,6 +10875,7 @@
                 },
                 "example": {
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "created_by_agent_id": null,
                   "date_created": "2013-02-20T05:44:35.625000\u002B00:00",
                   "date_updated": "2013-02-20T05:44:35.625000\u002B00:00",
                   "display_name": "Gob",
@@ -10885,6 +10887,12 @@
                     }
                   ],
                   "id": "cont_3lUrUYmceYjzeqrIqF5jpSppZemyxvgquE8Oq1kM6p0",
+                  "integration_links": [
+                    {
+                      "name": "Google search",
+                      "url": "https://www.google.com/search?q=Gob"
+                    }
+                  ],
                   "lead_id": "lead_etYl6PwL12hkj14567kjolJwZuZehb9b85EDH9CKuAI",
                   "name": "Gob",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
@@ -10896,8 +10904,12 @@
                       "type": "office"
                     }
                   ],
+                  "timezone": null,
+                  "timezone_source": null,
                   "title": "sr. vice president",
-                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "updated_by_agent_id": null,
+                  "urls": []
                 }
               }
             }
@@ -11054,6 +11066,7 @@
           "contacts"
         ],
         "summary": "Delete a contact",
+        "description": "Delete a contact by ID. The contact is removed from its lead.\n\nReturns \u0060404\u0060 if the contact doesn\u0027t exist, or \u0060403\u0060 if you can\u0027t access its lead.\n\nDeleting a contact also deletes its [workflow subscriptions](https://developer.close.com/api/resources/sequences/list-subscriptions). That cleanup runs in the background shortly after the request returns.\n\nA successful request returns an empty object.",
         "operationId": "ContactsDelete",
         "parameters": [
           {
@@ -23848,7 +23861,7 @@
           "phone_numbers"
         ],
         "summary": "Update a phone number",
-        "description": "You need the \u0022Manage Team Phone Numbers\u0022 permission to change most settings. If you\u0027re the only member of a number and no Group is assigned to it, you can change its \u0060label\u0060, voicemail greeting, and call forwarding without that permission.\n\nYou can:\n\n- Change the \u0060label\u0060 of the number.\n- Set up call forwarding via \u0060forward_to\u0060 and \u0060forward_to_enabled\u0060.\n- Set up a voicemail greeting by including a URL of an mp3 recording in \u0060voicemail_greeting_url\u0060. We require the URL to be secure (i.e. starting with https://).\n- Modify which users are assigned directly to the number via \u0060participants\u0060. This should be a list of user IDs.\n- Modify which Groups are assigned to the number via \u0060participant_groups\u0060. This should be a list of Group IDs from the Groups API. Members of these Groups, including users added to a Group later, ring on inbound calls, receive notifications for the number, and can use it as outbound caller ID. You can assign at most 40 Groups.\n- Modify which external phone numbers the number dials via \u0060phone_numbers\u0060. This should be a list of phone numbers in E.164 international format, e.g. \u0022\u002B16503334444\u0022.\n- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via \u0060inbound_ring_duration\u0060.\n- Let users who are not members of the number use it as their outbound caller ID via \u0060non_member_caller_id_enabled\u0060.\n- Let Local Presence pick the number for calls and SMS that voice agents make in Auto caller ID mode via \u0060voice_agents_local_presence_enabled\u0060. You cannot disable this setting while a voice agent uses the number.\n- Let Local Presence pick the number by proximity for calls and SMS via \u0060local_presence_enabled\u0060.\n\nYou can set at most 40 users and external phone numbers combined in \u0060participants\u0060 and \u0060phone_numbers\u0060.\n\nA number\u0027s ring order is set in Close. A number that rings its members all at once rings at most 40 users and external phone numbers per inbound call. The users in \u0060participants\u0060 and the external phone numbers in \u0060phone_numbers\u0060 take priority. Members of the number\u0027s Groups who are allowed to make calls are added, chosen at random for each call, until 40 users and external phone numbers are ringing.\n\nThe per-call limit does not apply to a number that rings its members one at a time (round-robin).",
+        "description": "You need the \u0022Manage Team Phone Numbers\u0022 permission to change most settings. If you\u0027re the only member of a number and no Group is assigned to it, you can change its \u0060label\u0060, voicemail greeting, and call forwarding without that permission.\n\nYou can:\n\n- Change the \u0060label\u0060 of the number.\n- Set up call forwarding via \u0060forward_to\u0060 and \u0060forward_to_enabled\u0060.\n- Set up a voicemail greeting by including a URL of an mp3 recording in \u0060voicemail_greeting_url\u0060. We require the URL to be secure (i.e. starting with https://).\n- Modify which users are assigned directly to the number via \u0060participants\u0060. This should be a list of user IDs.\n- Modify which Groups are assigned to the number via \u0060participant_groups\u0060. This should be a list of Group IDs from the Groups API. Members of these Groups, including users added to a Group later, ring on inbound calls, receive notifications for the number, and can use it as outbound caller ID. You can assign at most 40 Groups.\n- Modify which external phone numbers the number dials via \u0060phone_numbers\u0060. This should be a list of phone numbers in E.164 international format, e.g. \u0022\u002B16503334444\u0022.\n- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via \u0060inbound_ring_duration\u0060.\n- Let users who are not members of the number use it as their outbound caller ID via \u0060non_member_caller_id_enabled\u0060.\n- Let Local Presence pick the number for calls and SMS that voice agents make in Auto caller ID mode via \u0060voice_agents_local_presence_enabled\u0060. A voice agent in Fixed caller ID mode can use the number when this setting is off.\n- Let Local Presence pick the number by proximity for calls and SMS via \u0060local_presence_enabled\u0060.\n\nYou can set at most 40 users and external phone numbers combined in \u0060participants\u0060 and \u0060phone_numbers\u0060.\n\nA number\u0027s ring order is set in Close. A number that rings its members all at once rings at most 40 users and external phone numbers per inbound call. The users in \u0060participants\u0060 and the external phone numbers in \u0060phone_numbers\u0060 take priority. Members of the number\u0027s Groups who are allowed to make calls are added, chosen at random for each call, until 40 users and external phone numbers are ringing.\n\nThe per-call limit does not apply to a number that rings its members one at a time (round-robin).",
         "operationId": "PhoneNumbersUpdate",
         "parameters": [
           {
@@ -29413,6 +29426,7 @@
           "sequences"
         ],
         "summary": "Subscribe a Contact to a Sequence",
+        "description": "\u0060caller_id_mode\u0060 sets how the Subscription picks the phone number of its SMS steps. \u0060auto\u0060 requires a plan that includes Local Presence.",
         "operationId": "SequencesCreateSubscription",
         "requestBody": {
           "content": {
@@ -29622,7 +29636,7 @@
           "sequences"
         ],
         "summary": "Update a specific Subscription",
-        "description": "Setting \u0060status\u0060 to \u0060active\u0060 restarts the Subscription, so it requires a plan that includes Workflow runs and otherwise returns a 400. Setting it to \u0060paused\u0060 works on every plan.",
+        "description": "Setting \u0060status\u0060 to \u0060active\u0060 restarts the Subscription, so it requires a plan that includes Workflow runs and otherwise returns a 400. Setting it to \u0060paused\u0060 works on every plan.\n\nA switch of \u0060caller_id_mode\u0060 to \u0060auto\u0060 requires a plan that includes Local Presence. A Subscription that already uses \u0060auto\u0060 keeps it on every plan.",
         "operationId": "SequencesUpdateSubscription",
         "parameters": [
           {
@@ -38309,10 +38323,11 @@
         "enum": [
           "context",
           "local_presence",
-          "fallback"
+          "fallback",
+          "plan_fallback"
         ],
         "type": "string",
-        "description": "Why a number was chosen in Auto mode: reused from a prior communication (context), picked for geographic proximity (local_presence), or the default/oldest fallback.",
+        "description": "Why a number was chosen in Auto mode: reused from a prior communication (context), picked for geographic proximity (local_presence), the default/oldest fallback (fallback), or the same fallback because the plan does not include Local Presence (plan_fallback).",
         "x-ms-enum": {
           "name": "CallerIdReason",
           "modelAsString": false,
@@ -38328,6 +38343,10 @@
             {
               "value": "fallback",
               "name": "Fallback"
+            },
+            {
+              "value": "plan_fallback",
+              "name": "PlanFallback"
             }
           ]
         }
@@ -46712,10 +46731,10 @@
               "null",
               "string"
             ],
-            "description": "ID of the phone number to use as this member\u0027s default outbound caller ID. Close keeps this value while \u0060default_caller_id_mode\u0060 is \u0060auto\u0060, but outbound calls do not use it."
+            "description": "ID of the phone number to use as this member\u0027s default outbound caller ID. Close keeps this value while \u0060default_caller_id_mode\u0060 is \u0060auto\u0060. In \u0060auto\u0060 mode, Close uses it when no number has history with the contact and no number is near the contact. On a plan without Local Presence, \u0060auto\u0060 mode uses it like \u0060fixed\u0060 mode."
           },
           "default_caller_id_mode": {
-            "description": "How this member\u0027s outbound caller ID is chosen. In \u0060fixed\u0060 mode, outbound calls use \u0060default_caller_id\u0060. In \u0060auto\u0060 mode, Close derives the number for each call and ignores \u0060default_caller_id\u0060.",
+            "description": "How this member\u0027s outbound caller ID is chosen. In \u0060fixed\u0060 mode, outbound calls use \u0060default_caller_id\u0060. In \u0060auto\u0060 mode, Close derives the number for each call. A switch to \u0060auto\u0060 requires a plan that includes Local Presence. On a plan without it, \u0060auto\u0060 mode uses \u0060default_caller_id\u0060 like \u0060fixed\u0060 mode.",
             "title": "Default Caller ID Mode",
             "$ref": "#/components/schemas/CallerIdMode"
           },
@@ -48790,7 +48809,7 @@
           "local_presence_enabled": {
             "title": "Local Presence Enabled",
             "type": "boolean",
-            "description": "Whether Local Presence can pick this phone number by proximity for a call or SMS made as a user."
+            "description": "Whether Local Presence can pick this phone number by proximity for a call or SMS made as a user. It has no effect on a plan that doesn\u0027t include Local Presence."
           },
           "mms_enabled": {
             "title": "Mms Enabled",
@@ -51610,7 +51629,7 @@
           "updated_by"
         ],
         "type": "string",
-        "description": "Built-in fields of \u0060sequence_subscription\u0060 objects and their value types. The value type decides which conditions apply, see \u0060FieldCondition\u0060. For \u0060... ID\u0060 fields, use a \u0060reference\u0060 condition with that \u0060reference_type\u0060.\n\n- \u0060calls_assigned_to\u0060: Calls assigned to (\u0060user_or_group\u0060 ID)\n- \u0060contact_id\u0060: Contact (\u0060contact\u0060 ID)\n- \u0060created_by\u0060: Created by (\u0060user\u0060 ID)\n- \u0060date_created\u0060: Date created (datetime)\n- \u0060date_paused\u0060: Date paused (datetime)\n- \u0060date_updated\u0060: Date last updated (datetime)\n- \u0060initial_email_id\u0060: Initial email (\u0060activity.email\u0060 ID)\n- \u0060last_completed_step\u0060: Last completed step (\u0060sequence_step\u0060 ID)\n- \u0060last_processed_step\u0060: Last processed step (\u0060sequence_step\u0060 ID)\n- \u0060lead_id\u0060: Lead (\u0060lead\u0060 ID)\n- \u0060owner_id\u0060: Owner (\u0060user\u0060 ID)\n- \u0060run_once\u0060: Run once (boolean)\n- \u0060sender_account_id\u0060: Sender account (\u0060connected_account\u0060 ID)\n- \u0060sequence_id\u0060: Workflow (\u0060sequence\u0060 ID)\n- \u0060start_date\u0060: Start date (datetime)\n- \u0060status\u0060: Status (one of \u0060active\u0060, \u0060paused\u0060, \u0060finished\u0060, \u0060goal\u0060, \u0060error\u0060)\n- \u0060status_reason\u0060: Status reason (one of \u0060manual\u0060, \u0060pending-call-timed-out\u0060, \u0060bulk-action\u0060, \u0060rate-limited\u0060, \u0060sequence-deleted\u0060, \u0060workflow-paused\u0060, \u0060filter-not-matched\u0060, \u0060insufficient-ai-credit-balance\u0060, \u0060plan-not-supported\u0060, \u0060reply-received\u0060, \u0060call-answered\u0060, \u0060meeting-booked\u0060, \u0060lead-status-changed\u0060, \u0060outcome-met\u0060, \u0060account-invalid\u0060, \u0060account-failures\u0060, \u0060sending-throttled-too-long\u0060, \u0060membership-inactive\u0060, \u0060send-as-error\u0060, \u0060email-bounced\u0060, \u0060call-failed\u0060, \u0060sms-failed\u0060, \u0060no-user-phone\u0060, \u0060billing-error\u0060, \u0060assignment-field-invalid\u0060, \u0060lead-status-field-invalid\u0060, \u0060assignees-missing\u0060, \u0060run-as-disabled\u0060, \u0060lead-not-visible\u0060, \u0060internal-error\u0060, \u0060field-mapping-error\u0060, \u0060filter-config-invalid\u0060, \u0060email-ai-generation-failed\u0060)\n- \u0060step_last_processed_at\u0060: Last processed step date (datetime)\n- \u0060steps_completed\u0060: Number of completed subscription steps (integer)\n- \u0060time_to_goal\u0060: Time to goal (integer)\n- \u0060updated_by\u0060: Last updated by (\u0060user\u0060 ID)",
+        "description": "Built-in fields of \u0060sequence_subscription\u0060 objects and their value types. The value type decides which conditions apply, see \u0060FieldCondition\u0060. For \u0060... ID\u0060 fields, use a \u0060reference\u0060 condition with that \u0060reference_type\u0060.\n\n- \u0060calls_assigned_to\u0060: Calls assigned to (\u0060user_or_group_or_agent\u0060 ID)\n- \u0060contact_id\u0060: Contact (\u0060contact\u0060 ID)\n- \u0060created_by\u0060: Created by (\u0060user\u0060 ID)\n- \u0060date_created\u0060: Date created (datetime)\n- \u0060date_paused\u0060: Date paused (datetime)\n- \u0060date_updated\u0060: Date last updated (datetime)\n- \u0060initial_email_id\u0060: Initial email (\u0060activity.email\u0060 ID)\n- \u0060last_completed_step\u0060: Last completed step (\u0060sequence_step\u0060 ID)\n- \u0060last_processed_step\u0060: Last processed step (\u0060sequence_step\u0060 ID)\n- \u0060lead_id\u0060: Lead (\u0060lead\u0060 ID)\n- \u0060owner_id\u0060: Owner (\u0060user\u0060 ID)\n- \u0060run_once\u0060: Run once (boolean)\n- \u0060sender_account_id\u0060: Sender account (\u0060connected_account\u0060 ID)\n- \u0060sequence_id\u0060: Workflow (\u0060sequence\u0060 ID)\n- \u0060start_date\u0060: Start date (datetime)\n- \u0060status\u0060: Status (one of \u0060active\u0060, \u0060paused\u0060, \u0060finished\u0060, \u0060goal\u0060, \u0060error\u0060)\n- \u0060status_reason\u0060: Status reason (one of \u0060manual\u0060, \u0060pending-call-timed-out\u0060, \u0060bulk-action\u0060, \u0060rate-limited\u0060, \u0060sequence-deleted\u0060, \u0060workflow-paused\u0060, \u0060filter-not-matched\u0060, \u0060insufficient-ai-credit-balance\u0060, \u0060plan-not-supported\u0060, \u0060reply-received\u0060, \u0060call-answered\u0060, \u0060meeting-booked\u0060, \u0060lead-status-changed\u0060, \u0060outcome-met\u0060, \u0060account-invalid\u0060, \u0060account-failures\u0060, \u0060sending-throttled-too-long\u0060, \u0060membership-inactive\u0060, \u0060send-as-error\u0060, \u0060email-bounced\u0060, \u0060call-failed\u0060, \u0060sms-failed\u0060, \u0060no-user-phone\u0060, \u0060billing-error\u0060, \u0060assignment-field-invalid\u0060, \u0060lead-status-field-invalid\u0060, \u0060assignees-missing\u0060, \u0060run-as-disabled\u0060, \u0060lead-not-visible\u0060, \u0060internal-error\u0060, \u0060field-mapping-error\u0060, \u0060filter-config-invalid\u0060, \u0060email-ai-generation-failed\u0060)\n- \u0060step_last_processed_at\u0060: Last processed step date (datetime)\n- \u0060steps_completed\u0060: Number of completed subscription steps (integer)\n- \u0060time_to_goal\u0060: Time to goal (integer)\n- \u0060updated_by\u0060: Last updated by (\u0060user\u0060 ID)",
         "x-ms-enum": {
           "name": "SequenceSubscriptionSearchFieldName",
           "modelAsString": false,
@@ -54637,7 +54656,7 @@
           "local_presence_enabled": {
             "title": "Local Presence Enabled",
             "type": "boolean",
-            "description": "Whether Local Presence can pick this phone number by proximity for a call or SMS made as a user."
+            "description": "Whether Local Presence can pick this phone number by proximity for a call or SMS made as a user. It has no effect on a plan that doesn\u0027t include Local Presence."
           },
           "non_member_caller_id_enabled": {
             "title": "Non-Member Caller ID Enabled",
@@ -55408,7 +55427,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "description": "How the Workflow runs that this action starts pick the phone number of their SMS steps. \u0060auto\u0060 requires a plan that includes Local Presence."
       },
       "BulkSequenceSubscriptionActionContactPreference": {
         "anyOf": [
@@ -56310,6 +56330,17 @@
         "anyOf": [
           {
             "$ref": "#/components/schemas/CallerIdReason"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "SmsSearchResultCallerIdMode": {
+        "title": "Caller ID Mode",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/CallerIdMode"
           },
           {
             "type": "null"
@@ -61533,10 +61564,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CallActivity"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61551,10 +61584,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CreatedActivity"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61569,10 +61604,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CustomActivity"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61587,10 +61624,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/EmailActivity"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61605,10 +61644,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/EmailThreadActivity"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61623,10 +61664,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/FormSubmissionActivity"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61641,10 +61684,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ImportUpdateActivity"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61659,10 +61704,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/LeadMergeActivity"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61677,10 +61724,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/MeetingActivity"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61695,10 +61744,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ActivityBase"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61713,10 +61764,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/SmsActivity"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61731,10 +61784,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/LeadStatusChangeActivity"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61749,10 +61804,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/OpportunityStatusChangeActivity"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61767,10 +61824,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/TaskCompletedActivity"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61785,10 +61844,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/WhatsAppMessageActivity"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61803,10 +61864,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/BlockedPhoneNumber"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61821,10 +61884,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/BulkDeleteAction"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61839,10 +61904,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/BulkEditAction"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61857,10 +61924,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/BulkEmailAction"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61875,10 +61944,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/BulkSequenceSubscriptionAction"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61893,10 +61964,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Contact"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61911,10 +61984,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Export"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61929,10 +62004,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Export"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61947,10 +62024,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Export"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61965,10 +62044,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Form"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -61983,10 +62064,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Group"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -62001,10 +62084,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/IntegrationLink"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -62019,10 +62104,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Lead"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -62037,10 +62124,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/LeadFile"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -62055,10 +62144,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Opportunity"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -62073,10 +62164,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Outcome"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -62091,10 +62184,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/PhoneNumber"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -62109,10 +62204,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Pipeline"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -62127,10 +62224,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Playbook"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -62145,10 +62244,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/SavedSearch"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -62163,10 +62264,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/StandardObjectLabel"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -62181,10 +62284,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/LeadStatus"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -62199,10 +62304,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/OpportunityStatus"
-            }
+            },
+            "description": "The results on this page."
           },
           "has_more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether more results exist after this page."
           }
         }
       },
@@ -76867,7 +76974,7 @@
                 "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead."
               },
               "caller_id_mode": {
-                "$ref": "#/components/schemas/BulkSequenceSubscriptionActionCallerIdMode"
+                "$ref": "#/components/schemas/SmsSearchResultCallerIdMode"
               },
               "caller_id_reason": {
                 "$ref": "#/components/schemas/SmsSearchResultCallerIdReason"
@@ -83155,7 +83262,7 @@
           "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead."
         },
         "caller_id_mode": {
-          "$ref": "#/components/schemas/BulkSequenceSubscriptionActionCallerIdMode"
+          "$ref": "#/components/schemas/SmsSearchResultCallerIdMode"
         },
         "caller_id_reason": {
           "$ref": "#/components/schemas/SmsSearchResultCallerIdReason"
@@ -84990,17 +85097,6 @@
       "anyOf": [
         {
           "$ref": "#/components/schemas/OpportunityValuePeriod"
-        },
-        {
-          "type": "null"
-        }
-      ]
-    },
-    "SmsSearchResultCallerIdMode": {
-      "title": "Caller ID Mode",
-      "anyOf": [
-        {
-          "$ref": "#/components/schemas/CallerIdMode"
         },
         {
           "type": "null"

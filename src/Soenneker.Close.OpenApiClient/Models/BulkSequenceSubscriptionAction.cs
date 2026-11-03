@@ -74,7 +74,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         private global::Soenneker.Close.OpenApiClient.Models.BulkSequenceSubscriptionActionType? _explicitNullValueActionType = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The caller_id_mode property</summary>
+        /// <summary>How the Workflow runs that this action starts pick the phone number of their SMS steps. `auto` requires a plan that includes Local Presence.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.CallerIdMode? CallerIdMode { get => _explicitNullValueCallerIdMode; set { _explicitNullValueCallerIdMode = value; AdditionalData?.Remove("caller_id_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("caller_id_mode"); else _explicitNullProperties?.Remove("caller_id_mode"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CallerIdMode? _explicitNullValueCallerIdMode = default!;
         /// <summary>The calls_assigned_to property</summary>

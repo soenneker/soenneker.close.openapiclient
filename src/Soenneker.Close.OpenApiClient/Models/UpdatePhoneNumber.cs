@@ -71,7 +71,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
         private string _explicitNullValueLabel = default!;
 #endif
-        /// <summary>Whether Local Presence can pick this phone number by proximity for a call or SMS made as a user.</summary>
+        /// <summary>Whether Local Presence can pick this phone number by proximity for a call or SMS made as a user. It has no effect on a plan that doesn&apos;t include Local Presence.</summary>
         public bool? LocalPresenceEnabled { get => _explicitNullValueLocalPresenceEnabled; set { _explicitNullValueLocalPresenceEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("local_presence_enabled"); else _explicitNullProperties?.Remove("local_presence_enabled"); } }
         private bool? _explicitNullValueLocalPresenceEnabled = default!;
         /// <summary>Whether users who are not members of this phone number can use it as their outbound caller ID.</summary>

@@ -37,7 +37,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>Whether this member&apos;s calls are automatically recorded. Starts as `unset` and can be set to `enabled` or `disabled`.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.AutoRecordCalls? AutoRecordCalls { get => _explicitNullValueAutoRecordCalls; set { _explicitNullValueAutoRecordCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_record_calls"); else _explicitNullProperties?.Remove("auto_record_calls"); } }
         private global::Soenneker.Close.OpenApiClient.Models.AutoRecordCalls? _explicitNullValueAutoRecordCalls = default!;
-        /// <summary>ID of the phone number to use as this member&apos;s default outbound caller ID. Close keeps this value while `default_caller_id_mode` is `auto`, but outbound calls do not use it.</summary>
+        /// <summary>ID of the phone number to use as this member&apos;s default outbound caller ID. Close keeps this value while `default_caller_id_mode` is `auto`. In `auto` mode, Close uses it when no number has history with the contact and no number is near the contact. On a plan without Local Presence, `auto` mode uses it like `fixed` mode.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DefaultCallerId { get => _explicitNullValueDefaultCallerId; set { _explicitNullValueDefaultCallerId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_caller_id"); else _explicitNullProperties?.Remove("default_caller_id"); } }
@@ -47,7 +47,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string DefaultCallerId { get => _explicitNullValueDefaultCallerId; set { _explicitNullValueDefaultCallerId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_caller_id"); else _explicitNullProperties?.Remove("default_caller_id"); } }
         private string _explicitNullValueDefaultCallerId = default!;
 #endif
-        /// <summary>How this member&apos;s outbound caller ID is chosen. In `fixed` mode, outbound calls use `default_caller_id`. In `auto` mode, Close derives the number for each call and ignores `default_caller_id`.</summary>
+        /// <summary>How this member&apos;s outbound caller ID is chosen. In `fixed` mode, outbound calls use `default_caller_id`. In `auto` mode, Close derives the number for each call. A switch to `auto` requires a plan that includes Local Presence. On a plan without it, `auto` mode uses `default_caller_id` like `fixed` mode.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.CallerIdMode? DefaultCallerIdMode { get => _explicitNullValueDefaultCallerIdMode; set { _explicitNullValueDefaultCallerIdMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_caller_id_mode"); else _explicitNullProperties?.Remove("default_caller_id_mode"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CallerIdMode? _explicitNullValueDefaultCallerIdMode = default!;
         /// <summary>URL of the audio file used as this member&apos;s Voicemail Drop recording.</summary>
