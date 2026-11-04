@@ -79,7 +79,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("url") is { } nullNodeUrl && nullNodeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Url = null;
         }
 
-        /// <summary>The addresses property</summary>
+        /// <summary>Addresses of the lead</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.LeadAddress>? Addresses { get => _explicitNullValueAddresses; set { _explicitNullValueAddresses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("addresses"); else _explicitNullProperties?.Remove("addresses"); } }
@@ -89,7 +89,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<global::Soenneker.Close.OpenApiClient.Models.LeadAddress> Addresses { get => _explicitNullValueAddresses; set { _explicitNullValueAddresses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("addresses"); else _explicitNullProperties?.Remove("addresses"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.LeadAddress> _explicitNullValueAddresses = default!;
 #endif
-        /// <summary>The contact_ids property</summary>
+        /// <summary>IDs of the lead&apos;s contacts, in the same order as `contacts`. Only returned when requested in `_fields`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? ContactIds { get => _explicitNullValueContactIds; set { _explicitNullValueContactIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact_ids"); else _explicitNullProperties?.Remove("contact_ids"); } }
@@ -99,7 +99,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<string> ContactIds { get => _explicitNullValueContactIds; set { _explicitNullValueContactIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact_ids"); else _explicitNullProperties?.Remove("contact_ids"); } }
         private List<string> _explicitNullValueContactIds = default!;
 #endif
-        /// <summary>The contacts property</summary>
+        /// <summary>Contacts on the lead. Deprecated: use List Contacts with `lead_id` instead.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.Contact>? Contacts { get => _explicitNullValueContacts; set { _explicitNullValueContacts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contacts"); else _explicitNullProperties?.Remove("contacts"); } }
@@ -109,7 +109,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<global::Soenneker.Close.OpenApiClient.Models.Contact> Contacts { get => _explicitNullValueContacts; set { _explicitNullValueContacts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contacts"); else _explicitNullProperties?.Remove("contacts"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.Contact> _explicitNullValueContacts = default!;
 #endif
-        /// <summary>The contacts_summary property</summary>
+        /// <summary>Display name of the lead&apos;s first contact, followed by `+N` when the lead has N more contacts, e.g. `Bruce Wayne +2`. Empty if the lead has no contacts. Only returned when requested in `_fields`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ContactsSummary { get => _explicitNullValueContactsSummary; set { _explicitNullValueContactsSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contacts_summary"); else _explicitNullProperties?.Remove("contacts_summary"); } }
@@ -119,7 +119,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ContactsSummary { get => _explicitNullValueContactsSummary; set { _explicitNullValueContactsSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contacts_summary"); else _explicitNullProperties?.Remove("contacts_summary"); } }
         private string _explicitNullValueContactsSummary = default!;
 #endif
-        /// <summary>The created_by property</summary>
+        /// <summary>ID of the user who created the lead, e.g. `user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA`, or null if no user created it</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
@@ -139,7 +139,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string CreatedByAgentId { get => _explicitNullValueCreatedByAgentId; set { _explicitNullValueCreatedByAgentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by_agent_id"); else _explicitNullProperties?.Remove("created_by_agent_id"); } }
         private string _explicitNullValueCreatedByAgentId = default!;
 #endif
-        /// <summary>The created_by_name property</summary>
+        /// <summary>Full name of the user who created the lead, or null if no user created it</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatedByName { get => _explicitNullValueCreatedByName; set { _explicitNullValueCreatedByName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by_name"); else _explicitNullProperties?.Remove("created_by_name"); } }
@@ -149,13 +149,13 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string CreatedByName { get => _explicitNullValueCreatedByName; set { _explicitNullValueCreatedByName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by_name"); else _explicitNullProperties?.Remove("created_by_name"); } }
         private string _explicitNullValueCreatedByName = default!;
 #endif
-        /// <summary>The date_created property</summary>
+        /// <summary>When the lead was created, as an ISO 8601 timestamp in UTC</summary>
         public DateTimeOffset? DateCreated { get => _explicitNullValueDateCreated; set { _explicitNullValueDateCreated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_created"); else _explicitNullProperties?.Remove("date_created"); } }
         private DateTimeOffset? _explicitNullValueDateCreated = default!;
-        /// <summary>The date_updated property</summary>
+        /// <summary>When the lead was last updated, as an ISO 8601 timestamp in UTC</summary>
         public DateTimeOffset? DateUpdated { get => _explicitNullValueDateUpdated; set { _explicitNullValueDateUpdated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_updated"); else _explicitNullProperties?.Remove("date_updated"); } }
         private DateTimeOffset? _explicitNullValueDateUpdated = default!;
-        /// <summary>The description property</summary>
+        /// <summary>Free-text description of the lead, or null</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
@@ -165,7 +165,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string _explicitNullValueDescription = default!;
 #endif
-        /// <summary>The display_name property</summary>
+        /// <summary>Name to display for the lead: the lead&apos;s `name` if set, otherwise the name, first email address or first phone number (in international format) of the first contact that has one, then `Untitled`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
@@ -175,7 +175,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
         private string _explicitNullValueDisplayName = default!;
 #endif
-        /// <summary>The html_url property</summary>
+        /// <summary>Link to the lead in the Close app</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? HtmlUrl { get => _explicitNullValueHtmlUrl; set { _explicitNullValueHtmlUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("html_url"); else _explicitNullProperties?.Remove("html_url"); } }
@@ -185,7 +185,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string HtmlUrl { get => _explicitNullValueHtmlUrl; set { _explicitNullValueHtmlUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("html_url"); else _explicitNullProperties?.Remove("html_url"); } }
         private string _explicitNullValueHtmlUrl = default!;
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>The lead&apos;s ID, e.g. `lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
@@ -195,7 +195,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
-        /// <summary>The integration_links property</summary>
+        /// <summary>The organization&apos;s lead integration links, rendered with this lead&apos;s data</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.RenderedIntegrationLink>? IntegrationLinks { get => _explicitNullValueIntegrationLinks; set { _explicitNullValueIntegrationLinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_links"); else _explicitNullProperties?.Remove("integration_links"); } }
@@ -205,10 +205,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<global::Soenneker.Close.OpenApiClient.Models.RenderedIntegrationLink> IntegrationLinks { get => _explicitNullValueIntegrationLinks; set { _explicitNullValueIntegrationLinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_links"); else _explicitNullProperties?.Remove("integration_links"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.RenderedIntegrationLink> _explicitNullValueIntegrationLinks = default!;
 #endif
-        /// <summary>The localtime property</summary>
+        /// <summary>Current time in the lead&apos;s timezone, as an ISO 8601 timestamp without a UTC offset. The timezone comes from the lead&apos;s first address, or else from its contacts&apos; timezones. Null if no timezone is known. Only returned when requested in `_fields`.</summary>
         public DateTimeOffset? Localtime { get => _explicitNullValueLocaltime; set { _explicitNullValueLocaltime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("localtime"); else _explicitNullProperties?.Remove("localtime"); } }
         private DateTimeOffset? _explicitNullValueLocaltime = default!;
-        /// <summary>The name property</summary>
+        /// <summary>Name of the lead, usually a company name, or null if unnamed. See `display_name`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
@@ -218,7 +218,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
-        /// <summary>The opportunities property</summary>
+        /// <summary>Opportunities on the lead. Deprecated: use List Opportunities with `lead_id` instead.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.Opportunity>? Opportunities { get => _explicitNullValueOpportunities; set { _explicitNullValueOpportunities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("opportunities"); else _explicitNullProperties?.Remove("opportunities"); } }
@@ -228,7 +228,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<global::Soenneker.Close.OpenApiClient.Models.Opportunity> Opportunities { get => _explicitNullValueOpportunities; set { _explicitNullValueOpportunities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("opportunities"); else _explicitNullProperties?.Remove("opportunities"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.Opportunity> _explicitNullValueOpportunities = default!;
 #endif
-        /// <summary>The organization_id property</summary>
+        /// <summary>The owning organization&apos;s ID, e.g. `orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
@@ -238,7 +238,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string _explicitNullValueOrganizationId = default!;
 #endif
-        /// <summary>The primary_address_full property</summary>
+        /// <summary>The lead&apos;s first address on one line: the street lines, `City, State Zip` and the country name, separated by commas. Null if the lead has no address. Only returned when requested in `_fields`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PrimaryAddressFull { get => _explicitNullValuePrimaryAddressFull; set { _explicitNullValuePrimaryAddressFull = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_address_full"); else _explicitNullProperties?.Remove("primary_address_full"); } }
@@ -248,7 +248,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string PrimaryAddressFull { get => _explicitNullValuePrimaryAddressFull; set { _explicitNullValuePrimaryAddressFull = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_address_full"); else _explicitNullProperties?.Remove("primary_address_full"); } }
         private string _explicitNullValuePrimaryAddressFull = default!;
 #endif
-        /// <summary>The primary_address_summary property</summary>
+        /// <summary>Short summary of the lead&apos;s first address: `City, State` if both are set, otherwise the city, state, country name or postal code. Null if the lead has no address. Only returned when requested in `_fields`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PrimaryAddressSummary { get => _explicitNullValuePrimaryAddressSummary; set { _explicitNullValuePrimaryAddressSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_address_summary"); else _explicitNullProperties?.Remove("primary_address_summary"); } }
@@ -258,7 +258,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string PrimaryAddressSummary { get => _explicitNullValuePrimaryAddressSummary; set { _explicitNullValuePrimaryAddressSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_address_summary"); else _explicitNullProperties?.Remove("primary_address_summary"); } }
         private string _explicitNullValuePrimaryAddressSummary = default!;
 #endif
-        /// <summary>The primary_email property</summary>
+        /// <summary>First email address of the first contact that has one, or null if no contact has an email address. Only returned when requested in `_fields`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryEmail? PrimaryEmail { get => _explicitNullValuePrimaryEmail; set { _explicitNullValuePrimaryEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_email"); else _explicitNullProperties?.Remove("primary_email"); } }
@@ -268,7 +268,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryEmail PrimaryEmail { get => _explicitNullValuePrimaryEmail; set { _explicitNullValuePrimaryEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_email"); else _explicitNullProperties?.Remove("primary_email"); } }
         private global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryEmail _explicitNullValuePrimaryEmail = default!;
 #endif
-        /// <summary>The primary_phone property</summary>
+        /// <summary>First phone number of the first contact that has one, or null if no contact has a phone number. Only returned when requested in `_fields`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryPhone? PrimaryPhone { get => _explicitNullValuePrimaryPhone; set { _explicitNullValuePrimaryPhone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_phone"); else _explicitNullProperties?.Remove("primary_phone"); } }
@@ -278,7 +278,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryPhone PrimaryPhone { get => _explicitNullValuePrimaryPhone; set { _explicitNullValuePrimaryPhone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_phone"); else _explicitNullProperties?.Remove("primary_phone"); } }
         private global::Soenneker.Close.OpenApiClient.Models.LeadPrimaryPhone _explicitNullValuePrimaryPhone = default!;
 #endif
-        /// <summary>The status_id property</summary>
+        /// <summary>ID of the lead&apos;s status, e.g. `stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? StatusId { get => _explicitNullValueStatusId; set { _explicitNullValueStatusId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_id"); else _explicitNullProperties?.Remove("status_id"); } }
@@ -288,7 +288,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string StatusId { get => _explicitNullValueStatusId; set { _explicitNullValueStatusId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_id"); else _explicitNullProperties?.Remove("status_id"); } }
         private string _explicitNullValueStatusId = default!;
 #endif
-        /// <summary>The status_label property</summary>
+        /// <summary>Label of the lead&apos;s status, e.g. `Potential`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? StatusLabel { get => _explicitNullValueStatusLabel; set { _explicitNullValueStatusLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_label"); else _explicitNullProperties?.Remove("status_label"); } }
@@ -298,7 +298,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string StatusLabel { get => _explicitNullValueStatusLabel; set { _explicitNullValueStatusLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_label"); else _explicitNullProperties?.Remove("status_label"); } }
         private string _explicitNullValueStatusLabel = default!;
 #endif
-        /// <summary>The tasks property</summary>
+        /// <summary>Incomplete tasks on the lead (`_type` `lead`), soonest due first. To list all of a lead&apos;s tasks, including completed ones, use List Tasks with `lead_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.LeadSearchResultTasksItemProperty>? Tasks { get => _explicitNullValueTasks; set { _explicitNullValueTasks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tasks"); else _explicitNullProperties?.Remove("tasks"); } }
@@ -308,7 +308,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<global::Soenneker.Close.OpenApiClient.Models.LeadSearchResultTasksItemProperty> Tasks { get => _explicitNullValueTasks; set { _explicitNullValueTasks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tasks"); else _explicitNullProperties?.Remove("tasks"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.LeadSearchResultTasksItemProperty> _explicitNullValueTasks = default!;
 #endif
-        /// <summary>The updated_by property</summary>
+        /// <summary>ID of the user who last updated the lead, e.g. `user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA`, or null if the last update wasn&apos;t made by a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UpdatedBy { get => _explicitNullValueUpdatedBy; set { _explicitNullValueUpdatedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_by"); else _explicitNullProperties?.Remove("updated_by"); } }
@@ -328,7 +328,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string UpdatedByAgentId { get => _explicitNullValueUpdatedByAgentId; set { _explicitNullValueUpdatedByAgentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_by_agent_id"); else _explicitNullProperties?.Remove("updated_by_agent_id"); } }
         private string _explicitNullValueUpdatedByAgentId = default!;
 #endif
-        /// <summary>The updated_by_name property</summary>
+        /// <summary>Full name of the user who last updated the lead, or null if the last update wasn&apos;t made by a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UpdatedByName { get => _explicitNullValueUpdatedByName; set { _explicitNullValueUpdatedByName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_by_name"); else _explicitNullProperties?.Remove("updated_by_name"); } }
@@ -338,7 +338,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string UpdatedByName { get => _explicitNullValueUpdatedByName; set { _explicitNullValueUpdatedByName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_by_name"); else _explicitNullProperties?.Remove("updated_by_name"); } }
         private string _explicitNullValueUpdatedByName = default!;
 #endif
-        /// <summary>The url property</summary>
+        /// <summary>Website of the lead, e.g. `https://close.com`, or null if unset</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }

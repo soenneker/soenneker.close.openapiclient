@@ -34,23 +34,24 @@ namespace Soenneker.Close.OpenApiClient.Lead.Merge
         {
         }
         /// <summary>
-        /// For details and definitions of &apos;source&apos; and &apos;destination&apos;, see the Merge Leads feature in the UI.
+        /// Merge the source lead into the destination lead. The source lead&apos;s contacts, opportunities, activities, tasks, custom objects, addresses and custom field values move to the destination lead, and the source lead is then deleted. This can&apos;t be undone.When both leads have a value, the destination lead&apos;s value is kept. The source lead&apos;s name, status, description and URL are only copied over when the destination lead&apos;s are empty. Contacts and custom objects that match across both leads are combined instead of duplicated.The merge runs in the background. This request returns as soon as the merge is queued, and both leads get a Lead Merge activity that shows its progress. Neither lead can be merged again until the merge finishes.Requires the Merge Leads permission. Returns `404` if either lead doesn&apos;t exist, `403` if you don&apos;t have access to either lead, and `400` if both IDs are the same lead, you don&apos;t have permission to merge leads, the merged lead would have too many contacts or custom objects, or either lead is already being merged.
         /// </summary>
-        /// <returns>A <see cref="Stream"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.MergeLeadsResponse"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.BadRequestResponseError">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ForbiddenResponseError">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.NestedValidationErrors">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.LeadsMergeRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.MergeLeadsResponse?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.MergeLeadsRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> PostAsync(global::Soenneker.Close.OpenApiClient.Models.LeadsMergeRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.MergeLeadsResponse> PostAsync(global::Soenneker.Close.OpenApiClient.Models.MergeLeadsRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -60,25 +61,26 @@ namespace Soenneker.Close.OpenApiClient.Lead.Merge
                 { "400", global::Soenneker.Close.OpenApiClient.Models.BadRequestResponseError.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.Close.OpenApiClient.Models.ForbiddenResponseError.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Close.OpenApiClient.Models.NestedValidationErrors.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.MergeLeadsResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.MergeLeadsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// For details and definitions of &apos;source&apos; and &apos;destination&apos;, see the Merge Leads feature in the UI.
+        /// Merge the source lead into the destination lead. The source lead&apos;s contacts, opportunities, activities, tasks, custom objects, addresses and custom field values move to the destination lead, and the source lead is then deleted. This can&apos;t be undone.When both leads have a value, the destination lead&apos;s value is kept. The source lead&apos;s name, status, description and URL are only copied over when the destination lead&apos;s are empty. Contacts and custom objects that match across both leads are combined instead of duplicated.The merge runs in the background. This request returns as soon as the merge is queued, and both leads get a Lead Merge activity that shows its progress. Neither lead can be merged again until the merge finishes.Requires the Merge Leads permission. Returns `404` if either lead doesn&apos;t exist, `403` if you don&apos;t have access to either lead, and `400` if both IDs are the same lead, you don&apos;t have permission to merge leads, the merged lead would have too many contacts or custom objects, or either lead is already being merged.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.LeadsMergeRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.MergeLeadsRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.LeadsMergeRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.MergeLeadsRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

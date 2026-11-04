@@ -17378,6 +17378,7 @@
           "leads"
         ],
         "summary": "List Leads",
+        "description": "List the leads in your organization, most recently updated first. Only leads you have access to are returned.\n\nResults come from the search index, so a lead you just created or updated may not appear immediately.\n\nUse `_fields` to return only the fields you need, or `_fields=_all` to also include optional fields such as `primary_email`, `primary_phone` and `contact_ids`. Custom field values appear as `custom.{custom_field_id}` keys.\n\nResults are paginated with `_limit` and `_skip`.\n\nTo filter leads, use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering).\nTo retrieve more leads than this endpoint allows, use [Exports](https://developer.close.com/api/resources/exports).",
         "parameters": [
           {
             "in": "query",
@@ -17413,12 +17414,10 @@
                   "data": [
                     {
                       "addresses": [],
-                      "contact_ids": [
-                        "cont_o0kP3Nqyq0wxr5DLWIEm8mVr6ZpI0AhonKLDG0V5Qjh"
-                      ],
                       "contacts": [
                         {
                           "created_by": null,
+                          "created_by_agent_id": null,
                           "custom.cf_j0P7kHmgFTZZnYBFtyPSZ3uQw4dpW8xKcW7Krps8atj": "CEO",
                           "date_created": "2013-02-01T00:54:51.331000+00:00",
                           "date_updated": "2013-02-06T20:53:01.954000+00:00",
@@ -17431,20 +17430,34 @@
                             }
                           ],
                           "id": "cont_o0kP3Nqyq0wxr5DLWIEm8mVr6ZpI0AhonKLDG0V5Qjh",
+                          "integration_links": [
+                            {
+                              "name": "Google search",
+                              "url": "https://www.google.com/search?q=Bruce%20Wayne"
+                            }
+                          ],
+                          "lead_id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
                           "name": "Bruce Wayne",
                           "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                           "phones": [
                             {
+                              "country": "US",
                               "phone": "+16503334444",
                               "phone_formatted": "+1 650-333-4444",
                               "type": "office"
                             }
                           ],
+                          "timezone": "America/Los_Angeles",
+                          "timezone_source": "inferred_from_phone_number",
                           "title": "The Dark Knight",
-                          "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                          "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                          "updated_by_agent_id": null,
+                          "urls": []
                         }
                       ],
                       "created_by": null,
+                      "created_by_agent_id": null,
+                      "created_by_name": null,
                       "custom.cf_ORxgoOQ5YH1p7lDQzFJ88b4z0j7PLLTRaG66m8bmcKv": "Website contact form",
                       "custom.cf_nenE344jkwrjyRRezwsf8b4V1MCoXWIDHIStmFavZks": [
                         "Choice 1",
@@ -17456,20 +17469,26 @@
                       "display_name": "Wayne Enterprises (Sample Lead)",
                       "html_url": "https://app.close.com/lead/lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O/",
                       "id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
+                      "integration_links": [],
                       "name": "Wayne Enterprises (Sample Lead)",
                       "opportunities": [
                         {
                           "annualized_expected_value": 37500,
                           "annualized_value": 50000,
+                          "attachments": [],
                           "confidence": 75,
                           "contact_id": null,
+                          "contact_name": null,
                           "created_by": null,
+                          "created_by_agent_id": null,
+                          "created_by_name": null,
                           "date_created": "2013-02-01T00:54:51.337000+00:00",
                           "date_lost": null,
                           "date_updated": "2013-02-01T00:54:51.337000+00:00",
                           "date_won": null,
                           "expected_value": 37500,
                           "id": "oppo_8eB77gAdf8FMy6GsNHEy84f7uoeEWv55slvUjKQZpJt",
+                          "integration_links": [],
                           "lead_id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
                           "lead_name": "Wayne Enterprises (Sample Lead)",
                           "note": "Bruce needs new software for the Bat Cave.",
@@ -17477,10 +17496,13 @@
                           "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                           "pipeline_id": "pipe_04fC628PVB0HjK2Qq5EqEf",
                           "pipeline_name": "Sales",
+                          "status_display_name": "Active",
                           "status_id": "stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                           "status_label": "Active",
                           "status_type": "active",
                           "updated_by": null,
+                          "updated_by_agent_id": null,
+                          "updated_by_name": null,
                           "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                           "user_name": "John Doe",
                           "value": 50000,
@@ -17491,15 +17513,20 @@
                         {
                           "annualized_expected_value": 45000,
                           "annualized_value": 60000,
+                          "attachments": [],
                           "confidence": 75,
                           "contact_id": null,
+                          "contact_name": null,
                           "created_by": null,
+                          "created_by_agent_id": null,
+                          "created_by_name": null,
                           "date_created": "2013-02-01T00:54:51.337000+00:00",
                           "date_lost": null,
                           "date_updated": "2013-02-01T00:54:51.337000+00:00",
                           "date_won": null,
                           "expected_value": 3750,
                           "id": "oppo_klajsdflf8FMy6GsNHEy84f7uoeEWv55slvUjKQZpJt",
+                          "integration_links": [],
                           "lead_id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
                           "lead_name": "Wayne Enterprises (Sample Lead)",
                           "note": "Bat Cave monthly maintenance cost",
@@ -17507,10 +17534,13 @@
                           "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                           "pipeline_id": "pipe_04fC628PVB0HjK2Qq5EqEf",
                           "pipeline_name": "Sales",
+                          "status_display_name": "Active",
                           "status_id": "stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                           "status_label": "Active",
                           "status_type": "active",
                           "updated_by": null,
+                          "updated_by_agent_id": null,
+                          "updated_by_name": null,
                           "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                           "user_name": "John Doe",
                           "value": 5000,
@@ -17524,6 +17554,8 @@
                       "status_label": "Potential",
                       "tasks": [],
                       "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_agent_id": null,
+                      "updated_by_name": "John Doe",
                       "url": null
                     }
                   ],
@@ -17640,12 +17672,10 @@
                       "zipcode": "94103"
                     }
                   ],
-                  "contact_ids": [
-                    "cont_qpjDKxbN3WWsuhaJjg2Qr9pkqHqe1yviZ5BS0dEyz05"
-                  ],
                   "contacts": [
                     {
                       "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_agent_id": null,
                       "date_created": "2013-02-20T05:30:24.844000+00:00",
                       "date_updated": "2013-02-20T05:30:24.844000+00:00",
                       "display_name": "Gob",
@@ -17657,20 +17687,34 @@
                         }
                       ],
                       "id": "cont_qpjDKxbN3WWsuhaJjg2Qr9pkqHqe1yviZ5BS0dEyz05",
+                      "integration_links": [
+                        {
+                          "name": "Google search",
+                          "url": "https://www.google.com/search?q=Gob"
+                        }
+                      ],
+                      "lead_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
                       "name": "Gob",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "phones": [
                         {
+                          "country": "US",
                           "phone": "+18004445555",
                           "phone_formatted": "+1 800-444-5555",
                           "type": "office"
                         }
                       ],
+                      "timezone": null,
+                      "timezone_source": null,
                       "title": "sr. vice president",
-                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_agent_id": null,
+                      "urls": []
                     }
                   ],
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "created_by_agent_id": null,
+                  "created_by_name": "John Doe",
                   "custom.cf_FSYEbxYJFsnY9tN1OTAPIF33j7Sw5Lb7Eawll7JzoNh": "Segway",
                   "custom.cf_ORxgoOQ5YH1p7lDQzFJ88b4z0j7PLLTRaG66m8bmcKv": "Website contact form",
                   "custom.cf_bA7SU4vqaefQLuK5UjZMVpbfHK4SVujTJ9unKCIlTvI": "Real Estate",
@@ -17684,6 +17728,7 @@
                   "display_name": "Bluth Company",
                   "html_url": "https://app.close.com/lead/lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty/",
                   "id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
+                  "integration_links": [],
                   "name": "Bluth Company",
                   "opportunities": [],
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
@@ -17691,6 +17736,8 @@
                   "status_label": "Potential",
                   "tasks": [],
                   "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "updated_by_agent_id": null,
+                  "updated_by_name": "John Doe",
                   "url": "http://thebluthcompany.tumblr.com/"
                 },
                 "schema": {
@@ -17722,13 +17769,16 @@
           "leads"
         ],
         "summary": "Merge two leads",
-        "description": "For details and definitions of 'source' and 'destination', see the Merge Leads feature in the UI.",
+        "description": "Merge the source lead into the destination lead. The source lead's contacts, opportunities, activities, tasks, custom objects, addresses and custom field values move to the destination lead, and the source lead is then deleted. This can't be undone.\n\nWhen both leads have a value, the destination lead's value is kept. The source lead's name, status, description and URL are only copied over when the destination lead's are empty. Contacts and custom objects that match across both leads are combined instead of duplicated.\n\nThe merge runs in the background. This request returns as soon as the merge is queued, and both leads get a Lead Merge activity that shows its progress. Neither lead can be merged again until the merge finishes.\n\nRequires the Merge Leads permission. Returns `404` if either lead doesn't exist, `403` if you don't have access to either lead, and `400` if both IDs are the same lead, you don't have permission to merge leads, the merged lead would have too many contacts or custom objects, or either lead is already being merged.",
         "requestBody": {
           "content": {
             "application/json": {
               "example": {
                 "destination": "lead_6ivpsIOFYDEwCUz8sdftdoWqlKpLSNOAg9glZSLvZEG",
                 "source": "lead_JCTqyXSXD42eGO6PlWOe5ase8VRDCpE7ITYti8Th2Ei"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/MergeLeadsRequest"
               }
             }
           },
@@ -17736,6 +17786,16 @@
         },
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "ok"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/MergeLeadsResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -17746,6 +17806,16 @@
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NestedValidationErrors"
+                }
+              }
+            },
+            "description": "The source or destination lead doesn't exist."
           },
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
@@ -17760,6 +17830,7 @@
           "leads"
         ],
         "summary": "Get a single Lead",
+        "description": "Fetch a single lead by ID.\n\nReturns `404` if the lead doesn't exist, and `403` if it exists but you don't have access to it.\n\nUse `_fields` to return only the fields you need, or `_fields=_all` to also include optional fields such as `primary_email`, `primary_phone` and `contact_ids`. Custom field values appear as `custom.{custom_field_id}` keys.",
         "parameters": [
           {
             "in": "path",
@@ -17779,12 +17850,10 @@
               "application/json": {
                 "example": {
                   "addresses": [],
-                  "contact_ids": [
-                    "cont_o0kP3Nqyq0wxr5DLWIEm8mVr6ZpI0AhonKLDG0V5Qjh"
-                  ],
                   "contacts": [
                     {
                       "created_by": null,
+                      "created_by_agent_id": null,
                       "custom.cf_j0P7kHmgFTZZnYBFtyPSZ3uQw4dpW8xKcW7Krps8atj": "CEO",
                       "date_created": "2013-02-01T00:54:51.331000+00:00",
                       "date_updated": "2013-02-06T20:53:01.954000+00:00",
@@ -17797,20 +17866,34 @@
                         }
                       ],
                       "id": "cont_o0kP3Nqyq0wxr5DLWIEm8mVr6ZpI0AhonKLDG0V5Qjh",
+                      "integration_links": [
+                        {
+                          "name": "Google search",
+                          "url": "https://www.google.com/search?q=Bruce%20Wayne"
+                        }
+                      ],
+                      "lead_id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
                       "name": "Bruce Wayne",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "phones": [
                         {
+                          "country": "US",
                           "phone": "+16503334444",
                           "phone_formatted": "+1 650-333-4444",
                           "type": "office"
                         }
                       ],
+                      "timezone": "America/Los_Angeles",
+                      "timezone_source": "inferred_from_phone_number",
                       "title": "The Dark Knight",
-                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_agent_id": null,
+                      "urls": []
                     }
                   ],
                   "created_by": null,
+                  "created_by_agent_id": null,
+                  "created_by_name": null,
                   "custom.cf_ORxgoOQ5YH1p7lDQzFJ88b4z0j7PLLTRaG66m8bmcKv": "Website contact form",
                   "custom.cf_nenE344jkwrjyRRezwsf8b4V1MCoXWIDHIStmFavZks": [
                     "Choice 1",
@@ -17822,20 +17905,26 @@
                   "display_name": "Wayne Enterprises (Sample Lead)",
                   "html_url": "https://app.close.com/lead/lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O/",
                   "id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
+                  "integration_links": [],
                   "name": "Wayne Enterprises (Sample Lead)",
                   "opportunities": [
                     {
                       "annualized_expected_value": 37500,
                       "annualized_value": 50000,
+                      "attachments": [],
                       "confidence": 75,
                       "contact_id": null,
+                      "contact_name": null,
                       "created_by": null,
+                      "created_by_agent_id": null,
+                      "created_by_name": null,
                       "date_created": "2013-02-01T00:54:51.337000+00:00",
                       "date_lost": null,
                       "date_updated": "2013-02-01T00:54:51.337000+00:00",
                       "date_won": null,
                       "expected_value": 37500,
                       "id": "oppo_8eB77gAdf8FMy6GsNHEy84f7uoeEWv55slvUjKQZpJt",
+                      "integration_links": [],
                       "lead_id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
                       "lead_name": "Wayne Enterprises (Sample Lead)",
                       "note": "Bruce needs new software for the Bat Cave.",
@@ -17843,10 +17932,13 @@
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "pipeline_id": "pipe_04fC628PVB0HjK2Qq5EqEf",
                       "pipeline_name": "Sales",
+                      "status_display_name": "Active",
                       "status_id": "stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                       "status_label": "Active",
                       "status_type": "active",
                       "updated_by": null,
+                      "updated_by_agent_id": null,
+                      "updated_by_name": null,
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "user_name": "John Doe",
                       "value": 50000,
@@ -17857,15 +17949,20 @@
                     {
                       "annualized_expected_value": 45000,
                       "annualized_value": 60000,
+                      "attachments": [],
                       "confidence": 75,
                       "contact_id": null,
+                      "contact_name": null,
                       "created_by": null,
+                      "created_by_agent_id": null,
+                      "created_by_name": null,
                       "date_created": "2013-02-01T00:54:51.337000+00:00",
                       "date_lost": null,
                       "date_updated": "2013-02-01T00:54:51.337000+00:00",
                       "date_won": null,
                       "expected_value": 3750,
                       "id": "oppo_klajsdflf8FMy6GsNHEy84f7uoeEWv55slvUjKQZpJt",
+                      "integration_links": [],
                       "lead_id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
                       "lead_name": "Wayne Enterprises (Sample Lead)",
                       "note": "Bat Cave monthly maintenance cost",
@@ -17873,10 +17970,13 @@
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "pipeline_id": "pipe_04fC628PVB0HjK2Qq5EqEf",
                       "pipeline_name": "Sales",
+                      "status_display_name": "Active",
                       "status_id": "stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                       "status_label": "Active",
                       "status_type": "active",
                       "updated_by": null,
+                      "updated_by_agent_id": null,
+                      "updated_by_name": null,
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "user_name": "John Doe",
                       "value": 5000,
@@ -17890,6 +17990,8 @@
                   "status_label": "Potential",
                   "tasks": [],
                   "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "updated_by_agent_id": null,
+                  "updated_by_name": "John Doe",
                   "url": null
                 },
                 "schema": {
@@ -17949,12 +18051,10 @@
               "application/json": {
                 "example": {
                   "addresses": [],
-                  "contact_ids": [
-                    "cont_qpjDKxbN3WWsuhaJjg2Qr9pkqHqe1yviZ5BS0dEyz05"
-                  ],
                   "contacts": [
                     {
                       "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_agent_id": null,
                       "date_created": "2013-02-20T05:30:24.844000+00:00",
                       "date_updated": "2013-02-20T05:43:41.611000+00:00",
                       "display_name": "Gob",
@@ -17966,26 +18066,41 @@
                         }
                       ],
                       "id": "cont_qpjDKxbN3WWsuhaJjg2Qr9pkqHqe1yviZ5BS0dEyz05",
+                      "integration_links": [
+                        {
+                          "name": "Google search",
+                          "url": "https://www.google.com/search?q=Gob"
+                        }
+                      ],
+                      "lead_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
                       "name": "Gob",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "phones": [
                         {
+                          "country": "US",
                           "phone": "+18004445555",
                           "phone_formatted": "+1 800-444-5555",
                           "type": "office"
                         }
                       ],
+                      "timezone": null,
+                      "timezone_source": null,
                       "title": "sr. vice president",
-                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_agent_id": null,
+                      "urls": []
                     }
                   ],
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "created_by_agent_id": null,
+                  "created_by_name": "John Doe",
                   "date_created": "2013-02-20T05:30:24.854000+00:00",
                   "date_updated": "2013-02-20T05:43:41.622000+00:00",
                   "description": "Best show ever canceled.  Sad.",
                   "display_name": "Bluth Company",
                   "html_url": "https://app.close.com/lead/lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty/",
                   "id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
+                  "integration_links": [],
                   "name": "Bluth Company",
                   "opportunities": [],
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
@@ -17993,6 +18108,8 @@
                   "status_label": "Potential",
                   "tasks": [],
                   "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "updated_by_agent_id": null,
+                  "updated_by_name": "John Doe",
                   "url": "http://thebluthcompany.tumblr.com/"
                 },
                 "schema": {
@@ -18025,6 +18142,7 @@
           "leads"
         ],
         "summary": "Delete a lead",
+        "description": "Delete a lead and all of its related data, including its contacts, opportunities, activities, tasks and custom objects. This can't be undone.\n\nThe lead's contacts are deleted right away. Everything else, including the lead itself, is deleted in the background, so the lead may still be returned for a short time after this request succeeds.\n\nReturns an empty object on success. Returns `404` if the lead doesn't exist, `403` if it exists but you don't have access to it, and `400` if you don't have permission to delete leads.",
         "parameters": [
           {
             "in": "path",
@@ -20843,6 +20961,9 @@
                   "number_formatted": "+1 650-333-5555",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                   "participant_groups": [],
+                  "participants": [
+                    "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                  ],
                   "press_1_to_accept": false,
                   "sms_enabled": true,
                   "supports_mms_to_countries": [
@@ -20929,6 +21050,9 @@
                   "number_formatted": "+1 650-333-5555",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                   "participant_groups": [],
+                  "participants": [
+                    "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                  ],
                   "press_1_to_accept": false,
                   "sms_enabled": true,
                   "supports_mms_to_countries": [
@@ -21034,6 +21158,9 @@
                   "number_formatted": "+1 650-333-5555",
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                   "participant_groups": [],
+                  "participants": [
+                    "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                  ],
                   "press_1_to_accept": false,
                   "sms_enabled": true,
                   "supports_mms_to_countries": [
@@ -41624,6 +41751,7 @@
         "properties": {
           "addresses": {
             "title": "Addresses",
+            "description": "Addresses of the lead",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/LeadAddress"
@@ -41631,6 +41759,7 @@
           },
           "contact_ids": {
             "title": "Contact IDs",
+            "description": "IDs of the lead's contacts, in the same order as `contacts`. Only returned when requested in `_fields`.",
             "type": "array",
             "items": {
               "type": "string"
@@ -41638,6 +41767,7 @@
           },
           "contacts": {
             "title": "Contacts",
+            "description": "Contacts on the lead. Deprecated: use List Contacts with `lead_id` instead.",
             "deprecated": true,
             "type": "array",
             "items": {
@@ -41646,10 +41776,12 @@
           },
           "contacts_summary": {
             "title": "Contacts Summary",
+            "description": "Display name of the lead's first contact, followed by `+N` when the lead has N more contacts, e.g. `Bruce Wayne +2`. Empty if the lead has no contacts. Only returned when requested in `_fields`.",
             "type": "string"
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the lead, e.g. `user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA`, or null if no user created it",
             "anyOf": [
               {
                 "type": "string"
@@ -41673,6 +41805,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Full name of the user who created the lead, or null if no user created it",
             "anyOf": [
               {
                 "type": "string"
@@ -41684,16 +41817,19 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the lead was created, as an ISO 8601 timestamp in UTC",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the lead was last updated, as an ISO 8601 timestamp in UTC",
             "type": "string",
             "format": "date-time"
           },
           "description": {
             "title": "Description",
+            "description": "Free-text description of the lead, or null",
             "anyOf": [
               {
                 "type": "string"
@@ -41705,25 +41841,30 @@
           },
           "display_name": {
             "title": "Display Name",
+            "description": "Name to display for the lead: the lead's `name` if set, otherwise the name, first email address or first phone number (in international format) of the first contact that has one, then `Untitled`",
             "type": "string"
           },
           "html_url": {
             "title": "HTML URL",
+            "description": "Link to the lead in the Close app",
             "type": "string"
           },
           "id": {
             "title": "ID",
+            "description": "The lead's ID, e.g. `lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O`",
             "type": "string"
           },
           "integration_links": {
             "title": "Integration Links",
+            "description": "The organization's lead integration links, rendered with this lead's data",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/RenderedIntegrationLink"
             }
           },
           "localtime": {
-            "title": "Localtime",
+            "title": "Local Time",
+            "description": "Current time in the lead's timezone, as an ISO 8601 timestamp without a UTC offset. The timezone comes from the lead's first address, or else from its contacts' timezones. Null if no timezone is known. Only returned when requested in `_fields`.",
             "anyOf": [
               {
                 "type": "string",
@@ -41736,6 +41877,7 @@
           },
           "name": {
             "title": "Name",
+            "description": "Name of the lead, usually a company name, or null if unnamed. See `display_name`.",
             "anyOf": [
               {
                 "type": "string"
@@ -41747,6 +41889,7 @@
           },
           "opportunities": {
             "title": "Opportunities",
+            "description": "Opportunities on the lead. Deprecated: use List Opportunities with `lead_id` instead.",
             "deprecated": true,
             "type": "array",
             "items": {
@@ -41755,10 +41898,12 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "The owning organization's ID, e.g. `orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH`",
             "type": "string"
           },
           "primary_address_full": {
             "title": "Primary Address Full",
+            "description": "The lead's first address on one line: the street lines, `City, State Zip` and the country name, separated by commas. Null if the lead has no address. Only returned when requested in `_fields`.",
             "anyOf": [
               {
                 "type": "string"
@@ -41770,6 +41915,7 @@
           },
           "primary_address_summary": {
             "title": "Primary Address Summary",
+            "description": "Short summary of the lead's first address: `City, State` if both are set, otherwise the city, state, country name or postal code. Null if the lead has no address. Only returned when requested in `_fields`.",
             "anyOf": [
               {
                 "type": "string"
@@ -41781,6 +41927,7 @@
           },
           "primary_email": {
             "title": "Primary Email",
+            "description": "First email address of the first contact that has one, or null if no contact has an email address. Only returned when requested in `_fields`.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/ContactEmail"
@@ -41792,6 +41939,7 @@
           },
           "primary_phone": {
             "title": "Primary Phone",
+            "description": "First phone number of the first contact that has one, or null if no contact has a phone number. Only returned when requested in `_fields`.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/ContactPhone"
@@ -41801,43 +41949,19 @@
               }
             ]
           },
-          "recent_calls": {
-            "title": "Recent Calls",
-            "type": "array",
-            "items": {
-              "type": "object",
-              "additionalProperties": true
-            }
-          },
-          "source": {
-            "title": "Source",
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "status_id": {
             "title": "Status ID",
+            "description": "ID of the lead's status, e.g. `stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk`",
             "type": "string"
           },
           "status_label": {
             "title": "Status Label",
+            "description": "Label of the lead's status, e.g. `Potential`",
             "type": "string"
-          },
-          "summaries": {
-            "title": "Summaries",
-            "type": "array",
-            "items": {
-              "type": "object",
-              "additionalProperties": true
-            }
           },
           "tasks": {
             "title": "Tasks",
+            "description": "Incomplete tasks on the lead (`_type` `lead`), soonest due first. To list all of a lead's tasks, including completed ones, use List Tasks with `lead_id`.",
             "type": "array",
             "items": {
               "type": "object",
@@ -41846,6 +41970,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the lead, e.g. `user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA`, or null if the last update wasn't made by a user",
             "anyOf": [
               {
                 "type": "string"
@@ -41869,6 +41994,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Full name of the user who last updated the lead, or null if the last update wasn't made by a user",
             "anyOf": [
               {
                 "type": "string"
@@ -41880,6 +42006,7 @@
           },
           "url": {
             "title": "URL",
+            "description": "Website of the lead, e.g. `https://close.com`, or null if unset",
             "anyOf": [
               {
                 "type": "string"
@@ -41891,7 +42018,6 @@
           }
         },
         "required": [
-          "contact_ids",
           "created_by",
           "date_created",
           "date_updated",
@@ -41915,7 +42041,8 @@
         "type": "object",
         "properties": {
           "address_1": {
-            "title": "Address 1",
+            "title": "Address Line 1",
+            "description": "First line of the street address",
             "anyOf": [
               {
                 "type": "string"
@@ -41926,7 +42053,8 @@
             ]
           },
           "address_2": {
-            "title": "Address 2",
+            "title": "Address Line 2",
+            "description": "Second line of the street address, e.g. a suite or room number",
             "anyOf": [
               {
                 "type": "string"
@@ -41938,6 +42066,7 @@
           },
           "city": {
             "title": "City",
+            "description": "City",
             "anyOf": [
               {
                 "type": "string"
@@ -41949,6 +42078,7 @@
           },
           "country": {
             "title": "Country",
+            "description": "Country code in ISO 3166-1 alpha-2 format, e.g. `US`",
             "anyOf": [
               {
                 "type": "string"
@@ -41960,6 +42090,7 @@
           },
           "label": {
             "title": "Label",
+            "description": "Type of address, e.g. `business`, `mailing` or `other`",
             "anyOf": [
               {
                 "type": "string"
@@ -41971,6 +42102,7 @@
           },
           "state": {
             "title": "State",
+            "description": "State, province or region",
             "anyOf": [
               {
                 "type": "string"
@@ -41980,15 +42112,9 @@
               }
             ]
           },
-          "tz_ids": {
-            "title": "TZ IDs",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "zipcode": {
-            "title": "Zipcode",
+            "title": "ZIP Code",
+            "description": "Postal code",
             "anyOf": [
               {
                 "type": "string"
@@ -43085,6 +43211,7 @@
           },
           "addresses": {
             "title": "Addresses",
+            "description": "Addresses of the lead",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/LeadAddress"
@@ -43092,6 +43219,7 @@
           },
           "contact_ids": {
             "title": "Contact IDs",
+            "description": "IDs of the lead's contacts, in the same order as `contacts`. Only returned when requested in `_fields`.",
             "type": "array",
             "items": {
               "type": "string"
@@ -43099,6 +43227,7 @@
           },
           "contacts": {
             "title": "Contacts",
+            "description": "Contacts on the lead. Deprecated: use List Contacts with `lead_id` instead.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Contact"
@@ -43106,10 +43235,12 @@
           },
           "contacts_summary": {
             "title": "Contacts Summary",
+            "description": "Display name of the lead's first contact, followed by `+N` when the lead has N more contacts, e.g. `Bruce Wayne +2`. Empty if the lead has no contacts. Only returned when requested in `_fields`.",
             "type": "string"
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the lead, e.g. `user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA`, or null if no user created it",
             "anyOf": [
               {
                 "type": "string"
@@ -43133,6 +43264,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Full name of the user who created the lead, or null if no user created it",
             "anyOf": [
               {
                 "type": "string"
@@ -43144,16 +43276,19 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the lead was created, as an ISO 8601 timestamp in UTC",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the lead was last updated, as an ISO 8601 timestamp in UTC",
             "type": "string",
             "format": "date-time"
           },
           "description": {
             "title": "Description",
+            "description": "Free-text description of the lead, or null",
             "anyOf": [
               {
                 "type": "string"
@@ -43165,25 +43300,30 @@
           },
           "display_name": {
             "title": "Display Name",
+            "description": "Name to display for the lead: the lead's `name` if set, otherwise the name, first email address or first phone number (in international format) of the first contact that has one, then `Untitled`",
             "type": "string"
           },
           "html_url": {
             "title": "HTML URL",
+            "description": "Link to the lead in the Close app",
             "type": "string"
           },
           "id": {
             "title": "ID",
+            "description": "The lead's ID, e.g. `lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O`",
             "type": "string"
           },
           "integration_links": {
             "title": "Integration Links",
+            "description": "The organization's lead integration links, rendered with this lead's data",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/RenderedIntegrationLink"
             }
           },
           "localtime": {
-            "title": "Localtime",
+            "title": "Local Time",
+            "description": "Current time in the lead's timezone, as an ISO 8601 timestamp without a UTC offset. The timezone comes from the lead's first address, or else from its contacts' timezones. Null if no timezone is known. Only returned when requested in `_fields`.",
             "anyOf": [
               {
                 "type": "string",
@@ -43196,6 +43336,7 @@
           },
           "name": {
             "title": "Name",
+            "description": "Name of the lead, usually a company name, or null if unnamed. See `display_name`.",
             "anyOf": [
               {
                 "type": "string"
@@ -43207,6 +43348,7 @@
           },
           "opportunities": {
             "title": "Opportunities",
+            "description": "Opportunities on the lead. Deprecated: use List Opportunities with `lead_id` instead.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Opportunity"
@@ -43214,10 +43356,12 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "The owning organization's ID, e.g. `orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH`",
             "type": "string"
           },
           "primary_address_full": {
             "title": "Primary Address Full",
+            "description": "The lead's first address on one line: the street lines, `City, State Zip` and the country name, separated by commas. Null if the lead has no address. Only returned when requested in `_fields`.",
             "anyOf": [
               {
                 "type": "string"
@@ -43229,6 +43373,7 @@
           },
           "primary_address_summary": {
             "title": "Primary Address Summary",
+            "description": "Short summary of the lead's first address: `City, State` if both are set, otherwise the city, state, country name or postal code. Null if the lead has no address. Only returned when requested in `_fields`.",
             "anyOf": [
               {
                 "type": "string"
@@ -43240,6 +43385,7 @@
           },
           "primary_email": {
             "title": "Primary Email",
+            "description": "First email address of the first contact that has one, or null if no contact has an email address. Only returned when requested in `_fields`.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/ContactEmail"
@@ -43251,6 +43397,7 @@
           },
           "primary_phone": {
             "title": "Primary Phone",
+            "description": "First phone number of the first contact that has one, or null if no contact has a phone number. Only returned when requested in `_fields`.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/ContactPhone"
@@ -43262,14 +43409,17 @@
           },
           "status_id": {
             "title": "Status ID",
+            "description": "ID of the lead's status, e.g. `stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk`",
             "type": "string"
           },
           "status_label": {
             "title": "Status Label",
+            "description": "Label of the lead's status, e.g. `Potential`",
             "type": "string"
           },
           "tasks": {
             "title": "Tasks",
+            "description": "Incomplete tasks on the lead (`_type` `lead`), soonest due first. To list all of a lead's tasks, including completed ones, use List Tasks with `lead_id`.",
             "type": "array",
             "items": {
               "type": "object",
@@ -43278,6 +43428,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the lead, e.g. `user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA`, or null if the last update wasn't made by a user",
             "anyOf": [
               {
                 "type": "string"
@@ -43301,6 +43452,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Full name of the user who last updated the lead, or null if the last update wasn't made by a user",
             "anyOf": [
               {
                 "type": "string"
@@ -43312,6 +43464,7 @@
           },
           "url": {
             "title": "URL",
+            "description": "Website of the lead, e.g. `https://close.com`, or null if unset",
             "anyOf": [
               {
                 "type": "string"
@@ -45461,6 +45614,44 @@
           "image",
           "last_name",
           "totp_auth_state"
+        ]
+      },
+      "MergeLeadsRequest": {
+        "title": "MergeLeadsRequest",
+        "type": "object",
+        "properties": {
+          "destination": {
+            "title": "Destination",
+            "description": "ID of the lead to merge into, e.g. `lead_6ivpsIOFYDEwCUz8sdftdoWqlKpLSNOAg9glZSLvZEG`. This lead is kept, and its values win when both leads have one.",
+            "type": "string",
+            "minLength": 1
+          },
+          "source": {
+            "title": "Source",
+            "description": "ID of the lead to merge from, e.g. `lead_JCTqyXSXD42eGO6PlWOe5ase8VRDCpE7ITYti8Th2Ei`. Its data moves to the destination lead, and it is then deleted.",
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "destination",
+          "source"
+        ],
+        "additionalProperties": true
+      },
+      "MergeLeadsResponse": {
+        "title": "MergeLeadsResponse",
+        "type": "object",
+        "properties": {
+          "status": {
+            "title": "Status",
+            "description": "Always `ok`. The merge has been queued and runs in the background.",
+            "type": "string",
+            "const": "ok"
+          }
+        },
+        "required": [
+          "status"
         ]
       },
       "MessageStatus": {
@@ -48358,6 +48549,7 @@
           "number_formatted",
           "organization_id",
           "participant_groups",
+          "participants",
           "sms_enabled",
           "supports_mms_to_countries",
           "supports_sms_to_countries",
@@ -51188,6 +51380,19 @@
               }
             ]
           },
+          "created_by_agent_id": {
+            "title": "Created By Agent ID",
+            "description": "ID of the agent that completed the task, or null if no agent completed it.",
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "created_by_name": {
             "title": "Created By Name",
             "default": null,
@@ -51408,6 +51613,18 @@
           },
           "created_by": {
             "title": "Created By",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_by_agent_id": {
+            "title": "Created By Agent ID",
+            "description": "ID of the agent that completed the task, or null if no agent completed it.",
             "anyOf": [
               {
                 "type": "string"

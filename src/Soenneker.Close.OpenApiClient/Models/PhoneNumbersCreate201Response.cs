@@ -67,6 +67,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
             if (parseNode.GetChildNode("participant_groups") is null) { _explicitNullValueParticipantGroups = default!; _explicitNullProperties?.Remove("participant_groups"); }
             else if (parseNode.GetChildNode("participant_groups") is { } nullNodeParticipantGroups && nullNodeParticipantGroups.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParticipantGroups = null;
+            if (parseNode.GetChildNode("participants") is null) { _explicitNullValueParticipants = default!; _explicitNullProperties?.Remove("participants"); }
+            else if (parseNode.GetChildNode("participants") is { } nullNodeParticipants && nullNodeParticipants.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Participants = null;
             if (parseNode.GetChildNode("press_1_to_accept") is null) { _explicitNullValuePress1ToAccept = default!; _explicitNullProperties?.Remove("press_1_to_accept"); }
             else if (parseNode.GetChildNode("press_1_to_accept") is { } nullNodePress1ToAccept && nullNodePress1ToAccept.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Press1ToAccept = null;
             if (parseNode.GetChildNode("sms_enabled") is null) { _explicitNullValueSmsEnabled = default!; _explicitNullProperties?.Remove("sms_enabled"); }
@@ -290,6 +292,16 @@ namespace Soenneker.Close.OpenApiClient.Models
         public UntypedNode ParticipantGroups { get => _explicitNullValueParticipantGroups; set { _explicitNullValueParticipantGroups = value; AdditionalData?.Remove("participant_groups"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("participant_groups"); else _explicitNullProperties?.Remove("participant_groups"); } }
         private UntypedNode _explicitNullValueParticipantGroups = default!;
 #endif
+        /// <summary>The participants property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Participants { get => _explicitNullValueParticipants; set { _explicitNullValueParticipants = value; AdditionalData?.Remove("participants"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("participants"); else _explicitNullProperties?.Remove("participants"); } }
+        private List<string>? _explicitNullValueParticipants = default!;
+#nullable restore
+#else
+        public List<string> Participants { get => _explicitNullValueParticipants; set { _explicitNullValueParticipants = value; AdditionalData?.Remove("participants"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("participants"); else _explicitNullProperties?.Remove("participants"); } }
+        private List<string> _explicitNullValueParticipants = default!;
+#endif
         /// <summary>The press_1_to_accept property</summary>
         public bool? Press1ToAccept { get => _explicitNullValuePress1ToAccept; set { _explicitNullValuePress1ToAccept = value; AdditionalData?.Remove("press_1_to_accept"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("press_1_to_accept"); else _explicitNullProperties?.Remove("press_1_to_accept"); } }
         private bool? _explicitNullValuePress1ToAccept = default!;
@@ -402,6 +414,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "number_formatted", n => { NumberFormatted = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "participant_groups", n => { ParticipantGroups = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "participants", n => { Participants = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "press_1_to_accept", n => { Press1ToAccept = n.GetBoolValue(); } },
                 { "sms_enabled", n => { SmsEnabled = n.GetBoolValue(); } },
                 { "supports_mms_to_countries", n => { SupportsMmsToCountries = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -445,6 +458,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("number_formatted", NumberFormatted);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteObjectValue<UntypedNode>("participant_groups", ParticipantGroups);
+            writer.WriteCollectionOfPrimitiveValues<string>("participants", Participants);
             writer.WriteBoolValue("press_1_to_accept", Press1ToAccept);
             writer.WriteBoolValue("sms_enabled", SmsEnabled);
             writer.WriteCollectionOfPrimitiveValues<string>("supports_mms_to_countries", SupportsMmsToCountries);

@@ -34,7 +34,7 @@ namespace Soenneker.Close.OpenApiClient.Lead.Item
         {
         }
         /// <summary>
-        /// Delete a lead
+        /// Delete a lead and all of its related data, including its contacts, opportunities, activities, tasks and custom objects. This can&apos;t be undone.The lead&apos;s contacts are deleted right away. Everything else, including the lead itself, is deleted in the background, so the lead may still be returned for a short time after this request succeeds.Returns an empty object on success. Returns `404` if the lead doesn&apos;t exist, `403` if it exists but you don&apos;t have access to it, and `400` if you don&apos;t have permission to delete leads.
         /// </summary>
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -67,7 +67,7 @@ namespace Soenneker.Close.OpenApiClient.Lead.Item
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get a single Lead
+        /// Fetch a single lead by ID.Returns `404` if the lead doesn&apos;t exist, and `403` if it exists but you don&apos;t have access to it.Use `_fields` to return only the fields you need, or `_fields=_all` to also include optional fields such as `primary_email`, `primary_phone` and `contact_ids`. Custom field values appear as `custom.{custom_field_id}` keys.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.Lead"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -135,7 +135,7 @@ namespace Soenneker.Close.OpenApiClient.Lead.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.Lead>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.Lead.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete a lead
+        /// Delete a lead and all of its related data, including its contacts, opportunities, activities, tasks and custom objects. This can&apos;t be undone.The lead&apos;s contacts are deleted right away. Everything else, including the lead itself, is deleted in the background, so the lead may still be returned for a short time after this request succeeds.Returns an empty object on success. Returns `404` if the lead doesn&apos;t exist, `403` if it exists but you don&apos;t have access to it, and `400` if you don&apos;t have permission to delete leads.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -154,7 +154,7 @@ namespace Soenneker.Close.OpenApiClient.Lead.Item
             return requestInfo;
         }
         /// <summary>
-        /// Get a single Lead
+        /// Fetch a single lead by ID.Returns `404` if the lead doesn&apos;t exist, and `403` if it exists but you don&apos;t have access to it.Use `_fields` to return only the fields you need, or `_fields=_all` to also include optional fields such as `primary_email`, `primary_phone` and `contact_ids`. Custom field values appear as `custom.{custom_field_id}` keys.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -204,7 +204,7 @@ namespace Soenneker.Close.OpenApiClient.Lead.Item
             return new global::Soenneker.Close.OpenApiClient.Lead.Item.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get a single Lead
+        /// Fetch a single lead by ID.Returns `404` if the lead doesn&apos;t exist, and `403` if it exists but you don&apos;t have access to it.Use `_fields` to return only the fields you need, or `_fields=_all` to also include optional fields such as `primary_email`, `primary_phone` and `contact_ids`. Custom field values appear as `custom.{custom_field_id}` keys.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 

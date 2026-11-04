@@ -34,7 +34,7 @@ namespace Soenneker.Close.OpenApiClient.Lead
         {
         }
         /// <summary>
-        /// List Leads
+        /// List the leads in your organization, most recently updated first. Only leads you have access to are returned.Results come from the search index, so a lead you just created or updated may not appear immediately.Use `_fields` to return only the fields you need, or `_fields=_all` to also include optional fields such as `primary_email`, `primary_phone` and `contact_ids`. Custom field values appear as `custom.{custom_field_id}` keys.Results are paginated with `_limit` and `_skip`.To filter leads, use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering).To retrieve more leads than this endpoint allows, use [Exports](https://developer.close.com/api/resources/exports).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.LeadsList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -98,7 +98,7 @@ namespace Soenneker.Close.OpenApiClient.Lead
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.Lead>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.Lead.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List Leads
+        /// List the leads in your organization, most recently updated first. Only leads you have access to are returned.Results come from the search index, so a lead you just created or updated may not appear immediately.Use `_fields` to return only the fields you need, or `_fields=_all` to also include optional fields such as `primary_email`, `primary_phone` and `contact_ids`. Custom field values appear as `custom.{custom_field_id}` keys.Results are paginated with `_limit` and `_skip`.To filter leads, use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering).To retrieve more leads than this endpoint allows, use [Exports](https://developer.close.com/api/resources/exports).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -148,7 +148,7 @@ namespace Soenneker.Close.OpenApiClient.Lead
             return new global::Soenneker.Close.OpenApiClient.Lead.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List Leads
+        /// List the leads in your organization, most recently updated first. Only leads you have access to are returned.Results come from the search index, so a lead you just created or updated may not appear immediately.Use `_fields` to return only the fields you need, or `_fields=_all` to also include optional fields such as `primary_email`, `primary_phone` and `contact_ids`. Custom field values appear as `custom.{custom_field_id}` keys.Results are paginated with `_limit` and `_skip`.To filter leads, use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering).To retrieve more leads than this endpoint allows, use [Exports](https://developer.close.com/api/resources/exports).
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
