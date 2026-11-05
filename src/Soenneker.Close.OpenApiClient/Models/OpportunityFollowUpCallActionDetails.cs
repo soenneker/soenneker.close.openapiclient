@@ -25,7 +25,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The call_plan property</summary>
+        /// <summary>Suggested talking points for the follow-up call</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CallPlan { get => _explicitNullValueCallPlan; set { _explicitNullValueCallPlan = value; AdditionalData?.Remove("call_plan"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("call_plan"); else _explicitNullProperties?.Remove("call_plan"); } }
@@ -35,7 +35,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string CallPlan { get => _explicitNullValueCallPlan; set { _explicitNullValueCallPlan = value; AdditionalData?.Remove("call_plan"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("call_plan"); else _explicitNullProperties?.Remove("call_plan"); } }
         private string _explicitNullValueCallPlan = default!;
 #endif
-        /// <summary>The contact_id property</summary>
+        /// <summary>ID of the contact to call</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ContactId { get => _explicitNullValueContactId; set { _explicitNullValueContactId = value; AdditionalData?.Remove("contact_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact_id"); else _explicitNullProperties?.Remove("contact_id"); } }

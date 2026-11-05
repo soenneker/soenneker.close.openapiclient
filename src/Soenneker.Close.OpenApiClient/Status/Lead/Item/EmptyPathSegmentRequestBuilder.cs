@@ -34,9 +34,9 @@ namespace Soenneker.Close.OpenApiClient.Status.Lead.Item
         {
         }
         /// <summary>
-        /// You should make sure no leads are assigned this status, first.
+        /// Delete a lead status. Returns an empty object on success.Returns 400 if any leads still have this status, so move them to another status first. Also returns 400 if this is the organization&apos;s last lead status. Requires the Manage Customizations permission, otherwise returns 403.
         /// </summary>
-        /// <returns>A <see cref="Stream"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.LeadStatusesDelete200ResponseSchema"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.BadRequestResponseError">When receiving a 400 status code</exception>
@@ -46,11 +46,11 @@ namespace Soenneker.Close.OpenApiClient.Status.Lead.Item
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.LeadStatusesDelete200ResponseSchema?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.LeadStatusesDelete200ResponseSchema> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
@@ -64,10 +64,10 @@ namespace Soenneker.Close.OpenApiClient.Status.Lead.Item
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.LeadStatusesDelete200ResponseSchema>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.LeadStatusesDelete200ResponseSchema.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Fetch a single lead status
+        /// Fetch a single lead status by its ID or its label. The `id` path param is matched against status IDs first, then against labels, ignoring case in both. Returns 404 if no status matches.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.LeadStatus"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -100,7 +100,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Lead.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.LeadStatus>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.LeadStatus.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a lead status. The `label` and `color` can be changed. To update the status of a particular lead, see PUT `/lead/{lead_id}/`.
+        /// Rename a lead status or change its color. Send `label` on every update, even when you only change `color`. Leads that use the status keep it, and show the new label. Returns 400 if another status already has the same label (ignoring case). Requires the Manage Customizations permission, otherwise returns 403.To change the status of a particular lead, see PUT `/lead/{lead_id}/`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.LeadStatus"/></returns>
         /// <param name="body">The request body</param>
@@ -135,7 +135,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Lead.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.LeadStatus>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.LeadStatus.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// You should make sure no leads are assigned this status, first.
+        /// Delete a lead status. Returns an empty object on success.Returns 400 if any leads still have this status, so move them to another status first. Also returns 400 if this is the organization&apos;s last lead status. Requires the Manage Customizations permission, otherwise returns 403.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -154,7 +154,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Lead.Item
             return requestInfo;
         }
         /// <summary>
-        /// Fetch a single lead status
+        /// Fetch a single lead status by its ID or its label. The `id` path param is matched against status IDs first, then against labels, ignoring case in both. Returns 404 if no status matches.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -173,7 +173,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Lead.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update a lead status. The `label` and `color` can be changed. To update the status of a particular lead, see PUT `/lead/{lead_id}/`.
+        /// Rename a lead status or change its color. Send `label` on every update, even when you only change `color`. Leads that use the status keep it, and show the new label. Returns 400 if another status already has the same label (ignoring case). Requires the Manage Customizations permission, otherwise returns 403.To change the status of a particular lead, see PUT `/lead/{lead_id}/`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

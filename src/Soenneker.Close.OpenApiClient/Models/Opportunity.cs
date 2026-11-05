@@ -24,8 +24,6 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("annualized_value") is { } nullNodeAnnualizedValue && nullNodeAnnualizedValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnnualizedValue = null;
             if (parseNode.GetChildNode("attachments") is null) { _explicitNullValueAttachments = default!; _explicitNullProperties?.Remove("attachments"); }
             else if (parseNode.GetChildNode("attachments") is { } nullNodeAttachments && nullNodeAttachments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Attachments = null;
-            if (parseNode.GetChildNode("comment_summary") is null) { _explicitNullValueCommentSummary = default!; _explicitNullProperties?.Remove("comment_summary"); }
-            else if (parseNode.GetChildNode("comment_summary") is { } nullNodeCommentSummary && nullNodeCommentSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CommentSummary = null;
             if (parseNode.GetChildNode("confidence") is null) { _explicitNullValueConfidence = default!; _explicitNullProperties?.Remove("confidence"); }
             else if (parseNode.GetChildNode("confidence") is { } nullNodeConfidence && nullNodeConfidence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Confidence = null;
             if (parseNode.GetChildNode("contact_id") is null) { _explicitNullValueContactId = default!; _explicitNullProperties?.Remove("contact_id"); }
@@ -106,13 +104,13 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Annualized expected value in cents.</summary>
+        /// <summary>`expected_value` as a yearly amount, in cents: multiplied by 12 when `value_period` is `monthly`, unchanged otherwise.</summary>
         public int? AnnualizedExpectedValue { get => _explicitNullValueAnnualizedExpectedValue; set { _explicitNullValueAnnualizedExpectedValue = value; AdditionalData?.Remove("annualized_expected_value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("annualized_expected_value"); else _explicitNullProperties?.Remove("annualized_expected_value"); } }
         private int? _explicitNullValueAnnualizedExpectedValue = default!;
-        /// <summary>Annualized value in cents.</summary>
+        /// <summary>`value` as a yearly amount, in cents: multiplied by 12 when `value_period` is `monthly`, unchanged otherwise.</summary>
         public int? AnnualizedValue { get => _explicitNullValueAnnualizedValue; set { _explicitNullValueAnnualizedValue = value; AdditionalData?.Remove("annualized_value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("annualized_value"); else _explicitNullProperties?.Remove("annualized_value"); } }
         private int? _explicitNullValueAnnualizedValue = default!;
-        /// <summary>The attachments property</summary>
+        /// <summary>Files attached to the opportunity</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.Attachment>? Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; AdditionalData?.Remove("attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
@@ -122,20 +120,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<global::Soenneker.Close.OpenApiClient.Models.Attachment> Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; AdditionalData?.Remove("attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.Attachment> _explicitNullValueAttachments = default!;
 #endif
-        /// <summary>The comment_summary property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary? CommentSummary { get => _explicitNullValueCommentSummary; set { _explicitNullValueCommentSummary = value; AdditionalData?.Remove("comment_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment_summary"); else _explicitNullProperties?.Remove("comment_summary"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary? _explicitNullValueCommentSummary = default!;
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary CommentSummary { get => _explicitNullValueCommentSummary; set { _explicitNullValueCommentSummary = value; AdditionalData?.Remove("comment_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment_summary"); else _explicitNullProperties?.Remove("comment_summary"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary _explicitNullValueCommentSummary = default!;
-#endif
-        /// <summary>The confidence property</summary>
+        /// <summary>Likelihood of winning the opportunity, as a percentage from 0 to 100. Always 100 when `status_type` is `won` and 0 when it is `lost`.</summary>
         public int? Confidence { get => _explicitNullValueConfidence; set { _explicitNullValueConfidence = value; AdditionalData?.Remove("confidence"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confidence"); else _explicitNullProperties?.Remove("confidence"); } }
         private int? _explicitNullValueConfidence = default!;
-        /// <summary>The contact_id property</summary>
+        /// <summary>ID of the contact that the opportunity is associated with, e.g. `cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ContactId { get => _explicitNullValueContactId; set { _explicitNullValueContactId = value; AdditionalData?.Remove("contact_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact_id"); else _explicitNullProperties?.Remove("contact_id"); } }
@@ -145,7 +133,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ContactId { get => _explicitNullValueContactId; set { _explicitNullValueContactId = value; AdditionalData?.Remove("contact_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact_id"); else _explicitNullProperties?.Remove("contact_id"); } }
         private string _explicitNullValueContactId = default!;
 #endif
-        /// <summary>The contact_name property</summary>
+        /// <summary>Full name of the opportunity&apos;s contact</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ContactName { get => _explicitNullValueContactName; set { _explicitNullValueContactName = value; AdditionalData?.Remove("contact_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact_name"); else _explicitNullProperties?.Remove("contact_name"); } }
@@ -155,7 +143,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ContactName { get => _explicitNullValueContactName; set { _explicitNullValueContactName = value; AdditionalData?.Remove("contact_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact_name"); else _explicitNullProperties?.Remove("contact_name"); } }
         private string _explicitNullValueContactName = default!;
 #endif
-        /// <summary>The created_by property</summary>
+        /// <summary>ID of the user who created the opportunity, e.g. `user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
@@ -175,7 +163,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string CreatedByAgentId { get => _explicitNullValueCreatedByAgentId; set { _explicitNullValueCreatedByAgentId = value; AdditionalData?.Remove("created_by_agent_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by_agent_id"); else _explicitNullProperties?.Remove("created_by_agent_id"); } }
         private string _explicitNullValueCreatedByAgentId = default!;
 #endif
-        /// <summary>The created_by_name property</summary>
+        /// <summary>Full name of the user who created the opportunity</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatedByName { get => _explicitNullValueCreatedByName; set { _explicitNullValueCreatedByName = value; AdditionalData?.Remove("created_by_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by_name"); else _explicitNullProperties?.Remove("created_by_name"); } }
@@ -185,22 +173,22 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string CreatedByName { get => _explicitNullValueCreatedByName; set { _explicitNullValueCreatedByName = value; AdditionalData?.Remove("created_by_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by_name"); else _explicitNullProperties?.Remove("created_by_name"); } }
         private string _explicitNullValueCreatedByName = default!;
 #endif
-        /// <summary>The date_created property</summary>
+        /// <summary>When the opportunity was created, as an ISO 8601 timestamp in UTC</summary>
         public DateTimeOffset? DateCreated { get => _explicitNullValueDateCreated; set { _explicitNullValueDateCreated = value; AdditionalData?.Remove("date_created"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_created"); else _explicitNullProperties?.Remove("date_created"); } }
         private DateTimeOffset? _explicitNullValueDateCreated = default!;
-        /// <summary>The date_lost property</summary>
+        /// <summary>When the opportunity was lost, as an ISO 8601 timestamp in UTC. Set automatically when the opportunity moves to a `lost` status.</summary>
         public DateTimeOffset? DateLost { get => _explicitNullValueDateLost; set { _explicitNullValueDateLost = value; AdditionalData?.Remove("date_lost"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_lost"); else _explicitNullProperties?.Remove("date_lost"); } }
         private DateTimeOffset? _explicitNullValueDateLost = default!;
-        /// <summary>The date_updated property</summary>
+        /// <summary>When the opportunity was last updated, as an ISO 8601 timestamp in UTC</summary>
         public DateTimeOffset? DateUpdated { get => _explicitNullValueDateUpdated; set { _explicitNullValueDateUpdated = value; AdditionalData?.Remove("date_updated"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_updated"); else _explicitNullProperties?.Remove("date_updated"); } }
         private DateTimeOffset? _explicitNullValueDateUpdated = default!;
-        /// <summary>The date_won property</summary>
+        /// <summary>Date the opportunity was won, or is expected to close if it&apos;s still active, as an ISO 8601 date, e.g. `2013-02-20`. Set to today&apos;s date when the opportunity moves to a `won` status without one.</summary>
         public Date? DateWon { get => _explicitNullValueDateWon; set { _explicitNullValueDateWon = value; AdditionalData?.Remove("date_won"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_won"); else _explicitNullProperties?.Remove("date_won"); } }
         private Date? _explicitNullValueDateWon = default!;
-        /// <summary>Value multiplied by confidence, in cents.</summary>
+        /// <summary>`value` multiplied by `confidence`, in cents, rounded down. For example, a `value` of `300000` with 75% confidence has an expected value of `225000`.</summary>
         public int? ExpectedValue { get => _explicitNullValueExpectedValue; set { _explicitNullValueExpectedValue = value; AdditionalData?.Remove("expected_value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_value"); else _explicitNullProperties?.Remove("expected_value"); } }
         private int? _explicitNullValueExpectedValue = default!;
-        /// <summary>The id property</summary>
+        /// <summary>The opportunity&apos;s ID, e.g. `oppo_8eB77gAdf8FMy6GsNHEy84f7uoeEWv55slvUjKQZpJt`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
@@ -210,7 +198,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
-        /// <summary>The integration_links property</summary>
+        /// <summary>The organization&apos;s opportunity integration links, rendered with this opportunity&apos;s data</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.RenderedIntegrationLink>? IntegrationLinks { get => _explicitNullValueIntegrationLinks; set { _explicitNullValueIntegrationLinks = value; AdditionalData?.Remove("integration_links"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_links"); else _explicitNullProperties?.Remove("integration_links"); } }
@@ -220,10 +208,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<global::Soenneker.Close.OpenApiClient.Models.RenderedIntegrationLink> IntegrationLinks { get => _explicitNullValueIntegrationLinks; set { _explicitNullValueIntegrationLinks = value; AdditionalData?.Remove("integration_links"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_links"); else _explicitNullProperties?.Remove("integration_links"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.RenderedIntegrationLink> _explicitNullValueIntegrationLinks = default!;
 #endif
-        /// <summary>The is_stalled property</summary>
+        /// <summary>Whether Close has flagged the opportunity as stalled, and the flag hasn&apos;t been dismissed. Only returned when requested in `_fields`.</summary>
         public bool? IsStalled { get => _explicitNullValueIsStalled; set { _explicitNullValueIsStalled = value; AdditionalData?.Remove("is_stalled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_stalled"); else _explicitNullProperties?.Remove("is_stalled"); } }
         private bool? _explicitNullValueIsStalled = default!;
-        /// <summary>The lead_id property</summary>
+        /// <summary>ID of the lead the opportunity belongs to, e.g. `lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O`. Every opportunity belongs to exactly one lead.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LeadId { get => _explicitNullValueLeadId; set { _explicitNullValueLeadId = value; AdditionalData?.Remove("lead_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_id"); else _explicitNullProperties?.Remove("lead_id"); } }
@@ -233,7 +221,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string LeadId { get => _explicitNullValueLeadId; set { _explicitNullValueLeadId = value; AdditionalData?.Remove("lead_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_id"); else _explicitNullProperties?.Remove("lead_id"); } }
         private string _explicitNullValueLeadId = default!;
 #endif
-        /// <summary>The lead_name property</summary>
+        /// <summary>Display name of the opportunity&apos;s lead. See the lead&apos;s `display_name`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LeadName { get => _explicitNullValueLeadName; set { _explicitNullValueLeadName = value; AdditionalData?.Remove("lead_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_name"); else _explicitNullProperties?.Remove("lead_name"); } }
@@ -243,7 +231,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string LeadName { get => _explicitNullValueLeadName; set { _explicitNullValueLeadName = value; AdditionalData?.Remove("lead_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_name"); else _explicitNullProperties?.Remove("lead_name"); } }
         private string _explicitNullValueLeadName = default!;
 #endif
-        /// <summary>The lead_primary_email property</summary>
+        /// <summary>First email address of the lead&apos;s first contact that has one. Only returned when requested in `_fields`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Close.OpenApiClient.Models.OpportunityLeadPrimaryEmail? LeadPrimaryEmail { get => _explicitNullValueLeadPrimaryEmail; set { _explicitNullValueLeadPrimaryEmail = value; AdditionalData?.Remove("lead_primary_email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_primary_email"); else _explicitNullProperties?.Remove("lead_primary_email"); } }
@@ -253,7 +241,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public global::Soenneker.Close.OpenApiClient.Models.OpportunityLeadPrimaryEmail LeadPrimaryEmail { get => _explicitNullValueLeadPrimaryEmail; set { _explicitNullValueLeadPrimaryEmail = value; AdditionalData?.Remove("lead_primary_email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_primary_email"); else _explicitNullProperties?.Remove("lead_primary_email"); } }
         private global::Soenneker.Close.OpenApiClient.Models.OpportunityLeadPrimaryEmail _explicitNullValueLeadPrimaryEmail = default!;
 #endif
-        /// <summary>The lead_primary_phone property</summary>
+        /// <summary>First phone number of the lead&apos;s first contact that has one, as a single-item list. Only returned when requested in `_fields`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.ContactPhone>? LeadPrimaryPhone { get => _explicitNullValueLeadPrimaryPhone; set { _explicitNullValueLeadPrimaryPhone = value; AdditionalData?.Remove("lead_primary_phone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_primary_phone"); else _explicitNullProperties?.Remove("lead_primary_phone"); } }
@@ -263,7 +251,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<global::Soenneker.Close.OpenApiClient.Models.ContactPhone> LeadPrimaryPhone { get => _explicitNullValueLeadPrimaryPhone; set { _explicitNullValueLeadPrimaryPhone = value; AdditionalData?.Remove("lead_primary_phone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_primary_phone"); else _explicitNullProperties?.Remove("lead_primary_phone"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.ContactPhone> _explicitNullValueLeadPrimaryPhone = default!;
 #endif
-        /// <summary>The note property</summary>
+        /// <summary>The opportunity&apos;s note as plain text, with `note_html` formatting converted to markdown</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Note { get => _explicitNullValueNote; set { _explicitNullValueNote = value; AdditionalData?.Remove("note"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note"); else _explicitNullProperties?.Remove("note"); } }
@@ -273,7 +261,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Note { get => _explicitNullValueNote; set { _explicitNullValueNote = value; AdditionalData?.Remove("note"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note"); else _explicitNullProperties?.Remove("note"); } }
         private string _explicitNullValueNote = default!;
 #endif
-        /// <summary>The note_html property</summary>
+        /// <summary>The opportunity&apos;s note as [rich text](https://developer.close.com/api/overview/rich-text), a restricted subset of XHTML wrapped in a `&lt;body&gt;` tag, e.g. `&lt;body&gt;&lt;p&gt;Ready to sign next week.&lt;/p&gt;&lt;/body&gt;`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NoteHtml { get => _explicitNullValueNoteHtml; set { _explicitNullValueNoteHtml = value; AdditionalData?.Remove("note_html"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note_html"); else _explicitNullProperties?.Remove("note_html"); } }
@@ -283,7 +271,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string NoteHtml { get => _explicitNullValueNoteHtml; set { _explicitNullValueNoteHtml = value; AdditionalData?.Remove("note_html"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note_html"); else _explicitNullProperties?.Remove("note_html"); } }
         private string _explicitNullValueNoteHtml = default!;
 #endif
-        /// <summary>The organization_id property</summary>
+        /// <summary>The owning organization&apos;s ID, e.g. `orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
@@ -293,7 +281,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string _explicitNullValueOrganizationId = default!;
 #endif
-        /// <summary>The pipeline_id property</summary>
+        /// <summary>ID of the pipeline that the opportunity&apos;s status belongs to, e.g. `pipe_04fC628PVB0HjK2Qq5EqEf`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PipelineId { get => _explicitNullValuePipelineId; set { _explicitNullValuePipelineId = value; AdditionalData?.Remove("pipeline_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pipeline_id"); else _explicitNullProperties?.Remove("pipeline_id"); } }
@@ -303,7 +291,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string PipelineId { get => _explicitNullValuePipelineId; set { _explicitNullValuePipelineId = value; AdditionalData?.Remove("pipeline_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pipeline_id"); else _explicitNullProperties?.Remove("pipeline_id"); } }
         private string _explicitNullValuePipelineId = default!;
 #endif
-        /// <summary>The pipeline_name property</summary>
+        /// <summary>Name of the pipeline that the opportunity&apos;s status belongs to, e.g. `Sales`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PipelineName { get => _explicitNullValuePipelineName; set { _explicitNullValuePipelineName = value; AdditionalData?.Remove("pipeline_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pipeline_name"); else _explicitNullProperties?.Remove("pipeline_name"); } }
@@ -313,7 +301,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string PipelineName { get => _explicitNullValuePipelineName; set { _explicitNullValuePipelineName = value; AdditionalData?.Remove("pipeline_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pipeline_name"); else _explicitNullProperties?.Remove("pipeline_name"); } }
         private string _explicitNullValuePipelineName = default!;
 #endif
-        /// <summary>The stall_status property</summary>
+        /// <summary>Deprecated: use `suggested_action` instead. Why the opportunity is stalled and a suggested next step. Only returned when requested in `_fields`.</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -324,7 +312,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public global::Soenneker.Close.OpenApiClient.Models.OpportunitySearchResultStallStatus StallStatus { get => _explicitNullValueStallStatus; set { _explicitNullValueStallStatus = value; AdditionalData?.Remove("stall_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stall_status"); else _explicitNullProperties?.Remove("stall_status"); } }
         private global::Soenneker.Close.OpenApiClient.Models.OpportunitySearchResultStallStatus _explicitNullValueStallStatus = default!;
 #endif
-        /// <summary>The status_display_name property</summary>
+        /// <summary>Label of the opportunity&apos;s status, prefixed with its pipeline&apos;s name when the organization has more than one pipeline, e.g. `Sales: Active`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? StatusDisplayName { get => _explicitNullValueStatusDisplayName; set { _explicitNullValueStatusDisplayName = value; AdditionalData?.Remove("status_display_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_display_name"); else _explicitNullProperties?.Remove("status_display_name"); } }
@@ -334,7 +322,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string StatusDisplayName { get => _explicitNullValueStatusDisplayName; set { _explicitNullValueStatusDisplayName = value; AdditionalData?.Remove("status_display_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_display_name"); else _explicitNullProperties?.Remove("status_display_name"); } }
         private string _explicitNullValueStatusDisplayName = default!;
 #endif
-        /// <summary>The status_id property</summary>
+        /// <summary>ID of the opportunity&apos;s status, e.g. `stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk`. The status determines the opportunity&apos;s pipeline.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? StatusId { get => _explicitNullValueStatusId; set { _explicitNullValueStatusId = value; AdditionalData?.Remove("status_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_id"); else _explicitNullProperties?.Remove("status_id"); } }
@@ -344,7 +332,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string StatusId { get => _explicitNullValueStatusId; set { _explicitNullValueStatusId = value; AdditionalData?.Remove("status_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_id"); else _explicitNullProperties?.Remove("status_id"); } }
         private string _explicitNullValueStatusId = default!;
 #endif
-        /// <summary>The status_label property</summary>
+        /// <summary>Label of the opportunity&apos;s status, e.g. `Active`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? StatusLabel { get => _explicitNullValueStatusLabel; set { _explicitNullValueStatusLabel = value; AdditionalData?.Remove("status_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_label"); else _explicitNullProperties?.Remove("status_label"); } }
@@ -354,10 +342,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string StatusLabel { get => _explicitNullValueStatusLabel; set { _explicitNullValueStatusLabel = value; AdditionalData?.Remove("status_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_label"); else _explicitNullProperties?.Remove("status_label"); } }
         private string _explicitNullValueStatusLabel = default!;
 #endif
-        /// <summary>Type of an Opportunity Status: `active` for open Opportunities, `won` or `lost` for closed ones.</summary>
+        /// <summary>Type of the opportunity&apos;s status: `active`, `won` or `lost`</summary>
         public global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusType? StatusType { get => _explicitNullValueStatusType; set { _explicitNullValueStatusType = value; AdditionalData?.Remove("status_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_type"); else _explicitNullProperties?.Remove("status_type"); } }
         private global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusType? _explicitNullValueStatusType = default!;
-        /// <summary>The suggested_action property</summary>
+        /// <summary>Suggested next step for the stalled opportunity. Only returned when requested in `_fields`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Close.OpenApiClient.Models.OpportunitySearchResultSuggestedAction? SuggestedAction { get => _explicitNullValueSuggestedAction; set { _explicitNullValueSuggestedAction = value; AdditionalData?.Remove("suggested_action"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_action"); else _explicitNullProperties?.Remove("suggested_action"); } }
@@ -367,7 +355,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public global::Soenneker.Close.OpenApiClient.Models.OpportunitySearchResultSuggestedAction SuggestedAction { get => _explicitNullValueSuggestedAction; set { _explicitNullValueSuggestedAction = value; AdditionalData?.Remove("suggested_action"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_action"); else _explicitNullProperties?.Remove("suggested_action"); } }
         private global::Soenneker.Close.OpenApiClient.Models.OpportunitySearchResultSuggestedAction _explicitNullValueSuggestedAction = default!;
 #endif
-        /// <summary>The updated_by property</summary>
+        /// <summary>ID of the user who last updated the opportunity, e.g. `user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UpdatedBy { get => _explicitNullValueUpdatedBy; set { _explicitNullValueUpdatedBy = value; AdditionalData?.Remove("updated_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_by"); else _explicitNullProperties?.Remove("updated_by"); } }
@@ -387,7 +375,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string UpdatedByAgentId { get => _explicitNullValueUpdatedByAgentId; set { _explicitNullValueUpdatedByAgentId = value; AdditionalData?.Remove("updated_by_agent_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_by_agent_id"); else _explicitNullProperties?.Remove("updated_by_agent_id"); } }
         private string _explicitNullValueUpdatedByAgentId = default!;
 #endif
-        /// <summary>The updated_by_name property</summary>
+        /// <summary>Full name of the user who last updated the opportunity</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UpdatedByName { get => _explicitNullValueUpdatedByName; set { _explicitNullValueUpdatedByName = value; AdditionalData?.Remove("updated_by_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_by_name"); else _explicitNullProperties?.Remove("updated_by_name"); } }
@@ -397,7 +385,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string UpdatedByName { get => _explicitNullValueUpdatedByName; set { _explicitNullValueUpdatedByName = value; AdditionalData?.Remove("updated_by_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_by_name"); else _explicitNullProperties?.Remove("updated_by_name"); } }
         private string _explicitNullValueUpdatedByName = default!;
 #endif
-        /// <summary>The user_id property</summary>
+        /// <summary>ID of the user who owns the opportunity, e.g. `user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; AdditionalData?.Remove("user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
@@ -407,7 +395,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; AdditionalData?.Remove("user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
         private string _explicitNullValueUserId = default!;
 #endif
-        /// <summary>The user_name property</summary>
+        /// <summary>Full name of the user who owns the opportunity</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserName { get => _explicitNullValueUserName; set { _explicitNullValueUserName = value; AdditionalData?.Remove("user_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_name"); else _explicitNullProperties?.Remove("user_name"); } }
@@ -417,10 +405,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string UserName { get => _explicitNullValueUserName; set { _explicitNullValueUserName = value; AdditionalData?.Remove("user_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_name"); else _explicitNullProperties?.Remove("user_name"); } }
         private string _explicitNullValueUserName = default!;
 #endif
-        /// <summary>Monetary value of the opportunity in cents, e.g. `340000` for $3,400.00. See `value_formatted` for a human-readable version.</summary>
+        /// <summary>Monetary value of the opportunity in cents, e.g. `340000` for $3,400.00, in the organization&apos;s currency (see `value_currency`). See `value_formatted` for a human-readable version.</summary>
         public int? Value { get => _explicitNullValueValue; set { _explicitNullValueValue = value; AdditionalData?.Remove("value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value"); else _explicitNullProperties?.Remove("value"); } }
         private int? _explicitNullValueValue = default!;
-        /// <summary>The value_currency property</summary>
+        /// <summary>ISO 4217 code of the organization&apos;s currency, which `value` is in, e.g. `USD`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ValueCurrency { get => _explicitNullValueValueCurrency; set { _explicitNullValueValueCurrency = value; AdditionalData?.Remove("value_currency"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_currency"); else _explicitNullProperties?.Remove("value_currency"); } }
@@ -430,7 +418,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ValueCurrency { get => _explicitNullValueValueCurrency; set { _explicitNullValueValueCurrency = value; AdditionalData?.Remove("value_currency"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_currency"); else _explicitNullProperties?.Remove("value_currency"); } }
         private string _explicitNullValueValueCurrency = default!;
 #endif
-        /// <summary>The value_formatted property</summary>
+        /// <summary>`value` formatted in the organization&apos;s currency, followed by `value_period` unless it&apos;s `one_time`, e.g. `$500` or `$50 monthly`. Empty if `value` is null or 0.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ValueFormatted { get => _explicitNullValueValueFormatted; set { _explicitNullValueValueFormatted = value; AdditionalData?.Remove("value_formatted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_formatted"); else _explicitNullProperties?.Remove("value_formatted"); } }
@@ -440,7 +428,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ValueFormatted { get => _explicitNullValueValueFormatted; set { _explicitNullValueValueFormatted = value; AdditionalData?.Remove("value_formatted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_formatted"); else _explicitNullProperties?.Remove("value_formatted"); } }
         private string _explicitNullValueValueFormatted = default!;
 #endif
-        /// <summary>How often the Opportunity&apos;s value is paid: `one_time`, `monthly` or `annual`.</summary>
+        /// <summary>How often `value` is paid: `one_time`, `monthly` or `annual`</summary>
         public global::Soenneker.Close.OpenApiClient.Models.OpportunityValuePeriod? ValuePeriod { get => _explicitNullValueValuePeriod; set { _explicitNullValueValuePeriod = value; AdditionalData?.Remove("value_period"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_period"); else _explicitNullProperties?.Remove("value_period"); } }
         private global::Soenneker.Close.OpenApiClient.Models.OpportunityValuePeriod? _explicitNullValueValuePeriod = default!;
         /// <summary>
@@ -471,7 +459,6 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "annualized_expected_value", n => { AnnualizedExpectedValue = n.GetIntValue(); } },
                 { "annualized_value", n => { AnnualizedValue = n.GetIntValue(); } },
                 { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.Attachment>(global::Soenneker.Close.OpenApiClient.Models.Attachment.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "comment_summary", n => { CommentSummary = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary>(global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary.CreateFromDiscriminatorValue); } },
                 { "confidence", n => { Confidence = n.GetIntValue(); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
                 { "contact_name", n => { ContactName = n.GetStringValue(); } },
@@ -522,7 +509,6 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteIntValue("annualized_expected_value", AnnualizedExpectedValue);
             writer.WriteIntValue("annualized_value", AnnualizedValue);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.Attachment>("attachments", Attachments);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary>("comment_summary", CommentSummary);
             writer.WriteIntValue("confidence", Confidence);
             writer.WriteStringValue("contact_id", ContactId);
             writer.WriteStringValue("contact_name", ContactName);

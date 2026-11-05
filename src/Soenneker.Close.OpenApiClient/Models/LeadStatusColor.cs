@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>The color of the lead status badge in Close.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum LeadStatusColor
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "blue")]
         #pragma warning disable CS1591

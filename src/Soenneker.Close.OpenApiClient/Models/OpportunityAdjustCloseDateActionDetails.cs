@@ -24,7 +24,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The close_date property</summary>
+        /// <summary>Suggested new close date for the opportunity (its `date_won`), as an ISO 8601 date</summary>
         public Date? CloseDate { get => _explicitNullValueCloseDate; set { _explicitNullValueCloseDate = value; AdditionalData?.Remove("close_date"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("close_date"); else _explicitNullProperties?.Remove("close_date"); } }
         private Date? _explicitNullValueCloseDate = default!;
         /// <summary>

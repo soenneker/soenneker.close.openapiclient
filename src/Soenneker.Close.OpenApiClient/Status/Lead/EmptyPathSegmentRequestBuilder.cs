@@ -34,7 +34,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Lead
         {
         }
         /// <summary>
-        /// List lead statuses for your organization
+        /// List all lead statuses in your organization, in the order they&apos;re configured in Close. The list isn&apos;t paginated, so every status is returned in one response and `has_more` is always false.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.LeadStatusesList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Lead
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.LeadStatusesList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.LeadStatusesList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a new status that can be applied to leads
+        /// Create a lead status. New statuses are added to the end of the organization&apos;s list of statuses. Returns 400 if a status with the same label already exists (ignoring case). Requires the Manage Customizations permission, otherwise returns 403.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.LeadStatus"/></returns>
         /// <param name="body">The request body</param>
@@ -98,7 +98,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Lead
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.LeadStatus>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.LeadStatus.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List lead statuses for your organization
+        /// List all lead statuses in your organization, in the order they&apos;re configured in Close. The list isn&apos;t paginated, so every status is returned in one response and `has_more` is always false.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -117,7 +117,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Lead
             return requestInfo;
         }
         /// <summary>
-        /// Create a new status that can be applied to leads
+        /// Create a lead status. New statuses are added to the end of the organization&apos;s list of statuses. Returns 400 if a status with the same label already exists (ignoring case). Requires the Manage Customizations permission, otherwise returns 403.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

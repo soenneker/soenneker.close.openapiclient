@@ -45,7 +45,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ContentId { get => _explicitNullValueContentId; set { _explicitNullValueContentId = value; AdditionalData?.Remove("content_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_id"); else _explicitNullProperties?.Remove("content_id"); } }
         private string _explicitNullValueContentId = default!;
 #endif
-        /// <summary>The content_type property</summary>
+        /// <summary>MIME type of the file, e.g. `application/pdf`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ContentType { get => _explicitNullValueContentType; set { _explicitNullValueContentType = value; AdditionalData?.Remove("content_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_type"); else _explicitNullProperties?.Remove("content_type"); } }
@@ -55,7 +55,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ContentType { get => _explicitNullValueContentType; set { _explicitNullValueContentType = value; AdditionalData?.Remove("content_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_type"); else _explicitNullProperties?.Remove("content_type"); } }
         private string _explicitNullValueContentType = default!;
 #endif
-        /// <summary>The filename property</summary>
+        /// <summary>Name of the file, e.g. `contract.pdf`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Filename { get => _explicitNullValueFilename; set { _explicitNullValueFilename = value; AdditionalData?.Remove("filename"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filename"); else _explicitNullProperties?.Remove("filename"); } }
@@ -68,10 +68,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>Whether the attachment is embedded in the body HTML (e.g. a signature logo) rather than being standalone</summary>
         public bool? InlineOnly { get => _explicitNullValueInlineOnly; set { _explicitNullValueInlineOnly = value; AdditionalData?.Remove("inline_only"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inline_only"); else _explicitNullProperties?.Remove("inline_only"); } }
         private bool? _explicitNullValueInlineOnly = default!;
-        /// <summary>The size property</summary>
+        /// <summary>Size of the file in bytes</summary>
         public int? Size { get => _explicitNullValueSize; set { _explicitNullValueSize = value; AdditionalData?.Remove("size"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size"); else _explicitNullProperties?.Remove("size"); } }
         private int? _explicitNullValueSize = default!;
-        /// <summary>The thumbnail_url property</summary>
+        /// <summary>URL to download a thumbnail of the file. Only available for GIF, JPEG and PNG images.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ThumbnailUrl { get => _explicitNullValueThumbnailUrl; set { _explicitNullValueThumbnailUrl = value; AdditionalData?.Remove("thumbnail_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thumbnail_url"); else _explicitNullProperties?.Remove("thumbnail_url"); } }
@@ -81,7 +81,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ThumbnailUrl { get => _explicitNullValueThumbnailUrl; set { _explicitNullValueThumbnailUrl = value; AdditionalData?.Remove("thumbnail_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thumbnail_url"); else _explicitNullProperties?.Remove("thumbnail_url"); } }
         private string _explicitNullValueThumbnailUrl = default!;
 #endif
-        /// <summary>The url property</summary>
+        /// <summary>URL to download the file from Close</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; AdditionalData?.Remove("url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }

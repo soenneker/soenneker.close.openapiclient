@@ -21,7 +21,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Lead
             get => new global::Soenneker.Close.OpenApiClient.Status.Lead.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Close.OpenApiClient.status.lead.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">ID of the lead status, or its label. Labels are matched ignoring case, and only when no status has a matching ID.</param>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Status.Lead.Item.LeadItemRequestBuilder"/></returns>
         public global::Soenneker.Close.OpenApiClient.Status.Lead.Item.LeadItemRequestBuilder this[string position]
         {

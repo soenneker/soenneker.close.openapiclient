@@ -23,10 +23,10 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("label") is { } nullNodeLabel && nullNodeLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Label = null;
         }
 
-        /// <summary>The color property</summary>
+        /// <summary>Color of the status badge in Close. Set to null to clear the color. On update, leave it out to keep the current color.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.LeadStatusColor? Color { get => _explicitNullValueColor; set { _explicitNullValueColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("color"); else _explicitNullProperties?.Remove("color"); } }
         private global::Soenneker.Close.OpenApiClient.Models.LeadStatusColor? _explicitNullValueColor = default!;
-        /// <summary>The label property</summary>
+        /// <summary>Name of the lead status. Leading and trailing whitespace is removed. Must be unique within the organization (ignoring case).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }

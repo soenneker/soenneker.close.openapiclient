@@ -21681,7 +21681,7 @@
           "opportunities"
         ],
         "summary": "List or filter opportunities",
-        "description": "* All opportunity list responses contain the following aggregate values about all the matching objects (regardless of pagination / limits):\n    * \u0060total_results\u0060: the total number of objects,\n    * \u0060count_by_value_period\u0060: a dictionary containing the number of opportunities by value period, e.g. \u0060{ \u0027one_time\u0027: 2, \u0027annual\u0027: 1, \u0027monthly\u0027: 1 }\u0060,\n    * \u0060total_value_one_time\u0060: the sum of the values of all one time opportunities,\n    * \u0060total_value_monthly\u0060: the sum of the values of all monthly opportunities,\n    * \u0060total_value_annual\u0060: the sum of the values of all annual opportunities,\n    * \u0060total_value_annualized\u0060: the sum of the values of all opportunities where monthly opportunity values are multiplied by 12,\n    * \u0060expected_value_one_time\u0060: the sum of the values of all one time opportunities multiplied by their confidence,\n    * \u0060expected_value_monthly\u0060: the sum of the values of all monthly opportunities multiplied by their confidence,\n    * \u0060expected_value_annual\u0060: the sum of the values of all annual opportunities multiplied by their confidence,\n    * \u0060expected_value_annualized\u0060: the sum of the values of all opportunities multiplied by their confidence where monthly opportunity values are multiplied by 12,\n* \u0060query\u0060 is an optional search query filter. Only opportunity properties may be used in the filter. For example, \u0060note:important\u0060 will only show opportunities which contain the text \u0060important\u0060 in their note. Or, \u0060status_change(old_status:active new_status:won date:yesterday)\u0060 will only show opportunities that transitioned from status \u0060active\u0060 to status \u0060won\u0060 on the previous day.\n* \u0060_order_by\u0060 allows: \u0060date_won\u0060, \u0060date_updated\u0060, \u0060date_created\u0060, \u0060confidence\u0060, \u0060user_name\u0060, \u0060value\u0060, \u0060annualized_value\u0060, \u0060annualized_expected_value\u0060 (each of them allows descending order by prepending a minus, e.g. \u0060_order_by=-date_won\u0060).\n* \u0060value_period\u0060 allows: \u0060one_time\u0060, \u0060monthly\u0060, \u0060annual\u0060.\n* Multiple values for \u0060user_id\u0060, \u0060status_id\u0060, \u0060status_label\u0060, \u0060status_type\u0060 and \u0060value_period\u0060 can be specified using the *in* operator, e.g. \u0060status_type__in=active,won\u0060.\n* \u0060_group_by\u0060 allows: \u0060user_id\u0060, \u0060date_won__week\u0060, \u0060date_won__month\u0060, \u0060date_won__quarter\u0060 \u0060date_won__year\u0060 to group results by the given criteria.\n\n    When grouping results, the \u0060data\u0060 array contains a list of groups instead of objects. A group consists of the following fields:\n    * \u0060key\u0060 containing a unique group key,\n    * \u0060objects\u0060 containing the list of objects for the given group,\n    * \u0060total_results\u0060 containing the number of total objects for the given group,\n    * all aggregate values for the given group,\n    * if grouping by year: \u0060year\u0060, containing the year for the given group,\n    * if grouping by month: \u0060year\u0060 and \u0060month\u0060, containing the year and month (1-12) for the given group,\n    * if grouping by quarter: \u0060year\u0060 and \u0060quarter\u0060, containing the year and quarter (1-4) for the given group,\n    * if grouping by week: \u0060weekyear\u0060 and \u0060week\u0060, containing the ISO week year and ISO week number for the given group,\n    * if grouping by user: \u0060user_id\u0060 and \u0060user_name\u0060, containing the user ID and full name of the user for the given group.\n\n    Note that pagination still applies to objects and not groups. The last or first group may be cut off during pagination, therefore \u0060total_results\u0060 may not match the length of \u0060objects\u0060. When paginating, the \u0060key\u0060 value may be used to combine groups across multiple pages. Sorting using \u0060_order_by\u0060 may be applied and sorts the items within each of the groups. Group order can be reversed by prepending a minus. For example,  \u0060_group_by=-date_won__week\u0060 will show the most recent weeks first. When grouping by \u0060user_id\u0060, results are ordered by the user\u0027s full name.\n* \u0060lead_saved_search_id\u0060 is an optional lead Smart View filter.\n* (deprecated) \u0060lead_query\u0060 is an optional lead search text-based query filter. This parameter is now deprecated in favor of using the \u0060lead_saved_search_id\u0060 Smart View ID parameter.",
+        "description": "List the opportunities in your organization, most recently created first. Only opportunities you have access to are returned.\n\n* All opportunity list responses contain the following aggregate values about all the matching objects (regardless of pagination / limits):\n    * \u0060total_results\u0060: the total number of objects,\n    * \u0060count_by_value_period\u0060: a dictionary containing the number of opportunities by value period, e.g. \u0060{ \u0027one_time\u0027: 2, \u0027annual\u0027: 1, \u0027monthly\u0027: 1 }\u0060,\n    * \u0060total_value_one_time\u0060: the sum of the values of all one time opportunities,\n    * \u0060total_value_monthly\u0060: the sum of the values of all monthly opportunities,\n    * \u0060total_value_annual\u0060: the sum of the values of all annual opportunities,\n    * \u0060total_value_annualized\u0060: the sum of the values of all opportunities where monthly opportunity values are multiplied by 12,\n    * \u0060expected_value_one_time\u0060: the sum of the values of all one time opportunities multiplied by their confidence,\n    * \u0060expected_value_monthly\u0060: the sum of the values of all monthly opportunities multiplied by their confidence,\n    * \u0060expected_value_annual\u0060: the sum of the values of all annual opportunities multiplied by their confidence,\n    * \u0060expected_value_annualized\u0060: the sum of the values of all opportunities multiplied by their confidence where monthly opportunity values are multiplied by 12,\n* When grouping results with \u0060_group_by\u0060, the \u0060data\u0060 array contains a list of groups instead of objects. A group consists of the following fields:\n    * \u0060key\u0060 containing a unique group key,\n    * \u0060objects\u0060 containing the list of objects for the given group,\n    * \u0060total_results\u0060 containing the number of total objects for the given group,\n    * all aggregate values for the given group,\n    * if grouping by year: \u0060year\u0060, containing the year for the given group,\n    * if grouping by month: \u0060year\u0060 and \u0060month\u0060, containing the year and month (1-12) for the given group,\n    * if grouping by quarter: \u0060year\u0060 and \u0060quarter\u0060, containing the year and quarter (1-4) for the given group,\n    * if grouping by week: \u0060weekyear\u0060 and \u0060week\u0060, containing the ISO week year and ISO week number for the given group,\n    * if grouping by user: \u0060user_id\u0060 and \u0060user_name\u0060, containing the user ID and full name of the user for the given group.\n\n    Note that pagination still applies to objects and not groups. The last or first group may be cut off during pagination, therefore \u0060total_results\u0060 may not match the length of \u0060objects\u0060. When paginating, the \u0060key\u0060 value may be used to combine groups across multiple pages. Sorting using \u0060_order_by\u0060 may be applied and sorts the items within each of the groups. When grouping by \u0060user_id\u0060, results are ordered by the user\u0027s full name.",
         "operationId": "OpportunitiesList",
         "parameters": [
           {
@@ -21711,6 +21711,7 @@
           {
             "name": "lead_id",
             "in": "query",
+            "description": "Only return opportunities on this lead, e.g. \u0060lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O\u0060",
             "schema": {
               "title": "Lead ID",
               "type": [
@@ -21721,11 +21722,9 @@
             }
           },
           {
-            "$ref": "#/components/parameters/ActivityFilters_OrganizationIdParam"
-          },
-          {
             "name": "user_id",
             "in": "query",
+            "description": "Only return opportunities owned by this user, e.g. \u0060user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA\u0060. A group ID (\u0060group_...\u0060) matches opportunities owned by any member of the group.",
             "schema": {
               "title": "User ID",
               "type": [
@@ -21738,6 +21737,7 @@
           {
             "name": "user_id__in",
             "in": "query",
+            "description": "Comma-separated list of user or group IDs. Only return opportunities owned by any of them.",
             "schema": {
               "title": "User ID (In)",
               "type": [
@@ -21750,6 +21750,7 @@
           {
             "name": "status_id",
             "in": "query",
+            "description": "Only return opportunities with this status, e.g. \u0060stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk\u0060",
             "schema": {
               "title": "Status ID",
               "type": [
@@ -21762,6 +21763,7 @@
           {
             "name": "status_id__in",
             "in": "query",
+            "description": "Comma-separated list of status IDs. Only return opportunities with any of these statuses.",
             "schema": {
               "title": "Status ID (In)",
               "type": [
@@ -21774,6 +21776,7 @@
           {
             "name": "status_type",
             "in": "query",
+            "description": "Only return opportunities whose status has this type: \u0060active\u0060, \u0060won\u0060 or \u0060lost\u0060",
             "schema": {
               "title": "Status Type",
               "type": [
@@ -21786,6 +21789,7 @@
           {
             "name": "status_type__in",
             "in": "query",
+            "description": "Comma-separated list of status types, e.g. \u0060active,won\u0060. Only return opportunities whose status has any of these types.",
             "schema": {
               "title": "Status Type (In)",
               "type": [
@@ -21798,6 +21802,7 @@
           {
             "name": "status_label",
             "in": "query",
+            "description": "Only return opportunities whose status has this label, e.g. \u0060Active\u0060. Matching ignores case. Returns an error if more than one status has the label.",
             "schema": {
               "title": "Status Label",
               "type": [
@@ -21810,6 +21815,7 @@
           {
             "name": "status_label__in",
             "in": "query",
+            "description": "Comma-separated list of status labels. Only return opportunities whose status has any of these labels. Matching ignores case.",
             "schema": {
               "title": "Status Label (In)",
               "type": [
@@ -21822,6 +21828,7 @@
           {
             "name": "status",
             "in": "query",
+            "description": "Only return opportunities with this status, given as a status ID or label. See \u0060status_id\u0060 and \u0060status_label\u0060.",
             "schema": {
               "title": "Status",
               "type": [
@@ -21834,6 +21841,7 @@
           {
             "name": "status__in",
             "in": "query",
+            "description": "Comma-separated list of status IDs or labels. Only return opportunities with any of these statuses.",
             "schema": {
               "title": "Status (In)",
               "type": [
@@ -21844,20 +21852,9 @@
             }
           },
           {
-            "name": "date_won",
-            "in": "query",
-            "schema": {
-              "title": "Date Won",
-              "type": [
-                "null",
-                "string"
-              ],
-              "default": null
-            }
-          },
-          {
             "name": "date_won__gte",
             "in": "query",
+            "description": "Only return opportunities whose \u0060date_won\u0060 is on or after this date, e.g. \u00602024-01-31\u0060. Any time part is ignored.",
             "schema": {
               "title": "Date Won (\u003E=)",
               "type": [
@@ -21870,6 +21867,7 @@
           {
             "name": "date_won__gt",
             "in": "query",
+            "description": "Only return opportunities whose \u0060date_won\u0060 is after this date, e.g. \u00602024-01-31\u0060. Any time part is ignored.",
             "schema": {
               "title": "Date Won (\u003E)",
               "type": [
@@ -21882,6 +21880,7 @@
           {
             "name": "date_won__lte",
             "in": "query",
+            "description": "Only return opportunities whose \u0060date_won\u0060 is on or before this date, e.g. \u00602024-01-31\u0060. Any time part is ignored.",
             "schema": {
               "title": "Date Won (\u003C=)",
               "type": [
@@ -21894,6 +21893,7 @@
           {
             "name": "date_won__lt",
             "in": "query",
+            "description": "Only return opportunities whose \u0060date_won\u0060 is before this date, e.g. \u00602024-01-31\u0060. Any time part is ignored.",
             "schema": {
               "title": "Date Won (\u003C)",
               "type": [
@@ -21904,20 +21904,9 @@
             }
           },
           {
-            "name": "date_created",
-            "in": "query",
-            "schema": {
-              "title": "Date Created",
-              "type": [
-                "null",
-                "string"
-              ],
-              "default": null
-            }
-          },
-          {
             "name": "date_created__gte",
             "in": "query",
+            "description": "Only return opportunities created at or after this time, as an ISO 8601 date or timestamp, e.g. \u00602024-01-31T09:00:00Z\u0060. Values without a UTC offset are treated as UTC.",
             "schema": {
               "title": "Date Created (\u003E=)",
               "type": [
@@ -21930,6 +21919,7 @@
           {
             "name": "date_created__gt",
             "in": "query",
+            "description": "Only return opportunities created after this time, as an ISO 8601 date or timestamp, e.g. \u00602024-01-31T09:00:00Z\u0060. Values without a UTC offset are treated as UTC.",
             "schema": {
               "title": "Date Created (\u003E)",
               "type": [
@@ -21942,6 +21932,7 @@
           {
             "name": "date_created__lte",
             "in": "query",
+            "description": "Only return opportunities created at or before this time, as an ISO 8601 date or timestamp, e.g. \u00602024-01-31T09:00:00Z\u0060. Values without a UTC offset are treated as UTC.",
             "schema": {
               "title": "Date Created (\u003C=)",
               "type": [
@@ -21954,6 +21945,7 @@
           {
             "name": "date_created__lt",
             "in": "query",
+            "description": "Only return opportunities created before this time, as an ISO 8601 date or timestamp, e.g. \u00602024-01-31T09:00:00Z\u0060. Values without a UTC offset are treated as UTC.",
             "schema": {
               "title": "Date Created (\u003C)",
               "type": [
@@ -21964,20 +21956,9 @@
             }
           },
           {
-            "name": "date_updated",
-            "in": "query",
-            "schema": {
-              "title": "Date Updated",
-              "type": [
-                "null",
-                "string"
-              ],
-              "default": null
-            }
-          },
-          {
             "name": "date_updated__gte",
             "in": "query",
+            "description": "Only return opportunities last updated at or after this time, as an ISO 8601 date or timestamp, e.g. \u00602024-01-31T09:00:00Z\u0060. Values without a UTC offset are treated as UTC.",
             "schema": {
               "title": "Date Updated (\u003E=)",
               "type": [
@@ -21990,6 +21971,7 @@
           {
             "name": "date_updated__gt",
             "in": "query",
+            "description": "Only return opportunities last updated after this time, as an ISO 8601 date or timestamp, e.g. \u00602024-01-31T09:00:00Z\u0060. Values without a UTC offset are treated as UTC.",
             "schema": {
               "title": "Date Updated (\u003E)",
               "type": [
@@ -22002,6 +21984,7 @@
           {
             "name": "date_updated__lte",
             "in": "query",
+            "description": "Only return opportunities last updated at or before this time, as an ISO 8601 date or timestamp, e.g. \u00602024-01-31T09:00:00Z\u0060. Values without a UTC offset are treated as UTC.",
             "schema": {
               "title": "Date Updated (\u003C=)",
               "type": [
@@ -22014,6 +21997,7 @@
           {
             "name": "date_updated__lt",
             "in": "query",
+            "description": "Only return opportunities last updated before this time, as an ISO 8601 date or timestamp, e.g. \u00602024-01-31T09:00:00Z\u0060. Values without a UTC offset are treated as UTC.",
             "schema": {
               "title": "Date Updated (\u003C)",
               "type": [
@@ -22026,6 +22010,7 @@
           {
             "name": "value_period",
             "in": "query",
+            "description": "Only return opportunities with this \u0060value_period\u0060: \u0060one_time\u0060, \u0060monthly\u0060 or \u0060annual\u0060",
             "schema": {
               "title": "Value Period",
               "type": [
@@ -22038,6 +22023,7 @@
           {
             "name": "value_period__in",
             "in": "query",
+            "description": "Comma-separated list of value periods, e.g. \u0060monthly,annual\u0060. Only return opportunities with any of these value periods.",
             "schema": {
               "title": "Value Period (In)",
               "type": [
@@ -22050,6 +22036,7 @@
           {
             "name": "query",
             "in": "query",
+            "description": "Deprecated: use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) instead. Search query in Close\u0027s search syntax, matched against opportunity fields, e.g. \u0060note:important\u0060 or \u0060status_change(old_status:active new_status:won date:yesterday)\u0060",
             "schema": {
               "title": "Query",
               "type": [
@@ -22062,6 +22049,7 @@
           {
             "name": "lead_query",
             "in": "query",
+            "description": "Deprecated: use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) instead. Search query in Close\u0027s search syntax. Only return opportunities on leads that match it. Can\u0027t be combined with \u0060lead_saved_search_id\u0060.",
             "schema": {
               "title": "Lead Query",
               "type": [
@@ -22074,6 +22062,7 @@
           {
             "name": "lead_saved_search_id",
             "in": "query",
+            "description": "ID of a lead Smart View, e.g. \u0060save_...\u0060. Only return opportunities on leads in the Smart View. Can\u0027t be combined with \u0060lead_query\u0060.",
             "schema": {
               "title": "Lead Saved Search ID",
               "type": [
@@ -22086,6 +22075,7 @@
           {
             "name": "is_stalled",
             "in": "query",
+            "description": "\u0060true\u0060 to only return stalled opportunities, or \u0060false\u0060 to only return opportunities that aren\u0027t stalled",
             "schema": {
               "title": "Is Stalled",
               "type": [
@@ -22098,6 +22088,7 @@
           {
             "name": "_order_by",
             "in": "query",
+            "description": "Field to sort by: \u0060date_won\u0060, \u0060date_updated\u0060, \u0060date_created\u0060, \u0060confidence\u0060, \u0060user_name\u0060, \u0060value\u0060, \u0060annualized_value\u0060 or \u0060annualized_expected_value\u0060. Prefix with \u0060-\u0060 for descending order, e.g. \u0060-date_won\u0060. Defaults to \u0060-date_created\u0060. Invalid values are ignored.",
             "schema": {
               "title": "Order By",
               "type": [
@@ -22110,6 +22101,7 @@
           {
             "name": "_group_by",
             "in": "query",
+            "description": "Group results by \u0060user_id\u0060, \u0060date_won__week\u0060, \u0060date_won__month\u0060, \u0060date_won__quarter\u0060 or \u0060date_won__year\u0060. Prefix with \u0060-\u0060 to reverse the order of the groups. When set, \u0060data\u0060 holds groups of opportunities instead of opportunities.",
             "schema": {
               "title": "Group By",
               "type": [
@@ -22138,15 +22130,20 @@
                     {
                       "annualized_expected_value": 225000,
                       "annualized_value": 300000,
+                      "attachments": [],
                       "confidence": 75,
                       "contact_id": null,
+                      "contact_name": null,
                       "created_by": null,
+                      "created_by_agent_id": null,
+                      "created_by_name": null,
                       "date_created": "2013-02-01T00:54:51.321000\u002B00:00",
                       "date_lost": null,
                       "date_updated": "2013-02-01T00:54:51.321000\u002B00:00",
                       "date_won": null,
                       "expected_value": 225000,
                       "id": "oppo_KXyJj2PT74U1wOPvhBDO37jCC89mmrnoW0DylcDDWrL",
+                      "integration_links": [],
                       "lead_id": "lead_s6vHFTK1TSRoH6otXOexWDO9jM4xyb1kELHDoU7Fdsp",
                       "lead_name": "Bluth Company (Sample Lead)",
                       "note": "Gob\u0027s ready to buy a $3,000 suit.",
@@ -22154,10 +22151,13 @@
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "pipeline_id": "pipe_04fC628PVB0HjK2Qq5EqEf",
                       "pipeline_name": "Sales",
+                      "status_display_name": "Active",
                       "status_id": "stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                       "status_label": "Active",
                       "status_type": "active",
                       "updated_by": null,
+                      "updated_by_agent_id": null,
+                      "updated_by_name": null,
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "user_name": "John Doe",
                       "value": 300000,
@@ -22168,15 +22168,20 @@
                     {
                       "annualized_expected_value": 37500,
                       "annualized_value": 50000,
+                      "attachments": [],
                       "confidence": 75,
-                      "contact_id": null,
+                      "contact_id": "cont_o0kP3Nqyq0wxr5DLWIEm8mVr6ZpI0AhonKLDG0V5Qjh",
+                      "contact_name": "Bruce Wayne",
                       "created_by": null,
+                      "created_by_agent_id": null,
+                      "created_by_name": null,
                       "date_created": "2013-02-01T00:54:51.337000\u002B00:00",
                       "date_lost": null,
                       "date_updated": "2013-02-01T00:54:51.337000\u002B00:00",
                       "date_won": null,
                       "expected_value": 37500,
                       "id": "oppo_8eB77gAdf8FMy6GsNHEy84f7uoeEWv55slvUjKQZpJt",
+                      "integration_links": [],
                       "lead_id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
                       "lead_name": "Wayne Enterprises (Sample Lead)",
                       "note": "Bruce needs new software for the Bat Cave.",
@@ -22184,10 +22189,13 @@
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "pipeline_id": "pipe_04fC628PVB0HjK2Qq5EqEf",
                       "pipeline_name": "Sales",
+                      "status_display_name": "Active",
                       "status_id": "stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                       "status_label": "Active",
                       "status_type": "active",
                       "updated_by": null,
+                      "updated_by_agent_id": null,
+                      "updated_by_name": null,
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "user_name": "John Doe",
                       "value": 50000,
@@ -22198,9 +22206,13 @@
                     {
                       "annualized_expected_value": 30000,
                       "annualized_value": 60000,
+                      "attachments": [],
                       "confidence": 50,
                       "contact_id": null,
+                      "contact_name": null,
                       "created_by": null,
+                      "created_by_agent_id": null,
+                      "created_by_name": null,
                       "custom.cf_j0P7kHmgFTZZnYBFtyPSZ3uQw4dpW8xKcW7Krps8atj": "https://www.example.com/contract.pdf",
                       "date_created": "2013-02-01T00:54:51.337000\u002B00:00",
                       "date_lost": null,
@@ -22208,6 +22220,7 @@
                       "date_won": null,
                       "expected_value": 2500,
                       "id": "oppo_klajsdflf8FMy6GsNHEy84f7uoeEWv55slvUjKQZpJt",
+                      "integration_links": [],
                       "lead_id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
                       "lead_name": "Wayne Enterprises (Sample Lead)",
                       "note": "Bat Cave monthly maintenance cost",
@@ -22215,10 +22228,13 @@
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "pipeline_id": "pipe_04fC628PVB0HjK2Qq5EqEf",
                       "pipeline_name": "Sales",
+                      "status_display_name": "Active",
                       "status_id": "stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                       "status_label": "Active",
                       "status_type": "active",
                       "updated_by": null,
+                      "updated_by_agent_id": null,
+                      "updated_by_name": null,
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "user_name": "John Doe",
                       "value": 5000,
@@ -22284,7 +22300,7 @@
           "opportunities"
         ],
         "summary": "Create an opportunity",
-        "description": "Create an opportunity, optionally linked to an existing lead.\n\n**custom.FIELD_ID** (optional): Set custom fields by setting \u0060custom.FIELD_ID\u0060 to the field value, where FIELD_ID is the ID of the custom field, e.g.:\n\n\u0060\u0060\u0060json\n{ \u0022custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c\u0022: \u0022value\u0022, \u0022custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F\u0022: \u0022other value\u0022 }\n\u0060\u0060\u0060\n\nIf a custom field has \u0060accepts_multiple_values: true\u0060, the entire value will be replaced. For example, given an Opportunity has a Custom Choice Field with value \u0060[\u0022A\u0022, \u0022B\u0022]\u0060, adding choice \u0060\u0022C\u0022\u0060 would mean setting the value to \u0060[\u0022A\u0022, \u0022B\u0022, \u0022C\u0022]\u0060.\n\nNote that using the \u0060custom\u0060 field dict or the \u0060custom.FIELD_NAME\u0060 syntax (instead of custom field IDs) is deprecated and will be removed from the API. See [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.",
+        "description": "Create an opportunity. It\u0027s added to the lead given in \u0060lead_id\u0060, or to the lead of \u0060contact_id\u0060, or to a new lead if neither is given. A lead can have at most 300 opportunities.\n\nReturns the created opportunity.\n\n**Custom fields**: set a custom field by setting \u0060custom.{custom_field_id}\u0060 to its value, e.g.:\n\n\u0060\u0060\u0060json\n{ \u0022custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c\u0022: \u0022value\u0022, \u0022custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F\u0022: \u0022other value\u0022 }\n\u0060\u0060\u0060\n\nFor a custom field with \u0060accepts_multiple_values: true\u0060, pass the full list of values, e.g. \u0060[\u0022A\u0022, \u0022B\u0022, \u0022C\u0022]\u0060.\n\nSee [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.",
         "operationId": "OpportunitiesCreate",
         "requestBody": {
           "content": {
@@ -22292,14 +22308,31 @@
               "schema": {
                 "$ref": "#/components/schemas/CreateOpportunity"
               },
-              "example": {
-                "confidence": 90,
-                "custom.cf_j0P7kHmgFTZZnYBFtyPSZ3uQw4dpW8xKcW7Krps8atj": "https://www.example.com/contract.pdf",
-                "lead_id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
-                "note_html": "\u003Cbody\u003E\u003Cp\u003Ei hope this deal closes...\u003C/p\u003E\u003C/body\u003E",
-                "status_id": "stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
-                "value": 500,
-                "value_period": "monthly"
+              "examples": {
+                "default": {
+                  "summary": "Create an opportunity on a lead, with a custom field",
+                  "value": {
+                    "confidence": 90,
+                    "custom.cf_j0P7kHmgFTZZnYBFtyPSZ3uQw4dpW8xKcW7Krps8atj": "https://www.example.com/contract.pdf",
+                    "lead_id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
+                    "note_html": "\u003Cbody\u003E\u003Cp\u003Ei hope this deal closes...\u003C/p\u003E\u003C/body\u003E",
+                    "status_id": "stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                    "value": 50000,
+                    "value_period": "monthly"
+                  }
+                },
+                "for_contact": {
+                  "summary": "Create an opportunity for a contact, with a status label",
+                  "value": {
+                    "confidence": 60,
+                    "contact_id": "cont_o0kP3Nqyq0wxr5DLWIEm8mVr6ZpI0AhonKLDG0V5Qjh",
+                    "note_html": "\u003Cbody\u003E\u003Cp\u003EBruce wants a quote for the annual plan.\u003C/p\u003E\u003C/body\u003E",
+                    "pipeline_id": "pipe_04fC628PVB0HjK2Qq5EqEf",
+                    "status_id": "Active",
+                    "value": 250000,
+                    "value_period": "annual"
+                  }
+                }
               }
             }
           },
@@ -22313,36 +22346,90 @@
                 "schema": {
                   "$ref": "#/components/schemas/Opportunity"
                 },
-                "example": {
-                  "annualized_expected_value": 540000,
-                  "annualized_value": 600000,
-                  "confidence": 90,
-                  "contact_id": null,
-                  "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "custom.cf_j0P7kHmgFTZZnYBFtyPSZ3uQw4dpW8xKcW7Krps8atj": "https://www.example.com/contract.pdf",
-                  "date_created": "2013-02-20T10:11:50.520000\u002B00:00",
-                  "date_lost": null,
-                  "date_updated": "2013-02-20T10:11:50.520000\u002B00:00",
-                  "date_won": null,
-                  "expected_value": 45000,
-                  "id": "oppo_bJoqD4QX21AfA2fAGX5HmPQ1EgGoWBannvLj4khIfPH",
-                  "lead_id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
-                  "lead_name": "Wayne Enterprises (Sample Lead)",
-                  "note": "i hope this deal closes...",
-                  "note_html": "\u003Cbody\u003E\u003Cp\u003Ei hope this deal closes...\u003C/p\u003E\u003C/body\u003E",
-                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                  "pipeline_id": "pipe_04fC628PVB0HjK2Qq5EqEf",
-                  "pipeline_name": "Sales",
-                  "status_id": "stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
-                  "status_label": "Active",
-                  "status_type": "active",
-                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "user_name": "Anthony Nemitz",
-                  "value": 50000,
-                  "value_currency": "USD",
-                  "value_formatted": "$50 monthly",
-                  "value_period": "monthly"
+                "examples": {
+                  "default": {
+                    "summary": "Create an opportunity on a lead, with a custom field",
+                    "value": {
+                      "annualized_expected_value": 540000,
+                      "annualized_value": 600000,
+                      "attachments": [],
+                      "confidence": 90,
+                      "contact_id": null,
+                      "contact_name": null,
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_agent_id": null,
+                      "created_by_name": "John Doe",
+                      "custom.cf_j0P7kHmgFTZZnYBFtyPSZ3uQw4dpW8xKcW7Krps8atj": "https://www.example.com/contract.pdf",
+                      "date_created": "2013-02-20T10:11:50.520000\u002B00:00",
+                      "date_lost": null,
+                      "date_updated": "2013-02-20T10:11:50.520000\u002B00:00",
+                      "date_won": null,
+                      "expected_value": 45000,
+                      "id": "oppo_bJoqD4QX21AfA2fAGX5HmPQ1EgGoWBannvLj4khIfPH",
+                      "integration_links": [],
+                      "lead_id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
+                      "lead_name": "Wayne Enterprises (Sample Lead)",
+                      "note": "i hope this deal closes...",
+                      "note_html": "\u003Cbody\u003E\u003Cp\u003Ei hope this deal closes...\u003C/p\u003E\u003C/body\u003E",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "pipeline_id": "pipe_04fC628PVB0HjK2Qq5EqEf",
+                      "pipeline_name": "Sales",
+                      "status_display_name": "Active",
+                      "status_id": "stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                      "status_label": "Active",
+                      "status_type": "active",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_agent_id": null,
+                      "updated_by_name": "John Doe",
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "John Doe",
+                      "value": 50000,
+                      "value_currency": "USD",
+                      "value_formatted": "$500 monthly",
+                      "value_period": "monthly"
+                    }
+                  },
+                  "for_contact": {
+                    "summary": "Create an opportunity for a contact, with a status label",
+                    "value": {
+                      "annualized_expected_value": 150000,
+                      "annualized_value": 250000,
+                      "attachments": [],
+                      "confidence": 60,
+                      "contact_id": "cont_o0kP3Nqyq0wxr5DLWIEm8mVr6ZpI0AhonKLDG0V5Qjh",
+                      "contact_name": "Bruce Wayne",
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_agent_id": null,
+                      "created_by_name": "John Doe",
+                      "date_created": "2013-02-21T15:32:04.118000\u002B00:00",
+                      "date_lost": null,
+                      "date_updated": "2013-02-21T15:32:04.118000\u002B00:00",
+                      "date_won": null,
+                      "expected_value": 150000,
+                      "id": "oppo_ImC6zaSqqh9bymV6xlbqWvSeAEzAfHjx6WqmVjzQ62m",
+                      "integration_links": [],
+                      "lead_id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
+                      "lead_name": "Wayne Enterprises (Sample Lead)",
+                      "note": "Bruce wants a quote for the annual plan.",
+                      "note_html": "\u003Cbody\u003E\u003Cp\u003EBruce wants a quote for the annual plan.\u003C/p\u003E\u003C/body\u003E",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "pipeline_id": "pipe_04fC628PVB0HjK2Qq5EqEf",
+                      "pipeline_name": "Sales",
+                      "status_display_name": "Active",
+                      "status_id": "stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                      "status_label": "Active",
+                      "status_type": "active",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_agent_id": null,
+                      "updated_by_name": "John Doe",
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "John Doe",
+                      "value": 250000,
+                      "value_currency": "USD",
+                      "value_formatted": "$2,500 annual",
+                      "value_period": "annual"
+                    }
+                  }
                 }
               }
             }
@@ -22384,6 +22471,7 @@
           "opportunities"
         ],
         "summary": "Retrieve an opportunity",
+        "description": "Fetch a single opportunity by ID.\n\nReturns \u0060404\u0060 if the opportunity doesn\u0027t exist, and \u0060403\u0060 if it exists but you don\u0027t have access to its lead.\n\nUse \u0060_fields\u0060 to return only the fields you need, or \u0060_fields=_all\u0060 to also include optional fields such as \u0060is_stalled\u0060 and \u0060suggested_action\u0060. Custom field values appear as \u0060custom.{custom_field_id}\u0060 keys.",
         "operationId": "OpportunitiesGet",
         "parameters": [
           {
@@ -22410,9 +22498,13 @@
                 "example": {
                   "annualized_expected_value": 37500,
                   "annualized_value": 50000,
+                  "attachments": [],
                   "confidence": 75,
-                  "contact_id": null,
+                  "contact_id": "cont_o0kP3Nqyq0wxr5DLWIEm8mVr6ZpI0AhonKLDG0V5Qjh",
+                  "contact_name": "Bruce Wayne",
                   "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "created_by_agent_id": null,
+                  "created_by_name": "John Doe",
                   "custom.cf_j0P7kHmgFTZZnYBFtyPSZ3uQw4dpW8xKcW7Krps8atj": "https://www.example.com/contract.pdf",
                   "date_created": "2013-02-01T00:54:51.337000\u002B00:00",
                   "date_lost": null,
@@ -22420,6 +22512,7 @@
                   "date_won": null,
                   "expected_value": 37500,
                   "id": "oppo_8eB77gAdf8FMy6GsNHEy84f7uoeEWv55slvUjKQZpJt",
+                  "integration_links": [],
                   "lead_id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
                   "lead_name": "Wayne Enterprises (Sample Lead)",
                   "note": "Bruce needs new software for the Bat Cave.",
@@ -22427,10 +22520,13 @@
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                   "pipeline_id": "pipe_04fC628PVB0HjK2Qq5EqEf",
                   "pipeline_name": "Sales",
+                  "status_display_name": "Active",
                   "status_id": "stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
                   "status_label": "Active",
                   "status_type": "active",
                   "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                  "updated_by_agent_id": null,
+                  "updated_by_name": "John Doe",
                   "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                   "user_name": "John Doe",
                   "value": 50000,
@@ -22456,11 +22552,11 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
-            "description": "Forbidden. Also returned when the API key lacks the required scope (\u0060error_code\u0060 is \u0060insufficient_scope\u0060) or is inactive (\u0060error_code\u0060 is \u0060inactive_api_key\u0060).",
+            "description": "You don\u0027t have access to the opportunity.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ForbiddenResponseError"
+                  "$ref": "#/components/schemas/OpportunitiesGet403ResponseError"
                 }
               }
             }
@@ -22480,7 +22576,7 @@
           "opportunities"
         ],
         "summary": "Update an opportunity",
-        "description": "**custom.FIELD_ID** (optional)\n\n- See description for \u0060custom.FIELD_ID\u0060 in \u0060POST /opportunity/\u0060 above.\n- Additionally, you can unset a single field by using \u0060{ \u0022custom.FIELD_ID\u0022: null }\u0060, e.g.:\n\u0060\u0060\u0060\n{ \u0022custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c\u0022: null }\n\u0060\u0060\u0060\nIf you\u0027re trying to update a custom field and that custom field accepts multiple values, you can also specify \u0060.add\u0060 or \u0060.remove\u0060 as part of the field key to add/remove a single value to/from a list of values, e.g.:\n\u0060\u0060\u0060\n{ \u0022custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c.add\u0022: \u0022Wednesday\u0022 }\n\u0060\u0060\u0060",
+        "description": "Update an opportunity. Only the fields you send are changed.\n\nReturns \u0060404\u0060 if the opportunity doesn\u0027t exist. Returns \u0060403\u0060 if you don\u0027t have access to its lead, or if another user owns it and you don\u0027t have permission to manage other users\u0027 opportunities.\n\n\u0060lead_id\u0060, \u0060created_by\u0060 and \u0060date_created\u0060 can\u0027t be changed: sending a different value returns \u0060400\u0060.\n\nMoving the opportunity to a status with type \u0060won\u0060 sets \u0060date_won\u0060 to today\u0027s date if it isn\u0027t already set or sent in the request.\n\n**Custom fields**: set a custom field by setting \u0060custom.{custom_field_id}\u0060 to its value, or to \u0060null\u0060 to clear it, e.g.:\n\n\u0060\u0060\u0060json\n{ \u0022custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c\u0022: \u0022value\u0022, \u0022custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F\u0022: null }\n\u0060\u0060\u0060\n\nFor a custom field with \u0060accepts_multiple_values: true\u0060, pass the full list of values, or add or remove a single value by appending \u0060.add\u0060 or \u0060.remove\u0060 to the key, e.g.:\n\n\u0060\u0060\u0060json\n{ \u0022custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c.add\u0022: \u0022Wednesday\u0022 }\n\u0060\u0060\u0060\n\nSee [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.",
         "operationId": "OpportunitiesUpdate",
         "parameters": [
           {
@@ -22498,8 +22594,21 @@
               "schema": {
                 "$ref": "#/components/schemas/UpdateOpportunity"
               },
-              "example": {
-                "status_id": "stat_5ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk"
+              "examples": {
+                "default": {
+                  "summary": "Mark an opportunity as won",
+                  "value": {
+                    "status_id": "stat_5ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk"
+                  }
+                },
+                "reassign": {
+                  "summary": "Reassign an opportunity, set its contact and add a custom field value",
+                  "value": {
+                    "contact_id": "cont_o0kP3Nqyq0wxr5DLWIEm8mVr6ZpI0AhonKLDG0V5Qjh",
+                    "custom.cf_ajlYObD0s8bF0BNFKoxRErnfMJjtEjxId1EPfEahvz9.add": "Wednesday",
+                    "user_id": "user_BJ7S2La9Mv2Mfx08mMFMdaG7C3lmGgSOtmCEgOvLMRy"
+                  }
+                }
               }
             }
           },
@@ -22513,35 +22622,94 @@
                 "schema": {
                   "$ref": "#/components/schemas/Opportunity"
                 },
-                "example": {
-                  "annualized_expected_value": 37500,
-                  "annualized_value": 50000,
-                  "confidence": 75,
-                  "contact_id": null,
-                  "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "date_created": "2013-02-01T00:54:51.337000\u002B00:00",
-                  "date_lost": null,
-                  "date_updated": "2013-02-20T10:06:25.248000\u002B00:00",
-                  "date_won": "2013-02-20",
-                  "expected_value": 37500,
-                  "id": "oppo_8eB77gAdf8FMy6GsNHEy84f7uoeEWv55slvUjKQZpJt",
-                  "lead_id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
-                  "lead_name": "Wayne Enterprises (Sample Lead)",
-                  "note": "Bruce needs new software for the Bat Cave.",
-                  "note_html": "\u003Cbody\u003E\u003Cp\u003EBruce needs new software for the Bat Cave.\u003C/p\u003E\u003C/body\u003E",
-                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                  "pipeline_id": "pipe_04fC628PVB0HjK2Qq5EqEf",
-                  "pipeline_name": "Sales",
-                  "status_id": "stat_5ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
-                  "status_label": "Won",
-                  "status_type": "won",
-                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "user_name": "John Doe",
-                  "value": 50000,
-                  "value_currency": "USD",
-                  "value_formatted": "$500",
-                  "value_period": "one_time"
+                "examples": {
+                  "default": {
+                    "summary": "Mark an opportunity as won",
+                    "value": {
+                      "annualized_expected_value": 50000,
+                      "annualized_value": 50000,
+                      "attachments": [],
+                      "confidence": 100,
+                      "contact_id": "cont_o0kP3Nqyq0wxr5DLWIEm8mVr6ZpI0AhonKLDG0V5Qjh",
+                      "contact_name": "Bruce Wayne",
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_agent_id": null,
+                      "created_by_name": "John Doe",
+                      "date_created": "2013-02-01T00:54:51.337000\u002B00:00",
+                      "date_lost": null,
+                      "date_updated": "2013-02-20T10:06:25.248000\u002B00:00",
+                      "date_won": "2013-02-20",
+                      "expected_value": 50000,
+                      "id": "oppo_8eB77gAdf8FMy6GsNHEy84f7uoeEWv55slvUjKQZpJt",
+                      "integration_links": [],
+                      "lead_id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
+                      "lead_name": "Wayne Enterprises (Sample Lead)",
+                      "note": "Bruce needs new software for the Bat Cave.",
+                      "note_html": "\u003Cbody\u003E\u003Cp\u003EBruce needs new software for the Bat Cave.\u003C/p\u003E\u003C/body\u003E",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "pipeline_id": "pipe_04fC628PVB0HjK2Qq5EqEf",
+                      "pipeline_name": "Sales",
+                      "status_display_name": "Won",
+                      "status_id": "stat_5ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                      "status_label": "Won",
+                      "status_type": "won",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_agent_id": null,
+                      "updated_by_name": "John Doe",
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "John Doe",
+                      "value": 50000,
+                      "value_currency": "USD",
+                      "value_formatted": "$500",
+                      "value_period": "one_time"
+                    }
+                  },
+                  "reassign": {
+                    "summary": "Reassign an opportunity, set its contact and add a custom field value",
+                    "value": {
+                      "annualized_expected_value": 30000,
+                      "annualized_value": 60000,
+                      "attachments": [],
+                      "confidence": 50,
+                      "contact_id": "cont_o0kP3Nqyq0wxr5DLWIEm8mVr6ZpI0AhonKLDG0V5Qjh",
+                      "contact_name": "Bruce Wayne",
+                      "created_by": null,
+                      "created_by_agent_id": null,
+                      "created_by_name": null,
+                      "custom.cf_ajlYObD0s8bF0BNFKoxRErnfMJjtEjxId1EPfEahvz9": [
+                        "Monday",
+                        "Wednesday"
+                      ],
+                      "custom.cf_j0P7kHmgFTZZnYBFtyPSZ3uQw4dpW8xKcW7Krps8atj": "https://www.example.com/contract.pdf",
+                      "date_created": "2013-02-01T00:54:51.337000\u002B00:00",
+                      "date_lost": null,
+                      "date_updated": "2013-02-22T16:41:09.502000\u002B00:00",
+                      "date_won": null,
+                      "expected_value": 2500,
+                      "id": "oppo_klajsdflf8FMy6GsNHEy84f7uoeEWv55slvUjKQZpJt",
+                      "integration_links": [],
+                      "lead_id": "lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O",
+                      "lead_name": "Wayne Enterprises (Sample Lead)",
+                      "note": "Bat Cave monthly maintenance cost",
+                      "note_html": "\u003Cbody\u003E\u003Cp\u003EBat Cave monthly maintenance cost\u003C/p\u003E\u003C/body\u003E",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "pipeline_id": "pipe_04fC628PVB0HjK2Qq5EqEf",
+                      "pipeline_name": "Sales",
+                      "status_display_name": "Active",
+                      "status_id": "stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                      "status_label": "Active",
+                      "status_type": "active",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_agent_id": null,
+                      "updated_by_name": "John Doe",
+                      "user_id": "user_BJ7S2La9Mv2Mfx08mMFMdaG7C3lmGgSOtmCEgOvLMRy",
+                      "user_name": "Jane Doe",
+                      "value": 5000,
+                      "value_currency": "USD",
+                      "value_formatted": "$50 monthly",
+                      "value_period": "monthly"
+                    }
+                  }
                 }
               }
             }
@@ -22585,6 +22753,7 @@
           "opportunities"
         ],
         "summary": "Delete an opportunity",
+        "description": "Delete an opportunity, along with its opportunity status change activities. This can\u0027t be undone.\n\nThe opportunity\u0027s attachments are deleted in the background.\n\nReturns an empty object on success. Returns \u0060404\u0060 if the opportunity doesn\u0027t exist, and \u0060400\u0060 if you don\u0027t have permission to delete it or don\u0027t have access to its lead.",
         "operationId": "OpportunitiesDelete",
         "parameters": [
           {
@@ -23521,8 +23690,8 @@
                     {
                       "address_id": null,
                       "bundle_id": null,
-                      "carrier": null,
-                      "carrier_type": null,
+                      "carrier": "twilio",
+                      "carrier_type": "local",
                       "country": "US",
                       "date_created": "2016-07-18T22:54:24.787000\u002B00:00",
                       "date_updated": "2016-07-18T22:55:55.938000\u002B00:00",
@@ -23533,23 +23702,18 @@
                       "inbound_ring_duration": null,
                       "is_group_number": false,
                       "is_premium": false,
-                      "is_verified": true,
                       "label": "Primary Number",
-                      "last_billed_price": null,
+                      "last_billed_price": 1.15,
                       "local_presence_enabled": true,
                       "mms_enabled": true,
-                      "next_billing_on": null,
+                      "next_billing_on": "2016-08-17",
                       "non_member_caller_id_enabled": false,
                       "number": "\u002B16503335555",
                       "number_formatted": "\u002B1 650-333-5555",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "participant_groups": [],
-                      "participants": [],
-                      "phone_numbers": [
-                        "\u002B16508889898"
-                      ],
-                      "phone_numbers_formatted": [
-                        "\u002B1 650-888-9898"
+                      "participants": [
+                        "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
                       ],
                       "press_1_to_accept": false,
                       "sms_enabled": true,
@@ -23559,14 +23723,13 @@
                       ],
                       "supports_sms_to_countries": [
                         "CA",
+                        "PR",
                         "US"
                       ],
                       "type": "internal",
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                      "voice_agent_caller_id_enabled": false,
                       "voice_agents_local_presence_enabled": false,
-                      "voicemail_greeting_url": null,
-                      "was_ported": false
+                      "voicemail_greeting_url": null
                     },
                     {
                       "address_id": null,
@@ -23576,45 +23739,34 @@
                       "country": "US",
                       "date_created": "2016-07-18T22:54:24.787000\u002B00:00",
                       "date_updated": "2016-07-18T22:55:55.938000\u002B00:00",
-                      "forward_to": null,
-                      "forward_to_enabled": false,
-                      "forward_to_formatted": null,
                       "id": "phon_973589ev50ZKOqTVndOFN4effz092753608234569U3",
                       "is_group_number": false,
                       "is_premium": false,
-                      "is_verified": true,
                       "label": "My Personal Cell",
                       "last_billed_price": null,
                       "local_presence_enabled": true,
-                      "mms_enabled": true,
+                      "mms_enabled": false,
                       "next_billing_on": null,
                       "non_member_caller_id_enabled": false,
                       "number": "\u002B14151231234",
                       "number_formatted": "\u002B1 415-123-1234",
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "participant_groups": [],
-                      "participants": [],
-                      "phone_numbers": [],
-                      "phone_numbers_formatted": [],
-                      "press_1_to_accept": false,
-                      "sms_enabled": false,
-                      "supports_mms_to_countries": [
-                        "CA",
-                        "US"
+                      "participants": [
+                        "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
                       ],
+                      "sms_enabled": false,
+                      "supports_mms_to_countries": [],
                       "supports_sms_to_countries": [],
                       "type": "external",
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                      "voice_agent_caller_id_enabled": false,
-                      "voice_agents_local_presence_enabled": false,
-                      "voicemail_greeting_url": null,
-                      "was_ported": false
+                      "voice_agents_local_presence_enabled": false
                     },
                     {
                       "address_id": null,
                       "bundle_id": null,
-                      "carrier": null,
-                      "carrier_type": null,
+                      "carrier": "twilio",
+                      "carrier_type": "local",
                       "country": "US",
                       "date_created": "2016-07-14T20:37:23.022000\u002B00:00",
                       "date_updated": "2016-07-18T22:54:41.548000\u002B00:00",
@@ -23625,12 +23777,11 @@
                       "inbound_ring_duration": null,
                       "is_group_number": true,
                       "is_premium": false,
-                      "is_verified": true,
                       "label": "Group Number",
-                      "last_billed_price": null,
+                      "last_billed_price": 1.15,
                       "local_presence_enabled": true,
                       "mms_enabled": true,
-                      "next_billing_on": null,
+                      "next_billing_on": "2016-08-13",
                       "non_member_caller_id_enabled": true,
                       "number": "\u002B16508881234",
                       "number_formatted": "\u002B1 650-888-1234",
@@ -23653,11 +23804,11 @@
                       ],
                       "supports_sms_to_countries": [
                         "CA",
+                        "PR",
                         "US"
                       ],
                       "type": "internal",
                       "user_id": null,
-                      "voice_agent_caller_id_enabled": true,
                       "voice_agents_local_presence_enabled": true,
                       "voicemail_greeting_url": null
                     }
@@ -23727,16 +23878,16 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PhoneNumbersCreate201Response"
+                  "$ref": "#/components/schemas/PhoneNumber"
                 },
                 "example": {
                   "address_id": null,
                   "bundle_id": null,
-                  "carrier": null,
-                  "carrier_type": null,
+                  "carrier": "twilio",
+                  "carrier_type": "local",
                   "country": "US",
-                  "date_created": "2021-03-17T11:45:56.651057",
-                  "date_updated": "2021-03-17T11:45:56.651057",
+                  "date_created": "2021-03-17T11:45:56.651000\u002B00:00",
+                  "date_updated": "2021-03-17T11:45:56.651000\u002B00:00",
                   "forward_to": null,
                   "forward_to_enabled": false,
                   "forward_to_formatted": null,
@@ -23744,12 +23895,11 @@
                   "inbound_ring_duration": null,
                   "is_group_number": false,
                   "is_premium": false,
-                  "is_verified": true,
-                  "label": null,
+                  "label": "\u002B1 650-333-5555",
                   "last_billed_price": null,
                   "local_presence_enabled": true,
                   "mms_enabled": true,
-                  "next_billing_on": null,
+                  "next_billing_on": "2021-03-16",
                   "non_member_caller_id_enabled": false,
                   "number": "\u002B16503335555",
                   "number_formatted": "\u002B1 650-333-5555",
@@ -23758,7 +23908,7 @@
                   "participants": [
                     "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
                   ],
-                  "press_1_to_accept": false,
+                  "press_1_to_accept": true,
                   "sms_enabled": true,
                   "supports_mms_to_countries": [
                     "CA",
@@ -23771,11 +23921,9 @@
                   ],
                   "type": "internal",
                   "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "voice_agent_caller_id_enabled": false,
                   "voice_agents_local_presence_enabled": false,
                   "voicemail_greeting_url": null
-                },
-                "x-schema-inferred-from-examples": true
+                }
               }
             }
           },
@@ -23812,16 +23960,16 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PhoneNumbersCreate201Response"
+                  "$ref": "#/components/schemas/PhoneNumber"
                 },
                 "example": {
                   "address_id": null,
                   "bundle_id": null,
-                  "carrier": null,
-                  "carrier_type": null,
+                  "carrier": "twilio",
+                  "carrier_type": "local",
                   "country": "US",
-                  "date_created": "2021-03-17T11:45:56.651057",
-                  "date_updated": "2021-03-17T11:45:56.651057",
+                  "date_created": "2021-03-17T11:45:56.651000\u002B00:00",
+                  "date_updated": "2021-03-17T11:45:56.651000\u002B00:00",
                   "forward_to": null,
                   "forward_to_enabled": false,
                   "forward_to_formatted": null,
@@ -23829,12 +23977,11 @@
                   "inbound_ring_duration": null,
                   "is_group_number": false,
                   "is_premium": false,
-                  "is_verified": true,
-                  "label": null,
+                  "label": "\u002B1 650-333-5555",
                   "last_billed_price": null,
                   "local_presence_enabled": true,
                   "mms_enabled": true,
-                  "next_billing_on": null,
+                  "next_billing_on": "2021-03-16",
                   "non_member_caller_id_enabled": false,
                   "number": "\u002B16503335555",
                   "number_formatted": "\u002B1 650-333-5555",
@@ -23843,7 +23990,7 @@
                   "participants": [
                     "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
                   ],
-                  "press_1_to_accept": false,
+                  "press_1_to_accept": true,
                   "sms_enabled": true,
                   "supports_mms_to_countries": [
                     "CA",
@@ -23856,11 +24003,9 @@
                   ],
                   "type": "internal",
                   "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "voice_agent_caller_id_enabled": false,
                   "voice_agents_local_presence_enabled": false,
                   "voicemail_greeting_url": null
-                },
-                "x-schema-inferred-from-examples": true
+                }
               }
             },
             "x-client-success-response-status": "201"
@@ -23900,8 +24045,8 @@
                 "example": {
                   "address_id": null,
                   "bundle_id": null,
-                  "carrier": null,
-                  "carrier_type": null,
+                  "carrier": "twilio",
+                  "carrier_type": "local",
                   "country": "US",
                   "date_created": "2016-07-18T22:54:24.787000\u002B00:00",
                   "date_updated": "2016-07-18T22:55:55.938000\u002B00:00",
@@ -23912,12 +24057,11 @@
                   "inbound_ring_duration": null,
                   "is_group_number": false,
                   "is_premium": false,
-                  "is_verified": true,
                   "label": "Primary Number",
-                  "last_billed_price": null,
+                  "last_billed_price": 1.15,
                   "local_presence_enabled": true,
                   "mms_enabled": true,
-                  "next_billing_on": null,
+                  "next_billing_on": "2016-08-17",
                   "non_member_caller_id_enabled": false,
                   "number": "\u002B16503335555",
                   "number_formatted": "\u002B1 650-333-5555",
@@ -23934,11 +24078,11 @@
                   ],
                   "supports_sms_to_countries": [
                     "CA",
+                    "PR",
                     "US"
                   ],
                   "type": "internal",
                   "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "voice_agent_caller_id_enabled": false,
                   "voice_agents_local_presence_enabled": false,
                   "voicemail_greeting_url": null
                 }
@@ -23984,7 +24128,7 @@
           "phone_numbers"
         ],
         "summary": "Update a phone number",
-        "description": "You need the \u0022Manage Team Phone Numbers\u0022 permission to change most settings. If you\u0027re the only member of a number and no Group is assigned to it, you can change its \u0060label\u0060, voicemail greeting, and call forwarding without that permission.\n\nYou can:\n\n- Change the \u0060label\u0060 of the number.\n- Set up call forwarding via \u0060forward_to\u0060 and \u0060forward_to_enabled\u0060.\n- Set up a voicemail greeting by including a URL of an mp3 recording in \u0060voicemail_greeting_url\u0060. We require the URL to be secure (i.e. starting with https://).\n- Modify which users are assigned directly to the number via \u0060participants\u0060. This should be a list of user IDs.\n- Modify which Groups are assigned to the number via \u0060participant_groups\u0060. This should be a list of Group IDs from the Groups API. Members of these Groups, including users added to a Group later, ring on inbound calls, receive notifications for the number, and can use it as outbound caller ID. You can assign at most 40 Groups.\n- Modify which external phone numbers the number dials via \u0060phone_numbers\u0060. This should be a list of phone numbers in E.164 international format, e.g. \u0022\u002B16503334444\u0022.\n- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via \u0060inbound_ring_duration\u0060.\n- Let users who are not members of the number use it as their outbound caller ID via \u0060non_member_caller_id_enabled\u0060.\n- Let Local Presence pick the number for calls and SMS that voice agents make in Auto caller ID mode via \u0060voice_agents_local_presence_enabled\u0060. A voice agent in Fixed caller ID mode can use the number when this setting is off.\n- Let Local Presence pick the number by proximity for calls and SMS via \u0060local_presence_enabled\u0060.\n\nYou can set at most 40 users and external phone numbers combined in \u0060participants\u0060 and \u0060phone_numbers\u0060.\n\nA number\u0027s ring order is set in Close. A number that rings its members all at once rings at most 40 users and external phone numbers per inbound call. The users in \u0060participants\u0060 and the external phone numbers in \u0060phone_numbers\u0060 take priority. Members of the number\u0027s Groups who are allowed to make calls are added, chosen at random for each call, until 40 users and external phone numbers are ringing.\n\nThe per-call limit does not apply to a number that rings its members one at a time (round-robin).",
+        "description": "You need the \u0022Manage Team Phone Numbers\u0022 permission to change most settings. If you\u0027re the only member of a number and no Group is assigned to it, you can change its \u0060label\u0060, voicemail greeting, and call forwarding without that permission.\n\nYou can:\n\n- Change the \u0060label\u0060 of the number.\n- Set up call forwarding via \u0060forward_to\u0060 and \u0060forward_to_enabled\u0060.\n- Set up a voicemail greeting by including a URL of an mp3 recording in \u0060voicemail_greeting_url\u0060. We require the URL to be secure (i.e. starting with https://).\n- Modify which users are assigned directly to the number via \u0060participants\u0060. This should be a list of user IDs.\n- Modify which Groups are assigned to the number via \u0060participant_groups\u0060. This should be a list of Group IDs from the Groups API. Members of these Groups, including users added to a Group later, ring on inbound calls, receive notifications for the number, and can use it as outbound Caller ID. You can assign at most 40 Groups.\n- Modify which external phone numbers the number dials via \u0060phone_numbers\u0060. This should be a list of phone numbers in E.164 international format, e.g. \u0022\u002B16503334444\u0022.\n- Change how long (in seconds, 15-90) the number rings on inbound calls before moving on (e.g. to voicemail) via \u0060inbound_ring_duration\u0060.\n- Let users who are not members of the number use it as their outbound Caller ID via \u0060non_member_caller_id_enabled\u0060.\n- Let Local Presence pick the number for calls and SMS that voice agents make in Auto Caller ID mode via \u0060voice_agents_local_presence_enabled\u0060. A voice agent in Fixed Caller ID mode can use the number when this setting is off.\n- Let Local Presence pick the number by proximity for calls and SMS via \u0060local_presence_enabled\u0060.\n\nYou can set at most 40 users and external phone numbers combined in \u0060participants\u0060 and \u0060phone_numbers\u0060.\n\nA number\u0027s ring order is set in Close. A number that rings its members all at once rings at most 40 users and external phone numbers per inbound call. The users in \u0060participants\u0060 and the external phone numbers in \u0060phone_numbers\u0060 take priority. Members of the number\u0027s Groups who are allowed to make calls are added, chosen at random for each call, until 40 users and external phone numbers are ringing.\n\nThe per-call limit does not apply to a number that rings its members one at a time (round-robin).",
         "operationId": "PhoneNumbersUpdate",
         "parameters": [
           {
@@ -24025,8 +24169,8 @@
                 "example": {
                   "address_id": null,
                   "bundle_id": null,
-                  "carrier": null,
-                  "carrier_type": null,
+                  "carrier": "twilio",
+                  "carrier_type": "local",
                   "country": "US",
                   "date_created": "2016-07-18T22:54:24.787000\u002B00:00",
                   "date_updated": "2016-07-22T22:55:55.938000\u002B00:00",
@@ -24037,12 +24181,11 @@
                   "inbound_ring_duration": 45,
                   "is_group_number": false,
                   "is_premium": false,
-                  "is_verified": true,
                   "label": "My number w/ forwarding",
-                  "last_billed_price": null,
+                  "last_billed_price": 1.15,
                   "local_presence_enabled": false,
                   "mms_enabled": true,
-                  "next_billing_on": null,
+                  "next_billing_on": "2016-08-17",
                   "non_member_caller_id_enabled": false,
                   "number": "\u002B16503335555",
                   "number_formatted": "\u002B1 650-333-5555",
@@ -24059,11 +24202,11 @@
                   ],
                   "supports_sms_to_countries": [
                     "CA",
+                    "PR",
                     "US"
                   ],
                   "type": "internal",
                   "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "voice_agent_caller_id_enabled": false,
                   "voice_agents_local_presence_enabled": false,
                   "voicemail_greeting_url": "https://s3.amazonaws.com/bucket/aaa-bbb-ccc.mp3"
                 }
@@ -31270,6 +31413,7 @@
           "lead_statuses"
         ],
         "summary": "List lead statuses for your organization",
+        "description": "List all lead statuses in your organization, in the order they\u0027re configured in Close. The list isn\u0027t paginated, so every status is returned in one response and \u0060has_more\u0060 is always false.",
         "operationId": "LeadStatusesList",
         "responses": {
           "200": {
@@ -31346,6 +31490,7 @@
           "lead_statuses"
         ],
         "summary": "Create a new status that can be applied to leads",
+        "description": "Create a lead status. New statuses are added to the end of the organization\u0027s list of statuses. Returns 400 if a status with the same label already exists (ignoring case). Requires the Manage Customizations permission, otherwise returns 403.",
         "operationId": "LeadStatusesCreate",
         "requestBody": {
           "content": {
@@ -31353,8 +31498,20 @@
               "schema": {
                 "$ref": "#/components/schemas/CreateOrUpdateLeadStatus"
               },
-              "example": {
-                "label": "Potential"
+              "examples": {
+                "default": {
+                  "summary": "Create a status without a color",
+                  "value": {
+                    "label": "Potential"
+                  }
+                },
+                "with_color": {
+                  "summary": "Create a status with a color",
+                  "value": {
+                    "color": "green",
+                    "label": "Qualified"
+                  }
+                }
               }
             }
           },
@@ -31368,11 +31525,25 @@
                 "schema": {
                   "$ref": "#/components/schemas/LeadStatus"
                 },
-                "example": {
-                  "color": null,
-                  "id": "stat_9ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
-                  "label": "Potential",
-                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
+                "examples": {
+                  "default": {
+                    "summary": "Create a status without a color",
+                    "value": {
+                      "color": null,
+                      "id": "stat_9ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                      "label": "Potential",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
+                    }
+                  },
+                  "with_color": {
+                    "summary": "Create a status with a color",
+                    "value": {
+                      "color": "green",
+                      "id": "stat_3ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                      "label": "Qualified",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
+                    }
+                  }
                 }
               }
             }
@@ -31414,11 +31585,13 @@
           "lead_statuses"
         ],
         "summary": "Fetch a single lead status",
+        "description": "Fetch a single lead status by its ID or its label. The \u0060id\u0060 path param is matched against status IDs first, then against labels, ignoring case in both. Returns 404 if no status matches.",
         "operationId": "LeadStatusesGet",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "ID of the lead status, or its label. Labels are matched ignoring case, and only when no status has a matching ID.",
             "required": true,
             "schema": {
               "type": "string"
@@ -31480,13 +31653,14 @@
         "tags": [
           "lead_statuses"
         ],
-        "summary": "Rename a lead status",
-        "description": "Update a lead status. The \u0060label\u0060 and \u0060color\u0060 can be changed. To update the status of a particular lead, see PUT \u0060/lead/{lead_id}/\u0060.",
+        "summary": "Update a lead status",
+        "description": "Rename a lead status or change its color. Send \u0060label\u0060 on every update, even when you only change \u0060color\u0060. Leads that use the status keep it, and show the new label. Returns 400 if another status already has the same label (ignoring case). Requires the Manage Customizations permission, otherwise returns 403.\n\nTo change the status of a particular lead, see PUT \u0060/lead/{lead_id}/\u0060.",
         "operationId": "LeadStatusesUpdate",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "ID of the lead status.",
             "required": true,
             "schema": {
               "type": "string"
@@ -31499,8 +31673,20 @@
               "schema": {
                 "$ref": "#/components/schemas/CreateOrUpdateLeadStatus"
               },
-              "example": {
-                "label": "Renamed"
+              "examples": {
+                "default": {
+                  "summary": "Rename a status, keeping its color",
+                  "value": {
+                    "label": "Interested"
+                  }
+                },
+                "clear_color": {
+                  "summary": "Clear the color of a status",
+                  "value": {
+                    "color": null,
+                    "label": "Interested"
+                  }
+                }
               }
             }
           },
@@ -31514,11 +31700,25 @@
                 "schema": {
                   "$ref": "#/components/schemas/LeadStatus"
                 },
-                "example": {
-                  "color": null,
-                  "id": "stat_9ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
-                  "label": "Renamed",
-                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
+                "examples": {
+                  "default": {
+                    "summary": "Rename a status, keeping its color",
+                    "value": {
+                      "color": "blue",
+                      "id": "stat_9ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                      "label": "Interested",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
+                    }
+                  },
+                  "clear_color": {
+                    "summary": "Clear the color of a status",
+                    "value": {
+                      "color": null,
+                      "id": "stat_9ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                      "label": "Interested",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH"
+                    }
+                  }
                 }
               }
             }
@@ -31562,12 +31762,13 @@
           "lead_statuses"
         ],
         "summary": "Delete a lead status",
-        "description": "You should make sure no leads are assigned this status, first.",
+        "description": "Delete a lead status. Returns an empty object on success.\n\nReturns 400 if any leads still have this status, so move them to another status first. Also returns 400 if this is the organization\u0027s last lead status. Requires the Manage Customizations permission, otherwise returns 403.",
         "operationId": "LeadStatusesDelete",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "ID of the lead status.",
             "required": true,
             "schema": {
               "type": "string"
@@ -31576,7 +31777,15 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadStatusesDelete200ResponseSchema"
+                },
+                "x-schema-inferred-from-examples": true
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -37100,14 +37309,16 @@
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "MIME type of the file, e.g. \u0060application/pdf\u0060"
           },
           "filename": {
             "title": "Filename",
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "Name of the file, e.g. \u0060contract.pdf\u0060"
           },
           "inline_only": {
             "title": "Inline Only",
@@ -37119,18 +37330,21 @@
             "type": [
               "null",
               "integer"
-            ]
+            ],
+            "description": "Size of the file in bytes"
           },
           "thumbnail_url": {
             "title": "Thumbnail URL",
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "URL to download a thumbnail of the file. Only available for GIF, JPEG and PNG images."
           },
           "url": {
             "title": "URL",
-            "type": "string"
+            "type": "string",
+            "description": "URL to download the file from Close"
           }
         }
       },
@@ -37145,15 +37359,18 @@
           "content_type": {
             "title": "Content Type",
             "type": "string",
+            "description": "MIME type of the file, e.g. \u0060application/pdf\u0060",
             "default": ""
           },
           "filename": {
             "title": "Filename",
-            "type": "string"
+            "type": "string",
+            "description": "Name of the file, e.g. \u0060contract.pdf\u0060"
           },
           "url": {
-            "title": "Url",
-            "type": "string"
+            "title": "URL",
+            "type": "string",
+            "description": "URL of the uploaded file: the \u0060download.url\u0060 returned by \u0060POST /files/upload/\u0060"
           }
         }
       },
@@ -39328,13 +39545,15 @@
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "ID of the user to record as the contact\u0027s creator. Defaults to the requesting user"
           },
           "date_created": {
             "type": [
               "null",
               "string"
             ],
+            "description": "When the contact was created, as an ISO 8601 timestamp. Defaults to now. Useful when importing contacts from another system",
             "format": "date-time"
           },
           "emails": {
@@ -39345,20 +39564,23 @@
             ],
             "items": {
               "$ref": "#/components/schemas/CreateContactEmailsItem"
-            }
+            },
+            "description": "Email addresses of the contact"
           },
           "lead_id": {
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "ID of the lead to add the contact to. If omitted, a new lead is created for the contact"
           },
           "name": {
             "maxLength": 1000,
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "Full name of the contact"
           },
           "phones": {
             "maxItems": 100,
@@ -39368,21 +39590,23 @@
             ],
             "items": {
               "$ref": "#/components/schemas/CreateContactPhonesItem"
-            }
+            },
+            "description": "Phone numbers of the contact"
           },
           "timezone": {
             "type": [
               "null",
               "string"
             ],
-            "description": "IANA timezone identifier"
+            "description": "IANA timezone ID to set manually for the contact, e.g. \u0060America/New_York\u0060. If omitted or null, the timezone is inferred from the contact\u0027s phone numbers"
           },
           "title": {
             "maxLength": 1000,
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "Job title of the contact, e.g. \u0060CEO\u0060"
           },
           "urls": {
             "maxItems": 100,
@@ -39392,7 +39616,8 @@
             ],
             "items": {
               "$ref": "#/components/schemas/CreateContactUrlsItem"
-            }
+            },
+            "description": "URLs associated with the contact"
           }
         },
         "additionalProperties": false
@@ -39849,6 +40074,7 @@
             "items": {
               "$ref": "#/components/schemas/AttachmentIn"
             },
+            "description": "Files to attach to the opportunity, up to 20 files and 25 MB in total. Upload each file with the [Files API](https://developer.close.com/api/resources/files) first.",
             "default": null
           },
           "confidence": {
@@ -39857,6 +40083,7 @@
               "null",
               "integer"
             ],
+            "description": "Likelihood of winning the opportunity, as a percentage from 0 to 100. Defaults to 50. Opportunities with a \u0060won\u0060 or \u0060lost\u0060 status always have a confidence of 100 or 0.",
             "default": null
           },
           "contact_id": {
@@ -39865,6 +40092,7 @@
               "null",
               "string"
             ],
+            "description": "ID of the contact to associate the opportunity with, e.g. \u0060cont_o0kP3Nqyq0wxr5DLWIEm8mVr6ZpI0AhonKLDG0V5Qjh\u0060. The contact must belong to the opportunity\u0027s lead.",
             "default": null
           },
           "created_by": {
@@ -39873,6 +40101,7 @@
               "null",
               "string"
             ],
+            "description": "ID of the user to record as the opportunity\u0027s creator, e.g. \u0060user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA\u0060. Must be a member of your organization. Defaults to you. Set it when importing opportunities from another system.",
             "default": null
           },
           "date_created": {
@@ -39881,6 +40110,7 @@
               "null",
               "string"
             ],
+            "description": "When the opportunity was created, as an ISO 8601 timestamp. Defaults to the current time. Set it when importing opportunities from another system.",
             "format": "date-time",
             "default": null
           },
@@ -39890,7 +40120,7 @@
               "null",
               "string"
             ],
-            "description": "If not set on the resource or in the request, \u0060date_won\u0060 will be set automatically to today\u0027s date when setting \u0060status_id\u0060 to a status with type \u0060won\u0060. The \u0060x-tz-offset\u0060 header, used to pass your timezone\u0027s UTC offset, will be taken into account.",
+            "description": "Date the opportunity was won, or is expected to close if it\u0027s still active, e.g. \u00602013-02-20\u0060. Any time part is ignored. If neither the opportunity nor the request sets it, it\u0027s set to today\u0027s date when the status changes to one with type \u0060won\u0060. Pass your UTC offset in the \u0060x-tz-offset\u0060 header to use your local date.",
             "format": "date-time",
             "default": null
           },
@@ -39900,7 +40130,7 @@
               "null",
               "string"
             ],
-            "description": "Opportunities belong to exactly one Lead. If not provided, a new lead will be created (appearing as \u0022Untitled\u0022 in the UI).",
+            "description": "ID of the lead to add the opportunity to, e.g. \u0060lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O\u0060. Every opportunity belongs to exactly one lead. If omitted, the opportunity is added to the lead of \u0060contact_id\u0060, or to a new lead (shown as \u0060Untitled\u0060) if \u0060contact_id\u0060 isn\u0027t given either.",
             "default": null
           },
           "note": {
@@ -39918,7 +40148,7 @@
               "null",
               "string"
             ],
-            "description": "Rich-text HTML version of the note. When set, \u0060note\u0060 is automatically populated with the plaintext version (tags become markdown), overriding any \u0060note\u0060 value passed in the same request.",
+            "description": "[Rich text](https://developer.close.com/api/overview/rich-text) version of the note. When set, \u0060note\u0060 is automatically populated with the plaintext version (tags become markdown), overriding any \u0060note\u0060 value passed in the same request.",
             "default": null
           },
           "pipeline_id": {
@@ -39936,7 +40166,7 @@
               "null",
               "string"
             ],
-            "description": "Post a \u0060status_id\u0060 to create an opportunity with a specific status. If omitted, the organization\u0027s default (first) status will be used (or the first status of the \u0060pipeline_id\u0060 if provided). See the [Opportunity Status API](https://developer.close.com/api/resources/opportunity-statuses).",
+            "description": "ID or label of the opportunity\u0027s status, e.g. \u0060stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk\u0060 or \u0060Active\u0060. Labels are matched ignoring case. If omitted, the organization\u0027s first status is used, or the first status of \u0060pipeline_id\u0060 if given. See [Opportunity Statuses](https://developer.close.com/api/resources/opportunity-statuses).",
             "default": null
           },
           "user_id": {
@@ -39945,6 +40175,7 @@
               "null",
               "string"
             ],
+            "description": "ID of the user who owns the opportunity, e.g. \u0060user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA\u0060. Must be a member of your organization. Defaults to \u0060created_by\u0060.",
             "default": null
           },
           "value": {
@@ -39991,7 +40222,7 @@
         "additionalProperties": false
       },
       "CreateOrUpdateLeadStatus": {
-        "title": "CreateOrUpdateLeadStatusSchema",
+        "title": "CreateOrUpdateLeadStatus",
         "required": [
           "label"
         ],
@@ -40003,7 +40234,8 @@
           "label": {
             "title": "Label",
             "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "description": "Name of the lead status. Leading and trailing whitespace is removed. Must be unique within the organization (ignoring case)."
           }
         },
         "additionalProperties": false
@@ -46004,19 +46236,22 @@
         "type": "object",
         "properties": {
           "color": {
-            "$ref": "#/components/schemas/CreateOrUpdateLeadStatusColor"
+            "$ref": "#/components/schemas/LeadStatusColorComposed"
           },
           "id": {
             "title": "ID",
-            "type": "string"
+            "type": "string",
+            "description": "Unique ID of the lead status, prefixed with \u0060stat_\u0060."
           },
           "label": {
             "title": "Label",
-            "type": "string"
+            "type": "string",
+            "description": "Name of the lead status, unique within the organization (ignoring case)."
           },
           "organization_id": {
             "title": "Organization ID",
-            "type": "string"
+            "type": "string",
+            "description": "ID of the organization the lead status belongs to."
           }
         }
       },
@@ -46183,6 +46418,33 @@
           "yellow"
         ],
         "type": "string",
+        "description": "The color of the lead status badge in Close.",
+        "x-fern-enum": {
+          "blue": {
+            "description": "Blue badge."
+          },
+          "gray": {
+            "description": "Gray badge. Statuses without a color also show as gray."
+          },
+          "green": {
+            "description": "Green badge."
+          },
+          "magenta": {
+            "description": "Magenta badge."
+          },
+          "orange": {
+            "description": "Orange badge."
+          },
+          "purple": {
+            "description": "Purple badge."
+          },
+          "teal": {
+            "description": "Teal badge."
+          },
+          "yellow": {
+            "description": "Yellow badge."
+          }
+        },
         "x-ms-enum": {
           "name": "LeadStatusColor",
           "modelAsString": false,
@@ -46860,10 +47122,10 @@
               "null",
               "string"
             ],
-            "description": "ID of the phone number to use as this member\u0027s default outbound caller ID. Close keeps this value while \u0060default_caller_id_mode\u0060 is \u0060auto\u0060. In \u0060auto\u0060 mode, Close uses it when no number has history with the contact and no number is near the contact. On a plan without Local Presence, \u0060auto\u0060 mode uses it like \u0060fixed\u0060 mode."
+            "description": "ID of the phone number to use as this member\u0027s default outbound Caller ID. Close keeps this value while \u0060default_caller_id_mode\u0060 is \u0060auto\u0060. In \u0060auto\u0060 mode, Close uses it when no number has history with the contact and no number is near the contact. On a plan without Local Presence, \u0060auto\u0060 mode uses it like \u0060fixed\u0060 mode."
           },
           "default_caller_id_mode": {
-            "description": "How this member\u0027s outbound caller ID is chosen. In \u0060fixed\u0060 mode, outbound calls use \u0060default_caller_id\u0060. In \u0060auto\u0060 mode, Close derives the number for each call. A switch to \u0060auto\u0060 requires a plan that includes Local Presence. On a plan without it, \u0060auto\u0060 mode uses \u0060default_caller_id\u0060 like \u0060fixed\u0060 mode.",
+            "description": "How this member\u0027s outbound Caller ID is chosen. In \u0060fixed\u0060 mode, outbound calls use \u0060default_caller_id\u0060. In \u0060auto\u0060 mode, Close derives the number for each call. A switch to \u0060auto\u0060 requires a plan that includes Local Presence. On a plan without it, \u0060auto\u0060 mode uses \u0060default_caller_id\u0060 like \u0060fixed\u0060 mode.",
             "title": "Default Caller ID Mode",
             "$ref": "#/components/schemas/CallerIdMode"
           },
@@ -47431,7 +47693,7 @@
               "null",
               "integer"
             ],
-            "description": "Annualized expected value in cents."
+            "description": "\u0060expected_value\u0060 as a yearly amount, in cents: multiplied by 12 when \u0060value_period\u0060 is \u0060monthly\u0060, unchanged otherwise."
           },
           "annualized_value": {
             "title": "Annualized Value",
@@ -47439,42 +47701,44 @@
               "null",
               "integer"
             ],
-            "description": "Annualized value in cents."
+            "description": "\u0060value\u0060 as a yearly amount, in cents: multiplied by 12 when \u0060value_period\u0060 is \u0060monthly\u0060, unchanged otherwise."
           },
           "attachments": {
             "title": "Attachments",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Attachment"
-            }
-          },
-          "comment_summary": {
-            "$ref": "#/components/schemas/ActivityBaseCommentSummary"
+            },
+            "description": "Files attached to the opportunity"
           },
           "confidence": {
             "title": "Confidence",
-            "type": "integer"
+            "type": "integer",
+            "description": "Likelihood of winning the opportunity, as a percentage from 0 to 100. Always 100 when \u0060status_type\u0060 is \u0060won\u0060 and 0 when it is \u0060lost\u0060."
           },
           "contact_id": {
             "title": "Contact ID",
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "ID of the contact that the opportunity is associated with, e.g. \u0060cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk\u0060"
           },
           "contact_name": {
             "title": "Contact Name",
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "Full name of the opportunity\u0027s contact"
           },
           "created_by": {
             "title": "Created By",
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "ID of the user who created the opportunity, e.g. \u0060user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA\u0060"
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
@@ -47489,11 +47753,13 @@
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "Full name of the user who created the opportunity"
           },
           "date_created": {
             "title": "Date Created",
             "type": "string",
+            "description": "When the opportunity was created, as an ISO 8601 timestamp in UTC",
             "format": "date-time"
           },
           "date_lost": {
@@ -47502,11 +47768,13 @@
               "null",
               "string"
             ],
+            "description": "When the opportunity was lost, as an ISO 8601 timestamp in UTC. Set automatically when the opportunity moves to a \u0060lost\u0060 status.",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
             "type": "string",
+            "description": "When the opportunity was last updated, as an ISO 8601 timestamp in UTC",
             "format": "date-time"
           },
           "date_won": {
@@ -47515,6 +47783,7 @@
               "null",
               "string"
             ],
+            "description": "Date the opportunity was won, or is expected to close if it\u0027s still active, as an ISO 8601 date, e.g. \u00602013-02-20\u0060. Set to today\u0027s date when the opportunity moves to a \u0060won\u0060 status without one.",
             "format": "date"
           },
           "expected_value": {
@@ -47523,33 +47792,38 @@
               "null",
               "integer"
             ],
-            "description": "Value multiplied by confidence, in cents."
+            "description": "\u0060value\u0060 multiplied by \u0060confidence\u0060, in cents, rounded down. For example, a \u0060value\u0060 of \u0060300000\u0060 with 75% confidence has an expected value of \u0060225000\u0060."
           },
           "id": {
             "title": "ID",
-            "type": "string"
+            "type": "string",
+            "description": "The opportunity\u0027s ID, e.g. \u0060oppo_8eB77gAdf8FMy6GsNHEy84f7uoeEWv55slvUjKQZpJt\u0060"
           },
           "integration_links": {
             "title": "Integration Links",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/RenderedIntegrationLink"
-            }
+            },
+            "description": "The organization\u0027s opportunity integration links, rendered with this opportunity\u0027s data"
           },
           "is_stalled": {
             "title": "Is Stalled",
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether Close has flagged the opportunity as stalled, and the flag hasn\u0027t been dismissed. Only returned when requested in \u0060_fields\u0060."
           },
           "lead_id": {
             "title": "Lead ID",
-            "type": "string"
+            "type": "string",
+            "description": "ID of the lead the opportunity belongs to, e.g. \u0060lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O\u0060. Every opportunity belongs to exactly one lead."
           },
           "lead_name": {
             "title": "Lead Name",
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "Display name of the opportunity\u0027s lead. See the lead\u0027s \u0060display_name\u0060."
           },
           "lead_primary_email": {
             "$ref": "#/components/schemas/OpportunityLeadPrimaryEmail"
@@ -47562,57 +47836,66 @@
             ],
             "items": {
               "$ref": "#/components/schemas/ContactPhone"
-            }
+            },
+            "description": "First phone number of the lead\u0027s first contact that has one, as a single-item list. Only returned when requested in \u0060_fields\u0060."
           },
           "note": {
             "title": "Note",
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "The opportunity\u0027s note as plain text, with \u0060note_html\u0060 formatting converted to markdown"
           },
           "note_html": {
-            "title": "Note Html",
+            "title": "Note HTML",
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "The opportunity\u0027s note as [rich text](https://developer.close.com/api/overview/rich-text), a restricted subset of XHTML wrapped in a \u0060\u003Cbody\u003E\u0060 tag, e.g. \u0060\u003Cbody\u003E\u003Cp\u003EReady to sign next week.\u003C/p\u003E\u003C/body\u003E\u0060"
           },
           "organization_id": {
             "title": "Organization ID",
-            "type": "string"
+            "type": "string",
+            "description": "The owning organization\u0027s ID, e.g. \u0060orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH\u0060"
           },
           "pipeline_id": {
             "title": "Pipeline ID",
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "ID of the pipeline that the opportunity\u0027s status belongs to, e.g. \u0060pipe_04fC628PVB0HjK2Qq5EqEf\u0060"
           },
           "pipeline_name": {
             "title": "Pipeline Name",
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "Name of the pipeline that the opportunity\u0027s status belongs to, e.g. \u0060Sales\u0060"
           },
           "stall_status": {
             "$ref": "#/components/schemas/OpportunitySearchResultStallStatus"
           },
           "status_display_name": {
             "title": "Status Display Name",
-            "type": "string"
+            "type": "string",
+            "description": "Label of the opportunity\u0027s status, prefixed with its pipeline\u0027s name when the organization has more than one pipeline, e.g. \u0060Sales: Active\u0060"
           },
           "status_id": {
             "title": "Status ID",
-            "type": "string"
+            "type": "string",
+            "description": "ID of the opportunity\u0027s status, e.g. \u0060stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk\u0060. The status determines the opportunity\u0027s pipeline."
           },
           "status_label": {
             "title": "Status Label",
-            "type": "string"
+            "type": "string",
+            "description": "Label of the opportunity\u0027s status, e.g. \u0060Active\u0060"
           },
           "status_type": {
-            "description": "Type of an Opportunity Status: \u0060active\u0060 for open Opportunities, \u0060won\u0060 or \u0060lost\u0060 for closed ones.",
+            "description": "Type of the opportunity\u0027s status: \u0060active\u0060, \u0060won\u0060 or \u0060lost\u0060",
             "title": "Status Type",
             "$ref": "#/components/schemas/OpportunityStatusType"
           },
@@ -47624,7 +47907,8 @@
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "ID of the user who last updated the opportunity, e.g. \u0060user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA\u0060"
           },
           "updated_by_agent_id": {
             "title": "Updated By Agent ID",
@@ -47639,18 +47923,21 @@
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "Full name of the user who last updated the opportunity"
           },
           "user_id": {
             "title": "User ID",
-            "type": "string"
+            "type": "string",
+            "description": "ID of the user who owns the opportunity, e.g. \u0060user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA\u0060"
           },
           "user_name": {
             "title": "User Name",
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "Full name of the user who owns the opportunity"
           },
           "value": {
             "title": "Value",
@@ -47658,24 +47945,26 @@
               "null",
               "integer"
             ],
-            "description": "Monetary value of the opportunity in cents, e.g. \u0060340000\u0060 for $3,400.00. See \u0060value_formatted\u0060 for a human-readable version."
+            "description": "Monetary value of the opportunity in cents, e.g. \u0060340000\u0060 for $3,400.00, in the organization\u0027s currency (see \u0060value_currency\u0060). See \u0060value_formatted\u0060 for a human-readable version."
           },
           "value_currency": {
             "title": "Value Currency",
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "ISO 4217 code of the organization\u0027s currency, which \u0060value\u0060 is in, e.g. \u0060USD\u0060"
           },
           "value_formatted": {
             "title": "Value Formatted",
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "\u0060value\u0060 formatted in the organization\u0027s currency, followed by \u0060value_period\u0060 unless it\u0027s \u0060one_time\u0060, e.g. \u0060$500\u0060 or \u0060$50 monthly\u0060. Empty if \u0060value\u0060 is null or 0."
           },
           "value_period": {
-            "description": "How often the Opportunity\u0027s value is paid: \u0060one_time\u0060, \u0060monthly\u0060 or \u0060annual\u0060.",
+            "description": "How often \u0060value\u0060 is paid: \u0060one_time\u0060, \u0060monthly\u0060 or \u0060annual\u0060",
             "$ref": "#/components/schemas/OpportunityValuePeriod"
           }
         }
@@ -47690,6 +47979,7 @@
           "close_date": {
             "title": "Close Date",
             "type": "string",
+            "description": "Suggested new close date for the opportunity (its \u0060date_won\u0060), as an ISO 8601 date",
             "format": "date"
           }
         }
@@ -47703,7 +47993,8 @@
         "properties": {
           "status_id": {
             "title": "Status ID",
-            "type": "string"
+            "type": "string",
+            "description": "ID of the status to move the opportunity to"
           }
         }
       },
@@ -47717,11 +48008,13 @@
         "properties": {
           "call_plan": {
             "title": "Call Plan",
-            "type": "string"
+            "type": "string",
+            "description": "Suggested talking points for the follow-up call"
           },
           "contact_id": {
             "title": "Contact ID",
-            "type": "string"
+            "type": "string",
+            "description": "ID of the contact to call"
           }
         }
       },
@@ -47736,15 +48029,18 @@
         "properties": {
           "contact_id": {
             "title": "Contact ID",
-            "type": "string"
+            "type": "string",
+            "description": "ID of the contact to email"
           },
           "message_draft": {
             "title": "Message Draft",
-            "type": "string"
+            "type": "string",
+            "description": "Draft body of the follow-up email"
           },
           "subject_draft": {
             "title": "Subject Draft",
-            "type": "string"
+            "type": "string",
+            "description": "Draft subject of the follow-up email"
           }
         }
       },
@@ -47758,11 +48054,13 @@
         "properties": {
           "contact_id": {
             "title": "Contact ID",
-            "type": "string"
+            "type": "string",
+            "description": "ID of the contact to text"
           },
           "message_draft": {
             "title": "Message Draft",
-            "type": "string"
+            "type": "string",
+            "description": "Draft text of the follow-up SMS"
           }
         }
       },
@@ -48854,7 +49152,6 @@
           "id",
           "is_group_number",
           "is_premium",
-          "is_verified",
           "label",
           "last_billed_price",
           "local_presence_enabled",
@@ -48871,7 +49168,6 @@
           "supports_sms_to_countries",
           "type",
           "user_id",
-          "voice_agent_caller_id_enabled",
           "voice_agents_local_presence_enabled"
         ],
         "type": "object",
@@ -48955,10 +49251,6 @@
             "description": "This field is deprecated and will be removed in a future update. Until then, it is always \u0060false\u0060.",
             "deprecated": true
           },
-          "is_verified": {
-            "title": "Is Verified",
-            "type": "boolean"
-          },
           "label": {
             "title": "Label",
             "type": "string"
@@ -48968,7 +49260,8 @@
             "type": [
               "null",
               "number"
-            ]
+            ],
+            "description": "Monthly rate of the last charge for this number. \u0060null\u0060 before the first charge, and for numbers that Close does not bill."
           },
           "local_presence_enabled": {
             "title": "Local Presence Enabled",
@@ -48985,12 +49278,13 @@
               "null",
               "string"
             ],
-            "format": "date-time"
+            "description": "Date on which the next monthly charge for this number is due. A past date means that the charge did not go through yet, for example right after Close rents the number. \u0060null\u0060 for numbers that Close does not bill, such as external numbers.",
+            "format": "date"
           },
           "non_member_caller_id_enabled": {
             "title": "Non-Member Caller ID Enabled",
             "type": "boolean",
-            "description": "Whether users who are not members of this phone number can use it as their outbound caller ID."
+            "description": "Whether users who are not members of this phone number can use it as their outbound Caller ID."
           },
           "number": {
             "title": "Number",
@@ -49010,7 +49304,7 @@
             "items": {
               "type": "string"
             },
-            "description": "IDs of the Groups assigned to this phone number. Members of these Groups ring on inbound calls, receive notifications for the number, and can use it as outbound caller ID. See the Groups API."
+            "description": "IDs of the Groups assigned to this phone number. Members of these Groups ring on inbound calls, receive notifications for the number, and can use it as outbound Caller ID. See the Groups API."
           },
           "participants": {
             "title": "Participants",
@@ -49018,7 +49312,7 @@
             "items": {
               "type": "string"
             },
-            "description": "IDs of the users assigned directly to this phone number. Members of the Groups in \u0060participant_groups\u0060 also ring on inbound calls, receive notifications for the number, and can use it as outbound caller ID."
+            "description": "IDs of the users assigned directly to this phone number. Members of the Groups in \u0060participant_groups\u0060 also ring on inbound calls, receive notifications for the number, and can use it as outbound Caller ID."
           },
           "phone_numbers": {
             "title": "Phone Numbers",
@@ -49070,16 +49364,10 @@
             "description": "This field is deprecated. See the \u0060participants\u0060 and \u0060participant_groups\u0060 fields instead to learn who\u0027s assigned to this phone number. This \u0060user_id\u0060 field will be removed in a future update. Until then, it is set to a specific user ID *only if* the given phone number has a single participant and no additional \u0022shared\u0022 configuration (e.g. a phone menu, lead-based routing, a dial-out list, an assigned Group, a non-default ring order, etc.).",
             "deprecated": true
           },
-          "voice_agent_caller_id_enabled": {
-            "title": "Voice Agent Caller ID Enabled",
-            "type": "boolean",
-            "description": "Deprecated. Use \u0060voice_agents_local_presence_enabled\u0060. This field has the same value as \u0060voice_agents_local_presence_enabled\u0060, and it will be removed in a future update.",
-            "deprecated": true
-          },
           "voice_agents_local_presence_enabled": {
             "title": "Voice Agents Local Presence Enabled",
             "type": "boolean",
-            "description": "Whether Local Presence can pick this phone number for calls and SMS that voice agents make in Auto caller ID mode."
+            "description": "Whether Local Presence can pick this phone number for calls and SMS that voice agents make in Auto Caller ID mode."
           },
           "voicemail_greeting_url": {
             "title": "Voicemail Greeting URL",
@@ -54282,20 +54570,23 @@
             ],
             "items": {
               "$ref": "#/components/schemas/UpdateContactEmailsItem"
-            }
+            },
+            "description": "Email addresses of the contact. Replaces the existing list. Omit or send null to leave it unchanged"
           },
           "lead_id": {
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "ID of the lead the contact belongs to. Contacts can\u0027t be moved to another lead, so if set, this must be the contact\u0027s current lead"
           },
           "name": {
             "maxLength": 1000,
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "Full name of the contact. Omit or send null to leave it unchanged"
           },
           "phones": {
             "maxItems": 100,
@@ -54305,21 +54596,23 @@
             ],
             "items": {
               "$ref": "#/components/schemas/UpdateContactPhonesItem"
-            }
+            },
+            "description": "Phone numbers of the contact. Replaces the existing list. Omit or send null to leave it unchanged"
           },
           "timezone": {
             "type": [
               "null",
               "string"
             ],
-            "description": "IANA timezone identifier"
+            "description": "IANA timezone ID to set manually for the contact, e.g. \u0060America/New_York\u0060. Send null to clear it, so the timezone is inferred from the contact\u0027s phone numbers instead. Omit to leave it unchanged"
           },
           "title": {
             "maxLength": 1000,
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "Job title of the contact, e.g. \u0060CEO\u0060. Omit or send null to leave it unchanged"
           },
           "urls": {
             "maxItems": 100,
@@ -54329,7 +54622,8 @@
             ],
             "items": {
               "$ref": "#/components/schemas/UpdateContactUrlsItem"
-            }
+            },
+            "description": "URLs associated with the contact. Replaces the existing list. Omit or send null to leave it unchanged"
           }
         },
         "additionalProperties": false
@@ -54675,18 +54969,18 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/AttachmentIn"
-            }
+            },
+            "description": "Files attached to the opportunity, up to 20 files and 25 MB in total. Replaces all of the opportunity\u0027s attachments: include its current attachments to keep them, or pass \u0060[]\u0060 to remove them all. Upload new files with the [Files API](https://developer.close.com/api/resources/files) first."
           },
           "confidence": {
             "title": "Confidence",
-            "type": "integer"
+            "type": "integer",
+            "description": "Likelihood of winning the opportunity, as a percentage from 0 to 100. Opportunities with a \u0060won\u0060 or \u0060lost\u0060 status always have a confidence of 100 or 0."
           },
           "contact_id": {
             "title": "Contact ID",
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": "string",
+            "description": "ID of the contact to associate the opportunity with, e.g. \u0060cont_o0kP3Nqyq0wxr5DLWIEm8mVr6ZpI0AhonKLDG0V5Qjh\u0060. The contact must belong to the opportunity\u0027s lead."
           },
           "date_won": {
             "title": "Date Won",
@@ -54694,7 +54988,7 @@
               "null",
               "string"
             ],
-            "description": "If not set on the resource or in the request, \u0060date_won\u0060 will be set automatically to today\u0027s date when setting \u0060status_id\u0060 to a status with type \u0060won\u0060. The \u0060x-tz-offset\u0060 header, used to pass your timezone\u0027s UTC offset, will be taken into account.",
+            "description": "Date the opportunity was won, or is expected to close if it\u0027s still active, e.g. \u00602013-02-20\u0060. Any time part is ignored. If neither the opportunity nor the request sets it, it\u0027s set to today\u0027s date when the status changes to one with type \u0060won\u0060. Pass your UTC offset in the \u0060x-tz-offset\u0060 header to use your local date.",
             "format": "date-time"
           },
           "note": {
@@ -54708,23 +55002,17 @@
               "null",
               "string"
             ],
-            "description": "Rich-text HTML version of the note. When set, \u0060note\u0060 is automatically populated with the plaintext version (tags become markdown), overriding any \u0060note\u0060 value passed in the same request. Pass \u0060null\u0060 to clear \u0060note_html\u0060; \u0060note\u0060 is cleared as well."
-          },
-          "status": {
-            "title": "Status",
-            "type": "string"
+            "description": "[Rich text](https://developer.close.com/api/overview/rich-text) version of the note. When set, \u0060note\u0060 is automatically populated with the plaintext version (tags become markdown), overriding any \u0060note\u0060 value passed in the same request. Pass \u0060null\u0060 to clear \u0060note_html\u0060; \u0060note\u0060 is cleared as well."
           },
           "status_id": {
             "title": "Status ID",
             "type": "string",
-            "description": "Setting the \u0060status_id\u0060 to a status with a type of \u0060won\u0060 will automatically set the \u0060date_won\u0060 field if it is not already set or provided in the request. Reverting it from a \u0060won\u0060 status to an \u0060active\u0060 or \u0060lost\u0060 will not automatically change \u0060date_won\u0060."
+            "description": "ID or label of the opportunity\u0027s status, e.g. \u0060stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk\u0060 or \u0060Won\u0060. Labels are matched ignoring case. See [Opportunity Statuses](https://developer.close.com/api/resources/opportunity-statuses)."
           },
           "user_id": {
             "title": "User ID",
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": "string",
+            "description": "ID of the user who owns the opportunity, e.g. \u0060user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA\u0060. Must be a member of your organization."
           },
           "value": {
             "title": "Value",
@@ -54732,7 +55020,7 @@
             "description": "Monetary value of the opportunity in cents, e.g. \u0060340000\u0060 for $3,400.00. The currency is the organization\u0027s currency."
           },
           "value_period": {
-            "description": "How often the Opportunity\u0027s value is paid: \u0060one_time\u0060, \u0060monthly\u0060 or \u0060annual\u0060.",
+            "description": "How often \u0060value\u0060 is paid: \u0060one_time\u0060, \u0060monthly\u0060 or \u0060annual\u0060",
             "title": "Value Period",
             "$ref": "#/components/schemas/OpportunityValuePeriod"
           }
@@ -54834,7 +55122,7 @@
           "non_member_caller_id_enabled": {
             "title": "Non-Member Caller ID Enabled",
             "type": "boolean",
-            "description": "Whether users who are not members of this phone number can use it as their outbound caller ID."
+            "description": "Whether users who are not members of this phone number can use it as their outbound Caller ID."
           },
           "participant_groups": {
             "title": "Participant Groups",
@@ -54861,16 +55149,10 @@
             "title": "Press 1 To Accept",
             "type": "boolean"
           },
-          "voice_agent_caller_id_enabled": {
-            "title": "Voice Agent Caller ID Enabled",
-            "type": "boolean",
-            "description": "Deprecated. Use \u0060voice_agents_local_presence_enabled\u0060. This field is an alias of \u0060voice_agents_local_presence_enabled\u0060, and it will be removed in a future update. If you send both fields, they must have the same value.",
-            "deprecated": true
-          },
           "voice_agents_local_presence_enabled": {
             "title": "Voice Agents Local Presence Enabled",
             "type": "boolean",
-            "description": "Whether Local Presence can pick this phone number for calls and SMS that voice agents make in Auto caller ID mode."
+            "description": "Whether Local Presence can pick this phone number for calls and SMS that voice agents make in Auto Caller ID mode."
           },
           "voicemail_greeting_url": {
             "title": "Voicemail Greeting URL",
@@ -55670,7 +55952,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "description": "How often \u0060value\u0060 is paid: \u0060one_time\u0060, \u0060monthly\u0060 or \u0060annual\u0060. Defaults to \u0060one_time\u0060."
       },
       "CreateOrUpdateLeadStatusColor": {
         "anyOf": [
@@ -55680,7 +55963,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "description": "Color of the status badge in Close. Set to null to clear the color. On update, leave it out to keep the current color."
       },
       "CreatedSearchResultSource": {
         "title": "Source",
@@ -56051,6 +56335,17 @@
           "description": "First phone number of the first contact that has one, or null if no contact has a phone number. Only returned when requested in \u0060_fields\u0060."
         }
       },
+      "LeadStatusColorComposed": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/LeadStatusColor"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "Color of the status badge in Close, or null if no color is set."
+      },
       "MeetingActivityConversationTypeReason": {
         "anyOf": [
           {
@@ -56358,6 +56653,7 @@
             "description": "Label for the email address, e.g. \u0060office\u0060, \u0060home\u0060, or \u0060other\u0060"
           }
         },
+        "description": "First email address of the lead\u0027s first contact that has one. Only returned when requested in \u0060_fields\u0060.",
         "x-client-original-nullable-union": {
           "title": "Lead Primary Email",
           "anyOf": [
@@ -56367,7 +56663,8 @@
             {
               "type": "null"
             }
-          ]
+          ],
+          "description": "First email address of the lead\u0027s first contact that has one. Only returned when requested in \u0060_fields\u0060."
         }
       },
       "OpportunitySearchResultStallStatus": {
@@ -56391,6 +56688,7 @@
           }
         },
         "deprecated": true,
+        "description": "Deprecated: use \u0060suggested_action\u0060 instead. Why the opportunity is stalled and a suggested next step. Only returned when requested in \u0060_fields\u0060.",
         "x-client-original-nullable-union": {
           "title": "Stall Status",
           "anyOf": [
@@ -56400,7 +56698,8 @@
             {
               "type": "null"
             }
-          ]
+          ],
+          "description": "Deprecated: use \u0060suggested_action\u0060 instead. Why the opportunity is stalled and a suggested next step. Only returned when requested in \u0060_fields\u0060."
         }
       },
       "OpportunitySearchResultSuggestedAction": {
@@ -56416,7 +56715,7 @@
         ],
         "properties": {
           "action": {
-            "description": "A suggested next step for a stalled Opportunity.",
+            "description": "Type of the suggested next step",
             "$ref": "#/components/schemas/StalledOpportunityActionTypeV2"
           },
           "details": {
@@ -56424,9 +56723,11 @@
           },
           "justification": {
             "title": "Justification",
-            "type": "string"
+            "type": "string",
+            "description": "Short explanation of why the action is suggested"
           }
         },
+        "description": "Suggested next step for the stalled opportunity. Only returned when requested in \u0060_fields\u0060.",
         "x-client-original-nullable-union": {
           "title": "Suggested Action",
           "anyOf": [
@@ -56436,7 +56737,8 @@
             {
               "type": "null"
             }
-          ]
+          ],
+          "description": "Suggested next step for the stalled opportunity. Only returned when requested in \u0060_fields\u0060."
         }
       },
       "OpportunityStatusChangeActivityOpportunityValuePeriod": {
@@ -56471,7 +56773,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "description": "Details for carrying out the action. Their shape depends on \u0060action\u0060."
       },
       "PhoneNumberCarrier": {
         "anyOf": [
@@ -56650,10 +56953,12 @@
         "properties": {
           "email": {
             "type": "string",
+            "description": "Email address",
             "x-client-original-format": "email"
           },
           "type": {
-            "type": "string"
+            "type": "string",
+            "description": "Label for the email address, e.g. \u0060office\u0060, \u0060home\u0060, or \u0060other\u0060. Defaults to \u0060office\u0060"
           }
         }
       },
@@ -56665,10 +56970,11 @@
               "null",
               "string"
             ],
-            "description": "Phone number in E.164 format"
+            "description": "Phone number, stored in E.164 format, e.g. \u0060\u002B16503334444\u0060. A number without a country code is parsed using the requesting user\u0027s country, or the US if that\u0027s unset. May include an extension, e.g. \u0060\u002B16503334444x123\u0060. Entries with an empty value or a placeholder such as \u0060n/a\u0060 or \u0060unknown\u0060 are dropped"
           },
           "type": {
-            "type": "string"
+            "type": "string",
+            "description": "Label for the phone number, e.g. \u0060office\u0060, \u0060mobile\u0060, or \u0060home\u0060. Defaults to \u0060office\u0060"
           }
         }
       },
@@ -56679,10 +56985,12 @@
         "type": "object",
         "properties": {
           "type": {
-            "type": "string"
+            "type": "string",
+            "description": "Label for the URL. Defaults to \u0060url\u0060"
           },
           "url": {
             "type": "string",
+            "description": "The URL",
             "x-client-original-format": "uri"
           }
         }
@@ -56810,10 +57118,12 @@
         "properties": {
           "email": {
             "type": "string",
+            "description": "Email address",
             "x-client-original-format": "email"
           },
           "type": {
-            "type": "string"
+            "type": "string",
+            "description": "Label for the email address, e.g. \u0060office\u0060, \u0060home\u0060, or \u0060other\u0060. Defaults to \u0060office\u0060"
           }
         }
       },
@@ -56825,10 +57135,11 @@
               "null",
               "string"
             ],
-            "description": "Phone number in E.164 format"
+            "description": "Phone number, stored in E.164 format, e.g. \u0060\u002B16503334444\u0060. A number without a country code is parsed using the requesting user\u0027s country, or the US if that\u0027s unset. May include an extension, e.g. \u0060\u002B16503334444x123\u0060. Entries with an empty value or a placeholder such as \u0060n/a\u0060 or \u0060unknown\u0060 are dropped"
           },
           "type": {
-            "type": "string"
+            "type": "string",
+            "description": "Label for the phone number, e.g. \u0060office\u0060, \u0060mobile\u0060, or \u0060home\u0060. Defaults to \u0060office\u0060"
           }
         }
       },
@@ -56839,10 +57150,12 @@
         "type": "object",
         "properties": {
           "type": {
-            "type": "string"
+            "type": "string",
+            "description": "Label for the URL. Defaults to \u0060url\u0060"
           },
           "url": {
             "type": "string",
+            "description": "The URL",
             "x-client-original-format": "uri"
           }
         }
@@ -59697,126 +60010,6 @@
           }
         }
       },
-      "PhoneNumbersCreate201Response": {
-        "type": "object",
-        "properties": {
-          "address_id": {
-            "type": "null"
-          },
-          "bundle_id": {
-            "type": "null"
-          },
-          "carrier": {
-            "type": "null"
-          },
-          "carrier_type": {
-            "type": "null"
-          },
-          "country": {
-            "type": "string"
-          },
-          "date_created": {
-            "type": "string"
-          },
-          "date_updated": {
-            "type": "string"
-          },
-          "forward_to": {
-            "type": "null"
-          },
-          "forward_to_enabled": {
-            "type": "boolean"
-          },
-          "forward_to_formatted": {
-            "type": "null"
-          },
-          "id": {
-            "type": "string"
-          },
-          "inbound_ring_duration": {
-            "type": "null"
-          },
-          "is_group_number": {
-            "type": "boolean"
-          },
-          "is_premium": {
-            "type": "boolean"
-          },
-          "is_verified": {
-            "type": "boolean"
-          },
-          "label": {
-            "type": "null"
-          },
-          "last_billed_price": {
-            "type": "null"
-          },
-          "local_presence_enabled": {
-            "type": "boolean"
-          },
-          "mms_enabled": {
-            "type": "boolean"
-          },
-          "next_billing_on": {
-            "type": "null"
-          },
-          "non_member_caller_id_enabled": {
-            "type": "boolean"
-          },
-          "number": {
-            "type": "string"
-          },
-          "number_formatted": {
-            "type": "string"
-          },
-          "organization_id": {
-            "type": "string"
-          },
-          "participant_groups": {
-            "type": "array",
-            "items": {}
-          },
-          "participants": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "press_1_to_accept": {
-            "type": "boolean"
-          },
-          "sms_enabled": {
-            "type": "boolean"
-          },
-          "supports_mms_to_countries": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "supports_sms_to_countries": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "type": {
-            "type": "string"
-          },
-          "user_id": {
-            "type": "string"
-          },
-          "voice_agent_caller_id_enabled": {
-            "type": "boolean"
-          },
-          "voice_agents_local_presence_enabled": {
-            "type": "boolean"
-          },
-          "voicemail_greeting_url": {
-            "type": "null"
-          }
-        }
-      },
       "ReportingGetActivityRequest": {
         "type": "object",
         "properties": {
@@ -62464,6 +62657,9 @@
             "description": "Whether more results exist after this page."
           }
         }
+      },
+      "LeadStatusesDelete200ResponseSchema": {
+        "type": "object"
       },
       "OpportunityStatusesList200Response": {
         "required": [
@@ -71322,6 +71518,31 @@
           "$ref": "#/components/schemas/MembershipsCreate403Response"
         }
       },
+      "OpportunitiesGet403ResponseError": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message."
+          },
+          "error_code": {
+            "$ref": "#/components/schemas/ApiKeyErrorErrorCode"
+          },
+          "required_scope": {
+            "type": "string",
+            "description": "API key scope the request requires. Present when \u0060error_code\u0060 is \u0060insufficient_scope\u0060."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationErrorsErrorsItem"
+            }
+          }
+        },
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/OpportunitiesGet403Response"
+        }
+      },
       "StandardObjectLabelsDelete403ResponseError": {
         "type": "object",
         "properties": {
@@ -74588,7 +74809,7 @@
                   "null",
                   "integer"
                 ],
-                "description": "Annualized expected value in cents."
+                "description": "\u0060expected_value\u0060 as a yearly amount, in cents: multiplied by 12 when \u0060value_period\u0060 is \u0060monthly\u0060, unchanged otherwise."
               },
               "annualized_value": {
                 "title": "Annualized Value",
@@ -74596,39 +74817,44 @@
                   "null",
                   "integer"
                 ],
-                "description": "Annualized value in cents."
+                "description": "\u0060value\u0060 as a yearly amount, in cents: multiplied by 12 when \u0060value_period\u0060 is \u0060monthly\u0060, unchanged otherwise."
               },
               "attachments": {
                 "title": "Attachments",
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/Attachment"
-                }
+                },
+                "description": "Files attached to the opportunity"
               },
               "confidence": {
                 "title": "Confidence",
-                "type": "integer"
+                "type": "integer",
+                "description": "Likelihood of winning the opportunity, as a percentage from 0 to 100. Always 100 when \u0060status_type\u0060 is \u0060won\u0060 and 0 when it is \u0060lost\u0060."
               },
               "contact_id": {
                 "title": "Contact ID",
                 "type": [
                   "null",
                   "string"
-                ]
+                ],
+                "description": "ID of the contact that the opportunity is associated with, e.g. \u0060cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk\u0060"
               },
               "contact_name": {
                 "title": "Contact Name",
                 "type": [
                   "null",
                   "string"
-                ]
+                ],
+                "description": "Full name of the opportunity\u0027s contact"
               },
               "created_by": {
                 "title": "Created By",
                 "type": [
                   "null",
                   "string"
-                ]
+                ],
+                "description": "ID of the user who created the opportunity, e.g. \u0060user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA\u0060"
               },
               "created_by_agent_id": {
                 "title": "Created By Agent ID",
@@ -74643,11 +74869,13 @@
                 "type": [
                   "null",
                   "string"
-                ]
+                ],
+                "description": "Full name of the user who created the opportunity"
               },
               "date_created": {
                 "title": "Date Created",
                 "type": "string",
+                "description": "When the opportunity was created, as an ISO 8601 timestamp in UTC",
                 "format": "date-time"
               },
               "date_lost": {
@@ -74656,11 +74884,13 @@
                   "null",
                   "string"
                 ],
+                "description": "When the opportunity was lost, as an ISO 8601 timestamp in UTC. Set automatically when the opportunity moves to a \u0060lost\u0060 status.",
                 "format": "date-time"
               },
               "date_updated": {
                 "title": "Date Updated",
                 "type": "string",
+                "description": "When the opportunity was last updated, as an ISO 8601 timestamp in UTC",
                 "format": "date-time"
               },
               "date_won": {
@@ -74669,6 +74899,7 @@
                   "null",
                   "string"
                 ],
+                "description": "Date the opportunity was won, or is expected to close if it\u0027s still active, as an ISO 8601 date, e.g. \u00602013-02-20\u0060. Set to today\u0027s date when the opportunity moves to a \u0060won\u0060 status without one.",
                 "format": "date"
               },
               "expected_value": {
@@ -74677,33 +74908,38 @@
                   "null",
                   "integer"
                 ],
-                "description": "Value multiplied by confidence, in cents."
+                "description": "\u0060value\u0060 multiplied by \u0060confidence\u0060, in cents, rounded down. For example, a \u0060value\u0060 of \u0060300000\u0060 with 75% confidence has an expected value of \u0060225000\u0060."
               },
               "id": {
                 "title": "ID",
-                "type": "string"
+                "type": "string",
+                "description": "The opportunity\u0027s ID, e.g. \u0060oppo_8eB77gAdf8FMy6GsNHEy84f7uoeEWv55slvUjKQZpJt\u0060"
               },
               "integration_links": {
                 "title": "Integration Links",
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/RenderedIntegrationLink"
-                }
+                },
+                "description": "The organization\u0027s opportunity integration links, rendered with this opportunity\u0027s data"
               },
               "is_stalled": {
                 "title": "Is Stalled",
-                "type": "boolean"
+                "type": "boolean",
+                "description": "Whether Close has flagged the opportunity as stalled, and the flag hasn\u0027t been dismissed. Only returned when requested in \u0060_fields\u0060."
               },
               "lead_id": {
                 "title": "Lead ID",
-                "type": "string"
+                "type": "string",
+                "description": "ID of the lead the opportunity belongs to, e.g. \u0060lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O\u0060. Every opportunity belongs to exactly one lead."
               },
               "lead_name": {
                 "title": "Lead Name",
                 "type": [
                   "null",
                   "string"
-                ]
+                ],
+                "description": "Display name of the opportunity\u0027s lead. See the lead\u0027s \u0060display_name\u0060."
               },
               "lead_primary_email": {
                 "$ref": "#/components/schemas/OpportunityLeadPrimaryEmail"
@@ -74716,57 +74952,66 @@
                 ],
                 "items": {
                   "$ref": "#/components/schemas/ContactPhone"
-                }
+                },
+                "description": "First phone number of the lead\u0027s first contact that has one, as a single-item list. Only returned when requested in \u0060_fields\u0060."
               },
               "note": {
                 "title": "Note",
                 "type": [
                   "null",
                   "string"
-                ]
+                ],
+                "description": "The opportunity\u0027s note as plain text, with \u0060note_html\u0060 formatting converted to markdown"
               },
               "note_html": {
-                "title": "Note Html",
+                "title": "Note HTML",
                 "type": [
                   "null",
                   "string"
-                ]
+                ],
+                "description": "The opportunity\u0027s note as [rich text](https://developer.close.com/api/overview/rich-text), a restricted subset of XHTML wrapped in a \u0060\u003Cbody\u003E\u0060 tag, e.g. \u0060\u003Cbody\u003E\u003Cp\u003EReady to sign next week.\u003C/p\u003E\u003C/body\u003E\u0060"
               },
               "organization_id": {
                 "title": "Organization ID",
-                "type": "string"
+                "type": "string",
+                "description": "The owning organization\u0027s ID, e.g. \u0060orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH\u0060"
               },
               "pipeline_id": {
                 "title": "Pipeline ID",
                 "type": [
                   "null",
                   "string"
-                ]
+                ],
+                "description": "ID of the pipeline that the opportunity\u0027s status belongs to, e.g. \u0060pipe_04fC628PVB0HjK2Qq5EqEf\u0060"
               },
               "pipeline_name": {
                 "title": "Pipeline Name",
                 "type": [
                   "null",
                   "string"
-                ]
+                ],
+                "description": "Name of the pipeline that the opportunity\u0027s status belongs to, e.g. \u0060Sales\u0060"
               },
               "stall_status": {
                 "$ref": "#/components/schemas/OpportunitySearchResultStallStatus"
               },
               "status_display_name": {
                 "title": "Status Display Name",
-                "type": "string"
+                "type": "string",
+                "description": "Label of the opportunity\u0027s status, prefixed with its pipeline\u0027s name when the organization has more than one pipeline, e.g. \u0060Sales: Active\u0060"
               },
               "status_id": {
                 "title": "Status ID",
-                "type": "string"
+                "type": "string",
+                "description": "ID of the opportunity\u0027s status, e.g. \u0060stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk\u0060. The status determines the opportunity\u0027s pipeline."
               },
               "status_label": {
                 "title": "Status Label",
-                "type": "string"
+                "type": "string",
+                "description": "Label of the opportunity\u0027s status, e.g. \u0060Active\u0060"
               },
               "status_type": {
-                "description": "Type of an Opportunity Status: \u0060active\u0060 for open Opportunities, \u0060won\u0060 or \u0060lost\u0060 for closed ones.",
+                "description": "Type of the opportunity\u0027s status: \u0060active\u0060, \u0060won\u0060 or \u0060lost\u0060",
                 "title": "Status Type",
                 "$ref": "#/components/schemas/OpportunityStatusType"
               },
@@ -74778,7 +75023,8 @@
                 "type": [
                   "null",
                   "string"
-                ]
+                ],
+                "description": "ID of the user who last updated the opportunity, e.g. \u0060user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA\u0060"
               },
               "updated_by_agent_id": {
                 "title": "Updated By Agent ID",
@@ -74793,18 +75039,21 @@
                 "type": [
                   "null",
                   "string"
-                ]
+                ],
+                "description": "Full name of the user who last updated the opportunity"
               },
               "user_id": {
                 "title": "User ID",
-                "type": "string"
+                "type": "string",
+                "description": "ID of the user who owns the opportunity, e.g. \u0060user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA\u0060"
               },
               "user_name": {
                 "title": "User Name",
                 "type": [
                   "null",
                   "string"
-                ]
+                ],
+                "description": "Full name of the user who owns the opportunity"
               },
               "value": {
                 "title": "Value",
@@ -74812,24 +75061,26 @@
                   "null",
                   "integer"
                 ],
-                "description": "Monetary value of the opportunity in cents, e.g. \u0060340000\u0060 for $3,400.00. See \u0060value_formatted\u0060 for a human-readable version."
+                "description": "Monetary value of the opportunity in cents, e.g. \u0060340000\u0060 for $3,400.00, in the organization\u0027s currency (see \u0060value_currency\u0060). See \u0060value_formatted\u0060 for a human-readable version."
               },
               "value_currency": {
                 "title": "Value Currency",
                 "type": [
                   "null",
                   "string"
-                ]
+                ],
+                "description": "ISO 4217 code of the organization\u0027s currency, which \u0060value\u0060 is in, e.g. \u0060USD\u0060"
               },
               "value_formatted": {
                 "title": "Value Formatted",
                 "type": [
                   "null",
                   "string"
-                ]
+                ],
+                "description": "\u0060value\u0060 formatted in the organization\u0027s currency, followed by \u0060value_period\u0060 unless it\u0027s \u0060one_time\u0060, e.g. \u0060$500\u0060 or \u0060$50 monthly\u0060. Empty if \u0060value\u0060 is null or 0."
               },
               "value_period": {
-                "description": "How often the Opportunity\u0027s value is paid: \u0060one_time\u0060, \u0060monthly\u0060 or \u0060annual\u0060.",
+                "description": "How often \u0060value\u0060 is paid: \u0060one_time\u0060, \u0060monthly\u0060 or \u0060annual\u0060",
                 "title": "Value Period",
                 "$ref": "#/components/schemas/OpportunityValuePeriod"
               }
@@ -82878,7 +83129,7 @@
             "null",
             "integer"
           ],
-          "description": "Annualized expected value in cents."
+          "description": "\u0060expected_value\u0060 as a yearly amount, in cents: multiplied by 12 when \u0060value_period\u0060 is \u0060monthly\u0060, unchanged otherwise."
         },
         "annualized_value": {
           "title": "Annualized Value",
@@ -82886,39 +83137,44 @@
             "null",
             "integer"
           ],
-          "description": "Annualized value in cents."
+          "description": "\u0060value\u0060 as a yearly amount, in cents: multiplied by 12 when \u0060value_period\u0060 is \u0060monthly\u0060, unchanged otherwise."
         },
         "attachments": {
           "title": "Attachments",
           "type": "array",
           "items": {
             "$ref": "#/components/schemas/Attachment"
-          }
+          },
+          "description": "Files attached to the opportunity"
         },
         "confidence": {
           "title": "Confidence",
-          "type": "integer"
+          "type": "integer",
+          "description": "Likelihood of winning the opportunity, as a percentage from 0 to 100. Always 100 when \u0060status_type\u0060 is \u0060won\u0060 and 0 when it is \u0060lost\u0060."
         },
         "contact_id": {
           "title": "Contact ID",
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "ID of the contact that the opportunity is associated with, e.g. \u0060cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk\u0060"
         },
         "contact_name": {
           "title": "Contact Name",
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "Full name of the opportunity\u0027s contact"
         },
         "created_by": {
           "title": "Created By",
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "ID of the user who created the opportunity, e.g. \u0060user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA\u0060"
         },
         "created_by_agent_id": {
           "title": "Created By Agent ID",
@@ -82933,11 +83189,13 @@
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "Full name of the user who created the opportunity"
         },
         "date_created": {
           "title": "Date Created",
           "type": "string",
+          "description": "When the opportunity was created, as an ISO 8601 timestamp in UTC",
           "format": "date-time"
         },
         "date_lost": {
@@ -82946,11 +83204,13 @@
             "null",
             "string"
           ],
+          "description": "When the opportunity was lost, as an ISO 8601 timestamp in UTC. Set automatically when the opportunity moves to a \u0060lost\u0060 status.",
           "format": "date-time"
         },
         "date_updated": {
           "title": "Date Updated",
           "type": "string",
+          "description": "When the opportunity was last updated, as an ISO 8601 timestamp in UTC",
           "format": "date-time"
         },
         "date_won": {
@@ -82959,6 +83219,7 @@
             "null",
             "string"
           ],
+          "description": "Date the opportunity was won, or is expected to close if it\u0027s still active, as an ISO 8601 date, e.g. \u00602013-02-20\u0060. Set to today\u0027s date when the opportunity moves to a \u0060won\u0060 status without one.",
           "format": "date"
         },
         "expected_value": {
@@ -82967,33 +83228,38 @@
             "null",
             "integer"
           ],
-          "description": "Value multiplied by confidence, in cents."
+          "description": "\u0060value\u0060 multiplied by \u0060confidence\u0060, in cents, rounded down. For example, a \u0060value\u0060 of \u0060300000\u0060 with 75% confidence has an expected value of \u0060225000\u0060."
         },
         "id": {
           "title": "ID",
-          "type": "string"
+          "type": "string",
+          "description": "The opportunity\u0027s ID, e.g. \u0060oppo_8eB77gAdf8FMy6GsNHEy84f7uoeEWv55slvUjKQZpJt\u0060"
         },
         "integration_links": {
           "title": "Integration Links",
           "type": "array",
           "items": {
             "$ref": "#/components/schemas/RenderedIntegrationLink"
-          }
+          },
+          "description": "The organization\u0027s opportunity integration links, rendered with this opportunity\u0027s data"
         },
         "is_stalled": {
           "title": "Is Stalled",
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Whether Close has flagged the opportunity as stalled, and the flag hasn\u0027t been dismissed. Only returned when requested in \u0060_fields\u0060."
         },
         "lead_id": {
           "title": "Lead ID",
-          "type": "string"
+          "type": "string",
+          "description": "ID of the lead the opportunity belongs to, e.g. \u0060lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O\u0060. Every opportunity belongs to exactly one lead."
         },
         "lead_name": {
           "title": "Lead Name",
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "Display name of the opportunity\u0027s lead. See the lead\u0027s \u0060display_name\u0060."
         },
         "lead_primary_email": {
           "$ref": "#/components/schemas/OpportunityLeadPrimaryEmail"
@@ -83006,57 +83272,66 @@
           ],
           "items": {
             "$ref": "#/components/schemas/ContactPhone"
-          }
+          },
+          "description": "First phone number of the lead\u0027s first contact that has one, as a single-item list. Only returned when requested in \u0060_fields\u0060."
         },
         "note": {
           "title": "Note",
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "The opportunity\u0027s note as plain text, with \u0060note_html\u0060 formatting converted to markdown"
         },
         "note_html": {
-          "title": "Note Html",
+          "title": "Note HTML",
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "The opportunity\u0027s note as [rich text](https://developer.close.com/api/overview/rich-text), a restricted subset of XHTML wrapped in a \u0060\u003Cbody\u003E\u0060 tag, e.g. \u0060\u003Cbody\u003E\u003Cp\u003EReady to sign next week.\u003C/p\u003E\u003C/body\u003E\u0060"
         },
         "organization_id": {
           "title": "Organization ID",
-          "type": "string"
+          "type": "string",
+          "description": "The owning organization\u0027s ID, e.g. \u0060orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH\u0060"
         },
         "pipeline_id": {
           "title": "Pipeline ID",
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "ID of the pipeline that the opportunity\u0027s status belongs to, e.g. \u0060pipe_04fC628PVB0HjK2Qq5EqEf\u0060"
         },
         "pipeline_name": {
           "title": "Pipeline Name",
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "Name of the pipeline that the opportunity\u0027s status belongs to, e.g. \u0060Sales\u0060"
         },
         "stall_status": {
           "$ref": "#/components/schemas/OpportunitySearchResultStallStatus"
         },
         "status_display_name": {
           "title": "Status Display Name",
-          "type": "string"
+          "type": "string",
+          "description": "Label of the opportunity\u0027s status, prefixed with its pipeline\u0027s name when the organization has more than one pipeline, e.g. \u0060Sales: Active\u0060"
         },
         "status_id": {
           "title": "Status ID",
-          "type": "string"
+          "type": "string",
+          "description": "ID of the opportunity\u0027s status, e.g. \u0060stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk\u0060. The status determines the opportunity\u0027s pipeline."
         },
         "status_label": {
           "title": "Status Label",
-          "type": "string"
+          "type": "string",
+          "description": "Label of the opportunity\u0027s status, e.g. \u0060Active\u0060"
         },
         "status_type": {
-          "description": "Type of an Opportunity Status: \u0060active\u0060 for open Opportunities, \u0060won\u0060 or \u0060lost\u0060 for closed ones.",
+          "description": "Type of the opportunity\u0027s status: \u0060active\u0060, \u0060won\u0060 or \u0060lost\u0060",
           "title": "Status Type",
           "$ref": "#/components/schemas/OpportunityStatusType"
         },
@@ -83068,7 +83343,8 @@
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "ID of the user who last updated the opportunity, e.g. \u0060user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA\u0060"
         },
         "updated_by_agent_id": {
           "title": "Updated By Agent ID",
@@ -83083,18 +83359,21 @@
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "Full name of the user who last updated the opportunity"
         },
         "user_id": {
           "title": "User ID",
-          "type": "string"
+          "type": "string",
+          "description": "ID of the user who owns the opportunity, e.g. \u0060user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA\u0060"
         },
         "user_name": {
           "title": "User Name",
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "Full name of the user who owns the opportunity"
         },
         "value": {
           "title": "Value",
@@ -83102,24 +83381,26 @@
             "null",
             "integer"
           ],
-          "description": "Monetary value of the opportunity in cents, e.g. \u0060340000\u0060 for $3,400.00. See \u0060value_formatted\u0060 for a human-readable version."
+          "description": "Monetary value of the opportunity in cents, e.g. \u0060340000\u0060 for $3,400.00, in the organization\u0027s currency (see \u0060value_currency\u0060). See \u0060value_formatted\u0060 for a human-readable version."
         },
         "value_currency": {
           "title": "Value Currency",
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "ISO 4217 code of the organization\u0027s currency, which \u0060value\u0060 is in, e.g. \u0060USD\u0060"
         },
         "value_formatted": {
           "title": "Value Formatted",
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "\u0060value\u0060 formatted in the organization\u0027s currency, followed by \u0060value_period\u0060 unless it\u0027s \u0060one_time\u0060, e.g. \u0060$500\u0060 or \u0060$50 monthly\u0060. Empty if \u0060value\u0060 is null or 0."
         },
         "value_period": {
-          "description": "How often the Opportunity\u0027s value is paid: \u0060one_time\u0060, \u0060monthly\u0060 or \u0060annual\u0060.",
+          "description": "How often \u0060value\u0060 is paid: \u0060one_time\u0060, \u0060monthly\u0060 or \u0060annual\u0060",
           "title": "Value Period",
           "$ref": "#/components/schemas/OpportunityValuePeriod"
         }
@@ -83349,7 +83630,7 @@
       "type": "object",
       "properties": {
         "action": {
-          "description": "A suggested next step for a stalled Opportunity.",
+          "description": "Type of the suggested next step",
           "$ref": "#/components/schemas/StalledOpportunityActionTypeV2"
         },
         "details": {
@@ -83357,7 +83638,8 @@
         },
         "justification": {
           "title": "Justification",
-          "type": "string"
+          "type": "string",
+          "description": "Short explanation of why the action is suggested"
         }
       }
     },
@@ -85133,16 +85415,6 @@
         "description": "First phone number of the first contact that has one, or null if no contact has a phone number. Only returned when requested in \u0060_fields\u0060."
       }
     },
-    "LeadStatusColorComposed": {
-      "anyOf": [
-        {
-          "$ref": "#/components/schemas/LeadStatusColor"
-        },
-        {
-          "type": "null"
-        }
-      ]
-    },
     "MeetingActivityCommentSummary": {
       "title": "Comment Summary",
       "required": [
@@ -85206,38 +85478,6 @@
         }
       ]
     },
-    "OpportunityCommentSummary": {
-      "title": "Comment Summary",
-      "required": [
-        "comment_count",
-        "thread_id"
-      ],
-      "type": [
-        "object",
-        "null"
-      ],
-      "properties": {
-        "comment_count": {
-          "title": "Comment Count",
-          "type": "integer"
-        },
-        "thread_id": {
-          "title": "Thread ID",
-          "type": "string"
-        }
-      },
-      "x-client-original-nullable-union": {
-        "title": "Comment Summary",
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/CommentSummary"
-          },
-          {
-            "type": "null"
-          }
-        ]
-      }
-    },
     "OpportunityStallStatus": {
       "title": "Stall Status",
       "required": [
@@ -85259,6 +85499,7 @@
         }
       },
       "deprecated": true,
+      "description": "Deprecated: use \u0060suggested_action\u0060 instead. Why the opportunity is stalled and a suggested next step. Only returned when requested in \u0060_fields\u0060.",
       "x-client-original-nullable-union": {
         "title": "Stall Status",
         "anyOf": [
@@ -85268,7 +85509,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "description": "Deprecated: use \u0060suggested_action\u0060 instead. Why the opportunity is stalled and a suggested next step. Only returned when requested in \u0060_fields\u0060."
       }
     },
     "OpportunitySuggestedActionComposed": {
@@ -85284,7 +85526,7 @@
       ],
       "properties": {
         "action": {
-          "description": "A suggested next step for a stalled Opportunity.",
+          "description": "Type of the suggested next step",
           "$ref": "#/components/schemas/StalledOpportunityActionTypeV2"
         },
         "details": {
@@ -85292,9 +85534,11 @@
         },
         "justification": {
           "title": "Justification",
-          "type": "string"
+          "type": "string",
+          "description": "Short explanation of why the action is suggested"
         }
       },
+      "description": "Suggested next step for the stalled opportunity. Only returned when requested in \u0060_fields\u0060.",
       "x-client-original-nullable-union": {
         "title": "Suggested Action",
         "anyOf": [
@@ -85304,7 +85548,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "description": "Suggested next step for the stalled opportunity. Only returned when requested in \u0060_fields\u0060."
       }
     },
     "OpportunitySearchResultLeadPrimaryEmail": {
@@ -85335,6 +85580,7 @@
           "description": "Label for the email address, e.g. \u0060office\u0060, \u0060home\u0060, or \u0060other\u0060"
         }
       },
+      "description": "First email address of the lead\u0027s first contact that has one. Only returned when requested in \u0060_fields\u0060.",
       "x-client-original-nullable-union": {
         "title": "Lead Primary Email",
         "anyOf": [
@@ -85344,7 +85590,8 @@
           {
             "type": "null"
           }
-        ]
+        ],
+        "description": "First email address of the lead\u0027s first contact that has one. Only returned when requested in \u0060_fields\u0060."
       }
     },
     "OpportunityStatusChangeSearchResultOpportunityValuePeriod": {
@@ -85590,6 +85837,19 @@
         }
       ]
     },
+    "OpportunitiesGet403Response": {
+      "anyOf": [
+        {
+          "$ref": "#/components/schemas/ErrorMessage"
+        },
+        {
+          "$ref": "#/components/schemas/ApiKeyError"
+        },
+        {
+          "$ref": "#/components/schemas/ValidationErrors"
+        }
+      ]
+    },
     "StandardObjectLabelsUpdate403Response": {
       "anyOf": [
         {
@@ -85609,6 +85869,9 @@
           "$ref": "#/components/schemas/ApiKeyError"
         }
       ]
+    },
+    "LeadStatusesDelete200Response": {
+      "type": "object"
     },
     "ExamplePayload": {
       "type": "object",

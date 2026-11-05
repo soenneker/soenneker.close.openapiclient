@@ -22,7 +22,7 @@ namespace Soenneker.Close.OpenApiClient.Opportunity
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/opportunity/{?_fields*,_group_by*,_limit*,_order_by*,_skip*,date_created*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,date_updated*,date_updated__gt*,date_updated__gte*,date_updated__lt*,date_updated__lte*,date_won*,date_won__gt*,date_won__gte*,date_won__lt*,date_won__lte*,is_stalled*,lead_id*,lead_query*,lead_saved_search_id*,organization_id*,query*,status*,status__in*,status_id*,status_id__in*,status_label*,status_label__in*,status_type*,status_type__in*,user_id*,user_id__in*,value_period*,value_period__in*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/opportunity/{?_fields*,_group_by*,_limit*,_order_by*,_skip*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,date_updated__gt*,date_updated__gte*,date_updated__lt*,date_updated__lte*,date_won__gt*,date_won__gte*,date_won__lt*,date_won__lte*,is_stalled*,lead_id*,lead_query*,lead_saved_search_id*,query*,status*,status__in*,status_id*,status_id__in*,status_label*,status_label__in*,status_type*,status_type__in*,user_id*,user_id__in*,value_period*,value_period__in*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.Close.OpenApiClient.Opportunity
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/opportunity/{?_fields*,_group_by*,_limit*,_order_by*,_skip*,date_created*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,date_updated*,date_updated__gt*,date_updated__gte*,date_updated__lt*,date_updated__lte*,date_won*,date_won__gt*,date_won__gte*,date_won__lt*,date_won__lte*,is_stalled*,lead_id*,lead_query*,lead_saved_search_id*,organization_id*,query*,status*,status__in*,status_id*,status_id__in*,status_label*,status_label__in*,status_type*,status_type__in*,user_id*,user_id__in*,value_period*,value_period__in*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/opportunity/{?_fields*,_group_by*,_limit*,_order_by*,_skip*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,date_updated__gt*,date_updated__gte*,date_updated__lt*,date_updated__lte*,date_won__gt*,date_won__gte*,date_won__lt*,date_won__lte*,is_stalled*,lead_id*,lead_query*,lead_saved_search_id*,query*,status*,status__in*,status_id*,status_id__in*,status_label*,status_label__in*,status_type*,status_type__in*,user_id*,user_id__in*,value_period*,value_period__in*}", rawUrl)
         {
         }
         /// <summary>
-        /// * All opportunity list responses contain the following aggregate values about all the matching objects (regardless of pagination / limits):    * `total_results`: the total number of objects,    * `count_by_value_period`: a dictionary containing the number of opportunities by value period, e.g. `{ &apos;one_time&apos;: 2, &apos;annual&apos;: 1, &apos;monthly&apos;: 1 }`,    * `total_value_one_time`: the sum of the values of all one time opportunities,    * `total_value_monthly`: the sum of the values of all monthly opportunities,    * `total_value_annual`: the sum of the values of all annual opportunities,    * `total_value_annualized`: the sum of the values of all opportunities where monthly opportunity values are multiplied by 12,    * `expected_value_one_time`: the sum of the values of all one time opportunities multiplied by their confidence,    * `expected_value_monthly`: the sum of the values of all monthly opportunities multiplied by their confidence,    * `expected_value_annual`: the sum of the values of all annual opportunities multiplied by their confidence,    * `expected_value_annualized`: the sum of the values of all opportunities multiplied by their confidence where monthly opportunity values are multiplied by 12,* `query` is an optional search query filter. Only opportunity properties may be used in the filter. For example, `note:important` will only show opportunities which contain the text `important` in their note. Or, `status_change(old_status:active new_status:won date:yesterday)` will only show opportunities that transitioned from status `active` to status `won` on the previous day.* `_order_by` allows: `date_won`, `date_updated`, `date_created`, `confidence`, `user_name`, `value`, `annualized_value`, `annualized_expected_value` (each of them allows descending order by prepending a minus, e.g. `_order_by=-date_won`).* `value_period` allows: `one_time`, `monthly`, `annual`.* Multiple values for `user_id`, `status_id`, `status_label`, `status_type` and `value_period` can be specified using the *in* operator, e.g. `status_type__in=active,won`.* `_group_by` allows: `user_id`, `date_won__week`, `date_won__month`, `date_won__quarter` `date_won__year` to group results by the given criteria.    When grouping results, the `data` array contains a list of groups instead of objects. A group consists of the following fields:    * `key` containing a unique group key,    * `objects` containing the list of objects for the given group,    * `total_results` containing the number of total objects for the given group,    * all aggregate values for the given group,    * if grouping by year: `year`, containing the year for the given group,    * if grouping by month: `year` and `month`, containing the year and month (1-12) for the given group,    * if grouping by quarter: `year` and `quarter`, containing the year and quarter (1-4) for the given group,    * if grouping by week: `weekyear` and `week`, containing the ISO week year and ISO week number for the given group,    * if grouping by user: `user_id` and `user_name`, containing the user ID and full name of the user for the given group.    Note that pagination still applies to objects and not groups. The last or first group may be cut off during pagination, therefore `total_results` may not match the length of `objects`. When paginating, the `key` value may be used to combine groups across multiple pages. Sorting using `_order_by` may be applied and sorts the items within each of the groups. Group order can be reversed by prepending a minus. For example,  `_group_by=-date_won__week` will show the most recent weeks first. When grouping by `user_id`, results are ordered by the user&apos;s full name.* `lead_saved_search_id` is an optional lead Smart View filter.* (deprecated) `lead_query` is an optional lead search text-based query filter. This parameter is now deprecated in favor of using the `lead_saved_search_id` Smart View ID parameter.
+        /// List the opportunities in your organization, most recently created first. Only opportunities you have access to are returned.* All opportunity list responses contain the following aggregate values about all the matching objects (regardless of pagination / limits):    * `total_results`: the total number of objects,    * `count_by_value_period`: a dictionary containing the number of opportunities by value period, e.g. `{ &apos;one_time&apos;: 2, &apos;annual&apos;: 1, &apos;monthly&apos;: 1 }`,    * `total_value_one_time`: the sum of the values of all one time opportunities,    * `total_value_monthly`: the sum of the values of all monthly opportunities,    * `total_value_annual`: the sum of the values of all annual opportunities,    * `total_value_annualized`: the sum of the values of all opportunities where monthly opportunity values are multiplied by 12,    * `expected_value_one_time`: the sum of the values of all one time opportunities multiplied by their confidence,    * `expected_value_monthly`: the sum of the values of all monthly opportunities multiplied by their confidence,    * `expected_value_annual`: the sum of the values of all annual opportunities multiplied by their confidence,    * `expected_value_annualized`: the sum of the values of all opportunities multiplied by their confidence where monthly opportunity values are multiplied by 12,* When grouping results with `_group_by`, the `data` array contains a list of groups instead of objects. A group consists of the following fields:    * `key` containing a unique group key,    * `objects` containing the list of objects for the given group,    * `total_results` containing the number of total objects for the given group,    * all aggregate values for the given group,    * if grouping by year: `year`, containing the year for the given group,    * if grouping by month: `year` and `month`, containing the year and month (1-12) for the given group,    * if grouping by quarter: `year` and `quarter`, containing the year and quarter (1-4) for the given group,    * if grouping by week: `weekyear` and `week`, containing the ISO week year and ISO week number for the given group,    * if grouping by user: `user_id` and `user_name`, containing the user ID and full name of the user for the given group.    Note that pagination still applies to objects and not groups. The last or first group may be cut off during pagination, therefore `total_results` may not match the length of `objects`. When paginating, the `key` value may be used to combine groups across multiple pages. Sorting using `_order_by` may be applied and sorts the items within each of the groups. When grouping by `user_id`, results are ordered by the user&apos;s full name.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunitiesList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace Soenneker.Close.OpenApiClient.Opportunity
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.OpportunitiesList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.OpportunitiesList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create an opportunity, optionally linked to an existing lead.**custom.FIELD_ID** (optional): Set custom fields by setting `custom.FIELD_ID` to the field value, where FIELD_ID is the ID of the custom field, e.g.:```json{ &quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c&quot;: &quot;value&quot;, &quot;custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F&quot;: &quot;other value&quot; }```If a custom field has `accepts_multiple_values: true`, the entire value will be replaced. For example, given an Opportunity has a Custom Choice Field with value `[&quot;A&quot;, &quot;B&quot;]`, adding choice `&quot;C&quot;` would mean setting the value to `[&quot;A&quot;, &quot;B&quot;, &quot;C&quot;]`.Note that using the `custom` field dict or the `custom.FIELD_NAME` syntax (instead of custom field IDs) is deprecated and will be removed from the API. See [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.
+        /// Create an opportunity. It&apos;s added to the lead given in `lead_id`, or to the lead of `contact_id`, or to a new lead if neither is given. A lead can have at most 300 opportunities.Returns the created opportunity.**Custom fields**: set a custom field by setting `custom.{custom_field_id}` to its value, e.g.:```json{ &quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c&quot;: &quot;value&quot;, &quot;custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F&quot;: &quot;other value&quot; }```For a custom field with `accepts_multiple_values: true`, pass the full list of values, e.g. `[&quot;A&quot;, &quot;B&quot;, &quot;C&quot;]`.See [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.Opportunity"/></returns>
         /// <param name="body">The request body</param>
@@ -98,7 +98,7 @@ namespace Soenneker.Close.OpenApiClient.Opportunity
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.Opportunity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.Opportunity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// * All opportunity list responses contain the following aggregate values about all the matching objects (regardless of pagination / limits):    * `total_results`: the total number of objects,    * `count_by_value_period`: a dictionary containing the number of opportunities by value period, e.g. `{ &apos;one_time&apos;: 2, &apos;annual&apos;: 1, &apos;monthly&apos;: 1 }`,    * `total_value_one_time`: the sum of the values of all one time opportunities,    * `total_value_monthly`: the sum of the values of all monthly opportunities,    * `total_value_annual`: the sum of the values of all annual opportunities,    * `total_value_annualized`: the sum of the values of all opportunities where monthly opportunity values are multiplied by 12,    * `expected_value_one_time`: the sum of the values of all one time opportunities multiplied by their confidence,    * `expected_value_monthly`: the sum of the values of all monthly opportunities multiplied by their confidence,    * `expected_value_annual`: the sum of the values of all annual opportunities multiplied by their confidence,    * `expected_value_annualized`: the sum of the values of all opportunities multiplied by their confidence where monthly opportunity values are multiplied by 12,* `query` is an optional search query filter. Only opportunity properties may be used in the filter. For example, `note:important` will only show opportunities which contain the text `important` in their note. Or, `status_change(old_status:active new_status:won date:yesterday)` will only show opportunities that transitioned from status `active` to status `won` on the previous day.* `_order_by` allows: `date_won`, `date_updated`, `date_created`, `confidence`, `user_name`, `value`, `annualized_value`, `annualized_expected_value` (each of them allows descending order by prepending a minus, e.g. `_order_by=-date_won`).* `value_period` allows: `one_time`, `monthly`, `annual`.* Multiple values for `user_id`, `status_id`, `status_label`, `status_type` and `value_period` can be specified using the *in* operator, e.g. `status_type__in=active,won`.* `_group_by` allows: `user_id`, `date_won__week`, `date_won__month`, `date_won__quarter` `date_won__year` to group results by the given criteria.    When grouping results, the `data` array contains a list of groups instead of objects. A group consists of the following fields:    * `key` containing a unique group key,    * `objects` containing the list of objects for the given group,    * `total_results` containing the number of total objects for the given group,    * all aggregate values for the given group,    * if grouping by year: `year`, containing the year for the given group,    * if grouping by month: `year` and `month`, containing the year and month (1-12) for the given group,    * if grouping by quarter: `year` and `quarter`, containing the year and quarter (1-4) for the given group,    * if grouping by week: `weekyear` and `week`, containing the ISO week year and ISO week number for the given group,    * if grouping by user: `user_id` and `user_name`, containing the user ID and full name of the user for the given group.    Note that pagination still applies to objects and not groups. The last or first group may be cut off during pagination, therefore `total_results` may not match the length of `objects`. When paginating, the `key` value may be used to combine groups across multiple pages. Sorting using `_order_by` may be applied and sorts the items within each of the groups. Group order can be reversed by prepending a minus. For example,  `_group_by=-date_won__week` will show the most recent weeks first. When grouping by `user_id`, results are ordered by the user&apos;s full name.* `lead_saved_search_id` is an optional lead Smart View filter.* (deprecated) `lead_query` is an optional lead search text-based query filter. This parameter is now deprecated in favor of using the `lead_saved_search_id` Smart View ID parameter.
+        /// List the opportunities in your organization, most recently created first. Only opportunities you have access to are returned.* All opportunity list responses contain the following aggregate values about all the matching objects (regardless of pagination / limits):    * `total_results`: the total number of objects,    * `count_by_value_period`: a dictionary containing the number of opportunities by value period, e.g. `{ &apos;one_time&apos;: 2, &apos;annual&apos;: 1, &apos;monthly&apos;: 1 }`,    * `total_value_one_time`: the sum of the values of all one time opportunities,    * `total_value_monthly`: the sum of the values of all monthly opportunities,    * `total_value_annual`: the sum of the values of all annual opportunities,    * `total_value_annualized`: the sum of the values of all opportunities where monthly opportunity values are multiplied by 12,    * `expected_value_one_time`: the sum of the values of all one time opportunities multiplied by their confidence,    * `expected_value_monthly`: the sum of the values of all monthly opportunities multiplied by their confidence,    * `expected_value_annual`: the sum of the values of all annual opportunities multiplied by their confidence,    * `expected_value_annualized`: the sum of the values of all opportunities multiplied by their confidence where monthly opportunity values are multiplied by 12,* When grouping results with `_group_by`, the `data` array contains a list of groups instead of objects. A group consists of the following fields:    * `key` containing a unique group key,    * `objects` containing the list of objects for the given group,    * `total_results` containing the number of total objects for the given group,    * all aggregate values for the given group,    * if grouping by year: `year`, containing the year for the given group,    * if grouping by month: `year` and `month`, containing the year and month (1-12) for the given group,    * if grouping by quarter: `year` and `quarter`, containing the year and quarter (1-4) for the given group,    * if grouping by week: `weekyear` and `week`, containing the ISO week year and ISO week number for the given group,    * if grouping by user: `user_id` and `user_name`, containing the user ID and full name of the user for the given group.    Note that pagination still applies to objects and not groups. The last or first group may be cut off during pagination, therefore `total_results` may not match the length of `objects`. When paginating, the `key` value may be used to combine groups across multiple pages. Sorting using `_order_by` may be applied and sorts the items within each of the groups. When grouping by `user_id`, results are ordered by the user&apos;s full name.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -117,7 +117,7 @@ namespace Soenneker.Close.OpenApiClient.Opportunity
             return requestInfo;
         }
         /// <summary>
-        /// Create an opportunity, optionally linked to an existing lead.**custom.FIELD_ID** (optional): Set custom fields by setting `custom.FIELD_ID` to the field value, where FIELD_ID is the ID of the custom field, e.g.:```json{ &quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c&quot;: &quot;value&quot;, &quot;custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F&quot;: &quot;other value&quot; }```If a custom field has `accepts_multiple_values: true`, the entire value will be replaced. For example, given an Opportunity has a Custom Choice Field with value `[&quot;A&quot;, &quot;B&quot;]`, adding choice `&quot;C&quot;` would mean setting the value to `[&quot;A&quot;, &quot;B&quot;, &quot;C&quot;]`.Note that using the `custom` field dict or the `custom.FIELD_NAME` syntax (instead of custom field IDs) is deprecated and will be removed from the API. See [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.
+        /// Create an opportunity. It&apos;s added to the lead given in `lead_id`, or to the lead of `contact_id`, or to a new lead if neither is given. A lead can have at most 300 opportunities.Returns the created opportunity.**Custom fields**: set a custom field by setting `custom.{custom_field_id}` to its value, e.g.:```json{ &quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c&quot;: &quot;value&quot;, &quot;custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F&quot;: &quot;other value&quot; }```For a custom field with `accepts_multiple_values: true`, pass the full list of values, e.g. `[&quot;A&quot;, &quot;B&quot;, &quot;C&quot;]`.See [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -148,205 +148,130 @@ namespace Soenneker.Close.OpenApiClient.Opportunity
             return new global::Soenneker.Close.OpenApiClient.Opportunity.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// * All opportunity list responses contain the following aggregate values about all the matching objects (regardless of pagination / limits):    * `total_results`: the total number of objects,    * `count_by_value_period`: a dictionary containing the number of opportunities by value period, e.g. `{ &apos;one_time&apos;: 2, &apos;annual&apos;: 1, &apos;monthly&apos;: 1 }`,    * `total_value_one_time`: the sum of the values of all one time opportunities,    * `total_value_monthly`: the sum of the values of all monthly opportunities,    * `total_value_annual`: the sum of the values of all annual opportunities,    * `total_value_annualized`: the sum of the values of all opportunities where monthly opportunity values are multiplied by 12,    * `expected_value_one_time`: the sum of the values of all one time opportunities multiplied by their confidence,    * `expected_value_monthly`: the sum of the values of all monthly opportunities multiplied by their confidence,    * `expected_value_annual`: the sum of the values of all annual opportunities multiplied by their confidence,    * `expected_value_annualized`: the sum of the values of all opportunities multiplied by their confidence where monthly opportunity values are multiplied by 12,* `query` is an optional search query filter. Only opportunity properties may be used in the filter. For example, `note:important` will only show opportunities which contain the text `important` in their note. Or, `status_change(old_status:active new_status:won date:yesterday)` will only show opportunities that transitioned from status `active` to status `won` on the previous day.* `_order_by` allows: `date_won`, `date_updated`, `date_created`, `confidence`, `user_name`, `value`, `annualized_value`, `annualized_expected_value` (each of them allows descending order by prepending a minus, e.g. `_order_by=-date_won`).* `value_period` allows: `one_time`, `monthly`, `annual`.* Multiple values for `user_id`, `status_id`, `status_label`, `status_type` and `value_period` can be specified using the *in* operator, e.g. `status_type__in=active,won`.* `_group_by` allows: `user_id`, `date_won__week`, `date_won__month`, `date_won__quarter` `date_won__year` to group results by the given criteria.    When grouping results, the `data` array contains a list of groups instead of objects. A group consists of the following fields:    * `key` containing a unique group key,    * `objects` containing the list of objects for the given group,    * `total_results` containing the number of total objects for the given group,    * all aggregate values for the given group,    * if grouping by year: `year`, containing the year for the given group,    * if grouping by month: `year` and `month`, containing the year and month (1-12) for the given group,    * if grouping by quarter: `year` and `quarter`, containing the year and quarter (1-4) for the given group,    * if grouping by week: `weekyear` and `week`, containing the ISO week year and ISO week number for the given group,    * if grouping by user: `user_id` and `user_name`, containing the user ID and full name of the user for the given group.    Note that pagination still applies to objects and not groups. The last or first group may be cut off during pagination, therefore `total_results` may not match the length of `objects`. When paginating, the `key` value may be used to combine groups across multiple pages. Sorting using `_order_by` may be applied and sorts the items within each of the groups. Group order can be reversed by prepending a minus. For example,  `_group_by=-date_won__week` will show the most recent weeks first. When grouping by `user_id`, results are ordered by the user&apos;s full name.* `lead_saved_search_id` is an optional lead Smart View filter.* (deprecated) `lead_query` is an optional lead search text-based query filter. This parameter is now deprecated in favor of using the `lead_saved_search_id` Smart View ID parameter.
+        /// List the opportunities in your organization, most recently created first. Only opportunities you have access to are returned.* All opportunity list responses contain the following aggregate values about all the matching objects (regardless of pagination / limits):    * `total_results`: the total number of objects,    * `count_by_value_period`: a dictionary containing the number of opportunities by value period, e.g. `{ &apos;one_time&apos;: 2, &apos;annual&apos;: 1, &apos;monthly&apos;: 1 }`,    * `total_value_one_time`: the sum of the values of all one time opportunities,    * `total_value_monthly`: the sum of the values of all monthly opportunities,    * `total_value_annual`: the sum of the values of all annual opportunities,    * `total_value_annualized`: the sum of the values of all opportunities where monthly opportunity values are multiplied by 12,    * `expected_value_one_time`: the sum of the values of all one time opportunities multiplied by their confidence,    * `expected_value_monthly`: the sum of the values of all monthly opportunities multiplied by their confidence,    * `expected_value_annual`: the sum of the values of all annual opportunities multiplied by their confidence,    * `expected_value_annualized`: the sum of the values of all opportunities multiplied by their confidence where monthly opportunity values are multiplied by 12,* When grouping results with `_group_by`, the `data` array contains a list of groups instead of objects. A group consists of the following fields:    * `key` containing a unique group key,    * `objects` containing the list of objects for the given group,    * `total_results` containing the number of total objects for the given group,    * all aggregate values for the given group,    * if grouping by year: `year`, containing the year for the given group,    * if grouping by month: `year` and `month`, containing the year and month (1-12) for the given group,    * if grouping by quarter: `year` and `quarter`, containing the year and quarter (1-4) for the given group,    * if grouping by week: `weekyear` and `week`, containing the ISO week year and ISO week number for the given group,    * if grouping by user: `user_id` and `user_name`, containing the user ID and full name of the user for the given group.    Note that pagination still applies to objects and not groups. The last or first group may be cut off during pagination, therefore `total_results` may not match the length of `objects`. When paginating, the `key` value may be used to combine groups across multiple pages. Sorting using `_order_by` may be applied and sorts the items within each of the groups. When grouping by `user_id`, results are ordered by the user&apos;s full name.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         {
+            /// <summary>Only return opportunities created after this time, as an ISO 8601 date or timestamp, e.g. `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
-            [QueryParameter("date_created")]
-            public string? DateCreated { get; set; }
-            #pragma warning restore CS1591
-#nullable restore
-#else
-            #pragma warning disable CS1591
-            [QueryParameter("date_created")]
-            public string DateCreated { get; set; }
-            #pragma warning restore CS1591
-#endif
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_created__gt")]
             public string? DateCreatedGt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_created__gt")]
             public string DateCreatedGt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return opportunities created at or after this time, as an ISO 8601 date or timestamp, e.g. `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_created__gte")]
             public string? DateCreatedGte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_created__gte")]
             public string DateCreatedGte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return opportunities created before this time, as an ISO 8601 date or timestamp, e.g. `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_created__lt")]
             public string? DateCreatedLt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_created__lt")]
             public string DateCreatedLt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return opportunities created at or before this time, as an ISO 8601 date or timestamp, e.g. `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_created__lte")]
             public string? DateCreatedLte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_created__lte")]
             public string DateCreatedLte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return opportunities last updated after this time, as an ISO 8601 date or timestamp, e.g. `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
-            [QueryParameter("date_updated")]
-            public string? DateUpdated { get; set; }
-            #pragma warning restore CS1591
-#nullable restore
-#else
-            #pragma warning disable CS1591
-            [QueryParameter("date_updated")]
-            public string DateUpdated { get; set; }
-            #pragma warning restore CS1591
-#endif
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__gt")]
             public string? DateUpdatedGt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__gt")]
             public string DateUpdatedGt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return opportunities last updated at or after this time, as an ISO 8601 date or timestamp, e.g. `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__gte")]
             public string? DateUpdatedGte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__gte")]
             public string DateUpdatedGte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return opportunities last updated before this time, as an ISO 8601 date or timestamp, e.g. `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__lt")]
             public string? DateUpdatedLt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__lt")]
             public string DateUpdatedLt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return opportunities last updated at or before this time, as an ISO 8601 date or timestamp, e.g. `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__lte")]
             public string? DateUpdatedLte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__lte")]
             public string DateUpdatedLte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return opportunities whose `date_won` is after this date, e.g. `2024-01-31`. Any time part is ignored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
-            [QueryParameter("date_won")]
-            public string? DateWon { get; set; }
-            #pragma warning restore CS1591
-#nullable restore
-#else
-            #pragma warning disable CS1591
-            [QueryParameter("date_won")]
-            public string DateWon { get; set; }
-            #pragma warning restore CS1591
-#endif
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_won__gt")]
             public string? DateWonGt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_won__gt")]
             public string DateWonGt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return opportunities whose `date_won` is on or after this date, e.g. `2024-01-31`. Any time part is ignored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_won__gte")]
             public string? DateWonGte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_won__gte")]
             public string DateWonGte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return opportunities whose `date_won` is before this date, e.g. `2024-01-31`. Any time part is ignored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_won__lt")]
             public string? DateWonLt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_won__lt")]
             public string DateWonLt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return opportunities whose `date_won` is on or before this date, e.g. `2024-01-31`. Any time part is ignored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_won__lte")]
             public string? DateWonLte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_won__lte")]
             public string DateWonLte { get; set; }
-            #pragma warning restore CS1591
 #endif
             /// <summary>Comma-separated list of fields to include in the response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -358,271 +283,201 @@ namespace Soenneker.Close.OpenApiClient.Opportunity
             [QueryParameter("_fields")]
             public string Fields { get; set; }
 #endif
+            /// <summary>Group results by `user_id`, `date_won__week`, `date_won__month`, `date_won__quarter` or `date_won__year`. Prefix with `-` to reverse the order of the groups. When set, `data` holds groups of opportunities instead of opportunities.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("_group_by")]
             public string? GroupBy { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("_group_by")]
             public string GroupBy { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>`true` to only return stalled opportunities, or `false` to only return opportunities that aren&apos;t stalled</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("is_stalled")]
             public string? IsStalled { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("is_stalled")]
             public string IsStalled { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return opportunities on this lead, e.g. `lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("lead_id")]
             public string? LeadId { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("lead_id")]
             public string LeadId { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Deprecated: use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) instead. Search query in Close&apos;s search syntax. Only return opportunities on leads that match it. Can&apos;t be combined with `lead_saved_search_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("lead_query")]
             public string? LeadQuery { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("lead_query")]
             public string LeadQuery { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>ID of a lead Smart View, e.g. `save_...`. Only return opportunities on leads in the Smart View. Can&apos;t be combined with `lead_query`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("lead_saved_search_id")]
             public string? LeadSavedSearchId { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("lead_saved_search_id")]
             public string LeadSavedSearchId { get; set; }
-            #pragma warning restore CS1591
 #endif
             /// <summary>Number of results to return. The maximum is 250 for requests authenticated with an API key.</summary>
             [QueryParameter("_limit")]
             public int? Limit { get; set; }
+            /// <summary>Field to sort by: `date_won`, `date_updated`, `date_created`, `confidence`, `user_name`, `value`, `annualized_value` or `annualized_expected_value`. Prefix with `-` for descending order, e.g. `-date_won`. Defaults to `-date_created`. Invalid values are ignored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("_order_by")]
             public string? OrderBy { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("_order_by")]
             public string OrderBy { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Deprecated: use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) instead. Search query in Close&apos;s search syntax, matched against opportunity fields, e.g. `note:important` or `status_change(old_status:active new_status:won date:yesterday)`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
-            [QueryParameter("organization_id")]
-            public string? OrganizationId { get; set; }
-            #pragma warning restore CS1591
-#nullable restore
-#else
-            #pragma warning disable CS1591
-            [QueryParameter("organization_id")]
-            public string OrganizationId { get; set; }
-            #pragma warning restore CS1591
-#endif
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("query")]
             public string? Query { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("query")]
             public string Query { get; set; }
-            #pragma warning restore CS1591
 #endif
             /// <summary>Number of results to skip before returning, for pagination. The maximum is 35,000 for some organizations.</summary>
             [QueryParameter("_skip")]
             public int? Skip { get; set; }
+            /// <summary>Only return opportunities with this status, given as a status ID or label. See `status_id` and `status_label`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("status")]
             public string? Status { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("status")]
             public string Status { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return opportunities with this status, e.g. `stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("status_id")]
             public string? StatusId { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("status_id")]
             public string StatusId { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Comma-separated list of status IDs. Only return opportunities with any of these statuses.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("status_id__in")]
             public string? StatusIdIn { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("status_id__in")]
             public string StatusIdIn { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Comma-separated list of status IDs or labels. Only return opportunities with any of these statuses.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("status__in")]
             public string? StatusIn { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("status__in")]
             public string StatusIn { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return opportunities whose status has this label, e.g. `Active`. Matching ignores case. Returns an error if more than one status has the label.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("status_label")]
             public string? StatusLabel { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("status_label")]
             public string StatusLabel { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Comma-separated list of status labels. Only return opportunities whose status has any of these labels. Matching ignores case.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("status_label__in")]
             public string? StatusLabelIn { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("status_label__in")]
             public string StatusLabelIn { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return opportunities whose status has this type: `active`, `won` or `lost`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("status_type")]
             public string? StatusType { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("status_type")]
             public string StatusType { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Comma-separated list of status types, e.g. `active,won`. Only return opportunities whose status has any of these types.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("status_type__in")]
             public string? StatusTypeIn { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("status_type__in")]
             public string StatusTypeIn { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return opportunities owned by this user, e.g. `user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA`. A group ID (`group_...`) matches opportunities owned by any member of the group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("user_id")]
             public string? UserId { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("user_id")]
             public string UserId { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Comma-separated list of user or group IDs. Only return opportunities owned by any of them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("user_id__in")]
             public string? UserIdIn { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("user_id__in")]
             public string UserIdIn { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return opportunities with this `value_period`: `one_time`, `monthly` or `annual`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("value_period")]
             public string? ValuePeriod { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("value_period")]
             public string ValuePeriod { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Comma-separated list of value periods, e.g. `monthly,annual`. Only return opportunities with any of these value periods.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("value_period__in")]
             public string? ValuePeriodIn { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("value_period__in")]
             public string ValuePeriodIn { get; set; }
-            #pragma warning restore CS1591
 #endif
         }
     }

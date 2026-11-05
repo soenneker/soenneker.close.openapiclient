@@ -37,8 +37,6 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("phone_numbers") is { } nullNodePhoneNumbers && nullNodePhoneNumbers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PhoneNumbers = null;
             if (parseNode.GetChildNode("press_1_to_accept") is null) { _explicitNullValuePress1ToAccept = default!; _explicitNullProperties?.Remove("press_1_to_accept"); }
             else if (parseNode.GetChildNode("press_1_to_accept") is { } nullNodePress1ToAccept && nullNodePress1ToAccept.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Press1ToAccept = null;
-            if (parseNode.GetChildNode("voice_agent_caller_id_enabled") is null) { _explicitNullValueVoiceAgentCallerIdEnabled = default!; _explicitNullProperties?.Remove("voice_agent_caller_id_enabled"); }
-            else if (parseNode.GetChildNode("voice_agent_caller_id_enabled") is { } nullNodeVoiceAgentCallerIdEnabled && nullNodeVoiceAgentCallerIdEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VoiceAgentCallerIdEnabled = null;
             if (parseNode.GetChildNode("voice_agents_local_presence_enabled") is null) { _explicitNullValueVoiceAgentsLocalPresenceEnabled = default!; _explicitNullProperties?.Remove("voice_agents_local_presence_enabled"); }
             else if (parseNode.GetChildNode("voice_agents_local_presence_enabled") is { } nullNodeVoiceAgentsLocalPresenceEnabled && nullNodeVoiceAgentsLocalPresenceEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VoiceAgentsLocalPresenceEnabled = null;
             if (parseNode.GetChildNode("voicemail_greeting_url") is null) { _explicitNullValueVoicemailGreetingUrl = default!; _explicitNullProperties?.Remove("voicemail_greeting_url"); }
@@ -74,7 +72,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>Whether Local Presence can pick this phone number by proximity for a call or SMS made as a user. It has no effect on a plan that doesn&apos;t include Local Presence.</summary>
         public bool? LocalPresenceEnabled { get => _explicitNullValueLocalPresenceEnabled; set { _explicitNullValueLocalPresenceEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("local_presence_enabled"); else _explicitNullProperties?.Remove("local_presence_enabled"); } }
         private bool? _explicitNullValueLocalPresenceEnabled = default!;
-        /// <summary>Whether users who are not members of this phone number can use it as their outbound caller ID.</summary>
+        /// <summary>Whether users who are not members of this phone number can use it as their outbound Caller ID.</summary>
         public bool? NonMemberCallerIdEnabled { get => _explicitNullValueNonMemberCallerIdEnabled; set { _explicitNullValueNonMemberCallerIdEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("non_member_caller_id_enabled"); else _explicitNullProperties?.Remove("non_member_caller_id_enabled"); } }
         private bool? _explicitNullValueNonMemberCallerIdEnabled = default!;
         /// <summary>The participant_groups property</summary>
@@ -110,11 +108,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The press_1_to_accept property</summary>
         public bool? Press1ToAccept { get => _explicitNullValuePress1ToAccept; set { _explicitNullValuePress1ToAccept = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("press_1_to_accept"); else _explicitNullProperties?.Remove("press_1_to_accept"); } }
         private bool? _explicitNullValuePress1ToAccept = default!;
-        /// <summary>Deprecated. Use `voice_agents_local_presence_enabled`. This field is an alias of `voice_agents_local_presence_enabled`, and it will be removed in a future update. If you send both fields, they must have the same value.</summary>
-        [Obsolete("")]
-        public bool? VoiceAgentCallerIdEnabled { get => _explicitNullValueVoiceAgentCallerIdEnabled; set { _explicitNullValueVoiceAgentCallerIdEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voice_agent_caller_id_enabled"); else _explicitNullProperties?.Remove("voice_agent_caller_id_enabled"); } }
-        private bool? _explicitNullValueVoiceAgentCallerIdEnabled = default!;
-        /// <summary>Whether Local Presence can pick this phone number for calls and SMS that voice agents make in Auto caller ID mode.</summary>
+        /// <summary>Whether Local Presence can pick this phone number for calls and SMS that voice agents make in Auto Caller ID mode.</summary>
         public bool? VoiceAgentsLocalPresenceEnabled { get => _explicitNullValueVoiceAgentsLocalPresenceEnabled; set { _explicitNullValueVoiceAgentsLocalPresenceEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voice_agents_local_presence_enabled"); else _explicitNullProperties?.Remove("voice_agents_local_presence_enabled"); } }
         private bool? _explicitNullValueVoiceAgentsLocalPresenceEnabled = default!;
         /// <summary>The voicemail_greeting_url property</summary>
@@ -155,7 +149,6 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "participants", n => { Participants = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "phone_numbers", n => { PhoneNumbers = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "press_1_to_accept", n => { Press1ToAccept = n.GetBoolValue(); } },
-                { "voice_agent_caller_id_enabled", n => { VoiceAgentCallerIdEnabled = n.GetBoolValue(); } },
                 { "voice_agents_local_presence_enabled", n => { VoiceAgentsLocalPresenceEnabled = n.GetBoolValue(); } },
                 { "voicemail_greeting_url", n => { VoicemailGreetingUrl = n.GetStringValue(); } },
             };
@@ -177,7 +170,6 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("participants", Participants);
             writer.WriteCollectionOfPrimitiveValues<string>("phone_numbers", PhoneNumbers);
             writer.WriteBoolValue("press_1_to_accept", Press1ToAccept);
-            writer.WriteBoolValue("voice_agent_caller_id_enabled", VoiceAgentCallerIdEnabled);
             writer.WriteBoolValue("voice_agents_local_presence_enabled", VoiceAgentsLocalPresenceEnabled);
             writer.WriteStringValue("voicemail_greeting_url", VoicemailGreetingUrl);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             

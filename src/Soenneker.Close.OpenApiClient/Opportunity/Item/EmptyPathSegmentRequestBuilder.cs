@@ -34,7 +34,7 @@ namespace Soenneker.Close.OpenApiClient.Opportunity.Item
         {
         }
         /// <summary>
-        /// Delete an opportunity
+        /// Delete an opportunity, along with its opportunity status change activities. This can&apos;t be undone.The opportunity&apos;s attachments are deleted in the background.Returns an empty object on success. Returns `404` if the opportunity doesn&apos;t exist, and `400` if you don&apos;t have permission to delete it or don&apos;t have access to its lead.
         /// </summary>
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -67,14 +67,14 @@ namespace Soenneker.Close.OpenApiClient.Opportunity.Item
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieve an opportunity
+        /// Fetch a single opportunity by ID.Returns `404` if the opportunity doesn&apos;t exist, and `403` if it exists but you don&apos;t have access to its lead.Use `_fields` to return only the fields you need, or `_fields=_all` to also include optional fields such as `is_stalled` and `suggested_action`. Custom field values appear as `custom.{custom_field_id}` keys.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.Opportunity"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.BadRequestResponseError">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
-        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ForbiddenResponseError">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.OpportunitiesGet403ResponseError">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -91,7 +91,7 @@ namespace Soenneker.Close.OpenApiClient.Opportunity.Item
             {
                 { "400", global::Soenneker.Close.OpenApiClient.Models.BadRequestResponseError.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.Close.OpenApiClient.Models.ForbiddenResponseError.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.Close.OpenApiClient.Models.OpportunitiesGet403ResponseError.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
@@ -100,7 +100,7 @@ namespace Soenneker.Close.OpenApiClient.Opportunity.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.Opportunity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.Opportunity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// **custom.FIELD_ID** (optional)- See description for `custom.FIELD_ID` in `POST /opportunity/` above.- Additionally, you can unset a single field by using `{ &quot;custom.FIELD_ID&quot;: null }`, e.g.:```{ &quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c&quot;: null }```If you&apos;re trying to update a custom field and that custom field accepts multiple values, you can also specify `.add` or `.remove` as part of the field key to add/remove a single value to/from a list of values, e.g.:```{ &quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c.add&quot;: &quot;Wednesday&quot; }```
+        /// Update an opportunity. Only the fields you send are changed.Returns `404` if the opportunity doesn&apos;t exist. Returns `403` if you don&apos;t have access to its lead, or if another user owns it and you don&apos;t have permission to manage other users&apos; opportunities.`lead_id`, `created_by` and `date_created` can&apos;t be changed: sending a different value returns `400`.Moving the opportunity to a status with type `won` sets `date_won` to today&apos;s date if it isn&apos;t already set or sent in the request.**Custom fields**: set a custom field by setting `custom.{custom_field_id}` to its value, or to `null` to clear it, e.g.:```json{ &quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c&quot;: &quot;value&quot;, &quot;custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F&quot;: null }```For a custom field with `accepts_multiple_values: true`, pass the full list of values, or add or remove a single value by appending `.add` or `.remove` to the key, e.g.:```json{ &quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c.add&quot;: &quot;Wednesday&quot; }```See [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.Opportunity"/></returns>
         /// <param name="body">The request body</param>
@@ -135,7 +135,7 @@ namespace Soenneker.Close.OpenApiClient.Opportunity.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.Opportunity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.Opportunity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete an opportunity
+        /// Delete an opportunity, along with its opportunity status change activities. This can&apos;t be undone.The opportunity&apos;s attachments are deleted in the background.Returns an empty object on success. Returns `404` if the opportunity doesn&apos;t exist, and `400` if you don&apos;t have permission to delete it or don&apos;t have access to its lead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -154,7 +154,7 @@ namespace Soenneker.Close.OpenApiClient.Opportunity.Item
             return requestInfo;
         }
         /// <summary>
-        /// Retrieve an opportunity
+        /// Fetch a single opportunity by ID.Returns `404` if the opportunity doesn&apos;t exist, and `403` if it exists but you don&apos;t have access to its lead.Use `_fields` to return only the fields you need, or `_fields=_all` to also include optional fields such as `is_stalled` and `suggested_action`. Custom field values appear as `custom.{custom_field_id}` keys.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -173,7 +173,7 @@ namespace Soenneker.Close.OpenApiClient.Opportunity.Item
             return requestInfo;
         }
         /// <summary>
-        /// **custom.FIELD_ID** (optional)- See description for `custom.FIELD_ID` in `POST /opportunity/` above.- Additionally, you can unset a single field by using `{ &quot;custom.FIELD_ID&quot;: null }`, e.g.:```{ &quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c&quot;: null }```If you&apos;re trying to update a custom field and that custom field accepts multiple values, you can also specify `.add` or `.remove` as part of the field key to add/remove a single value to/from a list of values, e.g.:```{ &quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c.add&quot;: &quot;Wednesday&quot; }```
+        /// Update an opportunity. Only the fields you send are changed.Returns `404` if the opportunity doesn&apos;t exist. Returns `403` if you don&apos;t have access to its lead, or if another user owns it and you don&apos;t have permission to manage other users&apos; opportunities.`lead_id`, `created_by` and `date_created` can&apos;t be changed: sending a different value returns `400`.Moving the opportunity to a status with type `won` sets `date_won` to today&apos;s date if it isn&apos;t already set or sent in the request.**Custom fields**: set a custom field by setting `custom.{custom_field_id}` to its value, or to `null` to clear it, e.g.:```json{ &quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c&quot;: &quot;value&quot;, &quot;custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F&quot;: null }```For a custom field with `accepts_multiple_values: true`, pass the full list of values, or add or remove a single value by appending `.add` or `.remove` to the key, e.g.:```json{ &quot;custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c.add&quot;: &quot;Wednesday&quot; }```See [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -204,7 +204,7 @@ namespace Soenneker.Close.OpenApiClient.Opportunity.Item
             return new global::Soenneker.Close.OpenApiClient.Opportunity.Item.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Retrieve an opportunity
+        /// Fetch a single opportunity by ID.Returns `404` if the opportunity doesn&apos;t exist, and `403` if it exists but you don&apos;t have access to its lead.Use `_fields` to return only the fields you need, or `_fields=_all` to also include optional fields such as `is_stalled` and `suggested_action`. Custom field values appear as `custom.{custom_field_id}` keys.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
