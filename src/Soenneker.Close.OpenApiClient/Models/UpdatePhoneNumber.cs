@@ -9,7 +9,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class UpdatePhoneNumber : IParsable
+    public partial class UpdatePhoneNumber : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
@@ -43,84 +43,93 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("voicemail_greeting_url") is { } nullNodeVoicemailGreetingUrl && nullNodeVoicemailGreetingUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VoicemailGreetingUrl = null;
         }
 
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The forward_to property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ForwardTo { get => _explicitNullValueForwardTo; set { _explicitNullValueForwardTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forward_to"); else _explicitNullProperties?.Remove("forward_to"); } }
+        public string? ForwardTo { get => _explicitNullValueForwardTo; set { _explicitNullValueForwardTo = value; AdditionalData?.Remove("forward_to"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forward_to"); else _explicitNullProperties?.Remove("forward_to"); } }
         private string? _explicitNullValueForwardTo = default!;
 #nullable restore
 #else
-        public string ForwardTo { get => _explicitNullValueForwardTo; set { _explicitNullValueForwardTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forward_to"); else _explicitNullProperties?.Remove("forward_to"); } }
+        public string ForwardTo { get => _explicitNullValueForwardTo; set { _explicitNullValueForwardTo = value; AdditionalData?.Remove("forward_to"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forward_to"); else _explicitNullProperties?.Remove("forward_to"); } }
         private string _explicitNullValueForwardTo = default!;
 #endif
         /// <summary>The forward_to_enabled property</summary>
-        public bool? ForwardToEnabled { get => _explicitNullValueForwardToEnabled; set { _explicitNullValueForwardToEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forward_to_enabled"); else _explicitNullProperties?.Remove("forward_to_enabled"); } }
+        public bool? ForwardToEnabled { get => _explicitNullValueForwardToEnabled; set { _explicitNullValueForwardToEnabled = value; AdditionalData?.Remove("forward_to_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forward_to_enabled"); else _explicitNullProperties?.Remove("forward_to_enabled"); } }
         private bool? _explicitNullValueForwardToEnabled = default!;
         /// <summary>Number of seconds (15-90) to ring this number on inbound calls before moving on (e.g. to voicemail).</summary>
-        public int? InboundRingDuration { get => _explicitNullValueInboundRingDuration; set { _explicitNullValueInboundRingDuration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inbound_ring_duration"); else _explicitNullProperties?.Remove("inbound_ring_duration"); } }
+        public int? InboundRingDuration { get => _explicitNullValueInboundRingDuration; set { _explicitNullValueInboundRingDuration = value; AdditionalData?.Remove("inbound_ring_duration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inbound_ring_duration"); else _explicitNullProperties?.Remove("inbound_ring_duration"); } }
         private int? _explicitNullValueInboundRingDuration = default!;
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        public string? Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; AdditionalData?.Remove("label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
         private string? _explicitNullValueLabel = default!;
 #nullable restore
 #else
-        public string Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        public string Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; AdditionalData?.Remove("label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
         private string _explicitNullValueLabel = default!;
 #endif
         /// <summary>Whether Local Presence can pick this phone number by proximity for a call or SMS made as a user. It has no effect on a plan that doesn&apos;t include Local Presence.</summary>
-        public bool? LocalPresenceEnabled { get => _explicitNullValueLocalPresenceEnabled; set { _explicitNullValueLocalPresenceEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("local_presence_enabled"); else _explicitNullProperties?.Remove("local_presence_enabled"); } }
+        public bool? LocalPresenceEnabled { get => _explicitNullValueLocalPresenceEnabled; set { _explicitNullValueLocalPresenceEnabled = value; AdditionalData?.Remove("local_presence_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("local_presence_enabled"); else _explicitNullProperties?.Remove("local_presence_enabled"); } }
         private bool? _explicitNullValueLocalPresenceEnabled = default!;
         /// <summary>Whether users who are not members of this phone number can use it as their outbound Caller ID.</summary>
-        public bool? NonMemberCallerIdEnabled { get => _explicitNullValueNonMemberCallerIdEnabled; set { _explicitNullValueNonMemberCallerIdEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("non_member_caller_id_enabled"); else _explicitNullProperties?.Remove("non_member_caller_id_enabled"); } }
+        public bool? NonMemberCallerIdEnabled { get => _explicitNullValueNonMemberCallerIdEnabled; set { _explicitNullValueNonMemberCallerIdEnabled = value; AdditionalData?.Remove("non_member_caller_id_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("non_member_caller_id_enabled"); else _explicitNullProperties?.Remove("non_member_caller_id_enabled"); } }
         private bool? _explicitNullValueNonMemberCallerIdEnabled = default!;
         /// <summary>The participant_groups property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ParticipantGroups { get => _explicitNullValueParticipantGroups; set { _explicitNullValueParticipantGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("participant_groups"); else _explicitNullProperties?.Remove("participant_groups"); } }
+        public List<string>? ParticipantGroups { get => _explicitNullValueParticipantGroups; set { _explicitNullValueParticipantGroups = value; AdditionalData?.Remove("participant_groups"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("participant_groups"); else _explicitNullProperties?.Remove("participant_groups"); } }
         private List<string>? _explicitNullValueParticipantGroups = default!;
 #nullable restore
 #else
-        public List<string> ParticipantGroups { get => _explicitNullValueParticipantGroups; set { _explicitNullValueParticipantGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("participant_groups"); else _explicitNullProperties?.Remove("participant_groups"); } }
+        public List<string> ParticipantGroups { get => _explicitNullValueParticipantGroups; set { _explicitNullValueParticipantGroups = value; AdditionalData?.Remove("participant_groups"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("participant_groups"); else _explicitNullProperties?.Remove("participant_groups"); } }
         private List<string> _explicitNullValueParticipantGroups = default!;
 #endif
         /// <summary>The participants property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Participants { get => _explicitNullValueParticipants; set { _explicitNullValueParticipants = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("participants"); else _explicitNullProperties?.Remove("participants"); } }
+        public List<string>? Participants { get => _explicitNullValueParticipants; set { _explicitNullValueParticipants = value; AdditionalData?.Remove("participants"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("participants"); else _explicitNullProperties?.Remove("participants"); } }
         private List<string>? _explicitNullValueParticipants = default!;
 #nullable restore
 #else
-        public List<string> Participants { get => _explicitNullValueParticipants; set { _explicitNullValueParticipants = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("participants"); else _explicitNullProperties?.Remove("participants"); } }
+        public List<string> Participants { get => _explicitNullValueParticipants; set { _explicitNullValueParticipants = value; AdditionalData?.Remove("participants"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("participants"); else _explicitNullProperties?.Remove("participants"); } }
         private List<string> _explicitNullValueParticipants = default!;
 #endif
         /// <summary>The phone_numbers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? PhoneNumbers { get => _explicitNullValuePhoneNumbers; set { _explicitNullValuePhoneNumbers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phone_numbers"); else _explicitNullProperties?.Remove("phone_numbers"); } }
+        public List<string>? PhoneNumbers { get => _explicitNullValuePhoneNumbers; set { _explicitNullValuePhoneNumbers = value; AdditionalData?.Remove("phone_numbers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phone_numbers"); else _explicitNullProperties?.Remove("phone_numbers"); } }
         private List<string>? _explicitNullValuePhoneNumbers = default!;
 #nullable restore
 #else
-        public List<string> PhoneNumbers { get => _explicitNullValuePhoneNumbers; set { _explicitNullValuePhoneNumbers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phone_numbers"); else _explicitNullProperties?.Remove("phone_numbers"); } }
+        public List<string> PhoneNumbers { get => _explicitNullValuePhoneNumbers; set { _explicitNullValuePhoneNumbers = value; AdditionalData?.Remove("phone_numbers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phone_numbers"); else _explicitNullProperties?.Remove("phone_numbers"); } }
         private List<string> _explicitNullValuePhoneNumbers = default!;
 #endif
         /// <summary>The press_1_to_accept property</summary>
-        public bool? Press1ToAccept { get => _explicitNullValuePress1ToAccept; set { _explicitNullValuePress1ToAccept = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("press_1_to_accept"); else _explicitNullProperties?.Remove("press_1_to_accept"); } }
+        public bool? Press1ToAccept { get => _explicitNullValuePress1ToAccept; set { _explicitNullValuePress1ToAccept = value; AdditionalData?.Remove("press_1_to_accept"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("press_1_to_accept"); else _explicitNullProperties?.Remove("press_1_to_accept"); } }
         private bool? _explicitNullValuePress1ToAccept = default!;
         /// <summary>Whether Local Presence can pick this phone number for calls and SMS that voice agents make in Auto Caller ID mode.</summary>
-        public bool? VoiceAgentsLocalPresenceEnabled { get => _explicitNullValueVoiceAgentsLocalPresenceEnabled; set { _explicitNullValueVoiceAgentsLocalPresenceEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voice_agents_local_presence_enabled"); else _explicitNullProperties?.Remove("voice_agents_local_presence_enabled"); } }
+        public bool? VoiceAgentsLocalPresenceEnabled { get => _explicitNullValueVoiceAgentsLocalPresenceEnabled; set { _explicitNullValueVoiceAgentsLocalPresenceEnabled = value; AdditionalData?.Remove("voice_agents_local_presence_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voice_agents_local_presence_enabled"); else _explicitNullProperties?.Remove("voice_agents_local_presence_enabled"); } }
         private bool? _explicitNullValueVoiceAgentsLocalPresenceEnabled = default!;
         /// <summary>The voicemail_greeting_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VoicemailGreetingUrl { get => _explicitNullValueVoicemailGreetingUrl; set { _explicitNullValueVoicemailGreetingUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voicemail_greeting_url"); else _explicitNullProperties?.Remove("voicemail_greeting_url"); } }
+        public string? VoicemailGreetingUrl { get => _explicitNullValueVoicemailGreetingUrl; set { _explicitNullValueVoicemailGreetingUrl = value; AdditionalData?.Remove("voicemail_greeting_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voicemail_greeting_url"); else _explicitNullProperties?.Remove("voicemail_greeting_url"); } }
         private string? _explicitNullValueVoicemailGreetingUrl = default!;
 #nullable restore
 #else
-        public string VoicemailGreetingUrl { get => _explicitNullValueVoicemailGreetingUrl; set { _explicitNullValueVoicemailGreetingUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voicemail_greeting_url"); else _explicitNullProperties?.Remove("voicemail_greeting_url"); } }
+        public string VoicemailGreetingUrl { get => _explicitNullValueVoicemailGreetingUrl; set { _explicitNullValueVoicemailGreetingUrl = value; AdditionalData?.Remove("voicemail_greeting_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voicemail_greeting_url"); else _explicitNullProperties?.Remove("voicemail_greeting_url"); } }
         private string _explicitNullValueVoicemailGreetingUrl = default!;
 #endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.UpdatePhoneNumber"/> and sets the default values.
+        /// </summary>
+        public UpdatePhoneNumber()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -171,8 +180,9 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("phone_numbers", PhoneNumbers);
             writer.WriteBoolValue("press_1_to_accept", Press1ToAccept);
             writer.WriteBoolValue("voice_agents_local_presence_enabled", VoiceAgentsLocalPresenceEnabled);
-            writer.WriteStringValue("voicemail_greeting_url", VoicemailGreetingUrl);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
-            
+            writer.WriteStringValue("voicemail_greeting_url", VoicemailGreetingUrl);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

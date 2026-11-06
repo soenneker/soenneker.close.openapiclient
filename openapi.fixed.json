@@ -31828,6 +31828,7 @@
           "opportunity_statuses"
         ],
         "summary": "List opportunity statuses for your organization",
+        "description": "List the opportunity statuses of every pipeline in your organization. Statuses are grouped by pipeline, oldest pipeline first, and follow the order configured in Close within each pipeline. The list isn\u0027t paginated, so every status is returned in one response and \u0060has_more\u0060 is always false.",
         "operationId": "OpportunityStatusesList",
         "parameters": [
           {
@@ -31914,7 +31915,7 @@
           "opportunity_statuses"
         ],
         "summary": "Create an opportunity status",
-        "description": "Create a new opportunity status. The status must belong to a pipeline (specified by \u0060pipeline_id\u0060) and have a \u0060type\u0060 of \u0060active\u0060, \u0060won\u0060, or \u0060lost\u0060.",
+        "description": "Create an opportunity status and add it to the end of a pipeline\u0027s list of statuses. If you leave out \u0060pipeline_id\u0060, the status is added to your organization\u0027s oldest pipeline. \u0060type\u0060 defaults to \u0060active\u0060 and can\u0027t be changed later.\n\nReturns 400 if the pipeline doesn\u0027t exist, if your organization has no pipelines, if the pipeline already has a status with the same label (ignoring case), or if the pipeline already has 250 statuses. Requires the Manage Customizations permission, otherwise returns 403.",
         "operationId": "OpportunityStatusesCreate",
         "parameters": [
           {
@@ -31928,10 +31929,21 @@
               "schema": {
                 "$ref": "#/components/schemas/CreateOpportunityStatus"
               },
-              "example": {
-                "label": "Closed",
-                "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
-                "type": "won"
+              "examples": {
+                "default": {
+                  "summary": "Create a won status in a specific pipeline",
+                  "value": {
+                    "label": "Closed",
+                    "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
+                    "type": "won"
+                  }
+                },
+                "default_pipeline": {
+                  "summary": "Create an active status in the oldest pipeline",
+                  "value": {
+                    "label": "Proposal sent"
+                  }
+                }
               }
             }
           },
@@ -31945,12 +31957,27 @@
                 "schema": {
                   "$ref": "#/components/schemas/OpportunityStatus"
                 },
-                "example": {
-                  "id": "stat_10diZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
-                  "label": "Closed",
-                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                  "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
-                  "type": "won"
+                "examples": {
+                  "default": {
+                    "summary": "Create a won status in a specific pipeline",
+                    "value": {
+                      "id": "stat_10diZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                      "label": "Closed",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
+                      "type": "won"
+                    }
+                  },
+                  "default_pipeline": {
+                    "summary": "Create an active status in the oldest pipeline",
+                    "value": {
+                      "id": "stat_11diZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                      "label": "Proposal sent",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
+                      "type": "active"
+                    }
+                  }
                 }
               }
             }
@@ -31992,11 +32019,13 @@
           "opportunity_statuses"
         ],
         "summary": "Fetch a single opportunity status",
+        "description": "Fetch a single opportunity status by its ID. Returns 404 if no status in your organization has that ID.",
         "operationId": "OpportunityStatusesGet",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "ID of the opportunity status.",
             "required": true,
             "schema": {
               "type": "string"
@@ -32064,11 +32093,13 @@
           "opportunity_statuses"
         ],
         "summary": "Rename an opportunity status",
+        "description": "Rename an opportunity status. Only \u0060label\u0060 can be changed: \u0060type\u0060 is ignored, and opportunities that use the status keep it and show the new label. Returns 400 if another status in the same pipeline already has the label (ignoring case). Requires the Manage Customizations permission, otherwise returns 403.\n\n\u0060pipeline_id\u0060 is accepted but can\u0027t move the status. Any value other than the status\u0027s current pipeline returns 400. To move a status to another pipeline, use PUT \u0060/pipeline/{id}/\u0060.",
         "operationId": "OpportunityStatusesUpdate",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "ID of the opportunity status.",
             "required": true,
             "schema": {
               "type": "string"
@@ -32085,8 +32116,20 @@
               "schema": {
                 "$ref": "#/components/schemas/UpdateOpportunityStatus"
               },
-              "example": {
-                "label": "Renamed"
+              "examples": {
+                "default": {
+                  "summary": "Rename a status",
+                  "value": {
+                    "label": "Demo scheduled"
+                  }
+                },
+                "with_pipeline_id": {
+                  "summary": "Rename a status, passing its current pipeline",
+                  "value": {
+                    "label": "Contract signed",
+                    "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j"
+                  }
+                }
               }
             }
           },
@@ -32100,12 +32143,27 @@
                 "schema": {
                   "$ref": "#/components/schemas/OpportunityStatus"
                 },
-                "example": {
-                  "id": "stat_10diZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
-                  "label": "Renamed",
-                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                  "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
-                  "type": "active"
+                "examples": {
+                  "default": {
+                    "summary": "Rename a status",
+                    "value": {
+                      "id": "stat_10diZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                      "label": "Demo scheduled",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
+                      "type": "active"
+                    }
+                  },
+                  "with_pipeline_id": {
+                    "summary": "Rename a status, passing its current pipeline",
+                    "value": {
+                      "id": "stat_5ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                      "label": "Contract signed",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
+                      "type": "won"
+                    }
+                  }
                 }
               }
             }
@@ -32149,12 +32207,13 @@
           "opportunity_statuses"
         ],
         "summary": "Delete an opportunity status",
-        "description": "You should make sure no opportunities are assigned this status, first.",
+        "description": "Delete an opportunity status and remove it from its pipeline. Returns an empty object on success.\n\nReturns 400 if any opportunities still have this status, so move them to another status first. Also returns 400 if this is the organization\u0027s last opportunity status. Requires the Manage Customizations permission, otherwise returns 403.",
         "operationId": "OpportunityStatusesDelete",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "ID of the opportunity status.",
             "required": true,
             "schema": {
               "type": "string"
@@ -32163,7 +32222,15 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpportunityStatusesDelete200ResponseSchema"
+                },
+                "x-schema-inferred-from-examples": true
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -38366,8 +38433,7 @@
             "title": "Text",
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CalendarPeriod": {
         "title": "CalendarPeriod",
@@ -39383,8 +39449,7 @@
             "type": "string",
             "description": "The reason why you wish to block a given phone number."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateCallActivity": {
         "patternProperties": {
@@ -39511,8 +39576,7 @@
             ],
             "x-client-original-format": "uri"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateComment": {
         "title": "CreateComment",
@@ -39530,8 +39594,7 @@
             "title": "Object ID",
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateContact": {
         "patternProperties": {
@@ -39619,8 +39682,7 @@
             },
             "description": "URLs associated with the contact"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateCustomActivity": {
         "patternProperties": {
@@ -39687,8 +39749,7 @@
               "string"
             ]
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateEmailActivity": {
         "required": [
@@ -39865,8 +39926,7 @@
               "string"
             ]
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateGroup": {
         "title": "CreateGroup",
@@ -39879,8 +39939,7 @@
             "title": "Name",
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateGroupMember": {
         "title": "CreateGroupMember",
@@ -39893,8 +39952,7 @@
             "title": "User ID",
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateIntegrationLink": {
         "title": "CreateIntegrationLink",
@@ -39918,8 +39976,7 @@
             "minLength": 1,
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateLeadFile": {
         "title": "CreateLeadFile",
@@ -39947,8 +40004,7 @@
             "minLength": 1,
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateMembership": {
         "title": "CreateMembership",
@@ -39969,8 +40025,7 @@
             "type": "string",
             "description": "One of \u0060superuser\u0060, \u0060user\u0060, or \u0060restricteduser\u0060 for the corresponding predefined role, or the ID of a custom [Role](https://developer.close.com/api/resources/roles). The role must not grant the \u0060manage_organization\u0060 permission."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateNoteActivity": {
         "required": [
@@ -40053,8 +40108,7 @@
               "string"
             ]
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateOpportunity": {
         "patternProperties": {
@@ -40190,11 +40244,10 @@
           "value_period": {
             "$ref": "#/components/schemas/CreateOpportunityValuePeriod"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateOpportunityStatus": {
-        "title": "CreateOpportunityStatusSchema",
+        "title": "CreateOpportunityStatus",
         "required": [
           "label"
         ],
@@ -40203,7 +40256,8 @@
           "label": {
             "title": "Label",
             "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "description": "Name of the opportunity status. Leading and trailing whitespace is removed. Must be unique within the pipeline (ignoring case)."
           },
           "pipeline_id": {
             "title": "Pipeline ID",
@@ -40211,15 +40265,15 @@
               "null",
               "string"
             ],
+            "description": "ID of the pipeline to add the status to, prefixed with \u0060pipe_\u0060. Defaults to the organization\u0027s oldest pipeline.",
             "default": null
           },
           "type": {
-            "description": "Type of an Opportunity Status: \u0060active\u0060 for open Opportunities, \u0060won\u0060 or \u0060lost\u0060 for closed ones.",
+            "description": "Whether opportunities in this status are open (\u0060active\u0060) or closed (\u0060won\u0060 or \u0060lost\u0060). Can\u0027t be changed later.",
             "default": "active",
             "$ref": "#/components/schemas/OpportunityStatusType"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateOrUpdateLeadStatus": {
         "title": "CreateOrUpdateLeadStatus",
@@ -40237,8 +40291,7 @@
             "type": "string",
             "description": "Name of the lead status. Leading and trailing whitespace is removed. Must be unique within the organization (ignoring case)."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateOutcome": {
         "title": "CreateOutcome",
@@ -40279,8 +40332,7 @@
             "default": "custom",
             "$ref": "#/components/schemas/OutcomeType"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreatePhoneNumberRequest": {
         "title": "CreatePhoneNumberRequest",
@@ -40350,8 +40402,7 @@
             "description": "By default, SMS-capable numbers are rented if Close supports SMS for the given country. Renting an SMS-capable number can be forced by setting this flag to \u0060true\u0060. If set to \u0060false\u0060, certain prefixes that don\u0027t support SMS can be rented in countries where Close supports SMS. In most scenarios, this flag should not be passed unless a \u0060has-voice-only\u0060 error status is received.",
             "default": null
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreatePipeline": {
         "title": "CreatePipeline",
@@ -40376,8 +40427,7 @@
             "description": "Opportunity Statuses to create within the new Pipeline.",
             "default": null
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreatePlaybook": {
         "title": "CreatePlaybook",
@@ -40422,8 +40472,7 @@
             ],
             "description": "Guidance for AI summaries of calls and meetings associated with this Playbook."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateSmsActivity": {
         "required": [
@@ -40523,8 +40572,7 @@
               "string"
             ]
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateSmsTemplate": {
         "title": "CreateSMSTemplate",
@@ -40552,8 +40600,7 @@
             "title": "Text",
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateSmsTemplateAttachment": {
         "title": "CreateSMSTemplateAttachment",
@@ -40642,8 +40689,7 @@
             "type": "string",
             "x-client-original-format": "email"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateWebhook": {
         "title": "CreateWebhook",
@@ -40672,8 +40718,7 @@
             "description": "Verify SSL certificate of destination webhook URL. Set to \u0060false\u0060 to disable SSL certificate validation. We recommend using https to protect your data during delivery.",
             "default": true
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateWhatsAppMessage": {
         "title": "CreateWhatsAppMessage",
@@ -40755,8 +40800,7 @@
               "string"
             ]
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreatedActivity": {
         "title": "CreatedActivity",
@@ -41414,8 +41458,7 @@
             "description": "Fields to sort results by. When paginating, sort by a field that rarely changes, like \u0060date_created\u0060, so no results are skipped.",
             "default": []
           }
-        },
-        "additionalProperties": false
+        }
       },
       "DataSearchResponse": {
         "title": "DataSearchResponse",
@@ -47153,7 +47196,6 @@
             "description": "Whether email opens are tracked for emails this member sends."
           }
         },
-        "additionalProperties": false,
         "description": "Editable settings for an organization membership."
       },
       "MembershipResponse": {
@@ -48234,22 +48276,26 @@
         "properties": {
           "id": {
             "title": "ID",
-            "type": "string"
+            "type": "string",
+            "description": "Unique ID of the opportunity status, prefixed with \u0060stat_\u0060."
           },
           "label": {
             "title": "Label",
-            "type": "string"
+            "type": "string",
+            "description": "Name of the opportunity status, unique within its pipeline (ignoring case)."
           },
           "organization_id": {
             "title": "Organization ID",
-            "type": "string"
+            "type": "string",
+            "description": "ID of the organization the opportunity status belongs to."
           },
           "pipeline_id": {
             "title": "Pipeline ID",
-            "type": "string"
+            "type": "string",
+            "description": "ID of the pipeline the opportunity status belongs to, prefixed with \u0060pipe_\u0060."
           },
           "type": {
-            "description": "Type of an Opportunity Status: \u0060active\u0060 for open Opportunities, \u0060won\u0060 or \u0060lost\u0060 for closed ones.",
+            "description": "Whether opportunities in this status are open (\u0060active\u0060) or closed (\u0060won\u0060 or \u0060lost\u0060).",
             "$ref": "#/components/schemas/OpportunityStatusType"
           }
         }
@@ -48486,6 +48532,17 @@
         ],
         "type": "string",
         "description": "Type of an Opportunity Status: \u0060active\u0060 for open Opportunities, \u0060won\u0060 or \u0060lost\u0060 for closed ones.",
+        "x-fern-enum": {
+          "active": {
+            "description": "The opportunity is still open."
+          },
+          "lost": {
+            "description": "The opportunity is closed and was lost."
+          },
+          "won": {
+            "description": "The opportunity is closed and was won."
+          }
+        },
         "x-ms-enum": {
           "name": "OpportunityStatusType",
           "modelAsString": false,
@@ -48568,7 +48625,6 @@
             "description": "Require an unsubscribe link in Bulk Emails and Workflows."
           }
         },
-        "additionalProperties": false,
         "description": "Editable organization settings."
       },
       "OtherSearchObjectType": {
@@ -50755,8 +50811,7 @@
             "type": "boolean",
             "default": true
           }
-        },
-        "additionalProperties": false
+        }
       },
       "SmsActivity": {
         "title": "SMSActivity",
@@ -52187,8 +52242,7 @@
               "type": "string"
             }
           }
-        },
-        "additionalProperties": false
+        }
       },
       "SmsTemplateSearchFieldName": {
         "title": "SmsTemplateSearchFieldName",
@@ -54420,8 +54474,7 @@
             "type": "string",
             "description": "The updated reason for blocking the given phone number."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateBlockedPhoneNumberSettings": {
         "title": "UpdateBlockedPhoneNumberSettings",
@@ -54434,8 +54487,7 @@
             "title": "Reject Anonymous Inbound Calls",
             "type": "boolean"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateCallActivity": {
         "patternProperties": {
@@ -54537,8 +54589,7 @@
             ],
             "x-client-original-format": "uri"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateCommentThreads": {
         "title": "UpdateCommentThreads",
@@ -54551,8 +54602,7 @@
             "title": "Body",
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateContact": {
         "patternProperties": {
@@ -54625,8 +54675,7 @@
             },
             "description": "URLs associated with the contact. Replaces the existing list. Omit or send null to leave it unchanged"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateCustomActivity": {
         "patternProperties": {
@@ -54658,8 +54707,7 @@
           "status": {
             "$ref": "#/components/schemas/UpdateCustomActivityStatus"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateEmailActivity": {
         "type": "object",
@@ -54810,8 +54858,7 @@
               "string"
             ]
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateIntegrationLink": {
         "title": "UpdateIntegrationLink",
@@ -54838,8 +54885,7 @@
             ],
             "default": null
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateNoteActivity": {
         "type": "object",
@@ -54891,8 +54937,7 @@
               "string"
             ]
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateNotification": {
         "title": "UpdateNotification",
@@ -54952,8 +54997,7 @@
             "title": "Text",
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateOpportunity": {
         "patternProperties": {
@@ -55024,11 +55068,10 @@
             "title": "Value Period",
             "$ref": "#/components/schemas/OpportunityValuePeriod"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateOpportunityStatus": {
-        "title": "UpdateOpportunityStatusSchema",
+        "title": "UpdateOpportunityStatus",
         "required": [
           "label"
         ],
@@ -55037,7 +55080,8 @@
           "label": {
             "title": "Label",
             "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "description": "New name of the opportunity status. Leading and trailing whitespace is removed. Must be unique within the pipeline (ignoring case)."
           },
           "pipeline_id": {
             "title": "Pipeline ID",
@@ -55045,10 +55089,10 @@
               "null",
               "string"
             ],
+            "description": "ID of the pipeline the status belongs to. Optional, and it can\u0027t move the status: any other pipeline returns 400. To move a status to another pipeline, use the Pipelines API.",
             "default": null
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateOutcome": {
         "title": "UpdateOutcome",
@@ -55088,8 +55132,7 @@
           "type": {
             "$ref": "#/components/schemas/UpdateOutcomeType"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdatePhoneNumber": {
         "title": "UpdatePhoneNumber",
@@ -55161,8 +55204,7 @@
               "string"
             ]
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdatePipeline": {
         "title": "UpdatePipeline",
@@ -55185,8 +55227,7 @@
             "description": "Opportunity Statuses of this Pipeline, in the desired order.",
             "default": null
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdatePlaybook": {
         "title": "UpdatePlaybook",
@@ -55228,8 +55269,7 @@
             ],
             "description": "Guidance for AI summaries of calls and meetings associated with this Playbook."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateSmsActivity": {
         "type": "object",
@@ -55301,8 +55341,7 @@
               "string"
             ]
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateSmsTemplate": {
         "title": "UpdateSMSTemplate",
@@ -55330,8 +55369,7 @@
             "title": "Text",
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateSmsTemplateAttachment": {
         "title": "UpdateSMSTemplateAttachment",
@@ -55374,8 +55412,7 @@
             "type": "string",
             "description": "Name used when referring to a single object."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateWebhook": {
         "title": "UpdateWebhook",
@@ -55414,8 +55451,7 @@
             "description": "Verify SSL certificate of destination webhook URL. Set to \u0060false\u0060 to disable SSL certificate validation. We recommend using https to protect your data during delivery.",
             "default": null
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateWhatsAppMessage": {
         "title": "UpdateWhatsAppMessage",
@@ -55474,8 +55510,7 @@
             "title": "User ID",
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UploadFile": {
         "title": "UploadFile",
@@ -55493,8 +55528,7 @@
             "title": "Filename",
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "ValidationErrors": {
         "required": [
@@ -62680,6 +62714,9 @@
             "description": "Whether more results exist after this page."
           }
         }
+      },
+      "OpportunityStatusesDelete200ResponseSchema": {
+        "type": "object"
       },
       "BulkDeleteActionSQueryProperty": {
         "title": "S Query",
@@ -85871,6 +85908,9 @@
       ]
     },
     "LeadStatusesDelete200Response": {
+      "type": "object"
+    },
+    "OpportunityStatusesDelete200Response": {
       "type": "object"
     },
     "ExamplePayload": {

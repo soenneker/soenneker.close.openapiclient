@@ -27394,6 +27394,7 @@
           "opportunity_statuses"
         ],
         "summary": "List opportunity statuses for your organization",
+        "description": "List the opportunity statuses of every pipeline in your organization. Statuses are grouped by pipeline, oldest pipeline first, and follow the order configured in Close within each pipeline. The list isn't paginated, so every status is returned in one response and `has_more` is always false.",
         "parameters": [
           {
             "$ref": "#/components/parameters/FieldsParam"
@@ -27480,7 +27481,7 @@
           "opportunity_statuses"
         ],
         "summary": "Create an opportunity status",
-        "description": "Create a new opportunity status. The status must belong to a pipeline (specified by `pipeline_id`) and have a `type` of `active`, `won`, or `lost`.",
+        "description": "Create an opportunity status and add it to the end of a pipeline's list of statuses. If you leave out `pipeline_id`, the status is added to your organization's oldest pipeline. `type` defaults to `active` and can't be changed later.\n\nReturns 400 if the pipeline doesn't exist, if your organization has no pipelines, if the pipeline already has a status with the same label (ignoring case), or if the pipeline already has 250 statuses. Requires the Manage Customizations permission, otherwise returns 403.",
         "parameters": [
           {
             "$ref": "#/components/parameters/FieldsParam"
@@ -27489,10 +27490,21 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "example": {
-                "label": "Closed",
-                "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
-                "type": "won"
+              "examples": {
+                "default": {
+                  "summary": "Create a won status in a specific pipeline",
+                  "value": {
+                    "label": "Closed",
+                    "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
+                    "type": "won"
+                  }
+                },
+                "default_pipeline": {
+                  "summary": "Create an active status in the oldest pipeline",
+                  "value": {
+                    "label": "Proposal sent"
+                  }
+                }
               },
               "schema": {
                 "$ref": "#/components/schemas/CreateOpportunityStatus"
@@ -27505,12 +27517,27 @@
           "200": {
             "content": {
               "application/json": {
-                "example": {
-                  "id": "stat_10diZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
-                  "label": "Closed",
-                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                  "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
-                  "type": "won"
+                "examples": {
+                  "default": {
+                    "summary": "Create a won status in a specific pipeline",
+                    "value": {
+                      "id": "stat_10diZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                      "label": "Closed",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
+                      "type": "won"
+                    }
+                  },
+                  "default_pipeline": {
+                    "summary": "Create an active status in the oldest pipeline",
+                    "value": {
+                      "id": "stat_11diZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                      "label": "Proposal sent",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
+                      "type": "active"
+                    }
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/OpportunityStatus"
@@ -27541,11 +27568,13 @@
           "opportunity_statuses"
         ],
         "summary": "Fetch a single opportunity status",
+        "description": "Fetch a single opportunity status by its ID. Returns 404 if no status in your organization has that ID.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the opportunity status.",
             "schema": {
               "type": "string"
             }
@@ -27595,11 +27624,13 @@
           "opportunity_statuses"
         ],
         "summary": "Rename an opportunity status",
+        "description": "Rename an opportunity status. Only `label` can be changed: `type` is ignored, and opportunities that use the status keep it and show the new label. Returns 400 if another status in the same pipeline already has the label (ignoring case). Requires the Manage Customizations permission, otherwise returns 403.\n\n`pipeline_id` is accepted but can't move the status. Any value other than the status's current pipeline returns 400. To move a status to another pipeline, use PUT `/pipeline/{id}/`.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the opportunity status.",
             "schema": {
               "type": "string"
             }
@@ -27611,8 +27642,20 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "example": {
-                "label": "Renamed"
+              "examples": {
+                "default": {
+                  "summary": "Rename a status",
+                  "value": {
+                    "label": "Demo scheduled"
+                  }
+                },
+                "with_pipeline_id": {
+                  "summary": "Rename a status, passing its current pipeline",
+                  "value": {
+                    "label": "Contract signed",
+                    "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j"
+                  }
+                }
               },
               "schema": {
                 "$ref": "#/components/schemas/UpdateOpportunityStatus"
@@ -27625,12 +27668,27 @@
           "200": {
             "content": {
               "application/json": {
-                "example": {
-                  "id": "stat_10diZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
-                  "label": "Renamed",
-                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                  "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
-                  "type": "active"
+                "examples": {
+                  "default": {
+                    "summary": "Rename a status",
+                    "value": {
+                      "id": "stat_10diZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                      "label": "Demo scheduled",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
+                      "type": "active"
+                    }
+                  },
+                  "with_pipeline_id": {
+                    "summary": "Rename a status, passing its current pipeline",
+                    "value": {
+                      "id": "stat_5ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                      "label": "Contract signed",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "pipeline_id": "pipe_6gV01if4wo7r2YTVQDWP2j",
+                      "type": "won"
+                    }
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/OpportunityStatus"
@@ -27662,12 +27720,13 @@
           "opportunity_statuses"
         ],
         "summary": "Delete an opportunity status",
-        "description": "You should make sure no opportunities are assigned this status, first.",
+        "description": "Delete an opportunity status and remove it from its pipeline. Returns an empty object on success.\n\nReturns 400 if any opportunities still have this status, so move them to another status first. Also returns 400 if this is the organization's last opportunity status. Requires the Manage Customizations permission, otherwise returns 403.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the opportunity status.",
             "schema": {
               "type": "string"
             }
@@ -27675,6 +27734,11 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -33121,8 +33185,7 @@
             "title": "Text",
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CalendarPeriod": {
         "title": "CalendarPeriod",
@@ -34402,8 +34465,7 @@
         "required": [
           "phone",
           "reason"
-        ],
-        "additionalProperties": false
+        ]
       },
       "CreateCallActivity": {
         "type": "object",
@@ -34556,7 +34618,6 @@
             "format": "uri"
           }
         },
-        "additionalProperties": false,
         "patternProperties": {
           "^custom\\.(cf|lcf|ccf|acf|gcf|scf)_[A-Za-z0-9]+(\\.(add|remove))?$": {
             "description": "Value of the custom field with ID `custom_field_id`, keyed as `custom.{custom_field_id}` (e.g. `custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c`). The shape depends on the field's type: a string, a number, or an array of strings for fields that accept multiple values. Hidden fields may hold any JSON value. Set the value to null to clear the field. For fields that accept multiple values, append `.add` or `.remove` to the key (e.g. `custom.{custom_field_id}.add`) to add or remove a single value."
@@ -34665,8 +34726,7 @@
         "required": [
           "body",
           "object_id"
-        ],
-        "additionalProperties": false
+        ]
       },
       "CreateContact": {
         "type": "object",
@@ -34791,7 +34851,6 @@
             }
           }
         },
-        "additionalProperties": false,
         "patternProperties": {
           "^custom\\.(cf|lcf|ccf|acf|gcf|scf)_[A-Za-z0-9]+(\\.(add|remove))?$": {
             "description": "Value of the custom field with ID `custom_field_id`, keyed as `custom.{custom_field_id}` (e.g. `custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c`). The shape depends on the field's type: a string, a number, or an array of strings for fields that accept multiple values. Hidden fields may hold any JSON value. Set the value to null to clear the field. For fields that accept multiple values, append `.add` or `.remove` to the key (e.g. `custom.{custom_field_id}.add`) to add or remove a single value."
@@ -34863,7 +34922,6 @@
           "custom_activity_type_id",
           "lead_id"
         ],
-        "additionalProperties": false,
         "patternProperties": {
           "^custom\\.(cf|lcf|ccf|acf|gcf|scf)_[A-Za-z0-9]+(\\.(add|remove))?$": {
             "description": "Value of the custom field with ID `custom_field_id`, keyed as `custom.{custom_field_id}` (e.g. `custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c`). The shape depends on the field's type: a string, a number, or an array of strings for fields that accept multiple values. Hidden fields may hold any JSON value. Set the value to null to clear the field. For fields that accept multiple values, append `.add` or `.remove` to the key (e.g. `custom.{custom_field_id}.add`) to add or remove a single value."
@@ -35094,8 +35152,7 @@
         "required": [
           "lead_id",
           "status"
-        ],
-        "additionalProperties": false
+        ]
       },
       "CreateGroup": {
         "title": "CreateGroup",
@@ -35108,8 +35165,7 @@
         },
         "required": [
           "name"
-        ],
-        "additionalProperties": false
+        ]
       },
       "CreateGroupMember": {
         "title": "CreateGroupMember",
@@ -35122,8 +35178,7 @@
         },
         "required": [
           "user_id"
-        ],
-        "additionalProperties": false
+        ]
       },
       "CreateIntegrationLink": {
         "title": "CreateIntegrationLink",
@@ -35147,8 +35202,7 @@
           "name",
           "type",
           "url"
-        ],
-        "additionalProperties": false
+        ]
       },
       "CreateLeadFile": {
         "title": "CreateLeadFile",
@@ -35176,8 +35230,7 @@
           "content_type",
           "filename",
           "url"
-        ],
-        "additionalProperties": false
+        ]
       },
       "CreateLeadTask": {
         "title": "CreateLeadTask",
@@ -35308,8 +35361,7 @@
         "required": [
           "email",
           "role_id"
-        ],
-        "additionalProperties": false
+        ]
       },
       "CreateNoteActivity": {
         "type": "object",
@@ -35411,8 +35463,7 @@
         },
         "required": [
           "lead_id"
-        ],
-        "additionalProperties": false
+        ]
       },
       "CreateOpportunity": {
         "title": "CreateOpportunity",
@@ -35605,7 +35656,6 @@
             ]
           }
         },
-        "additionalProperties": false,
         "patternProperties": {
           "^custom\\.(cf|lcf|ccf|acf|gcf|scf)_[A-Za-z0-9]+(\\.(add|remove))?$": {
             "description": "Value of the custom field with ID `custom_field_id`, keyed as `custom.{custom_field_id}` (e.g. `custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c`). The shape depends on the field's type: a string, a number, or an array of strings for fields that accept multiple values. Hidden fields may hold any JSON value. Set the value to null to clear the field. For fields that accept multiple values, append `.add` or `.remove` to the key (e.g. `custom.{custom_field_id}.add`) to add or remove a single value."
@@ -35613,16 +35663,18 @@
         }
       },
       "CreateOpportunityStatus": {
-        "title": "CreateOpportunityStatusSchema",
+        "title": "CreateOpportunityStatus",
         "type": "object",
         "properties": {
           "label": {
             "title": "Label",
+            "description": "Name of the opportunity status. Leading and trailing whitespace is removed. Must be unique within the pipeline (ignoring case).",
             "type": "string",
             "minLength": 1
           },
           "pipeline_id": {
             "title": "Pipeline ID",
+            "description": "ID of the pipeline to add the status to, prefixed with `pipe_`. Defaults to the organization's oldest pipeline.",
             "default": null,
             "anyOf": [
               {
@@ -35634,14 +35686,14 @@
             ]
           },
           "type": {
+            "description": "Whether opportunities in this status are open (`active`) or closed (`won` or `lost`). Can't be changed later.",
             "default": "active",
             "$ref": "#/components/schemas/OpportunityStatusType"
           }
         },
         "required": [
           "label"
-        ],
-        "additionalProperties": false
+        ]
       },
       "CreateOrUpdateLeadStatus": {
         "title": "CreateOrUpdateLeadStatus",
@@ -35667,8 +35719,7 @@
         },
         "required": [
           "label"
-        ],
-        "additionalProperties": false
+        ]
       },
       "CreateOutcome": {
         "title": "CreateOutcome",
@@ -35717,8 +35768,7 @@
         },
         "required": [
           "name"
-        ],
-        "additionalProperties": false
+        ]
       },
       "CreatePhoneNumberRequest": {
         "title": "CreatePhoneNumberRequest",
@@ -35817,8 +35867,7 @@
         },
         "required": [
           "country"
-        ],
-        "additionalProperties": false
+        ]
       },
       "CreatePipeline": {
         "title": "CreatePipeline",
@@ -35847,8 +35896,7 @@
         },
         "required": [
           "name"
-        ],
-        "additionalProperties": false
+        ]
       },
       "CreatePlaybook": {
         "title": "CreatePlaybook",
@@ -35901,8 +35949,7 @@
         },
         "required": [
           "name"
-        ],
-        "additionalProperties": false
+        ]
       },
       "CreateSMSActivity": {
         "type": "object",
@@ -36092,8 +36139,7 @@
         },
         "required": [
           "status"
-        ],
-        "additionalProperties": false
+        ]
       },
       "CreateSMSTemplate": {
         "title": "CreateSMSTemplate",
@@ -36121,8 +36167,7 @@
         },
         "required": [
           "name"
-        ],
-        "additionalProperties": false
+        ]
       },
       "CreateSMSTemplateAttachment": {
         "title": "CreateSMSTemplateAttachment",
@@ -36178,8 +36223,7 @@
         },
         "required": [
           "email"
-        ],
-        "additionalProperties": false
+        ]
       },
       "CreateWebhook": {
         "title": "CreateWebhook",
@@ -36208,8 +36252,7 @@
         "required": [
           "events",
           "url"
-        ],
-        "additionalProperties": false
+        ]
       },
       "CreateWhatsAppMessage": {
         "title": "CreateWhatsAppMessage",
@@ -36302,8 +36345,7 @@
           "local_phone",
           "message_markdown",
           "remote_phone"
-        ],
-        "additionalProperties": false
+        ]
       },
       "CreatedActivity": {
         "title": "CreatedActivity",
@@ -37477,8 +37519,7 @@
               "$ref": "#/components/schemas/SearchSort"
             }
           }
-        },
-        "additionalProperties": false
+        }
       },
       "DataSearchResponse": {
         "title": "DataSearchResponse",
@@ -45608,8 +45649,7 @@
             "description": "Whether email opens are tracked for emails this member sends.",
             "type": "boolean"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "MembershipResponse": {
         "title": "MembershipResponse",
@@ -45912,8 +45952,7 @@
         "required": [
           "destination",
           "source"
-        ],
-        "additionalProperties": true
+        ]
       },
       "MergeLeadsResponse": {
         "title": "MergeLeadsResponse",
@@ -47609,21 +47648,26 @@
         "properties": {
           "id": {
             "title": "ID",
+            "description": "Unique ID of the opportunity status, prefixed with `stat_`.",
             "type": "string"
           },
           "label": {
             "title": "Label",
+            "description": "Name of the opportunity status, unique within its pipeline (ignoring case).",
             "type": "string"
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the opportunity status belongs to.",
             "type": "string"
           },
           "pipeline_id": {
             "title": "Pipeline ID",
+            "description": "ID of the pipeline the opportunity status belongs to, prefixed with `pipe_`.",
             "type": "string"
           },
           "type": {
+            "description": "Whether opportunities in this status are open (`active`) or closed (`won` or `lost`).",
             "$ref": "#/components/schemas/OpportunityStatusType"
           }
         },
@@ -48233,7 +48277,18 @@
           "won",
           "lost",
           "active"
-        ]
+        ],
+        "x-fern-enum": {
+          "active": {
+            "description": "The opportunity is still open."
+          },
+          "lost": {
+            "description": "The opportunity is closed and was lost."
+          },
+          "won": {
+            "description": "The opportunity is closed and was won."
+          }
+        }
       },
       "OpportunitySuggestedAction": {
         "title": "OpportunitySuggestedAction",
@@ -48354,8 +48409,7 @@
             "description": "Require an unsubscribe link in Bulk Emails and Workflows.",
             "type": "boolean"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "OtherSearchObjectType": {
         "title": "OtherSearchObjectType",
@@ -49727,8 +49781,7 @@
           "object_id",
           "object_type",
           "organization_id"
-        ],
-        "additionalProperties": false
+        ]
       },
       "SMSActivity": {
         "title": "SMSActivity",
@@ -51158,8 +51211,7 @@
         },
         "required": [
           "saved_view_ids"
-        ],
-        "additionalProperties": false
+        ]
       },
       "SharingSettingsEmbeddedResponse": {
         "title": "SharingSettingsEmbeddedResponse",
@@ -53000,8 +53052,7 @@
         },
         "required": [
           "reason"
-        ],
-        "additionalProperties": false
+        ]
       },
       "UpdateBlockedPhoneNumberSettings": {
         "title": "UpdateBlockedPhoneNumberSettings",
@@ -53014,8 +53065,7 @@
         },
         "required": [
           "reject_anonymous_inbound_calls"
-        ],
-        "additionalProperties": false
+        ]
       },
       "UpdateCallActivity": {
         "type": "object",
@@ -53127,7 +53177,6 @@
             "format": "uri"
           }
         },
-        "additionalProperties": false,
         "patternProperties": {
           "^custom\\.(cf|lcf|ccf|acf|gcf|scf)_[A-Za-z0-9]+(\\.(add|remove))?$": {
             "description": "Value of the custom field with ID `custom_field_id`, keyed as `custom.{custom_field_id}` (e.g. `custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c`). The shape depends on the field's type: a string, a number, or an array of strings for fields that accept multiple values. Hidden fields may hold any JSON value. Set the value to null to clear the field. For fields that accept multiple values, append `.add` or `.remove` to the key (e.g. `custom.{custom_field_id}.add`) to add or remove a single value."
@@ -53145,8 +53194,7 @@
         },
         "required": [
           "body"
-        ],
-        "additionalProperties": false
+        ]
       },
       "UpdateContact": {
         "type": "object",
@@ -53256,7 +53304,6 @@
             }
           }
         },
-        "additionalProperties": false,
         "patternProperties": {
           "^custom\\.(cf|lcf|ccf|acf|gcf|scf)_[A-Za-z0-9]+(\\.(add|remove))?$": {
             "description": "Value of the custom field with ID `custom_field_id`, keyed as `custom.{custom_field_id}` (e.g. `custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c`). The shape depends on the field's type: a string, a number, or an array of strings for fields that accept multiple values. Hidden fields may hold any JSON value. Set the value to null to clear the field. For fields that accept multiple values, append `.add` or `.remove` to the key (e.g. `custom.{custom_field_id}.add`) to add or remove a single value."
@@ -53293,7 +53340,6 @@
             ]
           }
         },
-        "additionalProperties": false,
         "patternProperties": {
           "^custom\\.(cf|lcf|ccf|acf|gcf|scf)_[A-Za-z0-9]+(\\.(add|remove))?$": {
             "description": "Value of the custom field with ID `custom_field_id`, keyed as `custom.{custom_field_id}` (e.g. `custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c`). The shape depends on the field's type: a string, a number, or an array of strings for fields that accept multiple values. Hidden fields may hold any JSON value. Set the value to null to clear the field. For fields that accept multiple values, append `.add` or `.remove` to the key (e.g. `custom.{custom_field_id}.add`) to add or remove a single value."
@@ -53498,8 +53544,7 @@
               "string"
             ]
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateIntegrationLink": {
         "title": "UpdateIntegrationLink",
@@ -53542,8 +53587,7 @@
               }
             ]
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateNoteActivity": {
         "type": "object",
@@ -53614,8 +53658,7 @@
               "string"
             ]
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateNotification": {
         "title": "UpdateNotification",
@@ -53710,8 +53753,7 @@
             "title": "Text",
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateOpportunity": {
         "title": "UpdateOpportunity",
@@ -53786,7 +53828,6 @@
             "$ref": "#/components/schemas/OpportunityValuePeriod"
           }
         },
-        "additionalProperties": false,
         "patternProperties": {
           "^custom\\.(cf|lcf|ccf|acf|gcf|scf)_[A-Za-z0-9]+(\\.(add|remove))?$": {
             "description": "Value of the custom field with ID `custom_field_id`, keyed as `custom.{custom_field_id}` (e.g. `custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c`). The shape depends on the field's type: a string, a number, or an array of strings for fields that accept multiple values. Hidden fields may hold any JSON value. Set the value to null to clear the field. For fields that accept multiple values, append `.add` or `.remove` to the key (e.g. `custom.{custom_field_id}.add`) to add or remove a single value."
@@ -53794,16 +53835,18 @@
         }
       },
       "UpdateOpportunityStatus": {
-        "title": "UpdateOpportunityStatusSchema",
+        "title": "UpdateOpportunityStatus",
         "type": "object",
         "properties": {
           "label": {
             "title": "Label",
+            "description": "New name of the opportunity status. Leading and trailing whitespace is removed. Must be unique within the pipeline (ignoring case).",
             "type": "string",
             "minLength": 1
           },
           "pipeline_id": {
             "title": "Pipeline ID",
+            "description": "ID of the pipeline the status belongs to. Optional, and it can't move the status: any other pipeline returns 400. To move a status to another pipeline, use the Pipelines API.",
             "default": null,
             "anyOf": [
               {
@@ -53817,8 +53860,7 @@
         },
         "required": [
           "label"
-        ],
-        "additionalProperties": false
+        ]
       },
       "UpdateOutcome": {
         "title": "UpdateOutcome",
@@ -53879,8 +53921,7 @@
               }
             ]
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdatePhoneNumber": {
         "title": "UpdatePhoneNumber",
@@ -53956,8 +53997,7 @@
               }
             ]
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdatePipeline": {
         "title": "UpdatePipeline",
@@ -53984,8 +54024,7 @@
               }
             ]
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdatePlaybook": {
         "title": "UpdatePlaybook",
@@ -54035,8 +54074,7 @@
               }
             ]
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateSMSActivity": {
         "type": "object",
@@ -54182,8 +54220,7 @@
               "string"
             ]
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateSMSTemplate": {
         "title": "UpdateSMSTemplate",
@@ -54212,8 +54249,7 @@
             "title": "Text",
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateSMSTemplateAttachment": {
         "title": "UpdateSMSTemplateAttachment",
@@ -54256,8 +54292,7 @@
         "required": [
           "plural",
           "singular"
-        ],
-        "additionalProperties": false
+        ]
       },
       "UpdateWebhook": {
         "title": "UpdateWebhook",
@@ -54316,8 +54351,7 @@
               }
             ]
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UpdateWhatsAppMessage": {
         "title": "UpdateWhatsAppMessage",
@@ -54383,8 +54417,7 @@
             "title": "User ID",
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UploadFile": {
         "title": "UploadFile",
@@ -54402,8 +54435,7 @@
         "required": [
           "content_type",
           "filename"
-        ],
-        "additionalProperties": false
+        ]
       },
       "ValidationErrors": {
         "description": "Validation errors with the path of each invalid field.",

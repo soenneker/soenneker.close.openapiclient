@@ -9,7 +9,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class UpdateWhatsAppMessage : IParsable
+    public partial class UpdateWhatsAppMessage : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
@@ -40,91 +40,100 @@ namespace Soenneker.Close.OpenApiClient.Models
         }
 
         /// <summary>The activity_at property</summary>
-        public DateTimeOffset? ActivityAt { get => _explicitNullValueActivityAt; set { _explicitNullValueActivityAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activity_at"); else _explicitNullProperties?.Remove("activity_at"); } }
+        public DateTimeOffset? ActivityAt { get => _explicitNullValueActivityAt; set { _explicitNullValueActivityAt = value; AdditionalData?.Remove("activity_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activity_at"); else _explicitNullProperties?.Remove("activity_at"); } }
         private DateTimeOffset? _explicitNullValueActivityAt = default!;
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The attachments property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.WhatsAppAttachmentData>? Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
+        public List<global::Soenneker.Close.OpenApiClient.Models.WhatsAppAttachmentData>? Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; AdditionalData?.Remove("attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.WhatsAppAttachmentData>? _explicitNullValueAttachments = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.WhatsAppAttachmentData> Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
+        public List<global::Soenneker.Close.OpenApiClient.Models.WhatsAppAttachmentData> Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; AdditionalData?.Remove("attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.WhatsAppAttachmentData> _explicitNullValueAttachments = default!;
 #endif
         /// <summary>The contact_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ContactId { get => _explicitNullValueContactId; set { _explicitNullValueContactId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact_id"); else _explicitNullProperties?.Remove("contact_id"); } }
+        public string? ContactId { get => _explicitNullValueContactId; set { _explicitNullValueContactId = value; AdditionalData?.Remove("contact_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact_id"); else _explicitNullProperties?.Remove("contact_id"); } }
         private string? _explicitNullValueContactId = default!;
 #nullable restore
 #else
-        public string ContactId { get => _explicitNullValueContactId; set { _explicitNullValueContactId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact_id"); else _explicitNullProperties?.Remove("contact_id"); } }
+        public string ContactId { get => _explicitNullValueContactId; set { _explicitNullValueContactId = value; AdditionalData?.Remove("contact_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact_id"); else _explicitNullProperties?.Remove("contact_id"); } }
         private string _explicitNullValueContactId = default!;
 #endif
         /// <summary>Direction of communication. Outgoing means the communication flowing from the user to the lead/contact. Inbound means the opposite.</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.CommunicationDirection? Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
+        public global::Soenneker.Close.OpenApiClient.Models.CommunicationDirection? Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; AdditionalData?.Remove("direction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CommunicationDirection? _explicitNullValueDirection = default!;
         /// <summary>The integration_link property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IntegrationLink { get => _explicitNullValueIntegrationLink; set { _explicitNullValueIntegrationLink = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_link"); else _explicitNullProperties?.Remove("integration_link"); } }
+        public string? IntegrationLink { get => _explicitNullValueIntegrationLink; set { _explicitNullValueIntegrationLink = value; AdditionalData?.Remove("integration_link"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_link"); else _explicitNullProperties?.Remove("integration_link"); } }
         private string? _explicitNullValueIntegrationLink = default!;
 #nullable restore
 #else
-        public string IntegrationLink { get => _explicitNullValueIntegrationLink; set { _explicitNullValueIntegrationLink = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_link"); else _explicitNullProperties?.Remove("integration_link"); } }
+        public string IntegrationLink { get => _explicitNullValueIntegrationLink; set { _explicitNullValueIntegrationLink = value; AdditionalData?.Remove("integration_link"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_link"); else _explicitNullProperties?.Remove("integration_link"); } }
         private string _explicitNullValueIntegrationLink = default!;
 #endif
         /// <summary>The local_phone property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LocalPhone { get => _explicitNullValueLocalPhone; set { _explicitNullValueLocalPhone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("local_phone"); else _explicitNullProperties?.Remove("local_phone"); } }
+        public string? LocalPhone { get => _explicitNullValueLocalPhone; set { _explicitNullValueLocalPhone = value; AdditionalData?.Remove("local_phone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("local_phone"); else _explicitNullProperties?.Remove("local_phone"); } }
         private string? _explicitNullValueLocalPhone = default!;
 #nullable restore
 #else
-        public string LocalPhone { get => _explicitNullValueLocalPhone; set { _explicitNullValueLocalPhone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("local_phone"); else _explicitNullProperties?.Remove("local_phone"); } }
+        public string LocalPhone { get => _explicitNullValueLocalPhone; set { _explicitNullValueLocalPhone = value; AdditionalData?.Remove("local_phone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("local_phone"); else _explicitNullProperties?.Remove("local_phone"); } }
         private string _explicitNullValueLocalPhone = default!;
 #endif
         /// <summary>The message_markdown property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MessageMarkdown { get => _explicitNullValueMessageMarkdown; set { _explicitNullValueMessageMarkdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message_markdown"); else _explicitNullProperties?.Remove("message_markdown"); } }
+        public string? MessageMarkdown { get => _explicitNullValueMessageMarkdown; set { _explicitNullValueMessageMarkdown = value; AdditionalData?.Remove("message_markdown"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message_markdown"); else _explicitNullProperties?.Remove("message_markdown"); } }
         private string? _explicitNullValueMessageMarkdown = default!;
 #nullable restore
 #else
-        public string MessageMarkdown { get => _explicitNullValueMessageMarkdown; set { _explicitNullValueMessageMarkdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message_markdown"); else _explicitNullProperties?.Remove("message_markdown"); } }
+        public string MessageMarkdown { get => _explicitNullValueMessageMarkdown; set { _explicitNullValueMessageMarkdown = value; AdditionalData?.Remove("message_markdown"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message_markdown"); else _explicitNullProperties?.Remove("message_markdown"); } }
         private string _explicitNullValueMessageMarkdown = default!;
 #endif
         /// <summary>The remote_phone property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RemotePhone { get => _explicitNullValueRemotePhone; set { _explicitNullValueRemotePhone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_phone"); else _explicitNullProperties?.Remove("remote_phone"); } }
+        public string? RemotePhone { get => _explicitNullValueRemotePhone; set { _explicitNullValueRemotePhone = value; AdditionalData?.Remove("remote_phone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_phone"); else _explicitNullProperties?.Remove("remote_phone"); } }
         private string? _explicitNullValueRemotePhone = default!;
 #nullable restore
 #else
-        public string RemotePhone { get => _explicitNullValueRemotePhone; set { _explicitNullValueRemotePhone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_phone"); else _explicitNullProperties?.Remove("remote_phone"); } }
+        public string RemotePhone { get => _explicitNullValueRemotePhone; set { _explicitNullValueRemotePhone = value; AdditionalData?.Remove("remote_phone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_phone"); else _explicitNullProperties?.Remove("remote_phone"); } }
         private string _explicitNullValueRemotePhone = default!;
 #endif
         /// <summary>The response_to_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ResponseToId { get => _explicitNullValueResponseToId; set { _explicitNullValueResponseToId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_to_id"); else _explicitNullProperties?.Remove("response_to_id"); } }
+        public string? ResponseToId { get => _explicitNullValueResponseToId; set { _explicitNullValueResponseToId = value; AdditionalData?.Remove("response_to_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_to_id"); else _explicitNullProperties?.Remove("response_to_id"); } }
         private string? _explicitNullValueResponseToId = default!;
 #nullable restore
 #else
-        public string ResponseToId { get => _explicitNullValueResponseToId; set { _explicitNullValueResponseToId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_to_id"); else _explicitNullProperties?.Remove("response_to_id"); } }
+        public string ResponseToId { get => _explicitNullValueResponseToId; set { _explicitNullValueResponseToId = value; AdditionalData?.Remove("response_to_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_to_id"); else _explicitNullProperties?.Remove("response_to_id"); } }
         private string _explicitNullValueResponseToId = default!;
 #endif
         /// <summary>The user_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
+        public string? UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; AdditionalData?.Remove("user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
         private string? _explicitNullValueUserId = default!;
 #nullable restore
 #else
-        public string UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
+        public string UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; AdditionalData?.Remove("user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
         private string _explicitNullValueUserId = default!;
 #endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.UpdateWhatsAppMessage"/> and sets the default values.
+        /// </summary>
+        public UpdateWhatsAppMessage()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -146,7 +155,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "activity_at", n => { ActivityAt = n.GetDateTimeOffsetValue(); } },
                 { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.WhatsAppAttachmentData>(global::Soenneker.Close.OpenApiClient.Models.WhatsAppAttachmentData.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
-                { "direction", n => { Direction = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CommunicationDirection>(); } },
+                { "direction", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CommunicationDirection>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDirection = default; _explicitNullProperties?.Remove("direction"); AdditionalData["direction"] = unknown; } else { Direction = parsed; AdditionalData.Remove("direction"); } } },
                 { "integration_link", n => { IntegrationLink = n.GetStringValue(); } },
                 { "local_phone", n => { LocalPhone = n.GetStringValue(); } },
                 { "message_markdown", n => { MessageMarkdown = n.GetStringValue(); } },
@@ -171,8 +180,9 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("message_markdown", MessageMarkdown);
             writer.WriteStringValue("remote_phone", RemotePhone);
             writer.WriteStringValue("response_to_id", ResponseToId);
-            writer.WriteStringValue("user_id", UserId);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
-            
+            writer.WriteStringValue("user_id", UserId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

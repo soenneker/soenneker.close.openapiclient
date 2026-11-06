@@ -9,7 +9,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class DataSearchRequest : IParsable
+    public partial class DataSearchRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
@@ -33,53 +33,55 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("sort") is { } nullNodeSort && nullNodeSort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sort = null;
         }
 
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The `cursor` from the previous page&apos;s response. Cursors expire after 30 seconds.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Cursor { get => _explicitNullValueCursor; set { _explicitNullValueCursor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cursor"); else _explicitNullProperties?.Remove("cursor"); } }
+        public string? Cursor { get => _explicitNullValueCursor; set { _explicitNullValueCursor = value; AdditionalData?.Remove("cursor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cursor"); else _explicitNullProperties?.Remove("cursor"); } }
         private string? _explicitNullValueCursor = default!;
 #nullable restore
 #else
-        public string Cursor { get => _explicitNullValueCursor; set { _explicitNullValueCursor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cursor"); else _explicitNullProperties?.Remove("cursor"); } }
+        public string Cursor { get => _explicitNullValueCursor; set { _explicitNullValueCursor = value; AdditionalData?.Remove("cursor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cursor"); else _explicitNullProperties?.Remove("cursor"); } }
         private string _explicitNullValueCursor = default!;
 #endif
         /// <summary>Fields to return for each object type. The field names are the same as in the object type&apos;s own endpoint, e.g. `{&quot;lead&quot;: [&quot;id&quot;, &quot;display_name&quot;]}`. Custom fields use `custom.cf_abc123`. Without it, results only contain `id` and `__object_type`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.DataSearchRequestFieldsProperty? Fields { get => _explicitNullValueFields; set { _explicitNullValueFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_fields"); else _explicitNullProperties?.Remove("_fields"); } }
+        public global::Soenneker.Close.OpenApiClient.Models.DataSearchRequestFieldsProperty? Fields { get => _explicitNullValueFields; set { _explicitNullValueFields = value; AdditionalData?.Remove("_fields"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_fields"); else _explicitNullProperties?.Remove("_fields"); } }
         private global::Soenneker.Close.OpenApiClient.Models.DataSearchRequestFieldsProperty? _explicitNullValueFields = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.DataSearchRequestFieldsProperty Fields { get => _explicitNullValueFields; set { _explicitNullValueFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_fields"); else _explicitNullProperties?.Remove("_fields"); } }
+        public global::Soenneker.Close.OpenApiClient.Models.DataSearchRequestFieldsProperty Fields { get => _explicitNullValueFields; set { _explicitNullValueFields = value; AdditionalData?.Remove("_fields"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_fields"); else _explicitNullProperties?.Remove("_fields"); } }
         private global::Soenneker.Close.OpenApiClient.Models.DataSearchRequestFieldsProperty _explicitNullValueFields = default!;
 #endif
         /// <summary>Whether to include the number of matches in `count`.</summary>
-        public bool? IncludeCounts { get => _explicitNullValueIncludeCounts; set { _explicitNullValueIncludeCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_counts"); else _explicitNullProperties?.Remove("include_counts"); } }
+        public bool? IncludeCounts { get => _explicitNullValueIncludeCounts; set { _explicitNullValueIncludeCounts = value; AdditionalData?.Remove("include_counts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_counts"); else _explicitNullProperties?.Remove("include_counts"); } }
         private bool? _explicitNullValueIncludeCounts = default!;
         /// <summary>Number of results per page.</summary>
-        public int? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_limit"); else _explicitNullProperties?.Remove("_limit"); } }
+        public int? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; AdditionalData?.Remove("_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_limit"); else _explicitNullProperties?.Remove("_limit"); } }
         private int? _explicitNullValueLimit = default!;
         /// <summary>The query objects must match. Start with an `and` query that contains an `object_type` query for the type of objects to return.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.SearchQuery? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        public global::Soenneker.Close.OpenApiClient.Models.SearchQuery? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
         private global::Soenneker.Close.OpenApiClient.Models.SearchQuery? _explicitNullValueQuery = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.SearchQuery Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        public global::Soenneker.Close.OpenApiClient.Models.SearchQuery Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
         private global::Soenneker.Close.OpenApiClient.Models.SearchQuery _explicitNullValueQuery = default!;
 #endif
         /// <summary>Maximum number of results across all pages, e.g. to act only on the first 100 matches. Use `0` with `include_counts` to only count matches.</summary>
-        public int? ResultsLimit { get => _explicitNullValueResultsLimit; set { _explicitNullValueResultsLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results_limit"); else _explicitNullProperties?.Remove("results_limit"); } }
+        public int? ResultsLimit { get => _explicitNullValueResultsLimit; set { _explicitNullValueResultsLimit = value; AdditionalData?.Remove("results_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results_limit"); else _explicitNullProperties?.Remove("results_limit"); } }
         private int? _explicitNullValueResultsLimit = default!;
         /// <summary>Fields to sort results by. When paginating, sort by a field that rarely changes, like `date_created`, so no results are skipped.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.SearchSort>? Sort { get => _explicitNullValueSort; set { _explicitNullValueSort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sort"); else _explicitNullProperties?.Remove("sort"); } }
+        public List<global::Soenneker.Close.OpenApiClient.Models.SearchSort>? Sort { get => _explicitNullValueSort; set { _explicitNullValueSort = value; AdditionalData?.Remove("sort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sort"); else _explicitNullProperties?.Remove("sort"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.SearchSort>? _explicitNullValueSort = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.SearchSort> Sort { get => _explicitNullValueSort; set { _explicitNullValueSort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sort"); else _explicitNullProperties?.Remove("sort"); } }
+        public List<global::Soenneker.Close.OpenApiClient.Models.SearchSort> Sort { get => _explicitNullValueSort; set { _explicitNullValueSort = value; AdditionalData?.Remove("sort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sort"); else _explicitNullProperties?.Remove("sort"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.SearchSort> _explicitNullValueSort = default!;
 #endif
         /// <summary>
@@ -87,6 +89,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// </summary>
         public DataSearchRequest()
         {
+            AdditionalData = new Dictionary<string, object>();
             IncludeCounts = false;
             Limit = 10;
         }
@@ -130,8 +133,9 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteIntValue("_limit", Limit);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.SearchQuery>("query", Query);
             writer.WriteIntValue("results_limit", ResultsLimit);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.SearchSort>("sort", Sort);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
-            
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.SearchSort>("sort", Sort);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

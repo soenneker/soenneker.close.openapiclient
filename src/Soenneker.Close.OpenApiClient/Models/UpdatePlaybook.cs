@@ -9,7 +9,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class UpdatePlaybook : IParsable
+    public partial class UpdatePlaybook : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
@@ -29,56 +29,65 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("summary_guidance") is { } nullNodeSummaryGuidance && nullNodeSummaryGuidance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SummaryGuidance = null;
         }
 
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>IDs of [Shared Custom Fields](/api/resources/custom-fields/custom-fields-shared) to associate with this Playbook.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? CustomFieldIds { get => _explicitNullValueCustomFieldIds; set { _explicitNullValueCustomFieldIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_field_ids"); else _explicitNullProperties?.Remove("custom_field_ids"); } }
+        public List<string>? CustomFieldIds { get => _explicitNullValueCustomFieldIds; set { _explicitNullValueCustomFieldIds = value; AdditionalData?.Remove("custom_field_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_field_ids"); else _explicitNullProperties?.Remove("custom_field_ids"); } }
         private List<string>? _explicitNullValueCustomFieldIds = default!;
 #nullable restore
 #else
-        public List<string> CustomFieldIds { get => _explicitNullValueCustomFieldIds; set { _explicitNullValueCustomFieldIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_field_ids"); else _explicitNullProperties?.Remove("custom_field_ids"); } }
+        public List<string> CustomFieldIds { get => _explicitNullValueCustomFieldIds; set { _explicitNullValueCustomFieldIds = value; AdditionalData?.Remove("custom_field_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_field_ids"); else _explicitNullProperties?.Remove("custom_field_ids"); } }
         private List<string> _explicitNullValueCustomFieldIds = default!;
 #endif
         /// <summary>Description of the playbook.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>IDs of [Outcomes](/api/resources/outcomes/) that should be associated with this Playbook.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? OutcomeIds { get => _explicitNullValueOutcomeIds; set { _explicitNullValueOutcomeIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome_ids"); else _explicitNullProperties?.Remove("outcome_ids"); } }
+        public List<string>? OutcomeIds { get => _explicitNullValueOutcomeIds; set { _explicitNullValueOutcomeIds = value; AdditionalData?.Remove("outcome_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome_ids"); else _explicitNullProperties?.Remove("outcome_ids"); } }
         private List<string>? _explicitNullValueOutcomeIds = default!;
 #nullable restore
 #else
-        public List<string> OutcomeIds { get => _explicitNullValueOutcomeIds; set { _explicitNullValueOutcomeIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome_ids"); else _explicitNullProperties?.Remove("outcome_ids"); } }
+        public List<string> OutcomeIds { get => _explicitNullValueOutcomeIds; set { _explicitNullValueOutcomeIds = value; AdditionalData?.Remove("outcome_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome_ids"); else _explicitNullProperties?.Remove("outcome_ids"); } }
         private List<string> _explicitNullValueOutcomeIds = default!;
 #endif
         /// <summary>Guidance for AI summaries of calls and meetings associated with this Playbook.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SummaryGuidance { get => _explicitNullValueSummaryGuidance; set { _explicitNullValueSummaryGuidance = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_guidance"); else _explicitNullProperties?.Remove("summary_guidance"); } }
+        public string? SummaryGuidance { get => _explicitNullValueSummaryGuidance; set { _explicitNullValueSummaryGuidance = value; AdditionalData?.Remove("summary_guidance"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_guidance"); else _explicitNullProperties?.Remove("summary_guidance"); } }
         private string? _explicitNullValueSummaryGuidance = default!;
 #nullable restore
 #else
-        public string SummaryGuidance { get => _explicitNullValueSummaryGuidance; set { _explicitNullValueSummaryGuidance = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_guidance"); else _explicitNullProperties?.Remove("summary_guidance"); } }
+        public string SummaryGuidance { get => _explicitNullValueSummaryGuidance; set { _explicitNullValueSummaryGuidance = value; AdditionalData?.Remove("summary_guidance"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_guidance"); else _explicitNullProperties?.Remove("summary_guidance"); } }
         private string _explicitNullValueSummaryGuidance = default!;
 #endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.UpdatePlaybook"/> and sets the default values.
+        /// </summary>
+        public UpdatePlaybook()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -115,8 +124,9 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
             writer.WriteCollectionOfPrimitiveValues<string>("outcome_ids", OutcomeIds);
-            writer.WriteStringValue("summary_guidance", SummaryGuidance);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
-            
+            writer.WriteStringValue("summary_guidance", SummaryGuidance);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

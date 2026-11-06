@@ -9,7 +9,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class RunFieldEnrichment : IParsable
+    public partial class RunFieldEnrichment : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
@@ -31,50 +31,53 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("set_new_value") is { } nullNodeSetNewValue && nullNodeSetNewValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SetNewValue = null;
         }
 
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The field_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FieldId { get => _explicitNullValueFieldId; set { _explicitNullValueFieldId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field_id"); else _explicitNullProperties?.Remove("field_id"); } }
+        public string? FieldId { get => _explicitNullValueFieldId; set { _explicitNullValueFieldId = value; AdditionalData?.Remove("field_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field_id"); else _explicitNullProperties?.Remove("field_id"); } }
         private string? _explicitNullValueFieldId = default!;
 #nullable restore
 #else
-        public string FieldId { get => _explicitNullValueFieldId; set { _explicitNullValueFieldId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field_id"); else _explicitNullProperties?.Remove("field_id"); } }
+        public string FieldId { get => _explicitNullValueFieldId; set { _explicitNullValueFieldId = value; AdditionalData?.Remove("field_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field_id"); else _explicitNullProperties?.Remove("field_id"); } }
         private string _explicitNullValueFieldId = default!;
 #endif
         /// <summary>The object_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ObjectId { get => _explicitNullValueObjectId; set { _explicitNullValueObjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object_id"); else _explicitNullProperties?.Remove("object_id"); } }
+        public string? ObjectId { get => _explicitNullValueObjectId; set { _explicitNullValueObjectId = value; AdditionalData?.Remove("object_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object_id"); else _explicitNullProperties?.Remove("object_id"); } }
         private string? _explicitNullValueObjectId = default!;
 #nullable restore
 #else
-        public string ObjectId { get => _explicitNullValueObjectId; set { _explicitNullValueObjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object_id"); else _explicitNullProperties?.Remove("object_id"); } }
+        public string ObjectId { get => _explicitNullValueObjectId; set { _explicitNullValueObjectId = value; AdditionalData?.Remove("object_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object_id"); else _explicitNullProperties?.Remove("object_id"); } }
         private string _explicitNullValueObjectId = default!;
 #endif
         /// <summary>The object_type property</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.RunFieldEnrichmentObjectType? ObjectType { get => _explicitNullValueObjectType; set { _explicitNullValueObjectType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object_type"); else _explicitNullProperties?.Remove("object_type"); } }
+        public global::Soenneker.Close.OpenApiClient.Models.RunFieldEnrichmentObjectType? ObjectType { get => _explicitNullValueObjectType; set { _explicitNullValueObjectType = value; AdditionalData?.Remove("object_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object_type"); else _explicitNullProperties?.Remove("object_type"); } }
         private global::Soenneker.Close.OpenApiClient.Models.RunFieldEnrichmentObjectType? _explicitNullValueObjectType = default!;
         /// <summary>The organization_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string? _explicitNullValueOrganizationId = default!;
 #nullable restore
 #else
-        public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string _explicitNullValueOrganizationId = default!;
 #endif
         /// <summary>The overwrite_existing_value property</summary>
-        public bool? OverwriteExistingValue { get => _explicitNullValueOverwriteExistingValue; set { _explicitNullValueOverwriteExistingValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("overwrite_existing_value"); else _explicitNullProperties?.Remove("overwrite_existing_value"); } }
+        public bool? OverwriteExistingValue { get => _explicitNullValueOverwriteExistingValue; set { _explicitNullValueOverwriteExistingValue = value; AdditionalData?.Remove("overwrite_existing_value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("overwrite_existing_value"); else _explicitNullProperties?.Remove("overwrite_existing_value"); } }
         private bool? _explicitNullValueOverwriteExistingValue = default!;
         /// <summary>The set_new_value property</summary>
-        public bool? SetNewValue { get => _explicitNullValueSetNewValue; set { _explicitNullValueSetNewValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("set_new_value"); else _explicitNullProperties?.Remove("set_new_value"); } }
+        public bool? SetNewValue { get => _explicitNullValueSetNewValue; set { _explicitNullValueSetNewValue = value; AdditionalData?.Remove("set_new_value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("set_new_value"); else _explicitNullProperties?.Remove("set_new_value"); } }
         private bool? _explicitNullValueSetNewValue = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.RunFieldEnrichment"/> and sets the default values.
         /// </summary>
         public RunFieldEnrichment()
         {
+            AdditionalData = new Dictionary<string, object>();
             OverwriteExistingValue = false;
             SetNewValue = true;
         }
@@ -98,7 +101,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             {
                 { "field_id", n => { FieldId = n.GetStringValue(); } },
                 { "object_id", n => { ObjectId = n.GetStringValue(); } },
-                { "object_type", n => { ObjectType = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.RunFieldEnrichmentObjectType>(); } },
+                { "object_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.RunFieldEnrichmentObjectType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueObjectType = default; _explicitNullProperties?.Remove("object_type"); AdditionalData["object_type"] = unknown; } else { ObjectType = parsed; AdditionalData.Remove("object_type"); } } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "overwrite_existing_value", n => { OverwriteExistingValue = n.GetBoolValue(); } },
                 { "set_new_value", n => { SetNewValue = n.GetBoolValue(); } },
@@ -116,8 +119,9 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.RunFieldEnrichmentObjectType>("object_type", ObjectType);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteBoolValue("overwrite_existing_value", OverwriteExistingValue);
-            writer.WriteBoolValue("set_new_value", SetNewValue);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
-            
+            writer.WriteBoolValue("set_new_value", SetNewValue);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

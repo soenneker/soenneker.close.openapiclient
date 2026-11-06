@@ -21,7 +21,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Opportunity
             get => new global::Soenneker.Close.OpenApiClient.Status.Opportunity.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Close.OpenApiClient.status.opportunity.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">ID of the opportunity status.</param>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Status.Opportunity.Item.OpportunityItemRequestBuilder"/></returns>
         public global::Soenneker.Close.OpenApiClient.Status.Opportunity.Item.OpportunityItemRequestBuilder this[string position]
         {

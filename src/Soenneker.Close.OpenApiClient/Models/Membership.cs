@@ -11,7 +11,7 @@ namespace Soenneker.Close.OpenApiClient.Models
     /// Editable settings for an organization membership.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class Membership : IParsable
+    public partial class Membership : IAdditionalDataHolder, IParsable
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
@@ -34,48 +34,57 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("track_email_opens") is { } nullNodeTrackEmailOpens && nullNodeTrackEmailOpens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrackEmailOpens = null;
         }
 
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether this member&apos;s calls are automatically recorded. Starts as `unset` and can be set to `enabled` or `disabled`.</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.AutoRecordCalls? AutoRecordCalls { get => _explicitNullValueAutoRecordCalls; set { _explicitNullValueAutoRecordCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_record_calls"); else _explicitNullProperties?.Remove("auto_record_calls"); } }
+        public global::Soenneker.Close.OpenApiClient.Models.AutoRecordCalls? AutoRecordCalls { get => _explicitNullValueAutoRecordCalls; set { _explicitNullValueAutoRecordCalls = value; AdditionalData?.Remove("auto_record_calls"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_record_calls"); else _explicitNullProperties?.Remove("auto_record_calls"); } }
         private global::Soenneker.Close.OpenApiClient.Models.AutoRecordCalls? _explicitNullValueAutoRecordCalls = default!;
         /// <summary>ID of the phone number to use as this member&apos;s default outbound Caller ID. Close keeps this value while `default_caller_id_mode` is `auto`. In `auto` mode, Close uses it when no number has history with the contact and no number is near the contact. On a plan without Local Presence, `auto` mode uses it like `fixed` mode.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultCallerId { get => _explicitNullValueDefaultCallerId; set { _explicitNullValueDefaultCallerId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_caller_id"); else _explicitNullProperties?.Remove("default_caller_id"); } }
+        public string? DefaultCallerId { get => _explicitNullValueDefaultCallerId; set { _explicitNullValueDefaultCallerId = value; AdditionalData?.Remove("default_caller_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_caller_id"); else _explicitNullProperties?.Remove("default_caller_id"); } }
         private string? _explicitNullValueDefaultCallerId = default!;
 #nullable restore
 #else
-        public string DefaultCallerId { get => _explicitNullValueDefaultCallerId; set { _explicitNullValueDefaultCallerId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_caller_id"); else _explicitNullProperties?.Remove("default_caller_id"); } }
+        public string DefaultCallerId { get => _explicitNullValueDefaultCallerId; set { _explicitNullValueDefaultCallerId = value; AdditionalData?.Remove("default_caller_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_caller_id"); else _explicitNullProperties?.Remove("default_caller_id"); } }
         private string _explicitNullValueDefaultCallerId = default!;
 #endif
         /// <summary>How this member&apos;s outbound Caller ID is chosen. In `fixed` mode, outbound calls use `default_caller_id`. In `auto` mode, Close derives the number for each call. A switch to `auto` requires a plan that includes Local Presence. On a plan without it, `auto` mode uses `default_caller_id` like `fixed` mode.</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.CallerIdMode? DefaultCallerIdMode { get => _explicitNullValueDefaultCallerIdMode; set { _explicitNullValueDefaultCallerIdMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_caller_id_mode"); else _explicitNullProperties?.Remove("default_caller_id_mode"); } }
+        public global::Soenneker.Close.OpenApiClient.Models.CallerIdMode? DefaultCallerIdMode { get => _explicitNullValueDefaultCallerIdMode; set { _explicitNullValueDefaultCallerIdMode = value; AdditionalData?.Remove("default_caller_id_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_caller_id_mode"); else _explicitNullProperties?.Remove("default_caller_id_mode"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CallerIdMode? _explicitNullValueDefaultCallerIdMode = default!;
         /// <summary>URL of the audio file used as this member&apos;s Voicemail Drop recording.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HangupRecordingUrl { get => _explicitNullValueHangupRecordingUrl; set { _explicitNullValueHangupRecordingUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hangup_recording_url"); else _explicitNullProperties?.Remove("hangup_recording_url"); } }
+        public string? HangupRecordingUrl { get => _explicitNullValueHangupRecordingUrl; set { _explicitNullValueHangupRecordingUrl = value; AdditionalData?.Remove("hangup_recording_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hangup_recording_url"); else _explicitNullProperties?.Remove("hangup_recording_url"); } }
         private string? _explicitNullValueHangupRecordingUrl = default!;
 #nullable restore
 #else
-        public string HangupRecordingUrl { get => _explicitNullValueHangupRecordingUrl; set { _explicitNullValueHangupRecordingUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hangup_recording_url"); else _explicitNullProperties?.Remove("hangup_recording_url"); } }
+        public string HangupRecordingUrl { get => _explicitNullValueHangupRecordingUrl; set { _explicitNullValueHangupRecordingUrl = value; AdditionalData?.Remove("hangup_recording_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hangup_recording_url"); else _explicitNullProperties?.Remove("hangup_recording_url"); } }
         private string _explicitNullValueHangupRecordingUrl = default!;
 #endif
         /// <summary>Whether Workflows may send emails on this member&apos;s behalf.</summary>
-        public bool? MayWorkflowsImpersonate { get => _explicitNullValueMayWorkflowsImpersonate; set { _explicitNullValueMayWorkflowsImpersonate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("may_workflows_impersonate"); else _explicitNullProperties?.Remove("may_workflows_impersonate"); } }
+        public bool? MayWorkflowsImpersonate { get => _explicitNullValueMayWorkflowsImpersonate; set { _explicitNullValueMayWorkflowsImpersonate = value; AdditionalData?.Remove("may_workflows_impersonate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("may_workflows_impersonate"); else _explicitNullProperties?.Remove("may_workflows_impersonate"); } }
         private bool? _explicitNullValueMayWorkflowsImpersonate = default!;
         /// <summary>One of `admin`, `superuser`, `user`, or `restricteduser` for the corresponding predefined role, or the ID of a custom [Role](https://developer.close.com/api/resources/roles).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RoleId { get => _explicitNullValueRoleId; set { _explicitNullValueRoleId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role_id"); else _explicitNullProperties?.Remove("role_id"); } }
+        public string? RoleId { get => _explicitNullValueRoleId; set { _explicitNullValueRoleId = value; AdditionalData?.Remove("role_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role_id"); else _explicitNullProperties?.Remove("role_id"); } }
         private string? _explicitNullValueRoleId = default!;
 #nullable restore
 #else
-        public string RoleId { get => _explicitNullValueRoleId; set { _explicitNullValueRoleId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role_id"); else _explicitNullProperties?.Remove("role_id"); } }
+        public string RoleId { get => _explicitNullValueRoleId; set { _explicitNullValueRoleId = value; AdditionalData?.Remove("role_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role_id"); else _explicitNullProperties?.Remove("role_id"); } }
         private string _explicitNullValueRoleId = default!;
 #endif
         /// <summary>Whether email opens are tracked for emails this member sends.</summary>
-        public bool? TrackEmailOpens { get => _explicitNullValueTrackEmailOpens; set { _explicitNullValueTrackEmailOpens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("track_email_opens"); else _explicitNullProperties?.Remove("track_email_opens"); } }
+        public bool? TrackEmailOpens { get => _explicitNullValueTrackEmailOpens; set { _explicitNullValueTrackEmailOpens = value; AdditionalData?.Remove("track_email_opens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("track_email_opens"); else _explicitNullProperties?.Remove("track_email_opens"); } }
         private bool? _explicitNullValueTrackEmailOpens = default!;
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.Membership"/> and sets the default values.
+        /// </summary>
+        public Membership()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -94,9 +103,9 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "auto_record_calls", n => { AutoRecordCalls = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.AutoRecordCalls>(); } },
+                { "auto_record_calls", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.AutoRecordCalls>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAutoRecordCalls = default; _explicitNullProperties?.Remove("auto_record_calls"); AdditionalData["auto_record_calls"] = unknown; } else { AutoRecordCalls = parsed; AdditionalData.Remove("auto_record_calls"); } } },
                 { "default_caller_id", n => { DefaultCallerId = n.GetStringValue(); } },
-                { "default_caller_id_mode", n => { DefaultCallerIdMode = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdMode>(); } },
+                { "default_caller_id_mode", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdMode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDefaultCallerIdMode = default; _explicitNullProperties?.Remove("default_caller_id_mode"); AdditionalData["default_caller_id_mode"] = unknown; } else { DefaultCallerIdMode = parsed; AdditionalData.Remove("default_caller_id_mode"); } } },
                 { "hangup_recording_url", n => { HangupRecordingUrl = n.GetStringValue(); } },
                 { "may_workflows_impersonate", n => { MayWorkflowsImpersonate = n.GetBoolValue(); } },
                 { "role_id", n => { RoleId = n.GetStringValue(); } },
@@ -116,8 +125,9 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("hangup_recording_url", HangupRecordingUrl);
             writer.WriteBoolValue("may_workflows_impersonate", MayWorkflowsImpersonate);
             writer.WriteStringValue("role_id", RoleId);
-            writer.WriteBoolValue("track_email_opens", TrackEmailOpens);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
-            
+            writer.WriteBoolValue("track_email_opens", TrackEmailOpens);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

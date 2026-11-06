@@ -11,7 +11,7 @@ namespace Soenneker.Close.OpenApiClient.Models
     /// Editable organization settings.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class Organization : IParsable
+    public partial class Organization : IAdditionalDataHolder, IParsable
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
@@ -30,42 +30,51 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("require_unsubscribe_link") is { } nullNodeRequireUnsubscribeLink && nullNodeRequireUnsubscribeLink.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequireUnsubscribeLink = null;
         }
 
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Default currency as a three-letter [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Currency { get => _explicitNullValueCurrency; set { _explicitNullValueCurrency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("currency"); else _explicitNullProperties?.Remove("currency"); } }
+        public string? Currency { get => _explicitNullValueCurrency; set { _explicitNullValueCurrency = value; AdditionalData?.Remove("currency"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("currency"); else _explicitNullProperties?.Remove("currency"); } }
         private string? _explicitNullValueCurrency = default!;
 #nullable restore
 #else
-        public string Currency { get => _explicitNullValueCurrency; set { _explicitNullValueCurrency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("currency"); else _explicitNullProperties?.Remove("currency"); } }
+        public string Currency { get => _explicitNullValueCurrency; set { _explicitNullValueCurrency = value; AdditionalData?.Remove("currency"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("currency"); else _explicitNullProperties?.Remove("currency"); } }
         private string _explicitNullValueCurrency = default!;
 #endif
         /// <summary>Enable the unsubscribe link by default in new email templates.</summary>
-        public bool? EnableUnsubscribeLink { get => _explicitNullValueEnableUnsubscribeLink; set { _explicitNullValueEnableUnsubscribeLink = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enable_unsubscribe_link"); else _explicitNullProperties?.Remove("enable_unsubscribe_link"); } }
+        public bool? EnableUnsubscribeLink { get => _explicitNullValueEnableUnsubscribeLink; set { _explicitNullValueEnableUnsubscribeLink = value; AdditionalData?.Remove("enable_unsubscribe_link"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enable_unsubscribe_link"); else _explicitNullProperties?.Remove("enable_unsubscribe_link"); } }
         private bool? _explicitNullValueEnableUnsubscribeLink = default!;
         /// <summary>The organization&apos;s lead statuses. Provide the full list in the desired order to reorder them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.InlineLeadStatusPayload>? LeadStatuses { get => _explicitNullValueLeadStatuses; set { _explicitNullValueLeadStatuses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_statuses"); else _explicitNullProperties?.Remove("lead_statuses"); } }
+        public List<global::Soenneker.Close.OpenApiClient.Models.InlineLeadStatusPayload>? LeadStatuses { get => _explicitNullValueLeadStatuses; set { _explicitNullValueLeadStatuses = value; AdditionalData?.Remove("lead_statuses"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_statuses"); else _explicitNullProperties?.Remove("lead_statuses"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.InlineLeadStatusPayload>? _explicitNullValueLeadStatuses = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.InlineLeadStatusPayload> LeadStatuses { get => _explicitNullValueLeadStatuses; set { _explicitNullValueLeadStatuses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_statuses"); else _explicitNullProperties?.Remove("lead_statuses"); } }
+        public List<global::Soenneker.Close.OpenApiClient.Models.InlineLeadStatusPayload> LeadStatuses { get => _explicitNullValueLeadStatuses; set { _explicitNullValueLeadStatuses = value; AdditionalData?.Remove("lead_statuses"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_statuses"); else _explicitNullProperties?.Remove("lead_statuses"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.InlineLeadStatusPayload> _explicitNullValueLeadStatuses = default!;
 #endif
         /// <summary>The organization&apos;s name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>Require an unsubscribe link in Bulk Emails and Workflows.</summary>
-        public bool? RequireUnsubscribeLink { get => _explicitNullValueRequireUnsubscribeLink; set { _explicitNullValueRequireUnsubscribeLink = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("require_unsubscribe_link"); else _explicitNullProperties?.Remove("require_unsubscribe_link"); } }
+        public bool? RequireUnsubscribeLink { get => _explicitNullValueRequireUnsubscribeLink; set { _explicitNullValueRequireUnsubscribeLink = value; AdditionalData?.Remove("require_unsubscribe_link"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("require_unsubscribe_link"); else _explicitNullProperties?.Remove("require_unsubscribe_link"); } }
         private bool? _explicitNullValueRequireUnsubscribeLink = default!;
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.Organization"/> and sets the default values.
+        /// </summary>
+        public Organization()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -102,8 +111,9 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteBoolValue("enable_unsubscribe_link", EnableUnsubscribeLink);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.InlineLeadStatusPayload>("lead_statuses", LeadStatuses);
             writer.WriteStringValue("name", Name);
-            writer.WriteBoolValue("require_unsubscribe_link", RequireUnsubscribeLink);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
-            
+            writer.WriteBoolValue("require_unsubscribe_link", RequireUnsubscribeLink);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

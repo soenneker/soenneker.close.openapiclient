@@ -9,7 +9,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class UpdateStandardObjectLabel : IParsable
+    public partial class UpdateStandardObjectLabel : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
@@ -23,26 +23,35 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("singular") is { } nullNodeSingular && nullNodeSingular.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Singular = null;
         }
 
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Name used when referring to multiple objects.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Plural { get => _explicitNullValuePlural; set { _explicitNullValuePlural = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("plural"); else _explicitNullProperties?.Remove("plural"); } }
+        public string? Plural { get => _explicitNullValuePlural; set { _explicitNullValuePlural = value; AdditionalData?.Remove("plural"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("plural"); else _explicitNullProperties?.Remove("plural"); } }
         private string? _explicitNullValuePlural = default!;
 #nullable restore
 #else
-        public string Plural { get => _explicitNullValuePlural; set { _explicitNullValuePlural = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("plural"); else _explicitNullProperties?.Remove("plural"); } }
+        public string Plural { get => _explicitNullValuePlural; set { _explicitNullValuePlural = value; AdditionalData?.Remove("plural"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("plural"); else _explicitNullProperties?.Remove("plural"); } }
         private string _explicitNullValuePlural = default!;
 #endif
         /// <summary>Name used when referring to a single object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Singular { get => _explicitNullValueSingular; set { _explicitNullValueSingular = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("singular"); else _explicitNullProperties?.Remove("singular"); } }
+        public string? Singular { get => _explicitNullValueSingular; set { _explicitNullValueSingular = value; AdditionalData?.Remove("singular"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("singular"); else _explicitNullProperties?.Remove("singular"); } }
         private string? _explicitNullValueSingular = default!;
 #nullable restore
 #else
-        public string Singular { get => _explicitNullValueSingular; set { _explicitNullValueSingular = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("singular"); else _explicitNullProperties?.Remove("singular"); } }
+        public string Singular { get => _explicitNullValueSingular; set { _explicitNullValueSingular = value; AdditionalData?.Remove("singular"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("singular"); else _explicitNullProperties?.Remove("singular"); } }
         private string _explicitNullValueSingular = default!;
 #endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.UpdateStandardObjectLabel"/> and sets the default values.
+        /// </summary>
+        public UpdateStandardObjectLabel()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -73,8 +82,9 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("plural", Plural);
-            writer.WriteStringValue("singular", Singular);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
-            
+            writer.WriteStringValue("singular", Singular);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

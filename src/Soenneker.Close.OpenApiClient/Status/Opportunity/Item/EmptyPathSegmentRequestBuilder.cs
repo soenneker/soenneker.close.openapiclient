@@ -34,9 +34,9 @@ namespace Soenneker.Close.OpenApiClient.Status.Opportunity.Item
         {
         }
         /// <summary>
-        /// You should make sure no opportunities are assigned this status, first.
+        /// Delete an opportunity status and remove it from its pipeline. Returns an empty object on success.Returns 400 if any opportunities still have this status, so move them to another status first. Also returns 400 if this is the organization&apos;s last opportunity status. Requires the Manage Customizations permission, otherwise returns 403.
         /// </summary>
-        /// <returns>A <see cref="Stream"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusesDelete200ResponseSchema"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.BadRequestResponseError">When receiving a 400 status code</exception>
@@ -46,11 +46,11 @@ namespace Soenneker.Close.OpenApiClient.Status.Opportunity.Item
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusesDelete200ResponseSchema?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusesDelete200ResponseSchema> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
@@ -64,10 +64,10 @@ namespace Soenneker.Close.OpenApiClient.Status.Opportunity.Item
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusesDelete200ResponseSchema>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusesDelete200ResponseSchema.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Fetch a single opportunity status
+        /// Fetch a single opportunity status by its ID. Returns 404 if no status in your organization has that ID.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunityStatus"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -100,7 +100,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Opportunity.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatus>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.OpportunityStatus.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Rename an opportunity status
+        /// Rename an opportunity status. Only `label` can be changed: `type` is ignored, and opportunities that use the status keep it and show the new label. Returns 400 if another status in the same pipeline already has the label (ignoring case). Requires the Manage Customizations permission, otherwise returns 403.`pipeline_id` is accepted but can&apos;t move the status. Any value other than the status&apos;s current pipeline returns 400. To move a status to another pipeline, use PUT `/pipeline/{id}/`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunityStatus"/></returns>
         /// <param name="body">The request body</param>
@@ -135,7 +135,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Opportunity.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatus>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.OpportunityStatus.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// You should make sure no opportunities are assigned this status, first.
+        /// Delete an opportunity status and remove it from its pipeline. Returns an empty object on success.Returns 400 if any opportunities still have this status, so move them to another status first. Also returns 400 if this is the organization&apos;s last opportunity status. Requires the Manage Customizations permission, otherwise returns 403.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -154,7 +154,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Opportunity.Item
             return requestInfo;
         }
         /// <summary>
-        /// Fetch a single opportunity status
+        /// Fetch a single opportunity status by its ID. Returns 404 if no status in your organization has that ID.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -173,7 +173,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Opportunity.Item
             return requestInfo;
         }
         /// <summary>
-        /// Rename an opportunity status
+        /// Rename an opportunity status. Only `label` can be changed: `type` is ignored, and opportunities that use the status keep it and show the new label. Returns 400 if another status in the same pipeline already has the label (ignoring case). Requires the Manage Customizations permission, otherwise returns 403.`pipeline_id` is accepted but can&apos;t move the status. Any value other than the status&apos;s current pipeline returns 400. To move a status to another pipeline, use PUT `/pipeline/{id}/`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -204,7 +204,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Opportunity.Item
             return new global::Soenneker.Close.OpenApiClient.Status.Opportunity.Item.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Fetch a single opportunity status
+        /// Fetch a single opportunity status by its ID. Returns 404 if no status in your organization has that ID.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
@@ -221,7 +221,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Opportunity.Item
 #endif
         }
         /// <summary>
-        /// Rename an opportunity status
+        /// Rename an opportunity status. Only `label` can be changed: `type` is ignored, and opportunities that use the status keep it and show the new label. Returns 400 if another status in the same pipeline already has the label (ignoring case). Requires the Manage Customizations permission, otherwise returns 403.`pipeline_id` is accepted but can&apos;t move the status. Any value other than the status&apos;s current pipeline returns 400. To move a status to another pipeline, use PUT `/pipeline/{id}/`.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderPutQueryParameters 

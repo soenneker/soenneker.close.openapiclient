@@ -34,7 +34,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Opportunity
         {
         }
         /// <summary>
-        /// List opportunity statuses for your organization
+        /// List the opportunity statuses of every pipeline in your organization. Statuses are grouped by pipeline, oldest pipeline first, and follow the order configured in Close within each pipeline. The list isn&apos;t paginated, so every status is returned in one response and `has_more` is always false.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusesList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Opportunity
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusesList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.OpportunityStatusesList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a new opportunity status. The status must belong to a pipeline (specified by `pipeline_id`) and have a `type` of `active`, `won`, or `lost`.
+        /// Create an opportunity status and add it to the end of a pipeline&apos;s list of statuses. If you leave out `pipeline_id`, the status is added to your organization&apos;s oldest pipeline. `type` defaults to `active` and can&apos;t be changed later.Returns 400 if the pipeline doesn&apos;t exist, if your organization has no pipelines, if the pipeline already has a status with the same label (ignoring case), or if the pipeline already has 250 statuses. Requires the Manage Customizations permission, otherwise returns 403.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.OpportunityStatus"/></returns>
         /// <param name="body">The request body</param>
@@ -98,7 +98,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Opportunity
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.OpportunityStatus>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.OpportunityStatus.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List opportunity statuses for your organization
+        /// List the opportunity statuses of every pipeline in your organization. Statuses are grouped by pipeline, oldest pipeline first, and follow the order configured in Close within each pipeline. The list isn&apos;t paginated, so every status is returned in one response and `has_more` is always false.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -117,7 +117,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Opportunity
             return requestInfo;
         }
         /// <summary>
-        /// Create a new opportunity status. The status must belong to a pipeline (specified by `pipeline_id`) and have a `type` of `active`, `won`, or `lost`.
+        /// Create an opportunity status and add it to the end of a pipeline&apos;s list of statuses. If you leave out `pipeline_id`, the status is added to your organization&apos;s oldest pipeline. `type` defaults to `active` and can&apos;t be changed later.Returns 400 if the pipeline doesn&apos;t exist, if your organization has no pipelines, if the pipeline already has a status with the same label (ignoring case), or if the pipeline already has 250 statuses. Requires the Manage Customizations permission, otherwise returns 403.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -148,7 +148,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Opportunity
             return new global::Soenneker.Close.OpenApiClient.Status.Opportunity.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List opportunity statuses for your organization
+        /// List the opportunity statuses of every pipeline in your organization. Statuses are grouped by pipeline, oldest pipeline first, and follow the order configured in Close within each pipeline. The list isn&apos;t paginated, so every status is returned in one response and `has_more` is always false.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
@@ -165,7 +165,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Opportunity
 #endif
         }
         /// <summary>
-        /// Create a new opportunity status. The status must belong to a pipeline (specified by `pipeline_id`) and have a `type` of `active`, `won`, or `lost`.
+        /// Create an opportunity status and add it to the end of a pipeline&apos;s list of statuses. If you leave out `pipeline_id`, the status is added to your organization&apos;s oldest pipeline. `type` defaults to `active` and can&apos;t be changed later.Returns 400 if the pipeline doesn&apos;t exist, if your organization has no pipelines, if the pipeline already has a status with the same label (ignoring case), or if the pipeline already has 250 statuses. Requires the Manage Customizations permission, otherwise returns 403.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderPostQueryParameters 

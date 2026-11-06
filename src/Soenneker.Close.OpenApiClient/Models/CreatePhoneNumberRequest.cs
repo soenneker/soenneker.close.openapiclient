@@ -9,7 +9,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class CreatePhoneNumberRequest : IParsable
+    public partial class CreatePhoneNumberRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
@@ -35,71 +35,74 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("with_sms") is { } nullNodeWithSms && nullNodeWithSms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WithSms = null;
         }
 
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>IDs of the users the new phone number is assigned to. When omitted, the number is assigned to the user making the request. Assigning it to anyone else requires the &quot;Manage Team Phone Numbers&quot; permission, and every user must be an active member of the organization who is allowed to make calls.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AssignTo { get => _explicitNullValueAssignTo; set { _explicitNullValueAssignTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assign_to"); else _explicitNullProperties?.Remove("assign_to"); } }
+        public List<string>? AssignTo { get => _explicitNullValueAssignTo; set { _explicitNullValueAssignTo = value; AdditionalData?.Remove("assign_to"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assign_to"); else _explicitNullProperties?.Remove("assign_to"); } }
         private List<string>? _explicitNullValueAssignTo = default!;
 #nullable restore
 #else
-        public List<string> AssignTo { get => _explicitNullValueAssignTo; set { _explicitNullValueAssignTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assign_to"); else _explicitNullProperties?.Remove("assign_to"); } }
+        public List<string> AssignTo { get => _explicitNullValueAssignTo; set { _explicitNullValueAssignTo = value; AdditionalData?.Remove("assign_to"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assign_to"); else _explicitNullProperties?.Remove("assign_to"); } }
         private List<string> _explicitNullValueAssignTo = default!;
 #endif
         /// <summary>The bundle_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BundleId { get => _explicitNullValueBundleId; set { _explicitNullValueBundleId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bundle_id"); else _explicitNullProperties?.Remove("bundle_id"); } }
+        public string? BundleId { get => _explicitNullValueBundleId; set { _explicitNullValueBundleId = value; AdditionalData?.Remove("bundle_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bundle_id"); else _explicitNullProperties?.Remove("bundle_id"); } }
         private string? _explicitNullValueBundleId = default!;
 #nullable restore
 #else
-        public string BundleId { get => _explicitNullValueBundleId; set { _explicitNullValueBundleId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bundle_id"); else _explicitNullProperties?.Remove("bundle_id"); } }
+        public string BundleId { get => _explicitNullValueBundleId; set { _explicitNullValueBundleId = value; AdditionalData?.Remove("bundle_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bundle_id"); else _explicitNullProperties?.Remove("bundle_id"); } }
         private string _explicitNullValueBundleId = default!;
 #endif
         /// <summary>The carrier_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType? CarrierType { get => _explicitNullValueCarrierType; set { _explicitNullValueCarrierType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("carrier_type"); else _explicitNullProperties?.Remove("carrier_type"); } }
+        public global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType? CarrierType { get => _explicitNullValueCarrierType; set { _explicitNullValueCarrierType = value; AdditionalData?.Remove("carrier_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("carrier_type"); else _explicitNullProperties?.Remove("carrier_type"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType? _explicitNullValueCarrierType = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType CarrierType { get => _explicitNullValueCarrierType; set { _explicitNullValueCarrierType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("carrier_type"); else _explicitNullProperties?.Remove("carrier_type"); } }
+        public global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType CarrierType { get => _explicitNullValueCarrierType; set { _explicitNullValueCarrierType = value; AdditionalData?.Remove("carrier_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("carrier_type"); else _explicitNullProperties?.Remove("carrier_type"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType _explicitNullValueCarrierType = default!;
 #endif
         /// <summary>A two letter ISO country code (e.g. `US` for United States).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Country { get => _explicitNullValueCountry; set { _explicitNullValueCountry = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("country"); else _explicitNullProperties?.Remove("country"); } }
+        public string? Country { get => _explicitNullValueCountry; set { _explicitNullValueCountry = value; AdditionalData?.Remove("country"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("country"); else _explicitNullProperties?.Remove("country"); } }
         private string? _explicitNullValueCountry = default!;
 #nullable restore
 #else
-        public string Country { get => _explicitNullValueCountry; set { _explicitNullValueCountry = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("country"); else _explicitNullProperties?.Remove("country"); } }
+        public string Country { get => _explicitNullValueCountry; set { _explicitNullValueCountry = value; AdditionalData?.Remove("country"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("country"); else _explicitNullProperties?.Remove("country"); } }
         private string _explicitNullValueCountry = default!;
 #endif
         /// <summary>A string with the phone number prefix or area code, not including the country code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Prefix { get => _explicitNullValuePrefix; set { _explicitNullValuePrefix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prefix"); else _explicitNullProperties?.Remove("prefix"); } }
+        public string? Prefix { get => _explicitNullValuePrefix; set { _explicitNullValuePrefix = value; AdditionalData?.Remove("prefix"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prefix"); else _explicitNullProperties?.Remove("prefix"); } }
         private string? _explicitNullValuePrefix = default!;
 #nullable restore
 #else
-        public string Prefix { get => _explicitNullValuePrefix; set { _explicitNullValuePrefix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prefix"); else _explicitNullProperties?.Remove("prefix"); } }
+        public string Prefix { get => _explicitNullValuePrefix; set { _explicitNullValuePrefix = value; AdditionalData?.Remove("prefix"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prefix"); else _explicitNullProperties?.Remove("prefix"); } }
         private string _explicitNullValuePrefix = default!;
 #endif
         /// <summary>Deprecated. `personal` for a number that belongs to an individual user, or `group` for a group number. The distinction between personal and group numbers is being removed, and this field will be removed in a future update. When omitted, defaults to `personal`.</summary>
         [Obsolete("")]
-        public global::Soenneker.Close.OpenApiClient.Models.PhoneNumberSharing? Sharing { get => _explicitNullValueSharing; set { _explicitNullValueSharing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sharing"); else _explicitNullProperties?.Remove("sharing"); } }
+        public global::Soenneker.Close.OpenApiClient.Models.PhoneNumberSharing? Sharing { get => _explicitNullValueSharing; set { _explicitNullValueSharing = value; AdditionalData?.Remove("sharing"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sharing"); else _explicitNullProperties?.Remove("sharing"); } }
         private global::Soenneker.Close.OpenApiClient.Models.PhoneNumberSharing? _explicitNullValueSharing = default!;
         /// <summary>By default, MMS-capable numbers are rented if Close supports MMS for the given country. Renting an MMS-capable number can be forced by setting this flag to `true`. If set to `false`, certain prefixes that don&apos;t support MMS can be rented in countries where Close supports MMS. In most scenarios, this flag should not be passed. When you request an MMS number, you must set `with_sms` to `true` as well.</summary>
-        public bool? WithMms { get => _explicitNullValueWithMms; set { _explicitNullValueWithMms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("with_mms"); else _explicitNullProperties?.Remove("with_mms"); } }
+        public bool? WithMms { get => _explicitNullValueWithMms; set { _explicitNullValueWithMms = value; AdditionalData?.Remove("with_mms"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("with_mms"); else _explicitNullProperties?.Remove("with_mms"); } }
         private bool? _explicitNullValueWithMms = default!;
         /// <summary>By default, SMS-capable numbers are rented if Close supports SMS for the given country. Renting an SMS-capable number can be forced by setting this flag to `true`. If set to `false`, certain prefixes that don&apos;t support SMS can be rented in countries where Close supports SMS. In most scenarios, this flag should not be passed unless a `has-voice-only` error status is received.</summary>
-        public bool? WithSms { get => _explicitNullValueWithSms; set { _explicitNullValueWithSms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("with_sms"); else _explicitNullProperties?.Remove("with_sms"); } }
+        public bool? WithSms { get => _explicitNullValueWithSms; set { _explicitNullValueWithSms = value; AdditionalData?.Remove("with_sms"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("with_sms"); else _explicitNullProperties?.Remove("with_sms"); } }
         private bool? _explicitNullValueWithSms = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequest"/> and sets the default values.
         /// </summary>
         public CreatePhoneNumberRequest()
         {
+            AdditionalData = new Dictionary<string, object>();
             Sharing = global::Soenneker.Close.OpenApiClient.Models.PhoneNumberSharing.Personal;
         }
         /// <summary>
@@ -125,7 +128,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "carrier_type", n => { CarrierType = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType>(global::Soenneker.Close.OpenApiClient.Models.CreatePhoneNumberRequestCarrierType.CreateFromDiscriminatorValue); } },
                 { "country", n => { Country = n.GetStringValue(); } },
                 { "prefix", n => { Prefix = n.GetStringValue(); } },
-                { "sharing", n => { Sharing = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.PhoneNumberSharing>(); } },
+                { "sharing", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.PhoneNumberSharing>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSharing = default; _explicitNullProperties?.Remove("sharing"); AdditionalData["sharing"] = unknown; } else { Sharing = parsed; AdditionalData.Remove("sharing"); } } },
                 { "with_mms", n => { WithMms = n.GetBoolValue(); } },
                 { "with_sms", n => { WithSms = n.GetBoolValue(); } },
             };
@@ -144,8 +147,9 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("prefix", Prefix);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.PhoneNumberSharing>("sharing", Sharing);
             writer.WriteBoolValue("with_mms", WithMms);
-            writer.WriteBoolValue("with_sms", WithSms);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
-            
+            writer.WriteBoolValue("with_sms", WithSms);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }
