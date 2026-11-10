@@ -215,6 +215,14 @@ namespace Soenneker.Close.OpenApiClient.Models
         #pragma warning disable CS1591
         FirstCallUser,
         #pragma warning restore CS1591
+        [EnumMember(Value = "first_communication_agent_config_id")]
+        #pragma warning disable CS1591
+        FirstCommunicationAgentConfigId,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "first_communication_any_agent")]
+        #pragma warning disable CS1591
+        FirstCommunicationAnyAgent,
+        #pragma warning restore CS1591
         [EnumMember(Value = "first_communication_date")]
         #pragma warning disable CS1591
         FirstCommunicationDate,
@@ -490,6 +498,14 @@ namespace Soenneker.Close.OpenApiClient.Models
         [EnumMember(Value = "last_call_user_id")]
         #pragma warning disable CS1591
         LastCallUserId,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "last_communication_agent_config_id")]
+        #pragma warning disable CS1591
+        LastCommunicationAgentConfigId,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "last_communication_any_agent")]
+        #pragma warning disable CS1591
+        LastCommunicationAnyAgent,
         #pragma warning restore CS1591
         [EnumMember(Value = "last_communication_date")]
         #pragma warning disable CS1591
