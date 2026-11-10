@@ -20150,57 +20150,74 @@
           "leads"
         ],
         "summary": "Create a new lead",
-        "description": "Contacts, addresses, and custom fields can all be nested in the lead. Activities, tasks, and opportunities must be posted separately.\n\n**status / status_id** (optional): Post either \u0060status\u0060 or \u0060status_id\u0060 (but not both). If neither is provided, the organization\u0027s default (first) status will be used. Using \u0060status_id\u0060 is recommended so that users can rename statuses in the UI without breaking your implementation.\n\n**custom.FIELD_ID** (optional): Set custom fields by setting \u0060custom.FIELD_ID\u0060 to the field value, where FIELD_ID is the ID of the custom field, e.g.:\n\n\u0060\u0060\u0060json\n{ \u0022custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c\u0022: \u0022value\u0022, \u0022custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F\u0022: \u0022other value\u0022 }\n\u0060\u0060\u0060\n\nIf a custom field has \u0060accepts_multiple_values: true\u0060, the entire value will be replaced. For example, given a Lead has a Custom Choice Field with value \u0060[\u0022A\u0022, \u0022B\u0022]\u0060, adding choice \u0060\u0022C\u0022\u0060 would mean setting the value to \u0060[\u0022A\u0022, \u0022B\u0022, \u0022C\u0022]\u0060.\n\nNote that using the \u0060custom\u0060 field dict or the \u0060custom.FIELD_NAME\u0060 syntax (instead of custom field IDs) is deprecated and will be removed from the API. See [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.",
+        "description": "Create a lead. You can include its contacts, addresses and custom fields in the same request. Activities, tasks and opportunities must be created separately.\n\nReturns the created lead.\n\n**Custom fields**: set a custom field by setting \u0060custom.{custom_field_id}\u0060 to its value, e.g.:\n\n\u0060\u0060\u0060json\n{ \u0022custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c\u0022: \u0022value\u0022, \u0022custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F\u0022: \u0022other value\u0022 }\n\u0060\u0060\u0060\n\nFor a custom field with \u0060accepts_multiple_values: true\u0060, pass the full list of values, e.g. \u0060[\u0022A\u0022, \u0022B\u0022, \u0022C\u0022]\u0060.\n\nSee [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.",
         "operationId": "LeadsCreate",
+        "parameters": [
+          {
+            "description": "Comma-separated list of fields to include in the response.",
+            "$ref": "#/components/parameters/FieldsParam"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LeadsCreateRequest"
+                "$ref": "#/components/schemas/CreateLead"
               },
-              "example": {
-                "addresses": [
-                  {
-                    "address_1": "747 Howard St",
-                    "address_2": "Room 3",
-                    "city": "San Francisco",
-                    "country": "US",
-                    "label": "business",
-                    "state": "CA",
-                    "zipcode": "94103"
-                  }
-                ],
-                "contacts": [
-                  {
-                    "emails": [
+              "examples": {
+                "default": {
+                  "summary": "Create a lead with a contact, an address and custom fields",
+                  "value": {
+                    "addresses": [
                       {
-                        "email": "gob@example.com",
-                        "type": "office"
+                        "address_1": "747 Howard St",
+                        "address_2": "Room 3",
+                        "city": "San Francisco",
+                        "country": "US",
+                        "label": "business",
+                        "state": "CA",
+                        "zipcode": "94103"
                       }
                     ],
-                    "name": "Gob",
-                    "phones": [
+                    "contacts": [
                       {
-                        "phone": "8004445555",
-                        "type": "office"
+                        "emails": [
+                          {
+                            "email": "gob@example.com",
+                            "type": "office"
+                          }
+                        ],
+                        "name": "Gob",
+                        "phones": [
+                          {
+                            "phone": "8004445555",
+                            "type": "office"
+                          }
+                        ],
+                        "title": "Sr. Vice President"
                       }
                     ],
-                    "title": "Sr. Vice President"
+                    "custom.cf_FSYEbxYJFsnY9tN1OTAPIF33j7Sw5Lb7Eawll7JzoNh": "Segway",
+                    "custom.cf_ORxgoOQ5YH1p7lDQzFJ88b4z0j7PLLTRaG66m8bmcKv": "Website contact form",
+                    "custom.cf_bA7SU4vqaefQLuK5UjZMVpbfHK4SVujTJ9unKCIlTvI": "Real Estate",
+                    "custom.cf_nenE344jkwrjyRRezwsf8b4V1MCoXWIDHIStmFavZks": [
+                      "Choice 1",
+                      "Choice 2"
+                    ],
+                    "description": "Best. Show. Ever.",
+                    "name": "Bluth Company",
+                    "status_id": "stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                    "url": "http://thebluthcompany.tumblr.com/"
                   }
-                ],
-                "custom.cf_FSYEbxYJFsnY9tN1OTAPIF33j7Sw5Lb7Eawll7JzoNh": "Segway",
-                "custom.cf_ORxgoOQ5YH1p7lDQzFJ88b4z0j7PLLTRaG66m8bmcKv": "Website contact form",
-                "custom.cf_bA7SU4vqaefQLuK5UjZMVpbfHK4SVujTJ9unKCIlTvI": "Real Estate",
-                "custom.cf_nenE344jkwrjyRRezwsf8b4V1MCoXWIDHIStmFavZks": [
-                  "Choice 1",
-                  "Choice 2"
-                ],
-                "description": "Best. Show. Ever.",
-                "name": "Bluth Company",
-                "status_id": "stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
-                "url": "http://thebluthcompany.tumblr.com/"
-              },
-              "x-schema-inferred-from-examples": true
+                },
+                "minimal": {
+                  "summary": "Create a lead with only a name and a status",
+                  "value": {
+                    "name": "Sitwell Enterprises",
+                    "status_id": "stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk"
+                  }
+                }
+              }
             }
           },
           "required": true
@@ -20213,85 +20230,117 @@
                 "schema": {
                   "$ref": "#/components/schemas/Lead"
                 },
-                "example": {
-                  "addresses": [
-                    {
-                      "address_1": "747 Howard St",
-                      "address_2": "Room 3",
-                      "city": "San Francisco",
-                      "country": "US",
-                      "label": "business",
-                      "state": "CA",
-                      "zipcode": "94103"
-                    }
-                  ],
-                  "contacts": [
-                    {
+                "examples": {
+                  "default": {
+                    "summary": "Create a lead with a contact, an address and custom fields",
+                    "value": {
+                      "addresses": [
+                        {
+                          "address_1": "747 Howard St",
+                          "address_2": "Room 3",
+                          "city": "San Francisco",
+                          "country": "US",
+                          "label": "business",
+                          "state": "CA",
+                          "zipcode": "94103"
+                        }
+                      ],
+                      "contacts": [
+                        {
+                          "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                          "created_by_agent_id": null,
+                          "date_created": "2013-02-20T05:30:24.844000\u002B00:00",
+                          "date_updated": "2013-02-20T05:30:24.844000\u002B00:00",
+                          "display_name": "Gob",
+                          "emails": [
+                            {
+                              "email": "gob@example.com",
+                              "is_unsubscribed": false,
+                              "type": "office"
+                            }
+                          ],
+                          "id": "cont_qpjDKxbN3WWsuhaJjg2Qr9pkqHqe1yviZ5BS0dEyz05",
+                          "integration_links": [
+                            {
+                              "name": "Google search",
+                              "url": "https://www.google.com/search?q=Gob"
+                            }
+                          ],
+                          "lead_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
+                          "name": "Gob",
+                          "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                          "phones": [
+                            {
+                              "country": "US",
+                              "phone": "\u002B18004445555",
+                              "phone_formatted": "\u002B1 800-444-5555",
+                              "type": "office"
+                            }
+                          ],
+                          "timezone": null,
+                          "timezone_source": null,
+                          "title": "sr. vice president",
+                          "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                          "updated_by_agent_id": null,
+                          "urls": []
+                        }
+                      ],
                       "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "created_by_agent_id": null,
-                      "date_created": "2013-02-20T05:30:24.844000\u002B00:00",
-                      "date_updated": "2013-02-20T05:30:24.844000\u002B00:00",
-                      "display_name": "Gob",
-                      "emails": [
-                        {
-                          "email": "gob@example.com",
-                          "is_unsubscribed": false,
-                          "type": "office"
-                        }
+                      "created_by_name": "John Doe",
+                      "custom.cf_FSYEbxYJFsnY9tN1OTAPIF33j7Sw5Lb7Eawll7JzoNh": "Segway",
+                      "custom.cf_ORxgoOQ5YH1p7lDQzFJ88b4z0j7PLLTRaG66m8bmcKv": "Website contact form",
+                      "custom.cf_bA7SU4vqaefQLuK5UjZMVpbfHK4SVujTJ9unKCIlTvI": "Real Estate",
+                      "custom.cf_nenE344jkwrjyRRezwsf8b4V1MCoXWIDHIStmFavZks": [
+                        "Choice 1",
+                        "Choice 2"
                       ],
-                      "id": "cont_qpjDKxbN3WWsuhaJjg2Qr9pkqHqe1yviZ5BS0dEyz05",
-                      "integration_links": [
-                        {
-                          "name": "Google search",
-                          "url": "https://www.google.com/search?q=Gob"
-                        }
-                      ],
-                      "lead_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
-                      "name": "Gob",
+                      "date_created": "2013-02-20T05:30:24.854000\u002B00:00",
+                      "date_updated": "2013-02-20T05:30:24.854000\u002B00:00",
+                      "description": "Best. Show. Ever.",
+                      "display_name": "Bluth Company",
+                      "html_url": "https://app.close.com/lead/lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty/",
+                      "id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
+                      "integration_links": [],
+                      "name": "Bluth Company",
+                      "opportunities": [],
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                      "phones": [
-                        {
-                          "country": "US",
-                          "phone": "\u002B18004445555",
-                          "phone_formatted": "\u002B1 800-444-5555",
-                          "type": "office"
-                        }
-                      ],
-                      "timezone": null,
-                      "timezone_source": null,
-                      "title": "sr. vice president",
+                      "status_id": "stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                      "status_label": "Potential",
+                      "tasks": [],
                       "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "updated_by_agent_id": null,
-                      "urls": []
+                      "updated_by_name": "John Doe",
+                      "url": "http://thebluthcompany.tumblr.com/"
                     }
-                  ],
-                  "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "created_by_agent_id": null,
-                  "created_by_name": "John Doe",
-                  "custom.cf_FSYEbxYJFsnY9tN1OTAPIF33j7Sw5Lb7Eawll7JzoNh": "Segway",
-                  "custom.cf_ORxgoOQ5YH1p7lDQzFJ88b4z0j7PLLTRaG66m8bmcKv": "Website contact form",
-                  "custom.cf_bA7SU4vqaefQLuK5UjZMVpbfHK4SVujTJ9unKCIlTvI": "Real Estate",
-                  "custom.cf_nenE344jkwrjyRRezwsf8b4V1MCoXWIDHIStmFavZks": [
-                    "Choice 1",
-                    "Choice 2"
-                  ],
-                  "date_created": "2013-02-20T05:30:24.854000\u002B00:00",
-                  "date_updated": "2013-02-20T05:30:24.854000\u002B00:00",
-                  "description": "Best. Show. Ever.",
-                  "display_name": "Bluth Company",
-                  "html_url": "https://app.close.com/lead/lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty/",
-                  "id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
-                  "integration_links": [],
-                  "name": "Bluth Company",
-                  "opportunities": [],
-                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                  "status_id": "stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
-                  "status_label": "Potential",
-                  "tasks": [],
-                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "updated_by_agent_id": null,
-                  "updated_by_name": "John Doe",
-                  "url": "http://thebluthcompany.tumblr.com/"
+                  },
+                  "minimal": {
+                    "summary": "Create a lead with only a name and a status",
+                    "value": {
+                      "addresses": [],
+                      "contacts": [],
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_agent_id": null,
+                      "created_by_name": "John Doe",
+                      "date_created": "2013-02-20T05:30:24.854000\u002B00:00",
+                      "date_updated": "2013-02-20T05:30:24.854000\u002B00:00",
+                      "description": "",
+                      "display_name": "Sitwell Enterprises",
+                      "html_url": "https://app.close.com/lead/lead_3xJnBpTq2bAvJ1kXgRVw7dR8CmPq8iRk9hGuz1SXfQb/",
+                      "id": "lead_3xJnBpTq2bAvJ1kXgRVw7dR8CmPq8iRk9hGuz1SXfQb",
+                      "integration_links": [],
+                      "name": "Sitwell Enterprises",
+                      "opportunities": [],
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "status_id": "stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                      "status_label": "Potential",
+                      "tasks": [],
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_agent_id": null,
+                      "updated_by_name": "John Doe",
+                      "url": null
+                    }
+                  }
                 }
               }
             }
@@ -20622,7 +20671,7 @@
           "leads"
         ],
         "summary": "Update an existing lead",
-        "description": "Supports non-destructive patches. Nested \u0060contacts\u0060 cannot be updated through this endpoint -- use the Contacts API instead.\n\n**status**: See \u0060status\u0060 and \u0060status_id\u0060 guidance on the create endpoint.\n\n**custom.FIELD_ID** (optional): See \u0060custom.FIELD_ID\u0060 guidance on the create endpoint. You can also unset a single field, e.g.:\n\n\u0060\u0060\u0060json\n{ \u0022custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c\u0022: null }\n\u0060\u0060\u0060\n\nIf the custom field accepts multiple values, you can specify \u0060.add\u0060 or \u0060.remove\u0060 as part of the field key to add/remove a single value to/from a list of values, e.g.:\n\n\u0060\u0060\u0060json\n{ \u0022custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c.add\u0022: \u0022Wednesday\u0022 }\n\u0060\u0060\u0060\n\nadds \u0022Wednesday\u0022 to the list of values which already exist on the given lead.",
+        "description": "Update a lead. Only the fields you send are changed, and omitted fields keep their current values. \u0060addresses\u0060 replaces all of the lead\u0027s addresses.\n\n**Contacts**: a contact in \u0060contacts\u0060 with an \u0060id\u0060 updates that existing contact, and one without an \u0060id\u0060 is added to the lead. Existing contacts you don\u0027t list are kept. To delete a contact, use the [Contacts API](https://developer.close.com/api/resources/contacts).\n\nReturns the updated lead.\n\n**Custom fields**: set a custom field by setting \u0060custom.{custom_field_id}\u0060 to its value, or to \u0060null\u0060 to clear it, e.g.:\n\n\u0060\u0060\u0060json\n{ \u0022custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c\u0022: null }\n\u0060\u0060\u0060\n\nCustom fields you don\u0027t send keep their values. For a custom field with \u0060accepts_multiple_values: true\u0060, pass the full list of values, or append \u0060.add\u0060 or \u0060.remove\u0060 to the key to add or remove a single value, e.g.:\n\n\u0060\u0060\u0060json\n{ \u0022custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c.add\u0022: \u0022Wednesday\u0022 }\n\u0060\u0060\u0060\n\nSee [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.",
         "operationId": "LeadsUpdate",
         "parameters": [
           {
@@ -20632,18 +20681,44 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "Comma-separated list of fields to include in the response.",
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LeadsUpdateRequest"
+                "$ref": "#/components/schemas/UpdateLead"
               },
-              "example": {
-                "description": "Best show ever canceled.  Sad."
-              },
-              "x-schema-inferred-from-examples": true
+              "examples": {
+                "default": {
+                  "summary": "Update the lead\u0027s description",
+                  "value": {
+                    "description": "Best show ever canceled.  Sad."
+                  }
+                },
+                "status_and_contact": {
+                  "summary": "Change the lead\u0027s status and add a contact",
+                  "value": {
+                    "contacts": [
+                      {
+                        "emails": [
+                          {
+                            "email": "lindsay@example.com",
+                            "type": "office"
+                          }
+                        ],
+                        "name": "Lindsay Bluth F\u00FCnke",
+                        "title": "Activist"
+                      }
+                    ],
+                    "status_id": "stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk"
+                  }
+                }
+              }
             }
           },
           "required": true
@@ -20656,68 +20731,170 @@
                 "schema": {
                   "$ref": "#/components/schemas/Lead"
                 },
-                "example": {
-                  "addresses": [],
-                  "contacts": [
-                    {
+                "examples": {
+                  "default": {
+                    "summary": "Update the lead\u0027s description",
+                    "value": {
+                      "addresses": [],
+                      "contacts": [
+                        {
+                          "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                          "created_by_agent_id": null,
+                          "date_created": "2013-02-20T05:30:24.844000\u002B00:00",
+                          "date_updated": "2013-02-20T05:43:41.611000\u002B00:00",
+                          "display_name": "Gob",
+                          "emails": [
+                            {
+                              "email": "gob@example.com",
+                              "is_unsubscribed": false,
+                              "type": "office"
+                            }
+                          ],
+                          "id": "cont_qpjDKxbN3WWsuhaJjg2Qr9pkqHqe1yviZ5BS0dEyz05",
+                          "integration_links": [
+                            {
+                              "name": "Google search",
+                              "url": "https://www.google.com/search?q=Gob"
+                            }
+                          ],
+                          "lead_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
+                          "name": "Gob",
+                          "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                          "phones": [
+                            {
+                              "country": "US",
+                              "phone": "\u002B18004445555",
+                              "phone_formatted": "\u002B1 800-444-5555",
+                              "type": "office"
+                            }
+                          ],
+                          "timezone": null,
+                          "timezone_source": null,
+                          "title": "sr. vice president",
+                          "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                          "updated_by_agent_id": null,
+                          "urls": []
+                        }
+                      ],
                       "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "created_by_agent_id": null,
-                      "date_created": "2013-02-20T05:30:24.844000\u002B00:00",
-                      "date_updated": "2013-02-20T05:43:41.611000\u002B00:00",
-                      "display_name": "Gob",
-                      "emails": [
-                        {
-                          "email": "gob@example.com",
-                          "is_unsubscribed": false,
-                          "type": "office"
-                        }
-                      ],
-                      "id": "cont_qpjDKxbN3WWsuhaJjg2Qr9pkqHqe1yviZ5BS0dEyz05",
-                      "integration_links": [
-                        {
-                          "name": "Google search",
-                          "url": "https://www.google.com/search?q=Gob"
-                        }
-                      ],
-                      "lead_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
-                      "name": "Gob",
+                      "created_by_name": "John Doe",
+                      "date_created": "2013-02-20T05:30:24.854000\u002B00:00",
+                      "date_updated": "2013-02-20T05:43:41.622000\u002B00:00",
+                      "description": "Best show ever canceled.  Sad.",
+                      "display_name": "Bluth Company",
+                      "html_url": "https://app.close.com/lead/lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty/",
+                      "id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
+                      "integration_links": [],
+                      "name": "Bluth Company",
+                      "opportunities": [],
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                      "phones": [
-                        {
-                          "country": "US",
-                          "phone": "\u002B18004445555",
-                          "phone_formatted": "\u002B1 800-444-5555",
-                          "type": "office"
-                        }
-                      ],
-                      "timezone": null,
-                      "timezone_source": null,
-                      "title": "sr. vice president",
+                      "status_id": "stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                      "status_label": "Potential",
+                      "tasks": [],
                       "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "updated_by_agent_id": null,
-                      "urls": []
+                      "updated_by_name": "John Doe",
+                      "url": "http://thebluthcompany.tumblr.com/"
                     }
-                  ],
-                  "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "created_by_agent_id": null,
-                  "created_by_name": "John Doe",
-                  "date_created": "2013-02-20T05:30:24.854000\u002B00:00",
-                  "date_updated": "2013-02-20T05:43:41.622000\u002B00:00",
-                  "description": "Best show ever canceled.  Sad.",
-                  "display_name": "Bluth Company",
-                  "html_url": "https://app.close.com/lead/lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty/",
-                  "id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
-                  "integration_links": [],
-                  "name": "Bluth Company",
-                  "opportunities": [],
-                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                  "status_id": "stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
-                  "status_label": "Potential",
-                  "tasks": [],
-                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "updated_by_agent_id": null,
-                  "updated_by_name": "John Doe",
-                  "url": "http://thebluthcompany.tumblr.com/"
+                  },
+                  "status_and_contact": {
+                    "summary": "Change the lead\u0027s status and add a contact",
+                    "value": {
+                      "addresses": [],
+                      "contacts": [
+                        {
+                          "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                          "created_by_agent_id": null,
+                          "date_created": "2013-02-20T05:43:41.611000\u002B00:00",
+                          "date_updated": "2013-02-20T05:43:41.611000\u002B00:00",
+                          "display_name": "Lindsay Bluth F\u00FCnke",
+                          "emails": [
+                            {
+                              "email": "lindsay@example.com",
+                              "is_unsubscribed": false,
+                              "type": "office"
+                            }
+                          ],
+                          "id": "cont_Wm2kTq9Yd7Lr4XbNfH6sJp3Vc8ZgA1uEoK5iRy0PtQx",
+                          "integration_links": [
+                            {
+                              "name": "Google search",
+                              "url": "https://www.google.com/search?q=Lindsay%20Bluth%20F%C3%BCnke"
+                            }
+                          ],
+                          "lead_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
+                          "name": "Lindsay Bluth F\u00FCnke",
+                          "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                          "phones": [],
+                          "timezone": null,
+                          "timezone_source": null,
+                          "title": "Activist",
+                          "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                          "updated_by_agent_id": null,
+                          "urls": []
+                        },
+                        {
+                          "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                          "created_by_agent_id": null,
+                          "date_created": "2013-02-20T05:30:24.844000\u002B00:00",
+                          "date_updated": "2013-02-20T05:43:41.611000\u002B00:00",
+                          "display_name": "Gob",
+                          "emails": [
+                            {
+                              "email": "gob@example.com",
+                              "is_unsubscribed": false,
+                              "type": "office"
+                            }
+                          ],
+                          "id": "cont_qpjDKxbN3WWsuhaJjg2Qr9pkqHqe1yviZ5BS0dEyz05",
+                          "integration_links": [
+                            {
+                              "name": "Google search",
+                              "url": "https://www.google.com/search?q=Gob"
+                            }
+                          ],
+                          "lead_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
+                          "name": "Gob",
+                          "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                          "phones": [
+                            {
+                              "country": "US",
+                              "phone": "\u002B18004445555",
+                              "phone_formatted": "\u002B1 800-444-5555",
+                              "type": "office"
+                            }
+                          ],
+                          "timezone": null,
+                          "timezone_source": null,
+                          "title": "sr. vice president",
+                          "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                          "updated_by_agent_id": null,
+                          "urls": []
+                        }
+                      ],
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_agent_id": null,
+                      "created_by_name": "John Doe",
+                      "date_created": "2013-02-20T05:30:24.854000\u002B00:00",
+                      "date_updated": "2013-02-20T05:43:41.622000\u002B00:00",
+                      "description": "Best. Show. Ever.",
+                      "display_name": "Bluth Company",
+                      "html_url": "https://app.close.com/lead/lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty/",
+                      "id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
+                      "integration_links": [],
+                      "name": "Bluth Company",
+                      "opportunities": [],
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "status_id": "stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk",
+                      "status_label": "Qualified",
+                      "tasks": [],
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_agent_id": null,
+                      "updated_by_name": "John Doe",
+                      "url": "http://thebluthcompany.tumblr.com/"
+                    }
+                  }
                 }
               }
             }
@@ -20818,11 +20995,13 @@
           "leads"
         ],
         "summary": "List files attached to a lead",
+        "description": "List the files on a lead, newest first (by \u0060date_created\u0060). This includes files attached to the lead directly, and attachments of the lead\u0027s emails, notes, SMS, WhatsApp messages and opportunities. \u0060last_object_type\u0060 and \u0060last_object_id\u0060 say where each file was most recently attached.\n\nReturns 403 if you can\u0027t see the lead, and 404 if it doesn\u0027t exist.",
         "operationId": "LeadsFilesList",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "ID of the lead, e.g. \u0060lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty\u0060.",
             "required": true,
             "schema": {
               "type": "string"
@@ -20926,12 +21105,13 @@
           "leads"
         ],
         "summary": "Attach a file to a lead",
-        "description": "Attach an already-uploaded file to a lead. First upload the file to S3 using the [Files API](https://developer.close.com/api/resources/files), then pass the resulting download \u0060url\u0060 here along with its \u0060filename\u0060 and \u0060content_type\u0060.",
+        "description": "Attach a file directly to a lead. First upload the file with the [Files API](https://developer.close.com/api/resources/files), then pass its download \u0060url\u0060 here with a \u0060filename\u0060. You can also pass the \u0060download_url\u0060 of a file already in Close. Files can be at most 25 MB.\n\nIf the lead already has a file with the same name and contents, that file is updated instead of creating a copy, and its original \u0060date_created\u0060 is kept. The response is 201 either way.\n\nReturns 403 if you can\u0027t see the lead, and 404 if it doesn\u0027t exist.",
         "operationId": "LeadsFilesCreate",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "ID of the lead, e.g. \u0060lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty\u0060.",
             "required": true,
             "schema": {
               "type": "string"
@@ -20944,10 +21124,21 @@
               "schema": {
                 "$ref": "#/components/schemas/CreateLeadFile"
               },
-              "example": {
-                "content_type": "application/pdf",
-                "filename": "contract.pdf",
-                "url": "https://app.close.com/go/file/temporary/user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk/1Zx0AlY1DwBXzKKrVwpAoj/contract.pdf/"
+              "examples": {
+                "document": {
+                  "summary": "Attach a PDF",
+                  "value": {
+                    "filename": "contract.pdf",
+                    "url": "https://app.close.com/go/file/temporary/user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk/1Zx0AlY1DwBXzKKrVwpAoj/contract.pdf/"
+                  }
+                },
+                "image": {
+                  "summary": "Attach an image, which gets a thumbnail",
+                  "value": {
+                    "filename": "storefront.png",
+                    "url": "https://app.close.com/go/file/temporary/user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk/4Hc8RmQ2VxZpKs7LtNbWy3/storefront.png/"
+                  }
+                }
               }
             }
           },
@@ -20961,23 +21152,49 @@
                 "schema": {
                   "$ref": "#/components/schemas/LeadFile"
                 },
-                "example": {
-                  "checksum": "d41d8cd98f00b204e9800998ecf8427e",
-                  "content_type": "application/pdf",
-                  "date_created": "2024-03-07T16:07:00\u002B00:00",
-                  "date_updated": "2024-03-07T16:07:00\u002B00:00",
-                  "download_url": "https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/activity.email/acti_5rV2n1Ub/1Zx0AlY1DwBXzKKrVwpAoj/contract.pdf/",
-                  "id": "file_2Lm4kZ8Qqwe0rTaPnB6yXcVd9sHgKfJoMuIlN3vBz1A",
-                  "is_pinned": false,
-                  "last_activity_at": "2024-03-07T16:07:00\u002B00:00",
-                  "last_object_id": "acti_5rV2n1UbQ8mLkJhGfDsAwErTyUiOpZxCvBnM3aQ",
-                  "last_object_type": "activity.email",
-                  "lead_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
-                  "name": "contract.pdf",
-                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                  "size": 20480,
-                  "thumbnail_url": null,
-                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                "examples": {
+                  "document": {
+                    "summary": "Attach a PDF",
+                    "value": {
+                      "checksum": "d41d8cd98f00b204e9800998ecf8427e",
+                      "content_type": "application/pdf",
+                      "date_created": "2024-03-07T16:07:00\u002B00:00",
+                      "date_updated": "2024-03-07T16:07:00\u002B00:00",
+                      "download_url": "https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/lead/lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty/1Zx0AlY1DwBXzKKrVwpAoj/contract.pdf/",
+                      "id": "file_2Lm4kZ8Qqwe0rTaPnB6yXcVd9sHgKfJoMuIlN3vBz1A",
+                      "is_pinned": false,
+                      "last_activity_at": "2024-03-07T16:07:00\u002B00:00",
+                      "last_object_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
+                      "last_object_type": "lead",
+                      "lead_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
+                      "name": "contract.pdf",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "size": 20480,
+                      "thumbnail_url": null,
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                    }
+                  },
+                  "image": {
+                    "summary": "Attach an image, which gets a thumbnail",
+                    "value": {
+                      "checksum": "9e107d9d372bb6826bd81d3542a419d6",
+                      "content_type": "image/png",
+                      "date_created": "2024-03-07T16:07:00\u002B00:00",
+                      "date_updated": "2024-03-07T16:07:00\u002B00:00",
+                      "download_url": "https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/lead/lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty/4Hc8RmQ2VxZpKs7LtNbWy3/storefront.png/",
+                      "id": "file_7Pq2wE9rTy4uI1oPaSdF6gHjK3lZxCvBnM8mQwErTyU",
+                      "is_pinned": false,
+                      "last_activity_at": "2024-03-07T16:07:00\u002B00:00",
+                      "last_object_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
+                      "last_object_type": "lead",
+                      "lead_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
+                      "name": "storefront.png",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "size": 482133,
+                      "thumbnail_url": "https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/lead/lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty/4Hc8RmQ2VxZpKs7LtNbWy3/storefront.png/thumbnail/",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                    }
+                  }
                 }
               }
             }
@@ -21021,23 +21238,49 @@
                 "schema": {
                   "$ref": "#/components/schemas/LeadFile"
                 },
-                "example": {
-                  "checksum": "d41d8cd98f00b204e9800998ecf8427e",
-                  "content_type": "application/pdf",
-                  "date_created": "2024-03-07T16:07:00\u002B00:00",
-                  "date_updated": "2024-03-07T16:07:00\u002B00:00",
-                  "download_url": "https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/activity.email/acti_5rV2n1Ub/1Zx0AlY1DwBXzKKrVwpAoj/contract.pdf/",
-                  "id": "file_2Lm4kZ8Qqwe0rTaPnB6yXcVd9sHgKfJoMuIlN3vBz1A",
-                  "is_pinned": false,
-                  "last_activity_at": "2024-03-07T16:07:00\u002B00:00",
-                  "last_object_id": "acti_5rV2n1UbQ8mLkJhGfDsAwErTyUiOpZxCvBnM3aQ",
-                  "last_object_type": "activity.email",
-                  "lead_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
-                  "name": "contract.pdf",
-                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                  "size": 20480,
-                  "thumbnail_url": null,
-                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                "examples": {
+                  "document": {
+                    "summary": "Attach a PDF",
+                    "value": {
+                      "checksum": "d41d8cd98f00b204e9800998ecf8427e",
+                      "content_type": "application/pdf",
+                      "date_created": "2024-03-07T16:07:00\u002B00:00",
+                      "date_updated": "2024-03-07T16:07:00\u002B00:00",
+                      "download_url": "https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/lead/lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty/1Zx0AlY1DwBXzKKrVwpAoj/contract.pdf/",
+                      "id": "file_2Lm4kZ8Qqwe0rTaPnB6yXcVd9sHgKfJoMuIlN3vBz1A",
+                      "is_pinned": false,
+                      "last_activity_at": "2024-03-07T16:07:00\u002B00:00",
+                      "last_object_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
+                      "last_object_type": "lead",
+                      "lead_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
+                      "name": "contract.pdf",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "size": 20480,
+                      "thumbnail_url": null,
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                    }
+                  },
+                  "image": {
+                    "summary": "Attach an image, which gets a thumbnail",
+                    "value": {
+                      "checksum": "9e107d9d372bb6826bd81d3542a419d6",
+                      "content_type": "image/png",
+                      "date_created": "2024-03-07T16:07:00\u002B00:00",
+                      "date_updated": "2024-03-07T16:07:00\u002B00:00",
+                      "download_url": "https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/lead/lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty/4Hc8RmQ2VxZpKs7LtNbWy3/storefront.png/",
+                      "id": "file_7Pq2wE9rTy4uI1oPaSdF6gHjK3lZxCvBnM8mQwErTyU",
+                      "is_pinned": false,
+                      "last_activity_at": "2024-03-07T16:07:00\u002B00:00",
+                      "last_object_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
+                      "last_object_type": "lead",
+                      "lead_id": "lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty",
+                      "name": "storefront.png",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "size": 482133,
+                      "thumbnail_url": "https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/lead/lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty/4Hc8RmQ2VxZpKs7LtNbWy3/storefront.png/thumbnail/",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                    }
+                  }
                 }
               }
             },
@@ -35169,6 +35412,9 @@
           "transferred_to",
           "transferred_to_user",
           "updated_by",
+          "updated_by_agent_id",
+          "updated_by_any_agent",
+          "updated_by_user_or_any_agent",
           "user_id",
           "user_or_agent",
           "user_or_any_agent",
@@ -35179,7 +35425,7 @@
           "voicemail_transcript"
         ],
         "type": "string",
-        "description": "Built-in fields of \u0060activity.call\u0060 objects and their value types. The value type decides which conditions apply, see \u0060FieldCondition\u0060. For \u0060... ID\u0060 fields, use a \u0060reference\u0060 condition with that \u0060reference_type\u0060.\n\n- \u0060activity_at\u0060: At (datetime)\n- \u0060agent_config_id\u0060: Agent Config (\u0060agent_config\u0060 ID)\n- \u0060any_agent\u0060: \u0060any_agent\u0060 ID\n- \u0060call_agent_grade_funnel_stage\u0060: Funnel Stage (one of \u0060no_connection\u0060, \u0060human_reached\u0060, \u0060prospect_engaged\u0060, \u0060objective_met\u0060)\n- \u0060call_agent_grade_performance_summary\u0060: text\n- \u0060call_agent_grade_sentiment_score\u0060: Sentiment Score (integer)\n- \u0060call_method\u0060: Method (fixed value)\n- \u0060called_by\u0060: Called by (\u0060user\u0060 ID)\n- \u0060called_to\u0060: Called (\u0060user\u0060 ID)\n- \u0060comm_type\u0060: Communication type (one of \u0060call\u0060, \u0060outgoing_call\u0060, \u0060incoming_answered_call\u0060, \u0060missed_call\u0060, \u0060received_voicemail\u0060, \u0060received_email\u0060, \u0060sent_email\u0060, \u0060received_sms\u0060, \u0060sent_sms\u0060, \u0060received_whatsapp_message\u0060, \u0060sent_whatsapp_message\u0060)\n- \u0060contact_id\u0060: Contact (\u0060contact\u0060 ID)\n- \u0060conversation_type_id\u0060: Playbook (\u0060conversation_type\u0060 ID)\n- \u0060conversation_type_reason\u0060: Playbook set by (one of \u0060user-selected\u0060, \u0060autodetected\u0060)\n- \u0060created_by\u0060: Created by (\u0060user\u0060 ID)\n- \u0060created_by_agent_id\u0060: Created by agent (\u0060agent_config\u0060 ID)\n- \u0060created_by_any_agent\u0060: \u0060any_agent\u0060 ID\n- \u0060created_by_user_or_any_agent\u0060: Created by (\u0060user_or_any_agent\u0060 ID)\n- \u0060date\u0060: Date (datetime)\n- \u0060date_created\u0060: Date created (datetime)\n- \u0060date_updated\u0060: Date last updated (datetime)\n- \u0060dialer_id\u0060: Dialer ID (\u0060dialer\u0060 ID)\n- \u0060dialer_saved_search_id\u0060: Dialed from Smart View (\u0060saved_search\u0060 ID)\n- \u0060direction\u0060: Direction (one of \u0060inbound\u0060, \u0060outbound\u0060)\n- \u0060disposition\u0060: Disposition (one of \u0060no-answer\u0060, \u0060answered\u0060, \u0060vm-answer\u0060, \u0060vm-left\u0060, \u0060busy\u0060, \u0060blocked\u0060, \u0060error\u0060, \u0060abandoned\u0060)\n- \u0060duration\u0060: Duration (integer)\n- \u0060has_any_tool_error\u0060: Has any tool error (boolean)\n- \u0060has_note\u0060: Has a note (boolean)\n- \u0060has_recording\u0060: Was recorded (boolean)\n- \u0060has_voicemail\u0060: Is a voicemail (boolean)\n- \u0060incoming_call_date\u0060: Incoming call date (datetime)\n- \u0060is_actual\u0060: Not sent or received (boolean)\n- \u0060is_missed\u0060: Missed (boolean)\n- \u0060is_to_group_number\u0060: Group number was called (boolean)\n- \u0060lead_id\u0060: Lead (\u0060lead\u0060 ID)\n- \u0060local_phone\u0060: Local phone (phone number)\n- \u0060mentions\u0060: Mentions in the note (\u0060user_or_group\u0060 ID)\n- \u0060note\u0060: Note (text)\n- \u0060outcome_id\u0060: Outcome (\u0060outcome\u0060 ID)\n- \u0060outgoing_call_date\u0060: Outgoing call date (datetime)\n- \u0060phone\u0060: Phone number (phone number)\n- \u0060playbook_id\u0060: Playbook (\u0060conversation_type\u0060 ID)\n- \u0060playbook_reason\u0060: Playbook set by (one of \u0060user-selected\u0060, \u0060autodetected\u0060)\n- \u0060recording_duration\u0060: Recording (integer)\n- \u0060recording_expires_at\u0060: Recording Expires At (datetime)\n- \u0060recording_summary\u0060: Recording Summary (text)\n- \u0060recording_transcript\u0060: Recording Transcript (text)\n- \u0060remote_phone\u0060: Remote phone (phone number)\n- \u0060sequence_id\u0060: Workflow used (\u0060sequence\u0060 ID)\n- \u0060sequence_subscription_id\u0060: Called with a sequence subscription (\u0060sequence_subscription\u0060 ID)\n- \u0060skill_use_names\u0060: Skill used (one of \u0060schedule_callback\u0060, \u0060create_task\u0060, \u0060send_scheduling_link\u0060, \u0060book_meeting\u0060, \u0060send_handoff_alert\u0060, \u0060search_knowledge_base\u0060, \u0060transfer_call\u0060, \u0060press_keypad\u0060)\n- \u0060source\u0060: Source (one of \u0060close.io\u0060, \u0060external\u0060)\n- \u0060status\u0060: Status (one of \u0060created\u0060, \u0060in-progress\u0060, \u0060completed\u0060, \u0060cancel\u0060, \u0060no-answer\u0060, \u0060busy\u0060, \u0060failed\u0060, \u0060timeout\u0060)\n- \u0060talk_time\u0060: Total Recording Talk Time (integer)\n- \u0060transferred\u0060: Transferred (boolean)\n- \u0060transferred_from\u0060: Transferred from (\u0060activity.call\u0060 ID)\n- \u0060transferred_from_user\u0060: Transferred from (\u0060user\u0060 ID)\n- \u0060transferred_to\u0060: Transferred to (\u0060activity.call\u0060 ID)\n- \u0060transferred_to_user\u0060: Transferred to (\u0060user\u0060 ID)\n- \u0060updated_by\u0060: Last updated by (\u0060user\u0060 ID)\n- \u0060user_id\u0060: User (\u0060user\u0060 ID)\n- \u0060user_or_agent\u0060: User or Agent (\u0060user_or_any_agent\u0060 ID)\n- \u0060user_or_any_agent\u0060: User or Agent (\u0060user_or_any_agent\u0060 ID)\n- \u0060user_talk_time\u0060: Total User Talk Time (integer)\n- \u0060user_talk_time_ratio\u0060: User Talk Time Percent (number)\n- \u0060users\u0060: User (\u0060user\u0060 ID)\n- \u0060voicemail_duration\u0060: Voicemail duration (integer)\n- \u0060voicemail_transcript\u0060: Voicemail Transcript (text)",
+        "description": "Built-in fields of \u0060activity.call\u0060 objects and their value types. The value type decides which conditions apply, see \u0060FieldCondition\u0060. For \u0060... ID\u0060 fields, use a \u0060reference\u0060 condition with that \u0060reference_type\u0060.\n\n- \u0060activity_at\u0060: At (datetime)\n- \u0060agent_config_id\u0060: Agent Config (\u0060agent_config\u0060 ID)\n- \u0060any_agent\u0060: \u0060any_agent\u0060 ID\n- \u0060call_agent_grade_funnel_stage\u0060: Funnel Stage (one of \u0060no_connection\u0060, \u0060human_reached\u0060, \u0060prospect_engaged\u0060, \u0060objective_met\u0060)\n- \u0060call_agent_grade_performance_summary\u0060: text\n- \u0060call_agent_grade_sentiment_score\u0060: Sentiment Score (integer)\n- \u0060call_method\u0060: Method (fixed value)\n- \u0060called_by\u0060: Called by (\u0060user\u0060 ID)\n- \u0060called_to\u0060: Called (\u0060user\u0060 ID)\n- \u0060comm_type\u0060: Communication type (one of \u0060call\u0060, \u0060outgoing_call\u0060, \u0060incoming_answered_call\u0060, \u0060missed_call\u0060, \u0060received_voicemail\u0060, \u0060received_email\u0060, \u0060sent_email\u0060, \u0060received_sms\u0060, \u0060sent_sms\u0060, \u0060received_whatsapp_message\u0060, \u0060sent_whatsapp_message\u0060)\n- \u0060contact_id\u0060: Contact (\u0060contact\u0060 ID)\n- \u0060conversation_type_id\u0060: Playbook (\u0060conversation_type\u0060 ID)\n- \u0060conversation_type_reason\u0060: Playbook set by (one of \u0060user-selected\u0060, \u0060autodetected\u0060)\n- \u0060created_by\u0060: Created by (\u0060user\u0060 ID)\n- \u0060created_by_agent_id\u0060: Created by agent (\u0060agent_config\u0060 ID)\n- \u0060created_by_any_agent\u0060: \u0060any_agent\u0060 ID\n- \u0060created_by_user_or_any_agent\u0060: Created by (\u0060user_or_any_agent\u0060 ID)\n- \u0060date\u0060: Date (datetime)\n- \u0060date_created\u0060: Date created (datetime)\n- \u0060date_updated\u0060: Date last updated (datetime)\n- \u0060dialer_id\u0060: Dialer ID (\u0060dialer\u0060 ID)\n- \u0060dialer_saved_search_id\u0060: Dialed from Smart View (\u0060saved_search\u0060 ID)\n- \u0060direction\u0060: Direction (one of \u0060inbound\u0060, \u0060outbound\u0060)\n- \u0060disposition\u0060: Disposition (one of \u0060no-answer\u0060, \u0060answered\u0060, \u0060vm-answer\u0060, \u0060vm-left\u0060, \u0060busy\u0060, \u0060blocked\u0060, \u0060error\u0060, \u0060abandoned\u0060)\n- \u0060duration\u0060: Duration (integer)\n- \u0060has_any_tool_error\u0060: Has any tool error (boolean)\n- \u0060has_note\u0060: Has a note (boolean)\n- \u0060has_recording\u0060: Was recorded (boolean)\n- \u0060has_voicemail\u0060: Is a voicemail (boolean)\n- \u0060incoming_call_date\u0060: Incoming call date (datetime)\n- \u0060is_actual\u0060: Not sent or received (boolean)\n- \u0060is_missed\u0060: Missed (boolean)\n- \u0060is_to_group_number\u0060: Group number was called (boolean)\n- \u0060lead_id\u0060: Lead (\u0060lead\u0060 ID)\n- \u0060local_phone\u0060: Local phone (phone number)\n- \u0060mentions\u0060: Mentions in the note (\u0060user_or_group\u0060 ID)\n- \u0060note\u0060: Note (text)\n- \u0060outcome_id\u0060: Outcome (\u0060outcome\u0060 ID)\n- \u0060outgoing_call_date\u0060: Outgoing call date (datetime)\n- \u0060phone\u0060: Phone number (phone number)\n- \u0060playbook_id\u0060: Playbook (\u0060conversation_type\u0060 ID)\n- \u0060playbook_reason\u0060: Playbook set by (one of \u0060user-selected\u0060, \u0060autodetected\u0060)\n- \u0060recording_duration\u0060: Recording (integer)\n- \u0060recording_expires_at\u0060: Recording Expires At (datetime)\n- \u0060recording_summary\u0060: Recording Summary (text)\n- \u0060recording_transcript\u0060: Recording Transcript (text)\n- \u0060remote_phone\u0060: Remote phone (phone number)\n- \u0060sequence_id\u0060: Workflow used (\u0060sequence\u0060 ID)\n- \u0060sequence_subscription_id\u0060: Called with a sequence subscription (\u0060sequence_subscription\u0060 ID)\n- \u0060skill_use_names\u0060: Skill used (one of \u0060schedule_callback\u0060, \u0060create_task\u0060, \u0060send_scheduling_link\u0060, \u0060book_meeting\u0060, \u0060send_handoff_alert\u0060, \u0060search_knowledge_base\u0060, \u0060transfer_call\u0060, \u0060press_keypad\u0060)\n- \u0060source\u0060: Source (one of \u0060close.io\u0060, \u0060external\u0060)\n- \u0060status\u0060: Status (one of \u0060created\u0060, \u0060in-progress\u0060, \u0060completed\u0060, \u0060cancel\u0060, \u0060no-answer\u0060, \u0060busy\u0060, \u0060failed\u0060, \u0060timeout\u0060)\n- \u0060talk_time\u0060: Total Recording Talk Time (integer)\n- \u0060transferred\u0060: Transferred (boolean)\n- \u0060transferred_from\u0060: Transferred from (\u0060activity.call\u0060 ID)\n- \u0060transferred_from_user\u0060: Transferred from (\u0060user\u0060 ID)\n- \u0060transferred_to\u0060: Transferred to (\u0060activity.call\u0060 ID)\n- \u0060transferred_to_user\u0060: Transferred to (\u0060user\u0060 ID)\n- \u0060updated_by\u0060: Last updated by (\u0060user\u0060 ID)\n- \u0060updated_by_agent_id\u0060: Last updated by agent (\u0060agent_config\u0060 ID)\n- \u0060updated_by_any_agent\u0060: \u0060any_agent\u0060 ID\n- \u0060updated_by_user_or_any_agent\u0060: Last updated by (\u0060user_or_any_agent\u0060 ID)\n- \u0060user_id\u0060: User (\u0060user\u0060 ID)\n- \u0060user_or_agent\u0060: User or Agent (\u0060user_or_any_agent\u0060 ID)\n- \u0060user_or_any_agent\u0060: User or Agent (\u0060user_or_any_agent\u0060 ID)\n- \u0060user_talk_time\u0060: Total User Talk Time (integer)\n- \u0060user_talk_time_ratio\u0060: User Talk Time Percent (number)\n- \u0060users\u0060: User (\u0060user\u0060 ID)\n- \u0060voicemail_duration\u0060: Voicemail duration (integer)\n- \u0060voicemail_transcript\u0060: Voicemail Transcript (text)",
         "x-ms-enum": {
           "name": "ActivityCallSearchFieldName",
           "modelAsString": false,
@@ -35419,6 +35665,18 @@
             {
               "value": "updated_by",
               "name": "UpdatedBy"
+            },
+            {
+              "value": "updated_by_agent_id",
+              "name": "UpdatedByAgentId"
+            },
+            {
+              "value": "updated_by_any_agent",
+              "name": "UpdatedByAnyAgent"
+            },
+            {
+              "value": "updated_by_user_or_any_agent",
+              "name": "UpdatedByUserOrAnyAgent"
             },
             {
               "value": "user_id",
@@ -39978,10 +40236,303 @@
           }
         }
       },
+      "CreateLead": {
+        "patternProperties": {
+          "^custom\\.(cf|lcf|ccf|acf|gcf|scf)_[A-Za-z0-9]\u002B(\\.(add|remove))?$": {
+            "description": "Value of the custom field with ID \u0060custom_field_id\u0060, keyed as \u0060custom.{custom_field_id}\u0060 (e.g. \u0060custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c\u0060). The shape depends on the field\u0027s type: a string, a number, or an array of strings for fields that accept multiple values. Hidden fields may hold any JSON value. Set the value to null to clear the field. For fields that accept multiple values, append \u0060.add\u0060 or \u0060.remove\u0060 to the key (e.g. \u0060custom.{custom_field_id}.add\u0060) to add or remove a single value."
+          }
+        },
+        "title": "CreateLead",
+        "type": "object",
+        "properties": {
+          "addresses": {
+            "title": "Addresses",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/CreateLeadAddress"
+            },
+            "description": "Addresses of the lead, up to 100.",
+            "default": null
+          },
+          "contacts": {
+            "title": "Contacts",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/CreateLeadContact"
+            },
+            "description": "Contacts to create on the lead, up to 300.",
+            "default": null
+          },
+          "description": {
+            "title": "Description",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Free-text description of the lead.",
+            "default": null
+          },
+          "name": {
+            "title": "Name",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Name of the lead, usually a company name, e.g. \u0060Bluth Company\u0060.",
+            "default": null
+          },
+          "status": {
+            "title": "Status",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Label of the lead\u0027s status, e.g. \u0060Potential\u0060, matched ignoring case. Using \u0060status_id\u0060 instead is recommended, so renaming a status doesn\u0027t break your integration. Pass either \u0060status\u0060 or \u0060status_id\u0060, not both.",
+            "default": null
+          },
+          "status_id": {
+            "title": "Status ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "ID of the lead\u0027s status, e.g. \u0060stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk\u0060. If neither \u0060status_id\u0060 nor \u0060status\u0060 is given, the organization\u0027s first lead status is used. See [Lead Statuses](https://developer.close.com/api/resources/lead-statuses).",
+            "default": null
+          },
+          "url": {
+            "title": "URL",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Website of the lead, e.g. \u0060https://www.example.com\u0060. \u0060https://\u0060 is added if the URL has no scheme.",
+            "default": null
+          }
+        }
+      },
+      "CreateLeadAddress": {
+        "title": "CreateLeadAddress",
+        "type": "object",
+        "properties": {
+          "address_1": {
+            "title": "Address line 1",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "First line of the street address.",
+            "default": null
+          },
+          "address_2": {
+            "title": "Address line 2",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Second line of the street address, e.g. a suite number.",
+            "default": null
+          },
+          "city": {
+            "title": "City",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "City.",
+            "default": null
+          },
+          "country": {
+            "title": "Country",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Two-letter ISO country code, e.g. \u0060US\u0060. A country name is also accepted and converted to its code. Defaults to your own country.",
+            "default": null
+          },
+          "label": {
+            "title": "Label",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Label of the address, e.g. \u0060business\u0060, \u0060mailing\u0060, or \u0060other\u0060. Defaults to \u0060business\u0060.",
+            "default": null
+          },
+          "state": {
+            "title": "State",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "State or province. For countries with known states, such as the US, a full state name is converted to its abbreviation, e.g. \u0060California\u0060 to \u0060CA\u0060, and unknown states are rejected.",
+            "default": null
+          },
+          "zipcode": {
+            "title": "Zipcode",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "ZIP or postal code.",
+            "default": null
+          }
+        }
+      },
+      "CreateLeadContact": {
+        "patternProperties": {
+          "^custom\\.(cf|lcf|ccf|acf|gcf|scf)_[A-Za-z0-9]\u002B$": {
+            "description": "Value of the custom field with ID \u0060custom_field_id\u0060, keyed as \u0060custom.{custom_field_id}\u0060 (e.g. \u0060custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c\u0060). The shape depends on the field\u0027s type: a string, a number, or an array of strings for fields that accept multiple values. Hidden fields may hold any JSON value."
+          }
+        },
+        "title": "CreateLeadContact",
+        "type": "object",
+        "properties": {
+          "emails": {
+            "title": "Emails",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/CreateLeadContactEmail"
+            },
+            "description": "Email addresses of the contact, up to 100.",
+            "default": null
+          },
+          "name": {
+            "title": "Name",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Full name of the contact, up to 1000 characters.",
+            "default": null
+          },
+          "phones": {
+            "title": "Phones",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/CreateLeadContactPhone"
+            },
+            "description": "Phone numbers of the contact, up to 100.",
+            "default": null
+          },
+          "timezone": {
+            "title": "Timezone",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "IANA timezone ID to set manually for the contact, e.g. \u0060America/New_York\u0060. If omitted or null, the timezone is inferred from the contact\u0027s phone numbers.",
+            "default": null
+          },
+          "title": {
+            "title": "Title",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Job title of the contact, e.g. \u0060CEO\u0060, up to 1000 characters.",
+            "default": null
+          },
+          "urls": {
+            "title": "URLs",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/CreateLeadContactUrl"
+            },
+            "description": "URLs associated with the contact, up to 100.",
+            "default": null
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateLeadContactEmail": {
+        "title": "CreateLeadContactEmail",
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "title": "Email",
+            "type": "string",
+            "description": "Email address."
+          },
+          "type": {
+            "title": "Type",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Label for the email address, e.g. \u0060office\u0060, \u0060home\u0060, or \u0060other\u0060. Defaults to \u0060office\u0060.",
+            "default": null
+          }
+        }
+      },
+      "CreateLeadContactPhone": {
+        "title": "CreateLeadContactPhone",
+        "type": "object",
+        "properties": {
+          "phone": {
+            "title": "Phone",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Phone number, stored in E.164 format, e.g. \u0060\u002B16503334444\u0060. A number without a country code is parsed using your country, or the US if that\u0027s unset. May include an extension, e.g. \u0060\u002B16503334444x123\u0060. Entries with an empty value or a placeholder such as \u0060n/a\u0060 or \u0060unknown\u0060 are dropped.",
+            "default": null
+          },
+          "type": {
+            "title": "Type",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Label for the phone number, e.g. \u0060office\u0060, \u0060mobile\u0060, or \u0060home\u0060. Defaults to \u0060office\u0060.",
+            "default": null
+          }
+        }
+      },
+      "CreateLeadContactUrl": {
+        "title": "CreateLeadContactUrl",
+        "required": [
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "title": "Type",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Label for the URL. Defaults to \u0060url\u0060.",
+            "default": null
+          },
+          "url": {
+            "title": "URL",
+            "type": "string",
+            "description": "The URL."
+          }
+        }
+      },
       "CreateLeadFile": {
         "title": "CreateLeadFile",
         "required": [
-          "content_type",
           "filename",
           "url"
         ],
@@ -39991,18 +40542,26 @@
             "title": "Content Type",
             "maxLength": 255,
             "minLength": 1,
-            "type": "string"
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Deprecated: ignored. The content type is read from the uploaded file.",
+            "default": null,
+            "deprecated": true
           },
           "filename": {
             "title": "Filename",
             "maxLength": 1024,
             "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "description": "Name to give the file on the lead, e.g. \u0060contract.pdf\u0060."
           },
           "url": {
             "title": "Url",
             "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "description": "URL of the file to attach: the download URL from the Files API upload, or the \u0060download_url\u0060 of a file already in Close. Must be a file you have access to, of at most 25 MB."
           }
         }
       },
@@ -44166,77 +44725,155 @@
         "properties": {
           "checksum": {
             "title": "Checksum",
-            "type": "string"
+            "type": "string",
+            "description": "Checksum of the file\u0027s contents, usually its MD5 hash. A lead has at most one file with a given \u0060name\u0060 and \u0060checksum\u0060."
           },
           "content_type": {
             "title": "Content Type",
-            "type": "string"
+            "type": "string",
+            "description": "MIME type of the file, e.g. \u0060application/pdf\u0060."
           },
           "date_created": {
             "title": "Date Created",
             "type": "string",
+            "description": "When the file was first attached to the lead.",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
             "type": "string",
+            "description": "When the file was last updated.",
             "format": "date-time"
           },
           "download_url": {
             "title": "Download Url",
-            "type": "string"
+            "type": "string",
+            "description": "URL to download the file."
           },
           "id": {
             "title": "ID",
-            "type": "string"
+            "type": "string",
+            "description": "Unique ID of the file, prefixed with \u0060file_\u0060."
           },
           "is_pinned": {
             "title": "Is Pinned",
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether the file is pinned on the lead."
           },
           "last_activity_at": {
             "title": "Last Activity At",
             "type": "string",
+            "description": "When the file was most recently attached to an object.",
             "format": "date-time"
           },
           "last_object_id": {
             "title": "Last Object ID",
-            "type": "string"
+            "type": "string",
+            "description": "ID of the object the file was most recently attached to, e.g. an email ID. For files attached directly to the lead, the lead ID."
           },
           "last_object_type": {
-            "title": "Last Object Type",
-            "type": "string"
+            "description": "Type of the object in \u0060last_object_id\u0060.",
+            "$ref": "#/components/schemas/LeadFileObjectType"
           },
           "lead_id": {
             "title": "Lead ID",
-            "type": "string"
+            "type": "string",
+            "description": "ID of the lead the file is on."
           },
           "name": {
             "title": "Name",
-            "type": "string"
+            "type": "string",
+            "description": "File name, e.g. \u0060contract.pdf\u0060."
           },
           "organization_id": {
             "title": "Organization ID",
-            "type": "string"
+            "type": "string",
+            "description": "ID of the organization the file belongs to."
           },
           "size": {
             "title": "Size",
-            "type": "integer"
+            "type": "integer",
+            "description": "Size of the file in bytes."
           },
           "thumbnail_url": {
             "title": "Thumbnail Url",
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "URL to download a thumbnail of the file. Only GIF, JPEG and PNG images have one, otherwise null."
           },
           "updated_by": {
             "title": "Updated By",
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "ID of the user who last updated the file, or null."
           }
+        }
+      },
+      "LeadFileObjectType": {
+        "title": "LeadFileObjectType",
+        "enum": [
+          "activity.email",
+          "activity.note",
+          "opportunity",
+          "activity.sms",
+          "activity.whatsapp_message",
+          "lead"
+        ],
+        "type": "string",
+        "description": "Type of object a file is attached to.",
+        "x-fern-enum": {
+          "activity.email": {
+            "description": "An email."
+          },
+          "activity.note": {
+            "description": "A note."
+          },
+          "activity.sms": {
+            "description": "An SMS."
+          },
+          "activity.whatsapp_message": {
+            "description": "A WhatsApp message."
+          },
+          "lead": {
+            "description": "The lead itself, for files attached directly to it."
+          },
+          "opportunity": {
+            "description": "An opportunity."
+          }
+        },
+        "x-ms-enum": {
+          "name": "LeadFileObjectType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "activity.email",
+              "name": "ActivityEmail"
+            },
+            {
+              "value": "activity.note",
+              "name": "ActivityNote"
+            },
+            {
+              "value": "opportunity",
+              "name": "Opportunity"
+            },
+            {
+              "value": "activity.sms",
+              "name": "ActivitySms"
+            },
+            {
+              "value": "activity.whatsapp_message",
+              "name": "ActivityWhatsappMessage"
+            },
+            {
+              "value": "lead",
+              "name": "Lead"
+            }
+          ]
         }
       },
       "LeadFileSearchFieldName": {
@@ -48571,6 +49208,17 @@
         ],
         "type": "string",
         "description": "How often the Opportunity\u0027s value is paid: \u0060one_time\u0060, \u0060monthly\u0060 or \u0060annual\u0060.",
+        "x-fern-enum": {
+          "annual": {
+            "description": "Paid every year."
+          },
+          "monthly": {
+            "description": "Paid every month. Annualized values multiply it by 12."
+          },
+          "one_time": {
+            "description": "Paid once."
+          }
+        },
         "x-ms-enum": {
           "name": "OpportunityValuePeriod",
           "modelAsString": false,
@@ -52401,6 +53049,23 @@
         ],
         "type": "string",
         "description": "A suggested next step for a stalled Opportunity.",
+        "x-fern-enum": {
+          "adjust_close_date": {
+            "description": "Set a more realistic close date."
+          },
+          "change_status": {
+            "description": "Move the Opportunity to a more accurate status."
+          },
+          "follow_up_call": {
+            "description": "Call a contact to unblock the deal."
+          },
+          "follow_up_email": {
+            "description": "Email a contact to move the deal forward."
+          },
+          "follow_up_sms": {
+            "description": "Send a contact a brief SMS to re-engage them."
+          }
+        },
         "x-ms-enum": {
           "name": "StalledOpportunityActionTypeV2",
           "modelAsString": false,
@@ -54884,6 +55549,302 @@
               "string"
             ],
             "default": null
+          }
+        }
+      },
+      "UpdateLead": {
+        "patternProperties": {
+          "^custom\\.(cf|lcf|ccf|acf|gcf|scf)_[A-Za-z0-9]\u002B(\\.(add|remove))?$": {
+            "description": "Value of the custom field with ID \u0060custom_field_id\u0060, keyed as \u0060custom.{custom_field_id}\u0060 (e.g. \u0060custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c\u0060). The shape depends on the field\u0027s type: a string, a number, or an array of strings for fields that accept multiple values. Hidden fields may hold any JSON value. Set the value to null to clear the field. For fields that accept multiple values, append \u0060.add\u0060 or \u0060.remove\u0060 to the key (e.g. \u0060custom.{custom_field_id}.add\u0060) to add or remove a single value."
+          }
+        },
+        "title": "UpdateLead",
+        "type": "object",
+        "properties": {
+          "addresses": {
+            "title": "Addresses",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/UpdateLeadAddress"
+            },
+            "description": "Addresses of the lead, up to 100. Replaces all of the lead\u0027s addresses: include its current addresses to keep them, or pass \u0060[]\u0060 to remove them all."
+          },
+          "contacts": {
+            "title": "Contacts",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/UpdateLeadContact"
+            },
+            "description": "Contacts to update or add, up to 300 in total. A contact with an \u0060id\u0060 updates that existing contact, and one without an \u0060id\u0060 is added. Existing contacts that aren\u0027t listed are kept."
+          },
+          "description": {
+            "title": "Description",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Free-text description of the lead."
+          },
+          "name": {
+            "title": "Name",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Name of the lead, usually a company name, e.g. \u0060Bluth Company\u0060."
+          },
+          "status": {
+            "title": "Status",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Label of the lead\u0027s status, e.g. \u0060Potential\u0060, matched ignoring case. Using \u0060status_id\u0060 instead is recommended, so renaming a status doesn\u0027t break your integration. Pass either \u0060status\u0060 or \u0060status_id\u0060, not both."
+          },
+          "status_id": {
+            "title": "Status ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "ID of the lead\u0027s status, e.g. \u0060stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk\u0060. See [Lead Statuses](https://developer.close.com/api/resources/lead-statuses)."
+          },
+          "url": {
+            "title": "URL",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Website of the lead, e.g. \u0060https://www.example.com\u0060. \u0060https://\u0060 is added if the URL has no scheme."
+          }
+        }
+      },
+      "UpdateLeadAddress": {
+        "title": "UpdateLeadAddress",
+        "type": "object",
+        "properties": {
+          "address_1": {
+            "title": "Address line 1",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "First line of the street address.",
+            "default": null
+          },
+          "address_2": {
+            "title": "Address line 2",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Second line of the street address, e.g. a suite number.",
+            "default": null
+          },
+          "city": {
+            "title": "City",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "City.",
+            "default": null
+          },
+          "country": {
+            "title": "Country",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Two-letter ISO country code, e.g. \u0060US\u0060. A country name is also accepted and converted to its code. Defaults to your own country.",
+            "default": null
+          },
+          "label": {
+            "title": "Label",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Label of the address, e.g. \u0060business\u0060, \u0060mailing\u0060, or \u0060other\u0060. Defaults to \u0060business\u0060.",
+            "default": null
+          },
+          "state": {
+            "title": "State",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "State or province. For countries with known states, such as the US, a full state name is converted to its abbreviation, e.g. \u0060California\u0060 to \u0060CA\u0060, and unknown states are rejected.",
+            "default": null
+          },
+          "zipcode": {
+            "title": "Zipcode",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "ZIP or postal code.",
+            "default": null
+          }
+        }
+      },
+      "UpdateLeadContact": {
+        "patternProperties": {
+          "^custom\\.(cf|lcf|ccf|acf|gcf|scf)_[A-Za-z0-9]\u002B$": {
+            "description": "Value of the custom field with ID \u0060custom_field_id\u0060, keyed as \u0060custom.{custom_field_id}\u0060 (e.g. \u0060custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c\u0060). The shape depends on the field\u0027s type: a string, a number, or an array of strings for fields that accept multiple values. Hidden fields may hold any JSON value."
+          }
+        },
+        "title": "UpdateLeadContact",
+        "type": "object",
+        "properties": {
+          "emails": {
+            "title": "Emails",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/UpdateLeadContactEmail"
+            },
+            "description": "Email addresses of the contact, up to 100. Replaces the existing list. For an existing contact, omit or send null to leave it unchanged.",
+            "default": null
+          },
+          "id": {
+            "title": "ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "ID of an existing contact of the lead to update, e.g. \u0060cont_qpjDKxbN3WWsuhaJjg2Qr9pkqHqe1yviZ5BS0dEyz05\u0060. Omit it to add a new contact.",
+            "default": null
+          },
+          "name": {
+            "title": "Name",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Full name of the contact, up to 1000 characters. For an existing contact, omit or send null to leave it unchanged.",
+            "default": null
+          },
+          "phones": {
+            "title": "Phones",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/UpdateLeadContactPhone"
+            },
+            "description": "Phone numbers of the contact, up to 100. Replaces the existing list. For an existing contact, omit or send null to leave it unchanged.",
+            "default": null
+          },
+          "timezone": {
+            "title": "Timezone",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "IANA timezone ID to set manually for the contact, e.g. \u0060America/New_York\u0060. Send null to clear it, so the timezone is inferred from the contact\u0027s phone numbers instead.",
+            "default": null
+          },
+          "title": {
+            "title": "Title",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Job title of the contact, e.g. \u0060CEO\u0060, up to 1000 characters. For an existing contact, omit or send null to leave it unchanged.",
+            "default": null
+          },
+          "urls": {
+            "title": "URLs",
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/UpdateLeadContactUrl"
+            },
+            "description": "URLs associated with the contact, up to 100. Replaces the existing list. For an existing contact, omit or send null to leave it unchanged.",
+            "default": null
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateLeadContactEmail": {
+        "title": "UpdateLeadContactEmail",
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "title": "Email",
+            "type": "string",
+            "description": "Email address."
+          },
+          "type": {
+            "title": "Type",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Label for the email address, e.g. \u0060office\u0060, \u0060home\u0060, or \u0060other\u0060. Defaults to \u0060office\u0060.",
+            "default": null
+          }
+        }
+      },
+      "UpdateLeadContactPhone": {
+        "title": "UpdateLeadContactPhone",
+        "type": "object",
+        "properties": {
+          "phone": {
+            "title": "Phone",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Phone number, stored in E.164 format, e.g. \u0060\u002B16503334444\u0060. A number without a country code is parsed using your country, or the US if that\u0027s unset. May include an extension, e.g. \u0060\u002B16503334444x123\u0060. Entries with an empty value or a placeholder such as \u0060n/a\u0060 or \u0060unknown\u0060 are dropped.",
+            "default": null
+          },
+          "type": {
+            "title": "Type",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Label for the phone number, e.g. \u0060office\u0060, \u0060mobile\u0060, or \u0060home\u0060. Defaults to \u0060office\u0060.",
+            "default": null
+          }
+        }
+      },
+      "UpdateLeadContactUrl": {
+        "title": "UpdateLeadContactUrl",
+        "required": [
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "title": "Type",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Label for the URL. Defaults to \u0060url\u0060.",
+            "default": null
+          },
+          "url": {
+            "title": "URL",
+            "type": "string",
+            "description": "The URL."
           }
         }
       },
@@ -59810,58 +60771,6 @@
           }
         }
       },
-      "LeadsCreateRequest": {
-        "type": "object",
-        "properties": {
-          "addresses": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/LeadsCreateRequestAddressesItem"
-            }
-          },
-          "contacts": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/LeadsCreateRequestContactsItem"
-            }
-          },
-          "custom.cf_FSYEbxYJFsnY9tN1OTAPIF33j7Sw5Lb7Eawll7JzoNh": {
-            "type": "string"
-          },
-          "custom.cf_ORxgoOQ5YH1p7lDQzFJ88b4z0j7PLLTRaG66m8bmcKv": {
-            "type": "string"
-          },
-          "custom.cf_bA7SU4vqaefQLuK5UjZMVpbfHK4SVujTJ9unKCIlTvI": {
-            "type": "string"
-          },
-          "custom.cf_nenE344jkwrjyRRezwsf8b4V1MCoXWIDHIStmFavZks": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "description": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "status_id": {
-            "type": "string"
-          },
-          "url": {
-            "type": "string"
-          }
-        }
-      },
-      "LeadsUpdateRequest": {
-        "type": "object",
-        "properties": {
-          "description": {
-            "type": "string"
-          }
-        }
-      },
       "UsersGetMe200Response": {
         "type": "object",
         "properties": {
@@ -64200,55 +65109,6 @@
           }
         }
       },
-      "LeadsCreateRequestAddressesItem": {
-        "type": "object",
-        "properties": {
-          "address_1": {
-            "type": "string"
-          },
-          "address_2": {
-            "type": "string"
-          },
-          "city": {
-            "type": "string"
-          },
-          "country": {
-            "type": "string"
-          },
-          "label": {
-            "type": "string"
-          },
-          "state": {
-            "type": "string"
-          },
-          "zipcode": {
-            "type": "string"
-          }
-        }
-      },
-      "LeadsCreateRequestContactsItem": {
-        "type": "object",
-        "properties": {
-          "emails": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/LeadsCreateRequestContactsItemEmailsItem"
-            }
-          },
-          "name": {
-            "type": "string"
-          },
-          "phones": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/LeadsCreateRequestContactsItemPhonesItem"
-            }
-          },
-          "title": {
-            "type": "string"
-          }
-        }
-      },
       "UsersGetMe200ResponseEmailAccountsItem": {
         "type": "object",
         "properties": {
@@ -66351,28 +67211,6 @@
             "type": "string"
           },
           "success_action_status": {
-            "type": "string"
-          }
-        }
-      },
-      "LeadsCreateRequestContactsItemEmailsItem": {
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          }
-        }
-      },
-      "LeadsCreateRequestContactsItemPhonesItem": {
-        "type": "object",
-        "properties": {
-          "phone": {
-            "type": "string"
-          },
-          "type": {
             "type": "string"
           }
         }
@@ -69082,7 +69920,7 @@
           ]
         }
       },
-      "LeadFileObjectType": {
+      "LeadFileSearchFieldObjectType": {
         "const": "lead_file",
         "title": "Object Type",
         "enum": [
@@ -69091,7 +69929,7 @@
         "type": "string",
         "description": "The object type the field belongs to.",
         "x-ms-enum": {
-          "name": "LeadFileObjectType",
+          "name": "LeadFileSearchFieldObjectType",
           "modelAsString": false,
           "values": [
             {
@@ -73397,7 +74235,7 @@
                 "$ref": "#/components/schemas/LeadFileSearchFieldName"
               },
               "object_type": {
-                "$ref": "#/components/schemas/LeadFileObjectType"
+                "$ref": "#/components/schemas/LeadFileSearchFieldObjectType"
               },
               "type": {
                 "$ref": "#/components/schemas/LeadFileSearchFieldType"
@@ -78035,76 +78873,92 @@
               },
               "checksum": {
                 "title": "Checksum",
-                "type": "string"
+                "type": "string",
+                "description": "Checksum of the file\u0027s contents, usually its MD5 hash. A lead has at most one file with a given \u0060name\u0060 and \u0060checksum\u0060."
               },
               "content_type": {
                 "title": "Content Type",
-                "type": "string"
+                "type": "string",
+                "description": "MIME type of the file, e.g. \u0060application/pdf\u0060."
               },
               "date_created": {
                 "title": "Date Created",
                 "type": "string",
+                "description": "When the file was first attached to the lead.",
                 "format": "date-time"
               },
               "date_updated": {
                 "title": "Date Updated",
                 "type": "string",
+                "description": "When the file was last updated.",
                 "format": "date-time"
               },
               "download_url": {
                 "title": "Download Url",
-                "type": "string"
+                "type": "string",
+                "description": "URL to download the file."
               },
               "id": {
                 "title": "ID",
-                "type": "string"
+                "type": "string",
+                "description": "Unique ID of the file, prefixed with \u0060file_\u0060."
               },
               "is_pinned": {
                 "title": "Is Pinned",
-                "type": "boolean"
+                "type": "boolean",
+                "description": "Whether the file is pinned on the lead."
               },
               "last_activity_at": {
                 "title": "Last Activity At",
                 "type": "string",
+                "description": "When the file was most recently attached to an object.",
                 "format": "date-time"
               },
               "last_object_id": {
                 "title": "Last Object ID",
-                "type": "string"
+                "type": "string",
+                "description": "ID of the object the file was most recently attached to, e.g. an email ID. For files attached directly to the lead, the lead ID."
               },
               "last_object_type": {
+                "description": "Type of the object in \u0060last_object_id\u0060.",
                 "title": "Last Object Type",
-                "type": "string"
+                "$ref": "#/components/schemas/LeadFileObjectType"
               },
               "lead_id": {
                 "title": "Lead ID",
-                "type": "string"
+                "type": "string",
+                "description": "ID of the lead the file is on."
               },
               "name": {
                 "title": "Name",
-                "type": "string"
+                "type": "string",
+                "description": "File name, e.g. \u0060contract.pdf\u0060."
               },
               "organization_id": {
                 "title": "Organization ID",
-                "type": "string"
+                "type": "string",
+                "description": "ID of the organization the file belongs to."
               },
               "size": {
                 "title": "Size",
-                "type": "integer"
+                "type": "integer",
+                "description": "Size of the file in bytes."
               },
               "thumbnail_url": {
                 "title": "Thumbnail Url",
                 "type": [
                   "null",
                   "string"
-                ]
+                ],
+                "description": "URL to download a thumbnail of the file. Only GIF, JPEG and PNG images have one, otherwise null."
               },
               "updated_by": {
                 "title": "Updated By",
                 "type": [
                   "null",
                   "string"
-                ]
+                ],
+                "description": "ID of the user who last updated the file, or null."
               }
             },
             "description": "A file attached to a Lead. Contains the fields requested in \u0060_fields\u0060, in the same format as the object\u0027s own endpoint."
@@ -81656,7 +82510,7 @@
           "$ref": "#/components/schemas/LeadFileSearchFieldName"
         },
         "object_type": {
-          "$ref": "#/components/schemas/LeadFileObjectType"
+          "$ref": "#/components/schemas/LeadFileSearchFieldObjectType"
         },
         "type": {
           "$ref": "#/components/schemas/LeadFileSearchFieldType"
@@ -81681,76 +82535,92 @@
         },
         "checksum": {
           "title": "Checksum",
-          "type": "string"
+          "type": "string",
+          "description": "Checksum of the file\u0027s contents, usually its MD5 hash. A lead has at most one file with a given \u0060name\u0060 and \u0060checksum\u0060."
         },
         "content_type": {
           "title": "Content Type",
-          "type": "string"
+          "type": "string",
+          "description": "MIME type of the file, e.g. \u0060application/pdf\u0060."
         },
         "date_created": {
           "title": "Date Created",
           "type": "string",
+          "description": "When the file was first attached to the lead.",
           "format": "date-time"
         },
         "date_updated": {
           "title": "Date Updated",
           "type": "string",
+          "description": "When the file was last updated.",
           "format": "date-time"
         },
         "download_url": {
           "title": "Download Url",
-          "type": "string"
+          "type": "string",
+          "description": "URL to download the file."
         },
         "id": {
           "title": "ID",
-          "type": "string"
+          "type": "string",
+          "description": "Unique ID of the file, prefixed with \u0060file_\u0060."
         },
         "is_pinned": {
           "title": "Is Pinned",
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Whether the file is pinned on the lead."
         },
         "last_activity_at": {
           "title": "Last Activity At",
           "type": "string",
+          "description": "When the file was most recently attached to an object.",
           "format": "date-time"
         },
         "last_object_id": {
           "title": "Last Object ID",
-          "type": "string"
+          "type": "string",
+          "description": "ID of the object the file was most recently attached to, e.g. an email ID. For files attached directly to the lead, the lead ID."
         },
         "last_object_type": {
+          "description": "Type of the object in \u0060last_object_id\u0060.",
           "title": "Last Object Type",
-          "type": "string"
+          "$ref": "#/components/schemas/LeadFileObjectType"
         },
         "lead_id": {
           "title": "Lead ID",
-          "type": "string"
+          "type": "string",
+          "description": "ID of the lead the file is on."
         },
         "name": {
           "title": "Name",
-          "type": "string"
+          "type": "string",
+          "description": "File name, e.g. \u0060contract.pdf\u0060."
         },
         "organization_id": {
           "title": "Organization ID",
-          "type": "string"
+          "type": "string",
+          "description": "ID of the organization the file belongs to."
         },
         "size": {
           "title": "Size",
-          "type": "integer"
+          "type": "integer",
+          "description": "Size of the file in bytes."
         },
         "thumbnail_url": {
           "title": "Thumbnail Url",
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "URL to download a thumbnail of the file. Only GIF, JPEG and PNG images have one, otherwise null."
         },
         "updated_by": {
           "title": "Updated By",
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "ID of the user who last updated the file, or null."
         }
       },
       "description": "A file attached to a Lead. Contains the fields requested in \u0060_fields\u0060, in the same format as the object\u0027s own endpoint."

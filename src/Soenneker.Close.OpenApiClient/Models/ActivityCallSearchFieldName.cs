@@ -243,6 +243,18 @@ namespace Soenneker.Close.OpenApiClient.Models
         #pragma warning disable CS1591
         UpdatedBy,
         #pragma warning restore CS1591
+        [EnumMember(Value = "updated_by_agent_id")]
+        #pragma warning disable CS1591
+        UpdatedByAgentId,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "updated_by_any_agent")]
+        #pragma warning disable CS1591
+        UpdatedByAnyAgent,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "updated_by_user_or_any_agent")]
+        #pragma warning disable CS1591
+        UpdatedByUserOrAnyAgent,
+        #pragma warning restore CS1591
         [EnumMember(Value = "user_id")]
         #pragma warning disable CS1591
         UserId,

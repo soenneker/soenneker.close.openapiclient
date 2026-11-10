@@ -9,7 +9,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class LeadsCreateRequestAddressesItem : IAdditionalDataHolder, IParsable
+    public partial class CreateLeadAddress : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
@@ -35,7 +35,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The address_1 property</summary>
+        /// <summary>First line of the street address.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Address1 { get => _explicitNullValueAddress1; set { _explicitNullValueAddress1 = value; AdditionalData?.Remove("address_1"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address_1"); else _explicitNullProperties?.Remove("address_1"); } }
@@ -45,7 +45,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Address1 { get => _explicitNullValueAddress1; set { _explicitNullValueAddress1 = value; AdditionalData?.Remove("address_1"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address_1"); else _explicitNullProperties?.Remove("address_1"); } }
         private string _explicitNullValueAddress1 = default!;
 #endif
-        /// <summary>The address_2 property</summary>
+        /// <summary>Second line of the street address, e.g. a suite number.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Address2 { get => _explicitNullValueAddress2; set { _explicitNullValueAddress2 = value; AdditionalData?.Remove("address_2"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address_2"); else _explicitNullProperties?.Remove("address_2"); } }
@@ -55,7 +55,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Address2 { get => _explicitNullValueAddress2; set { _explicitNullValueAddress2 = value; AdditionalData?.Remove("address_2"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address_2"); else _explicitNullProperties?.Remove("address_2"); } }
         private string _explicitNullValueAddress2 = default!;
 #endif
-        /// <summary>The city property</summary>
+        /// <summary>City.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? City { get => _explicitNullValueCity; set { _explicitNullValueCity = value; AdditionalData?.Remove("city"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("city"); else _explicitNullProperties?.Remove("city"); } }
@@ -65,7 +65,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string City { get => _explicitNullValueCity; set { _explicitNullValueCity = value; AdditionalData?.Remove("city"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("city"); else _explicitNullProperties?.Remove("city"); } }
         private string _explicitNullValueCity = default!;
 #endif
-        /// <summary>The country property</summary>
+        /// <summary>Two-letter ISO country code, e.g. `US`. A country name is also accepted and converted to its code. Defaults to your own country.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Country { get => _explicitNullValueCountry; set { _explicitNullValueCountry = value; AdditionalData?.Remove("country"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("country"); else _explicitNullProperties?.Remove("country"); } }
@@ -75,7 +75,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Country { get => _explicitNullValueCountry; set { _explicitNullValueCountry = value; AdditionalData?.Remove("country"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("country"); else _explicitNullProperties?.Remove("country"); } }
         private string _explicitNullValueCountry = default!;
 #endif
-        /// <summary>The label property</summary>
+        /// <summary>Label of the address, e.g. `business`, `mailing`, or `other`. Defaults to `business`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; AdditionalData?.Remove("label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
@@ -85,7 +85,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; AdditionalData?.Remove("label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
         private string _explicitNullValueLabel = default!;
 #endif
-        /// <summary>The state property</summary>
+        /// <summary>State or province. For countries with known states, such as the US, a full state name is converted to its abbreviation, e.g. `California` to `CA`, and unknown states are rejected.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? State { get => _explicitNullValueState; set { _explicitNullValueState = value; AdditionalData?.Remove("state"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
@@ -95,7 +95,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string State { get => _explicitNullValueState; set { _explicitNullValueState = value; AdditionalData?.Remove("state"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
         private string _explicitNullValueState = default!;
 #endif
-        /// <summary>The zipcode property</summary>
+        /// <summary>ZIP or postal code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Zipcode { get => _explicitNullValueZipcode; set { _explicitNullValueZipcode = value; AdditionalData?.Remove("zipcode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("zipcode"); else _explicitNullProperties?.Remove("zipcode"); } }
@@ -106,21 +106,21 @@ namespace Soenneker.Close.OpenApiClient.Models
         private string _explicitNullValueZipcode = default!;
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.LeadsCreateRequestAddressesItem"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.CreateLeadAddress"/> and sets the default values.
         /// </summary>
-        public LeadsCreateRequestAddressesItem()
+        public CreateLeadAddress()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.LeadsCreateRequestAddressesItem"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CreateLeadAddress"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Close.OpenApiClient.Models.LeadsCreateRequestAddressesItem CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Close.OpenApiClient.Models.CreateLeadAddress CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.LeadsCreateRequestAddressesItem(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.CreateLeadAddress(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model

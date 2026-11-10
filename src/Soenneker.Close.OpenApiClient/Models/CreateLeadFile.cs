@@ -27,7 +27,8 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The content_type property</summary>
+        /// <summary>Deprecated: ignored. The content type is read from the uploaded file.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ContentType { get => _explicitNullValueContentType; set { _explicitNullValueContentType = value; AdditionalData?.Remove("content_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_type"); else _explicitNullProperties?.Remove("content_type"); } }
@@ -37,7 +38,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ContentType { get => _explicitNullValueContentType; set { _explicitNullValueContentType = value; AdditionalData?.Remove("content_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_type"); else _explicitNullProperties?.Remove("content_type"); } }
         private string _explicitNullValueContentType = default!;
 #endif
-        /// <summary>The filename property</summary>
+        /// <summary>Name to give the file on the lead, e.g. `contract.pdf`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Filename { get => _explicitNullValueFilename; set { _explicitNullValueFilename = value; AdditionalData?.Remove("filename"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filename"); else _explicitNullProperties?.Remove("filename"); } }
@@ -47,7 +48,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Filename { get => _explicitNullValueFilename; set { _explicitNullValueFilename = value; AdditionalData?.Remove("filename"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filename"); else _explicitNullProperties?.Remove("filename"); } }
         private string _explicitNullValueFilename = default!;
 #endif
-        /// <summary>The url property</summary>
+        /// <summary>URL of the file to attach: the download URL from the Files API upload, or the `download_url` of a file already in Close. Must be a file you have access to, of at most 25 MB.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; AdditionalData?.Remove("url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }

@@ -3,13 +3,33 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
-    /// <summary>The object type the field belongs to.</summary>
+    /// <summary>Type of the object in `last_object_id`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum LeadFileObjectType
     {
-        [EnumMember(Value = "lead_file")]
+        [EnumMember(Value = "activity.email")]
         #pragma warning disable CS1591
-        LeadFile,
+        ActivityEmail,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "activity.note")]
+        #pragma warning disable CS1591
+        ActivityNote,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "opportunity")]
+        #pragma warning disable CS1591
+        Opportunity,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "activity.sms")]
+        #pragma warning disable CS1591
+        ActivitySms,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "activity.whatsapp_message")]
+        #pragma warning disable CS1591
+        ActivityWhatsappMessage,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "lead")]
+        #pragma warning disable CS1591
+        Lead,
         #pragma warning restore CS1591
     }
 }

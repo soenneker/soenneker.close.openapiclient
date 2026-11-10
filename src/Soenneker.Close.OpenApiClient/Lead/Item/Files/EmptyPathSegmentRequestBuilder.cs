@@ -34,7 +34,7 @@ namespace Soenneker.Close.OpenApiClient.Lead.Item.Files
         {
         }
         /// <summary>
-        /// List files attached to a lead
+        /// List the files on a lead, newest first (by `date_created`). This includes files attached to the lead directly, and attachments of the lead&apos;s emails, notes, SMS, WhatsApp messages and opportunities. `last_object_type` and `last_object_id` say where each file was most recently attached.Returns 403 if you can&apos;t see the lead, and 404 if it doesn&apos;t exist.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.LeadsFilesList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -67,7 +67,7 @@ namespace Soenneker.Close.OpenApiClient.Lead.Item.Files
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.LeadsFilesList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.LeadsFilesList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Attach an already-uploaded file to a lead. First upload the file to S3 using the [Files API](https://developer.close.com/api/resources/files), then pass the resulting download `url` here along with its `filename` and `content_type`.
+        /// Attach a file directly to a lead. First upload the file with the [Files API](https://developer.close.com/api/resources/files), then pass its download `url` here with a `filename`. You can also pass the `download_url` of a file already in Close. Files can be at most 25 MB.If the lead already has a file with the same name and contents, that file is updated instead of creating a copy, and its original `date_created` is kept. The response is 201 either way.Returns 403 if you can&apos;t see the lead, and 404 if it doesn&apos;t exist.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.LeadFile"/></returns>
         /// <param name="body">The request body</param>
@@ -102,7 +102,7 @@ namespace Soenneker.Close.OpenApiClient.Lead.Item.Files
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.LeadFile>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.LeadFile.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List files attached to a lead
+        /// List the files on a lead, newest first (by `date_created`). This includes files attached to the lead directly, and attachments of the lead&apos;s emails, notes, SMS, WhatsApp messages and opportunities. `last_object_type` and `last_object_id` say where each file was most recently attached.Returns 403 if you can&apos;t see the lead, and 404 if it doesn&apos;t exist.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -121,7 +121,7 @@ namespace Soenneker.Close.OpenApiClient.Lead.Item.Files
             return requestInfo;
         }
         /// <summary>
-        /// Attach an already-uploaded file to a lead. First upload the file to S3 using the [Files API](https://developer.close.com/api/resources/files), then pass the resulting download `url` here along with its `filename` and `content_type`.
+        /// Attach a file directly to a lead. First upload the file with the [Files API](https://developer.close.com/api/resources/files), then pass its download `url` here with a `filename`. You can also pass the `download_url` of a file already in Close. Files can be at most 25 MB.If the lead already has a file with the same name and contents, that file is updated instead of creating a copy, and its original `date_created` is kept. The response is 201 either way.Returns 403 if you can&apos;t see the lead, and 404 if it doesn&apos;t exist.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -152,7 +152,7 @@ namespace Soenneker.Close.OpenApiClient.Lead.Item.Files
             return new global::Soenneker.Close.OpenApiClient.Lead.Item.Files.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List files attached to a lead
+        /// List the files on a lead, newest first (by `date_created`). This includes files attached to the lead directly, and attachments of the lead&apos;s emails, notes, SMS, WhatsApp messages and opportunities. `last_object_type` and `last_object_id` say where each file was most recently attached.Returns 403 if you can&apos;t see the lead, and 404 if it doesn&apos;t exist.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 

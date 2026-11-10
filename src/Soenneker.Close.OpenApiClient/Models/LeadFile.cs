@@ -53,7 +53,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The checksum property</summary>
+        /// <summary>Checksum of the file&apos;s contents, usually its MD5 hash. A lead has at most one file with a given `name` and `checksum`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Checksum { get => _explicitNullValueChecksum; set { _explicitNullValueChecksum = value; AdditionalData?.Remove("checksum"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checksum"); else _explicitNullProperties?.Remove("checksum"); } }
@@ -63,7 +63,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Checksum { get => _explicitNullValueChecksum; set { _explicitNullValueChecksum = value; AdditionalData?.Remove("checksum"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checksum"); else _explicitNullProperties?.Remove("checksum"); } }
         private string _explicitNullValueChecksum = default!;
 #endif
-        /// <summary>The content_type property</summary>
+        /// <summary>MIME type of the file, e.g. `application/pdf`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ContentType { get => _explicitNullValueContentType; set { _explicitNullValueContentType = value; AdditionalData?.Remove("content_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_type"); else _explicitNullProperties?.Remove("content_type"); } }
@@ -73,13 +73,13 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ContentType { get => _explicitNullValueContentType; set { _explicitNullValueContentType = value; AdditionalData?.Remove("content_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_type"); else _explicitNullProperties?.Remove("content_type"); } }
         private string _explicitNullValueContentType = default!;
 #endif
-        /// <summary>The date_created property</summary>
+        /// <summary>When the file was first attached to the lead.</summary>
         public DateTimeOffset? DateCreated { get => _explicitNullValueDateCreated; set { _explicitNullValueDateCreated = value; AdditionalData?.Remove("date_created"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_created"); else _explicitNullProperties?.Remove("date_created"); } }
         private DateTimeOffset? _explicitNullValueDateCreated = default!;
-        /// <summary>The date_updated property</summary>
+        /// <summary>When the file was last updated.</summary>
         public DateTimeOffset? DateUpdated { get => _explicitNullValueDateUpdated; set { _explicitNullValueDateUpdated = value; AdditionalData?.Remove("date_updated"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_updated"); else _explicitNullProperties?.Remove("date_updated"); } }
         private DateTimeOffset? _explicitNullValueDateUpdated = default!;
-        /// <summary>The download_url property</summary>
+        /// <summary>URL to download the file.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DownloadUrl { get => _explicitNullValueDownloadUrl; set { _explicitNullValueDownloadUrl = value; AdditionalData?.Remove("download_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("download_url"); else _explicitNullProperties?.Remove("download_url"); } }
@@ -89,7 +89,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string DownloadUrl { get => _explicitNullValueDownloadUrl; set { _explicitNullValueDownloadUrl = value; AdditionalData?.Remove("download_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("download_url"); else _explicitNullProperties?.Remove("download_url"); } }
         private string _explicitNullValueDownloadUrl = default!;
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>Unique ID of the file, prefixed with `file_`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
@@ -99,13 +99,13 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
-        /// <summary>The is_pinned property</summary>
+        /// <summary>Whether the file is pinned on the lead.</summary>
         public bool? IsPinned { get => _explicitNullValueIsPinned; set { _explicitNullValueIsPinned = value; AdditionalData?.Remove("is_pinned"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_pinned"); else _explicitNullProperties?.Remove("is_pinned"); } }
         private bool? _explicitNullValueIsPinned = default!;
-        /// <summary>The last_activity_at property</summary>
+        /// <summary>When the file was most recently attached to an object.</summary>
         public DateTimeOffset? LastActivityAt { get => _explicitNullValueLastActivityAt; set { _explicitNullValueLastActivityAt = value; AdditionalData?.Remove("last_activity_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_activity_at"); else _explicitNullProperties?.Remove("last_activity_at"); } }
         private DateTimeOffset? _explicitNullValueLastActivityAt = default!;
-        /// <summary>The last_object_id property</summary>
+        /// <summary>ID of the object the file was most recently attached to, e.g. an email ID. For files attached directly to the lead, the lead ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LastObjectId { get => _explicitNullValueLastObjectId; set { _explicitNullValueLastObjectId = value; AdditionalData?.Remove("last_object_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_object_id"); else _explicitNullProperties?.Remove("last_object_id"); } }
@@ -115,17 +115,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string LastObjectId { get => _explicitNullValueLastObjectId; set { _explicitNullValueLastObjectId = value; AdditionalData?.Remove("last_object_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_object_id"); else _explicitNullProperties?.Remove("last_object_id"); } }
         private string _explicitNullValueLastObjectId = default!;
 #endif
-        /// <summary>The last_object_type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? LastObjectType { get => _explicitNullValueLastObjectType; set { _explicitNullValueLastObjectType = value; AdditionalData?.Remove("last_object_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_object_type"); else _explicitNullProperties?.Remove("last_object_type"); } }
-        private string? _explicitNullValueLastObjectType = default!;
-#nullable restore
-#else
-        public string LastObjectType { get => _explicitNullValueLastObjectType; set { _explicitNullValueLastObjectType = value; AdditionalData?.Remove("last_object_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_object_type"); else _explicitNullProperties?.Remove("last_object_type"); } }
-        private string _explicitNullValueLastObjectType = default!;
-#endif
-        /// <summary>The lead_id property</summary>
+        /// <summary>Type of the object in `last_object_id`.</summary>
+        public global::Soenneker.Close.OpenApiClient.Models.LeadFileObjectType? LastObjectType { get => _explicitNullValueLastObjectType; set { _explicitNullValueLastObjectType = value; AdditionalData?.Remove("last_object_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_object_type"); else _explicitNullProperties?.Remove("last_object_type"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.LeadFileObjectType? _explicitNullValueLastObjectType = default!;
+        /// <summary>ID of the lead the file is on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LeadId { get => _explicitNullValueLeadId; set { _explicitNullValueLeadId = value; AdditionalData?.Remove("lead_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_id"); else _explicitNullProperties?.Remove("lead_id"); } }
@@ -135,7 +128,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string LeadId { get => _explicitNullValueLeadId; set { _explicitNullValueLeadId = value; AdditionalData?.Remove("lead_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_id"); else _explicitNullProperties?.Remove("lead_id"); } }
         private string _explicitNullValueLeadId = default!;
 #endif
-        /// <summary>The name property</summary>
+        /// <summary>File name, e.g. `contract.pdf`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
@@ -145,7 +138,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
-        /// <summary>The organization_id property</summary>
+        /// <summary>ID of the organization the file belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
@@ -155,10 +148,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string _explicitNullValueOrganizationId = default!;
 #endif
-        /// <summary>The size property</summary>
+        /// <summary>Size of the file in bytes.</summary>
         public int? Size { get => _explicitNullValueSize; set { _explicitNullValueSize = value; AdditionalData?.Remove("size"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size"); else _explicitNullProperties?.Remove("size"); } }
         private int? _explicitNullValueSize = default!;
-        /// <summary>The thumbnail_url property</summary>
+        /// <summary>URL to download a thumbnail of the file. Only GIF, JPEG and PNG images have one, otherwise null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ThumbnailUrl { get => _explicitNullValueThumbnailUrl; set { _explicitNullValueThumbnailUrl = value; AdditionalData?.Remove("thumbnail_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thumbnail_url"); else _explicitNullProperties?.Remove("thumbnail_url"); } }
@@ -168,7 +161,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ThumbnailUrl { get => _explicitNullValueThumbnailUrl; set { _explicitNullValueThumbnailUrl = value; AdditionalData?.Remove("thumbnail_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thumbnail_url"); else _explicitNullProperties?.Remove("thumbnail_url"); } }
         private string _explicitNullValueThumbnailUrl = default!;
 #endif
-        /// <summary>The updated_by property</summary>
+        /// <summary>ID of the user who last updated the file, or null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UpdatedBy { get => _explicitNullValueUpdatedBy; set { _explicitNullValueUpdatedBy = value; AdditionalData?.Remove("updated_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_by"); else _explicitNullProperties?.Remove("updated_by"); } }
@@ -212,7 +205,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "is_pinned", n => { IsPinned = n.GetBoolValue(); } },
                 { "last_activity_at", n => { LastActivityAt = n.GetDateTimeOffsetValue(); } },
                 { "last_object_id", n => { LastObjectId = n.GetStringValue(); } },
-                { "last_object_type", n => { LastObjectType = n.GetStringValue(); } },
+                { "last_object_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.LeadFileObjectType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueLastObjectType = default; _explicitNullProperties?.Remove("last_object_type"); AdditionalData["last_object_type"] = unknown; } else { LastObjectType = parsed; AdditionalData.Remove("last_object_type"); } } },
                 { "lead_id", n => { LeadId = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
@@ -237,7 +230,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteBoolValue("is_pinned", IsPinned);
             writer.WriteDateTimeOffsetValue("last_activity_at", LastActivityAt);
             writer.WriteStringValue("last_object_id", LastObjectId);
-            writer.WriteStringValue("last_object_type", LastObjectType);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.LeadFileObjectType>("last_object_type", LastObjectType);
             writer.WriteStringValue("lead_id", LeadId);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("organization_id", OrganizationId);

@@ -9,7 +9,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class LeadsCreateRequestContactsItemEmailsItem : IAdditionalDataHolder, IParsable
+    public partial class UpdateLeadContactEmail : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
@@ -25,7 +25,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The email property</summary>
+        /// <summary>Email address.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; AdditionalData?.Remove("email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
@@ -35,7 +35,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; AdditionalData?.Remove("email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
         private string _explicitNullValueEmail = default!;
 #endif
-        /// <summary>The type property</summary>
+        /// <summary>Label for the email address, e.g. `office`, `home`, or `other`. Defaults to `office`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
@@ -46,21 +46,21 @@ namespace Soenneker.Close.OpenApiClient.Models
         private string _explicitNullValueType = default!;
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.LeadsCreateRequestContactsItemEmailsItem"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.UpdateLeadContactEmail"/> and sets the default values.
         /// </summary>
-        public LeadsCreateRequestContactsItemEmailsItem()
+        public UpdateLeadContactEmail()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.LeadsCreateRequestContactsItemEmailsItem"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.UpdateLeadContactEmail"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Close.OpenApiClient.Models.LeadsCreateRequestContactsItemEmailsItem CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Close.OpenApiClient.Models.UpdateLeadContactEmail CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.LeadsCreateRequestContactsItemEmailsItem(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.UpdateLeadContactEmail(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
