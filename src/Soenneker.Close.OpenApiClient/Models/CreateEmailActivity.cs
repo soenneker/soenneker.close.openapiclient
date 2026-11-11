@@ -35,6 +35,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("created_by") is { } nullNodeCreatedBy && nullNodeCreatedBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedBy = null;
             if (parseNode.GetChildNode("date_created") is null) { _explicitNullValueDateCreated = default!; _explicitNullProperties?.Remove("date_created"); }
             else if (parseNode.GetChildNode("date_created") is { } nullNodeDateCreated && nullNodeDateCreated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateCreated = null;
+            if (parseNode.GetChildNode("date_scheduled") is null) { _explicitNullValueDateScheduled = default!; _explicitNullProperties?.Remove("date_scheduled"); }
+            else if (parseNode.GetChildNode("date_scheduled") is { } nullNodeDateScheduled && nullNodeDateScheduled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateScheduled = null;
             if (parseNode.GetChildNode("email_account_id") is null) { _explicitNullValueEmailAccountId = default!; _explicitNullProperties?.Remove("email_account_id"); }
             else if (parseNode.GetChildNode("email_account_id") is { } nullNodeEmailAccountId && nullNodeEmailAccountId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailAccountId = null;
             if (parseNode.GetChildNode("followup_date") is null) { _explicitNullValueFollowupDate = default!; _explicitNullProperties?.Remove("followup_date"); }
@@ -55,6 +57,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
             if (parseNode.GetChildNode("sender") is null) { _explicitNullValueSender = default!; _explicitNullProperties?.Remove("sender"); }
             else if (parseNode.GetChildNode("sender") is { } nullNodeSender && nullNodeSender.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sender = null;
+            if (parseNode.GetChildNode("send_in") is null) { _explicitNullValueSendIn = default!; _explicitNullProperties?.Remove("send_in"); }
+            else if (parseNode.GetChildNode("send_in") is { } nullNodeSendIn && nullNodeSendIn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SendIn = null;
             if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
             else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
             if (parseNode.GetChildNode("subject") is null) { _explicitNullValueSubject = default!; _explicitNullProperties?.Remove("subject"); }
@@ -145,6 +149,9 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The date_created property</summary>
         public DateTimeOffset? DateCreated { get => _explicitNullValueDateCreated; set { _explicitNullValueDateCreated = value; AdditionalData?.Remove("date_created"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_created"); else _explicitNullProperties?.Remove("date_created"); } }
         private DateTimeOffset? _explicitNullValueDateCreated = default!;
+        /// <summary>When to send the message. Required when `status` is `scheduled`, and ignored otherwise.</summary>
+        public DateTimeOffset? DateScheduled { get => _explicitNullValueDateScheduled; set { _explicitNullValueDateScheduled = value; AdditionalData?.Remove("date_scheduled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_scheduled"); else _explicitNullProperties?.Remove("date_scheduled"); } }
+        private DateTimeOffset? _explicitNullValueDateScheduled = default!;
         /// <summary>The email_account_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -224,6 +231,9 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Sender { get => _explicitNullValueSender; set { _explicitNullValueSender = value; AdditionalData?.Remove("sender"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sender"); else _explicitNullProperties?.Remove("sender"); } }
         private string _explicitNullValueSender = default!;
 #endif
+        /// <summary>Seconds to delay sending, to allow undo. Only used when `status` is `outbox`.</summary>
+        public int? SendIn { get => _explicitNullValueSendIn; set { _explicitNullValueSendIn = value; AdditionalData?.Remove("send_in"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("send_in"); else _explicitNullProperties?.Remove("send_in"); } }
+        private int? _explicitNullValueSendIn = default!;
         /// <summary>The status property</summary>
         public global::Soenneker.Close.OpenApiClient.Models.CreateEmailActivityStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CreateEmailActivityStatus? _explicitNullValueStatus = default!;
@@ -301,6 +311,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetDateTimeOffsetValue(); } },
+                { "date_scheduled", n => { DateScheduled = n.GetDateTimeOffsetValue(); } },
                 { "email_account_id", n => { EmailAccountId = n.GetStringValue(); } },
                 { "followup_date", n => { FollowupDate = n.GetDateTimeOffsetValue(); } },
                 { "followup_sequence_add_cc_bcc", n => { FollowupSequenceAddCcBcc = n.GetBoolValue(); } },
@@ -310,6 +321,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "lead_id", n => { LeadId = n.GetStringValue(); } },
                 { "opens", n => { Opens = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CreateEmailActivityOpensItem>(global::Soenneker.Close.OpenApiClient.Models.CreateEmailActivityOpensItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
+                { "send_in", n => { SendIn = n.GetIntValue(); } },
                 { "sender", n => { Sender = n.GetStringValue(); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreateEmailActivityStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
@@ -334,6 +346,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("contact_id", ContactId);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteDateTimeOffsetValue("date_created", DateCreated);
+            writer.WriteDateTimeOffsetValue("date_scheduled", DateScheduled);
             writer.WriteStringValue("email_account_id", EmailAccountId);
             writer.WriteDateTimeOffsetValue("followup_date", FollowupDate);
             writer.WriteBoolValue("followup_sequence_add_cc_bcc", FollowupSequenceAddCcBcc);
@@ -344,6 +357,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CreateEmailActivityOpensItem>("opens", Opens);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("sender", Sender);
+            writer.WriteIntValue("send_in", SendIn);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreateEmailActivityStatus>("status", Status);
             writer.WriteStringValue("subject", Subject);
             writer.WriteStringValue("template_id", TemplateId);

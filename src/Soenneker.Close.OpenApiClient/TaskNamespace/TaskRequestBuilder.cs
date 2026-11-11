@@ -21,7 +21,7 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
             get => new global::Soenneker.Close.OpenApiClient.TaskNamespace.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Close.OpenApiClient.task.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">ID of the task, e.g. `task_aRUZXCm9lMb2LwipTPhfFoFbCsUnaoQh1ncQ7WLnjlI`.</param>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.TaskNamespace.Item.TaskItemRequestBuilder"/></returns>
         public global::Soenneker.Close.OpenApiClient.TaskNamespace.Item.TaskItemRequestBuilder this[string position]
         {

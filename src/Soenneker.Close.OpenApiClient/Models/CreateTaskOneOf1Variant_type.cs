@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>`lead` creates a task on a lead. Defaults to `lead` when left out.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum CreateTaskOneOf1Variant_type
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "lead")]
         #pragma warning disable CS1591

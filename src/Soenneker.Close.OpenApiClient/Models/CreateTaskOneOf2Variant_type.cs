@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>`outgoing_call` creates a task to call a contact.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum CreateTaskOneOf2Variant_type
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "outgoing_call")]
         #pragma warning disable CS1591

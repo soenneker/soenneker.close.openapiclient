@@ -12,7 +12,7 @@ namespace Soenneker.Close.OpenApiClient.Models
     /// Composed type wrapper for classes <see cref="Date"/>, <see cref="DateTimeOffset"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class BulkUpdateNotificationsDate : IComposedTypeWrapper, IParsable
+    public partial class CreateCallTaskDate : IComposedTypeWrapper, IParsable
     , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
         // Preserve ambiguous union payloads without inventing a discriminator.
         /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
@@ -26,12 +26,12 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotificationsDate"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CreateCallTaskDate"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotificationsDate CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Close.OpenApiClient.Models.CreateCallTaskDate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var result = new global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotificationsDate();
+            var result = new global::Soenneker.Close.OpenApiClient.Models.CreateCallTaskDate();
             if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString && parseNode.GetDateValue() is Date dateOnlyValue)
             {
                 result.DateOnly = dateOnlyValue;

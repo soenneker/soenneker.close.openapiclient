@@ -22,7 +22,7 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/task/{?_fields*,_limit*,_order_by*,_skip*,_type*,_type__in*,assigned_to*,date*,date__gt*,date__gte*,date__lt*,date__lte*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,date_updated__gt*,date_updated__gte*,date_updated__lt*,date_updated__lte*,due_date*,due_date__gt*,due_date__gte*,due_date__lt*,due_date__lte*,format*,id*,id__in*,is_complete*,lead_id*,organization_id*,view*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/task/{?_fields*,_limit*,_order_by*,_skip*,_type*,_type__in*,assigned_to*,date*,date__gt*,date__gte*,date__lt*,date__lte*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,date_updated__gt*,date_updated__gte*,date_updated__lt*,date_updated__lte*,due_date*,due_date__gt*,due_date__gte*,due_date__lt*,due_date__lte*,format*,id*,id__in*,is_complete*,lead_id*,view*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/task/{?_fields*,_limit*,_order_by*,_skip*,_type*,_type__in*,assigned_to*,date*,date__gt*,date__gte*,date__lt*,date__lte*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,date_updated__gt*,date_updated__gte*,date_updated__lt*,date_updated__lte*,due_date*,due_date__gt*,due_date__gte*,due_date__lt*,due_date__lte*,format*,id*,id__in*,is_complete*,lead_id*,organization_id*,view*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/task/{?_fields*,_limit*,_order_by*,_skip*,_type*,_type__in*,assigned_to*,date*,date__gt*,date__gte*,date__lt*,date__lte*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,date_updated__gt*,date_updated__gte*,date_updated__lt*,date_updated__lte*,due_date*,due_date__gt*,due_date__gte*,due_date__lt*,due_date__lte*,format*,id*,id__in*,is_complete*,lead_id*,view*}", rawUrl)
         {
         }
         /// <summary>
-        /// The `view` parameter can be used to conveniently access the different task views. It accepts one of the following values:* `inbox`: Shows incomplete tasks up to the end of the user&apos;s day only (taking the time zone into account).* `future`: Shows incomplete tasks starting from the user&apos;s tomorrow only (taking the time zone into account).* `archive`: Shows complete tasks only.Note that a `view` value of `inbox` or `future` will override any `date__lt` or `date__gte` parameters included in the same request.The `_order_by` field allows ordering by `date` or `date_created` (descending order by prepending a minus, e.g. `_order_by=-date`).
+        /// List tasks that match the filters, newest first by default. `total_results` holds the number of matching tasks.Without a `_type` or `_type__in` filter, only `lead` tasks are returned. Use `_type=all` to also return the other items in your Close inbox, such as incoming emails and missed calls. Use `view` for the inbox, future and archive views shown in Close.Set `format=ical` to get the tasks as an iCalendar feed instead of JSON.If you don&apos;t have the &quot;View All Leads&quot; permission, results only include tasks on leads you can access. Filtering by your own `assigned_to` returns all of your tasks.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.TasksList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -42,6 +42,7 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.BadRequestResponseError">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ForbiddenResponseError">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -58,6 +59,7 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
                 { "400", global::Soenneker.Close.OpenApiClient.Models.BadRequestResponseError.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.Close.OpenApiClient.Models.ForbiddenResponseError.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
@@ -65,7 +67,7 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.TasksList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.TasksList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Provide the type of task to be created in the `_type` field. Currently only tasks of type `lead` and `outgoing_call` can be created.
+        /// Create a task. Set `_type` to `lead` for a task on a lead, or to `outgoing_call` for a task to call one of the lead&apos;s contacts. Other types of tasks can&apos;t be created. `_type` defaults to `lead`.Close emails the assignee about a new incomplete task, unless they&apos;re also its creator. Set `disable_notification` or `date_created` to skip the email. Returns 400 once the lead has more than 300 incomplete tasks.Returns 403 if the lead is one you can&apos;t see.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.TasksCreate200Response"/></returns>
         /// <param name="body">The request body</param>
@@ -74,6 +76,7 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.BadRequestResponseError">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ForbiddenResponseError">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -91,6 +94,7 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
                 { "400", global::Soenneker.Close.OpenApiClient.Models.BadRequestResponseError.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.Close.OpenApiClient.Models.ForbiddenResponseError.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
@@ -98,23 +102,24 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.TasksCreate200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.TasksCreate200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Any of the filters of the GET endpoint may be used as query parameters or passed in the request body (see [Filter Parameters](https://developer.close.com/api/overview/filter-parameters)). For example:```json{&quot;_params&quot;: {&quot;id__in&quot;: &quot;task_A,task_B,task_C&quot;}, &quot;is_complete&quot;: true}```Only the `assigned_to`, `date` and `is_complete` fields may be updated.
+        /// Apply the same changes to every task that matches the filters, and return how many tasks were updated. Takes the same filters as `GET /task/`, as query params or in the `_params` body key. The other body fields are the changes to make, e.g.:```json{&quot;_params&quot;: {&quot;id__in&quot;: &quot;task_A,task_B,task_C&quot;}, &quot;is_complete&quot;: true}```One call updates at most `_limit` tasks, and the response doesn&apos;t say whether more tasks matched. Repeat the call to update the rest. Returns 400 if `id__in` lists 1000 or more IDs.Returns 400 if some tasks couldn&apos;t be updated, with `count` set to the number that were, and the reasons in `errors`. Also returns 400 if any of the tasks is assigned to someone else and you don&apos;t have the permission to manage other users&apos; tasks.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.TasksBulkUpdate200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasksResult"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.BadRequestResponseError">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 401 status code</exception>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ForbiddenResponseError">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.ErrorMessage">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.TasksBulkUpdate200Response?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotifications body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasksResult?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasks body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.TasksBulkUpdate200Response> PutAsync(global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotifications body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasksResult> PutAsync(global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasks body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -124,14 +129,15 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
                 { "400", global::Soenneker.Close.OpenApiClient.Models.BadRequestResponseError.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.Close.OpenApiClient.Models.ForbiddenResponseError.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Close.OpenApiClient.Models.ErrorMessage.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.Close.OpenApiClient.Models.RateLimitError.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.TasksBulkUpdate200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.TasksBulkUpdate200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasksResult>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasksResult.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// The `view` parameter can be used to conveniently access the different task views. It accepts one of the following values:* `inbox`: Shows incomplete tasks up to the end of the user&apos;s day only (taking the time zone into account).* `future`: Shows incomplete tasks starting from the user&apos;s tomorrow only (taking the time zone into account).* `archive`: Shows complete tasks only.Note that a `view` value of `inbox` or `future` will override any `date__lt` or `date__gte` parameters included in the same request.The `_order_by` field allows ordering by `date` or `date_created` (descending order by prepending a minus, e.g. `_order_by=-date`).
+        /// List tasks that match the filters, newest first by default. `total_results` holds the number of matching tasks.Without a `_type` or `_type__in` filter, only `lead` tasks are returned. Use `_type=all` to also return the other items in your Close inbox, such as incoming emails and missed calls. Use `view` for the inbox, future and archive views shown in Close.Set `format=ical` to get the tasks as an iCalendar feed instead of JSON.If you don&apos;t have the &quot;View All Leads&quot; permission, results only include tasks on leads you can access. Filtering by your own `assigned_to` returns all of your tasks.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -150,7 +156,7 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
             return requestInfo;
         }
         /// <summary>
-        /// Provide the type of task to be created in the `_type` field. Currently only tasks of type `lead` and `outgoing_call` can be created.
+        /// Create a task. Set `_type` to `lead` for a task on a lead, or to `outgoing_call` for a task to call one of the lead&apos;s contacts. Other types of tasks can&apos;t be created. `_type` defaults to `lead`.Close emails the assignee about a new incomplete task, unless they&apos;re also its creator. Set `disable_notification` or `date_created` to skip the email. Returns 400 once the lead has more than 300 incomplete tasks.Returns 403 if the lead is one you can&apos;t see.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -172,18 +178,18 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
             return requestInfo;
         }
         /// <summary>
-        /// Any of the filters of the GET endpoint may be used as query parameters or passed in the request body (see [Filter Parameters](https://developer.close.com/api/overview/filter-parameters)). For example:```json{&quot;_params&quot;: {&quot;id__in&quot;: &quot;task_A,task_B,task_C&quot;}, &quot;is_complete&quot;: true}```Only the `assigned_to`, `date` and `is_complete` fields may be updated.
+        /// Apply the same changes to every task that matches the filters, and return how many tasks were updated. Takes the same filters as `GET /task/`, as query params or in the `_params` body key. The other body fields are the changes to make, e.g.:```json{&quot;_params&quot;: {&quot;id__in&quot;: &quot;task_A,task_B,task_C&quot;}, &quot;is_complete&quot;: true}```One call updates at most `_limit` tasks, and the response doesn&apos;t say whether more tasks matched. Repeat the call to update the rest. Returns 400 if `id__in` lists 1000 or more IDs.Returns 400 if some tasks couldn&apos;t be updated, with `count` set to the number that were, and the reasons in `errors`. Also returns 400 if any of the tasks is assigned to someone else and you don&apos;t have the permission to manage other users&apos; tasks.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotifications body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasks body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotifications body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasks body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -203,257 +209,205 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
             return new global::Soenneker.Close.OpenApiClient.TaskNamespace.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// The `view` parameter can be used to conveniently access the different task views. It accepts one of the following values:* `inbox`: Shows incomplete tasks up to the end of the user&apos;s day only (taking the time zone into account).* `future`: Shows incomplete tasks starting from the user&apos;s tomorrow only (taking the time zone into account).* `archive`: Shows complete tasks only.Note that a `view` value of `inbox` or `future` will override any `date__lt` or `date__gte` parameters included in the same request.The `_order_by` field allows ordering by `date` or `date_created` (descending order by prepending a minus, e.g. `_order_by=-date`).
+        /// List tasks that match the filters, newest first by default. `total_results` holds the number of matching tasks.Without a `_type` or `_type__in` filter, only `lead` tasks are returned. Use `_type=all` to also return the other items in your Close inbox, such as incoming emails and missed calls. Use `view` for the inbox, future and archive views shown in Close.Set `format=ical` to get the tasks as an iCalendar feed instead of JSON.If you don&apos;t have the &quot;View All Leads&quot; permission, results only include tasks on leads you can access. Filtering by your own `assigned_to` returns all of your tasks.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         {
+            /// <summary>Only return tasks assigned to this user, e.g. `user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA`. Returns 403 for another user if your role restricts which leads you can see.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("assigned_to")]
             public string? AssignedTo { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("assigned_to")]
             public string AssignedTo { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks due at exactly this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date")]
             public string? Date { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date")]
             public string Date { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks created after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_created__gt")]
             public string? DateCreatedGt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_created__gt")]
             public string DateCreatedGt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks created on or after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_created__gte")]
             public string? DateCreatedGte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_created__gte")]
             public string DateCreatedGte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks created before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_created__lt")]
             public string? DateCreatedLt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_created__lt")]
             public string DateCreatedLt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks created on or before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_created__lte")]
             public string? DateCreatedLte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_created__lte")]
             public string DateCreatedLte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks due after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date__gt")]
             public string? DateGt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date__gt")]
             public string DateGt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks due on or after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date__gte")]
             public string? DateGte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date__gte")]
             public string DateGte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks due before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date__lt")]
             public string? DateLt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date__lt")]
             public string DateLt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks due on or before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date__lte")]
             public string? DateLte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date__lte")]
             public string DateLte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks last updated after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__gt")]
             public string? DateUpdatedGt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__gt")]
             public string DateUpdatedGt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks last updated on or after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__gte")]
             public string? DateUpdatedGte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__gte")]
             public string DateUpdatedGte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks last updated before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__lt")]
             public string? DateUpdatedLt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__lt")]
             public string DateUpdatedLt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks last updated on or before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__lte")]
             public string? DateUpdatedLte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__lte")]
             public string DateUpdatedLte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Deprecated: use `date` instead, which it matches.</summary>
+            [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("due_date")]
             public string? DueDate { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("due_date")]
             public string DueDate { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Deprecated: use `date__gt` instead, which it matches.</summary>
+            [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("due_date__gt")]
             public string? DueDateGt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("due_date__gt")]
             public string DueDateGt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Deprecated: use `date__gte` instead, which it matches.</summary>
+            [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("due_date__gte")]
             public string? DueDateGte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("due_date__gte")]
             public string DueDateGte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Deprecated: use `date__lt` instead, which it matches.</summary>
+            [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("due_date__lt")]
             public string? DueDateLt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("due_date__lt")]
             public string DueDateLt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Deprecated: use `date__lte` instead, which it matches.</summary>
+            [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("due_date__lte")]
             public string? DueDateLte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("due_date__lte")]
             public string DueDateLte { get; set; }
-            #pragma warning restore CS1591
 #endif
             /// <summary>Comma-separated list of fields to include in the response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -465,145 +419,91 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
             [QueryParameter("_fields")]
             public string Fields { get; set; }
 #endif
+            /// <summary>Set to `ical` to get the tasks as an iCalendar (`text/calendar`) feed instead of JSON. Sending an `Accept: text/calendar` header does the same. The feed leaves out tasks with no due date.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("format")]
             public string? Format { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("format")]
             public string Format { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return the task with this ID, e.g. `task_aRUZXCm9lMb2LwipTPhfFoFbCsUnaoQh1ncQ7WLnjlI`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("id")]
             public string? Id { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("id")]
             public string Id { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Comma-separated list of task IDs. Only return these tasks.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("id__in")]
             public string? IdIn { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("id__in")]
             public string IdIn { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>`true` to only return completed tasks, `false` to only return incomplete tasks.</summary>
+            [QueryParameter("is_complete")]
+            public bool? IsComplete { get; set; }
+            /// <summary>Only return tasks on this lead, e.g. `lead_5LmpOyrMQdJSUlbNGBSGfK5XzcioIm7aC94PSQamQJc`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
-            [QueryParameter("is_complete")]
-            public string? IsComplete { get; set; }
-            #pragma warning restore CS1591
-#nullable restore
-#else
-            #pragma warning disable CS1591
-            [QueryParameter("is_complete")]
-            public string IsComplete { get; set; }
-            #pragma warning restore CS1591
-#endif
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("lead_id")]
             public string? LeadId { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("lead_id")]
             public string LeadId { get; set; }
-            #pragma warning restore CS1591
 #endif
             /// <summary>Number of results to return.</summary>
             [QueryParameter("_limit")]
             public int? Limit { get; set; }
+            /// <summary>Field to sort by: `date`, `due_date`, `date_created` or `date_updated`. Prefix with `-` to sort in descending order, e.g. `-date`. Defaults to `-date_created`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("_order_by")]
             public string? OrderBy { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("_order_by")]
             public string OrderBy { get; set; }
-            #pragma warning restore CS1591
-#endif
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            #pragma warning disable CS1591
-            [QueryParameter("organization_id")]
-            public string? OrganizationId { get; set; }
-            #pragma warning restore CS1591
-#nullable restore
-#else
-            #pragma warning disable CS1591
-            [QueryParameter("organization_id")]
-            public string OrganizationId { get; set; }
-            #pragma warning restore CS1591
 #endif
             /// <summary>Number of results to skip before returning, for pagination.</summary>
             [QueryParameter("_skip")]
             public int? Skip { get; set; }
+            /// <summary>Only return tasks of this type. Defaults to `lead` (tasks created on a lead) when neither `_type` nor `_type__in` is set. Use `all` to return every type.</summary>
+            [QueryParameter("_type")]
+            public global::Soenneker.Close.OpenApiClient.Models.TaskTypeFilter? Type { get; set; }
+            /// <summary>Comma-separated list of task types, e.g. `lead,outgoing_call`. Only return tasks of any of these types. Takes the same values as `_type`, except `all`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
-            [QueryParameter("_type")]
-            public string? Type { get; set; }
-            #pragma warning restore CS1591
-#nullable restore
-#else
-            #pragma warning disable CS1591
-            [QueryParameter("_type")]
-            public string Type { get; set; }
-            #pragma warning restore CS1591
-#endif
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("_type__in")]
             public string? TypeIn { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("_type__in")]
             public string TypeIn { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Shortcut for a task view. `inbox` returns incomplete tasks due by the end of today, `future` returns incomplete tasks due from tomorrow on, and `archive` returns completed tasks. Today is based on your time zone. `inbox` overrides `is_complete` and `date__lt`, `future` overrides `is_complete` and `date__gte`, and `archive` overrides `is_complete`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("view")]
             public string? View { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("view")]
             public string View { get; set; }
-            #pragma warning restore CS1591
 #endif
         }
         /// <summary>
-        /// Provide the type of task to be created in the `_type` field. Currently only tasks of type `lead` and `outgoing_call` can be created.
+        /// Create a task. Set `_type` to `lead` for a task on a lead, or to `outgoing_call` for a task to call one of the lead&apos;s contacts. Other types of tasks can&apos;t be created. `_type` defaults to `lead`.Close emails the assignee about a new incomplete task, unless they&apos;re also its creator. Set `disable_notification` or `date_created` to skip the email. Returns 400 once the lead has more than 300 incomplete tasks.Returns 403 if the lead is one you can&apos;t see.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderPostQueryParameters 
@@ -620,397 +520,277 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace
 #endif
         }
         /// <summary>
-        /// Any of the filters of the GET endpoint may be used as query parameters or passed in the request body (see [Filter Parameters](https://developer.close.com/api/overview/filter-parameters)). For example:```json{&quot;_params&quot;: {&quot;id__in&quot;: &quot;task_A,task_B,task_C&quot;}, &quot;is_complete&quot;: true}```Only the `assigned_to`, `date` and `is_complete` fields may be updated.
+        /// Apply the same changes to every task that matches the filters, and return how many tasks were updated. Takes the same filters as `GET /task/`, as query params or in the `_params` body key. The other body fields are the changes to make, e.g.:```json{&quot;_params&quot;: {&quot;id__in&quot;: &quot;task_A,task_B,task_C&quot;}, &quot;is_complete&quot;: true}```One call updates at most `_limit` tasks, and the response doesn&apos;t say whether more tasks matched. Repeat the call to update the rest. Returns 400 if `id__in` lists 1000 or more IDs.Returns 400 if some tasks couldn&apos;t be updated, with `count` set to the number that were, and the reasons in `errors`. Also returns 400 if any of the tasks is assigned to someone else and you don&apos;t have the permission to manage other users&apos; tasks.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderPutQueryParameters 
         {
+            /// <summary>Only return tasks assigned to this user, e.g. `user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA`. Returns 403 for another user if your role restricts which leads you can see.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("assigned_to")]
             public string? AssignedTo { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("assigned_to")]
             public string AssignedTo { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks due at exactly this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date")]
             public string? Date { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date")]
             public string Date { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks created after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_created__gt")]
             public string? DateCreatedGt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_created__gt")]
             public string DateCreatedGt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks created on or after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_created__gte")]
             public string? DateCreatedGte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_created__gte")]
             public string DateCreatedGte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks created before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_created__lt")]
             public string? DateCreatedLt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_created__lt")]
             public string DateCreatedLt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks created on or before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_created__lte")]
             public string? DateCreatedLte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_created__lte")]
             public string DateCreatedLte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks due after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date__gt")]
             public string? DateGt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date__gt")]
             public string DateGt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks due on or after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date__gte")]
             public string? DateGte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date__gte")]
             public string DateGte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks due before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date__lt")]
             public string? DateLt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date__lt")]
             public string DateLt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks due on or before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date__lte")]
             public string? DateLte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date__lte")]
             public string DateLte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks last updated after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__gt")]
             public string? DateUpdatedGt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__gt")]
             public string DateUpdatedGt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks last updated on or after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__gte")]
             public string? DateUpdatedGte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__gte")]
             public string DateUpdatedGte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks last updated before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__lt")]
             public string? DateUpdatedLt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__lt")]
             public string DateUpdatedLt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only return tasks last updated on or before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__lte")]
             public string? DateUpdatedLte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_updated__lte")]
             public string DateUpdatedLte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Deprecated: use `date` instead, which it matches.</summary>
+            [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("due_date")]
             public string? DueDate { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("due_date")]
             public string DueDate { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Deprecated: use `date__gt` instead, which it matches.</summary>
+            [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("due_date__gt")]
             public string? DueDateGt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("due_date__gt")]
             public string DueDateGt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Deprecated: use `date__gte` instead, which it matches.</summary>
+            [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("due_date__gte")]
             public string? DueDateGte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("due_date__gte")]
             public string DueDateGte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Deprecated: use `date__lt` instead, which it matches.</summary>
+            [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("due_date__lt")]
             public string? DueDateLt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("due_date__lt")]
             public string DueDateLt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Deprecated: use `date__lte` instead, which it matches.</summary>
+            [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("due_date__lte")]
             public string? DueDateLte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("due_date__lte")]
             public string DueDateLte { get; set; }
-            #pragma warning restore CS1591
 #endif
-            /// <summary>Comma-separated list of fields to include in the response.</summary>
+            /// <summary>Only return the task with this ID, e.g. `task_aRUZXCm9lMb2LwipTPhfFoFbCsUnaoQh1ncQ7WLnjlI`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            [QueryParameter("_fields")]
-            public string? Fields { get; set; }
-#nullable restore
-#else
-            [QueryParameter("_fields")]
-            public string Fields { get; set; }
-#endif
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            #pragma warning disable CS1591
-            [QueryParameter("format")]
-            public string? Format { get; set; }
-            #pragma warning restore CS1591
-#nullable restore
-#else
-            #pragma warning disable CS1591
-            [QueryParameter("format")]
-            public string Format { get; set; }
-            #pragma warning restore CS1591
-#endif
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("id")]
             public string? Id { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("id")]
             public string Id { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Comma-separated list of task IDs. Only return these tasks.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("id__in")]
             public string? IdIn { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("id__in")]
             public string IdIn { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>`true` to only return completed tasks, `false` to only return incomplete tasks.</summary>
+            [QueryParameter("is_complete")]
+            public bool? IsComplete { get; set; }
+            /// <summary>Only return tasks on this lead, e.g. `lead_5LmpOyrMQdJSUlbNGBSGfK5XzcioIm7aC94PSQamQJc`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
-            [QueryParameter("is_complete")]
-            public string? IsComplete { get; set; }
-            #pragma warning restore CS1591
-#nullable restore
-#else
-            #pragma warning disable CS1591
-            [QueryParameter("is_complete")]
-            public string IsComplete { get; set; }
-            #pragma warning restore CS1591
-#endif
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("lead_id")]
             public string? LeadId { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("lead_id")]
             public string LeadId { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Number of results to return.</summary>
+            [QueryParameter("_limit")]
+            public int? Limit { get; set; }
+            /// <summary>Field to sort by: `date`, `due_date`, `date_created` or `date_updated`. Prefix with `-` to sort in descending order, e.g. `-date`. Defaults to `-date_created`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("_order_by")]
             public string? OrderBy { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("_order_by")]
             public string OrderBy { get; set; }
-            #pragma warning restore CS1591
 #endif
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            #pragma warning disable CS1591
-            [QueryParameter("organization_id")]
-            public string? OrganizationId { get; set; }
-            #pragma warning restore CS1591
-#nullable restore
-#else
-            #pragma warning disable CS1591
-            [QueryParameter("organization_id")]
-            public string OrganizationId { get; set; }
-            #pragma warning restore CS1591
-#endif
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            #pragma warning disable CS1591
+            /// <summary>Number of results to skip before returning, for pagination.</summary>
+            [QueryParameter("_skip")]
+            public int? Skip { get; set; }
+            /// <summary>Only return tasks of this type. Defaults to `lead` (tasks created on a lead) when neither `_type` nor `_type__in` is set. Use `all` to return every type.</summary>
             [QueryParameter("_type")]
-            public string? Type { get; set; }
-            #pragma warning restore CS1591
-#nullable restore
-#else
-            #pragma warning disable CS1591
-            [QueryParameter("_type")]
-            public string Type { get; set; }
-            #pragma warning restore CS1591
-#endif
+            public global::Soenneker.Close.OpenApiClient.Models.TaskTypeFilter? Type { get; set; }
+            /// <summary>Comma-separated list of task types, e.g. `lead,outgoing_call`. Only return tasks of any of these types. Takes the same values as `_type`, except `all`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("_type__in")]
             public string? TypeIn { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("_type__in")]
             public string TypeIn { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Shortcut for a task view. `inbox` returns incomplete tasks due by the end of today, `future` returns incomplete tasks due from tomorrow on, and `archive` returns completed tasks. Today is based on your time zone. `inbox` overrides `is_complete` and `date__lt`, `future` overrides `is_complete` and `date__gte`, and `archive` overrides `is_complete`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("view")]
             public string? View { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("view")]
             public string View { get; set; }
-            #pragma warning restore CS1591
 #endif
         }
     }

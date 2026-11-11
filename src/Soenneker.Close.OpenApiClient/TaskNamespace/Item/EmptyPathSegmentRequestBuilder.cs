@@ -34,9 +34,9 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace.Item
         {
         }
         /// <summary>
-        /// Delete a task
+        /// Delete a task. Returns an empty object on success.Deleting your own tasks and deleting other users&apos; tasks need separate permissions. Returns 400 if you don&apos;t have the one this task needs, 403 if the task is on a lead you can&apos;t see, and 404 if no task has this ID.
         /// </summary>
-        /// <returns>A <see cref="Stream"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.TasksDelete200ResponseSchema"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.BadRequestResponseError">When receiving a 400 status code</exception>
@@ -46,11 +46,11 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace.Item
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.TasksDelete200ResponseSchema?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.TasksDelete200ResponseSchema> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
@@ -64,10 +64,10 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace.Item
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.TasksDelete200ResponseSchema>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.TasksDelete200ResponseSchema.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Fetch a task&apos;s details
+        /// Fetch a single task. Returns 403 if the task is on a lead you can&apos;t see, and 404 if no task has this ID.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.TasksGet200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -100,7 +100,7 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.TasksGet200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.TasksGet200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// The `assigned_to`, `date` (either a date or a date-time), and `is_complete` fields may be updated on all tasks. If the task type is `lead`, the `text` field may also be modified.
+        /// Update a task. Only the fields you send are changed.`assigned_to`, `date` and `is_complete` can be updated on every type of task. The other fields only apply to some types, as their descriptions say. Sending `text`, `priority`, `lead_id` or `contact_id` for a type that doesn&apos;t support it returns 400. The other fields are ignored.Returns 403 if the task is on a lead you can&apos;t see, or if it&apos;s assigned to someone else and you don&apos;t have the permission to manage other users&apos; tasks.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.TasksUpdate200Response"/></returns>
         /// <param name="body">The request body</param>
@@ -113,11 +113,11 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace.Item
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.TasksUpdate200Response?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateNotification body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.TasksUpdate200Response?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateTask body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.TasksUpdate200Response> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateNotification body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.TasksUpdate200Response> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateTask body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -135,7 +135,7 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.TasksUpdate200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.TasksUpdate200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete a task
+        /// Delete a task. Returns an empty object on success.Deleting your own tasks and deleting other users&apos; tasks need separate permissions. Returns 400 if you don&apos;t have the one this task needs, 403 if the task is on a lead you can&apos;t see, and 404 if no task has this ID.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -154,7 +154,7 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace.Item
             return requestInfo;
         }
         /// <summary>
-        /// Fetch a task&apos;s details
+        /// Fetch a single task. Returns 403 if the task is on a lead you can&apos;t see, and 404 if no task has this ID.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -173,18 +173,18 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace.Item
             return requestInfo;
         }
         /// <summary>
-        /// The `assigned_to`, `date` (either a date or a date-time), and `is_complete` fields may be updated on all tasks. If the task type is `lead`, the `text` field may also be modified.
+        /// Update a task. Only the fields you send are changed.`assigned_to`, `date` and `is_complete` can be updated on every type of task. The other fields only apply to some types, as their descriptions say. Sending `text`, `priority`, `lead_id` or `contact_id` for a type that doesn&apos;t support it returns 400. The other fields are ignored.Returns 403 if the task is on a lead you can&apos;t see, or if it&apos;s assigned to someone else and you don&apos;t have the permission to manage other users&apos; tasks.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.UpdateNotification body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.UpdateTask body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.UpdateNotification body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.UpdateTask body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.TaskNamespace.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -204,7 +204,7 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace.Item
             return new global::Soenneker.Close.OpenApiClient.TaskNamespace.Item.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Fetch a task&apos;s details
+        /// Fetch a single task. Returns 403 if the task is on a lead you can&apos;t see, and 404 if no task has this ID.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
@@ -221,7 +221,7 @@ namespace Soenneker.Close.OpenApiClient.TaskNamespace.Item
 #endif
         }
         /// <summary>
-        /// The `assigned_to`, `date` (either a date or a date-time), and `is_complete` fields may be updated on all tasks. If the task type is `lead`, the `text` field may also be modified.
+        /// Update a task. Only the fields you send are changed.`assigned_to`, `date` and `is_complete` can be updated on every type of task. The other fields only apply to some types, as their descriptions say. Sending `text`, `priority`, `lead_id` or `contact_id` for a type that doesn&apos;t support it returns 400. The other fields are ignored.Returns 403 if the task is on a lead you can&apos;t see, or if it&apos;s assigned to someone else and you don&apos;t have the permission to manage other users&apos; tasks.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderPutQueryParameters 

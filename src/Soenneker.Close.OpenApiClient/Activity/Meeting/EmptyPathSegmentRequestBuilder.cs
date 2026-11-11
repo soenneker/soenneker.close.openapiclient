@@ -242,7 +242,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting
             [QueryParameter("lead_id")]
             public string LeadId { get; set; }
 #endif
-            /// <summary>Number of results to return.</summary>
+            /// <summary>Number of results to return. When `_fields` includes `transcripts`, larger values are treated as 10.</summary>
             [QueryParameter("_limit")]
             public int? Limit { get; set; }
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

@@ -29,6 +29,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("created_by") is { } nullNodeCreatedBy && nullNodeCreatedBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedBy = null;
             if (parseNode.GetChildNode("date_created") is null) { _explicitNullValueDateCreated = default!; _explicitNullProperties?.Remove("date_created"); }
             else if (parseNode.GetChildNode("date_created") is { } nullNodeDateCreated && nullNodeDateCreated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateCreated = null;
+            if (parseNode.GetChildNode("date_scheduled") is null) { _explicitNullValueDateScheduled = default!; _explicitNullProperties?.Remove("date_scheduled"); }
+            else if (parseNode.GetChildNode("date_scheduled") is { } nullNodeDateScheduled && nullNodeDateScheduled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateScheduled = null;
             if (parseNode.GetChildNode("direction") is null) { _explicitNullValueDirection = default!; _explicitNullProperties?.Remove("direction"); }
             else if (parseNode.GetChildNode("direction") is { } nullNodeDirection && nullNodeDirection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Direction = null;
             if (parseNode.GetChildNode("lead_id") is null) { _explicitNullValueLeadId = default!; _explicitNullProperties?.Remove("lead_id"); }
@@ -39,6 +41,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
             if (parseNode.GetChildNode("remote_phone") is null) { _explicitNullValueRemotePhone = default!; _explicitNullProperties?.Remove("remote_phone"); }
             else if (parseNode.GetChildNode("remote_phone") is { } nullNodeRemotePhone && nullNodeRemotePhone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemotePhone = null;
+            if (parseNode.GetChildNode("send_in") is null) { _explicitNullValueSendIn = default!; _explicitNullProperties?.Remove("send_in"); }
+            else if (parseNode.GetChildNode("send_in") is { } nullNodeSendIn && nullNodeSendIn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SendIn = null;
             if (parseNode.GetChildNode("source") is null) { _explicitNullValueSource = default!; _explicitNullProperties?.Remove("source"); }
             else if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
             if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
@@ -99,6 +103,9 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The date_created property</summary>
         public DateTimeOffset? DateCreated { get => _explicitNullValueDateCreated; set { _explicitNullValueDateCreated = value; AdditionalData?.Remove("date_created"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_created"); else _explicitNullProperties?.Remove("date_created"); } }
         private DateTimeOffset? _explicitNullValueDateCreated = default!;
+        /// <summary>When to send the message. Required when `status` is `scheduled`, and ignored otherwise.</summary>
+        public DateTimeOffset? DateScheduled { get => _explicitNullValueDateScheduled; set { _explicitNullValueDateScheduled = value; AdditionalData?.Remove("date_scheduled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_scheduled"); else _explicitNullProperties?.Remove("date_scheduled"); } }
+        private DateTimeOffset? _explicitNullValueDateScheduled = default!;
         /// <summary>The direction property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -149,6 +156,9 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string RemotePhone { get => _explicitNullValueRemotePhone; set { _explicitNullValueRemotePhone = value; AdditionalData?.Remove("remote_phone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_phone"); else _explicitNullProperties?.Remove("remote_phone"); } }
         private string _explicitNullValueRemotePhone = default!;
 #endif
+        /// <summary>Seconds to delay sending, to allow undo. Only used when `status` is `outbox`.</summary>
+        public int? SendIn { get => _explicitNullValueSendIn; set { _explicitNullValueSendIn = value; AdditionalData?.Remove("send_in"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("send_in"); else _explicitNullProperties?.Remove("send_in"); } }
+        private int? _explicitNullValueSendIn = default!;
         /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -223,11 +233,13 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetDateTimeOffsetValue(); } },
+                { "date_scheduled", n => { DateScheduled = n.GetDateTimeOffsetValue(); } },
                 { "direction", n => { Direction = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityDirection>(global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityDirection.CreateFromDiscriminatorValue); } },
                 { "lead_id", n => { LeadId = n.GetStringValue(); } },
                 { "local_phone", n => { LocalPhone = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "remote_phone", n => { RemotePhone = n.GetStringValue(); } },
+                { "send_in", n => { SendIn = n.GetIntValue(); } },
                 { "source", n => { Source = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivitySource>(global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivitySource.CreateFromDiscriminatorValue); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
                 { "template_id", n => { TemplateId = n.GetStringValue(); } },
@@ -248,11 +260,13 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("contact_id", ContactId);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteDateTimeOffsetValue("date_created", DateCreated);
+            writer.WriteDateTimeOffsetValue("date_scheduled", DateScheduled);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityDirection>("direction", Direction);
             writer.WriteStringValue("lead_id", LeadId);
             writer.WriteStringValue("local_phone", LocalPhone);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("remote_phone", RemotePhone);
+            writer.WriteIntValue("send_in", SendIn);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivitySource>("source", Source);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CreateSmsActivityStatus>("status", Status);
             writer.WriteStringValue("template_id", TemplateId);

@@ -9,7 +9,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class BulkUpdateNotifications : IAdditionalDataHolder, IParsable
+    public partial class BulkUpdateTasks : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
@@ -23,8 +23,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("date") is { } nullNodeDate && nullNodeDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Date = null;
             if (parseNode.GetChildNode("is_complete") is null) { _explicitNullValueIsComplete = default!; _explicitNullProperties?.Remove("is_complete"); }
             else if (parseNode.GetChildNode("is_complete") is { } nullNodeIsComplete && nullNodeIsComplete.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsComplete = null;
-            if (parseNode.GetChildNode("organization_id") is null) { _explicitNullValueOrganizationId = default!; _explicitNullProperties?.Remove("organization_id"); }
-            else if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
+            if (parseNode.GetChildNode("_params") is null) { _explicitNullValueParams = default!; _explicitNullProperties?.Remove("_params"); }
+            else if (parseNode.GetChildNode("_params") is { } nullNodeParams && nullNodeParams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Params = null;
             if (parseNode.GetChildNode("priority") is null) { _explicitNullValuePriority = default!; _explicitNullProperties?.Remove("priority"); }
             else if (parseNode.GetChildNode("priority") is { } nullNodePriority && nullNodePriority.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Priority = null;
             if (parseNode.GetChildNode("resolution") is null) { _explicitNullValueResolution = default!; _explicitNullProperties?.Remove("resolution"); }
@@ -35,7 +35,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The assigned_to property</summary>
+        /// <summary>ID of the user to assign the task to. For an incomplete `lead` task, Close emails the new assignee, unless that&apos;s you. On an `outgoing_call` task, this also removes the voice agent (`agent_config_id`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AssignedTo { get => _explicitNullValueAssignedTo; set { _explicitNullValueAssignedTo = value; AdditionalData?.Remove("assigned_to"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assigned_to"); else _explicitNullProperties?.Remove("assigned_to"); } }
@@ -45,36 +45,36 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string AssignedTo { get => _explicitNullValueAssignedTo; set { _explicitNullValueAssignedTo = value; AdditionalData?.Remove("assigned_to"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assigned_to"); else _explicitNullProperties?.Remove("assigned_to"); } }
         private string _explicitNullValueAssignedTo = default!;
 #endif
-        /// <summary>The date property</summary>
+        /// <summary>When the task is due, in ISO 8601. A date, e.g. `2024-01-31`, makes the task due that day. A date and time, e.g. `2024-01-31T09:00:00Z`, makes it due at that time.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotificationsDate? Date { get => _explicitNullValueDate; set { _explicitNullValueDate = value; AdditionalData?.Remove("date"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date"); else _explicitNullProperties?.Remove("date"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotificationsDate? _explicitNullValueDate = default!;
+        public global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasksDate? Date { get => _explicitNullValueDate; set { _explicitNullValueDate = value; AdditionalData?.Remove("date"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date"); else _explicitNullProperties?.Remove("date"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasksDate? _explicitNullValueDate = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotificationsDate Date { get => _explicitNullValueDate; set { _explicitNullValueDate = value; AdditionalData?.Remove("date"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date"); else _explicitNullProperties?.Remove("date"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotificationsDate _explicitNullValueDate = default!;
+        public global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasksDate Date { get => _explicitNullValueDate; set { _explicitNullValueDate = value; AdditionalData?.Remove("date"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date"); else _explicitNullProperties?.Remove("date"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasksDate _explicitNullValueDate = default!;
 #endif
-        /// <summary>The is_complete property</summary>
+        /// <summary>`true` to complete the task, `false` to reopen it.</summary>
         public bool? IsComplete { get => _explicitNullValueIsComplete; set { _explicitNullValueIsComplete = value; AdditionalData?.Remove("is_complete"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_complete"); else _explicitNullProperties?.Remove("is_complete"); } }
         private bool? _explicitNullValueIsComplete = default!;
-        /// <summary>The organization_id property</summary>
+        /// <summary>Filters that select the tasks to update, as an alternative to query params. Takes the same filters as `GET /task/`, e.g. `{&quot;id__in&quot;: &quot;task_A,task_B&quot;}`. Values must be strings or integers. Other values are ignored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
-        private string? _explicitNullValueOrganizationId = default!;
+        public global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasksParamsProperty? Params { get => _explicitNullValueParams; set { _explicitNullValueParams = value; AdditionalData?.Remove("_params"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_params"); else _explicitNullProperties?.Remove("_params"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasksParamsProperty? _explicitNullValueParams = default!;
 #nullable restore
 #else
-        public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
-        private string _explicitNullValueOrganizationId = default!;
+        public global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasksParamsProperty Params { get => _explicitNullValueParams; set { _explicitNullValueParams = value; AdditionalData?.Remove("_params"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_params"); else _explicitNullProperties?.Remove("_params"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasksParamsProperty _explicitNullValueParams = default!;
 #endif
-        /// <summary>The priority property</summary>
+        /// <summary>Priority of the task. Only `lead` and `outgoing_call` tasks have a priority.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.TaskPriority? Priority { get => _explicitNullValuePriority; set { _explicitNullValuePriority = value; AdditionalData?.Remove("priority"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priority"); else _explicitNullProperties?.Remove("priority"); } }
         private global::Soenneker.Close.OpenApiClient.Models.TaskPriority? _explicitNullValuePriority = default!;
-        /// <summary>The resolution property</summary>
+        /// <summary>How the task was closed without being done. Only applies to `outgoing_call`, `draft_email` and `draft_sms` tasks, and is ignored on other types. Set to null to clear it.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.NotificationResolution? Resolution { get => _explicitNullValueResolution; set { _explicitNullValueResolution = value; AdditionalData?.Remove("resolution"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolution"); else _explicitNullProperties?.Remove("resolution"); } }
         private global::Soenneker.Close.OpenApiClient.Models.NotificationResolution? _explicitNullValueResolution = default!;
-        /// <summary>The text property</summary>
+        /// <summary>Description of the task. Only `lead` and `outgoing_call` tasks have text, and it can&apos;t be blank on `lead` tasks.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Text { get => _explicitNullValueText; set { _explicitNullValueText = value; AdditionalData?.Remove("text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text"); else _explicitNullProperties?.Remove("text"); } }
@@ -85,21 +85,21 @@ namespace Soenneker.Close.OpenApiClient.Models
         private string _explicitNullValueText = default!;
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotifications"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasks"/> and sets the default values.
         /// </summary>
-        public BulkUpdateNotifications()
+        public BulkUpdateTasks()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotifications"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasks"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotifications CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasks CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotifications(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasks(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -110,9 +110,9 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "assigned_to", n => { AssignedTo = n.GetStringValue(); } },
-                { "date", n => { Date = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotificationsDate>(global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotificationsDate.CreateFromDiscriminatorValue); } },
+                { "date", n => { Date = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasksDate>(global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasksDate.CreateFromDiscriminatorValue); } },
                 { "is_complete", n => { IsComplete = n.GetBoolValue(); } },
-                { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
+                { "_params", n => { Params = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasksParamsProperty>(global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasksParamsProperty.CreateFromDiscriminatorValue); } },
                 { "priority", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.TaskPriority>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValuePriority = default; _explicitNullProperties?.Remove("priority"); AdditionalData["priority"] = unknown; } else { Priority = parsed; AdditionalData.Remove("priority"); } } },
                 { "resolution", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.NotificationResolution>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueResolution = default; _explicitNullProperties?.Remove("resolution"); AdditionalData["resolution"] = unknown; } else { Resolution = parsed; AdditionalData.Remove("resolution"); } } },
                 { "text", n => { Text = n.GetStringValue(); } },
@@ -126,9 +126,9 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("assigned_to", AssignedTo);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkUpdateNotificationsDate>("date", Date);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasksDate>("date", Date);
             writer.WriteBoolValue("is_complete", IsComplete);
-            writer.WriteStringValue("organization_id", OrganizationId);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.BulkUpdateTasksParamsProperty>("_params", Params);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.TaskPriority>("priority", Priority);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.NotificationResolution>("resolution", Resolution);
             writer.WriteStringValue("text", Text);

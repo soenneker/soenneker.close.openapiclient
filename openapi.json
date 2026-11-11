@@ -4181,7 +4181,7 @@
             "in": "query",
             "name": "_limit",
             "required": false,
-            "description": "Number of results to return.",
+            "description": "Number of results to return. When `_fields` includes `transcripts`, larger values are treated as 10.",
             "schema": {
               "default": 100,
               "type": "integer",
@@ -21069,9 +21069,9 @@
                 {
                   "type": "null"
                 }
-              ],
-              "deprecated": true
-            }
+              ]
+            },
+            "deprecated": true
           },
           {
             "in": "query",
@@ -21088,9 +21088,9 @@
                 {
                   "type": "null"
                 }
-              ],
-              "deprecated": true
-            }
+              ]
+            },
+            "deprecated": true
           },
           {
             "in": "query",
@@ -27989,7 +27989,7 @@
           "tasks"
         ],
         "summary": "List or filter tasks",
-        "description": "The `view` parameter can be used to conveniently access the different task views. It accepts one of the following values:\n\n* `inbox`: Shows incomplete tasks up to the end of the user's day only (taking the time zone into account).\n* `future`: Shows incomplete tasks starting from the user's tomorrow only (taking the time zone into account).\n* `archive`: Shows complete tasks only.\n\nNote that a `view` value of `inbox` or `future` will override any `date__lt` or `date__gte` parameters included in the same request.\n\nThe `_order_by` field allows ordering by `date` or `date_created` (descending order by prepending a minus, e.g. `_order_by=-date`).",
+        "description": "List tasks that match the filters, newest first by default. `total_results` holds the number of matching tasks.\n\nWithout a `_type` or `_type__in` filter, only `lead` tasks are returned. Use `_type=all` to also return the other items in your Close inbox, such as incoming emails and missed calls. Use `view` for the inbox, future and archive views shown in Close.\n\nSet `format=ical` to get the tasks as an iCalendar feed instead of JSON.\n\nIf you don't have the \"View All Leads\" permission, results only include tasks on leads you can access. Filtering by your own `assigned_to` returns all of your tasks.",
         "parameters": [
           {
             "in": "query",
@@ -28016,6 +28016,7 @@
             "in": "query",
             "name": "assigned_to",
             "required": false,
+            "description": "Only return tasks assigned to this user, e.g. `user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA`. Returns 403 for another user if your role restricts which leads you can see.",
             "schema": {
               "title": "Assigned To",
               "default": null,
@@ -28033,12 +28034,12 @@
             "in": "query",
             "name": "format",
             "required": false,
+            "description": "Set to `ical` to get the tasks as an iCalendar (`text/calendar`) feed instead of JSON. Sending an `Accept: text/calendar` header does the same. The feed leaves out tasks with no due date.",
             "schema": {
-              "title": "Format",
               "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "$ref": "#/components/schemas/TaskListFormat"
                 },
                 {
                   "type": "null"
@@ -28050,6 +28051,7 @@
             "in": "query",
             "name": "id",
             "required": false,
+            "description": "Only return the task with this ID, e.g. `task_aRUZXCm9lMb2LwipTPhfFoFbCsUnaoQh1ncQ7WLnjlI`.",
             "schema": {
               "title": "ID",
               "default": null,
@@ -28067,6 +28069,7 @@
             "in": "query",
             "name": "id__in",
             "required": false,
+            "description": "Comma-separated list of task IDs. Only return these tasks.",
             "schema": {
               "title": "ID (In)",
               "default": null,
@@ -28084,23 +28087,17 @@
             "in": "query",
             "name": "is_complete",
             "required": false,
+            "description": "`true` to only return completed tasks, `false` to only return incomplete tasks.",
             "schema": {
               "title": "Is Complete",
-              "default": null,
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ]
+              "type": "boolean"
             }
           },
           {
             "in": "query",
             "name": "lead_id",
             "required": false,
+            "description": "Only return tasks on this lead, e.g. `lead_5LmpOyrMQdJSUlbNGBSGfK5XzcioIm7aC94PSQamQJc`.",
             "schema": {
               "title": "Lead ID",
               "default": null,
@@ -28118,12 +28115,12 @@
             "in": "query",
             "name": "_order_by",
             "required": false,
+            "description": "Field to sort by: `date`, `due_date`, `date_created` or `date_updated`. Prefix with `-` to sort in descending order, e.g. `-date`. Defaults to `-date_created`.",
             "schema": {
-              "title": "Order By",
               "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "$ref": "#/components/schemas/TaskOrderBy"
                 },
                 {
                   "type": "null"
@@ -28132,29 +28129,20 @@
             }
           },
           {
-            "$ref": "#/components/parameters/ActivityFilters_OrganizationIdParam"
-          },
-          {
             "in": "query",
             "name": "_type",
             "required": false,
+            "description": "Only return tasks of this type. Defaults to `lead` (tasks created on a lead) when neither `_type` nor `_type__in` is set. Use `all` to return every type.",
             "schema": {
               "title": "Type",
-              "default": null,
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ]
+              "$ref": "#/components/schemas/TaskTypeFilter"
             }
           },
           {
             "in": "query",
             "name": "_type__in",
             "required": false,
+            "description": "Comma-separated list of task types, e.g. `lead,outgoing_call`. Only return tasks of any of these types. Takes the same values as `_type`, except `all`.",
             "schema": {
               "title": "Type (In)",
               "default": null,
@@ -28172,12 +28160,12 @@
             "in": "query",
             "name": "view",
             "required": false,
+            "description": "Shortcut for a task view. `inbox` returns incomplete tasks due by the end of today, `future` returns incomplete tasks due from tomorrow on, and `archive` returns completed tasks. Today is based on your time zone. `inbox` overrides `is_complete` and `date__lt`, `future` overrides `is_complete` and `date__gte`, and `archive` overrides `is_complete`.",
             "schema": {
-              "title": "View",
               "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "$ref": "#/components/schemas/TaskView"
                 },
                 {
                   "type": "null"
@@ -28189,15 +28177,17 @@
             "in": "query",
             "name": "date",
             "required": false,
+            "description": "Only return tasks due at exactly this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.",
             "schema": {
               "title": "Date",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -28206,15 +28196,17 @@
             "in": "query",
             "name": "date__lt",
             "required": false,
+            "description": "Only return tasks due before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.",
             "schema": {
               "title": "Date (<)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -28223,15 +28215,17 @@
             "in": "query",
             "name": "date__lte",
             "required": false,
+            "description": "Only return tasks due on or before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.",
             "schema": {
               "title": "Date (<=)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -28240,15 +28234,17 @@
             "in": "query",
             "name": "date__gt",
             "required": false,
+            "description": "Only return tasks due after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.",
             "schema": {
               "title": "Date (>)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -28257,15 +28253,17 @@
             "in": "query",
             "name": "date__gte",
             "required": false,
+            "description": "Only return tasks due on or after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.",
             "schema": {
               "title": "Date (>=)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -28274,100 +28272,117 @@
             "in": "query",
             "name": "due_date",
             "required": false,
+            "description": "Deprecated: use `date` instead, which it matches.",
             "schema": {
               "title": "Due Date",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
-            }
+            },
+            "deprecated": true
           },
           {
             "in": "query",
             "name": "due_date__lt",
             "required": false,
+            "description": "Deprecated: use `date__lt` instead, which it matches.",
             "schema": {
               "title": "Due Date (<)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
-            }
+            },
+            "deprecated": true
           },
           {
             "in": "query",
             "name": "due_date__lte",
             "required": false,
+            "description": "Deprecated: use `date__lte` instead, which it matches.",
             "schema": {
               "title": "Due Date (<=)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
-            }
+            },
+            "deprecated": true
           },
           {
             "in": "query",
             "name": "due_date__gt",
             "required": false,
+            "description": "Deprecated: use `date__gt` instead, which it matches.",
             "schema": {
               "title": "Due Date (>)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
-            }
+            },
+            "deprecated": true
           },
           {
             "in": "query",
             "name": "due_date__gte",
             "required": false,
+            "description": "Deprecated: use `date__gte` instead, which it matches.",
             "schema": {
               "title": "Due Date (>=)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
-            }
+            },
+            "deprecated": true
           },
           {
             "in": "query",
             "name": "date_created__lt",
             "required": false,
+            "description": "Only return tasks created before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.",
             "schema": {
               "title": "Date Created (<)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -28376,15 +28391,17 @@
             "in": "query",
             "name": "date_created__lte",
             "required": false,
+            "description": "Only return tasks created on or before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.",
             "schema": {
               "title": "Date Created (<=)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -28393,15 +28410,17 @@
             "in": "query",
             "name": "date_created__gt",
             "required": false,
+            "description": "Only return tasks created after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.",
             "schema": {
               "title": "Date Created (>)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -28410,15 +28429,17 @@
             "in": "query",
             "name": "date_created__gte",
             "required": false,
+            "description": "Only return tasks created on or after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.",
             "schema": {
               "title": "Date Created (>=)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -28427,15 +28448,17 @@
             "in": "query",
             "name": "date_updated__lt",
             "required": false,
+            "description": "Only return tasks last updated before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.",
             "schema": {
               "title": "Date Updated (<)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -28444,15 +28467,17 @@
             "in": "query",
             "name": "date_updated__lte",
             "required": false,
+            "description": "Only return tasks last updated on or before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.",
             "schema": {
               "title": "Date Updated (<=)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -28461,15 +28486,17 @@
             "in": "query",
             "name": "date_updated__gt",
             "required": false,
+            "description": "Only return tasks last updated after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.",
             "schema": {
               "title": "Date Updated (>)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -28478,15 +28505,17 @@
             "in": "query",
             "name": "date_updated__gte",
             "required": false,
+            "description": "Only return tasks last updated on or after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.",
             "schema": {
               "title": "Date Updated (>=)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -28750,7 +28779,8 @@
                       "view": "future"
                     }
                   ],
-                  "has_more": false
+                  "has_more": false,
+                  "total_results": 2
                 }
               }
             },
@@ -28765,6 +28795,16 @@
           "403": {
             "$ref": "#/components/responses/Forbidden"
           },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            },
+            "description": "You aren't an active member of the organization."
+          },
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
           }
@@ -28776,7 +28816,7 @@
           "tasks"
         ],
         "summary": "Create a task",
-        "description": "Provide the type of task to be created in the `_type` field. Currently only tasks of type `lead` and `outgoing_call` can be created.",
+        "description": "Create a task. Set `_type` to `lead` for a task on a lead, or to `outgoing_call` for a task to call one of the lead's contacts. Other types of tasks can't be created. `_type` defaults to `lead`.\n\nClose emails the assignee about a new incomplete task, unless they're also its creator. Set `disable_notification` or `date_created` to skip the email. Returns 400 once the lead has more than 300 incomplete tasks.\n\nReturns 403 if the lead is one you can't see.",
         "parameters": [
           {
             "$ref": "#/components/parameters/FieldsParam"
@@ -28886,6 +28926,16 @@
           "403": {
             "$ref": "#/components/responses/Forbidden"
           },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            },
+            "description": "You aren't an active member of the organization, or the organization is inactive."
+          },
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
           }
@@ -28897,12 +28947,34 @@
           "tasks"
         ],
         "summary": "Bulk-update tasks",
-        "description": "Any of the filters of the GET endpoint may be used as query parameters or passed in the request body (see [Filter Parameters](https://developer.close.com/api/overview/filter-parameters)). For example:\n\n```json\n{\"_params\": {\"id__in\": \"task_A,task_B,task_C\"}, \"is_complete\": true}\n```\n\nOnly the `assigned_to`, `date` and `is_complete` fields may be updated.",
+        "description": "Apply the same changes to every task that matches the filters, and return how many tasks were updated. Takes the same filters as `GET /task/`, as query params or in the `_params` body key. The other body fields are the changes to make, e.g.:\n\n```json\n{\"_params\": {\"id__in\": \"task_A,task_B,task_C\"}, \"is_complete\": true}\n```\n\nOne call updates at most `_limit` tasks, and the response doesn't say whether more tasks matched. Repeat the call to update the rest. Returns 400 if `id__in` lists 1000 or more IDs.\n\nReturns 400 if some tasks couldn't be updated, with `count` set to the number that were, and the reasons in `errors`. Also returns 400 if any of the tasks is assigned to someone else and you don't have the permission to manage other users' tasks.",
         "parameters": [
+          {
+            "in": "query",
+            "name": "_limit",
+            "required": false,
+            "description": "Number of results to return.",
+            "schema": {
+              "default": 1000,
+              "type": "integer",
+              "maximum": 1000
+            }
+          },
+          {
+            "in": "query",
+            "name": "_skip",
+            "required": false,
+            "description": "Number of results to skip before returning, for pagination.",
+            "schema": {
+              "default": 0,
+              "type": "integer"
+            }
+          },
           {
             "in": "query",
             "name": "assigned_to",
             "required": false,
+            "description": "Only return tasks assigned to this user, e.g. `user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA`. Returns 403 for another user if your role restricts which leads you can see.",
             "schema": {
               "title": "Assigned To",
               "default": null,
@@ -28918,25 +28990,9 @@
           },
           {
             "in": "query",
-            "name": "format",
-            "required": false,
-            "schema": {
-              "title": "Format",
-              "default": null,
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            }
-          },
-          {
-            "in": "query",
             "name": "id",
             "required": false,
+            "description": "Only return the task with this ID, e.g. `task_aRUZXCm9lMb2LwipTPhfFoFbCsUnaoQh1ncQ7WLnjlI`.",
             "schema": {
               "title": "ID",
               "default": null,
@@ -28954,6 +29010,7 @@
             "in": "query",
             "name": "id__in",
             "required": false,
+            "description": "Comma-separated list of task IDs. Only return these tasks.",
             "schema": {
               "title": "ID (In)",
               "default": null,
@@ -28971,23 +29028,17 @@
             "in": "query",
             "name": "is_complete",
             "required": false,
+            "description": "`true` to only return completed tasks, `false` to only return incomplete tasks.",
             "schema": {
               "title": "Is Complete",
-              "default": null,
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ]
+              "type": "boolean"
             }
           },
           {
             "in": "query",
             "name": "lead_id",
             "required": false,
+            "description": "Only return tasks on this lead, e.g. `lead_5LmpOyrMQdJSUlbNGBSGfK5XzcioIm7aC94PSQamQJc`.",
             "schema": {
               "title": "Lead ID",
               "default": null,
@@ -29005,12 +29056,12 @@
             "in": "query",
             "name": "_order_by",
             "required": false,
+            "description": "Field to sort by: `date`, `due_date`, `date_created` or `date_updated`. Prefix with `-` to sort in descending order, e.g. `-date`. Defaults to `-date_created`.",
             "schema": {
-              "title": "Order By",
               "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "$ref": "#/components/schemas/TaskOrderBy"
                 },
                 {
                   "type": "null"
@@ -29019,29 +29070,20 @@
             }
           },
           {
-            "$ref": "#/components/parameters/ActivityFilters_OrganizationIdParam"
-          },
-          {
             "in": "query",
             "name": "_type",
             "required": false,
+            "description": "Only return tasks of this type. Defaults to `lead` (tasks created on a lead) when neither `_type` nor `_type__in` is set. Use `all` to return every type.",
             "schema": {
               "title": "Type",
-              "default": null,
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ]
+              "$ref": "#/components/schemas/TaskTypeFilter"
             }
           },
           {
             "in": "query",
             "name": "_type__in",
             "required": false,
+            "description": "Comma-separated list of task types, e.g. `lead,outgoing_call`. Only return tasks of any of these types. Takes the same values as `_type`, except `all`.",
             "schema": {
               "title": "Type (In)",
               "default": null,
@@ -29059,12 +29101,12 @@
             "in": "query",
             "name": "view",
             "required": false,
+            "description": "Shortcut for a task view. `inbox` returns incomplete tasks due by the end of today, `future` returns incomplete tasks due from tomorrow on, and `archive` returns completed tasks. Today is based on your time zone. `inbox` overrides `is_complete` and `date__lt`, `future` overrides `is_complete` and `date__gte`, and `archive` overrides `is_complete`.",
             "schema": {
-              "title": "View",
               "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "$ref": "#/components/schemas/TaskView"
                 },
                 {
                   "type": "null"
@@ -29076,15 +29118,17 @@
             "in": "query",
             "name": "date",
             "required": false,
+            "description": "Only return tasks due at exactly this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.",
             "schema": {
               "title": "Date",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -29093,15 +29137,17 @@
             "in": "query",
             "name": "date__lt",
             "required": false,
+            "description": "Only return tasks due before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.",
             "schema": {
               "title": "Date (<)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -29110,15 +29156,17 @@
             "in": "query",
             "name": "date__lte",
             "required": false,
+            "description": "Only return tasks due on or before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.",
             "schema": {
               "title": "Date (<=)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -29127,15 +29175,17 @@
             "in": "query",
             "name": "date__gt",
             "required": false,
+            "description": "Only return tasks due after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.",
             "schema": {
               "title": "Date (>)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -29144,15 +29194,17 @@
             "in": "query",
             "name": "date__gte",
             "required": false,
+            "description": "Only return tasks due on or after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`. Values without a UTC offset are treated as UTC.",
             "schema": {
               "title": "Date (>=)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -29161,100 +29213,117 @@
             "in": "query",
             "name": "due_date",
             "required": false,
+            "description": "Deprecated: use `date` instead, which it matches.",
             "schema": {
               "title": "Due Date",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
-            }
+            },
+            "deprecated": true
           },
           {
             "in": "query",
             "name": "due_date__lt",
             "required": false,
+            "description": "Deprecated: use `date__lt` instead, which it matches.",
             "schema": {
               "title": "Due Date (<)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
-            }
+            },
+            "deprecated": true
           },
           {
             "in": "query",
             "name": "due_date__lte",
             "required": false,
+            "description": "Deprecated: use `date__lte` instead, which it matches.",
             "schema": {
               "title": "Due Date (<=)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
-            }
+            },
+            "deprecated": true
           },
           {
             "in": "query",
             "name": "due_date__gt",
             "required": false,
+            "description": "Deprecated: use `date__gt` instead, which it matches.",
             "schema": {
               "title": "Due Date (>)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
-            }
+            },
+            "deprecated": true
           },
           {
             "in": "query",
             "name": "due_date__gte",
             "required": false,
+            "description": "Deprecated: use `date__gte` instead, which it matches.",
             "schema": {
               "title": "Due Date (>=)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
-            }
+            },
+            "deprecated": true
           },
           {
             "in": "query",
             "name": "date_created__lt",
             "required": false,
+            "description": "Only return tasks created before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.",
             "schema": {
               "title": "Date Created (<)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -29263,15 +29332,17 @@
             "in": "query",
             "name": "date_created__lte",
             "required": false,
+            "description": "Only return tasks created on or before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.",
             "schema": {
               "title": "Date Created (<=)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -29280,15 +29351,17 @@
             "in": "query",
             "name": "date_created__gt",
             "required": false,
+            "description": "Only return tasks created after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.",
             "schema": {
               "title": "Date Created (>)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -29297,15 +29370,17 @@
             "in": "query",
             "name": "date_created__gte",
             "required": false,
+            "description": "Only return tasks created on or after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.",
             "schema": {
               "title": "Date Created (>=)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -29314,15 +29389,17 @@
             "in": "query",
             "name": "date_updated__lt",
             "required": false,
+            "description": "Only return tasks last updated before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.",
             "schema": {
               "title": "Date Updated (<)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -29331,15 +29408,17 @@
             "in": "query",
             "name": "date_updated__lte",
             "required": false,
+            "description": "Only return tasks last updated on or before this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.",
             "schema": {
               "title": "Date Updated (<=)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -29348,15 +29427,17 @@
             "in": "query",
             "name": "date_updated__gt",
             "required": false,
+            "description": "Only return tasks last updated after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.",
             "schema": {
               "title": "Date Updated (>)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
@@ -29365,31 +29446,48 @@
             "in": "query",
             "name": "date_updated__gte",
             "required": false,
+            "description": "Only return tasks last updated on or after this date or time, in ISO 8601, e.g. `2024-01-31` or `2024-01-31T09:00:00Z`.",
             "schema": {
               "title": "Date Updated (>=)",
-              "default": null,
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date"
                 },
                 {
-                  "type": "null"
+                  "type": "string",
+                  "format": "date-time"
                 }
               ]
             }
-          },
-          {
-            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "requestBody": {
           "content": {
             "application/json": {
-              "example": {
-                "is_complete": true
+              "examples": {
+                "complete_by_id": {
+                  "summary": "Complete tasks by ID",
+                  "value": {
+                    "_params": {
+                      "id__in": "task_aRUZXCm9lMb2LwipTPhfFoFbCsUnaoQh1ncQ7WLnjlI,task_bXUZYDn0mNc3MxwiUQigGpGcDtVobpRi2odR8XMokZJ"
+                    },
+                    "is_complete": true
+                  }
+                },
+                "reassign_lead_tasks": {
+                  "summary": "Reassign a lead's incomplete tasks",
+                  "value": {
+                    "_params": {
+                      "is_complete": "false",
+                      "lead_id": "lead_5LmpOyrMQdJSUlbNGBSGfK5XzcioIm7aC94PSQamQJc"
+                    },
+                    "assigned_to": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                  }
+                }
               },
               "schema": {
-                "$ref": "#/components/schemas/BulkUpdateNotifications"
+                "$ref": "#/components/schemas/BulkUpdateTasks"
               }
             }
           },
@@ -29399,8 +29497,22 @@
           "200": {
             "content": {
               "application/json": {
-                "example": {
-                  "ok": true
+                "examples": {
+                  "complete_by_id": {
+                    "summary": "Complete tasks by ID",
+                    "value": {
+                      "count": 2
+                    }
+                  },
+                  "reassign_lead_tasks": {
+                    "summary": "Reassign a lead's incomplete tasks",
+                    "value": {
+                      "count": 3
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/BulkUpdateTasksResult"
                 }
               }
             },
@@ -29415,6 +29527,16 @@
           "403": {
             "$ref": "#/components/responses/Forbidden"
           },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            },
+            "description": "You aren't an active member of the organization."
+          },
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
           }
@@ -29428,11 +29550,13 @@
           "tasks"
         ],
         "summary": "Fetch a task's details",
+        "description": "Fetch a single task. Returns 403 if the task is on a lead you can't see, and 404 if no task has this ID.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the task, e.g. `task_aRUZXCm9lMb2LwipTPhfFoFbCsUnaoQh1ncQ7WLnjlI`.",
             "schema": {
               "type": "string"
             }
@@ -29495,12 +29619,13 @@
           "tasks"
         ],
         "summary": "Update a task",
-        "description": "The `assigned_to`, `date` (either a date or a date-time), and `is_complete` fields may be updated on all tasks. If the task type is `lead`, the `text` field may also be modified.",
+        "description": "Update a task. Only the fields you send are changed.\n\n`assigned_to`, `date` and `is_complete` can be updated on every type of task. The other fields only apply to some types, as their descriptions say. Sending `text`, `priority`, `lead_id` or `contact_id` for a type that doesn't support it returns 400. The other fields are ignored.\n\nReturns 403 if the task is on a lead you can't see, or if it's assigned to someone else and you don't have the permission to manage other users' tasks.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the task, e.g. `task_aRUZXCm9lMb2LwipTPhfFoFbCsUnaoQh1ncQ7WLnjlI`.",
             "schema": {
               "type": "string"
             }
@@ -29512,11 +29637,23 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "example": {
-                "is_complete": false
+              "examples": {
+                "default": {
+                  "summary": "Complete a task",
+                  "value": {
+                    "is_complete": true
+                  }
+                },
+                "reschedule": {
+                  "summary": "Reschedule and reassign a task",
+                  "value": {
+                    "assigned_to": "user_K3lmPqRstUvWxYz0aBcDeFgHiJkLmNoPqRsTuVwXyZ1",
+                    "date": "2015-03-02T15:00:00+00:00"
+                  }
+                }
               },
               "schema": {
-                "$ref": "#/components/schemas/UpdateNotification"
+                "$ref": "#/components/schemas/UpdateTask"
               }
             }
           },
@@ -29526,28 +29663,59 @@
           "200": {
             "content": {
               "application/json": {
-                "example": {
-                  "_type": "lead",
-                  "assigned_to": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "assigned_to_name": "John Doe",
-                  "contact_id": null,
-                  "contact_name": null,
-                  "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "created_by_name": "John Doe",
-                  "date": "2013-02-06",
-                  "date_created": "2015-02-08T20:30:54.314000+00:00",
-                  "date_updated": "2015-02-26T19:11:36.128000+00:00",
-                  "id": "task_aRUZXCm9lMb2LwipTPhfFoFbCsUnaoQh1ncQ7WLnjlI",
-                  "is_complete": true,
-                  "is_dateless": false,
-                  "lead_id": "lead_5LmpOyrMQdJSUlbNGBSGfK5XzcioIm7aC94PSQamQJc",
-                  "lead_name": "Close",
-                  "object_id": null,
-                  "object_type": null,
-                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                  "text": "Connect with Account Manager",
-                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "updated_by_name": "John Doe"
+                "examples": {
+                  "default": {
+                    "summary": "Complete a task",
+                    "value": {
+                      "_type": "lead",
+                      "assigned_to": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "assigned_to_name": "John Doe",
+                      "contact_id": null,
+                      "contact_name": null,
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_name": "John Doe",
+                      "date": "2013-02-06",
+                      "date_created": "2015-02-08T20:30:54.314000+00:00",
+                      "date_updated": "2015-02-26T19:11:36.128000+00:00",
+                      "id": "task_aRUZXCm9lMb2LwipTPhfFoFbCsUnaoQh1ncQ7WLnjlI",
+                      "is_complete": true,
+                      "is_dateless": false,
+                      "lead_id": "lead_5LmpOyrMQdJSUlbNGBSGfK5XzcioIm7aC94PSQamQJc",
+                      "lead_name": "Close",
+                      "object_id": null,
+                      "object_type": null,
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "text": "Connect with Account Manager",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_name": "John Doe"
+                    }
+                  },
+                  "reschedule": {
+                    "summary": "Reschedule and reassign a task",
+                    "value": {
+                      "_type": "lead",
+                      "assigned_to": "user_K3lmPqRstUvWxYz0aBcDeFgHiJkLmNoPqRsTuVwXyZ1",
+                      "assigned_to_name": "Jane Smith",
+                      "contact_id": null,
+                      "contact_name": null,
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_name": "John Doe",
+                      "date": "2015-03-02T15:00:00+00:00",
+                      "date_created": "2015-02-08T20:30:54.314000+00:00",
+                      "date_updated": "2015-02-26T19:11:36.128000+00:00",
+                      "id": "task_aRUZXCm9lMb2LwipTPhfFoFbCsUnaoQh1ncQ7WLnjlI",
+                      "is_complete": false,
+                      "is_dateless": false,
+                      "lead_id": "lead_5LmpOyrMQdJSUlbNGBSGfK5XzcioIm7aC94PSQamQJc",
+                      "lead_name": "Close",
+                      "object_id": null,
+                      "object_type": null,
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "text": "Connect with Account Manager",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_name": "John Doe"
+                    }
+                  }
                 }
               }
             },
@@ -29576,11 +29744,13 @@
           "tasks"
         ],
         "summary": "Delete a task",
+        "description": "Delete a task. Returns an empty object on success.\n\nDeleting your own tasks and deleting other users' tasks need separate permissions. Returns 400 if you don't have the one this task needs, 403 if the task is on a lead you can't see, and 404 if no task has this ID.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the task, e.g. `task_aRUZXCm9lMb2LwipTPhfFoFbCsUnaoQh1ncQ7WLnjlI`.",
             "schema": {
               "type": "string"
             }
@@ -29588,6 +29758,11 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -33365,16 +33540,33 @@
           "contact"
         ]
       },
-      "BulkUpdateNotifications": {
-        "title": "BulkUpdateNotifications",
+      "BulkUpdateTasks": {
+        "title": "BulkUpdateTasks",
         "type": "object",
         "properties": {
+          "_params": {
+            "title": "Params",
+            "description": "Filters that select the tasks to update, as an alternative to query params. Takes the same filters as `GET /task/`, e.g. `{\"id__in\": \"task_A,task_B\"}`. Values must be strings or integers. Other values are ignored.",
+            "type": "object",
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          },
           "assigned_to": {
             "title": "Assigned To",
+            "description": "ID of the user to assign the task to. For an incomplete `lead` task, Close emails the new assignee, unless that's you. On an `outgoing_call` task, this also removes the voice agent (`agent_config_id`).",
             "type": "string"
           },
           "date": {
             "title": "Date",
+            "description": "When the task is due, in ISO 8601. A date, e.g. `2024-01-31`, makes the task due that day. A date and time, e.g. `2024-01-31T09:00:00Z`, makes it due at that time.",
             "anyOf": [
               {
                 "type": "string",
@@ -33388,16 +33580,15 @@
           },
           "is_complete": {
             "title": "Is Complete",
+            "description": "`true` to complete the task, `false` to reopen it.",
             "type": "boolean"
           },
-          "organization_id": {
-            "title": "Organization ID",
-            "type": "string"
-          },
           "priority": {
+            "description": "Priority of the task. Only `lead` and `outgoing_call` tasks have a priority.",
             "$ref": "#/components/schemas/TaskPriority"
           },
           "resolution": {
+            "description": "How the task was closed without being done. Only applies to `outgoing_call`, `draft_email` and `draft_sms` tasks, and is ignored on other types. Set to null to clear it.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/NotificationResolution"
@@ -33409,9 +33600,24 @@
           },
           "text": {
             "title": "Text",
+            "description": "Description of the task. Only `lead` and `outgoing_call` tasks have text, and it can't be blank on `lead` tasks.",
             "type": "string"
           }
         }
+      },
+      "BulkUpdateTasksResult": {
+        "title": "BulkUpdateTasksResult",
+        "type": "object",
+        "properties": {
+          "count": {
+            "title": "Count",
+            "description": "Number of tasks that were updated.",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "count"
+        ]
       },
       "CalendarPeriod": {
         "title": "CalendarPeriod",
@@ -34856,12 +35062,14 @@
         "properties": {
           "_type": {
             "title": "Type",
+            "description": "`outgoing_call` creates a task to call a contact.",
             "type": "string",
             "default": "outgoing_call",
             "const": "outgoing_call"
           },
           "agent_config_id": {
             "title": "Agent Config ID",
+            "description": "ID of the voice agent to make the call, instead of a user. When set without `assigned_to`, the task isn't assigned to a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -34873,6 +35081,7 @@
           },
           "assigned_to": {
             "title": "Assigned To",
+            "description": "ID of the user to make the call. Defaults to you, unless `agent_config_id` is set.",
             "anyOf": [
               {
                 "type": "string"
@@ -34884,14 +35093,17 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the contact to call. Must be on the lead.",
             "type": "string"
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user to record as the task's creator. Defaults to you. Must be a member of your organization.",
             "type": "string"
           },
           "date": {
             "title": "Date",
+            "description": "When the task is due, in ISO 8601. A date, e.g. `2024-01-31`, makes the task due that day. A date and time, e.g. `2024-01-31T09:00:00Z`, makes it due at that time. Defaults to today in your time zone.",
             "anyOf": [
               {
                 "type": "string",
@@ -34905,22 +35117,22 @@
           },
           "is_complete": {
             "title": "Is Complete",
+            "description": "`true` to create the task already completed. Defaults to `false`.",
             "type": "boolean"
           },
           "lead_id": {
             "title": "Lead ID",
-            "type": "string"
-          },
-          "organization_id": {
-            "title": "Organization ID",
+            "description": "ID of the lead the task is for.",
             "type": "string"
           },
           "priority": {
             "title": "Priority",
+            "description": "Priority of the task. Defaults to `medium`.",
             "$ref": "#/components/schemas/TaskPriority"
           },
           "text": {
             "title": "Text",
+            "description": "Notes for the call.",
             "anyOf": [
               {
                 "type": "string"
@@ -35261,6 +35473,11 @@
             ],
             "format": "date-time"
           },
+          "date_scheduled": {
+            "description": "When to send the message. Required when `status` is `scheduled`, and ignored otherwise.",
+            "type": "string",
+            "format": "date-time"
+          },
           "email_account_id": {
             "type": [
               "null",
@@ -35325,6 +35542,12 @@
               "null",
               "string"
             ]
+          },
+          "send_in": {
+            "description": "Seconds to delay sending, to allow undo. Only used when `status` is `outbox`.",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 60
           },
           "sender": {
             "type": [
@@ -35865,12 +36088,14 @@
         "properties": {
           "_type": {
             "title": "Type",
+            "description": "`lead` creates a task on a lead. Defaults to `lead` when left out.",
             "type": "string",
             "default": "lead",
             "const": "lead"
           },
           "assigned_to": {
             "title": "Assigned To",
+            "description": "ID of the user to assign the task to. Defaults to you.",
             "anyOf": [
               {
                 "type": "string"
@@ -35882,6 +36107,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of a contact on the lead that the task is about.",
             "anyOf": [
               {
                 "type": "string"
@@ -35893,10 +36119,12 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user to record as the task's creator. Defaults to you. Must be a member of your organization.",
             "type": "string"
           },
           "date": {
             "title": "Date",
+            "description": "When the task is due, in ISO 8601. A date, e.g. `2024-01-31`, makes the task due that day. A date and time, e.g. `2024-01-31T09:00:00Z`, makes it due at that time. Defaults to today in your time zone.",
             "anyOf": [
               {
                 "type": "string",
@@ -35910,6 +36138,7 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the task was created, for importing tasks from another system. Defaults to now. Setting it skips the email to the assignee.",
             "anyOf": [
               {
                 "type": "string",
@@ -35923,11 +36152,14 @@
           },
           "disable_notification": {
             "title": "Disable Notification",
+            "description": "`true` to skip emailing the assignee. Close emails the assignee about a new incomplete task, unless they're also its creator.",
             "type": "boolean",
             "default": false
           },
           "due_date": {
             "title": "Due Date",
+            "description": "Deprecated: use `date` instead. Only used when `date` is left out.",
+            "deprecated": true,
             "anyOf": [
               {
                 "type": "string",
@@ -35941,26 +36173,27 @@
           },
           "is_complete": {
             "title": "Is Complete",
+            "description": "`true` to create the task already completed. Defaults to `false`.",
             "type": "boolean"
           },
           "is_dateless": {
             "title": "Is Dateless",
+            "description": "`true` to create the task without a due date. Defaults to `false`.",
             "type": "boolean"
           },
           "lead_id": {
             "title": "Lead ID",
-            "type": "string"
-          },
-          "organization_id": {
-            "title": "Organization ID",
+            "description": "ID of the lead the task is for.",
             "type": "string"
           },
           "priority": {
             "title": "Priority",
+            "description": "Priority of the task. Defaults to `medium`.",
             "$ref": "#/components/schemas/TaskPriority"
           },
           "text": {
             "title": "Text",
+            "description": "Description of the task. Can't be blank.",
             "type": "string"
           }
         },
@@ -36686,6 +36919,11 @@
             ],
             "format": "date-time"
           },
+          "date_scheduled": {
+            "description": "When to send the message. Required when `status` is `scheduled`, and ignored otherwise.",
+            "type": "string",
+            "format": "date-time"
+          },
           "direction": {
             "type": [
               "null",
@@ -36722,6 +36960,12 @@
               "null",
               "string"
             ]
+          },
+          "send_in": {
+            "description": "Seconds to delay sending, to allow undo. Only used when `status` is `outbox`.",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 60
           },
           "source": {
             "type": [
@@ -47130,11 +47374,20 @@
       },
       "NotificationResolution": {
         "title": "NotificationResolution",
+        "description": "How a task was closed without being done.",
         "type": "string",
         "enum": [
           "abandoned",
           "skipped"
-        ]
+        ],
+        "x-fern-enum": {
+          "abandoned": {
+            "description": "Close closed the task because something it depends on was deleted, e.g. the workflow that created it."
+          },
+          "skipped": {
+            "description": "A user skipped the task, e.g. marked a draft email task as done without sending the email."
+          }
+        }
       },
       "NowMoment": {
         "title": "NowMoment",
@@ -53334,6 +53587,19 @@
           "view"
         ]
       },
+      "TaskListFormat": {
+        "title": "TaskListFormat",
+        "description": "Format to return tasks in, instead of JSON.",
+        "type": "string",
+        "enum": [
+          "ical"
+        ],
+        "x-fern-enum": {
+          "ical": {
+            "description": "An iCalendar (`text/calendar`) feed, e.g. to subscribe to tasks from a calendar app."
+          }
+        }
+      },
       "TaskMissedCallSearchField": {
         "title": "TaskMissedCallSearchField",
         "description": "A built-in field of `task.missed_call` objects.",
@@ -53499,6 +53765,47 @@
           "view"
         ]
       },
+      "TaskOrderBy": {
+        "title": "TaskOrderBy",
+        "description": "Field to sort tasks by. A `-` prefix sorts in descending order.",
+        "type": "string",
+        "enum": [
+          "date",
+          "-date",
+          "due_date",
+          "-due_date",
+          "date_created",
+          "-date_created",
+          "date_updated",
+          "-date_updated"
+        ],
+        "x-fern-enum": {
+          "-date": {
+            "description": "Due date, latest first."
+          },
+          "-date_created": {
+            "description": "Creation time, newest first. The default."
+          },
+          "-date_updated": {
+            "description": "Last update time, newest first."
+          },
+          "-due_date": {
+            "description": "Deprecated: same as `-date`."
+          },
+          "date": {
+            "description": "Due date, earliest first."
+          },
+          "date_created": {
+            "description": "Creation time, oldest first."
+          },
+          "date_updated": {
+            "description": "Last update time, oldest first."
+          },
+          "due_date": {
+            "description": "Deprecated: same as `date`."
+          }
+        }
+      },
       "TaskOutboundCallSearchField": {
         "title": "TaskOutboundCallSearchField",
         "description": "A built-in field of `task.outbound_call` objects.",
@@ -53562,11 +53869,110 @@
       },
       "TaskPriority": {
         "title": "TaskPriority",
+        "description": "Priority of a task.",
         "type": "string",
         "enum": [
           "high",
           "medium"
-        ]
+        ],
+        "x-fern-enum": {
+          "high": {
+            "description": "High priority."
+          },
+          "medium": {
+            "description": "Normal priority. The default for new tasks."
+          }
+        }
+      },
+      "TaskTypeFilter": {
+        "title": "TaskTypeFilter",
+        "description": "Type of task.",
+        "type": "string",
+        "enum": [
+          "all",
+          "lead",
+          "outgoing_call",
+          "draft_email",
+          "draft_sms",
+          "incoming_email",
+          "lead_suggestion_incoming_email",
+          "incoming_sms",
+          "incoming_whatsapp_message",
+          "missed_call",
+          "voicemail",
+          "opportunity_due",
+          "answered_detached_call",
+          "email_followup",
+          "opportunities_awaiting_action_notification"
+        ],
+        "x-fern-enum": {
+          "all": {
+            "description": "Every type of task."
+          },
+          "answered_detached_call": {
+            "description": "An answered call from a number that isn't on any lead, to create a lead from."
+          },
+          "draft_email": {
+            "description": "An email draft waiting to be reviewed and sent."
+          },
+          "draft_sms": {
+            "description": "An SMS draft waiting to be reviewed and sent."
+          },
+          "email_followup": {
+            "description": "A reminder to follow up on an email that got no reply."
+          },
+          "incoming_email": {
+            "description": "An email received from a contact."
+          },
+          "incoming_sms": {
+            "description": "An SMS received on your Close number."
+          },
+          "incoming_whatsapp_message": {
+            "description": "A WhatsApp message received."
+          },
+          "lead": {
+            "description": "A task on a lead, created by a user or a workflow."
+          },
+          "lead_suggestion_incoming_email": {
+            "description": "An email from an address that isn't on any lead, to create a lead from."
+          },
+          "missed_call": {
+            "description": "A call to your Close number that wasn't answered."
+          },
+          "opportunities_awaiting_action_notification": {
+            "description": "Stalled opportunities, with suggested actions to move them forward."
+          },
+          "opportunity_due": {
+            "description": "An opportunity past its expected close date."
+          },
+          "outgoing_call": {
+            "description": "A task to call a contact."
+          },
+          "voicemail": {
+            "description": "A voicemail left for you."
+          }
+        }
+      },
+      "TaskView": {
+        "title": "TaskView",
+        "description": "A shortcut for one of the task views shown in Close.",
+        "type": "string",
+        "enum": [
+          "inbox",
+          "future",
+          "archive"
+        ],
+        "x-fern-enum": {
+          "archive": {
+            "description": "Completed tasks."
+          },
+          "future": {
+            "description": "Incomplete tasks due from tomorrow on."
+          },
+          "inbox": {
+            "description": "Incomplete tasks due by the end of today."
+          }
+        }
       },
       "TaskVoicemailSearchField": {
         "title": "TaskVoicemailSearchField",
@@ -54163,6 +54569,11 @@
               "string"
             ]
           },
+          "date_scheduled": {
+            "description": "When to send the message. Required when `status` is `scheduled`, and ignored otherwise.",
+            "type": "string",
+            "format": "date-time"
+          },
           "email_account_id": {
             "type": [
               "null",
@@ -54218,6 +54629,12 @@
                 "opened_at"
               ]
             }
+          },
+          "send_in": {
+            "description": "Seconds to delay sending, to allow undo. Only used when `status` is `outbox`.",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 60
           },
           "sender": {
             "type": [
@@ -54779,101 +55196,6 @@
           }
         }
       },
-      "UpdateNotification": {
-        "title": "UpdateNotification",
-        "type": "object",
-        "properties": {
-          "agent_config_id": {
-            "title": "Agent Config ID",
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "assigned_to": {
-            "title": "Assigned To",
-            "type": "string"
-          },
-          "contact_id": {
-            "title": "Contact ID",
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "created_by": {
-            "title": "Created By",
-            "type": "string"
-          },
-          "date": {
-            "title": "Date",
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "date-time"
-              },
-              {
-                "type": "string",
-                "format": "date"
-              }
-            ]
-          },
-          "due_date": {
-            "title": "Due Date",
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "date-time"
-              },
-              {
-                "type": "string",
-                "format": "date"
-              }
-            ]
-          },
-          "is_complete": {
-            "title": "Is Complete",
-            "type": "boolean"
-          },
-          "is_dateless": {
-            "title": "Is Dateless",
-            "type": "boolean"
-          },
-          "lead_id": {
-            "title": "Lead ID",
-            "type": "string"
-          },
-          "organization_id": {
-            "title": "Organization ID",
-            "type": "string"
-          },
-          "priority": {
-            "$ref": "#/components/schemas/TaskPriority"
-          },
-          "resolution": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/NotificationResolution"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "text": {
-            "title": "Text",
-            "type": "string"
-          }
-        }
-      },
       "UpdateOpportunity": {
         "title": "UpdateOpportunity",
         "type": "object",
@@ -55290,6 +55612,11 @@
               "string"
             ]
           },
+          "date_scheduled": {
+            "description": "When to send the message. Required when `status` is `scheduled`, and ignored otherwise.",
+            "type": "string",
+            "format": "date-time"
+          },
           "lead_id": {
             "type": [
               "null",
@@ -55309,6 +55636,12 @@
               "null",
               "string"
             ]
+          },
+          "send_in": {
+            "description": "Seconds to delay sending, to allow undo. Only used when `status` is `outbox`.",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 60
           },
           "status": {
             "type": "string",
@@ -55412,6 +55745,105 @@
           "plural",
           "singular"
         ]
+      },
+      "UpdateTask": {
+        "title": "UpdateTask",
+        "type": "object",
+        "properties": {
+          "agent_config_id": {
+            "title": "Agent Config ID",
+            "description": "ID of the voice agent to make the call, instead of a user. Only applies to `outgoing_call` tasks, and can't be set together with `assigned_to`. To remove the voice agent, set this to null and set `assigned_to`.",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "assigned_to": {
+            "title": "Assigned To",
+            "description": "ID of the user to assign the task to. For an incomplete `lead` task, Close emails the new assignee, unless that's you. On an `outgoing_call` task, this also removes the voice agent (`agent_config_id`).",
+            "type": "string"
+          },
+          "contact_id": {
+            "title": "Contact ID",
+            "description": "ID of a contact on the task's lead. Only `lead` and `outgoing_call` tasks have a contact. Set to null to remove it.",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "date": {
+            "title": "Date",
+            "description": "When the task is due, in ISO 8601. A date, e.g. `2024-01-31`, makes the task due that day. A date and time, e.g. `2024-01-31T09:00:00Z`, makes it due at that time.",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "string",
+                "format": "date"
+              }
+            ]
+          },
+          "due_date": {
+            "title": "Due Date",
+            "description": "Deprecated: use `date` instead.",
+            "deprecated": true,
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "string",
+                "format": "date"
+              }
+            ]
+          },
+          "is_complete": {
+            "title": "Is Complete",
+            "description": "`true` to complete the task, `false` to reopen it.",
+            "type": "boolean"
+          },
+          "is_dateless": {
+            "title": "Is Dateless",
+            "description": "`true` if the task has no due date. Only applies to `lead` tasks, and is ignored on other types.",
+            "type": "boolean"
+          },
+          "lead_id": {
+            "title": "Lead ID",
+            "description": "ID of the lead to link the task to. Only `missed_call`, `incoming_sms`, `voicemail` and `answered_detached_call` tasks can change their lead. This also moves the related call or message to the lead.",
+            "type": "string"
+          },
+          "priority": {
+            "description": "Priority of the task. Only `lead` and `outgoing_call` tasks have a priority.",
+            "$ref": "#/components/schemas/TaskPriority"
+          },
+          "resolution": {
+            "description": "How the task was closed without being done. Only applies to `outgoing_call`, `draft_email` and `draft_sms` tasks, and is ignored on other types. Set to null to clear it.",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/NotificationResolution"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "text": {
+            "title": "Text",
+            "description": "Description of the task. Only `lead` and `outgoing_call` tasks have text, and it can't be blank on `lead` tasks.",
+            "type": "string"
+          }
+        }
       },
       "UpdateWebhook": {
         "title": "UpdateWebhook",

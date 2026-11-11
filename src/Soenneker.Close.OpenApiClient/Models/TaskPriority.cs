@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>Priority of the task. Defaults to `medium`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum TaskPriority
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "high")]
         #pragma warning disable CS1591
