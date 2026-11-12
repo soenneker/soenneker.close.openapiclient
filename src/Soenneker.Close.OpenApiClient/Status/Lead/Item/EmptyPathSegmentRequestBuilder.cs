@@ -36,7 +36,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Lead.Item
         /// <summary>
         /// Delete a lead status. Returns an empty object on success.Returns 400 if any leads still have this status, so move them to another status first. Also returns 400 if this is the organization&apos;s last lead status. Requires the Manage Customizations permission, otherwise returns 403.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.LeadStatusesDelete200ResponseSchema"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.EmptyResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.BadRequestResponseError">When receiving a 400 status code</exception>
@@ -46,11 +46,11 @@ namespace Soenneker.Close.OpenApiClient.Status.Lead.Item
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.LeadStatusesDelete200ResponseSchema?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.EmptyResponse?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.LeadStatusesDelete200ResponseSchema> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.EmptyResponse> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
@@ -64,7 +64,7 @@ namespace Soenneker.Close.OpenApiClient.Status.Lead.Item
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.LeadStatusesDelete200ResponseSchema>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.LeadStatusesDelete200ResponseSchema.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.EmptyResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.EmptyResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Fetch a single lead status by its ID or its label. The `id` path param is matched against status IDs first, then against labels, ignoring case in both. Returns 404 if no status matches.

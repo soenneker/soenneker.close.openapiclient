@@ -1207,6 +1207,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -1898,6 +1905,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -2607,6 +2621,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -3345,6 +3366,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -3681,6 +3709,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -3930,6 +3965,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -4653,6 +4695,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -5158,6 +5207,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -5645,6 +5701,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -5964,6 +6027,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -6340,6 +6410,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -6590,6 +6667,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -7061,6 +7145,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -10207,6 +10298,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -10888,6 +10986,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -11203,6 +11308,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -11870,6 +11982,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -12164,6 +12283,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -12476,6 +12602,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -17351,6 +17484,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -18338,6 +18478,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -18977,6 +19124,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -20329,6 +20483,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -20984,6 +21145,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -21595,6 +21763,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -24147,6 +24322,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -24665,6 +24847,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -25895,6 +26084,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -26246,6 +26442,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -27587,7 +27790,10 @@
           "200": {
             "content": {
               "application/json": {
-                "example": {}
+                "example": {},
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
               }
             },
             "description": "Successful response"
@@ -27959,7 +28165,10 @@
           "200": {
             "content": {
               "application/json": {
-                "example": {}
+                "example": {},
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
               }
             },
             "description": "Successful response"
@@ -29760,7 +29969,10 @@
           "200": {
             "content": {
               "application/json": {
-                "example": {}
+                "example": {},
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
               }
             },
             "description": "Successful response"
@@ -30600,6 +30812,13 @@
         ],
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "400": {
@@ -41162,6 +41381,13 @@
           "given_at",
           "rating"
         ]
+      },
+      "EmptyResponse": {
+        "title": "EmptyResponse",
+        "description": "An empty object.\n\nReturned on success by endpoints with nothing else to return, e.g. deletes.",
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
       },
       "ErrorMessage": {
         "description": "Error with a message.",
@@ -53781,27 +54007,35 @@
         ],
         "x-fern-enum": {
           "-date": {
+            "name": "DateDescending",
             "description": "Due date, latest first."
           },
           "-date_created": {
+            "name": "DateCreatedDescending",
             "description": "Creation time, newest first. The default."
           },
           "-date_updated": {
+            "name": "DateUpdatedDescending",
             "description": "Last update time, newest first."
           },
           "-due_date": {
+            "name": "DueDateDescending",
             "description": "Deprecated: same as `-date`."
           },
           "date": {
+            "name": "Date",
             "description": "Due date, earliest first."
           },
           "date_created": {
+            "name": "DateCreated",
             "description": "Creation time, oldest first."
           },
           "date_updated": {
+            "name": "DateUpdated",
             "description": "Last update time, oldest first."
           },
           "due_date": {
+            "name": "DueDate",
             "description": "Deprecated: same as `date`."
           }
         }

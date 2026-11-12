@@ -874,7 +874,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -1651,7 +1658,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -2431,7 +2445,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -3207,7 +3228,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -3571,7 +3599,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -3858,7 +3893,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -4661,7 +4703,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -5262,7 +5311,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -5819,7 +5875,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -6196,7 +6259,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -6625,7 +6695,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -6913,7 +6990,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -7449,7 +7533,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -11080,7 +11171,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -12003,7 +12101,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -12425,7 +12530,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -13333,7 +13445,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -13734,7 +13853,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -14151,7 +14277,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -19881,7 +20014,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -20952,7 +21092,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -21722,7 +21869,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -23010,7 +23164,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -23797,7 +23958,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -24509,7 +24677,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -27540,7 +27715,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -28128,7 +28310,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -29774,7 +29963,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -30260,7 +30456,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -32024,9 +32227,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LeadStatusesDelete200ResponseSchema"
-                },
-                "x-schema-inferred-from-examples": true
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
               }
             }
           },
@@ -32469,9 +32671,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/OpportunityStatusesDelete200ResponseSchema"
-                },
-                "x-schema-inferred-from-examples": true
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
               }
             }
           },
@@ -34293,9 +34494,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TasksDelete200ResponseSchema"
-                },
-                "x-schema-inferred-from-examples": true
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
               }
             }
           },
@@ -35441,7 +35641,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request, such as a validation error.",
@@ -43734,6 +43941,12 @@
             "$ref": "#/components/schemas/SummaryFeedbackRating"
           }
         }
+      },
+      "EmptyResponse": {
+        "title": "EmptyResponse",
+        "type": "object",
+        "additionalProperties": false,
+        "description": "An empty object.\n\nReturned on success by endpoints with nothing else to return, e.g. deletes."
       },
       "ErrorMessage": {
         "required": [
@@ -55278,27 +55491,35 @@
         "description": "Field to sort tasks by. A \u0060-\u0060 prefix sorts in descending order.",
         "x-fern-enum": {
           "-date": {
+            "name": "DateDescending",
             "description": "Due date, latest first."
           },
           "-date_created": {
+            "name": "DateCreatedDescending",
             "description": "Creation time, newest first. The default."
           },
           "-date_updated": {
+            "name": "DateUpdatedDescending",
             "description": "Last update time, newest first."
           },
           "-due_date": {
+            "name": "DueDateDescending",
             "description": "Deprecated: same as \u0060-date\u0060."
           },
           "date": {
+            "name": "Date",
             "description": "Due date, earliest first."
           },
           "date_created": {
+            "name": "DateCreated",
             "description": "Creation time, oldest first."
           },
           "date_updated": {
+            "name": "DateUpdated",
             "description": "Last update time, oldest first."
           },
           "due_date": {
+            "name": "DueDate",
             "description": "Deprecated: same as \u0060date\u0060."
           }
         },
@@ -64372,9 +64593,6 @@
           }
         }
       },
-      "LeadStatusesDelete200ResponseSchema": {
-        "type": "object"
-      },
       "OpportunityStatusesList200Response": {
         "required": [
           "data",
@@ -64394,12 +64612,6 @@
             "description": "Whether more results exist after this page."
           }
         }
-      },
-      "OpportunityStatusesDelete200ResponseSchema": {
-        "type": "object"
-      },
-      "TasksDelete200ResponseSchema": {
-        "type": "object"
       },
       "BulkDeleteActionSQueryProperty": {
         "title": "S Query",
@@ -87563,15 +87775,6 @@
           "$ref": "#/components/schemas/ApiKeyError"
         }
       ]
-    },
-    "LeadStatusesDelete200Response": {
-      "type": "object"
-    },
-    "OpportunityStatusesDelete200Response": {
-      "type": "object"
-    },
-    "TasksDelete200Response": {
-      "type": "object"
     },
     "ExamplePayload": {
       "type": "object",
