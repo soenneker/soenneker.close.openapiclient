@@ -488,7 +488,7 @@
                       "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                       "outcome_id": "outcome_031uY9IKV1JxfNKM9n2qCw",
                       "phone": "\u002B16503334444",
-                      "recording_url": null,
+                      "recording_url": "https://api.close.com/call/acti_Ay0QqN91HKAHVQUesISYV8QlhDobGfWb1Ui3TE75pJR/recording/",
                       "remote_country_iso": "US",
                       "remote_phone": "\u002B16503334444",
                       "remote_phone_formatted": "\u002B1 650-333-4444",
@@ -541,7 +541,7 @@
           "activities.calls"
         ],
         "summary": "Log an external Call activity",
-        "description": "Use this endpoint to log calls made outside of the Close built-in VoIP system.\n\n*status*: defaults to \u0060completed\u0060\n\n*direction* (optional): \u0060outbound\u0060 or \u0060inbound\u0060\n\n*recording_url*: you can post a URL pointing to the MP3 recording of your call. For security reasons, we require the URL to be secure (i.e. starting with https://)",
+        "description": "Use this endpoint to log calls made outside of the Close built-in VoIP system.\n\n*status*: defaults to \u0060completed\u0060\n\n*direction* (optional): \u0060outbound\u0060 or \u0060inbound\u0060\n\n*recording_url*: you can post a URL pointing to the MP3 recording of your call. For security reasons, we require the URL to be secure (i.e. starting with https://)\n\n*voicemail_url*: you can post a secure URL (starting with https://) that points to the voicemail that the caller left. The call must have \u0060direction\u0060 set to \u0060inbound\u0060.",
         "operationId": "ActivitiesCallsCreate",
         "requestBody": {
           "content": {
@@ -695,7 +695,7 @@
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                   "outcome_id": "outcome_031uY9IKV1JxfNKM9n2qCw",
                   "phone": "\u002B16503334444",
-                  "recording_url": null,
+                  "recording_url": "https://api.close.com/call/acti_Ay0QqN91HKAHVQUesISYV8QlhDobGfWb1Ui3TE75pJR/recording/",
                   "remote_country_iso": "US",
                   "remote_phone": "\u002B16503334444",
                   "remote_phone_formatted": "\u002B1 650-333-4444",
@@ -749,7 +749,7 @@
           "activities.calls"
         ],
         "summary": "Update a Call activity",
-        "description": "Most commonly used to update \u0060note_html\u0060 or \u0060outcome_id\u0060. Some fields (\u0060status\u0060, \u0060duration\u0060, \u0060direction\u0060) cannot be updated for internal calls made through Close\u0027s VoIP system.\n\n**\u0060note_html\u0060 and \u0060note\u0060**: setting one overwrites the other. If both are provided, \u0060note_html\u0060 takes precedence. \u0060note_html\u0060 supports rich-text HTML; \u0060note\u0060 is plaintext only.\n\n**Deleting recordings**: for internal calls, changing or clearing \u0060recording_url\u0060 or \u0060voicemail_url\u0060, or setting \u0060recording_transcript\u0060 to \u0060null\u0060, permanently deletes the corresponding recording, voicemail, or transcript. This requires the \u0060delete_own_activities\u0060 permission for your own calls, or \u0060manage_others_activities\u0060 for other users\u0027 calls and calls not assigned to a user. Without the required permission the request fails with a \u0060400\u0060 error.",
+        "description": "Most commonly used to update \u0060note_html\u0060 or \u0060outcome_id\u0060. Some fields (\u0060status\u0060, \u0060duration\u0060, \u0060direction\u0060) cannot be updated for internal calls made through Close\u0027s VoIP system.\n\n**\u0060note_html\u0060 and \u0060note\u0060**: setting one overwrites the other. If both are provided, \u0060note_html\u0060 takes precedence. \u0060note_html\u0060 supports rich-text HTML; \u0060note\u0060 is plaintext only.\n\n**Deleting recordings**: for internal calls, setting \u0060recording_url\u0060, \u0060voicemail_url\u0060, or \u0060recording_transcript\u0060 to \u0060null\u0060 permanently deletes the corresponding recording, voicemail, or transcript. A delete requires the \u0060delete_own_activities\u0060 permission for your own calls, or \u0060manage_others_activities\u0060 for other users\u0027 calls and calls not assigned to a user. Without the required permission, the request fails with a \u0060400\u0060 error. Any other new value for \u0060recording_url\u0060 or \u0060voicemail_url\u0060 also fails with a \u0060400\u0060 error.",
         "operationId": "ActivitiesCallsUpdate",
         "parameters": [
           {
@@ -807,7 +807,7 @@
                   "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
                   "outcome_id": "outcome_031uY9IKV1JxfNKM9n2qCw",
                   "phone": "\u002B16503334444",
-                  "recording_url": null,
+                  "recording_url": "https://api.close.com/call/acti_Ay0QqN91HKAHVQUesISYV8QlhDobGfWb1Ui3TE75pJR/recording/",
                   "remote_country_iso": "US",
                   "remote_phone": "\u002B16503334444",
                   "remote_phone_formatted": "\u002B1 650-333-4444",
@@ -39418,6 +39418,14 @@
               "string"
             ]
           },
+          "recording_url": {
+            "title": "Recording URL",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the call recording, or \u0060null\u0060 if the call has no recording or the recording expired. A \u0060GET\u0060 request to this URL needs the same authentication as other API requests. The response is a redirect to the audio file. For a call that you logged through the API, the redirect goes to the recording URL that you sent."
+          },
           "sequence_id": {
             "title": "Sequence ID",
             "type": [
@@ -39486,6 +39494,14 @@
             "items": {
               "type": "string"
             }
+          },
+          "voicemail_url": {
+            "title": "Voicemail URL",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the voicemail that the caller left on an inbound call, or \u0060null\u0060 if the call has no voicemail. A \u0060GET\u0060 request to this URL needs the same authentication as other API requests. The response is a redirect to the audio file. For a call that you logged through the API, the redirect goes to the voicemail URL that you sent."
           }
         }
       },
@@ -40393,6 +40409,7 @@
               "null",
               "string"
             ],
+            "description": "HTTPS URL of the recording of a call that you log through the API. For a call made through Close, only \u0060null\u0060 can change this field, and it deletes the recording.",
             "x-client-original-format": "uri"
           },
           "source": {
@@ -40412,6 +40429,7 @@
               "null",
               "string"
             ],
+            "description": "HTTPS URL of the voicemail that the caller left, for a call that you log through the API. The call must be inbound and completed, with a \u0060duration\u0060 of 0. For a call made through Close, only \u0060null\u0060 can change this field, and it deletes the voicemail.",
             "x-client-original-format": "uri"
           }
         }
@@ -56166,6 +56184,7 @@
               "null",
               "string"
             ],
+            "description": "HTTPS URL of the recording of a call that you log through the API. For a call made through Close, only \u0060null\u0060 can change this field, and it deletes the recording.",
             "x-client-original-format": "uri"
           },
           "status": {
@@ -56182,6 +56201,7 @@
               "null",
               "string"
             ],
+            "description": "HTTPS URL of the voicemail that the caller left, for a call that you log through the API. The call must be inbound and completed, with a \u0060duration\u0060 of 0. For a call made through Close, only \u0060null\u0060 can change this field, and it deletes the voicemail.",
             "x-client-original-format": "uri"
           }
         }
@@ -77054,6 +77074,14 @@
                   "string"
                 ]
               },
+              "recording_url": {
+                "title": "Recording URL",
+                "type": [
+                  "null",
+                  "string"
+                ],
+                "description": "URL of the call recording, or \u0060null\u0060 if the call has no recording or the recording expired. A \u0060GET\u0060 request to this URL needs the same authentication as other API requests. The response is a redirect to the audio file. For a call that you logged through the API, the redirect goes to the recording URL that you sent."
+              },
               "sequence_id": {
                 "title": "Sequence ID",
                 "type": [
@@ -77119,6 +77147,14 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "voicemail_url": {
+                "title": "Voicemail URL",
+                "type": [
+                  "null",
+                  "string"
+                ],
+                "description": "URL of the voicemail that the caller left on an inbound call, or \u0060null\u0060 if the call has no voicemail. A \u0060GET\u0060 request to this URL needs the same authentication as other API requests. The response is a redirect to the audio file. For a call that you logged through the API, the redirect goes to the voicemail URL that you sent."
               }
             },
             "description": "A Call activity. Contains the fields requested in \u0060_fields\u0060, in the same format as the object\u0027s own endpoint."
@@ -81345,6 +81381,14 @@
             "string"
           ]
         },
+        "recording_url": {
+          "title": "Recording URL",
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "URL of the call recording, or \u0060null\u0060 if the call has no recording or the recording expired. A \u0060GET\u0060 request to this URL needs the same authentication as other API requests. The response is a redirect to the audio file. For a call that you logged through the API, the redirect goes to the recording URL that you sent."
+        },
         "sequence_id": {
           "title": "Sequence ID",
           "type": [
@@ -81410,6 +81454,14 @@
           "items": {
             "type": "string"
           }
+        },
+        "voicemail_url": {
+          "title": "Voicemail URL",
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "URL of the voicemail that the caller left on an inbound call, or \u0060null\u0060 if the call has no voicemail. A \u0060GET\u0060 request to this URL needs the same authentication as other API requests. The response is a redirect to the audio file. For a call that you logged through the API, the redirect goes to the voicemail URL that you sent."
         }
       },
       "description": "A Call activity. Contains the fields requested in \u0060_fields\u0060, in the same format as the object\u0027s own endpoint."

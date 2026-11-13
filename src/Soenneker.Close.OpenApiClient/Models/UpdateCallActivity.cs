@@ -147,7 +147,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string QualityInfo { get => _explicitNullValueQualityInfo; set { _explicitNullValueQualityInfo = value; AdditionalData?.Remove("quality_info"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quality_info"); else _explicitNullProperties?.Remove("quality_info"); } }
         private string _explicitNullValueQualityInfo = default!;
 #endif
-        /// <summary>The recording_url property</summary>
+        /// <summary>HTTPS URL of the recording of a call that you log through the API. For a call made through Close, only `null` can change this field, and it deletes the recording.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RecordingUrl { get => _explicitNullValueRecordingUrl; set { _explicitNullValueRecordingUrl = value; AdditionalData?.Remove("recording_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recording_url"); else _explicitNullProperties?.Remove("recording_url"); } }
@@ -177,7 +177,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; AdditionalData?.Remove("user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
         private string _explicitNullValueUserId = default!;
 #endif
-        /// <summary>The voicemail_url property</summary>
+        /// <summary>HTTPS URL of the voicemail that the caller left, for a call that you log through the API. The call must be inbound and completed, with a `duration` of 0. For a call made through Close, only `null` can change this field, and it deletes the voicemail.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? VoicemailUrl { get => _explicitNullValueVoicemailUrl; set { _explicitNullValueVoicemailUrl = value; AdditionalData?.Remove("voicemail_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voicemail_url"); else _explicitNullProperties?.Remove("voicemail_url"); } }

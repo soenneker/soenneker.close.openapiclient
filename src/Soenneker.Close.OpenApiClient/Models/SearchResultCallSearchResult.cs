@@ -39,6 +39,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
             if (parseNode.GetChildNode("outcome_id") is null) { _explicitNullValueOutcomeId = default!; _explicitNullProperties?.Remove("outcome_id"); }
             else if (parseNode.GetChildNode("outcome_id") is { } nullNodeOutcomeId && nullNodeOutcomeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutcomeId = null;
+            if (parseNode.GetChildNode("recording_url") is null) { _explicitNullValueRecordingUrl = default!; _explicitNullProperties?.Remove("recording_url"); }
+            else if (parseNode.GetChildNode("recording_url") is { } nullNodeRecordingUrl && nullNodeRecordingUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecordingUrl = null;
             if (parseNode.GetChildNode("sequence_id") is null) { _explicitNullValueSequenceId = default!; _explicitNullProperties?.Remove("sequence_id"); }
             else if (parseNode.GetChildNode("sequence_id") is { } nullNodeSequenceId && nullNodeSequenceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SequenceId = null;
             if (parseNode.GetChildNode("sequence_name") is null) { _explicitNullValueSequenceName = default!; _explicitNullProperties?.Remove("sequence_name"); }
@@ -61,6 +63,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("user_name") is { } nullNodeUserName && nullNodeUserName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserName = null;
             if (parseNode.GetChildNode("users") is null) { _explicitNullValueUsers = default!; _explicitNullProperties?.Remove("users"); }
             else if (parseNode.GetChildNode("users") is { } nullNodeUsers && nullNodeUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Users = null;
+            if (parseNode.GetChildNode("voicemail_url") is null) { _explicitNullValueVoicemailUrl = default!; _explicitNullProperties?.Remove("voicemail_url"); }
+            else if (parseNode.GetChildNode("voicemail_url") is { } nullNodeVoicemailUrl && nullNodeVoicemailUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VoicemailUrl = null;
         }
 
         /// <summary>The activity_at property</summary>
@@ -141,6 +145,16 @@ namespace Soenneker.Close.OpenApiClient.Models
 #else
         public string OutcomeId { get => _explicitNullValueOutcomeId; set { _explicitNullValueOutcomeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome_id"); else _explicitNullProperties?.Remove("outcome_id"); } }
         private string _explicitNullValueOutcomeId = default!;
+#endif
+        /// <summary>URL of the call recording, or `null` if the call has no recording or the recording expired. A `GET` request to this URL needs the same authentication as other API requests. The response is a redirect to the audio file. For a call that you logged through the API, the redirect goes to the recording URL that you sent.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RecordingUrl { get => _explicitNullValueRecordingUrl; set { _explicitNullValueRecordingUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recording_url"); else _explicitNullProperties?.Remove("recording_url"); } }
+        private string? _explicitNullValueRecordingUrl = default!;
+#nullable restore
+#else
+        public string RecordingUrl { get => _explicitNullValueRecordingUrl; set { _explicitNullValueRecordingUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recording_url"); else _explicitNullProperties?.Remove("recording_url"); } }
+        private string _explicitNullValueRecordingUrl = default!;
 #endif
         /// <summary>The sequence_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -238,6 +252,16 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<string> Users { get => _explicitNullValueUsers; set { _explicitNullValueUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("users"); else _explicitNullProperties?.Remove("users"); } }
         private List<string> _explicitNullValueUsers = default!;
 #endif
+        /// <summary>URL of the voicemail that the caller left on an inbound call, or `null` if the call has no voicemail. A `GET` request to this URL needs the same authentication as other API requests. The response is a redirect to the audio file. For a call that you logged through the API, the redirect goes to the voicemail URL that you sent.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? VoicemailUrl { get => _explicitNullValueVoicemailUrl; set { _explicitNullValueVoicemailUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voicemail_url"); else _explicitNullProperties?.Remove("voicemail_url"); } }
+        private string? _explicitNullValueVoicemailUrl = default!;
+#nullable restore
+#else
+        public string VoicemailUrl { get => _explicitNullValueVoicemailUrl; set { _explicitNullValueVoicemailUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voicemail_url"); else _explicitNullProperties?.Remove("voicemail_url"); } }
+        private string _explicitNullValueVoicemailUrl = default!;
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -266,6 +290,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "lead_id", n => { LeadId = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "outcome_id", n => { OutcomeId = n.GetStringValue(); } },
+                { "recording_url", n => { RecordingUrl = n.GetStringValue(); } },
                 { "sequence_id", n => { SequenceId = n.GetStringValue(); } },
                 { "sequence_name", n => { SequenceName = n.GetStringValue(); } },
                 { "sequence_subscription_id", n => { SequenceSubscriptionId = n.GetStringValue(); } },
@@ -277,6 +302,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "user_id", n => { UserId = n.GetStringValue(); } },
                 { "user_name", n => { UserName = n.GetStringValue(); } },
                 { "users", n => { Users = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "voicemail_url", n => { VoicemailUrl = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -297,6 +323,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("lead_id", LeadId);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("outcome_id", OutcomeId);
+            writer.WriteStringValue("recording_url", RecordingUrl);
             writer.WriteStringValue("sequence_id", SequenceId);
             writer.WriteStringValue("sequence_name", SequenceName);
             writer.WriteStringValue("sequence_subscription_id", SequenceSubscriptionId);
@@ -307,7 +334,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("updated_by_name", UpdatedByName);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteStringValue("user_name", UserName);
-            writer.WriteCollectionOfPrimitiveValues<string>("users", Users);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteCollectionOfPrimitiveValues<string>("users", Users);
+            writer.WriteStringValue("voicemail_url", VoicemailUrl);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }
     }

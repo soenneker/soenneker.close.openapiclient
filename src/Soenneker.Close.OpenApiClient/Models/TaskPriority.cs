@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
-    /// <summary>Priority of the task. Only `lead` and `outgoing_call` tasks have a priority.</summary>
+    /// <summary>Priority of the task. Defaults to `medium`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum TaskPriority
     {
