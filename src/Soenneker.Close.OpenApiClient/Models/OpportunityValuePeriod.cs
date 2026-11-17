@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
-    /// <summary>How often the Opportunity&apos;s value is paid: `one_time`, `monthly` or `annual`.</summary>
+    /// <summary>How often `value` is paid: `one_time`, `monthly` or `annual`</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum OpportunityValuePeriod
     {

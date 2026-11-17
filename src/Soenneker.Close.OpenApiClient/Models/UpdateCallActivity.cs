@@ -37,8 +37,6 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("phone") is { } nullNodePhone && nullNodePhone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Phone = null;
             if (parseNode.GetChildNode("playbook_id") is null) { _explicitNullValuePlaybookId = default!; _explicitNullProperties?.Remove("playbook_id"); }
             else if (parseNode.GetChildNode("playbook_id") is { } nullNodePlaybookId && nullNodePlaybookId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PlaybookId = null;
-            if (parseNode.GetChildNode("quality_info") is null) { _explicitNullValueQualityInfo = default!; _explicitNullProperties?.Remove("quality_info"); }
-            else if (parseNode.GetChildNode("quality_info") is { } nullNodeQualityInfo && nullNodeQualityInfo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QualityInfo = null;
             if (parseNode.GetChildNode("recording_url") is null) { _explicitNullValueRecordingUrl = default!; _explicitNullProperties?.Remove("recording_url"); }
             else if (parseNode.GetChildNode("recording_url") is { } nullNodeRecordingUrl && nullNodeRecordingUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecordingUrl = null;
             if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
@@ -137,16 +135,6 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string PlaybookId { get => _explicitNullValuePlaybookId; set { _explicitNullValuePlaybookId = value; AdditionalData?.Remove("playbook_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("playbook_id"); else _explicitNullProperties?.Remove("playbook_id"); } }
         private string _explicitNullValuePlaybookId = default!;
 #endif
-        /// <summary>The quality_info property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? QualityInfo { get => _explicitNullValueQualityInfo; set { _explicitNullValueQualityInfo = value; AdditionalData?.Remove("quality_info"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quality_info"); else _explicitNullProperties?.Remove("quality_info"); } }
-        private string? _explicitNullValueQualityInfo = default!;
-#nullable restore
-#else
-        public string QualityInfo { get => _explicitNullValueQualityInfo; set { _explicitNullValueQualityInfo = value; AdditionalData?.Remove("quality_info"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quality_info"); else _explicitNullProperties?.Remove("quality_info"); } }
-        private string _explicitNullValueQualityInfo = default!;
-#endif
         /// <summary>HTTPS URL of the recording of a call that you log through the API. For a call made through Close, only `null` can change this field, and it deletes the recording.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -222,7 +210,6 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "outcome_id", n => { OutcomeId = n.GetStringValue(); } },
                 { "phone", n => { Phone = n.GetStringValue(); } },
                 { "playbook_id", n => { PlaybookId = n.GetStringValue(); } },
-                { "quality_info", n => { QualityInfo = n.GetStringValue(); } },
                 { "recording_url", n => { RecordingUrl = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.UpdateCallActivityStatus>(global::Soenneker.Close.OpenApiClient.Models.UpdateCallActivityStatus.CreateFromDiscriminatorValue); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
@@ -246,7 +233,6 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("outcome_id", OutcomeId);
             writer.WriteStringValue("phone", Phone);
             writer.WriteStringValue("playbook_id", PlaybookId);
-            writer.WriteStringValue("quality_info", QualityInfo);
             writer.WriteStringValue("recording_url", RecordingUrl);
             writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.UpdateCallActivityStatus>("status", Status);
             writer.WriteStringValue("user_id", UserId);
