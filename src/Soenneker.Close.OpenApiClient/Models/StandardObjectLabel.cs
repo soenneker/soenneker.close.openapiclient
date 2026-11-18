@@ -90,7 +90,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "is_customized", n => { IsCustomized = n.GetBoolValue(); } },
                 { "label_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.BuiltinLabelType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueLabelType = default; _explicitNullProperties?.Remove("label_type"); AdditionalData["label_type"] = unknown; } else { LabelType = parsed; AdditionalData.Remove("label_type"); } } },

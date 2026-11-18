@@ -36,25 +36,25 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The days property</summary>
+        /// <summary>Number of days.</summary>
         public int? Days { get => _explicitNullValueDays; set { _explicitNullValueDays = value; AdditionalData?.Remove("days"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("days"); else _explicitNullProperties?.Remove("days"); } }
         private int? _explicitNullValueDays = default!;
-        /// <summary>The hours property</summary>
+        /// <summary>Number of hours.</summary>
         public int? Hours { get => _explicitNullValueHours; set { _explicitNullValueHours = value; AdditionalData?.Remove("hours"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hours"); else _explicitNullProperties?.Remove("hours"); } }
         private int? _explicitNullValueHours = default!;
-        /// <summary>The minutes property</summary>
+        /// <summary>Number of minutes.</summary>
         public int? Minutes { get => _explicitNullValueMinutes; set { _explicitNullValueMinutes = value; AdditionalData?.Remove("minutes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minutes"); else _explicitNullProperties?.Remove("minutes"); } }
         private int? _explicitNullValueMinutes = default!;
-        /// <summary>The months property</summary>
+        /// <summary>Number of months.</summary>
         public int? Months { get => _explicitNullValueMonths; set { _explicitNullValueMonths = value; AdditionalData?.Remove("months"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("months"); else _explicitNullProperties?.Remove("months"); } }
         private int? _explicitNullValueMonths = default!;
-        /// <summary>The seconds property</summary>
+        /// <summary>Number of seconds.</summary>
         public int? Seconds { get => _explicitNullValueSeconds; set { _explicitNullValueSeconds = value; AdditionalData?.Remove("seconds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seconds"); else _explicitNullProperties?.Remove("seconds"); } }
         private int? _explicitNullValueSeconds = default!;
-        /// <summary>The weeks property</summary>
+        /// <summary>Number of weeks.</summary>
         public int? Weeks { get => _explicitNullValueWeeks; set { _explicitNullValueWeeks = value; AdditionalData?.Remove("weeks"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("weeks"); else _explicitNullProperties?.Remove("weeks"); } }
         private int? _explicitNullValueWeeks = default!;
-        /// <summary>The years property</summary>
+        /// <summary>Number of years.</summary>
         public int? Years { get => _explicitNullValueYears; set { _explicitNullValueYears = value; AdditionalData?.Remove("years"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("years"); else _explicitNullProperties?.Remove("years"); } }
         private int? _explicitNullValueYears = default!;
         /// <summary>
@@ -87,7 +87,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(7)
             {
                 { "days", n => { Days = n.GetIntValue(); } },
                 { "hours", n => { Hours = n.GetIntValue(); } },

@@ -298,7 +298,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(24)
             {
                 { "auto_record_calls", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.AutoRecordCalls>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAutoRecordCalls = default; _explicitNullProperties?.Remove("auto_record_calls"); AdditionalData["auto_record_calls"] = unknown; } else { AutoRecordCalls = parsed; AdditionalData.Remove("auto_record_calls"); } } },
                 { "default_caller_id", n => { DefaultCallerId = n.GetStringValue(); } },

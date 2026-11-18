@@ -214,7 +214,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(20)
             {
                 { "contact_preference", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.BulkEmailContactPreference>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueContactPreference = default; _explicitNullProperties?.Remove("contact_preference"); AdditionalData["contact_preference"] = unknown; } else { ContactPreference = parsed; AdditionalData.Remove("contact_preference"); } } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },

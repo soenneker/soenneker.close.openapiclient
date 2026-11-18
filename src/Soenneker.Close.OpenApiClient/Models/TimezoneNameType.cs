@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>Type of the condition. Must be `timezone_name`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum TimezoneNameType
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "timezone_name")]
         #pragma warning disable CS1591

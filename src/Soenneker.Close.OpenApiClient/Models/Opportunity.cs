@@ -454,7 +454,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(41)
             {
                 { "annualized_expected_value", n => { AnnualizedExpectedValue = n.GetIntValue(); } },
                 { "annualized_value", n => { AnnualizedValue = n.GetIntValue(); } },

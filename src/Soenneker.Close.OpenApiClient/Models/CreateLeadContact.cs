@@ -107,7 +107,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "emails", n => { Emails = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CreateLeadContactEmail>(global::Soenneker.Close.OpenApiClient.Models.CreateLeadContactEmail.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },

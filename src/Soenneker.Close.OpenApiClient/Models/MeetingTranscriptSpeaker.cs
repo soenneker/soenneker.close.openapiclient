@@ -71,7 +71,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "speaker_label", n => { SpeakerLabel = n.GetStringValue(); } },
                 { "speaker_side", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.SpeakerSide>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSpeakerSide = default; _explicitNullProperties?.Remove("speaker_side"); AdditionalData["speaker_side"] = unknown; } else { SpeakerSide = parsed; AdditionalData.Remove("speaker_side"); } } },

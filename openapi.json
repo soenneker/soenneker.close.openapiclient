@@ -27176,6 +27176,83 @@
         }
       }
     },
+    "/sms_template/{id}/render/": {
+      "get": {
+        "operationId": "sms_templates_render",
+        "tags": [
+          "sms_templates"
+        ],
+        "summary": "Render an SMS template",
+        "description": "Render an SMS template for the given lead and, optionally, one of its contacts, using the current user context.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "lead_id",
+            "required": true,
+            "description": "ID of the lead to render the template for.",
+            "schema": {
+              "title": "Lead ID",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "contact_id",
+            "required": false,
+            "description": "ID of the contact to render the template for. Must belong to the given lead.",
+            "schema": {
+              "title": "Contact ID",
+              "default": null,
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "contact_id": "cont_NdKMSOuamgB8ZlbNJW2WP17hfL3jQmf0hW6X8ichwQk",
+                  "lead_id": "lead_vYaUG0D39KdBeqVHbPkmvqaYopsdCBmDXW3tvJgwc2L",
+                  "text": "Hey John, ever considered Close?"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
     "/standard_object_label/": {
       "get": {
         "operationId": "standard_object_labels_list",
@@ -30853,6 +30930,7 @@
             "authorizationUrl": "https://app.close.com/oauth2/authorize/",
             "scopes": {
               "all.full_access": "Full access to all resources",
+              "all.read": "Read-only access to all resources",
               "offline_access": "Request a refresh token"
             },
             "tokenUrl": "https://api.close.com/oauth2/token/"
@@ -31256,10 +31334,12 @@
         "properties": {
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -31272,6 +31352,7 @@
           },
           "agent_action_reason": {
             "title": "Agent Action Reason",
+            "description": "Why an agent created the activity, e.g. `send_scheduling_link`, or `null` if no agent created it.",
             "default": null,
             "anyOf": [
               {
@@ -31316,6 +31397,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -31327,6 +31409,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -31338,6 +31421,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
+            "description": "ID of the agent that created the activity, or `null` if no agent created it.",
             "default": null,
             "anyOf": [
               {
@@ -31350,6 +31434,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "default": null,
             "anyOf": [
               {
@@ -31362,20 +31447,24 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -31402,6 +31491,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "pinned": {
@@ -31443,6 +31533,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -31454,6 +31545,7 @@
           },
           "updated_by_agent_id": {
             "title": "Updated By Agent ID",
+            "description": "ID of the agent that last updated the activity, or `null` if the last update wasn't made by an agent.",
             "default": null,
             "anyOf": [
               {
@@ -31466,6 +31558,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "default": null,
             "anyOf": [
               {
@@ -31478,6 +31571,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -31489,6 +31583,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "default": null,
             "anyOf": [
               {
@@ -31501,6 +31596,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -31550,6 +31646,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -31657,6 +31754,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -31705,6 +31803,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -31765,6 +31864,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -31858,6 +31958,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -31909,6 +32010,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -31958,6 +32060,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -32006,6 +32109,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -32055,6 +32159,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -32109,6 +32214,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -32188,6 +32294,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -32252,6 +32359,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -32309,6 +32417,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -32383,6 +32492,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -32431,6 +32541,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -32491,6 +32602,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -32538,6 +32650,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -32585,6 +32698,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the query. Must be `and`.",
             "type": "string",
             "const": "and"
           }
@@ -32615,6 +32729,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the query. Must be `any_of_saved_search`.",
             "type": "string",
             "const": "any_of_saved_search"
           }
@@ -32841,6 +32956,7 @@
         "properties": {
           "type": {
             "title": "Type",
+            "description": "Type of the condition. Must be `boolean`.",
             "type": "string",
             "const": "boolean"
           },
@@ -33859,10 +33975,12 @@
         "properties": {
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -33875,6 +33993,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -33886,6 +34005,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -33897,6 +34017,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "default": null,
             "anyOf": [
               {
@@ -33909,20 +34030,24 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -33934,6 +34059,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "outcome_id": {
@@ -33961,6 +34087,7 @@
           },
           "sequence_id": {
             "title": "Sequence ID",
+            "description": "ID of the Workflow that created the activity, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -33973,6 +34100,7 @@
           },
           "sequence_name": {
             "title": "Sequence Name",
+            "description": "Name of the Workflow in `sequence_id`.",
             "default": null,
             "anyOf": [
               {
@@ -33985,6 +34113,7 @@
           },
           "sequence_subscription_id": {
             "title": "Sequence Subscription ID",
+            "description": "ID of the Workflow subscription, i.e. the Contact's enrollment in the Workflow, that created the activity, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -34003,6 +34132,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -34014,6 +34144,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "default": null,
             "anyOf": [
               {
@@ -34026,6 +34157,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -34037,6 +34169,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "default": null,
             "anyOf": [
               {
@@ -34049,6 +34182,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -34106,10 +34240,12 @@
           },
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -34122,6 +34258,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -34133,6 +34270,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -34144,6 +34282,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -34155,20 +34294,24 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -34180,6 +34323,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "outcome_id": {
@@ -34207,6 +34351,7 @@
           },
           "sequence_id": {
             "title": "Sequence ID",
+            "description": "ID of the Workflow that created the activity, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -34218,6 +34363,7 @@
           },
           "sequence_name": {
             "title": "Sequence Name",
+            "description": "Name of the Workflow in `sequence_id`.",
             "anyOf": [
               {
                 "type": "string"
@@ -34229,6 +34375,7 @@
           },
           "sequence_subscription_id": {
             "title": "Sequence Subscription ID",
+            "description": "ID of the Workflow subscription, i.e. the Contact's enrollment in the Workflow, that created the activity, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -34248,6 +34395,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -34259,6 +34407,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -34270,6 +34419,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -34281,6 +34431,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "anyOf": [
               {
                 "type": "string"
@@ -34292,6 +34443,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -34386,6 +34538,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -34448,6 +34601,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -34734,6 +34888,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -34810,6 +34965,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -34851,6 +35007,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -35128,6 +35285,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -37487,10 +37645,12 @@
         "properties": {
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -37503,6 +37663,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -37514,6 +37675,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -37525,6 +37687,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "default": null,
             "anyOf": [
               {
@@ -37537,16 +37700,19 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "import_id": {
@@ -37562,6 +37728,7 @@
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -37573,6 +37740,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "source": {
@@ -37587,6 +37755,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -37598,6 +37767,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "default": null,
             "anyOf": [
               {
@@ -37610,6 +37780,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -37621,6 +37792,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "default": null,
             "anyOf": [
               {
@@ -37633,6 +37805,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -37672,10 +37845,12 @@
           },
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -37688,6 +37863,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -37699,6 +37875,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -37710,6 +37887,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -37721,16 +37899,19 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "import_id": {
@@ -37746,6 +37927,7 @@
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -37757,6 +37939,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "source": {
@@ -37772,6 +37955,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -37783,6 +37967,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -37794,6 +37979,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -37805,6 +37991,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "anyOf": [
               {
                 "type": "string"
@@ -37816,6 +38003,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -37858,6 +38046,7 @@
         "properties": {
           "type": {
             "title": "Type",
+            "description": "Type of the condition. Must be `current_user`.",
             "type": "string",
             "const": "current_user"
           }
@@ -37872,10 +38061,12 @@
         "properties": {
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -37899,6 +38090,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -37910,6 +38102,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -37921,6 +38114,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
+            "description": "ID of the agent that created the activity, or `null` if no agent created it.",
             "default": null,
             "anyOf": [
               {
@@ -37933,6 +38127,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "default": null,
             "anyOf": [
               {
@@ -37949,16 +38144,19 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "last_published_at": {
@@ -37975,6 +38173,7 @@
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -38005,6 +38204,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "pinned": {
@@ -38038,6 +38238,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -38049,6 +38250,7 @@
           },
           "updated_by_agent_id": {
             "title": "Updated By Agent ID",
+            "description": "ID of the agent that last updated the activity, or `null` if the last update wasn't made by an agent.",
             "default": null,
             "anyOf": [
               {
@@ -38061,6 +38263,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "default": null,
             "anyOf": [
               {
@@ -38073,6 +38276,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -38084,6 +38288,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "default": null,
             "anyOf": [
               {
@@ -38096,6 +38301,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -38146,10 +38352,12 @@
           },
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -38162,6 +38370,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -38173,6 +38382,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -38184,6 +38394,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
+            "description": "ID of the agent that created the activity, or `null` if no agent created it.",
             "anyOf": [
               {
                 "type": "string"
@@ -38195,6 +38406,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -38210,16 +38422,19 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "last_published_at": {
@@ -38236,6 +38451,7 @@
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -38266,6 +38482,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "pinned": {
@@ -38301,6 +38518,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -38312,6 +38530,7 @@
           },
           "updated_by_agent_id": {
             "title": "Updated By Agent ID",
+            "description": "ID of the agent that last updated the activity, or `null` if the last update wasn't made by an agent.",
             "anyOf": [
               {
                 "type": "string"
@@ -38323,6 +38542,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -38334,6 +38554,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -38345,6 +38566,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "anyOf": [
               {
                 "type": "string"
@@ -38356,6 +38578,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -38401,6 +38624,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -38443,6 +38667,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -38485,6 +38710,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -38527,6 +38753,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -38563,6 +38790,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `custom_field`.",
             "type": "string",
             "const": "custom_field"
           }
@@ -38721,6 +38949,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the condition. Must be `fixed_date_range`.",
             "type": "string",
             "const": "fixed_date_range"
           }
@@ -38736,36 +38965,43 @@
         "properties": {
           "days": {
             "title": "Days",
+            "description": "Number of days.",
             "type": "integer",
             "default": 0
           },
           "hours": {
             "title": "Hours",
+            "description": "Number of hours.",
             "type": "integer",
             "default": 0
           },
           "minutes": {
             "title": "Minutes",
+            "description": "Number of minutes.",
             "type": "integer",
             "default": 0
           },
           "months": {
             "title": "Months",
+            "description": "Number of months.",
             "type": "integer",
             "default": 0
           },
           "seconds": {
             "title": "Seconds",
+            "description": "Number of seconds.",
             "type": "integer",
             "default": 0
           },
           "weeks": {
             "title": "Weeks",
+            "description": "Number of weeks.",
             "type": "integer",
             "default": 0
           },
           "years": {
             "title": "Years",
+            "description": "Number of years.",
             "type": "integer",
             "default": 0
           }
@@ -38798,6 +39034,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the condition. Must be `duration_range`.",
             "type": "string",
             "const": "duration_range"
           }
@@ -38812,10 +39049,12 @@
         "properties": {
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -38828,6 +39067,7 @@
           },
           "agent_action_reason": {
             "title": "Agent Action Reason",
+            "description": "Why an agent created the activity, e.g. `send_scheduling_link`, or `null` if no agent created it.",
             "default": null,
             "anyOf": [
               {
@@ -38928,6 +39168,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -38939,6 +39180,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -38950,6 +39192,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
+            "description": "ID of the agent that created the activity, or `null` if no agent created it.",
             "default": null,
             "anyOf": [
               {
@@ -38962,6 +39205,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "default": null,
             "anyOf": [
               {
@@ -38974,6 +39218,7 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
@@ -39003,6 +39248,7 @@
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
@@ -39074,6 +39320,7 @@
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "in_reply_to_id": {
@@ -39089,6 +39336,7 @@
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -39137,6 +39385,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "references": {
@@ -39185,6 +39434,7 @@
           },
           "sequence_id": {
             "title": "Sequence ID",
+            "description": "ID of the Workflow that created the activity, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -39197,6 +39447,7 @@
           },
           "sequence_name": {
             "title": "Sequence Name",
+            "description": "Name of the Workflow in `sequence_id`.",
             "default": null,
             "anyOf": [
               {
@@ -39209,6 +39460,7 @@
           },
           "sequence_subscription_id": {
             "title": "Sequence Subscription ID",
+            "description": "ID of the Workflow subscription, i.e. the Contact's enrollment in the Workflow, that created the activity, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -39276,6 +39528,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -39287,6 +39540,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "default": null,
             "anyOf": [
               {
@@ -39299,6 +39553,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -39310,6 +39565,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "default": null,
             "anyOf": [
               {
@@ -39322,6 +39578,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -39499,10 +39756,12 @@
         "properties": {
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -39515,6 +39774,7 @@
           },
           "agent_action_reason": {
             "title": "Agent Action Reason",
+            "description": "Why an agent created the activity, e.g. `send_scheduling_link`, or `null` if no agent created it.",
             "default": null,
             "anyOf": [
               {
@@ -39655,6 +39915,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -39666,6 +39927,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -39677,6 +39939,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
+            "description": "ID of the agent that created the activity, or `null` if no agent created it.",
             "default": null,
             "anyOf": [
               {
@@ -39689,6 +39952,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "default": null,
             "anyOf": [
               {
@@ -39701,6 +39965,7 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
@@ -39730,6 +39995,7 @@
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
@@ -39801,6 +40067,7 @@
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "in_reply_to_id": {
@@ -39816,6 +40083,7 @@
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -39864,6 +40132,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "references": {
@@ -39912,6 +40181,7 @@
           },
           "sequence_id": {
             "title": "Sequence ID",
+            "description": "ID of the Workflow that created the activity, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -39924,6 +40194,7 @@
           },
           "sequence_name": {
             "title": "Sequence Name",
+            "description": "Name of the Workflow in `sequence_id`.",
             "default": null,
             "anyOf": [
               {
@@ -39936,6 +40207,7 @@
           },
           "sequence_subscription_id": {
             "title": "Sequence Subscription ID",
+            "description": "ID of the Workflow subscription, i.e. the Contact's enrollment in the Workflow, that created the activity, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -40003,6 +40275,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -40014,6 +40287,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "default": null,
             "anyOf": [
               {
@@ -40026,6 +40300,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -40037,6 +40312,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "default": null,
             "anyOf": [
               {
@@ -40049,6 +40325,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -40329,10 +40606,12 @@
           },
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -40345,6 +40624,7 @@
           },
           "agent_action_reason": {
             "title": "Agent Action Reason",
+            "description": "Why an agent created the activity, e.g. `send_scheduling_link`, or `null` if no agent created it.",
             "anyOf": [
               {
                 "type": "string"
@@ -40440,6 +40720,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -40451,6 +40732,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -40462,6 +40744,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
+            "description": "ID of the agent that created the activity, or `null` if no agent created it.",
             "anyOf": [
               {
                 "type": "string"
@@ -40473,6 +40756,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -40484,6 +40768,7 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
@@ -40513,6 +40798,7 @@
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
@@ -40582,6 +40868,7 @@
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "in_reply_to_id": {
@@ -40597,6 +40884,7 @@
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -40644,6 +40932,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "references": {
@@ -40691,6 +40980,7 @@
           },
           "sequence_id": {
             "title": "Sequence ID",
+            "description": "ID of the Workflow that created the activity, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -40702,6 +40992,7 @@
           },
           "sequence_name": {
             "title": "Sequence Name",
+            "description": "Name of the Workflow in `sequence_id`.",
             "anyOf": [
               {
                 "type": "string"
@@ -40713,6 +41004,7 @@
           },
           "sequence_subscription_id": {
             "title": "Sequence Subscription ID",
+            "description": "ID of the Workflow subscription, i.e. the Contact's enrollment in the Workflow, that created the activity, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -40779,6 +41071,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -40790,6 +41083,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -40801,6 +41095,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -40812,6 +41107,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "anyOf": [
               {
                 "type": "string"
@@ -40823,6 +41119,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -40859,6 +41156,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -40888,10 +41186,12 @@
         "properties": {
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -40915,6 +41215,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -40926,6 +41227,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -40937,6 +41239,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "default": null,
             "anyOf": [
               {
@@ -40949,11 +41252,13 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
@@ -40966,6 +41271,7 @@
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "importance": {
@@ -40999,6 +41305,7 @@
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -41021,6 +41328,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "participants": {
@@ -41043,6 +41351,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -41054,6 +41363,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "default": null,
             "anyOf": [
               {
@@ -41066,6 +41376,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -41077,6 +41388,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "default": null,
             "anyOf": [
               {
@@ -41089,6 +41401,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -41128,10 +41441,12 @@
           },
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -41144,6 +41459,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -41155,6 +41471,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -41166,6 +41483,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -41177,16 +41495,19 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "importance": {
@@ -41220,6 +41541,7 @@
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -41242,6 +41564,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "participants": {
@@ -41264,6 +41587,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -41275,6 +41599,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -41286,6 +41611,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -41297,6 +41623,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "anyOf": [
               {
                 "type": "string"
@@ -41308,6 +41635,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -41458,6 +41786,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the condition. Must be `exact_moment`.",
             "type": "string",
             "const": "exact_moment"
           }
@@ -41488,6 +41817,7 @@
         "properties": {
           "type": {
             "title": "Type",
+            "description": "Type of the condition. Must be `exists`.",
             "type": "string",
             "const": "exists"
           }
@@ -41819,6 +42149,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the query. Must be `field_condition`.",
             "type": "string",
             "const": "field_condition"
           }
@@ -41836,6 +42167,7 @@
         "properties": {
           "type": {
             "title": "Type",
+            "description": "Type of the moment. Must be `fixed_local_date`.",
             "type": "string",
             "const": "fixed_local_date"
           },
@@ -41864,6 +42196,7 @@
         "properties": {
           "type": {
             "title": "Type",
+            "description": "Type of the moment. Must be `fixed_local`.",
             "type": "string",
             "const": "fixed_local"
           },
@@ -41886,6 +42219,7 @@
         "properties": {
           "type": {
             "title": "Type",
+            "description": "Type of the moment. Must be `fixed_utc`.",
             "type": "string",
             "const": "fixed_utc"
           },
@@ -42017,6 +42351,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `form_field`.",
             "type": "string",
             "const": "form_field"
           }
@@ -42032,10 +42367,12 @@
         "properties": {
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -42048,6 +42385,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -42059,6 +42397,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -42070,6 +42409,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "default": null,
             "anyOf": [
               {
@@ -42082,11 +42422,13 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
@@ -42112,6 +42454,7 @@
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "ip_address": {
@@ -42127,6 +42470,7 @@
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -42138,6 +42482,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "origin": {
@@ -42175,6 +42520,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -42186,6 +42532,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "default": null,
             "anyOf": [
               {
@@ -42198,6 +42545,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -42209,6 +42557,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "default": null,
             "anyOf": [
               {
@@ -42221,6 +42570,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -42300,10 +42650,12 @@
           },
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -42316,6 +42668,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -42327,6 +42680,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -42338,6 +42692,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -42349,11 +42704,13 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
@@ -42367,6 +42724,7 @@
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "ip_address": {
@@ -42382,6 +42740,7 @@
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -42393,6 +42752,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "origin": {
@@ -42430,6 +42790,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -42441,6 +42802,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -42452,6 +42814,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -42463,6 +42826,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "anyOf": [
               {
                 "type": "string"
@@ -42582,6 +42946,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the query. Must be `has_related`.",
             "type": "string",
             "const": "has_related"
           }
@@ -42605,6 +42970,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the query. Must be `id`.",
             "type": "string",
             "const": "id"
           },
@@ -42625,10 +42991,12 @@
         "properties": {
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -42641,6 +43009,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -42652,6 +43021,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -42663,6 +43033,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "default": null,
             "anyOf": [
               {
@@ -42675,16 +43046,19 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "import_id": {
@@ -42700,6 +43074,7 @@
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -42711,6 +43086,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "reverted": {
@@ -42719,6 +43095,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -42730,6 +43107,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "default": null,
             "anyOf": [
               {
@@ -42742,6 +43120,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -42753,6 +43132,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "default": null,
             "anyOf": [
               {
@@ -42765,6 +43145,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -42804,10 +43185,12 @@
           },
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -42820,6 +43203,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -42831,6 +43215,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -42842,6 +43227,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -42853,16 +43239,19 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "import_id": {
@@ -42878,6 +43267,7 @@
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -42889,6 +43279,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "reverted": {
@@ -42897,6 +43288,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -42908,6 +43300,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -42919,6 +43312,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -42930,6 +43324,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "anyOf": [
               {
                 "type": "string"
@@ -42941,6 +43336,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -43021,6 +43417,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the query. Must be `in_status`.",
             "type": "string",
             "const": "in_status"
           }
@@ -43735,6 +44132,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -43890,10 +44288,12 @@
         "properties": {
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -43906,6 +44306,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -43917,6 +44318,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -43928,6 +44330,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "default": null,
             "anyOf": [
               {
@@ -43940,11 +44343,13 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
@@ -43976,10 +44381,12 @@
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -43994,6 +44401,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "source_display_name": {
@@ -44013,6 +44421,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -44024,6 +44433,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "default": null,
             "anyOf": [
               {
@@ -44036,6 +44446,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -44047,6 +44458,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "default": null,
             "anyOf": [
               {
@@ -44059,6 +44471,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -44102,10 +44515,12 @@
           },
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -44118,6 +44533,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -44129,6 +44545,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -44140,6 +44557,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -44151,11 +44569,13 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
@@ -44187,10 +44607,12 @@
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -44206,6 +44628,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "source_display_name": {
@@ -44225,6 +44648,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -44236,6 +44660,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -44247,6 +44672,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -44258,6 +44684,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "anyOf": [
               {
                 "type": "string"
@@ -44269,6 +44696,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -44316,6 +44744,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -45024,10 +45453,12 @@
         "properties": {
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -45040,6 +45471,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -45051,6 +45483,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -45062,6 +45495,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
+            "description": "ID of the agent that created the activity, or `null` if no agent created it.",
             "default": null,
             "anyOf": [
               {
@@ -45074,6 +45508,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "default": null,
             "anyOf": [
               {
@@ -45086,20 +45521,24 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -45127,10 +45566,12 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -45142,6 +45583,7 @@
           },
           "updated_by_agent_id": {
             "title": "Updated By Agent ID",
+            "description": "ID of the agent that last updated the activity, or `null` if the last update wasn't made by an agent.",
             "default": null,
             "anyOf": [
               {
@@ -45154,6 +45596,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "default": null,
             "anyOf": [
               {
@@ -45166,6 +45609,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -45177,6 +45621,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "default": null,
             "anyOf": [
               {
@@ -45189,6 +45634,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -45228,10 +45674,12 @@
           },
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -45244,6 +45692,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -45255,6 +45704,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -45266,6 +45716,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
+            "description": "ID of the agent that created the activity, or `null` if no agent created it.",
             "anyOf": [
               {
                 "type": "string"
@@ -45277,6 +45728,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -45288,20 +45740,24 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -45329,10 +45785,12 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -45344,6 +45802,7 @@
           },
           "updated_by_agent_id": {
             "title": "Updated By Agent ID",
+            "description": "ID of the agent that last updated the activity, or `null` if the last update wasn't made by an agent.",
             "anyOf": [
               {
                 "type": "string"
@@ -45355,6 +45814,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -45366,6 +45826,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -45377,6 +45838,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "anyOf": [
               {
                 "type": "string"
@@ -45388,6 +45850,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -45465,6 +45928,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -45510,6 +45974,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the condition. Must be `local_time`.",
             "type": "string",
             "const": "local_time"
           }
@@ -45531,6 +45996,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the query. Must be `match_all`.",
             "type": "string",
             "const": "match_all"
           }
@@ -45545,10 +46011,12 @@
         "properties": {
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -45647,6 +46115,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -45679,6 +46148,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -45702,6 +46172,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "default": null,
             "anyOf": [
               {
@@ -45714,11 +46185,13 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
@@ -45733,6 +46206,7 @@
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "integrations": {
@@ -45749,6 +46223,7 @@
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -45779,6 +46254,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "outcome_autofill_confidence": {
@@ -45920,6 +46396,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -45931,6 +46408,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "default": null,
             "anyOf": [
               {
@@ -45943,6 +46421,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -45954,6 +46433,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "default": null,
             "anyOf": [
               {
@@ -46007,6 +46487,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -46180,10 +46661,12 @@
           },
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -46269,6 +46752,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -46302,6 +46786,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -46324,6 +46809,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -46335,11 +46821,13 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
@@ -46354,6 +46842,7 @@
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "integrations": {
@@ -46370,6 +46859,7 @@
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -46400,6 +46890,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "outcome_autofill_confidence": {
@@ -46534,6 +47025,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -46545,6 +47037,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -46556,6 +47049,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -46567,6 +47061,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "anyOf": [
               {
                 "type": "string"
@@ -46619,6 +47114,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -47247,6 +47743,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the condition. Must be `moment_range`.",
             "type": "string",
             "const": "moment_range"
           }
@@ -47262,6 +47759,7 @@
         "properties": {
           "type": {
             "title": "Type",
+            "description": "Type of the condition. Must be `multiple_numbers`.",
             "type": "string",
             "const": "multiple_numbers"
           },
@@ -47298,6 +47796,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the condition. Must be `multiple_text`.",
             "type": "string",
             "const": "multiple_text"
           },
@@ -47399,10 +47898,12 @@
           },
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -47415,6 +47916,7 @@
           },
           "agent_action_reason": {
             "title": "Agent Action Reason",
+            "description": "Why an agent created the activity, e.g. `send_scheduling_link`, or `null` if no agent created it.",
             "anyOf": [
               {
                 "type": "string"
@@ -47445,6 +47947,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -47456,6 +47959,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -47467,6 +47971,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
+            "description": "ID of the agent that created the activity, or `null` if no agent created it.",
             "anyOf": [
               {
                 "type": "string"
@@ -47478,6 +47983,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -47489,20 +47995,24 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -47529,6 +48039,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "pinned": {
@@ -47571,6 +48082,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -47582,6 +48094,7 @@
           },
           "updated_by_agent_id": {
             "title": "Updated By Agent ID",
+            "description": "ID of the agent that last updated the activity, or `null` if the last update wasn't made by an agent.",
             "anyOf": [
               {
                 "type": "string"
@@ -47593,6 +48106,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -47604,6 +48118,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -47615,6 +48130,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "anyOf": [
               {
                 "type": "string"
@@ -47626,6 +48142,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -47666,6 +48183,7 @@
         "properties": {
           "type": {
             "title": "Type",
+            "description": "Type of the moment. Must be `now`.",
             "type": "string",
             "const": "now"
           }
@@ -47681,6 +48199,7 @@
         "properties": {
           "type": {
             "title": "Type",
+            "description": "Type of the condition. Must be `number`.",
             "type": "string",
             "const": "number"
           },
@@ -47757,6 +48276,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the condition. Must be `number_range`.",
             "type": "string",
             "const": "number_range"
           }
@@ -47783,6 +48303,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the query. Must be `object_type`.",
             "type": "string",
             "const": "object_type"
           }
@@ -47826,6 +48347,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the moment. Must be `offset`.",
             "type": "string",
             "const": "offset"
           },
@@ -48389,6 +48911,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -48902,10 +49425,12 @@
         "properties": {
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -48918,6 +49443,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -48929,6 +49455,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -48940,6 +49467,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
+            "description": "ID of the agent that created the activity, or `null` if no agent created it.",
             "default": null,
             "anyOf": [
               {
@@ -48952,6 +49480,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "default": null,
             "anyOf": [
               {
@@ -48964,20 +49493,24 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -49107,10 +49640,12 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -49122,6 +49657,7 @@
           },
           "updated_by_agent_id": {
             "title": "Updated By Agent ID",
+            "description": "ID of the agent that last updated the activity, or `null` if the last update wasn't made by an agent.",
             "default": null,
             "anyOf": [
               {
@@ -49134,6 +49670,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "default": null,
             "anyOf": [
               {
@@ -49146,6 +49683,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -49157,6 +49695,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "default": null,
             "anyOf": [
               {
@@ -49169,6 +49708,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -49209,10 +49749,12 @@
           },
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -49225,6 +49767,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -49236,6 +49779,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -49247,6 +49791,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
+            "description": "ID of the agent that created the activity, or `null` if no agent created it.",
             "anyOf": [
               {
                 "type": "string"
@@ -49258,6 +49803,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -49269,20 +49815,24 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -49412,10 +49962,12 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -49427,6 +49979,7 @@
           },
           "updated_by_agent_id": {
             "title": "Updated By Agent ID",
+            "description": "ID of the agent that last updated the activity, or `null` if the last update wasn't made by an agent.",
             "anyOf": [
               {
                 "type": "string"
@@ -49438,6 +49991,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -49449,6 +50003,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -49460,6 +50015,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "anyOf": [
               {
                 "type": "string"
@@ -49471,6 +50027,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -49595,6 +50152,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the query. Must be `or`.",
             "type": "string",
             "const": "or"
           }
@@ -49855,6 +50413,7 @@
           "manage_chloe_call_tasks",
           "view_custom_agents",
           "manage_custom_agents",
+          "manage_team_skills",
           "manage_others_activities",
           "delete_own_activities",
           "calling",
@@ -50619,6 +51178,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the condition. Must be `reference`.",
             "type": "string",
             "const": "reference"
           }
@@ -50936,6 +51496,7 @@
         "properties": {
           "type": {
             "title": "Type",
+            "description": "Type of the condition. Must be `predefined_relative_date_range`.",
             "type": "string",
             "const": "predefined_relative_date_range"
           },
@@ -51018,10 +51579,12 @@
         "properties": {
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -51034,6 +51597,7 @@
           },
           "agent_action_reason": {
             "title": "Agent Action Reason",
+            "description": "Why an agent created the activity, e.g. `send_scheduling_link`, or `null` if no agent created it.",
             "default": null,
             "anyOf": [
               {
@@ -51080,6 +51644,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -51102,6 +51667,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -51113,6 +51679,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
+            "description": "ID of the agent that created the activity, or `null` if no agent created it.",
             "default": null,
             "anyOf": [
               {
@@ -51125,6 +51692,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "default": null,
             "anyOf": [
               {
@@ -51137,6 +51705,7 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
@@ -51166,6 +51735,7 @@
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
@@ -51185,10 +51755,12 @@
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -51233,6 +51805,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "remote_country_iso": {
@@ -51270,6 +51843,7 @@
           },
           "sequence_id": {
             "title": "Sequence ID",
+            "description": "ID of the Workflow that created the activity, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -51282,6 +51856,7 @@
           },
           "sequence_name": {
             "title": "Sequence Name",
+            "description": "Name of the Workflow in `sequence_id`.",
             "default": null,
             "anyOf": [
               {
@@ -51294,6 +51869,7 @@
           },
           "sequence_subscription_id": {
             "title": "Sequence Subscription ID",
+            "description": "ID of the Workflow subscription, i.e. the Contact's enrollment in the Workflow, that created the activity, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -51334,6 +51910,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -51345,6 +51922,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "default": null,
             "anyOf": [
               {
@@ -51357,6 +51935,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -51368,6 +51947,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "default": null,
             "anyOf": [
               {
@@ -51380,6 +51960,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -51434,10 +52015,12 @@
           },
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -51450,6 +52033,7 @@
           },
           "agent_action_reason": {
             "title": "Agent Action Reason",
+            "description": "Why an agent created the activity, e.g. `send_scheduling_link`, or `null` if no agent created it.",
             "anyOf": [
               {
                 "type": "string"
@@ -51495,6 +52079,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -51517,6 +52102,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -51528,6 +52114,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
+            "description": "ID of the agent that created the activity, or `null` if no agent created it.",
             "anyOf": [
               {
                 "type": "string"
@@ -51539,6 +52126,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -51550,6 +52138,7 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
@@ -51579,6 +52168,7 @@
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
@@ -51599,10 +52189,12 @@
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -51647,6 +52239,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "remote_country_iso": {
@@ -51684,6 +52277,7 @@
           },
           "sequence_id": {
             "title": "Sequence ID",
+            "description": "ID of the Workflow that created the activity, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -51695,6 +52289,7 @@
           },
           "sequence_name": {
             "title": "Sequence Name",
+            "description": "Name of the Workflow in `sequence_id`.",
             "anyOf": [
               {
                 "type": "string"
@@ -51706,6 +52301,7 @@
           },
           "sequence_subscription_id": {
             "title": "Sequence Subscription ID",
+            "description": "ID of the Workflow subscription, i.e. the Contact's enrollment in the Workflow, that created the activity, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -51747,6 +52343,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -51758,6 +52355,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -51769,6 +52367,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -51780,6 +52379,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "anyOf": [
               {
                 "type": "string"
@@ -51973,6 +52573,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the query. Must be `saved_search`.",
             "type": "string",
             "const": "saved_search"
           }
@@ -52002,6 +52603,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -52388,6 +52990,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -52541,6 +53144,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -52716,6 +53320,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the moment. Must be `start_end_of_period`.",
             "type": "string",
             "const": "start_end_of_period"
           },
@@ -52743,6 +53348,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the moment. Must be `start_end_of_predefined_relative_period`.",
             "type": "string",
             "const": "start_end_of_predefined_relative_period"
           },
@@ -52778,6 +53384,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -52820,6 +53427,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -52862,6 +53470,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -52941,6 +53550,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -52979,10 +53589,12 @@
         "properties": {
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -53006,6 +53618,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -53030,6 +53643,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "default": null,
             "anyOf": [
               {
@@ -53042,20 +53656,24 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -53067,6 +53685,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "sequence_id": {
@@ -53148,6 +53767,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -53159,6 +53779,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "default": null,
             "anyOf": [
               {
@@ -53171,6 +53792,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -53182,6 +53804,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "default": null,
             "anyOf": [
               {
@@ -53194,6 +53817,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -53232,10 +53856,12 @@
           },
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -53248,6 +53874,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -53271,6 +53898,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -53282,20 +53910,24 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -53307,6 +53939,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "task_assigned_to": {
@@ -53355,6 +53988,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -53366,6 +54000,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -53377,6 +54012,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -53388,6 +54024,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "anyOf": [
               {
                 "type": "string"
@@ -53399,6 +54036,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -53435,6 +54073,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -53489,6 +54128,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -53543,6 +54183,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -53596,6 +54237,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -53655,6 +54297,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -53711,6 +54354,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -53765,6 +54409,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -53827,6 +54472,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -53890,6 +54536,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -53944,6 +54591,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -53997,6 +54645,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -54104,6 +54753,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -54272,6 +54922,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the field. Must be `regular_field`.",
             "type": "string",
             "const": "regular_field"
           }
@@ -54311,6 +54962,7 @@
         "properties": {
           "type": {
             "title": "Type",
+            "description": "Type of the condition. Must be `term`.",
             "type": "string",
             "const": "term"
           },
@@ -54341,6 +54993,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the condition. Must be `text`.",
             "type": "string",
             "const": "text"
           },
@@ -54399,6 +55052,7 @@
           },
           "type": {
             "title": "Type",
+            "description": "Type of the query. Must be `text`.",
             "type": "string",
             "const": "text"
           },
@@ -54421,6 +55075,7 @@
         "properties": {
           "type": {
             "title": "Type",
+            "description": "Type of the condition. Must be `timezone_name`.",
             "type": "string",
             "const": "timezone_name"
           },
@@ -56364,10 +57019,12 @@
         "properties": {
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -56387,6 +57044,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -56398,6 +57056,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -56409,6 +57068,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "default": null,
             "anyOf": [
               {
@@ -56421,11 +57081,13 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
@@ -56438,6 +57100,7 @@
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "integration_link": {
@@ -56464,6 +57127,7 @@
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -56491,6 +57155,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "remote_phone": {
@@ -56514,6 +57179,7 @@
           },
           "sequence_id": {
             "title": "Sequence ID",
+            "description": "ID of the Workflow that created the activity, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -56526,6 +57192,7 @@
           },
           "sequence_name": {
             "title": "Sequence Name",
+            "description": "Name of the Workflow in `sequence_id`.",
             "default": null,
             "anyOf": [
               {
@@ -56538,6 +57205,7 @@
           },
           "sequence_subscription_id": {
             "title": "Sequence Subscription ID",
+            "description": "ID of the Workflow subscription, i.e. the Contact's enrollment in the Workflow, that created the activity, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -56557,6 +57225,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -56568,6 +57237,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "default": null,
             "anyOf": [
               {
@@ -56580,6 +57250,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -56591,6 +57262,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "default": null,
             "anyOf": [
               {
@@ -56603,6 +57275,7 @@
           },
           "users": {
             "title": "Users",
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
             "type": "array",
             "items": {
               "type": "string"
@@ -56653,10 +57326,12 @@
           },
           "_type": {
             "title": "Type",
+            "description": "Type of the activity, e.g. `Call`, `Email` or `Note`.",
             "type": "string"
           },
           "activity_at": {
             "title": "Activity At",
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
             "anyOf": [
               {
                 "type": "string",
@@ -56676,6 +57351,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -56687,6 +57363,7 @@
           },
           "created_by": {
             "title": "Created By",
+            "description": "ID of the user who created the activity, or `null` if it wasn't created by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -56698,6 +57375,7 @@
           },
           "created_by_name": {
             "title": "Created By Name",
+            "description": "Name of the user in `created_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -56709,11 +57387,13 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the activity was created.",
             "type": "string",
             "format": "date-time"
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the activity was last updated.",
             "type": "string",
             "format": "date-time"
           },
@@ -56727,6 +57407,7 @@
           },
           "id": {
             "title": "ID",
+            "description": "ID of the activity, e.g. `acti_abc123`.",
             "type": "string"
           },
           "integration_link": {
@@ -56753,6 +57434,7 @@
           },
           "lead_id": {
             "title": "Lead ID",
+            "description": "ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don't match any Contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -56780,6 +57462,7 @@
           },
           "organization_id": {
             "title": "Organization ID",
+            "description": "ID of the organization the activity belongs to.",
             "type": "string"
           },
           "remote_phone": {
@@ -56811,6 +57494,7 @@
           },
           "updated_by": {
             "title": "Updated By",
+            "description": "ID of the user who last updated the activity, or `null` if it wasn't updated by a user.",
             "anyOf": [
               {
                 "type": "string"
@@ -56822,6 +57506,7 @@
           },
           "updated_by_name": {
             "title": "Updated By Name",
+            "description": "Name of the user in `updated_by`.",
             "anyOf": [
               {
                 "type": "string"
@@ -56833,6 +57518,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
             "anyOf": [
               {
                 "type": "string"
@@ -56844,6 +57530,7 @@
           },
           "user_name": {
             "title": "User Name",
+            "description": "Name of the user in `user_id`.",
             "anyOf": [
               {
                 "type": "string"

@@ -131,7 +131,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(9)
             {
                 { "accepts_multiple_values", n => { AcceptsMultipleValues = n.GetBoolValue(); } },
                 { "back_reference_is_visible", n => { BackReferenceIsVisible = n.GetBoolValue(); } },

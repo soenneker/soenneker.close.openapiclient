@@ -36,7 +36,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string FormFieldId { get => _explicitNullValueFormFieldId; set { _explicitNullValueFormFieldId = value; AdditionalData?.Remove("form_field_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("form_field_id"); else _explicitNullProperties?.Remove("form_field_id"); } }
         private string _explicitNullValueFormFieldId = default!;
 #endif
-        /// <summary>The type property</summary>
+        /// <summary>Type of the field. Must be `form_field`.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.FormFieldType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.Close.OpenApiClient.Models.FormFieldType? _explicitNullValueType = default!;
         /// <summary>

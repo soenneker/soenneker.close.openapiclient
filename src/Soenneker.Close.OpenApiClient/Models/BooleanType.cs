@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>Type of the condition. Must be `boolean`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum BooleanType
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "boolean")]
         #pragma warning disable CS1591

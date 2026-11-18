@@ -90,7 +90,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.UpdateSmsTemplateAttachment>(global::Soenneker.Close.OpenApiClient.Models.UpdateSmsTemplateAttachment.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "is_shared", n => { IsShared = n.GetBoolValue(); } },

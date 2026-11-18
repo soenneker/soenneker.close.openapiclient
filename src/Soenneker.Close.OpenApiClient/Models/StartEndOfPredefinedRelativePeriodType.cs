@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>Type of the moment. Must be `start_end_of_predefined_relative_period`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum StartEndOfPredefinedRelativePeriodType
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "start_end_of_predefined_relative_period")]
         #pragma warning disable CS1591

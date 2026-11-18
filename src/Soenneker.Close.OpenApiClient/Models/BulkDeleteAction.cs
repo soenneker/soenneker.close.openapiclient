@@ -178,7 +178,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(17)
             {
                 { "bulk_object_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.BulkActionObjectType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueBulkObjectType = default; _explicitNullProperties?.Remove("bulk_object_type"); AdditionalData["bulk_object_type"] = unknown; } else { BulkObjectType = parsed; AdditionalData.Remove("bulk_object_type"); } } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },

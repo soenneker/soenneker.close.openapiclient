@@ -36,7 +36,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string CustomFieldId { get => _explicitNullValueCustomFieldId; set { _explicitNullValueCustomFieldId = value; AdditionalData?.Remove("custom_field_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_field_id"); else _explicitNullProperties?.Remove("custom_field_id"); } }
         private string _explicitNullValueCustomFieldId = default!;
 #endif
-        /// <summary>The type property</summary>
+        /// <summary>Type of the field. Must be `custom_field`.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.CustomFieldType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CustomFieldType? _explicitNullValueType = default!;
         /// <summary>

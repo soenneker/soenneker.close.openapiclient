@@ -28,7 +28,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>Name of the field. See the [fields of each object type](https://developer.close.com/api/resources/advanced-filtering-fields).</summary>
         public global::Soenneker.Close.OpenApiClient.Models.ContactSearchFieldName? FieldName { get => _explicitNullValueFieldName; set { _explicitNullValueFieldName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field_name"); else _explicitNullProperties?.Remove("field_name"); } }
         private global::Soenneker.Close.OpenApiClient.Models.ContactSearchFieldName? _explicitNullValueFieldName = default!;
-        /// <summary>The type property</summary>
+        /// <summary>Type of the field. Must be `regular_field`.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.ContactSearchFieldType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.Close.OpenApiClient.Models.ContactSearchFieldType? _explicitNullValueType = default!;
         /// <summary>

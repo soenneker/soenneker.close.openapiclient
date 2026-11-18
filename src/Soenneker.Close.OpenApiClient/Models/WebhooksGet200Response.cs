@@ -210,7 +210,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(15)
             {
                 { "counters", n => { Counters = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.WebhooksGet200ResponseCounters>(global::Soenneker.Close.OpenApiClient.Models.WebhooksGet200ResponseCounters.CreateFromDiscriminatorValue); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },

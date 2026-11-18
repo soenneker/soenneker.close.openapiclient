@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>Type of the condition. Must be `predefined_relative_date_range`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum PredefinedRelativeDateRangeType
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "predefined_relative_date_range")]
         #pragma warning disable CS1591

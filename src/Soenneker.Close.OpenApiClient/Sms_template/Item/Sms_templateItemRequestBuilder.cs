@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Close.OpenApiClient.Sms_template.Item.Render;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -18,6 +19,11 @@ namespace Soenneker.Close.OpenApiClient.Sms_template.Item
         public global::Soenneker.Close.OpenApiClient.Sms_template.Item.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.Close.OpenApiClient.Sms_template.Item.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The render property</summary>
+        public global::Soenneker.Close.OpenApiClient.Sms_template.Item.Render.RenderRequestBuilder Render
+        {
+            get => new global::Soenneker.Close.OpenApiClient.Sms_template.Item.Render.RenderRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Sms_template.Item.Sms_templateItemRequestBuilder"/> and sets the default values.

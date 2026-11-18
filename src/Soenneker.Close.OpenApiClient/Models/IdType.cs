@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>Type of the query. Must be `id`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum IdType
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "id")]
         #pragma warning disable CS1591

@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>Type of the field. Must be `custom_field`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum CustomFieldType
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "custom_field")]
         #pragma warning disable CS1591

@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>Type of the condition. Must be `moment_range`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum MomentRangeType
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "moment_range")]
         #pragma warning disable CS1591

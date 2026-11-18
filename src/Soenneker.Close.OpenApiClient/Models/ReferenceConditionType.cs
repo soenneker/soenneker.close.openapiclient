@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>Type of the condition. Must be `reference`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum ReferenceConditionType
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "reference")]
         #pragma warning disable CS1591

@@ -188,7 +188,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(12)
             {
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "custom.cf_cSh3fWT3rEJ1BFSezme2YAG6bPrZV5wUWKKrW4iN19g", n => { CustomCfCSh3fWT3rEJ1BFSezme2YAG6bPrZV5wUWKKrW4iN19g = n.GetStringValue(); } },
