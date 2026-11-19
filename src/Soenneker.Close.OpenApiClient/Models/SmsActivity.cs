@@ -23,6 +23,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("agent_action_reason") is { } nullNodeAgentActionReason && nullNodeAgentActionReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentActionReason = null;
             if (parseNode.GetChildNode("agent_config_id") is null) { _explicitNullValueAgentConfigId = default!; _explicitNullProperties?.Remove("agent_config_id"); }
             else if (parseNode.GetChildNode("agent_config_id") is { } nullNodeAgentConfigId && nullNodeAgentConfigId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentConfigId = null;
+            if (parseNode.GetChildNode("attachments") is null) { _explicitNullValueAttachments = default!; _explicitNullProperties?.Remove("attachments"); }
+            else if (parseNode.GetChildNode("attachments") is { } nullNodeAttachments && nullNodeAttachments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Attachments = null;
             if (parseNode.GetChildNode("caller_id_mode") is null) { _explicitNullValueCallerIdMode = default!; _explicitNullProperties?.Remove("caller_id_mode"); }
             else if (parseNode.GetChildNode("caller_id_mode") is { } nullNodeCallerIdMode && nullNodeCallerIdMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CallerIdMode = null;
             if (parseNode.GetChildNode("caller_id_reason") is null) { _explicitNullValueCallerIdReason = default!; _explicitNullProperties?.Remove("caller_id_reason"); }
@@ -100,7 +102,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         private DateTimeOffset? _explicitNullValueActivityAt = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Why an agent created the activity, e.g. `send_scheduling_link`, or `null` if no agent created it.</summary>
+        /// <summary>Why an agent created the activity (`send_scheduling_link`, `custom_agent_decision` or `voice_agent_callback`), or `null` if no agent created it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AgentActionReason { get => _explicitNullValueAgentActionReason; set { _explicitNullValueAgentActionReason = value; AdditionalData?.Remove("agent_action_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_action_reason"); else _explicitNullProperties?.Remove("agent_action_reason"); } }
@@ -121,10 +123,20 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string AgentConfigId { get => _explicitNullValueAgentConfigId; set { _explicitNullValueAgentConfigId = value; AdditionalData?.Remove("agent_config_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_config_id"); else _explicitNullProperties?.Remove("agent_config_id"); } }
         private string _explicitNullValueAgentConfigId = default!;
 #endif
-        /// <summary>The caller_id_mode property</summary>
+        /// <summary>Files sent or received with the SMS. An SMS with attachments is an MMS.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Close.OpenApiClient.Models.SmsAttachment>? Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; AdditionalData?.Remove("attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.SmsAttachment>? _explicitNullValueAttachments = default!;
+#nullable restore
+#else
+        public List<global::Soenneker.Close.OpenApiClient.Models.SmsAttachment> Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; AdditionalData?.Remove("attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.SmsAttachment> _explicitNullValueAttachments = default!;
+#endif
+        /// <summary>How `local_phone` was chosen for an outgoing SMS. `null` for incoming, logged and older SMS.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.CallerIdMode? CallerIdMode { get => _explicitNullValueCallerIdMode; set { _explicitNullValueCallerIdMode = value; AdditionalData?.Remove("caller_id_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("caller_id_mode"); else _explicitNullProperties?.Remove("caller_id_mode"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CallerIdMode? _explicitNullValueCallerIdMode = default!;
-        /// <summary>The caller_id_reason property</summary>
+        /// <summary>Why Close chose `local_phone` when `caller_id_mode` is `auto`. `null` otherwise, and until Close sends the SMS.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.CallerIdReason? CallerIdReason { get => _explicitNullValueCallerIdReason; set { _explicitNullValueCallerIdReason = value; AdditionalData?.Remove("caller_id_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("caller_id_reason"); else _explicitNullProperties?.Remove("caller_id_reason"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CallerIdReason? _explicitNullValueCallerIdReason = default!;
         /// <summary>ID of the Contact the activity is with, or `null` if it isn&apos;t with a particular Contact.</summary>
@@ -137,7 +149,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ContactId { get => _explicitNullValueContactId; set { _explicitNullValueContactId = value; AdditionalData?.Remove("contact_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact_id"); else _explicitNullProperties?.Remove("contact_id"); } }
         private string _explicitNullValueContactId = default!;
 #endif
-        /// <summary>The cost property</summary>
+        /// <summary>What Close charges for the SMS, in cents, as a decimal string (e.g. `&quot;1.5&quot;`). `null` if there&apos;s no charge, e.g. for a logged SMS.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Cost { get => _explicitNullValueCost; set { _explicitNullValueCost = value; AdditionalData?.Remove("cost"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost"); else _explicitNullProperties?.Remove("cost"); } }
@@ -157,7 +169,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
         private string _explicitNullValueCreatedBy = default!;
 #endif
-        /// <summary>ID of the agent that created the activity, or `null` if no agent created it.</summary>
+        /// <summary>ID of the agent that created the activity, e.g. `agentconfig_abc123`, or `null` if no agent created it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatedByAgentId { get => _explicitNullValueCreatedByAgentId; set { _explicitNullValueCreatedByAgentId = value; AdditionalData?.Remove("created_by_agent_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by_agent_id"); else _explicitNullProperties?.Remove("created_by_agent_id"); } }
@@ -180,19 +192,19 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>When the activity was created.</summary>
         public DateTimeOffset? DateCreated { get => _explicitNullValueDateCreated; set { _explicitNullValueDateCreated = value; AdditionalData?.Remove("date_created"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_created"); else _explicitNullProperties?.Remove("date_created"); } }
         private DateTimeOffset? _explicitNullValueDateCreated = default!;
-        /// <summary>The date_scheduled property</summary>
+        /// <summary>When the SMS is scheduled to be sent, or `null` if it wasn&apos;t scheduled.</summary>
         public DateTimeOffset? DateScheduled { get => _explicitNullValueDateScheduled; set { _explicitNullValueDateScheduled = value; AdditionalData?.Remove("date_scheduled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_scheduled"); else _explicitNullProperties?.Remove("date_scheduled"); } }
         private DateTimeOffset? _explicitNullValueDateScheduled = default!;
-        /// <summary>The date_sent property</summary>
+        /// <summary>When the SMS was sent. `null` until it&apos;s sent.</summary>
         public DateTimeOffset? DateSent { get => _explicitNullValueDateSent; set { _explicitNullValueDateSent = value; AdditionalData?.Remove("date_sent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_sent"); else _explicitNullProperties?.Remove("date_sent"); } }
         private DateTimeOffset? _explicitNullValueDateSent = default!;
         /// <summary>When the activity was last updated.</summary>
         public DateTimeOffset? DateUpdated { get => _explicitNullValueDateUpdated; set { _explicitNullValueDateUpdated = value; AdditionalData?.Remove("date_updated"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_updated"); else _explicitNullProperties?.Remove("date_updated"); } }
         private DateTimeOffset? _explicitNullValueDateUpdated = default!;
-        /// <summary>Direction of a phone activity, such as a call or an SMS message.</summary>
+        /// <summary>Whether the SMS was received or sent.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.PhoneActivityDirection? Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; AdditionalData?.Remove("direction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
         private global::Soenneker.Close.OpenApiClient.Models.PhoneActivityDirection? _explicitNullValueDirection = default!;
-        /// <summary>The error_message property</summary>
+        /// <summary>Why the SMS failed to send, when `status` is `error`. Null otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ErrorMessage { get => _explicitNullValueErrorMessage; set { _explicitNullValueErrorMessage = value; AdditionalData?.Remove("error_message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_message"); else _explicitNullProperties?.Remove("error_message"); } }
@@ -222,7 +234,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string LeadId { get => _explicitNullValueLeadId; set { _explicitNullValueLeadId = value; AdditionalData?.Remove("lead_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_id"); else _explicitNullProperties?.Remove("lead_id"); } }
         private string _explicitNullValueLeadId = default!;
 #endif
-        /// <summary>The local_country_iso property</summary>
+        /// <summary>ISO 3166-1 alpha-2 code of the country of `local_phone`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LocalCountryIso { get => _explicitNullValueLocalCountryIso; set { _explicitNullValueLocalCountryIso = value; AdditionalData?.Remove("local_country_iso"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("local_country_iso"); else _explicitNullProperties?.Remove("local_country_iso"); } }
@@ -232,7 +244,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string LocalCountryIso { get => _explicitNullValueLocalCountryIso; set { _explicitNullValueLocalCountryIso = value; AdditionalData?.Remove("local_country_iso"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("local_country_iso"); else _explicitNullProperties?.Remove("local_country_iso"); } }
         private string _explicitNullValueLocalCountryIso = default!;
 #endif
-        /// <summary>The local_phone property</summary>
+        /// <summary>Your phone number that sent or received the SMS, in E.164 format. `null` for a logged SMS that doesn&apos;t say which number was used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LocalPhone { get => _explicitNullValueLocalPhone; set { _explicitNullValueLocalPhone = value; AdditionalData?.Remove("local_phone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("local_phone"); else _explicitNullProperties?.Remove("local_phone"); } }
@@ -242,7 +254,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string LocalPhone { get => _explicitNullValueLocalPhone; set { _explicitNullValueLocalPhone = value; AdditionalData?.Remove("local_phone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("local_phone"); else _explicitNullProperties?.Remove("local_phone"); } }
         private string _explicitNullValueLocalPhone = default!;
 #endif
-        /// <summary>The local_phone_formatted property</summary>
+        /// <summary>`local_phone` formatted for display.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LocalPhoneFormatted { get => _explicitNullValueLocalPhoneFormatted; set { _explicitNullValueLocalPhoneFormatted = value; AdditionalData?.Remove("local_phone_formatted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("local_phone_formatted"); else _explicitNullProperties?.Remove("local_phone_formatted"); } }
@@ -262,7 +274,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string _explicitNullValueOrganizationId = default!;
 #endif
-        /// <summary>The remote_country_iso property</summary>
+        /// <summary>ISO 3166-1 alpha-2 code of the country of `remote_phone`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RemoteCountryIso { get => _explicitNullValueRemoteCountryIso; set { _explicitNullValueRemoteCountryIso = value; AdditionalData?.Remove("remote_country_iso"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_country_iso"); else _explicitNullProperties?.Remove("remote_country_iso"); } }
@@ -272,7 +284,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string RemoteCountryIso { get => _explicitNullValueRemoteCountryIso; set { _explicitNullValueRemoteCountryIso = value; AdditionalData?.Remove("remote_country_iso"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_country_iso"); else _explicitNullProperties?.Remove("remote_country_iso"); } }
         private string _explicitNullValueRemoteCountryIso = default!;
 #endif
-        /// <summary>The remote_phone property</summary>
+        /// <summary>Phone number of the other party, in E.164 format. `null` for a logged SMS that only names a contact.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RemotePhone { get => _explicitNullValueRemotePhone; set { _explicitNullValueRemotePhone = value; AdditionalData?.Remove("remote_phone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_phone"); else _explicitNullProperties?.Remove("remote_phone"); } }
@@ -282,7 +294,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string RemotePhone { get => _explicitNullValueRemotePhone; set { _explicitNullValueRemotePhone = value; AdditionalData?.Remove("remote_phone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_phone"); else _explicitNullProperties?.Remove("remote_phone"); } }
         private string _explicitNullValueRemotePhone = default!;
 #endif
-        /// <summary>The remote_phone_formatted property</summary>
+        /// <summary>`remote_phone` formatted for display.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RemotePhoneFormatted { get => _explicitNullValueRemotePhoneFormatted; set { _explicitNullValueRemotePhoneFormatted = value; AdditionalData?.Remove("remote_phone_formatted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_phone_formatted"); else _explicitNullProperties?.Remove("remote_phone_formatted"); } }
@@ -292,7 +304,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string RemotePhoneFormatted { get => _explicitNullValueRemotePhoneFormatted; set { _explicitNullValueRemotePhoneFormatted = value; AdditionalData?.Remove("remote_phone_formatted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_phone_formatted"); else _explicitNullProperties?.Remove("remote_phone_formatted"); } }
         private string _explicitNullValueRemotePhoneFormatted = default!;
 #endif
-        /// <summary>ID of the Workflow that created the activity, or `null`.</summary>
+        /// <summary>ID of the Workflow that created the activity, e.g. `seq_abc123`, or `null`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SequenceId { get => _explicitNullValueSequenceId; set { _explicitNullValueSequenceId = value; AdditionalData?.Remove("sequence_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sequence_id"); else _explicitNullProperties?.Remove("sequence_id"); } }
@@ -312,7 +324,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string SequenceName { get => _explicitNullValueSequenceName; set { _explicitNullValueSequenceName = value; AdditionalData?.Remove("sequence_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sequence_name"); else _explicitNullProperties?.Remove("sequence_name"); } }
         private string _explicitNullValueSequenceName = default!;
 #endif
-        /// <summary>ID of the Workflow subscription, i.e. the Contact&apos;s enrollment in the Workflow, that created the activity, or `null`.</summary>
+        /// <summary>ID of the Workflow Run, i.e. the Contact&apos;s enrollment in the Workflow, that created the activity, e.g. `sub_abc123`, or `null`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SequenceSubscriptionId { get => _explicitNullValueSequenceSubscriptionId; set { _explicitNullValueSequenceSubscriptionId = value; AdditionalData?.Remove("sequence_subscription_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sequence_subscription_id"); else _explicitNullProperties?.Remove("sequence_subscription_id"); } }
@@ -322,13 +334,13 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string SequenceSubscriptionId { get => _explicitNullValueSequenceSubscriptionId; set { _explicitNullValueSequenceSubscriptionId = value; AdditionalData?.Remove("sequence_subscription_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sequence_subscription_id"); else _explicitNullProperties?.Remove("sequence_subscription_id"); } }
         private string _explicitNullValueSequenceSubscriptionId = default!;
 #endif
-        /// <summary>Source of a phone activity. Describes whether the phone activity (such as a call or an SMS) was handled by Close&apos;s telephony provider or handled externally by a 3rd party and is merely logged in Close.</summary>
+        /// <summary>Whether Close sent or received the SMS (`Close.io`), or it was logged from elsewhere (`External`).</summary>
         public global::Soenneker.Close.OpenApiClient.Models.PhoneActivitySource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
         private global::Soenneker.Close.OpenApiClient.Models.PhoneActivitySource? _explicitNullValueSource = default!;
-        /// <summary>Status of a message, such as Email or SMS.</summary>
+        /// <summary>Where the SMS is in its lifecycle, e.g. `draft`, `outbox` or `sent`.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.MessageStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.Close.OpenApiClient.Models.MessageStatus? _explicitNullValueStatus = default!;
-        /// <summary>The template_id property</summary>
+        /// <summary>ID of the SMS template the text was rendered from, or `null` if no template was used. The template may since have been deleted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TemplateId { get => _explicitNullValueTemplateId; set { _explicitNullValueTemplateId = value; AdditionalData?.Remove("template_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("template_id"); else _explicitNullProperties?.Remove("template_id"); } }
@@ -338,7 +350,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string TemplateId { get => _explicitNullValueTemplateId; set { _explicitNullValueTemplateId = value; AdditionalData?.Remove("template_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("template_id"); else _explicitNullProperties?.Remove("template_id"); } }
         private string _explicitNullValueTemplateId = default!;
 #endif
-        /// <summary>The text property</summary>
+        /// <summary>Text of the SMS.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Text { get => _explicitNullValueText; set { _explicitNullValueText = value; AdditionalData?.Remove("text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text"); else _explicitNullProperties?.Remove("text"); } }
@@ -431,11 +443,12 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(38)
+            return new Dictionary<string, Action<IParseNode>>(39)
             {
                 { "activity_at", n => { ActivityAt = n.GetDateTimeOffsetValue(); } },
                 { "agent_action_reason", n => { AgentActionReason = n.GetStringValue(); } },
                 { "agent_config_id", n => { AgentConfigId = n.GetStringValue(); } },
+                { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.SmsAttachment>(global::Soenneker.Close.OpenApiClient.Models.SmsAttachment.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "caller_id_mode", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdMode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCallerIdMode = default; _explicitNullProperties?.Remove("caller_id_mode"); AdditionalData["caller_id_mode"] = unknown; } else { CallerIdMode = parsed; AdditionalData.Remove("caller_id_mode"); } } },
                 { "caller_id_reason", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdReason>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCallerIdReason = default; _explicitNullProperties?.Remove("caller_id_reason"); AdditionalData["caller_id_reason"] = unknown; } else { CallerIdReason = parsed; AdditionalData.Remove("caller_id_reason"); } } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
@@ -483,6 +496,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("activity_at", ActivityAt);
             writer.WriteStringValue("agent_action_reason", AgentActionReason);
             writer.WriteStringValue("agent_config_id", AgentConfigId);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.SmsAttachment>("attachments", Attachments);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdMode>("caller_id_mode", CallerIdMode);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdReason>("caller_id_reason", CallerIdReason);
             writer.WriteStringValue("contact_id", ContactId);

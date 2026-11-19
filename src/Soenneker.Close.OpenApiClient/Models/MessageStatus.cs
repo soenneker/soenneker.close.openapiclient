@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
-    /// <summary>Status of a message, such as Email or SMS.</summary>
+    /// <summary>Status of the email, e.g. `draft`, `scheduled` or `sent`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum MessageStatus
     {

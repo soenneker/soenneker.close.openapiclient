@@ -119,7 +119,7 @@ namespace Soenneker.Close.OpenApiClient.Email_template.Item.Render
 #endif
             #pragma warning disable CS1591
             [QueryParameter("contact_preference")]
-            public global::Soenneker.Close.OpenApiClient.Models.EmailTemplatesRenderContactPreferenceParameter? ContactPreference { get; set; }
+            public global::Soenneker.Close.OpenApiClient.Models.BulkEmailContactPreference? ContactPreference { get; set; }
             #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -176,18 +176,15 @@ namespace Soenneker.Close.OpenApiClient.Email_template.Item.Render
             [QueryParameter("results_limit")]
             public int? ResultsLimit { get; set; }
             #pragma warning restore CS1591
+            /// <summary>Email address, optionally with a display name, e.g. `&quot;John Smith&quot; &lt;john@example.com&gt;`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("sender")]
             public string? Sender { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("sender")]
             public string Sender { get; set; }
-            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

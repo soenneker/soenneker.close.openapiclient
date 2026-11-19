@@ -22,7 +22,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/email/{?_fields*,_limit*,_skip*,_type*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,organization_id*,user_id*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/email/{?_fields*,_limit*,_order_by*,_skip*,_type*,_type__in*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,contact_id__in*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,lead_id__in*,organization_id*,user_id*,user_id__in*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/email/{?_fields*,_limit*,_skip*,_type*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,organization_id*,user_id*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/email/{?_fields*,_limit*,_order_by*,_skip*,_type*,_type__in*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,contact_id__in*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,lead_id__in*,organization_id*,user_id*,user_id__in*}", rawUrl)
         {
         }
         /// <summary>
-        /// You&apos;ll get one object per email message.
+        /// List email activities, newest first, with one object per email message. To get emails grouped into conversations, use the Email Threads endpoints.Results are paginated with `_limit` (at most 100) and `_skip`. Use filters such as `lead_id` or the date filters to narrow down the results.Some filters can only be used together with a single `lead_id`: `contact_id`, `contact_id__in`, `user_id__in`, `_type` and `_type__in`. `user_id` on its own doesn&apos;t need one. If your lead visibility is restricted, `lead_id` is required.By default, emails are sorted by `date_created`. To sort by `activity_at` (when the email was sent or received), pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesEmailsList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesEmailsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesEmailsList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// *status* must be one of the following: - `inbox` to log an already received email. - `draft` to create a draft email. - `scheduled` to send an email at a scheduled date and time, which must be specified in the `date_scheduled` field. - `outbox` to actually **send** an email. To delay email sending by a few seconds (to allow undo), specify `send_in` in seconds (must be less than 60). - `sent` to log an already sent email.Only drafts can be modified, and their status can be changed to `scheduled` (to send later) or `outbox` (to send immediately). Scheduled emails, or emails in outbox that weren&apos;t sent yet can be canceled by setting the status back to `draft`.For scheduled, outbox, or sent emails, a `followup_date` may be posted, which will have Close create an email followup task if no response was received.We&apos;ll render an Email Template server-side if you include a `template_id` _without_ including `body_text` or `body_html` in your POST.To specify both a sender name and a sender email address when posting an email, you can use the `sender` field with the format `&quot;sender&quot;: &quot;&quot;John Smith&quot; &lt;emailaddress@example.com&gt;&quot;`The `sender` field is **required** for emails with status `inbox`, `scheduled`, `outbox`, or `error`. It may be omitted for `draft` (since the sender can be specified later before sending) and `sent` (where it defaults to the email address of the `user` associated with the email or the owner of the API key).To include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename`, `content_type`, and `size`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin `https://app.close.com/go/file/`.
+        /// Create an email activity. Depending on `status`, this logs an email that was sent or received outside Close, saves a draft, or sends the email from one of the user&apos;s connected email accounts: - `inbox` logs an email that was received. - `sent` logs an email that was already sent. - `draft` saves a draft. You can edit it and send it later with PUT. - `outbox` sends the email right away. To leave time to undo, set `send_in` to delay sending by up to 60 seconds. - `scheduled` sends the email at `date_scheduled`. - `error` logs an email that failed to send.`sender` is required for every status except `draft` and `sent`. For `sent`, it defaults to the email address of the email&apos;s user. It takes a plain address like `john@example.com`, or a name and address like `&quot;John Smith&quot; &lt;john@example.com&gt;`. To send an email, `to` must contain at least one valid email address.If you include `template_id` without `body_text` or `body_html`, Close renders the email template for the lead and `contact_id`, which is then required.For `scheduled`, `outbox` or `sent` emails, `followup_date` creates a follow-up task for that date if the lead doesn&apos;t reply.To include an attachment, first upload the file with the [Files API](https://developer.close.com/api/resources/files). Then add an object to the `attachments` array with `url`, `filename`, `content_type` and `size`. `url` is the `download.url` field of the Files API response and must start with `https://app.close.com/go/file/`.Returns 400 if validation fails, or if `date_scheduled` or `followup_date` is set and your plan doesn&apos;t include scheduled sending or follow-up reminders.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.EmailActivity"/></returns>
         /// <param name="body">The request body</param>
@@ -77,11 +77,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.EmailActivity?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateEmailActivity body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.EmailActivity?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateEmailActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Email.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.EmailActivity> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateEmailActivity body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.EmailActivity> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateEmailActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Email.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -98,7 +98,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.EmailActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.EmailActivity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// You&apos;ll get one object per email message.
+        /// List email activities, newest first, with one object per email message. To get emails grouped into conversations, use the Email Threads endpoints.Results are paginated with `_limit` (at most 100) and `_skip`. Use filters such as `lead_id` or the date filters to narrow down the results.Some filters can only be used together with a single `lead_id`: `contact_id`, `contact_id__in`, `user_id__in`, `_type` and `_type__in`. `user_id` on its own doesn&apos;t need one. If your lead visibility is restricted, `lead_id` is required.By default, emails are sorted by `date_created`. To sort by `activity_at` (when the email was sent or received), pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -117,18 +117,18 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
             return requestInfo;
         }
         /// <summary>
-        /// *status* must be one of the following: - `inbox` to log an already received email. - `draft` to create a draft email. - `scheduled` to send an email at a scheduled date and time, which must be specified in the `date_scheduled` field. - `outbox` to actually **send** an email. To delay email sending by a few seconds (to allow undo), specify `send_in` in seconds (must be less than 60). - `sent` to log an already sent email.Only drafts can be modified, and their status can be changed to `scheduled` (to send later) or `outbox` (to send immediately). Scheduled emails, or emails in outbox that weren&apos;t sent yet can be canceled by setting the status back to `draft`.For scheduled, outbox, or sent emails, a `followup_date` may be posted, which will have Close create an email followup task if no response was received.We&apos;ll render an Email Template server-side if you include a `template_id` _without_ including `body_text` or `body_html` in your POST.To specify both a sender name and a sender email address when posting an email, you can use the `sender` field with the format `&quot;sender&quot;: &quot;&quot;John Smith&quot; &lt;emailaddress@example.com&gt;&quot;`The `sender` field is **required** for emails with status `inbox`, `scheduled`, `outbox`, or `error`. It may be omitted for `draft` (since the sender can be specified later before sending) and `sent` (where it defaults to the email address of the `user` associated with the email or the owner of the API key).To include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename`, `content_type`, and `size`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin `https://app.close.com/go/file/`.
+        /// Create an email activity. Depending on `status`, this logs an email that was sent or received outside Close, saves a draft, or sends the email from one of the user&apos;s connected email accounts: - `inbox` logs an email that was received. - `sent` logs an email that was already sent. - `draft` saves a draft. You can edit it and send it later with PUT. - `outbox` sends the email right away. To leave time to undo, set `send_in` to delay sending by up to 60 seconds. - `scheduled` sends the email at `date_scheduled`. - `error` logs an email that failed to send.`sender` is required for every status except `draft` and `sent`. For `sent`, it defaults to the email address of the email&apos;s user. It takes a plain address like `john@example.com`, or a name and address like `&quot;John Smith&quot; &lt;john@example.com&gt;`. To send an email, `to` must contain at least one valid email address.If you include `template_id` without `body_text` or `body_html`, Close renders the email template for the lead and `contact_id`, which is then required.For `scheduled`, `outbox` or `sent` emails, `followup_date` creates a follow-up task for that date if the lead doesn&apos;t reply.To include an attachment, first upload the file with the [Files API](https://developer.close.com/api/resources/files). Then add an object to the `attachments` array with `url`, `filename`, `content_type` and `size`. `url` is the `download.url` field of the Files API response and must start with `https://app.close.com/go/file/`.Returns 400 if validation fails, or if `date_scheduled` or `followup_date` is set and your plan doesn&apos;t include scheduled sending or follow-up reminders.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.CreateEmailActivity body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.CreateEmailActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Email.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.CreateEmailActivity body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.CreateEmailActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Email.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -148,64 +148,52 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
             return new global::Soenneker.Close.OpenApiClient.Activity.Email.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// You&apos;ll get one object per email message.
+        /// List email activities, newest first, with one object per email message. To get emails grouped into conversations, use the Email Threads endpoints.Results are paginated with `_limit` (at most 100) and `_skip`. Use filters such as `lead_id` or the date filters to narrow down the results.Some filters can only be used together with a single `lead_id`: `contact_id`, `contact_id__in`, `user_id__in`, `_type` and `_type__in`. `user_id` on its own doesn&apos;t need one. If your lead visibility is restricted, `lead_id` is required.By default, emails are sorted by `date_created`. To sort by `activity_at` (when the email was sent or received), pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         {
+            /// <summary>Only include activities that happened after this date or date and time. Requires `_order_by=-activity_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("activity_at__gt")]
             public string? ActivityAtGt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("activity_at__gt")]
             public string ActivityAtGt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only include activities that happened at or after this date or date and time. Requires `_order_by=-activity_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("activity_at__gte")]
             public string? ActivityAtGte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("activity_at__gte")]
             public string ActivityAtGte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only include activities that happened before this date or date and time. Requires `_order_by=-activity_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("activity_at__lt")]
             public string? ActivityAtLt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("activity_at__lt")]
             public string ActivityAtLt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only include activities that happened at or before this date or date and time. Requires `_order_by=-activity_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("activity_at__lte")]
             public string? ActivityAtLte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("activity_at__lte")]
             public string ActivityAtLte { get; set; }
-            #pragma warning restore CS1591
 #endif
-            /// <summary>Filter by contact IDs (comma-separated)</summary>
+            /// <summary>Filter by a comma-separated list of Contact IDs. Requires a single `lead_id`, or a `user_id` on endpoints for one activity type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("contact_id")]
@@ -215,57 +203,55 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
             [QueryParameter("contact_id")]
             public string ContactId { get; set; }
 #endif
+            /// <summary>Filter by a comma-separated list of multiple Contact IDs. Requires a single `lead_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
+            [QueryParameter("contact_id__in")]
+            public string? ContactIdIn { get; set; }
+#nullable restore
+#else
+            [QueryParameter("contact_id__in")]
+            public string ContactIdIn { get; set; }
+#endif
+            /// <summary>Only include activities created in Close after this date or date and time. Can&apos;t be combined with `_order_by=-activity_at`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("date_created__gt")]
             public string? DateCreatedGt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_created__gt")]
             public string DateCreatedGt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only include activities created in Close at or after this date or date and time. Can&apos;t be combined with `_order_by=-activity_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_created__gte")]
             public string? DateCreatedGte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_created__gte")]
             public string DateCreatedGte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only include activities created in Close before this date or date and time. Can&apos;t be combined with `_order_by=-activity_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_created__lt")]
             public string? DateCreatedLt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_created__lt")]
             public string DateCreatedLt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only include activities created in Close at or before this date or date and time. Can&apos;t be combined with `_order_by=-activity_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_created__lte")]
             public string? DateCreatedLte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_created__lte")]
             public string DateCreatedLte { get; set; }
-            #pragma warning restore CS1591
 #endif
             /// <summary>Comma-separated list of fields to include in the response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -287,7 +273,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
             [QueryParameter("id__in")]
             public string IdIn { get; set; }
 #endif
-            /// <summary>Filter by lead IDs (comma-separated)</summary>
+            /// <summary>Filter by a comma-separated list of Lead IDs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("lead_id")]
@@ -297,26 +283,43 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
             [QueryParameter("lead_id")]
             public string LeadId { get; set; }
 #endif
+            /// <summary>Filter by a comma-separated list of multiple Lead IDs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("lead_id__in")]
+            public string? LeadIdIn { get; set; }
+#nullable restore
+#else
+            [QueryParameter("lead_id__in")]
+            public string LeadIdIn { get; set; }
+#endif
             /// <summary>Number of results to return.</summary>
             [QueryParameter("_limit")]
             public int? Limit { get; set; }
+            /// <summary>Sort order: `-date_created` (the default) or `-activity_at`, newest first. `-activity_at` requires a single `lead_id` and can&apos;t be combined with the `date_created__*` filters. The `activity_at__*` filters require `-activity_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
-            [QueryParameter("organization_id")]
-            public string? OrganizationId { get; set; }
-            #pragma warning restore CS1591
+            [QueryParameter("_order_by")]
+            public string? OrderBy { get; set; }
 #nullable restore
 #else
-            #pragma warning disable CS1591
+            [QueryParameter("_order_by")]
+            public string OrderBy { get; set; }
+#endif
+            /// <summary>ID of your organization. Defaults to the organization of your API key or OAuth token.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("organization_id")]
+            public string? OrganizationId { get; set; }
+#nullable restore
+#else
             [QueryParameter("organization_id")]
             public string OrganizationId { get; set; }
-            #pragma warning restore CS1591
 #endif
             /// <summary>Number of results to skip before returning, for pagination. The maximum is 35,000 for some organizations.</summary>
             [QueryParameter("_skip")]
             public int? Skip { get; set; }
-            /// <summary>Filter by activity type, e.g. Call (comma-separated)</summary>
+            /// <summary>Filter by a comma-separated list of activity types, e.g. `Call`. Requires a single `lead_id`, or a `user_id` on endpoints for one activity type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("_type")]
@@ -326,7 +329,17 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
             [QueryParameter("_type")]
             public string Type { get; set; }
 #endif
-            /// <summary>Filter by user IDs (comma-separated)</summary>
+            /// <summary>Filter by a comma-separated list of multiple activity types. Requires a single `lead_id`, and can&apos;t be combined with `_type`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("_type__in")]
+            public string? TypeIn { get; set; }
+#nullable restore
+#else
+            [QueryParameter("_type__in")]
+            public string TypeIn { get; set; }
+#endif
+            /// <summary>Filter by a comma-separated list of User IDs. Requires a single `lead_id`, unless the endpoint is for one activity type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("user_id")]
@@ -335,6 +348,33 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
 #else
             [QueryParameter("user_id")]
             public string UserId { get; set; }
+#endif
+            /// <summary>Filter by a comma-separated list of multiple User IDs. Requires a single `lead_id`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("user_id__in")]
+            public string? UserIdIn { get; set; }
+#nullable restore
+#else
+            [QueryParameter("user_id__in")]
+            public string UserIdIn { get; set; }
+#endif
+        }
+        /// <summary>
+        /// Create an email activity. Depending on `status`, this logs an email that was sent or received outside Close, saves a draft, or sends the email from one of the user&apos;s connected email accounts: - `inbox` logs an email that was received. - `sent` logs an email that was already sent. - `draft` saves a draft. You can edit it and send it later with PUT. - `outbox` sends the email right away. To leave time to undo, set `send_in` to delay sending by up to 60 seconds. - `scheduled` sends the email at `date_scheduled`. - `error` logs an email that failed to send.`sender` is required for every status except `draft` and `sent`. For `sent`, it defaults to the email address of the email&apos;s user. It takes a plain address like `john@example.com`, or a name and address like `&quot;John Smith&quot; &lt;john@example.com&gt;`. To send an email, `to` must contain at least one valid email address.If you include `template_id` without `body_text` or `body_html`, Close renders the email template for the lead and `contact_id`, which is then required.For `scheduled`, `outbox` or `sent` emails, `followup_date` creates a follow-up task for that date if the lead doesn&apos;t reply.To include an attachment, first upload the file with the [Files API](https://developer.close.com/api/resources/files). Then add an object to the `attachments` array with `url`, `filename`, `content_type` and `size`. `url` is the `download.url` field of the Files API response and must start with `https://app.close.com/go/file/`.Returns 400 if validation fails, or if `date_scheduled` or `followup_date` is set and your plan doesn&apos;t include scheduled sending or follow-up reminders.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class EmptyPathSegmentRequestBuilderPostQueryParameters 
+        {
+            /// <summary>Comma-separated list of fields to include in the response.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("_fields")]
+            public string? Fields { get; set; }
+#nullable restore
+#else
+            [QueryParameter("_fields")]
+            public string Fields { get; set; }
 #endif
         }
     }

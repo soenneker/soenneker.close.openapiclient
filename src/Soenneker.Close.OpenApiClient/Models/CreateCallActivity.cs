@@ -96,15 +96,8 @@ namespace Soenneker.Close.OpenApiClient.Models
         public DateTimeOffset? DateCreated { get => _explicitNullValueDateCreated; set { _explicitNullValueDateCreated = value; AdditionalData?.Remove("date_created"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_created"); else _explicitNullProperties?.Remove("date_created"); } }
         private DateTimeOffset? _explicitNullValueDateCreated = default!;
         /// <summary>The direction property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.CreateCallActivityDirection? Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; AdditionalData?.Remove("direction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.CreateCallActivityDirection? _explicitNullValueDirection = default!;
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.CreateCallActivityDirection Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; AdditionalData?.Remove("direction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.CreateCallActivityDirection _explicitNullValueDirection = default!;
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.PhoneActivityDirection? Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; AdditionalData?.Remove("direction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.PhoneActivityDirection? _explicitNullValueDirection = default!;
         /// <summary>The duration property</summary>
         public int? Duration { get => _explicitNullValueDuration; set { _explicitNullValueDuration = value; AdditionalData?.Remove("duration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("duration"); else _explicitNullProperties?.Remove("duration"); } }
         private int? _explicitNullValueDuration = default!;
@@ -189,25 +182,11 @@ namespace Soenneker.Close.OpenApiClient.Models
         private string _explicitNullValueRecordingUrl = default!;
 #endif
         /// <summary>The source property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.CreateCallActivitySource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.CreateCallActivitySource? _explicitNullValueSource = default!;
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.CreateCallActivitySource Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.CreateCallActivitySource _explicitNullValueSource = default!;
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.PhoneActivitySource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.PhoneActivitySource? _explicitNullValueSource = default!;
         /// <summary>The status property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.CreateCallActivityStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.CreateCallActivityStatus? _explicitNullValueStatus = default!;
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.CreateCallActivityStatus Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.CreateCallActivityStatus _explicitNullValueStatus = default!;
-#endif
+        public global::Soenneker.Close.OpenApiClient.Models.CallStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.CallStatus? _explicitNullValueStatus = default!;
         /// <summary>The user_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -258,7 +237,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "conversation_type_id", n => { ConversationTypeId = n.GetStringValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "date_created", n => { DateCreated = n.GetDateTimeOffsetValue(); } },
-                { "direction", n => { Direction = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreateCallActivityDirection>(global::Soenneker.Close.OpenApiClient.Models.CreateCallActivityDirection.CreateFromDiscriminatorValue); } },
+                { "direction", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.PhoneActivityDirection>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDirection = default; _explicitNullProperties?.Remove("direction"); AdditionalData["direction"] = unknown; } else { Direction = parsed; AdditionalData.Remove("direction"); } } },
                 { "duration", n => { Duration = n.GetIntValue(); } },
                 { "lead_id", n => { LeadId = n.GetStringValue(); } },
                 { "note", n => { Note = n.GetStringValue(); } },
@@ -268,8 +247,8 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "phone", n => { Phone = n.GetStringValue(); } },
                 { "playbook_id", n => { PlaybookId = n.GetStringValue(); } },
                 { "recording_url", n => { RecordingUrl = n.GetStringValue(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreateCallActivitySource>(global::Soenneker.Close.OpenApiClient.Models.CreateCallActivitySource.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreateCallActivityStatus>(global::Soenneker.Close.OpenApiClient.Models.CreateCallActivityStatus.CreateFromDiscriminatorValue); } },
+                { "source", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.PhoneActivitySource>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSource = default; _explicitNullProperties?.Remove("source"); AdditionalData["source"] = unknown; } else { Source = parsed; AdditionalData.Remove("source"); } } },
+                { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CallStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
                 { "voicemail_url", n => { VoicemailUrl = n.GetStringValue(); } },
             };
@@ -286,7 +265,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("conversation_type_id", ConversationTypeId);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteDateTimeOffsetValue("date_created", DateCreated);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreateCallActivityDirection>("direction", Direction);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.PhoneActivityDirection>("direction", Direction);
             writer.WriteIntValue("duration", Duration);
             writer.WriteStringValue("lead_id", LeadId);
             writer.WriteStringValue("note", Note);
@@ -296,8 +275,8 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("phone", Phone);
             writer.WriteStringValue("playbook_id", PlaybookId);
             writer.WriteStringValue("recording_url", RecordingUrl);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreateCallActivitySource>("source", Source);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreateCallActivityStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.PhoneActivitySource>("source", Source);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CallStatus>("status", Status);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteStringValue("voicemail_url", VoicemailUrl);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

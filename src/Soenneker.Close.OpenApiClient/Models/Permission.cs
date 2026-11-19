@@ -128,6 +128,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         #pragma warning disable CS1591
         ManageCustomAgents,
         #pragma warning restore CS1591
+        [EnumMember(Value = "manage_others_custom_agents")]
+        #pragma warning disable CS1591
+        ManageOthersCustomAgents,
+        #pragma warning restore CS1591
         [EnumMember(Value = "manage_team_skills")]
         #pragma warning disable CS1591
         ManageTeamSkills,

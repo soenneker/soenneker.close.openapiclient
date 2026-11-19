@@ -45,9 +45,9 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The pinned property</summary>
         public bool? Pinned { get => _explicitNullValuePinned; set { _explicitNullValuePinned = value; AdditionalData?.Remove("pinned"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned"); else _explicitNullProperties?.Remove("pinned"); } }
         private bool? _explicitNullValuePinned = default!;
-        /// <summary>The status property</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.UpdateCustomActivityStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.UpdateCustomActivityStatus? _explicitNullValueStatus = default!;
+        /// <summary>Status of a Custom Activity. `draft` activities don&apos;t require their required fields to be filled in yet.</summary>
+        public global::Soenneker.Close.OpenApiClient.Models.CustomActivityStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.CustomActivityStatus? _explicitNullValueStatus = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.UpdateCustomActivity"/> and sets the default values.
         /// </summary>
@@ -76,7 +76,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "activity_at", n => { ActivityAt = n.GetDateTimeOffsetValue(); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
                 { "pinned", n => { Pinned = n.GetBoolValue(); } },
-                { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.UpdateCustomActivityStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
+                { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CustomActivityStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
             };
         }
         /// <summary>
@@ -89,7 +89,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("activity_at", ActivityAt);
             writer.WriteStringValue("contact_id", ContactId);
             writer.WriteBoolValue("pinned", Pinned);
-            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.UpdateCustomActivityStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CustomActivityStatus>("status", Status);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -494,6 +494,7 @@
             "in": "query",
             "name": "lead_id__in",
             "required": false,
+            "description": "Filter by a comma-separated list of multiple Lead IDs.",
             "schema": {
               "title": "Lead ID (In)",
               "type": "string"
@@ -503,6 +504,7 @@
             "in": "query",
             "name": "user_id__in",
             "required": false,
+            "description": "Filter by a comma-separated list of multiple User IDs. Requires a single `lead_id`.",
             "schema": {
               "title": "User ID (In)",
               "type": "string"
@@ -512,6 +514,7 @@
             "in": "query",
             "name": "contact_id__in",
             "required": false,
+            "description": "Filter by a comma-separated list of multiple Contact IDs. Requires a single `lead_id`.",
             "schema": {
               "title": "Contact ID (In)",
               "type": "string"
@@ -521,6 +524,7 @@
             "in": "query",
             "name": "_type__in",
             "required": false,
+            "description": "Filter by a comma-separated list of multiple activity types. Requires a single `lead_id`, and can't be combined with `_type`.",
             "schema": {
               "title": "Type (In)",
               "type": "string"
@@ -1939,7 +1943,7 @@
           "activities.emails"
         ],
         "summary": "List or filter all Email activities",
-        "description": "You'll get one object per email message.",
+        "description": "List email activities, newest first, with one object per email message. To get emails grouped into conversations, use the Email Threads endpoints.\n\nResults are paginated with `_limit` (at most 100) and `_skip`. Use filters such as `lead_id` or the date filters to narrow down the results.\n\nSome filters can only be used together with a single `lead_id`: `contact_id`, `contact_id__in`, `user_id__in`, `_type` and `_type__in`. `user_id` on its own doesn't need one. If your lead visibility is restricted, `lead_id` is required.\n\nBy default, emails are sorted by `date_created`. To sort by `activity_at` (when the email was sent or received), pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.",
         "parameters": [
           {
             "in": "query",
@@ -2004,6 +2008,55 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "in": "query",
+            "name": "lead_id__in",
+            "required": false,
+            "description": "Filter by a comma-separated list of multiple Lead IDs.",
+            "schema": {
+              "title": "Lead ID (In)",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "user_id__in",
+            "required": false,
+            "description": "Filter by a comma-separated list of multiple User IDs. Requires a single `lead_id`.",
+            "schema": {
+              "title": "User ID (In)",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "contact_id__in",
+            "required": false,
+            "description": "Filter by a comma-separated list of multiple Contact IDs. Requires a single `lead_id`.",
+            "schema": {
+              "title": "Contact ID (In)",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "_type__in",
+            "required": false,
+            "description": "Filter by a comma-separated list of multiple activity types. Requires a single `lead_id`, and can't be combined with `_type`.",
+            "schema": {
+              "title": "Type (In)",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "_order_by",
+            "required": false,
+            "description": "Sort order: `-date_created` (the default) or `-activity_at`, newest first. `-activity_at` requires a single `lead_id` and can't be combined with the `date_created__*` filters. The `activity_at__*` filters require `-activity_at`.",
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "$ref": "#/components/parameters/FieldsParam"
@@ -2230,36 +2283,54 @@
           "activities.emails"
         ],
         "summary": "Create an Email activity",
-        "description": "*status* must be one of the following:\n\n - `inbox` to log an already received email.\n - `draft` to create a draft email.\n - `scheduled` to send an email at a scheduled date and time, which must be specified in the `date_scheduled` field.\n - `outbox` to actually **send** an email. To delay email sending by a few seconds (to allow undo), specify `send_in` in seconds (must be less than 60).\n - `sent` to log an already sent email.\n\nOnly drafts can be modified, and their status can be changed to `scheduled` (to send later) or `outbox` (to send immediately). Scheduled emails, or emails in outbox that weren't sent yet can be canceled by setting the status back to `draft`.\n\nFor scheduled, outbox, or sent emails, a `followup_date` may be posted, which will have Close create an email followup task if no response was received.\n\nWe'll render an Email Template server-side if you include a `template_id` _without_ including `body_text` or `body_html` in your POST.\n\nTo specify both a sender name and a sender email address when posting an email, you can use the `sender` field with the format `\"sender\": \"\"John Smith\" <emailaddress@example.com>\"`\n\nThe `sender` field is **required** for emails with status `inbox`, `scheduled`, `outbox`, or `error`. It may be omitted for `draft` (since the sender can be specified later before sending) and `sent` (where it defaults to the email address of the `user` associated with the email or the owner of the API key).\n\nTo include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename`, `content_type`, and `size`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin `https://app.close.com/go/file/`.",
+        "description": "Create an email activity. Depending on `status`, this logs an email that was sent or received outside Close, saves a draft, or sends the email from one of the user's connected email accounts:\n\n - `inbox` logs an email that was received.\n - `sent` logs an email that was already sent.\n - `draft` saves a draft. You can edit it and send it later with PUT.\n - `outbox` sends the email right away. To leave time to undo, set `send_in` to delay sending by up to 60 seconds.\n - `scheduled` sends the email at `date_scheduled`.\n - `error` logs an email that failed to send.\n\n`sender` is required for every status except `draft` and `sent`. For `sent`, it defaults to the email address of the email's user. It takes a plain address like `john@example.com`, or a name and address like `\"John Smith\" <john@example.com>`. To send an email, `to` must contain at least one valid email address.\n\nIf you include `template_id` without `body_text` or `body_html`, Close renders the email template for the lead and `contact_id`, which is then required.\n\nFor `scheduled`, `outbox` or `sent` emails, `followup_date` creates a follow-up task for that date if the lead doesn't reply.\n\nTo include an attachment, first upload the file with the [Files API](https://developer.close.com/api/resources/files). Then add an object to the `attachments` array with `url`, `filename`, `content_type` and `size`. `url` is the `download.url` field of the Files API response and must start with `https://app.close.com/go/file/`.\n\nReturns 400 if validation fails, or if `date_scheduled` or `followup_date` is set and your plan doesn't include scheduled sending or follow-up reminders.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/FieldsParam"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
-              "example": {
-                "attachments": [
-                  {
-                    "content_type": "image/jpeg",
-                    "filename": "image.jpg",
-                    "size": 1108447,
-                    "url": "https://app.close.com/go/file/temporary/user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk/1Zx0AlY1DwBXzKKrVwpAoj/image.jpg/"
+              "examples": {
+                "default": {
+                  "summary": "Save a draft",
+                  "value": {
+                    "attachments": [
+                      {
+                        "content_type": "image/jpeg",
+                        "filename": "image.jpg",
+                        "size": 1108447,
+                        "url": "https://app.close.com/go/file/temporary/user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk/1Zx0AlY1DwBXzKKrVwpAoj/image.jpg/"
+                      }
+                    ],
+                    "body_html": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!",
+                    "contact_id": "cont_8NNOJnVwmHQEYuVOgJ4B4zU7g9RUxYH4JnPjza5Vr6t",
+                    "email_account_id": "emailacct_nuALjWGi09rlr36zXp0ygjja9De0mzPqyqPPVsriTzt",
+                    "lead_id": "lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h",
+                    "sender": "karan@close.com",
+                    "status": "draft",
+                    "subject": "Welcome to Close!",
+                    "to": [
+                      "phil+sample@close.com"
+                    ]
                   }
-                ],
-                "bcc": [],
-                "body_html": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!",
-                "body_text": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!",
-                "cc": [],
-                "contact_id": "cont_8NNOJnVwmHQEYuVOgJ4B4zU7g9RUxYH4JnPjza5Vr6t",
-                "created_by": null,
-                "date_created": "2013-02-01T00:54:51.274000+00:00",
-                "email_account_id": "emailacct_nuALjWGi09rlr36zXp0ygjja9De0mzPqyqPPVsriTzt",
-                "lead_id": "lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h",
-                "sender": "karan@close.com",
-                "status": "draft",
-                "subject": "Welcome to Close!",
-                "template_id": null,
-                "to": [
-                  "phil+sample@close.com"
-                ],
-                "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                },
+                "send_now": {
+                  "summary": "Send an email, with 10 seconds to undo",
+                  "value": {
+                    "body_text": "Hi Phil, here's the proposal we discussed.",
+                    "contact_id": "cont_8NNOJnVwmHQEYuVOgJ4B4zU7g9RUxYH4JnPjza5Vr6t",
+                    "lead_id": "lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h",
+                    "send_in": 10,
+                    "sender": "\"Karan Sharma\" <karan@close.com>",
+                    "status": "outbox",
+                    "subject": "Your proposal",
+                    "to": [
+                      "phil+sample@close.com"
+                    ]
+                  }
+                }
               },
               "schema": {
                 "$ref": "#/components/schemas/CreateEmailActivity"
@@ -2272,71 +2343,214 @@
           "200": {
             "content": {
               "application/json": {
-                "example": {
-                  "_type": "Email",
-                  "activity_at": "2015-06-26T02:01:43.059265",
-                  "attachments": [
-                    {
-                      "content_id": null,
-                      "content_type": "image/jpeg",
-                      "filename": "image.jpg",
-                      "inline_only": false,
-                      "size": 1108447,
-                      "url": "https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/activity.email/acti_EdpqkmtlQHIDWE2CixJo606BapX34SpYV3fzHryGPc3/1Zx0AlY1DwBXzKKrVwpAoj/image.jpg/"
+                "examples": {
+                  "default": {
+                    "summary": "Save a draft",
+                    "value": {
+                      "_type": "Email",
+                      "activity_at": "2015-06-26T02:01:43.059000+00:00",
+                      "agent_action_reason": null,
+                      "agent_config_id": null,
+                      "ai_draft": null,
+                      "attachments": [
+                        {
+                          "content_id": null,
+                          "content_type": "image/jpeg",
+                          "filename": "image.jpg",
+                          "inline_only": false,
+                          "size": 1108447,
+                          "url": "https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/activity.email/acti_EdpqkmtlQHIDWE2CixJo606BapX34SpYV3fzHryGPc3/1Zx0AlY1DwBXzKKrVwpAoj/image.jpg/"
+                        }
+                      ],
+                      "bcc": [],
+                      "body_html": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!",
+                      "body_html_quoted": [
+                        {
+                          "expand": true,
+                          "html": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!"
+                        }
+                      ],
+                      "body_preview": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any ",
+                      "body_text": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!",
+                      "body_text_quoted": [
+                        {
+                          "expand": true,
+                          "text": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!"
+                        }
+                      ],
+                      "bulk_email_action_id": null,
+                      "cc": [],
+                      "contact_id": "cont_8NNOJnVwmHQEYuVOgJ4B4zU7g9RUxYH4JnPjza5Vr6t",
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_agent_id": null,
+                      "created_by_name": "Karan Sharma",
+                      "date_created": "2015-06-26T02:01:43.059000+00:00",
+                      "date_scheduled": null,
+                      "date_sent": null,
+                      "date_updated": "2015-06-26T02:01:43.101000+00:00",
+                      "direction": "outgoing",
+                      "email_account_id": "emailacct_nuALjWGi09rlr36zXp0ygjja9De0mzPqyqPPVsriTzt",
+                      "envelope": {
+                        "bcc": [],
+                        "cc": [],
+                        "date": "Fri, 26 Jun 2015 02:01:43 -0000",
+                        "from": [
+                          {
+                            "email": "karan@close.com",
+                            "name": ""
+                          }
+                        ],
+                        "in_reply_to": null,
+                        "is_autoreply": false,
+                        "message_id": null,
+                        "reply_to": [],
+                        "sender": [
+                          {
+                            "email": "karan@close.com",
+                            "name": ""
+                          }
+                        ],
+                        "subject": "Welcome to Close!",
+                        "to": [
+                          {
+                            "email": "phil+sample@close.com",
+                            "name": ""
+                          }
+                        ]
+                      },
+                      "followup_sequence_add_cc_bcc": false,
+                      "followup_sequence_delay": null,
+                      "followup_sequence_id": null,
+                      "has_reply": false,
+                      "id": "acti_EdpqkmtlQHIDWE2CixJo606BapX34SpYV3fzHryGPc3",
+                      "in_reply_to_id": null,
+                      "lead_id": "lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h",
+                      "message_ids": [],
+                      "need_smtp_credentials": false,
+                      "opens": [],
+                      "opens_summary": null,
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "references": [],
+                      "send_as_id": null,
+                      "send_attempts": [],
+                      "sender": "karan@close.com",
+                      "sequence_id": null,
+                      "sequence_name": null,
+                      "sequence_subscription_id": null,
+                      "status": "draft",
+                      "subject": "Welcome to Close!",
+                      "template_id": null,
+                      "template_name": null,
+                      "thread_id": "acti_3VFfJMUKvwvQPXAbXAbs9b01usbFC5acL8MrmFcsmK5",
+                      "to": [
+                        "phil+sample@close.com"
+                      ],
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_name": "Karan Sharma",
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Karan Sharma",
+                      "users": []
                     }
-                  ],
-                  "bcc": [],
-                  "body_html": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!",
-                  "body_html_quoted": {
-                    "expand": true,
-                    "html": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!"
                   },
-                  "body_preview": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any ",
-                  "body_text": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!",
-                  "body_text_quoted": null,
-                  "bulk_email_action_id": null,
-                  "cc": [],
-                  "contact_id": "cont_8NNOJnVwmHQEYuVOgJ4B4zU7g9RUxYH4JnPjza5Vr6t",
-                  "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "created_by_name": "Steve Wiseman",
-                  "date_created": "2015-06-26T02:01:43.059265",
-                  "date_scheduled": null,
-                  "date_sent": null,
-                  "date_updated": "2015-06-26T02:01:43.101910",
-                  "direction": "outgoing",
-                  "email_account_id": "emailacct_nuALjWGi09rlr36zXp0ygjja9De0mzPqyqPPVsriTzt",
-                  "envelope": null,
-                  "followup_sequence_add_cc_bcc": false,
-                  "followup_sequence_delay": null,
-                  "has_reply": false,
-                  "id": "acti_EdpqkmtlQHIDWE2CixJo606BapX34SpYV3fzHryGPc3",
-                  "in_reply_to_id": null,
-                  "lead_id": "lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h",
-                  "message_ids": [],
-                  "need_smtp_credentials": false,
-                  "opens": [],
-                  "opens_summary": null,
-                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                  "references": [],
-                  "send_as_id": null,
-                  "send_attempts": [],
-                  "sender": "karan@close.com",
-                  "sequence_id": null,
-                  "sequence_name": null,
-                  "sequence_subscription_id": null,
-                  "status": "draft",
-                  "subject": "Welcome to Close!",
-                  "template_id": null,
-                  "template_name": null,
-                  "thread_id": "acti_3VFfJMUKvwvQPXAbXAbs9b01usbFC5acL8MrmFcsmK5",
-                  "to": [
-                    "phil+sample@gclose.com"
-                  ],
-                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "updated_by_name": "Steve Wiseman",
-                  "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "user_name": "Steve Wiseman",
-                  "users": []
+                  "send_now": {
+                    "summary": "Send an email, with 10 seconds to undo",
+                    "value": {
+                      "_type": "Email",
+                      "activity_at": "2015-06-26T03:12:08.204000+00:00",
+                      "agent_action_reason": null,
+                      "agent_config_id": null,
+                      "ai_draft": null,
+                      "attachments": [],
+                      "bcc": [],
+                      "body_html": "Hi Phil, here&#x27;s the proposal we discussed.",
+                      "body_html_quoted": [
+                        {
+                          "expand": true,
+                          "html": "Hi Phil, here&#x27;s the proposal we discussed."
+                        }
+                      ],
+                      "body_preview": "Hi Phil, here's the proposal we discussed.",
+                      "body_text": "Hi Phil, here's the proposal we discussed.",
+                      "body_text_quoted": [
+                        {
+                          "expand": true,
+                          "text": "Hi Phil, here's the proposal we discussed."
+                        }
+                      ],
+                      "bulk_email_action_id": null,
+                      "cc": [],
+                      "contact_id": "cont_8NNOJnVwmHQEYuVOgJ4B4zU7g9RUxYH4JnPjza5Vr6t",
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_agent_id": null,
+                      "created_by_name": "Karan Sharma",
+                      "date_created": "2015-06-26T03:12:08.204000+00:00",
+                      "date_scheduled": null,
+                      "date_sent": null,
+                      "date_updated": "2015-06-26T03:12:08.297000+00:00",
+                      "direction": "outgoing",
+                      "email_account_id": "emailacct_nuALjWGi09rlr36zXp0ygjja9De0mzPqyqPPVsriTzt",
+                      "envelope": {
+                        "bcc": [],
+                        "cc": [],
+                        "date": "Fri, 26 Jun 2015 03:12:08 -0000",
+                        "from": [
+                          {
+                            "email": "karan@close.com",
+                            "name": "Karan Sharma"
+                          }
+                        ],
+                        "in_reply_to": null,
+                        "is_autoreply": false,
+                        "message_id": null,
+                        "reply_to": [],
+                        "sender": [
+                          {
+                            "email": "karan@close.com",
+                            "name": "Karan Sharma"
+                          }
+                        ],
+                        "subject": "Your proposal",
+                        "to": [
+                          {
+                            "email": "phil+sample@close.com",
+                            "name": ""
+                          }
+                        ]
+                      },
+                      "followup_sequence_add_cc_bcc": false,
+                      "followup_sequence_delay": null,
+                      "followup_sequence_id": null,
+                      "has_reply": false,
+                      "id": "acti_Hq3P8sZ0cRvTyL1kW6mN2bD9fJ4gX7aE5uYoKiQtCnB",
+                      "in_reply_to_id": null,
+                      "lead_id": "lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h",
+                      "message_ids": [],
+                      "need_smtp_credentials": false,
+                      "opens": [],
+                      "opens_summary": null,
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "references": [],
+                      "send_as_id": null,
+                      "send_attempts": [],
+                      "sender": "\"Karan Sharma\" <karan@close.com>",
+                      "sequence_id": null,
+                      "sequence_name": null,
+                      "sequence_subscription_id": null,
+                      "status": "outbox",
+                      "subject": "Your proposal",
+                      "template_id": null,
+                      "template_name": null,
+                      "thread_id": "acti_Hq3P8sZ0cRvTyL1kW6mN2bD9fJ4gX7aE5uYoKiQtCnB",
+                      "to": [
+                        "phil+sample@close.com"
+                      ],
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_name": "Karan Sharma",
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Karan Sharma",
+                      "users": []
+                    }
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/EmailActivity"
@@ -2367,11 +2581,13 @@
           "activities.emails"
         ],
         "summary": "Get a single Email activity",
+        "description": "Fetch a single email activity by its ID. Returns 404 if no email in your organization has that ID, and 403 if you can't see the email's lead.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the email activity, prefixed with `acti_`.",
             "schema": {
               "type": "string"
             }
@@ -2494,22 +2710,38 @@
           "activities.emails"
         ],
         "summary": "Update an Email activity",
-        "description": "This can be used to modify a draft or send it once the draft is complete.\n\nWhen changing a draft's status to `scheduled` or `outbox`, the `sender` field is required if not already set on the email.",
+        "description": "Update an email activity. Use it to edit a draft, then send it by changing its `status` to `outbox`, or schedule it with `scheduled` and `date_scheduled`. When you send or schedule a draft, `sender` is required if the email doesn't have one yet.\n\nFields such as `subject`, the body, the recipients, `sender` and `attachments` can only be changed while the email is a draft, or in the same request that sends it, moves it back to `draft` or resends a failed email. To cancel a scheduled email, or an `outbox` email that hasn't been sent yet, set its `status` back to `draft`. The status of `inbox` and `sent` emails can't be changed.\n\nUpdating an email that belongs to another user requires the `manage_others_activities` permission.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the email activity, prefixed with `acti_`.",
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "requestBody": {
           "content": {
             "application/json": {
-              "example": {
-                "subject": "Updated subject!"
+              "examples": {
+                "default": {
+                  "summary": "Edit a draft",
+                  "value": {
+                    "subject": "Updated subject!"
+                  }
+                },
+                "schedule": {
+                  "summary": "Schedule a draft",
+                  "value": {
+                    "date_scheduled": "2015-06-29T15:00:00+00:00",
+                    "status": "scheduled"
+                  }
+                }
               },
               "schema": {
                 "$ref": "#/components/schemas/UpdateEmailActivity"
@@ -2522,62 +2754,223 @@
           "200": {
             "content": {
               "application/json": {
-                "example": {
-                  "_type": "Email",
-                  "activity_at": "2015-06-26T02:01:43.059265",
-                  "attachments": [],
-                  "bcc": [],
-                  "body_html": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!",
-                  "body_html_quoted": {
-                    "expand": true,
-                    "html": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!"
+                "examples": {
+                  "default": {
+                    "summary": "Edit a draft",
+                    "value": {
+                      "_type": "Email",
+                      "activity_at": "2015-06-26T02:01:43.059000+00:00",
+                      "agent_action_reason": null,
+                      "agent_config_id": null,
+                      "ai_draft": null,
+                      "attachments": [
+                        {
+                          "content_id": null,
+                          "content_type": "image/jpeg",
+                          "filename": "image.jpg",
+                          "inline_only": false,
+                          "size": 1108447,
+                          "url": "https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/activity.email/acti_EdpqkmtlQHIDWE2CixJo606BapX34SpYV3fzHryGPc3/1Zx0AlY1DwBXzKKrVwpAoj/image.jpg/"
+                        }
+                      ],
+                      "bcc": [],
+                      "body_html": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!",
+                      "body_html_quoted": [
+                        {
+                          "expand": true,
+                          "html": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!"
+                        }
+                      ],
+                      "body_preview": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any ",
+                      "body_text": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!",
+                      "body_text_quoted": [
+                        {
+                          "expand": true,
+                          "text": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!"
+                        }
+                      ],
+                      "bulk_email_action_id": null,
+                      "cc": [],
+                      "contact_id": "cont_8NNOJnVwmHQEYuVOgJ4B4zU7g9RUxYH4JnPjza5Vr6t",
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_agent_id": null,
+                      "created_by_name": "Karan Sharma",
+                      "date_created": "2015-06-26T02:01:43.059000+00:00",
+                      "date_scheduled": null,
+                      "date_sent": null,
+                      "date_updated": "2015-06-26T02:05:12.418000+00:00",
+                      "direction": "outgoing",
+                      "email_account_id": "emailacct_nuALjWGi09rlr36zXp0ygjja9De0mzPqyqPPVsriTzt",
+                      "envelope": {
+                        "bcc": [],
+                        "cc": [],
+                        "date": "Fri, 26 Jun 2015 02:01:43 -0000",
+                        "from": [
+                          {
+                            "email": "karan@close.com",
+                            "name": ""
+                          }
+                        ],
+                        "in_reply_to": null,
+                        "is_autoreply": false,
+                        "message_id": null,
+                        "reply_to": [],
+                        "sender": [
+                          {
+                            "email": "karan@close.com",
+                            "name": ""
+                          }
+                        ],
+                        "subject": "Updated subject!",
+                        "to": [
+                          {
+                            "email": "phil+sample@close.com",
+                            "name": ""
+                          }
+                        ]
+                      },
+                      "followup_sequence_add_cc_bcc": false,
+                      "followup_sequence_delay": null,
+                      "followup_sequence_id": null,
+                      "has_reply": false,
+                      "id": "acti_EdpqkmtlQHIDWE2CixJo606BapX34SpYV3fzHryGPc3",
+                      "in_reply_to_id": null,
+                      "lead_id": "lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h",
+                      "message_ids": [],
+                      "need_smtp_credentials": false,
+                      "opens": [],
+                      "opens_summary": null,
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "references": [],
+                      "send_as_id": null,
+                      "send_attempts": [],
+                      "sender": "karan@close.com",
+                      "sequence_id": null,
+                      "sequence_name": null,
+                      "sequence_subscription_id": null,
+                      "status": "draft",
+                      "subject": "Updated subject!",
+                      "template_id": null,
+                      "template_name": null,
+                      "thread_id": "acti_3VFfJMUKvwvQPXAbXAbs9b01usbFC5acL8MrmFcsmK5",
+                      "to": [
+                        "phil+sample@close.com"
+                      ],
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_name": "Karan Sharma",
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Karan Sharma",
+                      "users": []
+                    }
                   },
-                  "body_preview": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any ",
-                  "body_text": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!",
-                  "body_text_quoted": null,
-                  "bulk_email_action_id": null,
-                  "cc": [],
-                  "contact_id": "cont_8NNOJnVwmHQEYuVOgJ4B4zU7g9RUxYH4JnPjza5Vr6t",
-                  "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "created_by_name": "Steve Wiseman",
-                  "date_created": "2015-06-26T02:01:43.059265",
-                  "date_scheduled": null,
-                  "date_sent": null,
-                  "date_updated": "2015-06-26T02:01:43.101910",
-                  "direction": "outgoing",
-                  "email_account_id": null,
-                  "envelope": null,
-                  "followup_sequence_add_cc_bcc": false,
-                  "followup_sequence_delay": null,
-                  "has_reply": false,
-                  "id": "acti_EdpqkmtlQHIDWE2CixJo606BapX34SpYV3fzHryGPc3",
-                  "in_reply_to_id": null,
-                  "lead_id": "lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h",
-                  "message_ids": [],
-                  "need_smtp_credentials": false,
-                  "opens": [],
-                  "opens_summary": null,
-                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                  "references": [],
-                  "send_as_id": null,
-                  "send_attempts": [],
-                  "sender": "karan@close.com",
-                  "sequence_id": null,
-                  "sequence_name": null,
-                  "sequence_subscription_id": null,
-                  "status": "draft",
-                  "subject": "Updated subject!",
-                  "template_id": null,
-                  "template_name": null,
-                  "thread_id": "acti_3VFfJMUKvwvQPXAbXAbs9b01usbFC5acL8MrmFcsmK5",
-                  "to": [
-                    "phil+sample@gclose.com"
-                  ],
-                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "updated_by_name": "Steve Wiseman",
-                  "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "user_name": "Steve Wiseman",
-                  "users": []
+                  "schedule": {
+                    "summary": "Schedule a draft",
+                    "value": {
+                      "_type": "Email",
+                      "activity_at": "2015-06-26T02:01:43.059000+00:00",
+                      "agent_action_reason": null,
+                      "agent_config_id": null,
+                      "ai_draft": null,
+                      "attachments": [
+                        {
+                          "content_id": null,
+                          "content_type": "image/jpeg",
+                          "filename": "image.jpg",
+                          "inline_only": false,
+                          "size": 1108447,
+                          "url": "https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/activity.email/acti_EdpqkmtlQHIDWE2CixJo606BapX34SpYV3fzHryGPc3/1Zx0AlY1DwBXzKKrVwpAoj/image.jpg/"
+                        }
+                      ],
+                      "bcc": [],
+                      "body_html": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!",
+                      "body_html_quoted": [
+                        {
+                          "expand": true,
+                          "html": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!"
+                        }
+                      ],
+                      "body_preview": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any ",
+                      "body_text": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!",
+                      "body_text_quoted": [
+                        {
+                          "expand": true,
+                          "text": "Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!"
+                        }
+                      ],
+                      "bulk_email_action_id": null,
+                      "cc": [],
+                      "contact_id": "cont_8NNOJnVwmHQEYuVOgJ4B4zU7g9RUxYH4JnPjza5Vr6t",
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_agent_id": null,
+                      "created_by_name": "Karan Sharma",
+                      "date_created": "2015-06-26T02:01:43.059000+00:00",
+                      "date_scheduled": "2015-06-29T15:00:00+00:00",
+                      "date_sent": null,
+                      "date_updated": "2015-06-26T02:05:12.418000+00:00",
+                      "direction": "outgoing",
+                      "email_account_id": "emailacct_nuALjWGi09rlr36zXp0ygjja9De0mzPqyqPPVsriTzt",
+                      "envelope": {
+                        "bcc": [],
+                        "cc": [],
+                        "date": "Fri, 26 Jun 2015 02:01:43 -0000",
+                        "from": [
+                          {
+                            "email": "karan@close.com",
+                            "name": ""
+                          }
+                        ],
+                        "in_reply_to": null,
+                        "is_autoreply": false,
+                        "message_id": null,
+                        "reply_to": [],
+                        "sender": [
+                          {
+                            "email": "karan@close.com",
+                            "name": ""
+                          }
+                        ],
+                        "subject": "Welcome to Close!",
+                        "to": [
+                          {
+                            "email": "phil+sample@close.com",
+                            "name": ""
+                          }
+                        ]
+                      },
+                      "followup_sequence_add_cc_bcc": false,
+                      "followup_sequence_delay": null,
+                      "followup_sequence_id": null,
+                      "has_reply": false,
+                      "id": "acti_EdpqkmtlQHIDWE2CixJo606BapX34SpYV3fzHryGPc3",
+                      "in_reply_to_id": null,
+                      "lead_id": "lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h",
+                      "message_ids": [],
+                      "need_smtp_credentials": false,
+                      "opens": [],
+                      "opens_summary": null,
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "references": [],
+                      "send_as_id": null,
+                      "send_attempts": [],
+                      "sender": "karan@close.com",
+                      "sequence_id": null,
+                      "sequence_name": null,
+                      "sequence_subscription_id": null,
+                      "status": "scheduled",
+                      "subject": "Welcome to Close!",
+                      "template_id": null,
+                      "template_name": null,
+                      "thread_id": "acti_3VFfJMUKvwvQPXAbXAbs9b01usbFC5acL8MrmFcsmK5",
+                      "to": [
+                        "phil+sample@close.com"
+                      ],
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_name": "Karan Sharma",
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Karan Sharma",
+                      "users": []
+                    }
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/EmailActivity"
@@ -2609,11 +3002,13 @@
           "activities.emails"
         ],
         "summary": "Delete an Email activity",
+        "description": "Delete an email activity. Returns an empty object on success. This only removes the email from Close: it doesn't recall an email that was already sent. If the email is still in `outbox` or `scheduled`, it won't be sent.\n\nYou can always delete your own drafts. Deleting your own other emails requires the `delete_own_activities` permission, and deleting other users' emails requires `manage_others_activities`. Without it, the request returns 400. It also returns 400 if the email is being sent at that moment, so retry it later.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the email activity, prefixed with `acti_`.",
             "schema": {
               "type": "string"
             }
@@ -2623,6 +3018,7 @@
           "200": {
             "content": {
               "application/json": {
+                "example": {},
                 "schema": {
                   "$ref": "#/components/schemas/EmptyResponse"
                 }
@@ -3470,6 +3866,7 @@
             "in": "query",
             "name": "lead_id__in",
             "required": false,
+            "description": "Filter by a comma-separated list of multiple Lead IDs.",
             "schema": {
               "title": "Lead ID (In)",
               "type": "string"
@@ -3479,6 +3876,7 @@
             "in": "query",
             "name": "user_id__in",
             "required": false,
+            "description": "Filter by a comma-separated list of multiple User IDs. Requires a single `lead_id`.",
             "schema": {
               "title": "User ID (In)",
               "type": "string"
@@ -3488,6 +3886,7 @@
             "in": "query",
             "name": "contact_id__in",
             "required": false,
+            "description": "Filter by a comma-separated list of multiple Contact IDs. Requires a single `lead_id`.",
             "schema": {
               "title": "Contact ID (In)",
               "type": "string"
@@ -3497,6 +3896,7 @@
             "in": "query",
             "name": "_type__in",
             "required": false,
+            "description": "Filter by a comma-separated list of multiple activity types. Requires a single `lead_id`, and can't be combined with `_type`.",
             "schema": {
               "title": "Type (In)",
               "type": "string"
@@ -5281,9 +5681,6 @@
             "$ref": "#/components/parameters/ActivityFilters_OrganizationIdParam"
           },
           {
-            "$ref": "#/components/parameters/ActivityFilters_TypeParam"
-          },
-          {
             "$ref": "#/components/parameters/ActivityFilters_DateCreatedGteParam"
           },
           {
@@ -5306,6 +5703,45 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "in": "query",
+            "name": "lead_id__in",
+            "required": false,
+            "description": "Filter by a comma-separated list of multiple Lead IDs.",
+            "schema": {
+              "title": "Lead ID (In)",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "user_id__in",
+            "required": false,
+            "description": "Filter by a comma-separated list of multiple User IDs. Requires a single `lead_id`.",
+            "schema": {
+              "title": "User ID (In)",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "contact_id__in",
+            "required": false,
+            "description": "Filter by a comma-separated list of multiple Contact IDs. Requires a single `lead_id`.",
+            "schema": {
+              "title": "Contact ID (In)",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "_order_by",
+            "required": false,
+            "description": "Sort order: `-date_created` (the default) or `-activity_at`, newest first. `-activity_at` requires a single `lead_id` and can't be combined with the `date_created__*` filters. The `activity_at__*` filters require `-activity_at`.",
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "$ref": "#/components/parameters/FieldsParam"
@@ -5446,6 +5882,7 @@
                 "example": {
                   "_type": "SMS",
                   "activity_at": "2016-10-03T16:06:11.167000+00:00",
+                  "attachments": [],
                   "caller_id_mode": null,
                   "caller_id_reason": null,
                   "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
@@ -5628,6 +6065,7 @@
                 "example": {
                   "_type": "SMS",
                   "activity_at": "2016-10-03T16:06:11.167000+00:00",
+                  "attachments": [],
                   "caller_id_mode": null,
                   "caller_id_reason": null,
                   "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
@@ -14356,7 +14794,21 @@
             }
           },
           {
-            "$ref": "#/components/parameters/ActivityFilters_OrganizationIdParam"
+            "in": "query",
+            "name": "organization_id",
+            "required": false,
+            "schema": {
+              "title": "Organization ID",
+              "default": null,
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
           },
           {
             "in": "query",
@@ -14538,7 +14990,21 @@
             }
           },
           {
-            "$ref": "#/components/parameters/ActivityFilters_OrganizationIdParam"
+            "in": "query",
+            "name": "organization_id",
+            "required": false,
+            "schema": {
+              "title": "Organization ID",
+              "default": null,
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
           }
         ],
         "responses": {
@@ -14987,12 +15453,7 @@
             "name": "contact_preference",
             "required": false,
             "schema": {
-              "type": "string",
-              "enum": [
-                "lead",
-                "contact",
-                "all"
-              ]
+              "$ref": "#/components/schemas/BulkEmailContactPreference"
             }
           },
           {
@@ -15049,9 +15510,9 @@
             "in": "query",
             "name": "sender",
             "required": false,
+            "description": "Email address, optionally with a display name, e.g. `\"John Smith\" <john@example.com>`.",
             "schema": {
-              "type": "string",
-              "format": "email"
+              "type": "string"
             }
           },
           {
@@ -15065,11 +15526,7 @@
                 "type": "object",
                 "properties": {
                   "direction": {
-                    "type": "string",
-                    "enum": [
-                      "asc",
-                      "desc"
-                    ]
+                    "$ref": "#/components/schemas/SortDirection"
                   },
                   "field": {
                     "type": "string"
@@ -30971,7 +31428,7 @@
         }
       },
       "ActivityFilters_LeadIdParam": {
-        "description": "Filter by lead IDs (comma-separated)",
+        "description": "Filter by a comma-separated list of Lead IDs.",
         "in": "query",
         "name": "lead_id",
         "required": false,
@@ -30992,7 +31449,7 @@
         }
       },
       "ActivityFilters_ContactIdParam": {
-        "description": "Filter by contact IDs (comma-separated)",
+        "description": "Filter by a comma-separated list of Contact IDs. Requires a single `lead_id`, or a `user_id` on endpoints for one activity type.",
         "in": "query",
         "name": "contact_id",
         "required": false,
@@ -31013,7 +31470,7 @@
         }
       },
       "ActivityFilters_UserIdParam": {
-        "description": "Filter by user IDs (comma-separated)",
+        "description": "Filter by a comma-separated list of User IDs. Requires a single `lead_id`, unless the endpoint is for one activity type.",
         "in": "query",
         "name": "user_id",
         "required": false,
@@ -31034,6 +31491,7 @@
         }
       },
       "ActivityFilters_OrganizationIdParam": {
+        "description": "ID of your organization. Defaults to the organization of your API key or OAuth token.",
         "in": "query",
         "name": "organization_id",
         "required": false,
@@ -31051,7 +31509,7 @@
         }
       },
       "ActivityFilters_TypeParam": {
-        "description": "Filter by activity type, e.g. Call (comma-separated)",
+        "description": "Filter by a comma-separated list of activity types, e.g. `Call`. Requires a single `lead_id`, or a `user_id` on endpoints for one activity type.",
         "in": "query",
         "name": "_type",
         "required": false,
@@ -31072,6 +31530,7 @@
         }
       },
       "ActivityFilters_DateCreatedGteParam": {
+        "description": "Only include activities created in Close at or after this date or date and time. Can't be combined with `_order_by=-activity_at`.",
         "in": "query",
         "name": "date_created__gte",
         "required": false,
@@ -31090,6 +31549,7 @@
         }
       },
       "ActivityFilters_DateCreatedLteParam": {
+        "description": "Only include activities created in Close at or before this date or date and time. Can't be combined with `_order_by=-activity_at`.",
         "in": "query",
         "name": "date_created__lte",
         "required": false,
@@ -31108,6 +31568,7 @@
         }
       },
       "ActivityFilters_DateCreatedGtParam": {
+        "description": "Only include activities created in Close after this date or date and time. Can't be combined with `_order_by=-activity_at`.",
         "in": "query",
         "name": "date_created__gt",
         "required": false,
@@ -31126,6 +31587,7 @@
         }
       },
       "ActivityFilters_DateCreatedLtParam": {
+        "description": "Only include activities created in Close before this date or date and time. Can't be combined with `_order_by=-activity_at`.",
         "in": "query",
         "name": "date_created__lt",
         "required": false,
@@ -31144,6 +31606,7 @@
         }
       },
       "ActivityFilters_ActivityAtGteParam": {
+        "description": "Only include activities that happened at or after this date or date and time. Requires `_order_by=-activity_at`.",
         "in": "query",
         "name": "activity_at__gte",
         "required": false,
@@ -31162,6 +31625,7 @@
         }
       },
       "ActivityFilters_ActivityAtLteParam": {
+        "description": "Only include activities that happened at or before this date or date and time. Requires `_order_by=-activity_at`.",
         "in": "query",
         "name": "activity_at__lte",
         "required": false,
@@ -31180,6 +31644,7 @@
         }
       },
       "ActivityFilters_ActivityAtGtParam": {
+        "description": "Only include activities that happened after this date or date and time. Requires `_order_by=-activity_at`.",
         "in": "query",
         "name": "activity_at__gt",
         "required": false,
@@ -31198,6 +31663,7 @@
         }
       },
       "ActivityFilters_ActivityAtLtParam": {
+        "description": "Only include activities that happened before this date or date and time. Requires `_order_by=-activity_at`.",
         "in": "query",
         "name": "activity_at__lt",
         "required": false,
@@ -31308,6 +31774,26 @@
       }
     },
     "schemas": {
+      "AIDraft": {
+        "title": "AIDraft",
+        "type": "object",
+        "properties": {
+          "content": {
+            "title": "Content",
+            "description": "HTML body of the draft.",
+            "type": "string"
+          },
+          "id": {
+            "title": "ID",
+            "description": "ID of the AI draft, prefixed with `aidraft_`.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "content",
+          "id"
+        ]
+      },
       "ActionItem": {
         "title": "ActionItem",
         "deprecated": true,
@@ -34087,7 +34573,7 @@
           },
           "sequence_id": {
             "title": "Sequence ID",
-            "description": "ID of the Workflow that created the activity, or `null`.",
+            "description": "ID of the Workflow that created the activity, e.g. `seq_abc123`, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -34112,8 +34598,8 @@
             ]
           },
           "sequence_subscription_id": {
-            "title": "Sequence Subscription ID",
-            "description": "ID of the Workflow subscription, i.e. the Contact's enrollment in the Workflow, that created the activity, or `null`.",
+            "title": "Workflow Run ID",
+            "description": "ID of the Workflow Run, i.e. the Contact's enrollment in the Workflow, that created the activity, e.g. `sub_abc123`, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -34351,7 +34837,7 @@
           },
           "sequence_id": {
             "title": "Sequence ID",
-            "description": "ID of the Workflow that created the activity, or `null`.",
+            "description": "ID of the Workflow that created the activity, e.g. `seq_abc123`, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -34374,8 +34860,8 @@
             ]
           },
           "sequence_subscription_id": {
-            "title": "Sequence Subscription ID",
-            "description": "ID of the Workflow subscription, i.e. the Contact's enrollment in the Workflow, that created the activity, or `null`.",
+            "title": "Workflow Run ID",
+            "description": "ID of the Workflow Run, i.e. the Contact's enrollment in the Workflow, that created the activity, e.g. `sub_abc123`, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -34494,7 +34980,15 @@
         "enum": [
           "fixed",
           "auto"
-        ]
+        ],
+        "x-fern-enum": {
+          "auto": {
+            "description": "Close picks the number for each call or SMS."
+          },
+          "fixed": {
+            "description": "The user chose the number to call or text from."
+          }
+        }
       },
       "CallerIdReason": {
         "title": "CallerIdReason",
@@ -34505,7 +34999,21 @@
           "local_presence",
           "fallback",
           "plan_fallback"
-        ]
+        ],
+        "x-fern-enum": {
+          "context": {
+            "description": "The number used for an earlier call or message with the same contact."
+          },
+          "fallback": {
+            "description": "No better match, so the default caller ID or the oldest available number."
+          },
+          "local_presence": {
+            "description": "The number closest to the location of the other party's number."
+          },
+          "plan_fallback": {
+            "description": "Same as `fallback`, because the plan doesn't include Local Presence."
+          }
+        }
       },
       "CarrierNumberType": {
         "title": "CarrierNumberType",
@@ -34569,10 +35077,12 @@
         "properties": {
           "comment_count": {
             "title": "Comment Count",
+            "description": "Number of comments in the thread.",
             "type": "integer"
           },
           "thread_id": {
             "title": "Thread ID",
+            "description": "ID of the comment thread, prefixed with `comthr_`.",
             "type": "string"
           }
         },
@@ -34634,7 +35144,15 @@
         "enum": [
           "incoming",
           "outgoing"
-        ]
+        ],
+        "x-fern-enum": {
+          "incoming": {
+            "description": "Sent by a lead or contact to a user in your organization."
+          },
+          "outgoing": {
+            "description": "Sent by a user in your organization to a lead or contact."
+          }
+        }
       },
       "ConferenceLinkType": {
         "title": "ConferenceLinkType",
@@ -35360,14 +35878,13 @@
             "format": "date-time"
           },
           "direction": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "enum": [
-              "inbound",
-              "outbound",
-              null
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PhoneActivityDirection"
+              },
+              {
+                "type": "null"
+              }
             ]
           },
           "duration": {
@@ -35429,31 +35946,23 @@
             "format": "uri"
           },
           "source": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "enum": [
-              "Close.io",
-              "External",
-              null
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PhoneActivitySource"
+              },
+              {
+                "type": "null"
+              }
             ]
           },
           "status": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "enum": [
-              "created",
-              "in-progress",
-              "completed",
-              "cancel",
-              "no-answer",
-              "busy",
-              "failed",
-              "timeout",
-              null
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              {
+                "type": "null"
+              }
             ]
           },
           "user_id": {
@@ -35764,11 +36273,7 @@
             ]
           },
           "status": {
-            "type": "string",
-            "enum": [
-              "draft",
-              "published"
-            ]
+            "$ref": "#/components/schemas/CustomActivityStatus"
           },
           "user_id": {
             "type": [
@@ -35791,6 +36296,7 @@
         "type": "object",
         "properties": {
           "activity_at": {
+            "description": "When the email happened. Defaults to `date_created`, and is set to the send time when Close sends the email.",
             "type": [
               "null",
               "string"
@@ -35798,6 +36304,7 @@
             "format": "date-time"
           },
           "attachments": {
+            "description": "Files to attach. Upload each file with the Files API first, then pass its `download.url` as `url`.",
             "type": [
               "array",
               "null"
@@ -35807,27 +36314,33 @@
               "type": "object",
               "properties": {
                 "content_id": {
+                  "description": "MIME Content-ID of the file, for an image that the HTML body references with a `cid:` link.",
                   "type": [
                     "null",
                     "string"
                   ]
                 },
                 "content_type": {
+                  "description": "MIME type of the file, e.g. `application/pdf`.",
                   "type": [
                     "null",
                     "string"
                   ]
                 },
                 "filename": {
+                  "description": "Name of the file, e.g. `contract.pdf`.",
                   "type": "string"
                 },
                 "inline_only": {
+                  "description": "Whether the file is only shown inside the HTML body (e.g. a signature logo) instead of as a standalone attachment.",
                   "type": "boolean"
                 },
                 "size": {
+                  "description": "Size of the file in bytes.",
                   "type": "integer"
                 },
                 "url": {
+                  "description": "URL of the uploaded file, from the `download.url` field of the Files API response. Must start with `https://app.close.com/go/file/`.",
                   "type": "string",
                   "format": "uri"
                 }
@@ -35840,6 +36353,7 @@
             }
           },
           "bcc": {
+            "description": "Email addresses of the `Bcc` recipients.",
             "type": [
               "array",
               "null"
@@ -35851,6 +36365,7 @@
             }
           },
           "body_html": {
+            "description": "HTML body. If you send only one of `body_text` and `body_html`, Close generates the other.",
             "type": [
               "null",
               "string"
@@ -35858,6 +36373,7 @@
             "maxLength": 1048576
           },
           "body_text": {
+            "description": "Plain-text body. If you send only one of `body_text` and `body_html`, Close generates the other.",
             "type": [
               "null",
               "string"
@@ -35865,6 +36381,7 @@
             "maxLength": 1048576
           },
           "cc": {
+            "description": "Email addresses of the `Cc` recipients.",
             "type": [
               "array",
               "null"
@@ -35876,18 +36393,21 @@
             }
           },
           "contact_id": {
+            "description": "ID of the lead's contact the email is with.",
             "type": [
               "null",
               "string"
             ]
           },
           "created_by": {
+            "description": "ID of the user to record as the creator of the email.",
             "type": [
               "null",
               "string"
             ]
           },
           "date_created": {
+            "description": "When the email was created, for importing older emails. Defaults to now. Can't be changed later.",
             "type": [
               "null",
               "string"
@@ -35900,12 +36420,14 @@
             "format": "date-time"
           },
           "email_account_id": {
+            "description": "ID of the connected email account to send the email from, prefixed with `emailacct_`. If you leave it out for a draft or an email you send, Close picks the user's account that matches `sender`.",
             "type": [
               "null",
               "string"
             ]
           },
           "followup_date": {
+            "description": "Date to create a follow-up task on if the lead doesn't reply. Only used when `status` is `scheduled`, `outbox` or `sent`, and can't be before the email is sent.",
             "type": [
               "null",
               "string"
@@ -35913,12 +36435,14 @@
             "format": "date-time"
           },
           "followup_sequence_add_cc_bcc": {
+            "description": "Whether to also add the `cc` and `bcc` recipients to the `followup_sequence_id` workflow. Requires `followup_sequence_id`.",
             "type": [
               "boolean",
               "null"
             ]
           },
           "followup_sequence_delay": {
+            "description": "Seconds to wait after the email is sent before the first step of the `followup_sequence_id` workflow. At least 86,400 (one day). Required with `followup_sequence_id`.",
             "type": [
               "integer",
               "null"
@@ -35926,21 +36450,25 @@
             "minimum": 86400
           },
           "followup_sequence_id": {
+            "description": "ID of a workflow to subscribe the recipients to after the email is sent, prefixed with `seq_`. Required with `followup_sequence_delay`.",
             "type": [
               "null",
               "string"
             ]
           },
           "in_reply_to_id": {
+            "description": "ID of the email activity this email replies to. Close sets the `In-Reply-To` and `References` headers from it.",
             "type": [
               "null",
               "string"
             ]
           },
           "lead_id": {
+            "description": "ID of the lead the email belongs to. Can't be changed later.",
             "type": "string"
           },
           "opens": {
+            "description": "Opens to record. Only allowed when `status` is `sent`.",
             "type": [
               "array",
               "null"
@@ -35949,6 +36477,7 @@
               "type": "object",
               "properties": {
                 "opened_at": {
+                  "description": "When the email was opened.",
                   "type": "string",
                   "format": "date-time"
                 }
@@ -35959,6 +36488,7 @@
             }
           },
           "organization_id": {
+            "description": "ID of your organization. Defaults to the organization of your API key or OAuth token.",
             "type": [
               "null",
               "string"
@@ -35971,24 +36501,18 @@
             "maximum": 60
           },
           "sender": {
+            "description": "Sender of the email, either a plain address like `john@example.com` or a name and address like `\"John Smith\" <john@example.com>`. Required unless `status` is `draft` or `sent`. For `sent`, it defaults to the address of the email's user.",
             "type": [
               "null",
               "string"
-            ],
-            "format": "email"
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "inbox",
-              "draft",
-              "scheduled",
-              "outbox",
-              "sent",
-              "error"
             ]
           },
+          "status": {
+            "description": "Status of the email. Set `outbox` to send it now, `scheduled` to send it at `date_scheduled`, `draft` to save a draft, or `inbox`, `sent` or `error` to log an email sent or received elsewhere. Only `draft`, `scheduled`, `outbox` and `error` emails can change status, and only to `draft`, `scheduled` or `outbox`.",
+            "$ref": "#/components/schemas/MessageStatus"
+          },
           "subject": {
+            "description": "Subject of the email.",
             "type": [
               "null",
               "string"
@@ -35996,12 +36520,14 @@
             "maxLength": 1000
           },
           "template_id": {
+            "description": "ID of the email template to use, prefixed with `tmpl_`. On create, if you leave out `body_text` and `body_html`, Close renders the template for `contact_id`, which is then required, and fills in `subject`, `cc`, `bcc` and `attachments` you leave empty.",
             "type": [
               "null",
               "string"
             ]
           },
           "to": {
+            "description": "Email addresses of the `To` recipients. At least one valid address is required to send the email.",
             "type": [
               "array",
               "null"
@@ -36013,6 +36539,7 @@
             }
           },
           "user_id": {
+            "description": "ID of the user the email belongs to. Defaults to you. Setting another user requires the Manage Organization permission and is otherwise ignored. Can only be changed while the email is a draft.",
             "type": [
               "null",
               "string"
@@ -37236,6 +37763,7 @@
         "type": "object",
         "properties": {
           "activity_at": {
+            "description": "When the SMS happened. Defaults to `date_created`, and is set to the time the SMS is sent.",
             "type": [
               "null",
               "string"
@@ -37243,6 +37771,7 @@
             "format": "date-time"
           },
           "attachments": {
+            "description": "Files to send with the SMS as an MMS, at most 10. Can only be changed while the SMS is a draft.",
             "type": [
               "array",
               "null"
@@ -37252,6 +37781,7 @@
               "type": "object",
               "properties": {
                 "content_type": {
+                  "description": "MIME type of the file, e.g. `image/jpeg`.",
                   "type": "string",
                   "enum": [
                     "application/pdf",
@@ -37297,9 +37827,11 @@
                   ]
                 },
                 "filename": {
+                  "description": "Name of the file, e.g. `photo.jpg`.",
                   "type": "string"
                 },
                 "url": {
+                  "description": "URL of a file uploaded with the Files API. Use the `download.url` from the upload response, which begins with `https://app.close.com/go/file/`.",
                   "type": "string"
                 }
               },
@@ -37311,29 +37843,32 @@
             }
           },
           "caller_id_mode": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "enum": [
-              "fixed",
-              "auto",
-              null
+            "description": "How to choose `local_phone` when sending. `auto` lets Close pick the number. A logged SMS can't have a caller ID mode. Can only be changed while the SMS is a draft.",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CallerIdMode"
+              },
+              {
+                "type": "null"
+              }
             ]
           },
           "contact_id": {
+            "description": "ID of the contact the SMS is with. Can only be changed while the SMS is a draft.",
             "type": [
               "null",
               "string"
             ]
           },
           "created_by": {
+            "description": "ID of the user who created the SMS. Defaults to you. Setting another user requires the `manage_organization` permission, otherwise you are used instead.",
             "type": [
               "null",
               "string"
             ]
           },
           "date_created": {
+            "description": "When the SMS was created, e.g. when importing older SMS. Defaults to now.",
             "type": [
               "null",
               "string"
@@ -37346,37 +37881,39 @@
             "format": "date-time"
           },
           "direction": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "enum": [
-              "inbound",
-              "outbound",
-              null
+            "description": "Whether the SMS was received (`inbound`) or sent (`outbound`). Defaults to `inbound` when `status` is `inbox`, and to `outbound` otherwise. Can't be changed later.",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PhoneActivityDirection"
+              },
+              {
+                "type": "null"
+              }
             ]
           },
           "lead_id": {
+            "description": "ID of the lead the SMS belongs to. For a logged SMS (`source` is `External`), it defaults to the lead of `contact_id`, or of the oldest contact with `remote_phone`. Once set, it can't be removed.",
             "type": [
               "null",
               "string"
             ]
           },
           "local_phone": {
-            "description": "Phone number in E.164 format",
+            "description": "Your Close phone number to send the SMS from, or that received it, in E.164 format. Required to send (`outbox` or `scheduled`) unless `caller_id_mode` is `auto`. Can only be changed while the SMS is a draft.",
             "type": [
               "null",
               "string"
             ]
           },
           "organization_id": {
+            "description": "ID of your organization. Defaults to the organization of your API key or OAuth token.",
             "type": [
               "null",
               "string"
             ]
           },
           "remote_phone": {
-            "description": "Phone number in E.164 format",
+            "description": "Phone number of the other party, in E.164 format. Required to send. A logged SMS needs `remote_phone` or `contact_id`. Can only be changed while the SMS is a draft.",
             "type": [
               "null",
               "string"
@@ -37389,40 +37926,36 @@
             "maximum": 60
           },
           "source": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "enum": [
-              "Close.io",
-              "External",
-              null
+            "description": "`External` to log an SMS that was sent or received outside Close, or `Close.io` for an SMS that Close sends. Defaults to `External` when `status` is `inbox` or `sent`, and to `Close.io` otherwise. Can't be changed later.",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PhoneActivitySource"
+              },
+              {
+                "type": "null"
+              }
             ]
           },
           "status": {
-            "type": "string",
-            "enum": [
-              "inbox",
-              "draft",
-              "scheduled",
-              "outbox",
-              "sent",
-              "error"
-            ]
+            "description": "Status of the SMS. Use `inbox` or `sent` to log an SMS, `draft` to save a draft, `outbox` to send it now or `scheduled` to send it at `date_scheduled`. Close sets `error` when sending fails.",
+            "$ref": "#/components/schemas/MessageStatus"
           },
           "template_id": {
+            "description": "ID of an SMS template. When you create an SMS with a `template_id` and no `text`, Close renders the template into `text`, which requires `lead_id`. Can only be changed while the SMS is a draft.",
             "type": [
               "null",
               "string"
             ]
           },
           "text": {
+            "description": "Text of the SMS. Required unless `status` is `draft`, or you send `attachments` or a `template_id`. An SMS to send can be at most 1,000 bytes of UTF-8 text. Can only be changed while the SMS is a draft.",
             "type": [
               "null",
               "string"
             ]
           },
           "user_id": {
+            "description": "ID of the user who sent or received the SMS. Defaults to you. Setting another user requires the `manage_organization` permission, otherwise you are used instead.",
             "type": [
               "null",
               "string"
@@ -39067,7 +39600,7 @@
           },
           "agent_action_reason": {
             "title": "Agent Action Reason",
-            "description": "Why an agent created the activity, e.g. `send_scheduling_link`, or `null` if no agent created it.",
+            "description": "Why an agent created the activity (`send_scheduling_link`, `custom_agent_decision` or `voice_agent_callback`), or `null` if no agent created it.",
             "default": null,
             "anyOf": [
               {
@@ -39092,8 +39625,21 @@
               }
             ]
           },
+          "ai_draft": {
+            "title": "AI Draft",
+            "description": "AI-generated draft of a follow-up to this email, prepared for the user making the request. `null` if there is none, or once it's been used or discarded.",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AIDraft"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "attachments": {
             "title": "Attachments",
+            "description": "Files attached to the email.",
             "default": null,
             "anyOf": [
               {
@@ -39109,6 +39655,7 @@
           },
           "bcc": {
             "title": "Bcc",
+            "description": "Email addresses of the `Bcc` recipients.",
             "type": "array",
             "items": {
               "type": "string"
@@ -39116,6 +39663,7 @@
           },
           "body_html": {
             "title": "Body HTML",
+            "description": "HTML body of the email.",
             "anyOf": [
               {
                 "type": "string"
@@ -39125,8 +39673,24 @@
               }
             ]
           },
+          "body_html_quoted": {
+            "title": "Body HTML Quoted",
+            "description": "`body_html` split into new content and HTML quoted from earlier messages. `null` if there is no HTML body.",
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/QuotedEmailHTML"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "body_preview": {
             "title": "Body Preview",
+            "description": "First 200 characters of the body, as plain text.",
             "default": null,
             "anyOf": [
               {
@@ -39139,6 +39703,7 @@
           },
           "body_text": {
             "title": "Body Text",
+            "description": "Plain-text body of the email.",
             "anyOf": [
               {
                 "type": "string"
@@ -39148,8 +39713,24 @@
               }
             ]
           },
+          "body_text_quoted": {
+            "title": "Body Text Quoted",
+            "description": "`body_text` split into new content and text quoted from earlier messages. `null` if there is no plain-text body.",
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/QuotedEmailText"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "bulk_email_action_id": {
             "title": "Bulk Email Action ID",
+            "description": "ID of the bulk email action that sent the email, or `null` if it wasn't sent in bulk.",
             "anyOf": [
               {
                 "type": "string"
@@ -39161,6 +39742,7 @@
           },
           "cc": {
             "title": "Cc",
+            "description": "Email addresses of the `Cc` recipients.",
             "type": "array",
             "items": {
               "type": "string"
@@ -39192,7 +39774,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
-            "description": "ID of the agent that created the activity, or `null` if no agent created it.",
+            "description": "ID of the agent that created the activity, e.g. `agentconfig_abc123`, or `null` if no agent created it.",
             "default": null,
             "anyOf": [
               {
@@ -39224,6 +39806,7 @@
           },
           "date_scheduled": {
             "title": "Date Scheduled",
+            "description": "When the email is scheduled to be sent, or `null` if it isn't scheduled.",
             "anyOf": [
               {
                 "type": "string",
@@ -39236,6 +39819,7 @@
           },
           "date_sent": {
             "title": "Date Sent",
+            "description": "When the email was sent, or `null` if it hasn't been sent.",
             "anyOf": [
               {
                 "type": "string",
@@ -39253,6 +39837,7 @@
             "format": "date-time"
           },
           "direction": {
+            "description": "Whether the email was sent to the lead (`outgoing`) or received from the lead (`incoming`).",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/CommunicationDirection"
@@ -39264,6 +39849,7 @@
           },
           "email_account_id": {
             "title": "Email Account ID",
+            "description": "ID of the connected email account the email was sent from or received in, prefixed with `emailacct_`. `null` if there is none or the account was deleted.",
             "default": null,
             "anyOf": [
               {
@@ -39276,6 +39862,7 @@
           },
           "envelope": {
             "title": "Envelope",
+            "description": "Headers of the email: the original ones for synced emails, or ones Close generates for emails created in Close. Has `date`, `subject`, `in_reply_to`, `message_id`, `is_autoreply`, and `from`, `sender`, `reply_to`, `to`, `cc` and `bcc` as lists of `{email, name}` objects. `null` if the email has none.",
             "default": null,
             "anyOf": [
               {
@@ -39289,10 +39876,12 @@
           },
           "followup_sequence_add_cc_bcc": {
             "title": "Followup Sequence Add Cc Bcc",
+            "description": "Whether the email's `cc` and `bcc` recipients are also added to the `followup_sequence_id` workflow.",
             "type": "boolean"
           },
           "followup_sequence_delay": {
             "title": "Followup Sequence Delay",
+            "description": "Seconds to wait after the email is sent before the first step of the `followup_sequence_id` workflow, or `null`.",
             "anyOf": [
               {
                 "type": "integer"
@@ -39304,6 +39893,7 @@
           },
           "followup_sequence_id": {
             "title": "Followup Sequence ID",
+            "description": "ID of the workflow the recipients are subscribed to after the email is sent, prefixed with `seq_`, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -39316,6 +39906,7 @@
           },
           "has_reply": {
             "title": "Has Reply",
+            "description": "Whether a reply to the email was received.",
             "type": "boolean"
           },
           "id": {
@@ -39325,6 +39916,7 @@
           },
           "in_reply_to_id": {
             "title": "In Reply To ID",
+            "description": "ID of the email activity this email replies to, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -39348,6 +39940,7 @@
           },
           "message_ids": {
             "title": "Message IDs",
+            "description": "`Message-ID` header values of the email.",
             "type": "array",
             "items": {
               "type": "string"
@@ -39355,10 +39948,12 @@
           },
           "need_smtp_credentials": {
             "title": "Need Smtp Credentials",
+            "description": "Always `false`. Kept for backward compatibility.",
             "type": "boolean"
           },
           "opens": {
             "title": "Opens",
+            "description": "Each time a recipient opened the email, oldest first.",
             "default": null,
             "anyOf": [
               {
@@ -39374,6 +39969,7 @@
           },
           "opens_summary": {
             "title": "Opens Summary",
+            "description": "Human-readable summary of `opens`, e.g. `Opened by karen@example.com (2 times, latest 2024-01-31)`. `null` if the email hasn't been opened.",
             "anyOf": [
               {
                 "type": "string"
@@ -39390,6 +39986,7 @@
           },
           "references": {
             "title": "References",
+            "description": "Message IDs of the earlier emails this email refers to, oldest first, from its `References` and `In-Reply-To` headers.",
             "type": "array",
             "items": {
               "type": "string"
@@ -39397,6 +39994,7 @@
           },
           "send_as_id": {
             "title": "Send As ID",
+            "description": "ID of the user the email is sent on behalf of, when it's sent as another user. `null` otherwise.",
             "anyOf": [
               {
                 "type": "string"
@@ -39408,6 +40006,7 @@
           },
           "send_attempts": {
             "title": "Send Attempts",
+            "description": "Failed or partly failed attempts to send the email, oldest first.",
             "default": null,
             "anyOf": [
               {
@@ -39423,6 +40022,7 @@
           },
           "sender": {
             "title": "Sender",
+            "description": "Sender of the email, either a plain address like `john@example.com` or a name and address like `\"John Smith\" <john@example.com>`. `null` if a draft has no sender yet.",
             "anyOf": [
               {
                 "type": "string"
@@ -39434,7 +40034,7 @@
           },
           "sequence_id": {
             "title": "Sequence ID",
-            "description": "ID of the Workflow that created the activity, or `null`.",
+            "description": "ID of the Workflow that created the activity, e.g. `seq_abc123`, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -39459,8 +40059,8 @@
             ]
           },
           "sequence_subscription_id": {
-            "title": "Sequence Subscription ID",
-            "description": "ID of the Workflow subscription, i.e. the Contact's enrollment in the Workflow, that created the activity, or `null`.",
+            "title": "Workflow Run ID",
+            "description": "ID of the Workflow Run, i.e. the Contact's enrollment in the Workflow, that created the activity, e.g. `sub_abc123`, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -39472,10 +40072,12 @@
             ]
           },
           "status": {
+            "description": "Status of the email, e.g. `draft`, `scheduled` or `sent`.",
             "$ref": "#/components/schemas/MessageStatus"
           },
           "subject": {
             "title": "Subject",
+            "description": "Subject of the email.",
             "anyOf": [
               {
                 "type": "string"
@@ -39487,6 +40089,7 @@
           },
           "template_id": {
             "title": "Template ID",
+            "description": "ID of the email template the email was written from, prefixed with `tmpl_`, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -39498,6 +40101,7 @@
           },
           "template_name": {
             "title": "Template Name",
+            "description": "Name of the email template in `template_id`. Kept after the template is deleted.",
             "default": null,
             "anyOf": [
               {
@@ -39510,6 +40114,7 @@
           },
           "thread_id": {
             "title": "Thread ID",
+            "description": "ID of the email thread activity the email belongs to, prefixed with `acti_`.",
             "anyOf": [
               {
                 "type": "string"
@@ -39521,6 +40126,7 @@
           },
           "to": {
             "title": "To",
+            "description": "Email addresses of the `To` recipients.",
             "type": "array",
             "items": {
               "type": "string"
@@ -39774,7 +40380,7 @@
           },
           "agent_action_reason": {
             "title": "Agent Action Reason",
-            "description": "Why an agent created the activity, e.g. `send_scheduling_link`, or `null` if no agent created it.",
+            "description": "Why an agent created the activity (`send_scheduling_link`, `custom_agent_decision` or `voice_agent_callback`), or `null` if no agent created it.",
             "default": null,
             "anyOf": [
               {
@@ -39800,11 +40406,11 @@
             ]
           },
           "ai_draft": {
-            "title": "Ai Draft",
+            "title": "AI Draft",
+            "description": "AI-generated draft of a follow-up to this email, prepared for the user making the request. `null` if there is none, or once it's been used or discarded.",
             "anyOf": [
               {
-                "type": "object",
-                "additionalProperties": true
+                "$ref": "#/components/schemas/AIDraft"
               },
               {
                 "type": "null"
@@ -39813,6 +40419,7 @@
           },
           "attachments": {
             "title": "Attachments",
+            "description": "Files attached to the email.",
             "default": null,
             "anyOf": [
               {
@@ -39828,6 +40435,7 @@
           },
           "bcc": {
             "title": "Bcc",
+            "description": "Email addresses of the `Bcc` recipients.",
             "type": "array",
             "items": {
               "type": "string"
@@ -39846,6 +40454,7 @@
           },
           "body_html_quoted": {
             "title": "Body HTML Quoted",
+            "description": "`body_html` split into new content and HTML quoted from earlier messages. `null` if there is no HTML body.",
             "anyOf": [
               {
                 "type": "array",
@@ -39860,6 +40469,7 @@
           },
           "body_preview": {
             "title": "Body Preview",
+            "description": "First 200 characters of the body, as plain text.",
             "default": null,
             "anyOf": [
               {
@@ -39883,6 +40493,7 @@
           },
           "body_text_quoted": {
             "title": "Body Text Quoted",
+            "description": "`body_text` split into new content and text quoted from earlier messages. `null` if there is no plain-text body.",
             "anyOf": [
               {
                 "type": "array",
@@ -39897,6 +40508,7 @@
           },
           "bulk_email_action_id": {
             "title": "Bulk Email Action ID",
+            "description": "ID of the bulk email action that sent the email, or `null` if it wasn't sent in bulk.",
             "anyOf": [
               {
                 "type": "string"
@@ -39908,6 +40520,7 @@
           },
           "cc": {
             "title": "Cc",
+            "description": "Email addresses of the `Cc` recipients.",
             "type": "array",
             "items": {
               "type": "string"
@@ -39939,7 +40552,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
-            "description": "ID of the agent that created the activity, or `null` if no agent created it.",
+            "description": "ID of the agent that created the activity, e.g. `agentconfig_abc123`, or `null` if no agent created it.",
             "default": null,
             "anyOf": [
               {
@@ -39971,6 +40584,7 @@
           },
           "date_scheduled": {
             "title": "Date Scheduled",
+            "description": "When the email is scheduled to be sent, or `null` if it isn't scheduled.",
             "anyOf": [
               {
                 "type": "string",
@@ -39983,6 +40597,7 @@
           },
           "date_sent": {
             "title": "Date Sent",
+            "description": "When the email was sent, or `null` if it hasn't been sent.",
             "anyOf": [
               {
                 "type": "string",
@@ -40000,6 +40615,7 @@
             "format": "date-time"
           },
           "direction": {
+            "description": "Whether the email was sent to the lead (`outgoing`) or received from the lead (`incoming`).",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/CommunicationDirection"
@@ -40011,6 +40627,7 @@
           },
           "email_account_id": {
             "title": "Email Account ID",
+            "description": "ID of the connected email account the email was sent from or received in, prefixed with `emailacct_`. `null` if there is none or the account was deleted.",
             "default": null,
             "anyOf": [
               {
@@ -40023,6 +40640,7 @@
           },
           "envelope": {
             "title": "Envelope",
+            "description": "Headers of the email: the original ones for synced emails, or ones Close generates for emails created in Close. Has `date`, `subject`, `in_reply_to`, `message_id`, `is_autoreply`, and `from`, `sender`, `reply_to`, `to`, `cc` and `bcc` as lists of `{email, name}` objects. `null` if the email has none.",
             "default": null,
             "anyOf": [
               {
@@ -40036,10 +40654,12 @@
           },
           "followup_sequence_add_cc_bcc": {
             "title": "Followup Sequence Add Cc Bcc",
+            "description": "Whether the email's `cc` and `bcc` recipients are also added to the `followup_sequence_id` workflow.",
             "type": "boolean"
           },
           "followup_sequence_delay": {
             "title": "Followup Sequence Delay",
+            "description": "Seconds to wait after the email is sent before the first step of the `followup_sequence_id` workflow, or `null`.",
             "anyOf": [
               {
                 "type": "integer"
@@ -40051,6 +40671,7 @@
           },
           "followup_sequence_id": {
             "title": "Followup Sequence ID",
+            "description": "ID of the workflow the recipients are subscribed to after the email is sent, prefixed with `seq_`, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -40063,6 +40684,7 @@
           },
           "has_reply": {
             "title": "Has Reply",
+            "description": "Whether a reply to the email was received.",
             "type": "boolean"
           },
           "id": {
@@ -40072,6 +40694,7 @@
           },
           "in_reply_to_id": {
             "title": "In Reply To ID",
+            "description": "ID of the email activity this email replies to, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -40095,6 +40718,7 @@
           },
           "message_ids": {
             "title": "Message IDs",
+            "description": "`Message-ID` header values of the email.",
             "type": "array",
             "items": {
               "type": "string"
@@ -40102,10 +40726,12 @@
           },
           "need_smtp_credentials": {
             "title": "Need Smtp Credentials",
+            "description": "Always `false`. Kept for backward compatibility.",
             "type": "boolean"
           },
           "opens": {
             "title": "Opens",
+            "description": "Each time a recipient opened the email, oldest first.",
             "default": null,
             "anyOf": [
               {
@@ -40121,6 +40747,7 @@
           },
           "opens_summary": {
             "title": "Opens Summary",
+            "description": "Human-readable summary of `opens`, e.g. `Opened by karen@example.com (2 times, latest 2024-01-31)`. `null` if the email hasn't been opened.",
             "anyOf": [
               {
                 "type": "string"
@@ -40137,6 +40764,7 @@
           },
           "references": {
             "title": "References",
+            "description": "Message IDs of the earlier emails this email refers to, oldest first, from its `References` and `In-Reply-To` headers.",
             "type": "array",
             "items": {
               "type": "string"
@@ -40144,6 +40772,7 @@
           },
           "send_as_id": {
             "title": "Send As ID",
+            "description": "ID of the user the email is sent on behalf of, when it's sent as another user. `null` otherwise.",
             "anyOf": [
               {
                 "type": "string"
@@ -40155,6 +40784,7 @@
           },
           "send_attempts": {
             "title": "Send Attempts",
+            "description": "Failed or partly failed attempts to send the email, oldest first.",
             "default": null,
             "anyOf": [
               {
@@ -40170,6 +40800,7 @@
           },
           "sender": {
             "title": "Sender",
+            "description": "Sender of the email, either a plain address like `john@example.com` or a name and address like `\"John Smith\" <john@example.com>`. `null` if a draft has no sender yet.",
             "anyOf": [
               {
                 "type": "string"
@@ -40181,7 +40812,7 @@
           },
           "sequence_id": {
             "title": "Sequence ID",
-            "description": "ID of the Workflow that created the activity, or `null`.",
+            "description": "ID of the Workflow that created the activity, e.g. `seq_abc123`, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -40206,8 +40837,8 @@
             ]
           },
           "sequence_subscription_id": {
-            "title": "Sequence Subscription ID",
-            "description": "ID of the Workflow subscription, i.e. the Contact's enrollment in the Workflow, that created the activity, or `null`.",
+            "title": "Workflow Run ID",
+            "description": "ID of the Workflow Run, i.e. the Contact's enrollment in the Workflow, that created the activity, e.g. `sub_abc123`, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -40219,10 +40850,12 @@
             ]
           },
           "status": {
+            "description": "Status of the email, e.g. `draft`, `scheduled` or `sent`.",
             "$ref": "#/components/schemas/MessageStatus"
           },
           "subject": {
             "title": "Subject",
+            "description": "Subject of the email.",
             "anyOf": [
               {
                 "type": "string"
@@ -40234,6 +40867,7 @@
           },
           "template_id": {
             "title": "Template ID",
+            "description": "ID of the email template the email was written from, prefixed with `tmpl_`, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -40245,6 +40879,7 @@
           },
           "template_name": {
             "title": "Template Name",
+            "description": "Name of the email template in `template_id`. Kept after the template is deleted.",
             "default": null,
             "anyOf": [
               {
@@ -40257,6 +40892,7 @@
           },
           "thread_id": {
             "title": "Thread ID",
+            "description": "ID of the email thread activity the email belongs to, prefixed with `acti_`.",
             "anyOf": [
               {
                 "type": "string"
@@ -40268,6 +40904,7 @@
           },
           "to": {
             "title": "To",
+            "description": "Email addresses of the `To` recipients.",
             "type": "array",
             "items": {
               "type": "string"
@@ -40373,7 +41010,8 @@
         "type": "object",
         "properties": {
           "ip_address": {
-            "title": "Ip Address",
+            "title": "IP Address",
+            "description": "IP address the email was opened from.",
             "anyOf": [
               {
                 "type": "string"
@@ -40385,11 +41023,13 @@
           },
           "opened_at": {
             "title": "Opened At",
+            "description": "When the email was opened.",
             "type": "string",
             "format": "date-time"
           },
           "opened_by": {
             "title": "Opened By",
+            "description": "Email address of the recipient who opened the email, or `null` if unknown.",
             "anyOf": [
               {
                 "type": "string"
@@ -40401,6 +41041,7 @@
           },
           "user_agent": {
             "title": "User Agent",
+            "description": "User agent of the app that opened the email.",
             "anyOf": [
               {
                 "type": "string"
@@ -40624,7 +41265,7 @@
           },
           "agent_action_reason": {
             "title": "Agent Action Reason",
-            "description": "Why an agent created the activity, e.g. `send_scheduling_link`, or `null` if no agent created it.",
+            "description": "Why an agent created the activity (`send_scheduling_link`, `custom_agent_decision` or `voice_agent_callback`), or `null` if no agent created it.",
             "anyOf": [
               {
                 "type": "string"
@@ -40646,8 +41287,21 @@
               }
             ]
           },
+          "ai_draft": {
+            "title": "AI Draft",
+            "description": "AI-generated draft of a follow-up to this email, prepared for the user making the request. `null` if there is none, or once it's been used or discarded.",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AIDraft"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "attachments": {
             "title": "Attachments",
+            "description": "Files attached to the email.",
             "anyOf": [
               {
                 "type": "array",
@@ -40662,6 +41316,7 @@
           },
           "bcc": {
             "title": "Bcc",
+            "description": "Email addresses of the `Bcc` recipients.",
             "type": "array",
             "items": {
               "type": "string"
@@ -40669,6 +41324,7 @@
           },
           "body_html": {
             "title": "Body HTML",
+            "description": "HTML body of the email.",
             "anyOf": [
               {
                 "type": "string"
@@ -40678,8 +41334,24 @@
               }
             ]
           },
+          "body_html_quoted": {
+            "title": "Body HTML Quoted",
+            "description": "`body_html` split into new content and HTML quoted from earlier messages. `null` if there is no HTML body.",
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/QuotedEmailHTML"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "body_preview": {
             "title": "Body Preview",
+            "description": "First 200 characters of the body, as plain text.",
             "anyOf": [
               {
                 "type": "string"
@@ -40691,6 +41363,7 @@
           },
           "body_text": {
             "title": "Body Text",
+            "description": "Plain-text body of the email.",
             "anyOf": [
               {
                 "type": "string"
@@ -40700,8 +41373,24 @@
               }
             ]
           },
+          "body_text_quoted": {
+            "title": "Body Text Quoted",
+            "description": "`body_text` split into new content and text quoted from earlier messages. `null` if there is no plain-text body.",
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/QuotedEmailText"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "bulk_email_action_id": {
             "title": "Bulk Email Action ID",
+            "description": "ID of the bulk email action that sent the email, or `null` if it wasn't sent in bulk.",
             "anyOf": [
               {
                 "type": "string"
@@ -40713,6 +41402,7 @@
           },
           "cc": {
             "title": "Cc",
+            "description": "Email addresses of the `Cc` recipients.",
             "type": "array",
             "items": {
               "type": "string"
@@ -40744,7 +41434,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
-            "description": "ID of the agent that created the activity, or `null` if no agent created it.",
+            "description": "ID of the agent that created the activity, e.g. `agentconfig_abc123`, or `null` if no agent created it.",
             "anyOf": [
               {
                 "type": "string"
@@ -40774,6 +41464,7 @@
           },
           "date_scheduled": {
             "title": "Date Scheduled",
+            "description": "When the email is scheduled to be sent, or `null` if it isn't scheduled.",
             "anyOf": [
               {
                 "type": "string",
@@ -40786,6 +41477,7 @@
           },
           "date_sent": {
             "title": "Date Sent",
+            "description": "When the email was sent, or `null` if it hasn't been sent.",
             "anyOf": [
               {
                 "type": "string",
@@ -40804,6 +41496,7 @@
           },
           "direction": {
             "title": "Direction",
+            "description": "Whether the email was sent to the lead (`outgoing`) or received from the lead (`incoming`).",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/CommunicationDirection"
@@ -40815,6 +41508,7 @@
           },
           "email_account_id": {
             "title": "Email Account ID",
+            "description": "ID of the connected email account the email was sent from or received in, prefixed with `emailacct_`. `null` if there is none or the account was deleted.",
             "anyOf": [
               {
                 "type": "string"
@@ -40826,6 +41520,7 @@
           },
           "envelope": {
             "title": "Envelope",
+            "description": "Headers of the email: the original ones for synced emails, or ones Close generates for emails created in Close. Has `date`, `subject`, `in_reply_to`, `message_id`, `is_autoreply`, and `from`, `sender`, `reply_to`, `to`, `cc` and `bcc` as lists of `{email, name}` objects. `null` if the email has none.",
             "anyOf": [
               {
                 "type": "object",
@@ -40838,10 +41533,12 @@
           },
           "followup_sequence_add_cc_bcc": {
             "title": "Followup Sequence Add Cc Bcc",
+            "description": "Whether the email's `cc` and `bcc` recipients are also added to the `followup_sequence_id` workflow.",
             "type": "boolean"
           },
           "followup_sequence_delay": {
             "title": "Followup Sequence Delay",
+            "description": "Seconds to wait after the email is sent before the first step of the `followup_sequence_id` workflow, or `null`.",
             "anyOf": [
               {
                 "type": "integer"
@@ -40853,6 +41550,7 @@
           },
           "followup_sequence_id": {
             "title": "Followup Sequence ID",
+            "description": "ID of the workflow the recipients are subscribed to after the email is sent, prefixed with `seq_`, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -40864,6 +41562,7 @@
           },
           "has_reply": {
             "title": "Has Reply",
+            "description": "Whether a reply to the email was received.",
             "type": "boolean"
           },
           "id": {
@@ -40873,6 +41572,7 @@
           },
           "in_reply_to_id": {
             "title": "In Reply To ID",
+            "description": "ID of the email activity this email replies to, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -40896,6 +41596,7 @@
           },
           "message_ids": {
             "title": "Message IDs",
+            "description": "`Message-ID` header values of the email.",
             "type": "array",
             "items": {
               "type": "string"
@@ -40903,10 +41604,12 @@
           },
           "need_smtp_credentials": {
             "title": "Need Smtp Credentials",
+            "description": "Always `false`. Kept for backward compatibility.",
             "type": "boolean"
           },
           "opens": {
             "title": "Opens",
+            "description": "Each time a recipient opened the email, oldest first.",
             "anyOf": [
               {
                 "type": "array",
@@ -40921,6 +41624,7 @@
           },
           "opens_summary": {
             "title": "Opens Summary",
+            "description": "Human-readable summary of `opens`, e.g. `Opened by karen@example.com (2 times, latest 2024-01-31)`. `null` if the email hasn't been opened.",
             "anyOf": [
               {
                 "type": "string"
@@ -40937,6 +41641,7 @@
           },
           "references": {
             "title": "References",
+            "description": "Message IDs of the earlier emails this email refers to, oldest first, from its `References` and `In-Reply-To` headers.",
             "type": "array",
             "items": {
               "type": "string"
@@ -40944,6 +41649,7 @@
           },
           "send_as_id": {
             "title": "Send As ID",
+            "description": "ID of the user the email is sent on behalf of, when it's sent as another user. `null` otherwise.",
             "anyOf": [
               {
                 "type": "string"
@@ -40955,6 +41661,7 @@
           },
           "send_attempts": {
             "title": "Send Attempts",
+            "description": "Failed or partly failed attempts to send the email, oldest first.",
             "anyOf": [
               {
                 "type": "array",
@@ -40969,6 +41676,7 @@
           },
           "sender": {
             "title": "Sender",
+            "description": "Sender of the email, either a plain address like `john@example.com` or a name and address like `\"John Smith\" <john@example.com>`. `null` if a draft has no sender yet.",
             "anyOf": [
               {
                 "type": "string"
@@ -40980,7 +41688,7 @@
           },
           "sequence_id": {
             "title": "Sequence ID",
-            "description": "ID of the Workflow that created the activity, or `null`.",
+            "description": "ID of the Workflow that created the activity, e.g. `seq_abc123`, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -41003,8 +41711,8 @@
             ]
           },
           "sequence_subscription_id": {
-            "title": "Sequence Subscription ID",
-            "description": "ID of the Workflow subscription, i.e. the Contact's enrollment in the Workflow, that created the activity, or `null`.",
+            "title": "Workflow Run ID",
+            "description": "ID of the Workflow Run, i.e. the Contact's enrollment in the Workflow, that created the activity, e.g. `sub_abc123`, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -41016,10 +41724,12 @@
           },
           "status": {
             "title": "Status",
+            "description": "Status of the email, e.g. `draft`, `scheduled` or `sent`.",
             "$ref": "#/components/schemas/MessageStatus"
           },
           "subject": {
             "title": "Subject",
+            "description": "Subject of the email.",
             "anyOf": [
               {
                 "type": "string"
@@ -41031,6 +41741,7 @@
           },
           "template_id": {
             "title": "Template ID",
+            "description": "ID of the email template the email was written from, prefixed with `tmpl_`, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -41042,6 +41753,7 @@
           },
           "template_name": {
             "title": "Template Name",
+            "description": "Name of the email template in `template_id`. Kept after the template is deleted.",
             "anyOf": [
               {
                 "type": "string"
@@ -41053,6 +41765,7 @@
           },
           "thread_id": {
             "title": "Thread ID",
+            "description": "ID of the email thread activity the email belongs to, prefixed with `acti_`.",
             "anyOf": [
               {
                 "type": "string"
@@ -41064,6 +41777,7 @@
           },
           "to": {
             "title": "To",
+            "description": "Email addresses of the `To` recipients.",
             "type": "array",
             "items": {
               "type": "string"
@@ -47685,7 +48399,27 @@
           "outbox",
           "sent",
           "error"
-        ]
+        ],
+        "x-fern-enum": {
+          "draft": {
+            "description": "A draft that hasn't been sent yet."
+          },
+          "error": {
+            "description": "Sending the message failed."
+          },
+          "inbox": {
+            "description": "A message that was received."
+          },
+          "outbox": {
+            "description": "Queued to be sent right away, or after the `send_in` delay. It can still be canceled by changing the status back to `draft`."
+          },
+          "scheduled": {
+            "description": "Scheduled to be sent at `date_scheduled`."
+          },
+          "sent": {
+            "description": "A message that was sent."
+          }
+        }
       },
       "Moment": {
         "title": "Moment",
@@ -50413,6 +51147,7 @@
           "manage_chloe_call_tasks",
           "view_custom_agents",
           "manage_custom_agents",
+          "manage_others_custom_agents",
           "manage_team_skills",
           "manage_others_activities",
           "delete_own_activities",
@@ -50430,7 +51165,15 @@
         "enum": [
           "inbound",
           "outbound"
-        ]
+        ],
+        "x-fern-enum": {
+          "inbound": {
+            "description": "The other party called or texted you."
+          },
+          "outbound": {
+            "description": "You called or texted the other party."
+          }
+        }
       },
       "PhoneActivitySource": {
         "title": "PhoneActivitySource",
@@ -50439,7 +51182,15 @@
         "enum": [
           "Close.io",
           "External"
-        ]
+        ],
+        "x-fern-enum": {
+          "Close.io": {
+            "description": "Close placed or delivered the call or SMS."
+          },
+          "External": {
+            "description": "The call or SMS happened outside Close and was logged in Close."
+          }
+        }
       },
       "PhoneNumber": {
         "title": "PhoneNumber",
@@ -51091,10 +51842,12 @@
         "properties": {
           "expand": {
             "title": "Expand",
+            "description": "`true` for new content, `false` for HTML quoted from earlier messages, such as a reply's quoted history.",
             "type": "boolean"
           },
           "html": {
             "title": "HTML",
+            "description": "HTML of the part.",
             "type": "string"
           }
         },
@@ -51109,10 +51862,12 @@
         "properties": {
           "expand": {
             "title": "Expand",
+            "description": "`true` for new content, `false` for text quoted from earlier messages, such as a reply's quoted history.",
             "type": "boolean"
           },
           "text": {
             "title": "Text",
+            "description": "Plain text of the part.",
             "type": "string"
           }
         },
@@ -51597,7 +52352,7 @@
           },
           "agent_action_reason": {
             "title": "Agent Action Reason",
-            "description": "Why an agent created the activity, e.g. `send_scheduling_link`, or `null` if no agent created it.",
+            "description": "Why an agent created the activity (`send_scheduling_link`, `custom_agent_decision` or `voice_agent_callback`), or `null` if no agent created it.",
             "default": null,
             "anyOf": [
               {
@@ -51622,7 +52377,16 @@
               }
             ]
           },
+          "attachments": {
+            "title": "Attachments",
+            "description": "Files sent or received with the SMS. An SMS with attachments is an MMS.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SMSAttachment"
+            }
+          },
           "caller_id_mode": {
+            "description": "How `local_phone` was chosen for an outgoing SMS. `null` for incoming, logged and older SMS.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/CallerIdMode"
@@ -51633,6 +52397,7 @@
             ]
           },
           "caller_id_reason": {
+            "description": "Why Close chose `local_phone` when `caller_id_mode` is `auto`. `null` otherwise, and until Close sends the SMS.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/CallerIdReason"
@@ -51656,6 +52421,7 @@
           },
           "cost": {
             "title": "Cost",
+            "description": "What Close charges for the SMS, in cents, as a decimal string (e.g. `\"1.5\"`). `null` if there's no charge, e.g. for a logged SMS.",
             "anyOf": [
               {
                 "type": "string"
@@ -51679,7 +52445,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
-            "description": "ID of the agent that created the activity, or `null` if no agent created it.",
+            "description": "ID of the agent that created the activity, e.g. `agentconfig_abc123`, or `null` if no agent created it.",
             "default": null,
             "anyOf": [
               {
@@ -51711,6 +52477,7 @@
           },
           "date_scheduled": {
             "title": "Date Scheduled",
+            "description": "When the SMS is scheduled to be sent, or `null` if it wasn't scheduled.",
             "anyOf": [
               {
                 "type": "string",
@@ -51723,6 +52490,7 @@
           },
           "date_sent": {
             "title": "Date Sent",
+            "description": "When the SMS was sent. `null` until it's sent.",
             "anyOf": [
               {
                 "type": "string",
@@ -51740,10 +52508,12 @@
             "format": "date-time"
           },
           "direction": {
+            "description": "Whether the SMS was received or sent.",
             "$ref": "#/components/schemas/PhoneActivityDirection"
           },
           "error_message": {
             "title": "Error Message",
+            "description": "Why the SMS failed to send, when `status` is `error`. Null otherwise.",
             "anyOf": [
               {
                 "type": "string"
@@ -51771,7 +52541,8 @@
             ]
           },
           "local_country_iso": {
-            "title": "Local Country Iso",
+            "title": "Local Country ISO",
+            "description": "ISO 3166-1 alpha-2 code of the country of `local_phone`.",
             "anyOf": [
               {
                 "type": "string"
@@ -51783,6 +52554,7 @@
           },
           "local_phone": {
             "title": "Local Phone",
+            "description": "Your phone number that sent or received the SMS, in E.164 format. `null` for a logged SMS that doesn't say which number was used.",
             "anyOf": [
               {
                 "type": "string"
@@ -51794,6 +52566,7 @@
           },
           "local_phone_formatted": {
             "title": "Local Phone Formatted",
+            "description": "`local_phone` formatted for display.",
             "anyOf": [
               {
                 "type": "string"
@@ -51809,7 +52582,8 @@
             "type": "string"
           },
           "remote_country_iso": {
-            "title": "Remote Country Iso",
+            "title": "Remote Country ISO",
+            "description": "ISO 3166-1 alpha-2 code of the country of `remote_phone`.",
             "anyOf": [
               {
                 "type": "string"
@@ -51821,6 +52595,7 @@
           },
           "remote_phone": {
             "title": "Remote Phone",
+            "description": "Phone number of the other party, in E.164 format. `null` for a logged SMS that only names a contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -51832,6 +52607,7 @@
           },
           "remote_phone_formatted": {
             "title": "Remote Phone Formatted",
+            "description": "`remote_phone` formatted for display.",
             "anyOf": [
               {
                 "type": "string"
@@ -51843,7 +52619,7 @@
           },
           "sequence_id": {
             "title": "Sequence ID",
-            "description": "ID of the Workflow that created the activity, or `null`.",
+            "description": "ID of the Workflow that created the activity, e.g. `seq_abc123`, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -51868,8 +52644,8 @@
             ]
           },
           "sequence_subscription_id": {
-            "title": "Sequence Subscription ID",
-            "description": "ID of the Workflow subscription, i.e. the Contact's enrollment in the Workflow, that created the activity, or `null`.",
+            "title": "Workflow Run ID",
+            "description": "ID of the Workflow Run, i.e. the Contact's enrollment in the Workflow, that created the activity, e.g. `sub_abc123`, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -51881,13 +52657,16 @@
             ]
           },
           "source": {
+            "description": "Whether Close sent or received the SMS (`Close.io`), or it was logged from elsewhere (`External`).",
             "$ref": "#/components/schemas/PhoneActivitySource"
           },
           "status": {
+            "description": "Where the SMS is in its lifecycle, e.g. `draft`, `outbox` or `sent`.",
             "$ref": "#/components/schemas/MessageStatus"
           },
           "template_id": {
             "title": "Template ID",
+            "description": "ID of the SMS template the text was rendered from, or `null` if no template was used. The template may since have been deleted.",
             "anyOf": [
               {
                 "type": "string"
@@ -51899,6 +52678,7 @@
           },
           "text": {
             "title": "Text",
+            "description": "Text of the SMS.",
             "anyOf": [
               {
                 "type": "string"
@@ -51970,6 +52750,7 @@
         "required": [
           "_type",
           "activity_at",
+          "attachments",
           "caller_id_mode",
           "caller_id_reason",
           "contact_id",
@@ -51997,6 +52778,56 @@
           "updated_by",
           "user_id",
           "users"
+        ]
+      },
+      "SMSAttachment": {
+        "title": "SMSAttachment",
+        "type": "object",
+        "properties": {
+          "content_type": {
+            "title": "Content Type",
+            "description": "MIME type of the file, e.g. `image/png`.",
+            "type": "string"
+          },
+          "filename": {
+            "title": "Filename",
+            "description": "Name of the file.",
+            "type": "string"
+          },
+          "media_id": {
+            "title": "Media ID",
+            "description": "Unique ID of the attachment within the SMS.",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "size": {
+            "title": "Size",
+            "description": "Size of the file in bytes.",
+            "type": "integer"
+          },
+          "thumbnail_url": {
+            "title": "Thumbnail URL",
+            "description": "URL to download a thumbnail of the file. Only present when Close can generate a thumbnail for the file type. It requires an authenticated session and redirects to a temporary signed URL.",
+            "type": "string"
+          },
+          "url": {
+            "title": "URL",
+            "description": "URL to download the file. It requires an authenticated session and redirects to a temporary signed URL.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "content_type",
+          "filename",
+          "media_id",
+          "size",
+          "url"
         ]
       },
       "SMSSearchResult": {
@@ -52033,7 +52864,7 @@
           },
           "agent_action_reason": {
             "title": "Agent Action Reason",
-            "description": "Why an agent created the activity, e.g. `send_scheduling_link`, or `null` if no agent created it.",
+            "description": "Why an agent created the activity (`send_scheduling_link`, `custom_agent_decision` or `voice_agent_callback`), or `null` if no agent created it.",
             "anyOf": [
               {
                 "type": "string"
@@ -52055,8 +52886,17 @@
               }
             ]
           },
+          "attachments": {
+            "title": "Attachments",
+            "description": "Files sent or received with the SMS. An SMS with attachments is an MMS.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SMSAttachment"
+            }
+          },
           "caller_id_mode": {
             "title": "Caller ID Mode",
+            "description": "How `local_phone` was chosen for an outgoing SMS. `null` for incoming, logged and older SMS.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/CallerIdMode"
@@ -52068,6 +52908,7 @@
           },
           "caller_id_reason": {
             "title": "Caller ID Reason",
+            "description": "Why Close chose `local_phone` when `caller_id_mode` is `auto`. `null` otherwise, and until Close sends the SMS.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/CallerIdReason"
@@ -52091,6 +52932,7 @@
           },
           "cost": {
             "title": "Cost",
+            "description": "What Close charges for the SMS, in cents, as a decimal string (e.g. `\"1.5\"`). `null` if there's no charge, e.g. for a logged SMS.",
             "anyOf": [
               {
                 "type": "string"
@@ -52114,7 +52956,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
-            "description": "ID of the agent that created the activity, or `null` if no agent created it.",
+            "description": "ID of the agent that created the activity, e.g. `agentconfig_abc123`, or `null` if no agent created it.",
             "anyOf": [
               {
                 "type": "string"
@@ -52144,6 +52986,7 @@
           },
           "date_scheduled": {
             "title": "Date Scheduled",
+            "description": "When the SMS is scheduled to be sent, or `null` if it wasn't scheduled.",
             "anyOf": [
               {
                 "type": "string",
@@ -52156,6 +52999,7 @@
           },
           "date_sent": {
             "title": "Date Sent",
+            "description": "When the SMS was sent. `null` until it's sent.",
             "anyOf": [
               {
                 "type": "string",
@@ -52174,10 +53018,12 @@
           },
           "direction": {
             "title": "Direction",
+            "description": "Whether the SMS was received or sent.",
             "$ref": "#/components/schemas/PhoneActivityDirection"
           },
           "error_message": {
             "title": "Error Message",
+            "description": "Why the SMS failed to send, when `status` is `error`. Null otherwise.",
             "anyOf": [
               {
                 "type": "string"
@@ -52205,7 +53051,8 @@
             ]
           },
           "local_country_iso": {
-            "title": "Local Country Iso",
+            "title": "Local Country ISO",
+            "description": "ISO 3166-1 alpha-2 code of the country of `local_phone`.",
             "anyOf": [
               {
                 "type": "string"
@@ -52217,6 +53064,7 @@
           },
           "local_phone": {
             "title": "Local Phone",
+            "description": "Your phone number that sent or received the SMS, in E.164 format. `null` for a logged SMS that doesn't say which number was used.",
             "anyOf": [
               {
                 "type": "string"
@@ -52228,6 +53076,7 @@
           },
           "local_phone_formatted": {
             "title": "Local Phone Formatted",
+            "description": "`local_phone` formatted for display.",
             "anyOf": [
               {
                 "type": "string"
@@ -52243,7 +53092,8 @@
             "type": "string"
           },
           "remote_country_iso": {
-            "title": "Remote Country Iso",
+            "title": "Remote Country ISO",
+            "description": "ISO 3166-1 alpha-2 code of the country of `remote_phone`.",
             "anyOf": [
               {
                 "type": "string"
@@ -52255,6 +53105,7 @@
           },
           "remote_phone": {
             "title": "Remote Phone",
+            "description": "Phone number of the other party, in E.164 format. `null` for a logged SMS that only names a contact.",
             "anyOf": [
               {
                 "type": "string"
@@ -52266,6 +53117,7 @@
           },
           "remote_phone_formatted": {
             "title": "Remote Phone Formatted",
+            "description": "`remote_phone` formatted for display.",
             "anyOf": [
               {
                 "type": "string"
@@ -52277,7 +53129,7 @@
           },
           "sequence_id": {
             "title": "Sequence ID",
-            "description": "ID of the Workflow that created the activity, or `null`.",
+            "description": "ID of the Workflow that created the activity, e.g. `seq_abc123`, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -52300,8 +53152,8 @@
             ]
           },
           "sequence_subscription_id": {
-            "title": "Sequence Subscription ID",
-            "description": "ID of the Workflow subscription, i.e. the Contact's enrollment in the Workflow, that created the activity, or `null`.",
+            "title": "Workflow Run ID",
+            "description": "ID of the Workflow Run, i.e. the Contact's enrollment in the Workflow, that created the activity, e.g. `sub_abc123`, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -52313,14 +53165,17 @@
           },
           "source": {
             "title": "Source",
+            "description": "Whether Close sent or received the SMS (`Close.io`), or it was logged from elsewhere (`External`).",
             "$ref": "#/components/schemas/PhoneActivitySource"
           },
           "status": {
             "title": "Status",
+            "description": "Where the SMS is in its lifecycle, e.g. `draft`, `outbox` or `sent`.",
             "$ref": "#/components/schemas/MessageStatus"
           },
           "template_id": {
             "title": "Template ID",
+            "description": "ID of the SMS template the text was rendered from, or `null` if no template was used. The template may since have been deleted.",
             "anyOf": [
               {
                 "type": "string"
@@ -52332,6 +53187,7 @@
           },
           "text": {
             "title": "Text",
+            "description": "Text of the SMS.",
             "anyOf": [
               {
                 "type": "string"
@@ -52946,10 +53802,12 @@
         "properties": {
           "date": {
             "title": "Date",
+            "description": "When Close tried to send the email, in UTC, formatted like `2024-01-31 14:05:09.123000`.",
             "type": "string"
           },
           "error_class": {
             "title": "Error Class",
+            "description": "Kind of error that made the attempt fail.",
             "anyOf": [
               {
                 "type": "string"
@@ -52961,6 +53819,7 @@
           },
           "error_message": {
             "title": "Error Message",
+            "description": "Human-readable summary of why the attempt failed.",
             "type": "string"
           }
         },
@@ -55204,20 +56063,13 @@
             "format": "uri"
           },
           "status": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "enum": [
-              "created",
-              "in-progress",
-              "completed",
-              "cancel",
-              "no-answer",
-              "busy",
-              "failed",
-              "timeout",
-              null
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              {
+                "type": "null"
+              }
             ]
           },
           "user_id": {
@@ -55391,11 +56243,7 @@
             ]
           },
           "status": {
-            "type": "string",
-            "enum": [
-              "draft",
-              "published"
-            ]
+            "$ref": "#/components/schemas/CustomActivityStatus"
           }
         },
         "patternProperties": {
@@ -55408,6 +56256,7 @@
         "type": "object",
         "properties": {
           "activity_at": {
+            "description": "When the email happened. Defaults to `date_created`, and is set to the send time when Close sends the email.",
             "type": [
               "null",
               "string"
@@ -55415,6 +56264,7 @@
             "format": "date-time"
           },
           "attachments": {
+            "description": "Files to attach. Upload each file with the Files API first, then pass its `download.url` as `url`.",
             "type": [
               "array",
               "null"
@@ -55424,27 +56274,33 @@
               "type": "object",
               "properties": {
                 "content_id": {
+                  "description": "MIME Content-ID of the file, for an image that the HTML body references with a `cid:` link.",
                   "type": [
                     "null",
                     "string"
                   ]
                 },
                 "content_type": {
+                  "description": "MIME type of the file, e.g. `application/pdf`.",
                   "type": [
                     "null",
                     "string"
                   ]
                 },
                 "filename": {
+                  "description": "Name of the file, e.g. `contract.pdf`.",
                   "type": "string"
                 },
                 "inline_only": {
+                  "description": "Whether the file is only shown inside the HTML body (e.g. a signature logo) instead of as a standalone attachment.",
                   "type": "boolean"
                 },
                 "size": {
+                  "description": "Size of the file in bytes.",
                   "type": "integer"
                 },
                 "url": {
+                  "description": "URL of the uploaded file, from the `download.url` field of the Files API response. Must start with `https://app.close.com/go/file/`.",
                   "type": "string",
                   "format": "uri"
                 }
@@ -55457,6 +56313,7 @@
             }
           },
           "bcc": {
+            "description": "Email addresses of the `Bcc` recipients.",
             "type": [
               "array",
               "null"
@@ -55468,6 +56325,7 @@
             }
           },
           "body_html": {
+            "description": "HTML body. If you send only one of `body_text` and `body_html`, Close generates the other.",
             "type": [
               "null",
               "string"
@@ -55475,6 +56333,7 @@
             "maxLength": 1048576
           },
           "body_text": {
+            "description": "Plain-text body. If you send only one of `body_text` and `body_html`, Close generates the other.",
             "type": [
               "null",
               "string"
@@ -55482,6 +56341,7 @@
             "maxLength": 1048576
           },
           "cc": {
+            "description": "Email addresses of the `Cc` recipients.",
             "type": [
               "array",
               "null"
@@ -55493,6 +56353,7 @@
             }
           },
           "contact_id": {
+            "description": "ID of the lead's contact the email is with.",
             "type": [
               "null",
               "string"
@@ -55504,12 +56365,14 @@
             "format": "date-time"
           },
           "email_account_id": {
+            "description": "ID of the connected email account to send the email from, prefixed with `emailacct_`. If you leave it out for a draft or an email you send, Close picks the user's account that matches `sender`.",
             "type": [
               "null",
               "string"
             ]
           },
           "followup_date": {
+            "description": "Date to create a follow-up task on if the lead doesn't reply. Only used when `status` is `scheduled`, `outbox` or `sent`, and can't be before the email is sent.",
             "type": [
               "null",
               "string"
@@ -55517,12 +56380,14 @@
             "format": "date-time"
           },
           "followup_sequence_add_cc_bcc": {
+            "description": "Whether to also add the `cc` and `bcc` recipients to the `followup_sequence_id` workflow. Requires `followup_sequence_id`.",
             "type": [
               "boolean",
               "null"
             ]
           },
           "followup_sequence_delay": {
+            "description": "Seconds to wait after the email is sent before the first step of the `followup_sequence_id` workflow. At least 86,400 (one day). Required with `followup_sequence_id`.",
             "type": [
               "integer",
               "null"
@@ -55530,18 +56395,21 @@
             "minimum": 86400
           },
           "followup_sequence_id": {
+            "description": "ID of a workflow to subscribe the recipients to after the email is sent, prefixed with `seq_`. Required with `followup_sequence_delay`.",
             "type": [
               "null",
               "string"
             ]
           },
           "in_reply_to_id": {
+            "description": "ID of the email activity this email replies to. Close sets the `In-Reply-To` and `References` headers from it.",
             "type": [
               "null",
               "string"
             ]
           },
           "opens": {
+            "description": "Opens to record. Only allowed when `status` is `sent`.",
             "type": [
               "array",
               "null"
@@ -55550,6 +56418,7 @@
               "type": "object",
               "properties": {
                 "opened_at": {
+                  "description": "When the email was opened.",
                   "type": "string",
                   "format": "date-time"
                 }
@@ -55566,24 +56435,18 @@
             "maximum": 60
           },
           "sender": {
+            "description": "Sender of the email, either a plain address like `john@example.com` or a name and address like `\"John Smith\" <john@example.com>`. Required unless `status` is `draft` or `sent`. For `sent`, it defaults to the address of the email's user.",
             "type": [
               "null",
               "string"
-            ],
-            "format": "email"
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "inbox",
-              "draft",
-              "scheduled",
-              "outbox",
-              "sent",
-              "error"
             ]
           },
+          "status": {
+            "description": "Status of the email. Set `outbox` to send it now, `scheduled` to send it at `date_scheduled`, `draft` to save a draft, or `inbox`, `sent` or `error` to log an email sent or received elsewhere. Only `draft`, `scheduled`, `outbox` and `error` emails can change status, and only to `draft`, `scheduled` or `outbox`.",
+            "$ref": "#/components/schemas/MessageStatus"
+          },
           "subject": {
+            "description": "Subject of the email.",
             "type": [
               "null",
               "string"
@@ -55591,12 +56454,14 @@
             "maxLength": 1000
           },
           "template_id": {
+            "description": "ID of the email template to use, prefixed with `tmpl_`. On create, if you leave out `body_text` and `body_html`, Close renders the template for `contact_id`, which is then required, and fills in `subject`, `cc`, `bcc` and `attachments` you leave empty.",
             "type": [
               "null",
               "string"
             ]
           },
           "to": {
+            "description": "Email addresses of the `To` recipients. At least one valid address is required to send the email.",
             "type": [
               "array",
               "null"
@@ -55608,6 +56473,7 @@
             }
           },
           "user_id": {
+            "description": "ID of the user the email belongs to. Defaults to you. Setting another user requires the Manage Organization permission and is otherwise ignored. Can only be changed while the email is a draft.",
             "type": [
               "null",
               "string"
@@ -56450,6 +57316,7 @@
         "type": "object",
         "properties": {
           "activity_at": {
+            "description": "When the SMS happened. Defaults to `date_created`, and is set to the time the SMS is sent.",
             "type": [
               "null",
               "string"
@@ -56457,6 +57324,7 @@
             "format": "date-time"
           },
           "attachments": {
+            "description": "Files to send with the SMS as an MMS, at most 10. Can only be changed while the SMS is a draft.",
             "type": [
               "array",
               "null"
@@ -56466,6 +57334,7 @@
               "type": "object",
               "properties": {
                 "content_type": {
+                  "description": "MIME type of the file, e.g. `image/jpeg`.",
                   "type": "string",
                   "enum": [
                     "application/pdf",
@@ -56511,9 +57380,11 @@
                   ]
                 },
                 "filename": {
+                  "description": "Name of the file, e.g. `photo.jpg`.",
                   "type": "string"
                 },
                 "url": {
+                  "description": "URL of a file uploaded with the Files API. Use the `download.url` from the upload response, which begins with `https://app.close.com/go/file/`.",
                   "type": "string"
                 }
               },
@@ -56525,17 +57396,18 @@
             }
           },
           "caller_id_mode": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "enum": [
-              "fixed",
-              "auto",
-              null
+            "description": "How to choose `local_phone` when sending. `auto` lets Close pick the number. A logged SMS can't have a caller ID mode. Can only be changed while the SMS is a draft.",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CallerIdMode"
+              },
+              {
+                "type": "null"
+              }
             ]
           },
           "contact_id": {
+            "description": "ID of the contact the SMS is with. Can only be changed while the SMS is a draft.",
             "type": [
               "null",
               "string"
@@ -56547,20 +57419,21 @@
             "format": "date-time"
           },
           "lead_id": {
+            "description": "ID of the lead the SMS belongs to. For a logged SMS (`source` is `External`), it defaults to the lead of `contact_id`, or of the oldest contact with `remote_phone`. Once set, it can't be removed.",
             "type": [
               "null",
               "string"
             ]
           },
           "local_phone": {
-            "description": "Phone number in E.164 format",
+            "description": "Your Close phone number to send the SMS from, or that received it, in E.164 format. Required to send (`outbox` or `scheduled`) unless `caller_id_mode` is `auto`. Can only be changed while the SMS is a draft.",
             "type": [
               "null",
               "string"
             ]
           },
           "remote_phone": {
-            "description": "Phone number in E.164 format",
+            "description": "Phone number of the other party, in E.164 format. Required to send. A logged SMS needs `remote_phone` or `contact_id`. Can only be changed while the SMS is a draft.",
             "type": [
               "null",
               "string"
@@ -56573,29 +57446,25 @@
             "maximum": 60
           },
           "status": {
-            "type": "string",
-            "enum": [
-              "inbox",
-              "draft",
-              "scheduled",
-              "outbox",
-              "sent",
-              "error"
-            ]
+            "description": "Status of the SMS. Use `inbox` or `sent` to log an SMS, `draft` to save a draft, `outbox` to send it now or `scheduled` to send it at `date_scheduled`. Close sets `error` when sending fails.",
+            "$ref": "#/components/schemas/MessageStatus"
           },
           "template_id": {
+            "description": "ID of an SMS template. When you create an SMS with a `template_id` and no `text`, Close renders the template into `text`, which requires `lead_id`. Can only be changed while the SMS is a draft.",
             "type": [
               "null",
               "string"
             ]
           },
           "text": {
+            "description": "Text of the SMS. Required unless `status` is `draft`, or you send `attachments` or a `template_id`. An SMS to send can be at most 1,000 bytes of UTF-8 text. Can only be changed while the SMS is a draft.",
             "type": [
               "null",
               "string"
             ]
           },
           "user_id": {
+            "description": "ID of the user who sent or received the SMS. Defaults to you. Setting another user requires the `manage_organization` permission, otherwise you are used instead.",
             "type": [
               "null",
               "string"
@@ -57179,7 +58048,7 @@
           },
           "sequence_id": {
             "title": "Sequence ID",
-            "description": "ID of the Workflow that created the activity, or `null`.",
+            "description": "ID of the Workflow that created the activity, e.g. `seq_abc123`, or `null`.",
             "default": null,
             "anyOf": [
               {
@@ -57204,8 +58073,8 @@
             ]
           },
           "sequence_subscription_id": {
-            "title": "Sequence Subscription ID",
-            "description": "ID of the Workflow subscription, i.e. the Contact's enrollment in the Workflow, that created the activity, or `null`.",
+            "title": "Workflow Run ID",
+            "description": "ID of the Workflow Run, i.e. the Contact's enrollment in the Workflow, that created the activity, e.g. `sub_abc123`, or `null`.",
             "default": null,
             "anyOf": [
               {

@@ -21,7 +21,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
             get => new global::Soenneker.Close.OpenApiClient.Activity.Email.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Close.OpenApiClient.activity.email.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">ID of the email activity, prefixed with `acti_`.</param>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Activity.Email.Item.EmailItemRequestBuilder"/></returns>
         public global::Soenneker.Close.OpenApiClient.Activity.Email.Item.EmailItemRequestBuilder this[string position]
         {

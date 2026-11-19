@@ -27,7 +27,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The date property</summary>
+        /// <summary>When Close tried to send the email, in UTC, formatted like `2024-01-31 14:05:09.123000`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Date { get => _explicitNullValueDate; set { _explicitNullValueDate = value; AdditionalData?.Remove("date"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date"); else _explicitNullProperties?.Remove("date"); } }
@@ -37,7 +37,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Date { get => _explicitNullValueDate; set { _explicitNullValueDate = value; AdditionalData?.Remove("date"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date"); else _explicitNullProperties?.Remove("date"); } }
         private string _explicitNullValueDate = default!;
 #endif
-        /// <summary>The error_class property</summary>
+        /// <summary>Kind of error that made the attempt fail.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ErrorClass { get => _explicitNullValueErrorClass; set { _explicitNullValueErrorClass = value; AdditionalData?.Remove("error_class"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_class"); else _explicitNullProperties?.Remove("error_class"); } }
@@ -47,7 +47,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ErrorClass { get => _explicitNullValueErrorClass; set { _explicitNullValueErrorClass = value; AdditionalData?.Remove("error_class"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_class"); else _explicitNullProperties?.Remove("error_class"); } }
         private string _explicitNullValueErrorClass = default!;
 #endif
-        /// <summary>The error_message property</summary>
+        /// <summary>Human-readable summary of why the attempt failed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ErrorMessage { get => _explicitNullValueErrorMessage; set { _explicitNullValueErrorMessage = value; AdditionalData?.Remove("error_message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_message"); else _explicitNullProperties?.Remove("error_message"); } }

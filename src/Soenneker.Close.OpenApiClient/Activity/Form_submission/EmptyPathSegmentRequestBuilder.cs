@@ -98,59 +98,47 @@ namespace Soenneker.Close.OpenApiClient.Activity.Form_submission
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         {
+            /// <summary>Only include activities that happened after this date or date and time. Requires `_order_by=-activity_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("activity_at__gt")]
             public string? ActivityAtGt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("activity_at__gt")]
             public string ActivityAtGt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only include activities that happened at or after this date or date and time. Requires `_order_by=-activity_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("activity_at__gte")]
             public string? ActivityAtGte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("activity_at__gte")]
             public string ActivityAtGte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only include activities that happened before this date or date and time. Requires `_order_by=-activity_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("activity_at__lt")]
             public string? ActivityAtLt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("activity_at__lt")]
             public string ActivityAtLt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only include activities that happened at or before this date or date and time. Requires `_order_by=-activity_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("activity_at__lte")]
             public string? ActivityAtLte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("activity_at__lte")]
             public string ActivityAtLte { get; set; }
-            #pragma warning restore CS1591
 #endif
-            /// <summary>Filter by contact IDs (comma-separated)</summary>
+            /// <summary>Filter by a comma-separated list of Contact IDs. Requires a single `lead_id`, or a `user_id` on endpoints for one activity type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("contact_id")]
@@ -160,70 +148,55 @@ namespace Soenneker.Close.OpenApiClient.Activity.Form_submission
             [QueryParameter("contact_id")]
             public string ContactId { get; set; }
 #endif
+            /// <summary>Filter by a comma-separated list of multiple Contact IDs. Requires a single `lead_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("contact_id__in")]
             public string? ContactIdIn { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("contact_id__in")]
             public string ContactIdIn { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only include activities created in Close after this date or date and time. Can&apos;t be combined with `_order_by=-activity_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_created__gt")]
             public string? DateCreatedGt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_created__gt")]
             public string DateCreatedGt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only include activities created in Close at or after this date or date and time. Can&apos;t be combined with `_order_by=-activity_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_created__gte")]
             public string? DateCreatedGte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_created__gte")]
             public string DateCreatedGte { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only include activities created in Close before this date or date and time. Can&apos;t be combined with `_order_by=-activity_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_created__lt")]
             public string? DateCreatedLt { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_created__lt")]
             public string DateCreatedLt { get; set; }
-            #pragma warning restore CS1591
 #endif
+            /// <summary>Only include activities created in Close at or before this date or date and time. Can&apos;t be combined with `_order_by=-activity_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("date_created__lte")]
             public string? DateCreatedLte { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("date_created__lte")]
             public string DateCreatedLte { get; set; }
-            #pragma warning restore CS1591
 #endif
             /// <summary>Comma-separated list of fields to include in the response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -265,7 +238,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Form_submission
             [QueryParameter("id__in")]
             public string IdIn { get; set; }
 #endif
-            /// <summary>Filter by lead IDs (comma-separated)</summary>
+            /// <summary>Filter by a comma-separated list of Lead IDs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("lead_id")]
@@ -275,39 +248,33 @@ namespace Soenneker.Close.OpenApiClient.Activity.Form_submission
             [QueryParameter("lead_id")]
             public string LeadId { get; set; }
 #endif
+            /// <summary>Filter by a comma-separated list of multiple Lead IDs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("lead_id__in")]
             public string? LeadIdIn { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("lead_id__in")]
             public string LeadIdIn { get; set; }
-            #pragma warning restore CS1591
 #endif
             /// <summary>Number of results to return.</summary>
             [QueryParameter("_limit")]
             public int? Limit { get; set; }
+            /// <summary>ID of your organization. Defaults to the organization of your API key or OAuth token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("organization_id")]
             public string? OrganizationId { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("organization_id")]
             public string OrganizationId { get; set; }
-            #pragma warning restore CS1591
 #endif
             /// <summary>Number of results to skip before returning, for pagination. The maximum is 35,000 for some organizations.</summary>
             [QueryParameter("_skip")]
             public int? Skip { get; set; }
-            /// <summary>Filter by activity type, e.g. Call (comma-separated)</summary>
+            /// <summary>Filter by a comma-separated list of activity types, e.g. `Call`. Requires a single `lead_id`, or a `user_id` on endpoints for one activity type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("_type")]
@@ -317,20 +284,17 @@ namespace Soenneker.Close.OpenApiClient.Activity.Form_submission
             [QueryParameter("_type")]
             public string Type { get; set; }
 #endif
+            /// <summary>Filter by a comma-separated list of multiple activity types. Requires a single `lead_id`, and can&apos;t be combined with `_type`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("_type__in")]
             public string? TypeIn { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("_type__in")]
             public string TypeIn { get; set; }
-            #pragma warning restore CS1591
 #endif
-            /// <summary>Filter by user IDs (comma-separated)</summary>
+            /// <summary>Filter by a comma-separated list of User IDs. Requires a single `lead_id`, unless the endpoint is for one activity type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("user_id")]
@@ -340,18 +304,15 @@ namespace Soenneker.Close.OpenApiClient.Activity.Form_submission
             [QueryParameter("user_id")]
             public string UserId { get; set; }
 #endif
+            /// <summary>Filter by a comma-separated list of multiple User IDs. Requires a single `lead_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            #pragma warning disable CS1591
             [QueryParameter("user_id__in")]
             public string? UserIdIn { get; set; }
-            #pragma warning restore CS1591
 #nullable restore
 #else
-            #pragma warning disable CS1591
             [QueryParameter("user_id__in")]
             public string UserIdIn { get; set; }
-            #pragma warning restore CS1591
 #endif
         }
     }

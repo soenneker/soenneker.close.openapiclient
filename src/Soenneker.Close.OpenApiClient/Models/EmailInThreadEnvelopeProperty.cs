@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>
+    /// Headers of the email: the original ones for synced emails, or ones Close generates for emails created in Close. Has `date`, `subject`, `in_reply_to`, `message_id`, `is_autoreply`, and `from`, `sender`, `reply_to`, `to`, `cc` and `bcc` as lists of `{email, name}` objects. `null` if the email has none.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class EmailInThreadEnvelopeProperty : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;

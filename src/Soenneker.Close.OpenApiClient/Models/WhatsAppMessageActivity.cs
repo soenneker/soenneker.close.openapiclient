@@ -267,7 +267,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ResponseToId { get => _explicitNullValueResponseToId; set { _explicitNullValueResponseToId = value; AdditionalData?.Remove("response_to_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_to_id"); else _explicitNullProperties?.Remove("response_to_id"); } }
         private string _explicitNullValueResponseToId = default!;
 #endif
-        /// <summary>ID of the Workflow that created the activity, or `null`.</summary>
+        /// <summary>ID of the Workflow that created the activity, e.g. `seq_abc123`, or `null`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SequenceId { get => _explicitNullValueSequenceId; set { _explicitNullValueSequenceId = value; AdditionalData?.Remove("sequence_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sequence_id"); else _explicitNullProperties?.Remove("sequence_id"); } }
@@ -287,7 +287,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string SequenceName { get => _explicitNullValueSequenceName; set { _explicitNullValueSequenceName = value; AdditionalData?.Remove("sequence_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sequence_name"); else _explicitNullProperties?.Remove("sequence_name"); } }
         private string _explicitNullValueSequenceName = default!;
 #endif
-        /// <summary>ID of the Workflow subscription, i.e. the Contact&apos;s enrollment in the Workflow, that created the activity, or `null`.</summary>
+        /// <summary>ID of the Workflow Run, i.e. the Contact&apos;s enrollment in the Workflow, that created the activity, e.g. `sub_abc123`, or `null`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SequenceSubscriptionId { get => _explicitNullValueSequenceSubscriptionId; set { _explicitNullValueSequenceSubscriptionId = value; AdditionalData?.Remove("sequence_subscription_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sequence_subscription_id"); else _explicitNullProperties?.Remove("sequence_subscription_id"); } }

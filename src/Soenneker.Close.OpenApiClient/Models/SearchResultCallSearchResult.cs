@@ -156,7 +156,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string RecordingUrl { get => _explicitNullValueRecordingUrl; set { _explicitNullValueRecordingUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recording_url"); else _explicitNullProperties?.Remove("recording_url"); } }
         private string _explicitNullValueRecordingUrl = default!;
 #endif
-        /// <summary>ID of the Workflow that created the activity, or `null`.</summary>
+        /// <summary>ID of the Workflow that created the activity, e.g. `seq_abc123`, or `null`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SequenceId { get => _explicitNullValueSequenceId; set { _explicitNullValueSequenceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sequence_id"); else _explicitNullProperties?.Remove("sequence_id"); } }
@@ -176,7 +176,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string SequenceName { get => _explicitNullValueSequenceName; set { _explicitNullValueSequenceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sequence_name"); else _explicitNullProperties?.Remove("sequence_name"); } }
         private string _explicitNullValueSequenceName = default!;
 #endif
-        /// <summary>ID of the Workflow subscription, i.e. the Contact&apos;s enrollment in the Workflow, that created the activity, or `null`.</summary>
+        /// <summary>ID of the Workflow Run, i.e. the Contact&apos;s enrollment in the Workflow, that created the activity, e.g. `sub_abc123`, or `null`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SequenceSubscriptionId { get => _explicitNullValueSequenceSubscriptionId; set { _explicitNullValueSequenceSubscriptionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sequence_subscription_id"); else _explicitNullProperties?.Remove("sequence_subscription_id"); } }

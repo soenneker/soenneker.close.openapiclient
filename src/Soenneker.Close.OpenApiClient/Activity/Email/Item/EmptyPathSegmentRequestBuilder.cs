@@ -34,7 +34,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email.Item
         {
         }
         /// <summary>
-        /// Delete an Email activity
+        /// Delete an email activity. Returns an empty object on success. This only removes the email from Close: it doesn&apos;t recall an email that was already sent. If the email is still in `outbox` or `scheduled`, it won&apos;t be sent.You can always delete your own drafts. Deleting your own other emails requires the `delete_own_activities` permission, and deleting other users&apos; emails requires `manage_others_activities`. Without it, the request returns 400. It also returns 400 if the email is being sent at that moment, so retry it later.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.EmptyResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -67,7 +67,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.EmptyResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.EmptyResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get a single Email activity
+        /// Fetch a single email activity by its ID. Returns 404 if no email in your organization has that ID, and 403 if you can&apos;t see the email&apos;s lead.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.EmailActivity"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -100,7 +100,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.EmailActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.EmailActivity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// This can be used to modify a draft or send it once the draft is complete.When changing a draft&apos;s status to `scheduled` or `outbox`, the `sender` field is required if not already set on the email.
+        /// Update an email activity. Use it to edit a draft, then send it by changing its `status` to `outbox`, or schedule it with `scheduled` and `date_scheduled`. When you send or schedule a draft, `sender` is required if the email doesn&apos;t have one yet.Fields such as `subject`, the body, the recipients, `sender` and `attachments` can only be changed while the email is a draft, or in the same request that sends it, moves it back to `draft` or resends a failed email. To cancel a scheduled email, or an `outbox` email that hasn&apos;t been sent yet, set its `status` back to `draft`. The status of `inbox` and `sent` emails can&apos;t be changed.Updating an email that belongs to another user requires the `manage_others_activities` permission.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.EmailActivity"/></returns>
         /// <param name="body">The request body</param>
@@ -113,11 +113,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email.Item
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.EmailActivity?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateEmailActivity body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.EmailActivity?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateEmailActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Email.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.EmailActivity> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateEmailActivity body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.EmailActivity> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateEmailActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Email.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -135,7 +135,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.EmailActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.EmailActivity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete an Email activity
+        /// Delete an email activity. Returns an empty object on success. This only removes the email from Close: it doesn&apos;t recall an email that was already sent. If the email is still in `outbox` or `scheduled`, it won&apos;t be sent.You can always delete your own drafts. Deleting your own other emails requires the `delete_own_activities` permission, and deleting other users&apos; emails requires `manage_others_activities`. Without it, the request returns 400. It also returns 400 if the email is being sent at that moment, so retry it later.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -154,7 +154,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email.Item
             return requestInfo;
         }
         /// <summary>
-        /// Get a single Email activity
+        /// Fetch a single email activity by its ID. Returns 404 if no email in your organization has that ID, and 403 if you can&apos;t see the email&apos;s lead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -173,18 +173,18 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email.Item
             return requestInfo;
         }
         /// <summary>
-        /// This can be used to modify a draft or send it once the draft is complete.When changing a draft&apos;s status to `scheduled` or `outbox`, the `sender` field is required if not already set on the email.
+        /// Update an email activity. Use it to edit a draft, then send it by changing its `status` to `outbox`, or schedule it with `scheduled` and `date_scheduled`. When you send or schedule a draft, `sender` is required if the email doesn&apos;t have one yet.Fields such as `subject`, the body, the recipients, `sender` and `attachments` can only be changed while the email is a draft, or in the same request that sends it, moves it back to `draft` or resends a failed email. To cancel a scheduled email, or an `outbox` email that hasn&apos;t been sent yet, set its `status` back to `draft`. The status of `inbox` and `sent` emails can&apos;t be changed.Updating an email that belongs to another user requires the `manage_others_activities` permission.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.UpdateEmailActivity body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.UpdateEmailActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Email.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.UpdateEmailActivity body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.UpdateEmailActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Email.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -204,10 +204,27 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email.Item
             return new global::Soenneker.Close.OpenApiClient.Activity.Email.Item.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get a single Email activity
+        /// Fetch a single email activity by its ID. Returns 404 if no email in your organization has that ID, and 403 if you can&apos;t see the email&apos;s lead.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
+        {
+            /// <summary>Comma-separated list of fields to include in the response.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("_fields")]
+            public string? Fields { get; set; }
+#nullable restore
+#else
+            [QueryParameter("_fields")]
+            public string Fields { get; set; }
+#endif
+        }
+        /// <summary>
+        /// Update an email activity. Use it to edit a draft, then send it by changing its `status` to `outbox`, or schedule it with `scheduled` and `date_scheduled`. When you send or schedule a draft, `sender` is required if the email doesn&apos;t have one yet.Fields such as `subject`, the body, the recipients, `sender` and `attachments` can only be changed while the email is a draft, or in the same request that sends it, moves it back to `draft` or resends a failed email. To cancel a scheduled email, or an `outbox` email that hasn&apos;t been sent yet, set its `status` back to `draft`. The status of `inbox` and `sent` emails can&apos;t be changed.Updating an email that belongs to another user requires the `manage_others_activities` permission.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class EmptyPathSegmentRequestBuilderPutQueryParameters 
         {
             /// <summary>Comma-separated list of fields to include in the response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
