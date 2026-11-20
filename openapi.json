@@ -5641,7 +5641,7 @@
           "activities.sms"
         ],
         "summary": "List or filter all SMS activities",
-        "description": "Get a list of matching SMS activities.\n\nMMS messages are considered SMS messages with attachments. Attachments have identical fields to email attachments (`url`, `filename`, `size` and `content_type`), a `media_id` uniquely identifying an attachment, and if Close was able to generate a thumbnail, a `thumbnail_url` too.\n\nAccessing `url` or `thumbnail_url` requires an authenticated session and leads to a temporarily signed S3 URL.",
+        "description": "List the SMS activities in your organization, newest first. Filter by lead, contact, user or date. To sort by `activity_at` instead of `date_created`, pass `_order_by=-activity_at` together with a `lead_id` filter.\n\nIf you can only see some leads, you must filter by `lead_id`, otherwise the request returns 403.\n\nMMS messages are SMS messages with attachments. Each attachment has a `url`, `filename`, `size` and `content_type`, a `media_id` that identifies it within the SMS and, if Close was able to generate a thumbnail, a `thumbnail_url`. Accessing `url` or `thumbnail_url` requires an authenticated session and redirects to a temporary signed URL.",
         "parameters": [
           {
             "in": "query",
@@ -5844,29 +5844,69 @@
           "activities.sms"
         ],
         "summary": "Create an SMS activity",
-        "description": "*status* must be one of the following:\n\n - `inbox` to log an already received SMS.\n - `draft` to create a draft SMS.\n - `scheduled` to send an SMS at a scheduled date and time, which must be specified in the `date_scheduled` field.\n - `outbox` to actually **send** an SMS. To delay SMS sending by a few seconds (to allow undo), specify `send_in` in seconds (must be less than 60).\n - `sent` to log an already sent SMS.\n\nOnly drafts can be modified, and their status can be changed to `scheduled` (to send later) or `outbox` (to send immediately). Scheduled SMS, or SMS in outbox that weren't sent yet can be canceled by setting the status back to `draft`.\n\nYou have to provide a `local_phone` that will be used to send the SMS. The number you choose has to be associated with a Phone Number of type `internal`. See the [Phone Numbers](https://developer.close.com/api/resources/phone-numbers) paragraph for more details.\n\nSet `caller_id_mode` to `auto` to let Close pick `local_phone` for the SMS. `auto` requires a plan that includes Local Presence. On a plan without it, Close accepts `auto` only if the sender's [Membership](https://developer.close.com/api/resources/memberships) has `default_caller_id_mode` set to `auto`. The sender is the user in `user_id`, or the authenticated user if `user_id` is absent. Close then sends the SMS from the `default_caller_id` of that Membership. If `default_caller_id` is unset or cannot send the SMS, Close uses the oldest number that the sender can send from.\n\nA `template_id` referencing an SMS Template may be provided instead of `text` to automatically render that template and use the content as `text`.\n\nWhen `direction` is not provided, but `status=\"inbox\"`, `direction` will default to \"inbound\". Otherwise, `direction` defaults to \"outbound\".\n\nWhen creating a new SMS with the status set to `inbox`, you can pass the query parameter `send_to_inbox` with the value of `true`  to create a corresponding Inbox Notification for the SMS.",
+        "description": "Create an SMS activity, either to log an SMS that was sent or received outside Close, or to have Close send it.\n\n`status` must be one of the following:\n\n - `inbox` to log an already received SMS.\n - `sent` to log an already sent SMS.\n - `draft` to create a draft SMS.\n - `scheduled` to send an SMS at the date and time in `date_scheduled`. This requires a plan that includes scheduled SMS.\n - `outbox` to **send** an SMS now. To delay sending by a few seconds (to allow undo), set `send_in` to a number of seconds, up to 60.\n\nOnly drafts can be modified, and their status can be changed to `scheduled` (to send later) or `outbox` (to send immediately). A scheduled SMS, or an SMS in the outbox that wasn't sent yet, can be canceled by setting its status back to `draft`.\n\nTo send an SMS, provide `remote_phone` and the `local_phone` to send from. The number you choose has to be associated with a Phone Number of type `internal`. See the [Phone Numbers](https://developer.close.com/api/resources/phone-numbers) paragraph for more details.\n\nInstead of `local_phone`, you can set `caller_id_mode` to `auto` to let Close pick the number. `auto` requires a plan that includes Local Presence. On a plan without it, Close accepts `auto` only if the sender's [Membership](https://developer.close.com/api/resources/memberships) has `default_caller_id_mode` set to `auto`. The sender is the user in `user_id`, or the authenticated user if `user_id` is absent. Close then sends the SMS from the `default_caller_id` of that Membership. If `default_caller_id` is unset or cannot send the SMS, Close uses the oldest number that the sender can send from.\n\nA `template_id` referencing an SMS Template may be provided instead of `text` to automatically render that template and use the content as `text`.\n\nWhen `direction` is not provided, it defaults to `inbound` if `status` is `inbox`, and to `outbound` otherwise. When `source` is not provided, it defaults to `External` if `status` is `inbox` or `sent`, and to `Close.io` otherwise.\n\nWhen creating a new SMS with the status set to `inbox`, you can pass the query parameter `send_to_inbox` with the value of `true` to create a corresponding Inbox Notification for the SMS.\n\nReturns 400 if the SMS is invalid, for example if `text` is empty for an SMS that isn't a draft, if Close can't send an SMS to `remote_phone`, or if your organization can't pay for the SMS.",
         "parameters": [
           {
             "in": "query",
             "name": "send_to_inbox",
             "required": false,
+            "description": "Set to `true` to also create an Inbox notification for the SMS. Only allowed when creating an SMS with `status` set to `inbox`. Defaults to `false`.",
             "schema": {
               "type": "boolean"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "requestBody": {
           "content": {
             "application/json": {
-              "example": {
-                "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
-                "direction": "inbound",
-                "lead_id": "lead_iuSXNk1x3446ggPVwQS7ynmp8pGRIDieRYiCnuo4yFb",
-                "local_phone": "+14154445555",
-                "remote_phone": "+18183334444",
-                "source": "External",
-                "status": "inbox",
-                "text": "Hi! This is a reminder that we have a call scheduled for 12pm PT today."
+              "examples": {
+                "default": {
+                  "summary": "Log an SMS received outside Close",
+                  "value": {
+                    "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
+                    "direction": "inbound",
+                    "lead_id": "lead_iuSXNk1x3446ggPVwQS7ynmp8pGRIDieRYiCnuo4yFb",
+                    "local_phone": "+14154445555",
+                    "remote_phone": "+18183334444",
+                    "source": "External",
+                    "status": "inbox",
+                    "text": "Hi! This is a reminder that we have a call scheduled for 12pm PT today."
+                  }
+                },
+                "send": {
+                  "summary": "Send an SMS from a number that Close picks",
+                  "value": {
+                    "caller_id_mode": "auto",
+                    "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
+                    "lead_id": "lead_iuSXNk1x3446ggPVwQS7ynmp8pGRIDieRYiCnuo4yFb",
+                    "remote_phone": "+18183334444",
+                    "send_in": 10,
+                    "status": "outbox",
+                    "text": "Hi Lindsay, are you free for a quick call tomorrow at 10am?"
+                  }
+                },
+                "schedule_mms": {
+                  "summary": "Schedule an MMS with an image",
+                  "value": {
+                    "attachments": [
+                      {
+                        "content_type": "image/png",
+                        "filename": "floor-plan.png",
+                        "url": "https://app.close.com/go/file/temporary/user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA/2Fk7eLtqZb0yVnRhXa3c1D/floor-plan.png/"
+                      }
+                    ],
+                    "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
+                    "date_scheduled": "2026-03-03T16:00:00+00:00",
+                    "lead_id": "lead_iuSXNk1x3446ggPVwQS7ynmp8pGRIDieRYiCnuo4yFb",
+                    "local_phone": "+14154445555",
+                    "remote_phone": "+18183334444",
+                    "status": "scheduled",
+                    "text": "Here's the floor plan we talked about."
+                  }
+                }
               },
               "schema": {
                 "$ref": "#/components/schemas/CreateSMSActivity"
@@ -5879,40 +5919,130 @@
           "200": {
             "content": {
               "application/json": {
-                "example": {
-                  "_type": "SMS",
-                  "activity_at": "2016-10-03T16:06:11.167000+00:00",
-                  "attachments": [],
-                  "caller_id_mode": null,
-                  "caller_id_reason": null,
-                  "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
-                  "cost": "1",
-                  "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "created_by_name": "Tobias Fuenke",
-                  "date_created": "2016-10-03T16:06:11.167000+00:00",
-                  "date_scheduled": null,
-                  "date_sent": null,
-                  "date_updated": "2016-10-03T16:06:11.167000+00:00",
-                  "direction": "outbound",
-                  "error_message": null,
-                  "id": "acti_12358hIUhaklslYoYSbtozZuUTyB2zO2nhm7iVSpZpp",
-                  "lead_id": "lead_iuSXNk1x3446ggPVwQS7ynmp8pGRIDieRYiCnuo4yFb",
-                  "local_country_iso": "US",
-                  "local_phone": "+14154445555",
-                  "local_phone_formatted": "+1 415-444-5555",
-                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                  "remote_country_iso": "US",
-                  "remote_phone": "+18183334444",
-                  "remote_phone_formatted": "+1 818-333-4444",
-                  "source": "Close.io",
-                  "status": "outbox",
-                  "template_id": null,
-                  "text": "Hi! This is a reminder that we have a call scheduled for 12pm PT today.",
-                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "updated_by_name": "Tobias Fuenke",
-                  "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "user_name": "Tobias Fuenke",
-                  "users": []
+                "examples": {
+                  "default": {
+                    "summary": "Log an SMS received outside Close",
+                    "value": {
+                      "_type": "SMS",
+                      "activity_at": "2016-10-03T16:06:11.167000+00:00",
+                      "attachments": [],
+                      "caller_id_mode": null,
+                      "caller_id_reason": null,
+                      "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
+                      "cost": null,
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_name": "Tobias Fuenke",
+                      "date_created": "2016-10-03T16:06:11.167000+00:00",
+                      "date_scheduled": null,
+                      "date_sent": null,
+                      "date_updated": "2016-10-03T16:06:11.167000+00:00",
+                      "direction": "inbound",
+                      "error_message": null,
+                      "id": "acti_12358hIUhaklslYoYSbtozZuUTyB2zO2nhm7iVSpZpp",
+                      "lead_id": "lead_iuSXNk1x3446ggPVwQS7ynmp8pGRIDieRYiCnuo4yFb",
+                      "local_country_iso": "US",
+                      "local_phone": "+14154445555",
+                      "local_phone_formatted": "+1 415-444-5555",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "remote_country_iso": "US",
+                      "remote_phone": "+18183334444",
+                      "remote_phone_formatted": "+1 818-333-4444",
+                      "source": "External",
+                      "status": "inbox",
+                      "template_id": null,
+                      "text": "Hi! This is a reminder that we have a call scheduled for 12pm PT today.",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_name": "Tobias Fuenke",
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Tobias Fuenke",
+                      "users": []
+                    }
+                  },
+                  "send": {
+                    "summary": "Send an SMS from a number that Close picks",
+                    "value": {
+                      "_type": "SMS",
+                      "activity_at": "2026-03-02T17:30:00.000000+00:00",
+                      "attachments": [],
+                      "caller_id_mode": "auto",
+                      "caller_id_reason": null,
+                      "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
+                      "cost": null,
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_name": "Tobias Fuenke",
+                      "date_created": "2026-03-02T17:30:00.000000+00:00",
+                      "date_scheduled": null,
+                      "date_sent": null,
+                      "date_updated": "2026-03-02T17:30:00.000000+00:00",
+                      "direction": "outbound",
+                      "error_message": null,
+                      "id": "acti_4bT0dYhBlQnQTSY3LjSs0dJtlCBYyOt0UBOg3VOq2Dl",
+                      "lead_id": "lead_iuSXNk1x3446ggPVwQS7ynmp8pGRIDieRYiCnuo4yFb",
+                      "local_country_iso": null,
+                      "local_phone": null,
+                      "local_phone_formatted": null,
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "remote_country_iso": "US",
+                      "remote_phone": "+18183334444",
+                      "remote_phone_formatted": "+1 818-333-4444",
+                      "source": "Close.io",
+                      "status": "outbox",
+                      "template_id": null,
+                      "text": "Hi Lindsay, are you free for a quick call tomorrow at 10am?",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_name": "Tobias Fuenke",
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Tobias Fuenke",
+                      "users": []
+                    }
+                  },
+                  "schedule_mms": {
+                    "summary": "Schedule an MMS with an image",
+                    "value": {
+                      "_type": "SMS",
+                      "activity_at": "2026-03-02T17:45:00.000000+00:00",
+                      "attachments": [
+                        {
+                          "content_type": "image/png",
+                          "filename": "floor-plan.png",
+                          "media_id": "media_5rJ8wQe1HnY2ZtVbKc3Lm9",
+                          "size": 48213,
+                          "thumbnail_url": "https://app.close.com/go/sms/acti_7Qm2fZcXy4LhTsWn8VbR1kJpDgE3uYoA6iNt0HqC5eP/media/media_5rJ8wQe1HnY2ZtVbKc3Lm9/thumbnail/",
+                          "url": "https://app.close.com/go/sms/acti_7Qm2fZcXy4LhTsWn8VbR1kJpDgE3uYoA6iNt0HqC5eP/media/media_5rJ8wQe1HnY2ZtVbKc3Lm9/"
+                        }
+                      ],
+                      "caller_id_mode": "fixed",
+                      "caller_id_reason": null,
+                      "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
+                      "cost": null,
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_name": "Tobias Fuenke",
+                      "date_created": "2026-03-02T17:45:00.000000+00:00",
+                      "date_scheduled": "2026-03-03T16:00:00+00:00",
+                      "date_sent": null,
+                      "date_updated": "2026-03-02T17:45:00.000000+00:00",
+                      "direction": "outbound",
+                      "error_message": null,
+                      "id": "acti_7Qm2fZcXy4LhTsWn8VbR1kJpDgE3uYoA6iNt0HqC5eP",
+                      "lead_id": "lead_iuSXNk1x3446ggPVwQS7ynmp8pGRIDieRYiCnuo4yFb",
+                      "local_country_iso": "US",
+                      "local_phone": "+14154445555",
+                      "local_phone_formatted": "+1 415-444-5555",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "remote_country_iso": "US",
+                      "remote_phone": "+18183334444",
+                      "remote_phone_formatted": "+1 818-333-4444",
+                      "source": "Close.io",
+                      "status": "scheduled",
+                      "template_id": null,
+                      "text": "Here's the floor plan we talked about.",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_name": "Tobias Fuenke",
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Tobias Fuenke",
+                      "users": []
+                    }
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/SMSActivity"
@@ -5943,11 +6073,13 @@
           "activities.sms"
         ],
         "summary": "Get a single SMS activity",
+        "description": "Fetch a single SMS activity by its ID. Returns 404 if no SMS in your organization has that ID, and 403 if you can't see the SMS's lead.\n\nMMS messages are SMS messages with attachments. Each attachment has a `url`, `filename`, `size` and `content_type`, a `media_id` that identifies it within the SMS and, if Close was able to generate a thumbnail, a `thumbnail_url`. Accessing `url` or `thumbnail_url` requires an authenticated session and redirects to a temporary signed URL.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the SMS activity, prefixed with `acti_`.",
             "schema": {
               "type": "string"
             }
@@ -6034,22 +6166,38 @@
           "activities.sms"
         ],
         "summary": "Update an SMS activity",
-        "description": "This can be used to modify a draft or send it once the draft is complete.\n\nTo send an SMS immediately, you can update its `status` to `outbox`. To send it at a later time, change the `status` to `scheduled` and provide the desired date & time in the `date_scheduled` field.\n\nA switch of `caller_id_mode` to `auto` requires a plan that includes Local Presence. On a plan without it, a draft can use `auto` only if the draft already uses `auto`. It can also switch to `auto` if the sender's [Membership](https://developer.close.com/api/resources/memberships) has `default_caller_id_mode` set to `auto`. The sender is the user in `user_id`. If the request has no `user_id`, the sender is the user of the draft, else the authenticated user. On a plan without Local Presence, Close sends an `auto` SMS from the `default_caller_id` of the sender's Membership. If `default_caller_id` is unset or cannot send the SMS, Close uses the oldest number that the sender can send from.",
+        "description": "This can be used to modify a draft or send it once the draft is complete.\n\nTo send an SMS immediately, you can update its `status` to `outbox`, optionally with `send_in` to delay sending by up to 60 seconds. To send it at a later time, change the `status` to `scheduled` and provide the desired date & time in the `date_scheduled` field. To cancel sending a scheduled SMS, or an SMS in the outbox that wasn't sent yet, set its `status` back to `draft`.\n\n`contact_id`, `local_phone`, `caller_id_mode`, `remote_phone`, `text`, `template_id` and `attachments` can only be changed while the SMS is a draft. The status of a received or sent SMS can't be changed.\n\nA switch of `caller_id_mode` to `auto` requires a plan that includes Local Presence. On a plan without it, a draft can use `auto` only if the draft already uses `auto`. It can also switch to `auto` if the sender's [Membership](https://developer.close.com/api/resources/memberships) has `default_caller_id_mode` set to `auto`. The sender is the user in `user_id`. If the request has no `user_id`, the sender is the user of the draft, else the authenticated user. On a plan without Local Presence, Close sends an `auto` SMS from the `default_caller_id` of the sender's Membership. If `default_caller_id` is unset or cannot send the SMS, Close uses the oldest number that the sender can send from.\n\nReturns 400 if the update is invalid, 404 if no SMS in your organization has that ID, and 403 if you can't see the SMS's lead.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the SMS activity, prefixed with `acti_`.",
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "requestBody": {
           "content": {
             "application/json": {
-              "example": {
-                "text": "Updated text message!"
+              "examples": {
+                "default": {
+                  "summary": "Edit the text of a draft",
+                  "value": {
+                    "text": "Updated text message!"
+                  }
+                },
+                "schedule": {
+                  "summary": "Schedule a draft to be sent later",
+                  "value": {
+                    "date_scheduled": "2026-03-03T16:00:00+00:00",
+                    "status": "scheduled"
+                  }
+                }
               },
               "schema": {
                 "$ref": "#/components/schemas/UpdateSMSActivity"
@@ -6062,40 +6210,83 @@
           "200": {
             "content": {
               "application/json": {
-                "example": {
-                  "_type": "SMS",
-                  "activity_at": "2016-10-03T16:06:11.167000+00:00",
-                  "attachments": [],
-                  "caller_id_mode": null,
-                  "caller_id_reason": null,
-                  "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
-                  "cost": "1",
-                  "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "created_by_name": "Tobias Fuenke",
-                  "date_created": "2016-10-03T16:06:11.167000+00:00",
-                  "date_scheduled": null,
-                  "date_sent": null,
-                  "date_updated": "2016-10-03T18:00:00.167000+00:00",
-                  "direction": "outbound",
-                  "error_message": null,
-                  "id": "acti_12358hIUhaklslYoYSbtozZuUTyB2zO2nhm7iVSpZpp",
-                  "lead_id": "lead_iuSXNk1x3446ggPVwQS7ynmp8pGRIDieRYiCnuo4yFb",
-                  "local_country_iso": "US",
-                  "local_phone": "+14154445555",
-                  "local_phone_formatted": "+1 415-444-5555",
-                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                  "remote_country_iso": "US",
-                  "remote_phone": "+18183334444",
-                  "remote_phone_formatted": "+1 818-333-4444",
-                  "source": "Close.io",
-                  "status": "draft",
-                  "template_id": null,
-                  "text": "Updated text message!",
-                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "updated_by_name": "Tobias Fuenke",
-                  "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "user_name": "Tobias Fuenke",
-                  "users": []
+                "examples": {
+                  "default": {
+                    "summary": "Edit the text of a draft",
+                    "value": {
+                      "_type": "SMS",
+                      "activity_at": "2026-03-02T16:00:00.000000+00:00",
+                      "attachments": [],
+                      "caller_id_mode": "fixed",
+                      "caller_id_reason": null,
+                      "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
+                      "cost": null,
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_name": "Tobias Fuenke",
+                      "date_created": "2026-03-02T16:00:00.000000+00:00",
+                      "date_scheduled": null,
+                      "date_sent": null,
+                      "date_updated": "2026-03-02T18:00:00.000000+00:00",
+                      "direction": "outbound",
+                      "error_message": null,
+                      "id": "acti_12358hIUhaklslYoYSbtozZuUTyB2zO2nhm7iVSpZpp",
+                      "lead_id": "lead_iuSXNk1x3446ggPVwQS7ynmp8pGRIDieRYiCnuo4yFb",
+                      "local_country_iso": "US",
+                      "local_phone": "+14154445555",
+                      "local_phone_formatted": "+1 415-444-5555",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "remote_country_iso": "US",
+                      "remote_phone": "+18183334444",
+                      "remote_phone_formatted": "+1 818-333-4444",
+                      "source": "Close.io",
+                      "status": "draft",
+                      "template_id": null,
+                      "text": "Updated text message!",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_name": "Tobias Fuenke",
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Tobias Fuenke",
+                      "users": []
+                    }
+                  },
+                  "schedule": {
+                    "summary": "Schedule a draft to be sent later",
+                    "value": {
+                      "_type": "SMS",
+                      "activity_at": "2026-03-02T16:00:00.000000+00:00",
+                      "attachments": [],
+                      "caller_id_mode": "fixed",
+                      "caller_id_reason": null,
+                      "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
+                      "cost": null,
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_name": "Tobias Fuenke",
+                      "date_created": "2026-03-02T16:00:00.000000+00:00",
+                      "date_scheduled": "2026-03-03T16:00:00+00:00",
+                      "date_sent": null,
+                      "date_updated": "2026-03-02T18:00:00.000000+00:00",
+                      "direction": "outbound",
+                      "error_message": null,
+                      "id": "acti_12358hIUhaklslYoYSbtozZuUTyB2zO2nhm7iVSpZpp",
+                      "lead_id": "lead_iuSXNk1x3446ggPVwQS7ynmp8pGRIDieRYiCnuo4yFb",
+                      "local_country_iso": "US",
+                      "local_phone": "+14154445555",
+                      "local_phone_formatted": "+1 415-444-5555",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "remote_country_iso": "US",
+                      "remote_phone": "+18183334444",
+                      "remote_phone_formatted": "+1 818-333-4444",
+                      "source": "Close.io",
+                      "status": "scheduled",
+                      "template_id": null,
+                      "text": "Updated text message!",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_name": "Tobias Fuenke",
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Tobias Fuenke",
+                      "users": []
+                    }
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/SMSActivity"
@@ -6127,11 +6318,13 @@
           "activities.sms"
         ],
         "summary": "Delete an SMS activity",
+        "description": "Delete an SMS activity and its attachments. Returns an empty object on success.\n\nDeleting your own SMS requires the `delete_own_activities` permission, and deleting another user's SMS, or one not assigned to a user, requires `manage_others_activities`. Without it, the request returns 400. You can always delete your own drafts. Returns 404 if no SMS in your organization has that ID, and 403 if you can't see the SMS's lead.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the SMS activity, prefixed with `acti_`.",
             "schema": {
               "type": "string"
             }
@@ -6141,6 +6334,7 @@
           "200": {
             "content": {
               "application/json": {
+                "example": {},
                 "schema": {
                   "$ref": "#/components/schemas/EmptyResponse"
                 }

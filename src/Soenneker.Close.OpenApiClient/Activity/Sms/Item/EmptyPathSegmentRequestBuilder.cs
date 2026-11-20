@@ -34,7 +34,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Sms.Item
         {
         }
         /// <summary>
-        /// Delete an SMS activity
+        /// Delete an SMS activity and its attachments. Returns an empty object on success.Deleting your own SMS requires the `delete_own_activities` permission, and deleting another user&apos;s SMS, or one not assigned to a user, requires `manage_others_activities`. Without it, the request returns 400. You can always delete your own drafts. Returns 404 if no SMS in your organization has that ID, and 403 if you can&apos;t see the SMS&apos;s lead.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.EmptyResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -67,7 +67,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Sms.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.EmptyResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.EmptyResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get a single SMS activity
+        /// Fetch a single SMS activity by its ID. Returns 404 if no SMS in your organization has that ID, and 403 if you can&apos;t see the SMS&apos;s lead.MMS messages are SMS messages with attachments. Each attachment has a `url`, `filename`, `size` and `content_type`, a `media_id` that identifies it within the SMS and, if Close was able to generate a thumbnail, a `thumbnail_url`. Accessing `url` or `thumbnail_url` requires an authenticated session and redirects to a temporary signed URL.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.SmsActivity"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -100,7 +100,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Sms.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.SmsActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.SmsActivity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// This can be used to modify a draft or send it once the draft is complete.To send an SMS immediately, you can update its `status` to `outbox`. To send it at a later time, change the `status` to `scheduled` and provide the desired date &amp; time in the `date_scheduled` field.A switch of `caller_id_mode` to `auto` requires a plan that includes Local Presence. On a plan without it, a draft can use `auto` only if the draft already uses `auto`. It can also switch to `auto` if the sender&apos;s [Membership](https://developer.close.com/api/resources/memberships) has `default_caller_id_mode` set to `auto`. The sender is the user in `user_id`. If the request has no `user_id`, the sender is the user of the draft, else the authenticated user. On a plan without Local Presence, Close sends an `auto` SMS from the `default_caller_id` of the sender&apos;s Membership. If `default_caller_id` is unset or cannot send the SMS, Close uses the oldest number that the sender can send from.
+        /// This can be used to modify a draft or send it once the draft is complete.To send an SMS immediately, you can update its `status` to `outbox`, optionally with `send_in` to delay sending by up to 60 seconds. To send it at a later time, change the `status` to `scheduled` and provide the desired date &amp; time in the `date_scheduled` field. To cancel sending a scheduled SMS, or an SMS in the outbox that wasn&apos;t sent yet, set its `status` back to `draft`.`contact_id`, `local_phone`, `caller_id_mode`, `remote_phone`, `text`, `template_id` and `attachments` can only be changed while the SMS is a draft. The status of a received or sent SMS can&apos;t be changed.A switch of `caller_id_mode` to `auto` requires a plan that includes Local Presence. On a plan without it, a draft can use `auto` only if the draft already uses `auto`. It can also switch to `auto` if the sender&apos;s [Membership](https://developer.close.com/api/resources/memberships) has `default_caller_id_mode` set to `auto`. The sender is the user in `user_id`. If the request has no `user_id`, the sender is the user of the draft, else the authenticated user. On a plan without Local Presence, Close sends an `auto` SMS from the `default_caller_id` of the sender&apos;s Membership. If `default_caller_id` is unset or cannot send the SMS, Close uses the oldest number that the sender can send from.Returns 400 if the update is invalid, 404 if no SMS in your organization has that ID, and 403 if you can&apos;t see the SMS&apos;s lead.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.SmsActivity"/></returns>
         /// <param name="body">The request body</param>
@@ -113,11 +113,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Sms.Item
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.SmsActivity?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivity body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.SmsActivity?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Sms.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.SmsActivity> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivity body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.SmsActivity> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Sms.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -135,7 +135,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Sms.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.SmsActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.SmsActivity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete an SMS activity
+        /// Delete an SMS activity and its attachments. Returns an empty object on success.Deleting your own SMS requires the `delete_own_activities` permission, and deleting another user&apos;s SMS, or one not assigned to a user, requires `manage_others_activities`. Without it, the request returns 400. You can always delete your own drafts. Returns 404 if no SMS in your organization has that ID, and 403 if you can&apos;t see the SMS&apos;s lead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -154,7 +154,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Sms.Item
             return requestInfo;
         }
         /// <summary>
-        /// Get a single SMS activity
+        /// Fetch a single SMS activity by its ID. Returns 404 if no SMS in your organization has that ID, and 403 if you can&apos;t see the SMS&apos;s lead.MMS messages are SMS messages with attachments. Each attachment has a `url`, `filename`, `size` and `content_type`, a `media_id` that identifies it within the SMS and, if Close was able to generate a thumbnail, a `thumbnail_url`. Accessing `url` or `thumbnail_url` requires an authenticated session and redirects to a temporary signed URL.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -173,18 +173,18 @@ namespace Soenneker.Close.OpenApiClient.Activity.Sms.Item
             return requestInfo;
         }
         /// <summary>
-        /// This can be used to modify a draft or send it once the draft is complete.To send an SMS immediately, you can update its `status` to `outbox`. To send it at a later time, change the `status` to `scheduled` and provide the desired date &amp; time in the `date_scheduled` field.A switch of `caller_id_mode` to `auto` requires a plan that includes Local Presence. On a plan without it, a draft can use `auto` only if the draft already uses `auto`. It can also switch to `auto` if the sender&apos;s [Membership](https://developer.close.com/api/resources/memberships) has `default_caller_id_mode` set to `auto`. The sender is the user in `user_id`. If the request has no `user_id`, the sender is the user of the draft, else the authenticated user. On a plan without Local Presence, Close sends an `auto` SMS from the `default_caller_id` of the sender&apos;s Membership. If `default_caller_id` is unset or cannot send the SMS, Close uses the oldest number that the sender can send from.
+        /// This can be used to modify a draft or send it once the draft is complete.To send an SMS immediately, you can update its `status` to `outbox`, optionally with `send_in` to delay sending by up to 60 seconds. To send it at a later time, change the `status` to `scheduled` and provide the desired date &amp; time in the `date_scheduled` field. To cancel sending a scheduled SMS, or an SMS in the outbox that wasn&apos;t sent yet, set its `status` back to `draft`.`contact_id`, `local_phone`, `caller_id_mode`, `remote_phone`, `text`, `template_id` and `attachments` can only be changed while the SMS is a draft. The status of a received or sent SMS can&apos;t be changed.A switch of `caller_id_mode` to `auto` requires a plan that includes Local Presence. On a plan without it, a draft can use `auto` only if the draft already uses `auto`. It can also switch to `auto` if the sender&apos;s [Membership](https://developer.close.com/api/resources/memberships) has `default_caller_id_mode` set to `auto`. The sender is the user in `user_id`. If the request has no `user_id`, the sender is the user of the draft, else the authenticated user. On a plan without Local Presence, Close sends an `auto` SMS from the `default_caller_id` of the sender&apos;s Membership. If `default_caller_id` is unset or cannot send the SMS, Close uses the oldest number that the sender can send from.Returns 400 if the update is invalid, 404 if no SMS in your organization has that ID, and 403 if you can&apos;t see the SMS&apos;s lead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivity body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Sms.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivity body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Sms.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -204,10 +204,27 @@ namespace Soenneker.Close.OpenApiClient.Activity.Sms.Item
             return new global::Soenneker.Close.OpenApiClient.Activity.Sms.Item.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get a single SMS activity
+        /// Fetch a single SMS activity by its ID. Returns 404 if no SMS in your organization has that ID, and 403 if you can&apos;t see the SMS&apos;s lead.MMS messages are SMS messages with attachments. Each attachment has a `url`, `filename`, `size` and `content_type`, a `media_id` that identifies it within the SMS and, if Close was able to generate a thumbnail, a `thumbnail_url`. Accessing `url` or `thumbnail_url` requires an authenticated session and redirects to a temporary signed URL.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
+        {
+            /// <summary>Comma-separated list of fields to include in the response.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("_fields")]
+            public string? Fields { get; set; }
+#nullable restore
+#else
+            [QueryParameter("_fields")]
+            public string Fields { get; set; }
+#endif
+        }
+        /// <summary>
+        /// This can be used to modify a draft or send it once the draft is complete.To send an SMS immediately, you can update its `status` to `outbox`, optionally with `send_in` to delay sending by up to 60 seconds. To send it at a later time, change the `status` to `scheduled` and provide the desired date &amp; time in the `date_scheduled` field. To cancel sending a scheduled SMS, or an SMS in the outbox that wasn&apos;t sent yet, set its `status` back to `draft`.`contact_id`, `local_phone`, `caller_id_mode`, `remote_phone`, `text`, `template_id` and `attachments` can only be changed while the SMS is a draft. The status of a received or sent SMS can&apos;t be changed.A switch of `caller_id_mode` to `auto` requires a plan that includes Local Presence. On a plan without it, a draft can use `auto` only if the draft already uses `auto`. It can also switch to `auto` if the sender&apos;s [Membership](https://developer.close.com/api/resources/memberships) has `default_caller_id_mode` set to `auto`. The sender is the user in `user_id`. If the request has no `user_id`, the sender is the user of the draft, else the authenticated user. On a plan without Local Presence, Close sends an `auto` SMS from the `default_caller_id` of the sender&apos;s Membership. If `default_caller_id` is unset or cannot send the SMS, Close uses the oldest number that the sender can send from.Returns 400 if the update is invalid, 404 if no SMS in your organization has that ID, and 403 if you can&apos;t see the SMS&apos;s lead.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class EmptyPathSegmentRequestBuilderPutQueryParameters 
         {
             /// <summary>Comma-separated list of fields to include in the response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
