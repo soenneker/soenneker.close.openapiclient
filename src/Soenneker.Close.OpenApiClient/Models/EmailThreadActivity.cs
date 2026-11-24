@@ -19,8 +19,6 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("activity_at") is null) { _explicitNullValueActivityAt = default!; _explicitNullProperties?.Remove("activity_at"); }
             else if (parseNode.GetChildNode("activity_at") is { } nullNodeActivityAt && nullNodeActivityAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActivityAt = null;
-            if (parseNode.GetChildNode("comment_summary") is null) { _explicitNullValueCommentSummary = default!; _explicitNullProperties?.Remove("comment_summary"); }
-            else if (parseNode.GetChildNode("comment_summary") is { } nullNodeCommentSummary && nullNodeCommentSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CommentSummary = null;
             if (parseNode.GetChildNode("contact_id") is null) { _explicitNullValueContactId = default!; _explicitNullProperties?.Remove("contact_id"); }
             else if (parseNode.GetChildNode("contact_id") is { } nullNodeContactId && nullNodeContactId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContactId = null;
             if (parseNode.GetChildNode("created_by") is null) { _explicitNullValueCreatedBy = default!; _explicitNullProperties?.Remove("created_by"); }
@@ -65,22 +63,12 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("users") is { } nullNodeUsers && nullNodeUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Users = null;
         }
 
-        /// <summary>When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.</summary>
+        /// <summary>When the most recent email in the thread was sent or received. It moves forward when a new email joins the thread.</summary>
         public DateTimeOffset? ActivityAt { get => _explicitNullValueActivityAt; set { _explicitNullValueActivityAt = value; AdditionalData?.Remove("activity_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activity_at"); else _explicitNullProperties?.Remove("activity_at"); } }
         private DateTimeOffset? _explicitNullValueActivityAt = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The comment_summary property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary? CommentSummary { get => _explicitNullValueCommentSummary; set { _explicitNullValueCommentSummary = value; AdditionalData?.Remove("comment_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment_summary"); else _explicitNullProperties?.Remove("comment_summary"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary? _explicitNullValueCommentSummary = default!;
-#nullable restore
-#else
-        public global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary CommentSummary { get => _explicitNullValueCommentSummary; set { _explicitNullValueCommentSummary = value; AdditionalData?.Remove("comment_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment_summary"); else _explicitNullProperties?.Remove("comment_summary"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary _explicitNullValueCommentSummary = default!;
-#endif
-        /// <summary>ID of the Contact the activity is with, or `null` if it isn&apos;t with a particular Contact.</summary>
+        /// <summary>Always `null` for email threads. Each email in `emails` has its own `contact_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ContactId { get => _explicitNullValueContactId; set { _explicitNullValueContactId = value; AdditionalData?.Remove("contact_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact_id"); else _explicitNullProperties?.Remove("contact_id"); } }
@@ -110,13 +98,13 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string CreatedByName { get => _explicitNullValueCreatedByName; set { _explicitNullValueCreatedByName = value; AdditionalData?.Remove("created_by_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by_name"); else _explicitNullProperties?.Remove("created_by_name"); } }
         private string _explicitNullValueCreatedByName = default!;
 #endif
-        /// <summary>When the activity was created.</summary>
+        /// <summary>Same as `activity_at`: when the most recent email in the thread was sent or received, not when the thread was first created.</summary>
         public DateTimeOffset? DateCreated { get => _explicitNullValueDateCreated; set { _explicitNullValueDateCreated = value; AdditionalData?.Remove("date_created"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_created"); else _explicitNullProperties?.Remove("date_created"); } }
         private DateTimeOffset? _explicitNullValueDateCreated = default!;
         /// <summary>When the activity was last updated.</summary>
         public DateTimeOffset? DateUpdated { get => _explicitNullValueDateUpdated; set { _explicitNullValueDateUpdated = value; AdditionalData?.Remove("date_updated"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_updated"); else _explicitNullProperties?.Remove("date_updated"); } }
         private DateTimeOffset? _explicitNullValueDateUpdated = default!;
-        /// <summary>The emails property</summary>
+        /// <summary>Every email in the thread, most recent first. Only returned when fetching a single thread. Email bodies are left out unless you request them with `expand_emails`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.EmailInThread>? Emails { get => _explicitNullValueEmails; set { _explicitNullValueEmails = value; AdditionalData?.Remove("emails"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emails"); else _explicitNullProperties?.Remove("emails"); } }
@@ -136,7 +124,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
-        /// <summary>The importance property</summary>
+        /// <summary>Whether Close considers the thread important, and why.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivityImportance? Importance { get => _explicitNullValueImportance; set { _explicitNullValueImportance = value; AdditionalData?.Remove("importance"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("importance"); else _explicitNullProperties?.Remove("importance"); } }
@@ -146,7 +134,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivityImportance Importance { get => _explicitNullValueImportance; set { _explicitNullValueImportance = value; AdditionalData?.Remove("importance"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("importance"); else _explicitNullProperties?.Remove("importance"); } }
         private global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivityImportance _explicitNullValueImportance = default!;
 #endif
-        /// <summary>The latest_emails property</summary>
+        /// <summary>Previews of the 5 most recent emails in the thread, most recent first. Only returned when listing threads.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.EmailPreview>? LatestEmails { get => _explicitNullValueLatestEmails; set { _explicitNullValueLatestEmails = value; AdditionalData?.Remove("latest_emails"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_emails"); else _explicitNullProperties?.Remove("latest_emails"); } }
@@ -156,7 +144,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<global::Soenneker.Close.OpenApiClient.Models.EmailPreview> LatestEmails { get => _explicitNullValueLatestEmails; set { _explicitNullValueLatestEmails = value; AdditionalData?.Remove("latest_emails"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_emails"); else _explicitNullProperties?.Remove("latest_emails"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.EmailPreview> _explicitNullValueLatestEmails = default!;
 #endif
-        /// <summary>The latest_normalized_subject property</summary>
+        /// <summary>Subject of the most recent email, without prefixes such as `Re:` and `Fwd:`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LatestNormalizedSubject { get => _explicitNullValueLatestNormalizedSubject; set { _explicitNullValueLatestNormalizedSubject = value; AdditionalData?.Remove("latest_normalized_subject"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_normalized_subject"); else _explicitNullProperties?.Remove("latest_normalized_subject"); } }
@@ -176,7 +164,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string LeadId { get => _explicitNullValueLeadId; set { _explicitNullValueLeadId = value; AdditionalData?.Remove("lead_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_id"); else _explicitNullProperties?.Remove("lead_id"); } }
         private string _explicitNullValueLeadId = default!;
 #endif
-        /// <summary>The n_emails property</summary>
+        /// <summary>Number of emails in the thread.</summary>
         public int? NEmails { get => _explicitNullValueNEmails; set { _explicitNullValueNEmails = value; AdditionalData?.Remove("n_emails"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_emails"); else _explicitNullProperties?.Remove("n_emails"); } }
         private int? _explicitNullValueNEmails = default!;
         /// <summary>ID of the organization the activity belongs to.</summary>
@@ -189,7 +177,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string _explicitNullValueOrganizationId = default!;
 #endif
-        /// <summary>The participants property</summary>
+        /// <summary>Senders of the emails in the thread, one per address, most recent first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.EmailIdentity>? Participants { get => _explicitNullValueParticipants; set { _explicitNullValueParticipants = value; AdditionalData?.Remove("participants"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("participants"); else _explicitNullProperties?.Remove("participants"); } }
@@ -199,7 +187,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<global::Soenneker.Close.OpenApiClient.Models.EmailIdentity> Participants { get => _explicitNullValueParticipants; set { _explicitNullValueParticipants = value; AdditionalData?.Remove("participants"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("participants"); else _explicitNullProperties?.Remove("participants"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.EmailIdentity> _explicitNullValueParticipants = default!;
 #endif
-        /// <summary>The summary property</summary>
+        /// <summary>AI summary of the thread, or `null` if it has none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivitySummary? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
@@ -239,7 +227,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string UpdatedByName { get => _explicitNullValueUpdatedByName; set { _explicitNullValueUpdatedByName = value; AdditionalData?.Remove("updated_by_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_by_name"); else _explicitNullProperties?.Remove("updated_by_name"); } }
         private string _explicitNullValueUpdatedByName = default!;
 #endif
-        /// <summary>ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.</summary>
+        /// <summary>ID of the user of the most recent email in the thread: the user who sent it, or whose connected account received it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; AdditionalData?.Remove("user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
@@ -259,7 +247,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string UserName { get => _explicitNullValueUserName; set { _explicitNullValueUserName = value; AdditionalData?.Remove("user_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_name"); else _explicitNullProperties?.Remove("user_name"); } }
         private string _explicitNullValueUserName = default!;
 #endif
-        /// <summary>IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.</summary>
+        /// <summary>IDs of the users of every email in the thread, in no particular order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Users { get => _explicitNullValueUsers; set { _explicitNullValueUsers = value; AdditionalData?.Remove("users"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("users"); else _explicitNullProperties?.Remove("users"); } }
@@ -292,10 +280,9 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(23)
+            return new Dictionary<string, Action<IParseNode>>(22)
             {
                 { "activity_at", n => { ActivityAt = n.GetDateTimeOffsetValue(); } },
-                { "comment_summary", n => { CommentSummary = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary>(global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary.CreateFromDiscriminatorValue); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "created_by_name", n => { CreatedByName = n.GetStringValue(); } },
@@ -327,7 +314,6 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("activity_at", ActivityAt);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary>("comment_summary", CommentSummary);
             writer.WriteStringValue("contact_id", ContactId);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteStringValue("created_by_name", CreatedByName);

@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>Which side of the conversation a speaker is on: `contact` for the Lead&apos;s side, `close-user` for a Close user, or `voice-agent` for a Close AI voice agent.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum SpeakerSide
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "contact")]
         #pragma warning disable CS1591

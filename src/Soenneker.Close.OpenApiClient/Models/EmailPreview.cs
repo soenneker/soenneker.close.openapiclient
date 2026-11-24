@@ -55,7 +55,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The bcc property</summary>
+        /// <summary>Addresses the email was sent to as Bcc.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Bcc { get => _explicitNullValueBcc; set { _explicitNullValueBcc = value; AdditionalData?.Remove("bcc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bcc"); else _explicitNullProperties?.Remove("bcc"); } }
@@ -65,7 +65,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<string> Bcc { get => _explicitNullValueBcc; set { _explicitNullValueBcc = value; AdditionalData?.Remove("bcc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bcc"); else _explicitNullProperties?.Remove("bcc"); } }
         private List<string> _explicitNullValueBcc = default!;
 #endif
-        /// <summary>The body_preview property</summary>
+        /// <summary>First 200 characters of the email body, with repeated whitespace collapsed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BodyPreview { get => _explicitNullValueBodyPreview; set { _explicitNullValueBodyPreview = value; AdditionalData?.Remove("body_preview"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("body_preview"); else _explicitNullProperties?.Remove("body_preview"); } }
@@ -75,7 +75,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string BodyPreview { get => _explicitNullValueBodyPreview; set { _explicitNullValueBodyPreview = value; AdditionalData?.Remove("body_preview"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("body_preview"); else _explicitNullProperties?.Remove("body_preview"); } }
         private string _explicitNullValueBodyPreview = default!;
 #endif
-        /// <summary>The cc property</summary>
+        /// <summary>Addresses the email was sent to as Cc.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Cc { get => _explicitNullValueCc; set { _explicitNullValueCc = value; AdditionalData?.Remove("cc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cc"); else _explicitNullProperties?.Remove("cc"); } }
@@ -85,19 +85,19 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<string> Cc { get => _explicitNullValueCc; set { _explicitNullValueCc = value; AdditionalData?.Remove("cc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cc"); else _explicitNullProperties?.Remove("cc"); } }
         private List<string> _explicitNullValueCc = default!;
 #endif
-        /// <summary>The date_created property</summary>
+        /// <summary>When the email was created in Close.</summary>
         public DateTimeOffset? DateCreated { get => _explicitNullValueDateCreated; set { _explicitNullValueDateCreated = value; AdditionalData?.Remove("date_created"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_created"); else _explicitNullProperties?.Remove("date_created"); } }
         private DateTimeOffset? _explicitNullValueDateCreated = default!;
-        /// <summary>The date_sent property</summary>
+        /// <summary>When the email was sent, or `null` if it hasn&apos;t been sent or the time isn&apos;t known.</summary>
         public DateTimeOffset? DateSent { get => _explicitNullValueDateSent; set { _explicitNullValueDateSent = value; AdditionalData?.Remove("date_sent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_sent"); else _explicitNullProperties?.Remove("date_sent"); } }
         private DateTimeOffset? _explicitNullValueDateSent = default!;
-        /// <summary>The date_updated property</summary>
+        /// <summary>When the email was last updated.</summary>
         public DateTimeOffset? DateUpdated { get => _explicitNullValueDateUpdated; set { _explicitNullValueDateUpdated = value; AdditionalData?.Remove("date_updated"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_updated"); else _explicitNullProperties?.Remove("date_updated"); } }
         private DateTimeOffset? _explicitNullValueDateUpdated = default!;
-        /// <summary>Direction of communication. Outgoing means the communication flowing from the user to the lead/contact. Inbound means the opposite.</summary>
+        /// <summary>Whether the email was sent or received.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.CommunicationDirection? Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; AdditionalData?.Remove("direction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CommunicationDirection? _explicitNullValueDirection = default!;
-        /// <summary>The envelope property</summary>
+        /// <summary>Headers of the email, or `null` if they aren&apos;t available, for example for a draft.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Close.OpenApiClient.Models.EmailPreviewEnvelope? Envelope { get => _explicitNullValueEnvelope; set { _explicitNullValueEnvelope = value; AdditionalData?.Remove("envelope"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("envelope"); else _explicitNullProperties?.Remove("envelope"); } }
@@ -107,10 +107,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         public global::Soenneker.Close.OpenApiClient.Models.EmailPreviewEnvelope Envelope { get => _explicitNullValueEnvelope; set { _explicitNullValueEnvelope = value; AdditionalData?.Remove("envelope"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("envelope"); else _explicitNullProperties?.Remove("envelope"); } }
         private global::Soenneker.Close.OpenApiClient.Models.EmailPreviewEnvelope _explicitNullValueEnvelope = default!;
 #endif
-        /// <summary>The has_attachments property</summary>
+        /// <summary>Whether the email has attachments.</summary>
         public bool? HasAttachments { get => _explicitNullValueHasAttachments; set { _explicitNullValueHasAttachments = value; AdditionalData?.Remove("has_attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_attachments"); else _explicitNullProperties?.Remove("has_attachments"); } }
         private bool? _explicitNullValueHasAttachments = default!;
-        /// <summary>The id property</summary>
+        /// <summary>ID of the email, prefixed with `acti_`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
@@ -120,7 +120,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
-        /// <summary>The opens_summary property</summary>
+        /// <summary>Human-readable summary of who opened the email and when, or `null` if no opens were tracked.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OpensSummary { get => _explicitNullValueOpensSummary; set { _explicitNullValueOpensSummary = value; AdditionalData?.Remove("opens_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("opens_summary"); else _explicitNullProperties?.Remove("opens_summary"); } }
@@ -130,7 +130,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string OpensSummary { get => _explicitNullValueOpensSummary; set { _explicitNullValueOpensSummary = value; AdditionalData?.Remove("opens_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("opens_summary"); else _explicitNullProperties?.Remove("opens_summary"); } }
         private string _explicitNullValueOpensSummary = default!;
 #endif
-        /// <summary>The send_as_id property</summary>
+        /// <summary>ID of the user whose name and address the email was sent with, when sent on that user&apos;s behalf. `null` otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SendAsId { get => _explicitNullValueSendAsId; set { _explicitNullValueSendAsId = value; AdditionalData?.Remove("send_as_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("send_as_id"); else _explicitNullProperties?.Remove("send_as_id"); } }
@@ -140,7 +140,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string SendAsId { get => _explicitNullValueSendAsId; set { _explicitNullValueSendAsId = value; AdditionalData?.Remove("send_as_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("send_as_id"); else _explicitNullProperties?.Remove("send_as_id"); } }
         private string _explicitNullValueSendAsId = default!;
 #endif
-        /// <summary>The sender property</summary>
+        /// <summary>Sender of the email as `Name &lt;address&gt;`, or just the address if there&apos;s no name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Sender { get => _explicitNullValueSender; set { _explicitNullValueSender = value; AdditionalData?.Remove("sender"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sender"); else _explicitNullProperties?.Remove("sender"); } }
@@ -150,10 +150,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Sender { get => _explicitNullValueSender; set { _explicitNullValueSender = value; AdditionalData?.Remove("sender"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sender"); else _explicitNullProperties?.Remove("sender"); } }
         private string _explicitNullValueSender = default!;
 #endif
-        /// <summary>Status of a message, such as Email or SMS.</summary>
+        /// <summary>Status of the email.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.MessageStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.Close.OpenApiClient.Models.MessageStatus? _explicitNullValueStatus = default!;
-        /// <summary>The subject property</summary>
+        /// <summary>Subject of the email.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Subject { get => _explicitNullValueSubject; set { _explicitNullValueSubject = value; AdditionalData?.Remove("subject"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject"); else _explicitNullProperties?.Remove("subject"); } }
@@ -163,7 +163,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Subject { get => _explicitNullValueSubject; set { _explicitNullValueSubject = value; AdditionalData?.Remove("subject"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject"); else _explicitNullProperties?.Remove("subject"); } }
         private string _explicitNullValueSubject = default!;
 #endif
-        /// <summary>The to property</summary>
+        /// <summary>Addresses the email was sent to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? To { get => _explicitNullValueTo; set { _explicitNullValueTo = value; AdditionalData?.Remove("to"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("to"); else _explicitNullProperties?.Remove("to"); } }
@@ -173,7 +173,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<string> To { get => _explicitNullValueTo; set { _explicitNullValueTo = value; AdditionalData?.Remove("to"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("to"); else _explicitNullProperties?.Remove("to"); } }
         private List<string> _explicitNullValueTo = default!;
 #endif
-        /// <summary>The user_id property</summary>
+        /// <summary>ID of the Close user who sent the email or whose connected account received it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; AdditionalData?.Remove("user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }

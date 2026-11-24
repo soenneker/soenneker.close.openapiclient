@@ -27,7 +27,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The detail property</summary>
+        /// <summary>Comment you left with the rating, or `null`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Detail { get => _explicitNullValueDetail; set { _explicitNullValueDetail = value; AdditionalData?.Remove("detail"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail"); else _explicitNullProperties?.Remove("detail"); } }
@@ -37,10 +37,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Detail { get => _explicitNullValueDetail; set { _explicitNullValueDetail = value; AdditionalData?.Remove("detail"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail"); else _explicitNullProperties?.Remove("detail"); } }
         private string _explicitNullValueDetail = default!;
 #endif
-        /// <summary>The given_at property</summary>
+        /// <summary>When you rated the summary.</summary>
         public DateTimeOffset? GivenAt { get => _explicitNullValueGivenAt; set { _explicitNullValueGivenAt = value; AdditionalData?.Remove("given_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("given_at"); else _explicitNullProperties?.Remove("given_at"); } }
         private DateTimeOffset? _explicitNullValueGivenAt = default!;
-        /// <summary>A user&apos;s rating of an AI summary.</summary>
+        /// <summary>Your rating of the summary.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.SummaryFeedbackRating? Rating { get => _explicitNullValueRating; set { _explicitNullValueRating = value; AdditionalData?.Remove("rating"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rating"); else _explicitNullProperties?.Remove("rating"); } }
         private global::Soenneker.Close.OpenApiClient.Models.SummaryFeedbackRating? _explicitNullValueRating = default!;
         /// <summary>

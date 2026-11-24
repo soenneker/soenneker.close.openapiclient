@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>Always `not_important`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum NotImportantType
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "not_important")]
         #pragma warning disable CS1591

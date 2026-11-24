@@ -44,8 +44,6 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("inbound_ring_duration") is { } nullNodeInboundRingDuration && nullNodeInboundRingDuration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InboundRingDuration = null;
             if (parseNode.GetChildNode("is_group_number") is null) { _explicitNullValueIsGroupNumber = default!; _explicitNullProperties?.Remove("is_group_number"); }
             else if (parseNode.GetChildNode("is_group_number") is { } nullNodeIsGroupNumber && nullNodeIsGroupNumber.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsGroupNumber = null;
-            if (parseNode.GetChildNode("is_premium") is null) { _explicitNullValueIsPremium = default!; _explicitNullProperties?.Remove("is_premium"); }
-            else if (parseNode.GetChildNode("is_premium") is { } nullNodeIsPremium && nullNodeIsPremium.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsPremium = null;
             if (parseNode.GetChildNode("label") is null) { _explicitNullValueLabel = default!; _explicitNullProperties?.Remove("label"); }
             else if (parseNode.GetChildNode("label") is { } nullNodeLabel && nullNodeLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Label = null;
             if (parseNode.GetChildNode("last_billed_price") is null) { _explicitNullValueLastBilledPrice = default!; _explicitNullProperties?.Remove("last_billed_price"); }
@@ -176,10 +174,6 @@ namespace Soenneker.Close.OpenApiClient.Models
         [Obsolete("")]
         public bool? IsGroupNumber { get => _explicitNullValueIsGroupNumber; set { _explicitNullValueIsGroupNumber = value; AdditionalData?.Remove("is_group_number"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_group_number"); else _explicitNullProperties?.Remove("is_group_number"); } }
         private bool? _explicitNullValueIsGroupNumber = default!;
-        /// <summary>This field is deprecated and will be removed in a future update. Until then, it is always `false`.</summary>
-        [Obsolete("")]
-        public bool? IsPremium { get => _explicitNullValueIsPremium; set { _explicitNullValueIsPremium = value; AdditionalData?.Remove("is_premium"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_premium"); else _explicitNullProperties?.Remove("is_premium"); } }
-        private bool? _explicitNullValueIsPremium = default!;
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -354,7 +348,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(36)
+            return new Dictionary<string, Action<IParseNode>>(35)
             {
                 { "address_id", n => { AddressId = n.GetStringValue(); } },
                 { "bundle_id", n => { BundleId = n.GetStringValue(); } },
@@ -369,7 +363,6 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "inbound_ring_duration", n => { InboundRingDuration = n.GetIntValue(); } },
                 { "is_group_number", n => { IsGroupNumber = n.GetBoolValue(); } },
-                { "is_premium", n => { IsPremium = n.GetBoolValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "last_billed_price", n => { LastBilledPrice = n.GetDoubleValue(); } },
                 { "local_presence_enabled", n => { LocalPresenceEnabled = n.GetBoolValue(); } },
@@ -414,7 +407,6 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteIntValue("inbound_ring_duration", InboundRingDuration);
             writer.WriteBoolValue("is_group_number", IsGroupNumber);
-            writer.WriteBoolValue("is_premium", IsPremium);
             writer.WriteStringValue("label", Label);
             writer.WriteDoubleValue("last_billed_price", LastBilledPrice);
             writer.WriteBoolValue("local_presence_enabled", LocalPresenceEnabled);

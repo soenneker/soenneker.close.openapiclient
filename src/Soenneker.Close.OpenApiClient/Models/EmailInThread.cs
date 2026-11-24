@@ -185,7 +185,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<string> Bcc { get => _explicitNullValueBcc; set { _explicitNullValueBcc = value; AdditionalData?.Remove("bcc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bcc"); else _explicitNullProperties?.Remove("bcc"); } }
         private List<string> _explicitNullValueBcc = default!;
 #endif
-        /// <summary>The body_html property</summary>
+        /// <summary>HTML body of the email. Only returned for emails expanded with the `expand_emails` query parameter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BodyHtml { get => _explicitNullValueBodyHtml; set { _explicitNullValueBodyHtml = value; AdditionalData?.Remove("body_html"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("body_html"); else _explicitNullProperties?.Remove("body_html"); } }
@@ -195,7 +195,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string BodyHtml { get => _explicitNullValueBodyHtml; set { _explicitNullValueBodyHtml = value; AdditionalData?.Remove("body_html"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("body_html"); else _explicitNullProperties?.Remove("body_html"); } }
         private string _explicitNullValueBodyHtml = default!;
 #endif
-        /// <summary>`body_html` split into new content and HTML quoted from earlier messages. `null` if there is no HTML body.</summary>
+        /// <summary>`body_html` split into new content and HTML quoted from earlier messages. `null` if there is no HTML body. Only returned for emails expanded with the `expand_emails` query parameter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.QuotedEmailHtml>? BodyHtmlQuoted { get => _explicitNullValueBodyHtmlQuoted; set { _explicitNullValueBodyHtmlQuoted = value; AdditionalData?.Remove("body_html_quoted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("body_html_quoted"); else _explicitNullProperties?.Remove("body_html_quoted"); } }
@@ -215,7 +215,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string BodyPreview { get => _explicitNullValueBodyPreview; set { _explicitNullValueBodyPreview = value; AdditionalData?.Remove("body_preview"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("body_preview"); else _explicitNullProperties?.Remove("body_preview"); } }
         private string _explicitNullValueBodyPreview = default!;
 #endif
-        /// <summary>The body_text property</summary>
+        /// <summary>Plain-text body of the email. Only returned for emails expanded with the `expand_emails` query parameter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BodyText { get => _explicitNullValueBodyText; set { _explicitNullValueBodyText = value; AdditionalData?.Remove("body_text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("body_text"); else _explicitNullProperties?.Remove("body_text"); } }
@@ -225,7 +225,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string BodyText { get => _explicitNullValueBodyText; set { _explicitNullValueBodyText = value; AdditionalData?.Remove("body_text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("body_text"); else _explicitNullProperties?.Remove("body_text"); } }
         private string _explicitNullValueBodyText = default!;
 #endif
-        /// <summary>`body_text` split into new content and text quoted from earlier messages. `null` if there is no plain-text body.</summary>
+        /// <summary>`body_text` split into new content and text quoted from earlier messages. `null` if there is no plain-text body. Only returned for emails expanded with the `expand_emails` query parameter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.QuotedEmailText>? BodyTextQuoted { get => _explicitNullValueBodyTextQuoted; set { _explicitNullValueBodyTextQuoted = value; AdditionalData?.Remove("body_text_quoted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("body_text_quoted"); else _explicitNullProperties?.Remove("body_text_quoted"); } }

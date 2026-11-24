@@ -31,10 +31,10 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The end property</summary>
+        /// <summary>When the utterance ends, in seconds from the start of the recording.</summary>
         public double? End { get => _explicitNullValueEnd; set { _explicitNullValueEnd = value; AdditionalData?.Remove("end"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end"); else _explicitNullProperties?.Remove("end"); } }
         private double? _explicitNullValueEnd = default!;
-        /// <summary>The speaker_label property</summary>
+        /// <summary>Name or label of the speaker, e.g. `Jane Doe`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SpeakerLabel { get => _explicitNullValueSpeakerLabel; set { _explicitNullValueSpeakerLabel = value; AdditionalData?.Remove("speaker_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speaker_label"); else _explicitNullProperties?.Remove("speaker_label"); } }
@@ -44,13 +44,13 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string SpeakerLabel { get => _explicitNullValueSpeakerLabel; set { _explicitNullValueSpeakerLabel = value; AdditionalData?.Remove("speaker_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speaker_label"); else _explicitNullProperties?.Remove("speaker_label"); } }
         private string _explicitNullValueSpeakerLabel = default!;
 #endif
-        /// <summary>The speaker_side property</summary>
+        /// <summary>Which side of the conversation the speaker is on, or `null` if it isn&apos;t known.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.SpeakerSide? SpeakerSide { get => _explicitNullValueSpeakerSide; set { _explicitNullValueSpeakerSide = value; AdditionalData?.Remove("speaker_side"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speaker_side"); else _explicitNullProperties?.Remove("speaker_side"); } }
         private global::Soenneker.Close.OpenApiClient.Models.SpeakerSide? _explicitNullValueSpeakerSide = default!;
-        /// <summary>The start property</summary>
+        /// <summary>When the utterance starts, in seconds from the start of the recording.</summary>
         public double? Start { get => _explicitNullValueStart; set { _explicitNullValueStart = value; AdditionalData?.Remove("start"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start"); else _explicitNullProperties?.Remove("start"); } }
         private double? _explicitNullValueStart = default!;
-        /// <summary>The text property</summary>
+        /// <summary>What the speaker said.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Text { get => _explicitNullValueText; set { _explicitNullValueText = value; AdditionalData?.Remove("text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text"); else _explicitNullProperties?.Remove("text"); } }

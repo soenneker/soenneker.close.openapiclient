@@ -34,7 +34,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note.Item
         {
         }
         /// <summary>
-        /// Delete a Note activity
+        /// Delete a note and its attachments. Returns an empty object on success.Returns 404 if no note in your organization has that ID, and 403 if you can&apos;t see the note&apos;s lead. Returns 400 if you don&apos;t have permission to delete the note: deleting your own notes needs permission to delete your own activities, and deleting other users&apos; notes needs permission to manage their activities.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.EmptyResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -67,7 +67,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.EmptyResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.EmptyResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get a single Note activity
+        /// Fetch a single note by its ID. Returns 404 if no note in your organization has that ID, and 403 if you can&apos;t see the note&apos;s lead.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivityBase"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -100,7 +100,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivityBase>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivityBase.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// **`note_html` and `note`**: setting one overwrites the other. If both are provided, `note_html` takes precedence. `note_html` supports rich-text HTML; `note` is plaintext only.A note can be pinned or unpinned by setting `pinned` to `true` or `false`.
+        /// Edit a note and return it. Only the fields you send change. Send `pinned` as `true` or `false` to pin or unpin the note. The note&apos;s lead, user and creation date can&apos;t be changed.A note needs at least one of `note`, `note_html` or `attachments`. Send rich text in `note_html`, which takes precedence over `note`: the plain-text `note` is then derived from it. Sending either one replaces the note&apos;s text.To attach a file, first upload it with the [Files API](https://developer.close.com/api/resources/files). Then add an object with `url`, `filename` and `content_type` to `attachments`. The `url` is the `download.url` from the Files API response, and must start with `https://app.close.com/go/file/`. Sending `attachments` replaces the note&apos;s attachments, so include the ones you want to keep.Returns 404 if no note in your organization has that ID, and 403 if you can&apos;t see the note&apos;s lead. Returns 400 if the note belongs to another user and you don&apos;t have permission to manage other users&apos; activities, if the update would leave the note with no text or attachments, if `note_html` isn&apos;t valid rich text, if the contact isn&apos;t on the note&apos;s lead, or if pinning the note would put more than 5 pinned activities on the lead.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivityBase"/></returns>
         /// <param name="body">The request body</param>
@@ -113,11 +113,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note.Item
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivityBase?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateNoteActivity body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivityBase?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateNoteActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Note.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivityBase> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateNoteActivity body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivityBase> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateNoteActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Note.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -135,7 +135,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivityBase>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivityBase.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete a Note activity
+        /// Delete a note and its attachments. Returns an empty object on success.Returns 404 if no note in your organization has that ID, and 403 if you can&apos;t see the note&apos;s lead. Returns 400 if you don&apos;t have permission to delete the note: deleting your own notes needs permission to delete your own activities, and deleting other users&apos; notes needs permission to manage their activities.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -154,7 +154,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note.Item
             return requestInfo;
         }
         /// <summary>
-        /// Get a single Note activity
+        /// Fetch a single note by its ID. Returns 404 if no note in your organization has that ID, and 403 if you can&apos;t see the note&apos;s lead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -173,18 +173,18 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note.Item
             return requestInfo;
         }
         /// <summary>
-        /// **`note_html` and `note`**: setting one overwrites the other. If both are provided, `note_html` takes precedence. `note_html` supports rich-text HTML; `note` is plaintext only.A note can be pinned or unpinned by setting `pinned` to `true` or `false`.
+        /// Edit a note and return it. Only the fields you send change. Send `pinned` as `true` or `false` to pin or unpin the note. The note&apos;s lead, user and creation date can&apos;t be changed.A note needs at least one of `note`, `note_html` or `attachments`. Send rich text in `note_html`, which takes precedence over `note`: the plain-text `note` is then derived from it. Sending either one replaces the note&apos;s text.To attach a file, first upload it with the [Files API](https://developer.close.com/api/resources/files). Then add an object with `url`, `filename` and `content_type` to `attachments`. The `url` is the `download.url` from the Files API response, and must start with `https://app.close.com/go/file/`. Sending `attachments` replaces the note&apos;s attachments, so include the ones you want to keep.Returns 404 if no note in your organization has that ID, and 403 if you can&apos;t see the note&apos;s lead. Returns 400 if the note belongs to another user and you don&apos;t have permission to manage other users&apos; activities, if the update would leave the note with no text or attachments, if `note_html` isn&apos;t valid rich text, if the contact isn&apos;t on the note&apos;s lead, or if pinning the note would put more than 5 pinned activities on the lead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.UpdateNoteActivity body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.UpdateNoteActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Note.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.UpdateNoteActivity body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.UpdateNoteActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Note.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -204,10 +204,27 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note.Item
             return new global::Soenneker.Close.OpenApiClient.Activity.Note.Item.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get a single Note activity
+        /// Fetch a single note by its ID. Returns 404 if no note in your organization has that ID, and 403 if you can&apos;t see the note&apos;s lead.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
+        {
+            /// <summary>Comma-separated list of fields to include in the response.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("_fields")]
+            public string? Fields { get; set; }
+#nullable restore
+#else
+            [QueryParameter("_fields")]
+            public string Fields { get; set; }
+#endif
+        }
+        /// <summary>
+        /// Edit a note and return it. Only the fields you send change. Send `pinned` as `true` or `false` to pin or unpin the note. The note&apos;s lead, user and creation date can&apos;t be changed.A note needs at least one of `note`, `note_html` or `attachments`. Send rich text in `note_html`, which takes precedence over `note`: the plain-text `note` is then derived from it. Sending either one replaces the note&apos;s text.To attach a file, first upload it with the [Files API](https://developer.close.com/api/resources/files). Then add an object with `url`, `filename` and `content_type` to `attachments`. The `url` is the `download.url` from the Files API response, and must start with `https://app.close.com/go/file/`. Sending `attachments` replaces the note&apos;s attachments, so include the ones you want to keep.Returns 404 if no note in your organization has that ID, and 403 if you can&apos;t see the note&apos;s lead. Returns 400 if the note belongs to another user and you don&apos;t have permission to manage other users&apos; activities, if the update would leave the note with no text or attachments, if `note_html` isn&apos;t valid rich text, if the contact isn&apos;t on the note&apos;s lead, or if pinning the note would put more than 5 pinned activities on the lead.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class EmptyPathSegmentRequestBuilderPutQueryParameters 
         {
             /// <summary>Comma-separated list of fields to include in the response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

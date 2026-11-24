@@ -22,7 +22,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Call
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/call/{?_fields*,_limit*,_skip*,_type*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,organization_id*,user_id*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/call/{?_fields*,_limit*,_order_by*,_skip*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,contact_id__in*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,lead_id__in*,organization_id*,user_id*,user_id__in*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Call
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/call/{?_fields*,_limit*,_skip*,_type*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,organization_id*,user_id*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/call/{?_fields*,_limit*,_order_by*,_skip*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,contact_id__in*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,lead_id__in*,organization_id*,user_id*,user_id__in*}", rawUrl)
         {
         }
         /// <summary>
-        /// List or filter all Call activities
+        /// List call activities, newest first. Custom field values are returned as `custom.{custom_field_id}` keys.Results are paginated with `_limit` (at most 100) and `_skip`. Use filters such as `lead_id`, `user_id` or the date filters to narrow down the results.`contact_id` and `contact_id__in` can only be used together with a single `lead_id` or a single `user_id`. `user_id__in` can only be used together with a single `lead_id`. If you don&apos;t have the &quot;View all Leads&quot; permission, `lead_id` is required.By default, calls are sorted by `date_created`. To sort by `activity_at` (when the call happened), pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesCallsList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -98,7 +98,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Call
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CallActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CallActivity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List or filter all Call activities
+        /// List call activities, newest first. Custom field values are returned as `custom.{custom_field_id}` keys.Results are paginated with `_limit` (at most 100) and `_skip`. Use filters such as `lead_id`, `user_id` or the date filters to narrow down the results.`contact_id` and `contact_id__in` can only be used together with a single `lead_id` or a single `user_id`. `user_id__in` can only be used together with a single `lead_id`. If you don&apos;t have the &quot;View all Leads&quot; permission, `lead_id` is required.By default, calls are sorted by `date_created`. To sort by `activity_at` (when the call happened), pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -148,7 +148,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Call
             return new global::Soenneker.Close.OpenApiClient.Activity.Call.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List or filter all Call activities
+        /// List call activities, newest first. Custom field values are returned as `custom.{custom_field_id}` keys.Results are paginated with `_limit` (at most 100) and `_skip`. Use filters such as `lead_id`, `user_id` or the date filters to narrow down the results.`contact_id` and `contact_id__in` can only be used together with a single `lead_id` or a single `user_id`. `user_id__in` can only be used together with a single `lead_id`. If you don&apos;t have the &quot;View all Leads&quot; permission, `lead_id` is required.By default, calls are sorted by `date_created`. To sort by `activity_at` (when the call happened), pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
@@ -202,6 +202,16 @@ namespace Soenneker.Close.OpenApiClient.Activity.Call
 #else
             [QueryParameter("contact_id")]
             public string ContactId { get; set; }
+#endif
+            /// <summary>Filter by a comma-separated list of multiple Contact IDs. Requires a single `lead_id` or a single `user_id`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("contact_id__in")]
+            public string? ContactIdIn { get; set; }
+#nullable restore
+#else
+            [QueryParameter("contact_id__in")]
+            public string ContactIdIn { get; set; }
 #endif
             /// <summary>Only include activities created in Close after this date or date and time. Can&apos;t be combined with `_order_by=-activity_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -273,9 +283,29 @@ namespace Soenneker.Close.OpenApiClient.Activity.Call
             [QueryParameter("lead_id")]
             public string LeadId { get; set; }
 #endif
+            /// <summary>Filter by a comma-separated list of multiple Lead IDs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("lead_id__in")]
+            public string? LeadIdIn { get; set; }
+#nullable restore
+#else
+            [QueryParameter("lead_id__in")]
+            public string LeadIdIn { get; set; }
+#endif
             /// <summary>Number of results to return.</summary>
             [QueryParameter("_limit")]
             public int? Limit { get; set; }
+            /// <summary>Sort order: `-date_created` (the default) or `-activity_at`, newest first. `-activity_at` requires a single `lead_id` and can&apos;t be combined with the `date_created__*` filters. The `activity_at__*` filters require `-activity_at`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("_order_by")]
+            public string? OrderBy { get; set; }
+#nullable restore
+#else
+            [QueryParameter("_order_by")]
+            public string OrderBy { get; set; }
+#endif
             /// <summary>ID of your organization. Defaults to the organization of your API key or OAuth token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -289,16 +319,6 @@ namespace Soenneker.Close.OpenApiClient.Activity.Call
             /// <summary>Number of results to skip before returning, for pagination. The maximum is 35,000 for some organizations.</summary>
             [QueryParameter("_skip")]
             public int? Skip { get; set; }
-            /// <summary>Filter by a comma-separated list of activity types, e.g. `Call`. Requires a single `lead_id`, or a `user_id` on endpoints for one activity type.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            [QueryParameter("_type")]
-            public string? Type { get; set; }
-#nullable restore
-#else
-            [QueryParameter("_type")]
-            public string Type { get; set; }
-#endif
             /// <summary>Filter by a comma-separated list of User IDs. Requires a single `lead_id`, unless the endpoint is for one activity type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -308,6 +328,16 @@ namespace Soenneker.Close.OpenApiClient.Activity.Call
 #else
             [QueryParameter("user_id")]
             public string UserId { get; set; }
+#endif
+            /// <summary>Filter by a comma-separated list of multiple User IDs. Requires a single `lead_id`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("user_id__in")]
+            public string? UserIdIn { get; set; }
+#nullable restore
+#else
+            [QueryParameter("user_id__in")]
+            public string UserIdIn { get; set; }
 #endif
         }
     }

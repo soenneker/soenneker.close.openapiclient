@@ -22,7 +22,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Emailthread.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/emailthread/{id}/{?_fields*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/emailthread/{id}/{?_fields*,expand_emails*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Emailthread.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/emailthread/{id}/{?_fields*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/emailthread/{id}/{?_fields*,expand_emails*}", rawUrl)
         {
         }
         /// <summary>
-        /// This will also delete all the email activities belonging to this thread.
+        /// Delete an email thread and every email in it. Returns an empty object on success.If the thread&apos;s `user_id` is you, you need permission to delete your own activities. Otherwise you need permission to manage other users&apos; activities. Returns 400 if you don&apos;t have it, 403 if you can&apos;t see the thread&apos;s lead, and 404 if your organization has no email thread with this ID.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.EmptyResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -67,7 +67,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Emailthread.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.EmptyResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.EmptyResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get a single EmailThread activity
+        /// Fetch a single email thread with all of its emails in `emails`, most recent first. Email bodies are left out unless you ask for them with `expand_emails`.Returns 403 if you can&apos;t see the thread&apos;s lead, and 404 if your organization has no email thread with this ID.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivity"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -100,7 +100,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Emailthread.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.EmailThreadActivity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// This will also delete all the email activities belonging to this thread.
+        /// Delete an email thread and every email in it. Returns an empty object on success.If the thread&apos;s `user_id` is you, you need permission to delete your own activities. Otherwise you need permission to manage other users&apos; activities. Returns 400 if you don&apos;t have it, 403 if you can&apos;t see the thread&apos;s lead, and 404 if your organization has no email thread with this ID.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -119,7 +119,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Emailthread.Item
             return requestInfo;
         }
         /// <summary>
-        /// Get a single EmailThread activity
+        /// Fetch a single email thread with all of its emails in `emails`, most recent first. Email bodies are left out unless you ask for them with `expand_emails`.Returns 403 if you can&apos;t see the thread&apos;s lead, and 404 if your organization has no email thread with this ID.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -147,11 +147,21 @@ namespace Soenneker.Close.OpenApiClient.Activity.Emailthread.Item
             return new global::Soenneker.Close.OpenApiClient.Activity.Emailthread.Item.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get a single EmailThread activity
+        /// Fetch a single email thread with all of its emails in `emails`, most recent first. Email bodies are left out unless you ask for them with `expand_emails`.Returns 403 if you can&apos;t see the thread&apos;s lead, and 404 if your organization has no email thread with this ID.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         {
+            /// <summary>Comma-separated list of the emails to include bodies for (`body_text`, `body_html`, `body_text_quoted` and `body_html_quoted`): `all`, `first` (the oldest email), `last` or `latest` (the most recent email), `unread` (emails that are new in your Close inbox) and `drafts`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("expand_emails")]
+            public string? ExpandEmails { get; set; }
+#nullable restore
+#else
+            [QueryParameter("expand_emails")]
+            public string ExpandEmails { get; set; }
+#endif
             /// <summary>Comma-separated list of fields to include in the response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

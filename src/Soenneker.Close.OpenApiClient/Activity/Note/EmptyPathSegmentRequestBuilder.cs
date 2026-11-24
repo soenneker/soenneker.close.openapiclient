@@ -22,7 +22,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/note/{?_fields*,_limit*,_skip*,_type*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,organization_id*,user_id*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/note/{?_fields*,_limit*,_order_by*,_skip*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,contact_id__in*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,lead_id__in*,organization_id*,user_id*,user_id__in*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/note/{?_fields*,_limit*,_skip*,_type*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,organization_id*,user_id*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/note/{?_fields*,_limit*,_order_by*,_skip*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,contact_id__in*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,lead_id__in*,organization_id*,user_id*,user_id__in*}", rawUrl)
         {
         }
         /// <summary>
-        /// List or filter all Note activities
+        /// List the notes in your organization, newest first. Filter by lead, contact, user or date. To sort by `activity_at` instead of `date_created`, pass `_order_by=-activity_at` together with a `lead_id` filter.`contact_id`, `contact_id__in` and `user_id__in` require a single `lead_id`. If you can only see some leads, you must filter by `lead_id`, otherwise the request returns 403.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesNotesList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesNotesList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesNotesList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// To include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename` and `content_type`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin `https://app.close.com/go/file/`.A note can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a note.
+        /// Add a note to a lead and return the created note. Set `pinned` to `true` to pin it to the top of the lead&apos;s activity timeline.A note needs at least one of `note`, `note_html` or `attachments`. Send rich text in `note_html`, which takes precedence over `note`: the plain-text `note` is then derived from it.To attach a file, first upload it with the [Files API](https://developer.close.com/api/resources/files). Then add an object with `url`, `filename` and `content_type` to `attachments`. The `url` is the `download.url` from the Files API response, and must start with `https://app.close.com/go/file/`.Returns 400 if the lead or contact doesn&apos;t exist, if the contact isn&apos;t on the lead, if you can&apos;t see the lead, if `note_html` isn&apos;t valid rich text, if the attachments are invalid or add up to more than 25 MB, or if pinning the note would put more than 5 pinned activities on the lead.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivityBase"/></returns>
         /// <param name="body">The request body</param>
@@ -77,11 +77,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivityBase?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivity body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivityBase?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Note.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivityBase> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivity body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivityBase> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Note.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -98,7 +98,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivityBase>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivityBase.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List or filter all Note activities
+        /// List the notes in your organization, newest first. Filter by lead, contact, user or date. To sort by `activity_at` instead of `date_created`, pass `_order_by=-activity_at` together with a `lead_id` filter.`contact_id`, `contact_id__in` and `user_id__in` require a single `lead_id`. If you can only see some leads, you must filter by `lead_id`, otherwise the request returns 403.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -117,18 +117,18 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note
             return requestInfo;
         }
         /// <summary>
-        /// To include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename` and `content_type`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin `https://app.close.com/go/file/`.A note can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a note.
+        /// Add a note to a lead and return the created note. Set `pinned` to `true` to pin it to the top of the lead&apos;s activity timeline.A note needs at least one of `note`, `note_html` or `attachments`. Send rich text in `note_html`, which takes precedence over `note`: the plain-text `note` is then derived from it.To attach a file, first upload it with the [Files API](https://developer.close.com/api/resources/files). Then add an object with `url`, `filename` and `content_type` to `attachments`. The `url` is the `download.url` from the Files API response, and must start with `https://app.close.com/go/file/`.Returns 400 if the lead or contact doesn&apos;t exist, if the contact isn&apos;t on the lead, if you can&apos;t see the lead, if `note_html` isn&apos;t valid rich text, if the attachments are invalid or add up to more than 25 MB, or if pinning the note would put more than 5 pinned activities on the lead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivity body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Note.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivity body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Note.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -148,7 +148,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note
             return new global::Soenneker.Close.OpenApiClient.Activity.Note.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List or filter all Note activities
+        /// List the notes in your organization, newest first. Filter by lead, contact, user or date. To sort by `activity_at` instead of `date_created`, pass `_order_by=-activity_at` together with a `lead_id` filter.`contact_id`, `contact_id__in` and `user_id__in` require a single `lead_id`. If you can only see some leads, you must filter by `lead_id`, otherwise the request returns 403.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
@@ -202,6 +202,16 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note
 #else
             [QueryParameter("contact_id")]
             public string ContactId { get; set; }
+#endif
+            /// <summary>Filter by a comma-separated list of multiple Contact IDs. Requires a single `lead_id`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("contact_id__in")]
+            public string? ContactIdIn { get; set; }
+#nullable restore
+#else
+            [QueryParameter("contact_id__in")]
+            public string ContactIdIn { get; set; }
 #endif
             /// <summary>Only include activities created in Close after this date or date and time. Can&apos;t be combined with `_order_by=-activity_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -273,9 +283,29 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note
             [QueryParameter("lead_id")]
             public string LeadId { get; set; }
 #endif
+            /// <summary>Filter by a comma-separated list of multiple Lead IDs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("lead_id__in")]
+            public string? LeadIdIn { get; set; }
+#nullable restore
+#else
+            [QueryParameter("lead_id__in")]
+            public string LeadIdIn { get; set; }
+#endif
             /// <summary>Number of results to return.</summary>
             [QueryParameter("_limit")]
             public int? Limit { get; set; }
+            /// <summary>Sort order: `-date_created` (the default) or `-activity_at`, newest first. `-activity_at` requires a single `lead_id` and can&apos;t be combined with the `date_created__*` filters. The `activity_at__*` filters require `-activity_at`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("_order_by")]
+            public string? OrderBy { get; set; }
+#nullable restore
+#else
+            [QueryParameter("_order_by")]
+            public string OrderBy { get; set; }
+#endif
             /// <summary>ID of your organization. Defaults to the organization of your API key or OAuth token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -289,16 +319,6 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note
             /// <summary>Number of results to skip before returning, for pagination. The maximum is 35,000 for some organizations.</summary>
             [QueryParameter("_skip")]
             public int? Skip { get; set; }
-            /// <summary>Filter by a comma-separated list of activity types, e.g. `Call`. Requires a single `lead_id`, or a `user_id` on endpoints for one activity type.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            [QueryParameter("_type")]
-            public string? Type { get; set; }
-#nullable restore
-#else
-            [QueryParameter("_type")]
-            public string Type { get; set; }
-#endif
             /// <summary>Filter by a comma-separated list of User IDs. Requires a single `lead_id`, unless the endpoint is for one activity type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -308,6 +328,33 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note
 #else
             [QueryParameter("user_id")]
             public string UserId { get; set; }
+#endif
+            /// <summary>Filter by a comma-separated list of multiple User IDs. Requires a single `lead_id`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("user_id__in")]
+            public string? UserIdIn { get; set; }
+#nullable restore
+#else
+            [QueryParameter("user_id__in")]
+            public string UserIdIn { get; set; }
+#endif
+        }
+        /// <summary>
+        /// Add a note to a lead and return the created note. Set `pinned` to `true` to pin it to the top of the lead&apos;s activity timeline.A note needs at least one of `note`, `note_html` or `attachments`. Send rich text in `note_html`, which takes precedence over `note`: the plain-text `note` is then derived from it.To attach a file, first upload it with the [Files API](https://developer.close.com/api/resources/files). Then add an object with `url`, `filename` and `content_type` to `attachments`. The `url` is the `download.url` from the Files API response, and must start with `https://app.close.com/go/file/`.Returns 400 if the lead or contact doesn&apos;t exist, if the contact isn&apos;t on the lead, if you can&apos;t see the lead, if `note_html` isn&apos;t valid rich text, if the attachments are invalid or add up to more than 25 MB, or if pinning the note would put more than 5 pinned activities on the lead.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class EmptyPathSegmentRequestBuilderPostQueryParameters 
+        {
+            /// <summary>Comma-separated list of fields to include in the response.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("_fields")]
+            public string? Fields { get; set; }
+#nullable restore
+#else
+            [QueryParameter("_fields")]
+            public string Fields { get; set; }
 #endif
         }
     }

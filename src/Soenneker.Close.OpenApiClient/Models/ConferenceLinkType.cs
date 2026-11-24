@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
-    /// <summary>The video conferencing service of a Meeting&apos;s link.</summary>
+    /// <summary>The video conferencing service the link is for.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ConferenceLinkType
     {

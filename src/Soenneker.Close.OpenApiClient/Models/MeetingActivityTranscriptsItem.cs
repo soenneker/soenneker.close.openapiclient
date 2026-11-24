@@ -33,10 +33,10 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The has_speaker_labels property</summary>
+        /// <summary>Whether the utterances are labeled with who said them. When `false`, `speaker_label` may be a placeholder such as `A` or `Unknown` instead of a name.</summary>
         public bool? HasSpeakerLabels { get => _explicitNullValueHasSpeakerLabels; set { _explicitNullValueHasSpeakerLabels = value; AdditionalData?.Remove("has_speaker_labels"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_speaker_labels"); else _explicitNullProperties?.Remove("has_speaker_labels"); } }
         private bool? _explicitNullValueHasSpeakerLabels = default!;
-        /// <summary>The id property</summary>
+        /// <summary>ID of the transcript, e.g. `transcript_abc123`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
@@ -46,7 +46,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
-        /// <summary>The speakers property</summary>
+        /// <summary>Talk time statistics for each speaker.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptSpeaker>? Speakers { get => _explicitNullValueSpeakers; set { _explicitNullValueSpeakers = value; AdditionalData?.Remove("speakers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speakers"); else _explicitNullProperties?.Remove("speakers"); } }
@@ -56,7 +56,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptSpeaker> Speakers { get => _explicitNullValueSpeakers; set { _explicitNullValueSpeakers = value; AdditionalData?.Remove("speakers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speakers"); else _explicitNullProperties?.Remove("speakers"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptSpeaker> _explicitNullValueSpeakers = default!;
 #endif
-        /// <summary>The summary_html property</summary>
+        /// <summary>AI-generated summary of the transcript as HTML, or `null` if there&apos;s no summary yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SummaryHtml { get => _explicitNullValueSummaryHtml; set { _explicitNullValueSummaryHtml = value; AdditionalData?.Remove("summary_html"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_html"); else _explicitNullProperties?.Remove("summary_html"); } }
@@ -66,7 +66,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string SummaryHtml { get => _explicitNullValueSummaryHtml; set { _explicitNullValueSummaryHtml = value; AdditionalData?.Remove("summary_html"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_html"); else _explicitNullProperties?.Remove("summary_html"); } }
         private string _explicitNullValueSummaryHtml = default!;
 #endif
-        /// <summary>The summary_text property</summary>
+        /// <summary>AI-generated summary of the transcript as plain text, or `null` if there&apos;s no summary yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SummaryText { get => _explicitNullValueSummaryText; set { _explicitNullValueSummaryText = value; AdditionalData?.Remove("summary_text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_text"); else _explicitNullProperties?.Remove("summary_text"); } }
@@ -76,7 +76,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string SummaryText { get => _explicitNullValueSummaryText; set { _explicitNullValueSummaryText = value; AdditionalData?.Remove("summary_text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_text"); else _explicitNullProperties?.Remove("summary_text"); } }
         private string _explicitNullValueSummaryText = default!;
 #endif
-        /// <summary>The utterances property</summary>
+        /// <summary>What was said, in order, one entry per utterance.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.MeetingTranscriptUtterance>? Utterances { get => _explicitNullValueUtterances; set { _explicitNullValueUtterances = value; AdditionalData?.Remove("utterances"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("utterances"); else _explicitNullProperties?.Remove("utterances"); } }

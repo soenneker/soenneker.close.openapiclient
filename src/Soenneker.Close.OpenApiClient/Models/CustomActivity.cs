@@ -79,12 +79,12 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The comment_summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary? CommentSummary { get => _explicitNullValueCommentSummary; set { _explicitNullValueCommentSummary = value; AdditionalData?.Remove("comment_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment_summary"); else _explicitNullProperties?.Remove("comment_summary"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary? _explicitNullValueCommentSummary = default!;
+        public global::Soenneker.Close.OpenApiClient.Models.CustomActivityCommentSummary? CommentSummary { get => _explicitNullValueCommentSummary; set { _explicitNullValueCommentSummary = value; AdditionalData?.Remove("comment_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment_summary"); else _explicitNullProperties?.Remove("comment_summary"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.CustomActivityCommentSummary? _explicitNullValueCommentSummary = default!;
 #nullable restore
 #else
-        public global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary CommentSummary { get => _explicitNullValueCommentSummary; set { _explicitNullValueCommentSummary = value; AdditionalData?.Remove("comment_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment_summary"); else _explicitNullProperties?.Remove("comment_summary"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary _explicitNullValueCommentSummary = default!;
+        public global::Soenneker.Close.OpenApiClient.Models.CustomActivityCommentSummary CommentSummary { get => _explicitNullValueCommentSummary; set { _explicitNullValueCommentSummary = value; AdditionalData?.Remove("comment_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment_summary"); else _explicitNullProperties?.Remove("comment_summary"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.CustomActivityCommentSummary _explicitNullValueCommentSummary = default!;
 #endif
         /// <summary>ID of the Contact the activity is with, or `null` if it isn&apos;t with a particular Contact.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -296,7 +296,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>(26)
             {
                 { "activity_at", n => { ActivityAt = n.GetDateTimeOffsetValue(); } },
-                { "comment_summary", n => { CommentSummary = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary>(global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary.CreateFromDiscriminatorValue); } },
+                { "comment_summary", n => { CommentSummary = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CustomActivityCommentSummary>(global::Soenneker.Close.OpenApiClient.Models.CustomActivityCommentSummary.CreateFromDiscriminatorValue); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "created_by_agent_id", n => { CreatedByAgentId = n.GetStringValue(); } },
@@ -331,7 +331,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("activity_at", ActivityAt);
-            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.ActivityBaseCommentSummary>("comment_summary", CommentSummary);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CustomActivityCommentSummary>("comment_summary", CommentSummary);
             writer.WriteStringValue("contact_id", ContactId);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteStringValue("created_by_agent_id", CreatedByAgentId);

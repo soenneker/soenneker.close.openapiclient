@@ -78,7 +78,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.</summary>
         public DateTimeOffset? ActivityAt { get => _explicitNullValueActivityAt; set { _explicitNullValueActivityAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activity_at"); else _explicitNullProperties?.Remove("activity_at"); } }
         private DateTimeOffset? _explicitNullValueActivityAt = default!;
-        /// <summary>Why an agent created the activity, e.g. `send_scheduling_link`, or `null` if no agent created it.</summary>
+        /// <summary>Why an agent created the activity (`send_scheduling_link`, `custom_agent_decision` or `voice_agent_callback`), or `null` if no agent created it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AgentActionReason { get => _explicitNullValueAgentActionReason; set { _explicitNullValueAgentActionReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_action_reason"); else _explicitNullProperties?.Remove("agent_action_reason"); } }
@@ -98,7 +98,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string AgentConfigId { get => _explicitNullValueAgentConfigId; set { _explicitNullValueAgentConfigId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_config_id"); else _explicitNullProperties?.Remove("agent_config_id"); } }
         private string _explicitNullValueAgentConfigId = default!;
 #endif
-        /// <summary>The attachments property</summary>
+        /// <summary>Files attached to the note.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.Attachment>? Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
@@ -128,7 +128,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
         private string _explicitNullValueCreatedBy = default!;
 #endif
-        /// <summary>ID of the agent that created the activity, or `null` if no agent created it.</summary>
+        /// <summary>ID of the agent that created the activity, e.g. `agentconfig_abc123`, or `null` if no agent created it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatedByAgentId { get => _explicitNullValueCreatedByAgentId; set { _explicitNullValueCreatedByAgentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by_agent_id"); else _explicitNullProperties?.Remove("created_by_agent_id"); } }
@@ -174,7 +174,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string LeadId { get => _explicitNullValueLeadId; set { _explicitNullValueLeadId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_id"); else _explicitNullProperties?.Remove("lead_id"); } }
         private string _explicitNullValueLeadId = default!;
 #endif
-        /// <summary>The note property</summary>
+        /// <summary>Plain-text content of the note. When the note has rich text, this is derived from `note_html`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Note { get => _explicitNullValueNote; set { _explicitNullValueNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note"); else _explicitNullProperties?.Remove("note"); } }
@@ -184,7 +184,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Note { get => _explicitNullValueNote; set { _explicitNullValueNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note"); else _explicitNullProperties?.Remove("note"); } }
         private string _explicitNullValueNote = default!;
 #endif
-        /// <summary>The note_html property</summary>
+        /// <summary>Rich-text content of the note as HTML. For a note that was written as plain text, this is generated from `note`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NoteHtml { get => _explicitNullValueNoteHtml; set { _explicitNullValueNoteHtml = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note_html"); else _explicitNullProperties?.Remove("note_html"); } }
@@ -194,7 +194,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string NoteHtml { get => _explicitNullValueNoteHtml; set { _explicitNullValueNoteHtml = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note_html"); else _explicitNullProperties?.Remove("note_html"); } }
         private string _explicitNullValueNoteHtml = default!;
 #endif
-        /// <summary>The note_mentions property</summary>
+        /// <summary>IDs of the users (`user_`) and groups (`group_`) mentioned in `note_html`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? NoteMentions { get => _explicitNullValueNoteMentions; set { _explicitNullValueNoteMentions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note_mentions"); else _explicitNullProperties?.Remove("note_mentions"); } }
@@ -214,16 +214,16 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string _explicitNullValueOrganizationId = default!;
 #endif
-        /// <summary>The pinned property</summary>
+        /// <summary>Whether the note is pinned to the top of the lead&apos;s activity timeline.</summary>
         public bool? Pinned { get => _explicitNullValuePinned; set { _explicitNullValuePinned = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned"); else _explicitNullProperties?.Remove("pinned"); } }
         private bool? _explicitNullValuePinned = default!;
-        /// <summary>The pinned_at property</summary>
+        /// <summary>When the note was pinned, or `null` if it isn&apos;t pinned.</summary>
         public DateTimeOffset? PinnedAt { get => _explicitNullValuePinnedAt; set { _explicitNullValuePinnedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned_at"); else _explicitNullProperties?.Remove("pinned_at"); } }
         private DateTimeOffset? _explicitNullValuePinnedAt = default!;
-        /// <summary>The source property</summary>
+        /// <summary>How the note was created, e.g. `ui` in the Close app or `api` through the API. `null` if the source isn&apos;t known.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.CreationSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CreationSource? _explicitNullValueSource = default!;
-        /// <summary>The title property</summary>
+        /// <summary>Title of the note, or `null` if it has no title.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }

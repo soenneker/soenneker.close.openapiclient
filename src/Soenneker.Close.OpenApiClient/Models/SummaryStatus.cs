@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
-    /// <summary>Status of an AI summary. `expired` means newer activity made the summary out of date.</summary>
+    /// <summary>Status of the summary.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SummaryStatus
     {

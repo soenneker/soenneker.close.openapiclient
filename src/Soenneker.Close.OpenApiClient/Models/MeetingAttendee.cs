@@ -33,7 +33,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The contact_id property</summary>
+        /// <summary>ID of the Contact with this email address, or `null` if no Contact matches.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ContactId { get => _explicitNullValueContactId; set { _explicitNullValueContactId = value; AdditionalData?.Remove("contact_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact_id"); else _explicitNullProperties?.Remove("contact_id"); } }
@@ -43,7 +43,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ContactId { get => _explicitNullValueContactId; set { _explicitNullValueContactId = value; AdditionalData?.Remove("contact_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact_id"); else _explicitNullProperties?.Remove("contact_id"); } }
         private string _explicitNullValueContactId = default!;
 #endif
-        /// <summary>The email property</summary>
+        /// <summary>Email address of the attendee.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; AdditionalData?.Remove("email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
@@ -53,10 +53,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; AdditionalData?.Remove("email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
         private string _explicitNullValueEmail = default!;
 #endif
-        /// <summary>The is_organizer property</summary>
+        /// <summary>Whether the attendee organized the Meeting.</summary>
         public bool? IsOrganizer { get => _explicitNullValueIsOrganizer; set { _explicitNullValueIsOrganizer = value; AdditionalData?.Remove("is_organizer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_organizer"); else _explicitNullProperties?.Remove("is_organizer"); } }
         private bool? _explicitNullValueIsOrganizer = default!;
-        /// <summary>The name property</summary>
+        /// <summary>Name of the attendee, if the calendar provides one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
@@ -66,17 +66,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
-        /// <summary>The status property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
-        private string? _explicitNullValueStatus = default!;
-#nullable restore
-#else
-        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
-        private string _explicitNullValueStatus = default!;
-#endif
-        /// <summary>The user_id property</summary>
+        /// <summary>The attendee&apos;s response to the invitation.</summary>
+        public global::Soenneker.Close.OpenApiClient.Models.EventAttendeeStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.EventAttendeeStatus? _explicitNullValueStatus = default!;
+        /// <summary>ID of the Close user with this email address, or `null` if the attendee isn&apos;t a user in your organization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; AdditionalData?.Remove("user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
@@ -115,7 +108,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "is_organizer", n => { IsOrganizer = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetStringValue(); } },
+                { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.EventAttendeeStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
             };
         }
@@ -130,7 +123,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("email", Email);
             writer.WriteBoolValue("is_organizer", IsOrganizer);
             writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.EventAttendeeStatus>("status", Status);
             writer.WriteStringValue("user_id", UserId);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

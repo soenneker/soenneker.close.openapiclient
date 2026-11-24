@@ -33,12 +33,12 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
         }
 
-        /// <summary>The activity_at property</summary>
+        /// <summary>When the note was logged, which sets its place in the lead&apos;s activity timeline. Defaults to the time the note is created.</summary>
         public DateTimeOffset? ActivityAt { get => _explicitNullValueActivityAt; set { _explicitNullValueActivityAt = value; AdditionalData?.Remove("activity_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activity_at"); else _explicitNullProperties?.Remove("activity_at"); } }
         private DateTimeOffset? _explicitNullValueActivityAt = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The attachments property</summary>
+        /// <summary>Files to attach to the note. Upload each file with the Files API first. The files can add up to 25 MB. On update, this list replaces the note&apos;s attachments.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.UpdateNoteActivityAttachmentsItem>? Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; AdditionalData?.Remove("attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
@@ -48,7 +48,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<global::Soenneker.Close.OpenApiClient.Models.UpdateNoteActivityAttachmentsItem> Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; AdditionalData?.Remove("attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.UpdateNoteActivityAttachmentsItem> _explicitNullValueAttachments = default!;
 #endif
-        /// <summary>The contact_id property</summary>
+        /// <summary>ID of the contact the note is about. The contact must belong to the note&apos;s lead. On update, set it to `null` to unlink the contact.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ContactId { get => _explicitNullValueContactId; set { _explicitNullValueContactId = value; AdditionalData?.Remove("contact_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact_id"); else _explicitNullProperties?.Remove("contact_id"); } }
@@ -58,7 +58,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ContactId { get => _explicitNullValueContactId; set { _explicitNullValueContactId = value; AdditionalData?.Remove("contact_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact_id"); else _explicitNullProperties?.Remove("contact_id"); } }
         private string _explicitNullValueContactId = default!;
 #endif
-        /// <summary>The note property</summary>
+        /// <summary>Plain-text content of the note. Ignored when `note_html` is set, since `note` is then derived from `note_html`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Note { get => _explicitNullValueNote; set { _explicitNullValueNote = value; AdditionalData?.Remove("note"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note"); else _explicitNullProperties?.Remove("note"); } }
@@ -68,7 +68,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Note { get => _explicitNullValueNote; set { _explicitNullValueNote = value; AdditionalData?.Remove("note"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note"); else _explicitNullProperties?.Remove("note"); } }
         private string _explicitNullValueNote = default!;
 #endif
-        /// <summary>The note_html property</summary>
+        /// <summary>Rich-text content of the note as HTML. Takes precedence over `note`. To mention a user or group, add an element like `&lt;span data-type=&quot;mention&quot; data-id=&quot;user_...&quot; class=&quot;mention&quot;&gt;@Name&lt;/span&gt;`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NoteHtml { get => _explicitNullValueNoteHtml; set { _explicitNullValueNoteHtml = value; AdditionalData?.Remove("note_html"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note_html"); else _explicitNullProperties?.Remove("note_html"); } }
@@ -78,10 +78,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string NoteHtml { get => _explicitNullValueNoteHtml; set { _explicitNullValueNoteHtml = value; AdditionalData?.Remove("note_html"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note_html"); else _explicitNullProperties?.Remove("note_html"); } }
         private string _explicitNullValueNoteHtml = default!;
 #endif
-        /// <summary>The pinned property</summary>
+        /// <summary>Whether to pin the note to the top of the lead&apos;s activity timeline. A lead can have at most 5 pinned activities.</summary>
         public bool? Pinned { get => _explicitNullValuePinned; set { _explicitNullValuePinned = value; AdditionalData?.Remove("pinned"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned"); else _explicitNullProperties?.Remove("pinned"); } }
         private bool? _explicitNullValuePinned = default!;
-        /// <summary>The title property</summary>
+        /// <summary>Title of the note. An empty title is saved as `null`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; AdditionalData?.Remove("title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }

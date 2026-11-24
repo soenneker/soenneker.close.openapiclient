@@ -22,7 +22,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/meeting/{?_fields*,_limit*,_skip*,_type*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,organization_id*,user_id*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/meeting/{?_fields*,_limit*,_order_by*,_skip*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,contact_id__in*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,lead_id__in*,organization_id*,provider_calendar_event_id*,provider_calendar_id*,provider_calendar_type*,starts_at*,starts_at__gte*,starts_at__lt*,user_id*,user_id__in*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/meeting/{?_fields*,_limit*,_skip*,_type*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,organization_id*,user_id*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/meeting/{?_fields*,_limit*,_order_by*,_skip*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,contact_id__in*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,lead_id__in*,organization_id*,provider_calendar_event_id*,provider_calendar_id*,provider_calendar_type*,starts_at*,starts_at__gte*,starts_at__lt*,user_id*,user_id__in*}", rawUrl)
         {
         }
         /// <summary>
-        /// List or filter all Meeting activities
+        /// List Meeting activities, newest first.Results are paginated with `_limit` (at most 100) and `_skip`. Use filters such as `lead_id` or the date filters to narrow down the results. Transcripts are not loaded by default. To load them, pass `transcripts` in `_fields`. When you do, a page returns at most 10 Meetings.`user_id__in` can only be used together with a single `lead_id`. `contact_id` and `contact_id__in` need a single `lead_id` or a single `user_id`. `user_id` on its own doesn&apos;t need one. If your lead visibility is restricted, `lead_id` is required.By default, Meetings are sorted by `date_created`. To sort by `activity_at` (when the Meeting starts), pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.To find the Meetings for a Google or Microsoft calendar event, pass its ID in `provider_calendar_event_id`. You can narrow down the results with `provider_calendar_id`, `provider_calendar_type` and the `starts_at` filters, for example to find one occurrence of a recurring event. These filters can only be used together with `provider_calendar_event_id`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List or filter all Meeting activities
+        /// List Meeting activities, newest first.Results are paginated with `_limit` (at most 100) and `_skip`. Use filters such as `lead_id` or the date filters to narrow down the results. Transcripts are not loaded by default. To load them, pass `transcripts` in `_fields`. When you do, a page returns at most 10 Meetings.`user_id__in` can only be used together with a single `lead_id`. `contact_id` and `contact_id__in` need a single `lead_id` or a single `user_id`. `user_id` on its own doesn&apos;t need one. If your lead visibility is restricted, `lead_id` is required.By default, Meetings are sorted by `date_created`. To sort by `activity_at` (when the Meeting starts), pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.To find the Meetings for a Google or Microsoft calendar event, pass its ID in `provider_calendar_event_id`. You can narrow down the results with `provider_calendar_id`, `provider_calendar_type` and the `starts_at` filters, for example to find one occurrence of a recurring event. These filters can only be used together with `provider_calendar_event_id`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -93,7 +93,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting
             return new global::Soenneker.Close.OpenApiClient.Activity.Meeting.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List or filter all Meeting activities
+        /// List Meeting activities, newest first.Results are paginated with `_limit` (at most 100) and `_skip`. Use filters such as `lead_id` or the date filters to narrow down the results. Transcripts are not loaded by default. To load them, pass `transcripts` in `_fields`. When you do, a page returns at most 10 Meetings.`user_id__in` can only be used together with a single `lead_id`. `contact_id` and `contact_id__in` need a single `lead_id` or a single `user_id`. `user_id` on its own doesn&apos;t need one. If your lead visibility is restricted, `lead_id` is required.By default, Meetings are sorted by `date_created`. To sort by `activity_at` (when the Meeting starts), pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.To find the Meetings for a Google or Microsoft calendar event, pass its ID in `provider_calendar_event_id`. You can narrow down the results with `provider_calendar_id`, `provider_calendar_type` and the `starts_at` filters, for example to find one occurrence of a recurring event. These filters can only be used together with `provider_calendar_event_id`.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
@@ -147,6 +147,16 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting
 #else
             [QueryParameter("contact_id")]
             public string ContactId { get; set; }
+#endif
+            /// <summary>Filter by a comma-separated list of multiple Contact IDs. Requires a single `lead_id`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("contact_id__in")]
+            public string? ContactIdIn { get; set; }
+#nullable restore
+#else
+            [QueryParameter("contact_id__in")]
+            public string ContactIdIn { get; set; }
 #endif
             /// <summary>Only include activities created in Close after this date or date and time. Can&apos;t be combined with `_order_by=-activity_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -218,9 +228,29 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting
             [QueryParameter("lead_id")]
             public string LeadId { get; set; }
 #endif
+            /// <summary>Filter by a comma-separated list of multiple Lead IDs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("lead_id__in")]
+            public string? LeadIdIn { get; set; }
+#nullable restore
+#else
+            [QueryParameter("lead_id__in")]
+            public string LeadIdIn { get; set; }
+#endif
             /// <summary>Number of results to return. When `_fields` includes `transcripts`, larger values are treated as 10.</summary>
             [QueryParameter("_limit")]
             public int? Limit { get; set; }
+            /// <summary>Sort order: `-date_created` (the default) or `-activity_at`, newest first. `-activity_at` requires a single `lead_id` and can&apos;t be combined with the `date_created__*` filters. The `activity_at__*` filters require `-activity_at`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("_order_by")]
+            public string? OrderBy { get; set; }
+#nullable restore
+#else
+            [QueryParameter("_order_by")]
+            public string OrderBy { get; set; }
+#endif
             /// <summary>ID of your organization. Defaults to the organization of your API key or OAuth token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -231,19 +261,41 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting
             [QueryParameter("organization_id")]
             public string OrganizationId { get; set; }
 #endif
+            /// <summary>Only include Meetings for this Google or Microsoft calendar event ID. A recurring event&apos;s ID matches the Meetings for all of its occurrences; use the `starts_at` filters to narrow them down.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("provider_calendar_event_id")]
+            public string? ProviderCalendarEventId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("provider_calendar_event_id")]
+            public string ProviderCalendarEventId { get; set; }
+#endif
+            /// <summary>Only include Meetings from this Google or Microsoft calendar. Requires `provider_calendar_event_id`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("provider_calendar_id")]
+            public string? ProviderCalendarId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("provider_calendar_id")]
+            public string ProviderCalendarId { get; set; }
+#endif
+            /// <summary>Only include Meetings synced from this calendar provider. Requires `provider_calendar_event_id`.</summary>
+            [QueryParameter("provider_calendar_type")]
+            public global::Soenneker.Close.OpenApiClient.Models.ProviderCalendarType? ProviderCalendarType { get; set; }
             /// <summary>Number of results to skip before returning, for pagination. The maximum is 35,000 for some organizations.</summary>
             [QueryParameter("_skip")]
             public int? Skip { get; set; }
-            /// <summary>Filter by a comma-separated list of activity types, e.g. `Call`. Requires a single `lead_id`, or a `user_id` on endpoints for one activity type.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            [QueryParameter("_type")]
-            public string? Type { get; set; }
-#nullable restore
-#else
-            [QueryParameter("_type")]
-            public string Type { get; set; }
-#endif
+            /// <summary>Only include Meetings that start at exactly this date and time, e.g. one occurrence of a recurring event. Requires `provider_calendar_event_id`.</summary>
+            [QueryParameter("starts_at")]
+            public DateTimeOffset? StartsAt { get; set; }
+            /// <summary>Only include Meetings that start at or after this date and time. Requires `provider_calendar_event_id`.</summary>
+            [QueryParameter("starts_at__gte")]
+            public DateTimeOffset? StartsAtGte { get; set; }
+            /// <summary>Only include Meetings that start before this date and time. Requires `provider_calendar_event_id`.</summary>
+            [QueryParameter("starts_at__lt")]
+            public DateTimeOffset? StartsAtLt { get; set; }
             /// <summary>Filter by a comma-separated list of User IDs. Requires a single `lead_id`, unless the endpoint is for one activity type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -253,6 +305,16 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting
 #else
             [QueryParameter("user_id")]
             public string UserId { get; set; }
+#endif
+            /// <summary>Filter by a comma-separated list of multiple User IDs. Requires a single `lead_id`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("user_id__in")]
+            public string? UserIdIn { get; set; }
+#nullable restore
+#else
+            [QueryParameter("user_id__in")]
+            public string UserIdIn { get; set; }
 #endif
         }
     }

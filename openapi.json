@@ -772,6 +772,7 @@
           "activities.calls"
         ],
         "summary": "List or filter all Call activities",
+        "description": "List call activities, newest first. Custom field values are returned as `custom.{custom_field_id}` keys.\n\nResults are paginated with `_limit` (at most 100) and `_skip`. Use filters such as `lead_id`, `user_id` or the date filters to narrow down the results.\n\n`contact_id` and `contact_id__in` can only be used together with a single `lead_id` or a single `user_id`. `user_id__in` can only be used together with a single `lead_id`. If you don't have the \"View all Leads\" permission, `lead_id` is required.\n\nBy default, calls are sorted by `date_created`. To sort by `activity_at` (when the call happened), pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.",
         "parameters": [
           {
             "in": "query",
@@ -811,9 +812,6 @@
             "$ref": "#/components/parameters/ActivityFilters_OrganizationIdParam"
           },
           {
-            "$ref": "#/components/parameters/ActivityFilters_TypeParam"
-          },
-          {
             "$ref": "#/components/parameters/ActivityFilters_DateCreatedGteParam"
           },
           {
@@ -836,6 +834,45 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "in": "query",
+            "name": "lead_id__in",
+            "required": false,
+            "description": "Filter by a comma-separated list of multiple Lead IDs.",
+            "schema": {
+              "title": "Lead ID (In)",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "user_id__in",
+            "required": false,
+            "description": "Filter by a comma-separated list of multiple User IDs. Requires a single `lead_id`.",
+            "schema": {
+              "title": "User ID (In)",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "contact_id__in",
+            "required": false,
+            "description": "Filter by a comma-separated list of multiple Contact IDs. Requires a single `lead_id` or a single `user_id`.",
+            "schema": {
+              "title": "Contact ID (In)",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "_order_by",
+            "required": false,
+            "description": "Sort order: `-date_created` (the default) or `-activity_at`, newest first. `-activity_at` requires a single `lead_id` and can't be combined with the `date_created__*` filters. The `activity_at__*` filters require `-activity_at`.",
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "$ref": "#/components/parameters/FieldsParam"
@@ -1021,11 +1058,13 @@
           "activities.calls"
         ],
         "summary": "Get a single Call activity",
+        "description": "Fetch a single call activity by its ID. Custom field values are returned as `custom.{custom_field_id}` keys. Returns 404 if no call in your organization has that ID, and 403 if you can't see the call's lead.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the call activity, prefixed with `acti_`.",
             "schema": {
               "type": "string"
             }
@@ -3051,7 +3090,7 @@
           "activities.email_threads"
         ],
         "summary": "List or filter all EmailThread activities",
-        "description": "You'll get one object per email conversation (generally grouped by subject).",
+        "description": "List email threads. A thread groups the emails on a lead that belong to one conversation. An email joins a thread when it shares a `Message-ID` with the thread's emails, for example a reply, or when it has the same subject (ignoring prefixes such as `Re:`) and was sent around the same time.\n\nEach thread includes `latest_emails`, previews of its 5 most recent emails. To get every email in a thread, fetch the thread by its ID.\n\nThreads are sorted by `date_created`, newest first. A thread's `date_created` and `activity_at` are the time of its most recent email, so a thread moves to the top when it gets a new email.\n\n`user_id__in` requires a single `lead_id`. To sort by `activity_at`, pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.\n\nIf you can only see some leads, you must filter by `lead_id`, otherwise the request returns 403.",
         "parameters": [
           {
             "in": "query",
@@ -3091,9 +3130,6 @@
             "$ref": "#/components/parameters/ActivityFilters_OrganizationIdParam"
           },
           {
-            "$ref": "#/components/parameters/ActivityFilters_TypeParam"
-          },
-          {
             "$ref": "#/components/parameters/ActivityFilters_DateCreatedGteParam"
           },
           {
@@ -3118,6 +3154,35 @@
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
           },
           {
+            "in": "query",
+            "name": "lead_id__in",
+            "required": false,
+            "description": "Filter by a comma-separated list of multiple Lead IDs.",
+            "schema": {
+              "title": "Lead ID (In)",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "user_id__in",
+            "required": false,
+            "description": "Filter by a comma-separated list of multiple User IDs. Requires a single `lead_id`.",
+            "schema": {
+              "title": "User ID (In)",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "_order_by",
+            "required": false,
+            "description": "Sort order: `-date_created` (the default) or `-activity_at`, newest first. `-activity_at` requires a single `lead_id` and can't be combined with the `date_created__*` filters. The `activity_at__*` filters require `-activity_at`.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/FieldsParam"
           }
         ],
@@ -3129,30 +3194,26 @@
                   "data": [
                     {
                       "_type": "EmailThread",
-                      "activity_at": "2014-12-07T04:10:46+00:00",
+                      "activity_at": "2014-12-07T04:10:46.001000+00:00",
                       "contact_id": null,
                       "created_by": null,
                       "created_by_name": null,
-                      "date_created": "2014-12-07T04:10:46+00:00",
+                      "date_created": "2014-12-07T04:10:46.001000+00:00",
                       "date_updated": "2014-12-07T04:11:00.476000+00:00",
-                      "emails": [
+                      "id": "acti_giHHCV8uOniX2wuFmKY14VWqOEq5zXxWi6FQL88MoNH",
+                      "importance": {
+                        "reason": "contains-manual-message",
+                        "type": "important"
+                      },
+                      "latest_emails": [
                         {
-                          "_type": "Email",
-                          "activity_at": "2014-12-07T04:10:46+00:00",
-                          "attachments": [],
                           "bcc": [],
-                          "body_preview": "Hey Karen,\r\n\r\nThanks for signing up for Close. My name is Steli Efti and I'm\r\nthe CEO of Close. Please let me know if I can do anything to\r\nhelp make your trial into a massive success.\r\n\r\nAdditi",
-                          "bulk_email_action_id": null,
+                          "body_preview": "Hey Karen, Thanks for signing up for Close. My name is Steli Efti and I'm the CEO of Close. Please let me know if I can do anything to help make your trial into a massive success.",
                           "cc": [],
-                          "contact_id": "cont_alksdjfalksdfj8NzQM56BzBZ8X2GWaowuifsOeWyeJ",
-                          "created_by": null,
-                          "created_by_name": null,
                           "date_created": "2014-12-07T04:10:46+00:00",
-                          "date_scheduled": null,
                           "date_sent": "2014-12-07T04:10:46+00:00",
-                          "date_updated": "2014-12-07T04:11:00.459000+00:00",
+                          "date_updated": "2014-12-07T04:10:46+00:00",
                           "direction": "outgoing",
-                          "email_account_id": "emailacct_aslkdjfalksjdfCmLShmuvlPMFy7Ze61FVeEj1VXnlG",
                           "envelope": {
                             "bcc": [],
                             "cc": [],
@@ -3164,7 +3225,8 @@
                               }
                             ],
                             "in_reply_to": null,
-                            "message_id": "<5483d346af89c_c0031a60fdc11130711c@ns5001546.ip-192-95-32.net.mail>",
+                            "is_autoreply": false,
+                            "message_id": "<acti_sPS0I3TiLxjttbY3xnbTT0JQsZLb60s73WZHc16TpE9@mail.example.com>",
                             "reply_to": [],
                             "sender": [
                               {
@@ -3176,61 +3238,30 @@
                             "to": [
                               {
                                 "email": "karen@example.com",
-                                "name": null
+                                "name": ""
                               }
                             ]
                           },
-                          "followup_sequence_add_cc_bcc": false,
-                          "followup_sequence_delay": null,
-                          "has_reply": false,
-                          "id": "acti_12342j3451lk25iH1Rrtk9LWxwpUZmHygjww4c5iFw4",
-                          "in_reply_to_id": null,
-                          "lead_id": "lead_5cIz6MHYMYEJLDTJRzoyfLHAMymuWlPweEMvslHoBf5",
-                          "message_ids": [
-                            "<5483d346af89c_c0031a60fdc11130711c@ns5001546.ip-192-95-32.net.mail>"
-                          ],
-                          "need_smtp_credentials": false,
-                          "opens": [],
+                          "has_attachments": false,
+                          "id": "acti_sPS0I3TiLxjttbY3xnbTT0JQsZLb60s73WZHc16TpE9",
                           "opens_summary": null,
-                          "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                          "references": [],
                           "send_as_id": null,
-                          "send_attempts": [],
                           "sender": "Steli Efti <steli@close.com>",
-                          "sequence_id": "seq_1BTljGuCooX0nbFoPihl07",
-                          "sequence_name": "My Sequence",
-                          "sequence_subscription_id": "sub_wRlAku35U53xEV7PcNY3Qo",
                           "status": "sent",
                           "subject": "Excited to have you on board!",
-                          "template_id": null,
-                          "template_name": null,
-                          "thread_id": "acti_giHHCV8uOniX2wuFmKY14VWqOEq5zXxWi6FQL88MoNH",
                           "to": [
                             "karen@example.com"
                           ],
-                          "updated_by": null,
-                          "updated_by_name": null,
-                          "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                          "user_name": "Steli Efti",
-                          "users": []
+                          "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
                         },
                         {
-                          "_type": "Email",
-                          "activity_at": "2014-11-28T17:26:00+00:00",
-                          "attachments": [],
                           "bcc": [],
-                          "body_preview": "Hey Carlos,\r\n\r\nThanks for signing up for Close. My name is Steli Efti and I'm\r\nthe CEO of Close. Please let me know if I can do anything to\r\nhelp make your trial into a massive success.\r\n\r\nAddit",
-                          "bulk_email_action_id": null,
+                          "body_preview": "Hey Carlos, Thanks for signing up for Close. My name is Steli Efti and I'm the CEO of Close. Please let me know if I can do anything to help make your trial into a massive success.",
                           "cc": [],
-                          "contact_id": "cont_Hw4160e5c61QoFpEkvbUeGYJ0uDMLODYfrBRLWDFHh6",
-                          "created_by": null,
-                          "created_by_name": null,
                           "date_created": "2014-11-28T17:26:00+00:00",
-                          "date_scheduled": null,
                           "date_sent": "2014-11-28T17:26:00+00:00",
-                          "date_updated": "2014-11-28T17:26:47.740000+00:00",
+                          "date_updated": "2014-11-28T17:26:00+00:00",
                           "direction": "outgoing",
-                          "email_account_id": "emailacct_eLq7Zxa3CPKgapCmLShmuvlPMFy7Ze61FVeEj1VXnlG",
                           "envelope": {
                             "bcc": [],
                             "cc": [],
@@ -3242,7 +3273,8 @@
                               }
                             ],
                             "in_reply_to": null,
-                            "message_id": "<5478b0283055a_724e3fb94e13cb5c60513397@ns5001376.ip-192-95-32.net.mail>",
+                            "is_autoreply": false,
+                            "message_id": "<acti_3ANoOJE7DkTwxG9s1TY3SP3VhiJFeua3gt85nuzb0by@mail.example.com>",
                             "reply_to": [],
                             "sender": [
                               {
@@ -3253,62 +3285,31 @@
                             "subject": "Excited to have you on board!",
                             "to": [
                               {
-                                "email": "carlos@abc.com",
-                                "name": null
+                                "email": "carlos@example.com",
+                                "name": ""
                               }
                             ]
                           },
-                          "followup_sequence_add_cc_bcc": false,
-                          "followup_sequence_delay": null,
-                          "has_reply": false,
+                          "has_attachments": false,
                           "id": "acti_3ANoOJE7DkTwxG9s1TY3SP3VhiJFeua3gt85nuzb0by",
-                          "in_reply_to_id": null,
-                          "lead_id": "lead_5cIz6MHYMYEJLDTJRzoyfLHAMymuWlPweEMvslHoBf5",
-                          "message_ids": [
-                            "<5478b0283055a_724e3fb94e13cb5c60513397@ns5001376.ip-192-95-32.net.mail>"
-                          ],
-                          "need_smtp_credentials": false,
-                          "opens": [],
                           "opens_summary": null,
-                          "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                          "references": [],
                           "send_as_id": null,
-                          "send_attempts": [],
                           "sender": "Steli Efti <steli@close.com>",
-                          "sequence_id": null,
-                          "sequence_name": null,
-                          "sequence_subscription_id": null,
                           "status": "sent",
                           "subject": "Excited to have you on board!",
-                          "template_id": null,
-                          "template_name": null,
-                          "thread_id": "acti_giHHCV8uOniX2wuFmKY14VWqOEq5zXxWi6FQL88MoNH",
                           "to": [
-                            "carlos@abc.com"
+                            "carlos@example.com"
                           ],
-                          "updated_by": null,
-                          "updated_by_name": null,
-                          "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                          "user_name": "Steli Efti",
-                          "users": []
+                          "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
                         },
                         {
-                          "_type": "Email",
-                          "activity_at": "2014-11-26T10:15:44+00:00",
-                          "attachments": [],
                           "bcc": [],
-                          "body_preview": "Hey TrueAccord,\r\n\r\nThanks for signing up for Close. My name is Steli Efti and I'm\r\nthe CEO of Close. Please let me know if I can do anything to\r\nhelp make your trial into a massive success.\r\n\r\nA",
-                          "bulk_email_action_id": null,
+                          "body_preview": "Hey Ohad, Thanks for signing up for Close. My name is Steli Efti and I'm the CEO of Close. Please let me know if I can do anything to help make your trial into a massive success.",
                           "cc": [],
-                          "contact_id": "cont_6d0dRVHWGMvsJLFjAms1xTL0LCeQoRVWyZtpQs0Y98S",
-                          "created_by": null,
-                          "created_by_name": null,
                           "date_created": "2014-11-26T10:15:44+00:00",
-                          "date_scheduled": null,
                           "date_sent": "2014-11-26T10:15:44+00:00",
-                          "date_updated": "2014-11-26T10:17:58.234000+00:00",
+                          "date_updated": "2014-11-26T10:15:44+00:00",
                           "direction": "outgoing",
-                          "email_account_id": "emailacct_eLq7Zxa3CPKgapCmLShmuvlPMFy7Ze61FVeEj1VXnlG",
                           "envelope": {
                             "bcc": [],
                             "cc": [],
@@ -3320,7 +3321,8 @@
                               }
                             ],
                             "in_reply_to": null,
-                            "message_id": "<5475a850a030a_620f1ba3e246281806c1@ns5000834.ip-142-4-219.net.mail>",
+                            "is_autoreply": false,
+                            "message_id": "<acti_lcAFcE1n7vbkjtlcwpSSLGpheZKBSrmrPFcCM9S13q0@mail.example.com>",
                             "reply_to": [],
                             "sender": [
                               {
@@ -3331,47 +3333,24 @@
                             "subject": "Excited to have you on board!",
                             "to": [
                               {
-                                "email": "ohad@trueaccord.com",
-                                "name": null
+                                "email": "ohad@example.com",
+                                "name": ""
                               }
                             ]
                           },
-                          "followup_sequence_add_cc_bcc": false,
-                          "followup_sequence_delay": null,
-                          "has_reply": false,
+                          "has_attachments": false,
                           "id": "acti_lcAFcE1n7vbkjtlcwpSSLGpheZKBSrmrPFcCM9S13q0",
-                          "in_reply_to_id": null,
-                          "lead_id": "lead_5cIz6MHYMYEJLDTJRzoyfLHAMymuWlPweEMvslHoBf5",
-                          "message_ids": [
-                            "<5475a850a030a_620f1ba3e246281806c1@ns5000834.ip-142-4-219.net.mail>"
-                          ],
-                          "need_smtp_credentials": false,
-                          "opens": [],
                           "opens_summary": null,
-                          "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                          "references": [],
                           "send_as_id": null,
-                          "send_attempts": [],
                           "sender": "Steli Efti <steli@close.com>",
-                          "sequence_id": null,
-                          "sequence_name": null,
-                          "sequence_subscription_id": null,
                           "status": "sent",
                           "subject": "Excited to have you on board!",
-                          "template_id": null,
-                          "template_name": null,
-                          "thread_id": "acti_giHHCV8uOniX2wuFmKY14VWqOEq5zXxWi6FQL88MoNH",
                           "to": [
-                            "ohad@abc.com"
+                            "ohad@example.com"
                           ],
-                          "updated_by": null,
-                          "updated_by_name": null,
-                          "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                          "user_name": "Steli Efti",
-                          "users": []
+                          "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
                         }
                       ],
-                      "id": "acti_giHHCV8uOnialksjdflaksjdflq5zXxWi6FQL88MoNH",
                       "latest_normalized_subject": "Excited to have you on board!",
                       "lead_id": "lead_5cIz6MHYMYEJLDTJRzoyfLHAMymuWlPweEMvslHoBf5",
                       "n_emails": 3,
@@ -3382,6 +3361,7 @@
                           "name": "Steli Efti"
                         }
                       ],
+                      "summary": null,
                       "updated_by": null,
                       "updated_by_name": null,
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
@@ -3439,11 +3419,22 @@
           "activities.email_threads"
         ],
         "summary": "Get a single EmailThread activity",
+        "description": "Fetch a single email thread with all of its emails in `emails`, most recent first. Email bodies are left out unless you ask for them with `expand_emails`.\n\nReturns 403 if you can't see the thread's lead, and 404 if your organization has no email thread with this ID.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the email thread, prefixed with `acti_`.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "expand_emails",
+            "required": false,
+            "description": "Comma-separated list of the emails to include bodies for (`body_text`, `body_html`, `body_text_quoted` and `body_html_quoted`): `all`, `first` (the oldest email), `last` or `latest` (the most recent email), `unread` (emails that are new in your Close inbox) and `drafts`.",
             "schema": {
               "type": "string"
             }
@@ -3458,11 +3449,11 @@
               "application/json": {
                 "example": {
                   "_type": "EmailThread",
-                  "activity_at": "2014-12-07T04:10:46+00:00",
+                  "activity_at": "2014-12-07T04:10:46.001000+00:00",
                   "contact_id": null,
                   "created_by": null,
                   "created_by_name": null,
-                  "date_created": "2014-12-07T04:10:46+00:00",
+                  "date_created": "2014-12-07T04:10:46.001000+00:00",
                   "date_updated": "2014-12-07T04:11:00.476000+00:00",
                   "emails": [
                     {
@@ -3473,7 +3464,7 @@
                       "body_preview": "Hey Karen,\r\n\r\nThanks for signing up for Close. My name is Steli Efti and I'm\r\nthe CEO of Close. Please let me know if I can do anything to\r\nhelp make your trial into a massive success.\r\n\r\nAdditi",
                       "bulk_email_action_id": null,
                       "cc": [],
-                      "contact_id": "cont_alksdjfalksdfj8NzQM56BzBZ8X2GWaowuifsOeWyeJ",
+                      "contact_id": "cont_g2vWNTZUL8XGoHUl0t1iALKBsCxixwPtz52E4T9akBH",
                       "created_by": null,
                       "created_by_name": null,
                       "date_created": "2014-12-07T04:10:46+00:00",
@@ -3481,7 +3472,7 @@
                       "date_sent": "2014-12-07T04:10:46+00:00",
                       "date_updated": "2014-12-07T04:11:00.459000+00:00",
                       "direction": "outgoing",
-                      "email_account_id": "emailacct_aslkdjfalksjdfCmLShmuvlPMFy7Ze61FVeEj1VXnlG",
+                      "email_account_id": "emailacct_eLq7Zxa3CPKgapCmLShmuvlPMFy7Ze61FVeEj1VXnlG",
                       "envelope": {
                         "bcc": [],
                         "cc": [],
@@ -3512,7 +3503,7 @@
                       "followup_sequence_add_cc_bcc": false,
                       "followup_sequence_delay": null,
                       "has_reply": false,
-                      "id": "acti_12342j3451lk25iH1Rrtk9LWxwpUZmHygjww4c5iFw4",
+                      "id": "acti_sPS0I3TiLxjttbY3xnbTT0JQsZLb60s73WZHc16TpE9",
                       "in_reply_to_id": null,
                       "lead_id": "lead_5cIz6MHYMYEJLDTJRzoyfLHAMymuWlPweEMvslHoBf5",
                       "message_ids": [
@@ -3541,7 +3532,9 @@
                       "updated_by_name": null,
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "user_name": "Steli Efti",
-                      "users": []
+                      "users": [
+                        "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                      ]
                     },
                     {
                       "_type": "Email",
@@ -3582,7 +3575,7 @@
                         "subject": "Excited to have you on board!",
                         "to": [
                           {
-                            "email": "carlos@abc.com",
+                            "email": "carlos@example.com",
                             "name": null
                           }
                         ]
@@ -3613,20 +3606,22 @@
                       "template_name": null,
                       "thread_id": "acti_giHHCV8uOniX2wuFmKY14VWqOEq5zXxWi6FQL88MoNH",
                       "to": [
-                        "carlos@abc.com"
+                        "carlos@example.com"
                       ],
                       "updated_by": null,
                       "updated_by_name": null,
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "user_name": "Steli Efti",
-                      "users": []
+                      "users": [
+                        "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                      ]
                     },
                     {
                       "_type": "Email",
                       "activity_at": "2014-11-26T10:15:44+00:00",
                       "attachments": [],
                       "bcc": [],
-                      "body_preview": "Hey TrueAccord,\r\n\r\nThanks for signing up for Close. My name is Steli Efti and I'm\r\nthe CEO of Close. Please let me know if I can do anything to\r\nhelp make your trial into a massive success.\r\n\r\nA",
+                      "body_preview": "Hey Ohad,\r\n\r\nThanks for signing up for Close. My name is Steli Efti and I'm\r\nthe CEO of Close. Please let me know if I can do anything to\r\nhelp make your trial into a massive success.\r\n\r\nAdditio",
                       "bulk_email_action_id": null,
                       "cc": [],
                       "contact_id": "cont_6d0dRVHWGMvsJLFjAms1xTL0LCeQoRVWyZtpQs0Y98S",
@@ -3660,7 +3655,7 @@
                         "subject": "Excited to have you on board!",
                         "to": [
                           {
-                            "email": "ohad@trueaccord.com",
+                            "email": "ohad@example.com",
                             "name": null
                           }
                         ]
@@ -3691,16 +3686,22 @@
                       "template_name": null,
                       "thread_id": "acti_giHHCV8uOniX2wuFmKY14VWqOEq5zXxWi6FQL88MoNH",
                       "to": [
-                        "ohad@abc.com"
+                        "ohad@example.com"
                       ],
                       "updated_by": null,
                       "updated_by_name": null,
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "user_name": "Steli Efti",
-                      "users": []
+                      "users": [
+                        "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA"
+                      ]
                     }
                   ],
-                  "id": "acti_giHHCV8uOnialksjdflaksjdflq5zXxWi6FQL88MoNH",
+                  "id": "acti_giHHCV8uOniX2wuFmKY14VWqOEq5zXxWi6FQL88MoNH",
+                  "importance": {
+                    "reason": "contains-manual-message",
+                    "type": "important"
+                  },
                   "latest_normalized_subject": "Excited to have you on board!",
                   "lead_id": "lead_5cIz6MHYMYEJLDTJRzoyfLHAMymuWlPweEMvslHoBf5",
                   "n_emails": 3,
@@ -3711,6 +3712,7 @@
                       "name": "Steli Efti"
                     }
                   ],
+                  "summary": null,
                   "updated_by": null,
                   "updated_by_name": null,
                   "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
@@ -3749,12 +3751,13 @@
           "activities.email_threads"
         ],
         "summary": "Delete an EmailThread activity",
-        "description": "This will also delete all the email activities belonging to this thread.",
+        "description": "Delete an email thread and every email in it. Returns an empty object on success.\n\nIf the thread's `user_id` is you, you need permission to delete your own activities. Otherwise you need permission to manage other users' activities. Returns 400 if you don't have it, 403 if you can't see the thread's lead, and 404 if your organization has no email thread with this ID.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the email thread, prefixed with `acti_`.",
             "schema": {
               "type": "string"
             }
@@ -3764,6 +3767,7 @@
           "200": {
             "content": {
               "application/json": {
+                "example": {},
                 "schema": {
                   "$ref": "#/components/schemas/EmptyResponse"
                 }
@@ -4618,6 +4622,7 @@
           "activities.meetings"
         ],
         "summary": "List or filter all Meeting activities",
+        "description": "List Meeting activities, newest first.\n\nResults are paginated with `_limit` (at most 100) and `_skip`. Use filters such as `lead_id` or the date filters to narrow down the results. Transcripts are not loaded by default. To load them, pass `transcripts` in `_fields`. When you do, a page returns at most 10 Meetings.\n\n`user_id__in` can only be used together with a single `lead_id`. `contact_id` and `contact_id__in` need a single `lead_id` or a single `user_id`. `user_id` on its own doesn't need one. If your lead visibility is restricted, `lead_id` is required.\n\nBy default, Meetings are sorted by `date_created`. To sort by `activity_at` (when the Meeting starts), pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.\n\nTo find the Meetings for a Google or Microsoft calendar event, pass its ID in `provider_calendar_event_id`. You can narrow down the results with `provider_calendar_id`, `provider_calendar_type` and the `starts_at` filters, for example to find one occurrence of a recurring event. These filters can only be used together with `provider_calendar_event_id`.",
         "parameters": [
           {
             "in": "query",
@@ -4657,9 +4662,6 @@
             "$ref": "#/components/parameters/ActivityFilters_OrganizationIdParam"
           },
           {
-            "$ref": "#/components/parameters/ActivityFilters_TypeParam"
-          },
-          {
             "$ref": "#/components/parameters/ActivityFilters_DateCreatedGteParam"
           },
           {
@@ -4682,6 +4684,108 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "in": "query",
+            "name": "lead_id__in",
+            "required": false,
+            "description": "Filter by a comma-separated list of multiple Lead IDs.",
+            "schema": {
+              "title": "Lead ID (In)",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "user_id__in",
+            "required": false,
+            "description": "Filter by a comma-separated list of multiple User IDs. Requires a single `lead_id`.",
+            "schema": {
+              "title": "User ID (In)",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "contact_id__in",
+            "required": false,
+            "description": "Filter by a comma-separated list of multiple Contact IDs. Requires a single `lead_id`.",
+            "schema": {
+              "title": "Contact ID (In)",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "_order_by",
+            "required": false,
+            "description": "Sort order: `-date_created` (the default) or `-activity_at`, newest first. `-activity_at` requires a single `lead_id` and can't be combined with the `date_created__*` filters. The `activity_at__*` filters require `-activity_at`.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "provider_calendar_id",
+            "required": false,
+            "description": "Only include Meetings from this Google or Microsoft calendar. Requires `provider_calendar_event_id`.",
+            "schema": {
+              "title": "Provider Calendar ID",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "provider_calendar_type",
+            "required": false,
+            "description": "Only include Meetings synced from this calendar provider. Requires `provider_calendar_event_id`.",
+            "schema": {
+              "title": "Provider Calendar Type",
+              "$ref": "#/components/schemas/ProviderCalendarType"
+            }
+          },
+          {
+            "in": "query",
+            "name": "starts_at",
+            "required": false,
+            "description": "Only include Meetings that start at exactly this date and time, e.g. one occurrence of a recurring event. Requires `provider_calendar_event_id`.",
+            "schema": {
+              "title": "Starts At",
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "in": "query",
+            "name": "starts_at__gte",
+            "required": false,
+            "description": "Only include Meetings that start at or after this date and time. Requires `provider_calendar_event_id`.",
+            "schema": {
+              "title": "Starts At (Greater Than or Equal)",
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "in": "query",
+            "name": "starts_at__lt",
+            "required": false,
+            "description": "Only include Meetings that start before this date and time. Requires `provider_calendar_event_id`.",
+            "schema": {
+              "title": "Starts At (Less Than)",
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "in": "query",
+            "name": "provider_calendar_event_id",
+            "required": false,
+            "description": "Only include Meetings for this Google or Microsoft calendar event ID. A recurring event's ID matches the Meetings for all of its occurrences; use the `starts_at` filters to narrow them down.",
+            "schema": {
+              "title": "Provider Calendar Event ID",
+              "type": "string"
+            }
           },
           {
             "$ref": "#/components/parameters/FieldsParam"
@@ -4948,12 +5052,13 @@
           "activities.meetings"
         ],
         "summary": "Update a Meeting activity",
-        "description": "Most commonly this can be used to update a meetings's `user_note_html` or `outcome_id`.",
+        "description": "Update the note, Outcome, Playbook or custom fields of a Meeting activity, and return the updated Meeting. Only the fields you send are changed. Other Meeting fields come from the calendar event and can't be changed here.\n\n`conversation_type_id` is a deprecated name for `playbook_id`. If you send both, `playbook_id` is used. If the Meeting has both an Outcome and a Playbook, the Outcome must be one that is linked to the Playbook.\n\nTo set a custom field, send its value as `custom.{custom_field_id}`, or `null` to clear it. For fields that accept multiple values, append `.add` or `.remove` to the key to add or remove a single value.\n\nUpdating other users' Meetings requires the `manage_others_activities` permission. Without it, the request returns 400.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the Meeting activity, prefixed with `acti_`.",
             "schema": {
               "type": "string"
             }
@@ -4962,9 +5067,24 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "example": {
-                "outcome_id": "outcome_031uY9IKV1JxfNKM9n2qCw",
-                "user_note_html": "<body><p><ul><li>Discussed product/service offering, highlighting security and scalability features.</li><li>Addressed Bruce Wayne's specific project requirements and concerns.</li><li>Negotiated customized pricing package.</li><ul></p></body>"
+              "examples": {
+                "default": {
+                  "summary": "Set the note and the Outcome",
+                  "value": {
+                    "outcome_id": "outcome_031uY9IKV1JxfNKM9n2qCw",
+                    "user_note_html": "<body><ul><li>Discussed product/service offering, highlighting security and scalability features.</li><li>Addressed Bruce Wayne's specific project requirements and concerns.</li><li>Negotiated customized pricing package.</li></ul></body>"
+                  }
+                },
+                "playbook_and_custom_fields": {
+                  "summary": "Set the Playbook and a custom field",
+                  "value": {
+                    "custom.cf_cSh3fWT3rEJ1BFSezme2YAG6bPrZV5wUWKKrW4iN19g": "Enterprise",
+                    "playbook_id": "convtyp_5PNhZ6UiN2fK8NeEXWqTBu"
+                  }
+                }
+              },
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMeetingActivity"
               }
             }
           },
@@ -4974,84 +5094,172 @@
           "200": {
             "content": {
               "application/json": {
-                "example": {
-                  "_type": "Meeting",
-                  "activity_at": "2019-10-11T16:30:00+00:00",
-                  "actual_duration": null,
-                  "attached_call_ids": [],
-                  "attendees": [
-                    {
-                      "contact_id": "cont_V3RuqD9VJKJWOtPsoH7EMy3MnKoFED2Ulgd4g87Ayqc",
-                      "email": "bruce@wayneenterprises.com",
-                      "is_organizer": false,
-                      "name": null,
-                      "status": "noreply",
-                      "user_id": null
-                    },
-                    {
+                "examples": {
+                  "default": {
+                    "summary": "Set the note and the Outcome",
+                    "value": {
+                      "_type": "Meeting",
+                      "activity_at": "2019-10-11T16:30:00+00:00",
+                      "actual_duration": null,
+                      "attached_call_ids": [],
+                      "attendees": [
+                        {
+                          "contact_id": "cont_V3RuqD9VJKJWOtPsoH7EMy3MnKoFED2Ulgd4g87Ayqc",
+                          "email": "bruce@wayneenterprises.com",
+                          "is_organizer": false,
+                          "name": null,
+                          "status": "noreply",
+                          "user_id": null
+                        },
+                        {
+                          "contact_id": null,
+                          "email": "jane@example.com",
+                          "is_organizer": true,
+                          "name": null,
+                          "status": "yes",
+                          "user_id": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk"
+                        }
+                      ],
+                      "calendar_event_link": "https://www.google.com/calendar/event?eid=NzlrNGRoMmk5bm9jZDEwOGtjMmY3Y2RzODggamFuZUBleGFtcGxlLmNvbQ",
+                      "calendar_event_uids": [
+                        "79k4dh2i9nocd108kc2f7cds88"
+                      ],
+                      "conference_links": [
+                        {
+                          "type": "ZOOM",
+                          "url": "https://zoom.us/j/zoommeeting"
+                        }
+                      ],
+                      "connected_account_id": "emailacct_OoSyqxjm1HbuxcRsOyrm2SwR1uOTBdHKPdhAaf9mhUp",
                       "contact_id": null,
-                      "email": "jane@example.com",
-                      "is_organizer": true,
-                      "name": null,
-                      "status": "yes",
-                      "user_id": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk"
+                      "conversation_type_id": null,
+                      "conversation_type_reason": null,
+                      "created_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                      "created_by_name": "Jane User",
+                      "date_created": "2019-10-11T16:30:00+00:00",
+                      "date_updated": "2019-10-11T16:30:00.368000+00:00",
+                      "duration": 3600,
+                      "ends_at": "2019-10-11T17:30:00+00:00",
+                      "id": "acti_qwA2IPmjYyMQQ2UWuNxBOtc2CbZtRUOb5JkS1i3Qo1b",
+                      "integrations": [],
+                      "is_recurring": false,
+                      "lead_id": "lead_Qq33JAqr6zrgqtJGkKv7XQxTnQxpTEJA7Mfcx98ZrWe",
+                      "location": "https://zoom.us/j/zoommeeting",
+                      "note": "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nJane User is inviting you to a scheduled Zoom meeting to find out if you're really Batman.\n\nJoin Zoom Meeting\nhttps://zoom.us/j/zoommeeting\n\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
+                      "notetaker_id": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "outcome_autofill_confidence": null,
+                      "outcome_autofill_reasoning": null,
+                      "outcome_id": "outcome_031uY9IKV1JxfNKM9n2qCw",
+                      "outcome_reason": "user-selected",
+                      "playbook_id": null,
+                      "playbook_reason": null,
+                      "provider_calendar_event_id": "79k4dh2i9nocd108kc2f7cds88",
+                      "provider_calendar_ids": [
+                        "primary"
+                      ],
+                      "provider_calendar_type": "google",
+                      "source": "calendar",
+                      "starts_at": "2019-10-11T16:30:00+00:00",
+                      "status": "in-progress",
+                      "summary": null,
+                      "title": "Bruce Wayne Interview",
+                      "updated_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                      "updated_by_name": "Jane User",
+                      "user_id": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                      "user_name": "Jane User",
+                      "user_note": "* Discussed product/service offering, highlighting security and scalability features.\n  * Addressed Bruce Wayne's specific project requirements and concerns.\n  * Negotiated customized pricing package.",
+                      "user_note_date_updated": "2019-10-11T16:30:00.368000+00:00",
+                      "user_note_html": "<body><ul><li>Discussed product/service offering, highlighting security and scalability features.</li><li>Addressed Bruce Wayne's specific project requirements and concerns.</li><li>Negotiated customized pricing package.</li></ul></body>",
+                      "user_note_mentions": [],
+                      "users": [
+                        "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk"
+                      ]
                     }
-                  ],
-                  "calendar_event_link": "https://www.google.com/calendar/event?eid=NzlrNGRoMmk5bm9jZDEwOGtjMmY3Y2RzODggamFuZUBleGFtcGxlLmNvbQ",
-                  "calendar_event_uids": [
-                    "79k4dh2i9nocd108kc2f7cds88"
-                  ],
-                  "conference_links": [
-                    {
-                      "type": "ZOOM",
-                      "url": "https://zoom.us/j/zoommeeting"
+                  },
+                  "playbook_and_custom_fields": {
+                    "summary": "Set the Playbook and a custom field",
+                    "value": {
+                      "_type": "Meeting",
+                      "activity_at": "2019-10-11T16:30:00+00:00",
+                      "actual_duration": null,
+                      "attached_call_ids": [],
+                      "attendees": [
+                        {
+                          "contact_id": "cont_V3RuqD9VJKJWOtPsoH7EMy3MnKoFED2Ulgd4g87Ayqc",
+                          "email": "bruce@wayneenterprises.com",
+                          "is_organizer": false,
+                          "name": null,
+                          "status": "noreply",
+                          "user_id": null
+                        },
+                        {
+                          "contact_id": null,
+                          "email": "jane@example.com",
+                          "is_organizer": true,
+                          "name": null,
+                          "status": "yes",
+                          "user_id": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk"
+                        }
+                      ],
+                      "calendar_event_link": "https://www.google.com/calendar/event?eid=NzlrNGRoMmk5bm9jZDEwOGtjMmY3Y2RzODggamFuZUBleGFtcGxlLmNvbQ",
+                      "calendar_event_uids": [
+                        "79k4dh2i9nocd108kc2f7cds88"
+                      ],
+                      "conference_links": [
+                        {
+                          "type": "ZOOM",
+                          "url": "https://zoom.us/j/zoommeeting"
+                        }
+                      ],
+                      "connected_account_id": "emailacct_OoSyqxjm1HbuxcRsOyrm2SwR1uOTBdHKPdhAaf9mhUp",
+                      "contact_id": null,
+                      "conversation_type_id": "convtyp_5PNhZ6UiN2fK8NeEXWqTBu",
+                      "conversation_type_reason": "user-selected",
+                      "created_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                      "created_by_name": "Jane User",
+                      "custom.cf_cSh3fWT3rEJ1BFSezme2YAG6bPrZV5wUWKKrW4iN19g": "Enterprise",
+                      "date_created": "2019-10-11T16:30:00+00:00",
+                      "date_updated": "2019-10-11T16:30:00.368000+00:00",
+                      "duration": 3600,
+                      "ends_at": "2019-10-11T17:30:00+00:00",
+                      "id": "acti_qwA2IPmjYyMQQ2UWuNxBOtc2CbZtRUOb5JkS1i3Qo1b",
+                      "integrations": [],
+                      "is_recurring": false,
+                      "lead_id": "lead_Qq33JAqr6zrgqtJGkKv7XQxTnQxpTEJA7Mfcx98ZrWe",
+                      "location": "https://zoom.us/j/zoommeeting",
+                      "note": "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nJane User is inviting you to a scheduled Zoom meeting to find out if you're really Batman.\n\nJoin Zoom Meeting\nhttps://zoom.us/j/zoommeeting\n\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
+                      "notetaker_id": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "outcome_autofill_confidence": null,
+                      "outcome_autofill_reasoning": null,
+                      "outcome_id": "outcome_031uY9IKV1JxfNKM9n2qCw",
+                      "outcome_reason": "user-selected",
+                      "playbook_id": "convtyp_5PNhZ6UiN2fK8NeEXWqTBu",
+                      "playbook_reason": "user-selected",
+                      "provider_calendar_event_id": "79k4dh2i9nocd108kc2f7cds88",
+                      "provider_calendar_ids": [
+                        "primary"
+                      ],
+                      "provider_calendar_type": "google",
+                      "source": "calendar",
+                      "starts_at": "2019-10-11T16:30:00+00:00",
+                      "status": "in-progress",
+                      "summary": null,
+                      "title": "Bruce Wayne Interview",
+                      "updated_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                      "updated_by_name": "Jane User",
+                      "user_id": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
+                      "user_name": "Jane User",
+                      "user_note": "* Discussed product/service offering, highlighting security and scalability features.\n  * Addressed Bruce Wayne's specific project requirements and concerns.\n  * Negotiated customized pricing package.",
+                      "user_note_date_updated": "2019-10-11T16:30:00.368000+00:00",
+                      "user_note_html": "<body><ul><li>Discussed product/service offering, highlighting security and scalability features.</li><li>Addressed Bruce Wayne's specific project requirements and concerns.</li><li>Negotiated customized pricing package.</li></ul></body>",
+                      "user_note_mentions": [],
+                      "users": [
+                        "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk"
+                      ]
                     }
-                  ],
-                  "connected_account_id": "emailacct_OoSyqxjm1HbuxcRsOyrm2SwR1uOTBdHKPdhAaf9mhUp",
-                  "contact_id": null,
-                  "conversation_type_id": null,
-                  "conversation_type_reason": null,
-                  "created_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
-                  "created_by_name": "Jane User",
-                  "date_created": "2019-10-11T16:30:00+00:00",
-                  "date_updated": "2019-10-11T16:30:00.368000+00:00",
-                  "duration": 3600,
-                  "ends_at": "2019-10-11T17:30:00+00:00",
-                  "id": "acti_qwA2IPmjYyMQQ2UWuNxBOtc2CbZtRUOb5JkS1i3Qo1b",
-                  "integrations": [],
-                  "is_recurring": false,
-                  "lead_id": "lead_Qq33JAqr6zrgqtJGkKv7XQxTnQxpTEJA7Mfcx98ZrWe",
-                  "location": "https://zoom.us/j/zoommeeting",
-                  "note": "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nJane User is inviting you to a scheduled Zoom meeting to find out if you're really Batman.\n\nJoin Zoom Meeting\nhttps://zoom.us/j/zoommeeting\n\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
-                  "notetaker_id": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
-                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                  "outcome_autofill_confidence": null,
-                  "outcome_autofill_reasoning": null,
-                  "outcome_id": "outcome_031uY9IKV1JxfNKM9n2qCw",
-                  "outcome_reason": null,
-                  "playbook_id": null,
-                  "playbook_reason": null,
-                  "provider_calendar_event_id": "79k4dh2i9nocd108kc2f7cds88",
-                  "provider_calendar_ids": [
-                    "primary"
-                  ],
-                  "provider_calendar_type": "google",
-                  "source": "calendar",
-                  "starts_at": "2019-10-11T16:30:00+00:00",
-                  "status": "in-progress",
-                  "summary": null,
-                  "title": "Bruce Wayne Interview",
-                  "updated_by": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
-                  "updated_by_name": "Jane User",
-                  "user_id": "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk",
-                  "user_name": "Jane User",
-                  "user_note": "Discussed product/service offering, highlighting security and scalability features.",
-                  "user_note_date_updated": "2019-10-11T16:30:00.368000+00:00",
-                  "user_note_html": "<body><p><ul><li>Discussed product/service offering, highlighting security and scalability features.</li><li>Addressed Bruce Wayne's specific project requirements and concerns.</li><li>Negotiated customized pricing package.</li><ul></p></body>",
-                  "user_note_mentions": [],
-                  "users": [
-                    "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk"
-                  ]
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/MeetingActivity"
@@ -5083,13 +5291,35 @@
           "activities.meetings"
         ],
         "summary": "Delete a Meeting activity",
+        "description": "Delete a Meeting activity. Returns an empty object on success. This only removes the Meeting from Close: it doesn't change or cancel the event in Google or Microsoft calendar. Calls linked to the Meeting are unlinked, not deleted, and calendar sync won't add the Meeting back.\n\nFor a Meeting from a recurring calendar event, pass `include_all_occurrences=true` to also delete the Meetings for every other occurrence of the event, or `include_future_occurrences=true` to also delete the ones for later occurrences. Both only delete Meetings on the same Lead, and both are ignored for other Meetings.\n\nDeleting your own Meetings requires the `delete_own_activities` permission, and deleting other users' Meetings requires `manage_others_activities`. Without it, the request returns 400.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the Meeting activity, prefixed with `acti_`.",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "include_all_occurrences",
+            "required": false,
+            "description": "For a Meeting from a recurring calendar event, also delete the Meetings for every other occurrence of the event on the same Lead. Takes precedence over `include_future_occurrences`.",
+            "schema": {
+              "title": "Include All Occurrences",
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "include_future_occurrences",
+            "required": false,
+            "description": "For a Meeting from a recurring calendar event, also delete the Meetings for the later occurrences of the event on the same Lead.",
+            "schema": {
+              "title": "Include Future Occurrences",
+              "type": "boolean"
             }
           }
         ],
@@ -5097,6 +5327,7 @@
           "200": {
             "content": {
               "application/json": {
+                "example": {},
                 "schema": {
                   "$ref": "#/components/schemas/EmptyResponse"
                 }
@@ -5129,12 +5360,13 @@
           "activities.meetings"
         ],
         "summary": "Create or update third-party Meeting integration",
-        "description": "Please note that only OAuth apps can perform this operation. Using API key will result in an error. See [Authentication with OAuth](https://developer.close.com/api/overview/oauth-authentication) for more information.\n\nThird party integrations are presented as tabs titled with OAuth app name in the activity feed. When invoked for the first time with a given OAuth app a new integration is created, subsequent calls with the same OAuth app will update an existing integration. Submitting an empty JSON body does nothing.",
+        "description": "Add a note from your app to a Meeting, or update it. Only OAuth apps can do this: a request made with an API key returns 403. See [Authentication with OAuth](https://developer.close.com/api/overview/oauth-authentication) for more information.\n\nThe note is shown in the activity feed, in a tab named after your OAuth app. Each OAuth app has one integration per Meeting: the first request creates it, and later requests update its note. Meetings for the same calendar event share their integrations. This only works for Meetings synced from a calendar.\n\nThe response is the integration. If you leave out `integration_data.note_html`, the request doesn't change anything and returns an empty object. Unknown keys are ignored, so check the spelling of `integration_data` and `note_html`.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the Meeting activity, prefixed with `acti_`.",
             "schema": {
               "type": "string"
             }
@@ -5143,10 +5375,24 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "example": {
-                "integration_data": {
-                  "note_html": "<body><ul><li>Very interested in calendar integration feature.</li><li>Frustrated with their existing CRM.</li></ul></body>"
+              "examples": {
+                "default": {
+                  "summary": "Add or update the note",
+                  "value": {
+                    "integration_data": {
+                      "note_html": "<body><ul><li>Very interested in calendar integration feature.</li><li>Frustrated with their existing CRM.</li></ul></body>"
+                    }
+                  }
+                },
+                "no_note": {
+                  "summary": "Leave out the note",
+                  "value": {
+                    "integration_data": {}
+                  }
                 }
+              },
+              "schema": {
+                "$ref": "#/components/schemas/UpsertMeetingIntegration"
               }
             }
           },
@@ -5156,16 +5402,35 @@
           "200": {
             "content": {
               "application/json": {
-                "example": {
-                  "id": "evtint_68gPlaA2Q79nvAa4PFHG9J",
-                  "integration_data": {
-                    "note_html": "<body><ul><li>Very interested in calendar integration feature.</li><li>Frustrated with their existing CRM.</li></ul></body>"
+                "examples": {
+                  "default": {
+                    "summary": "Add or update the note",
+                    "value": {
+                      "artifacts": [],
+                      "created_at": "2019-10-11T17:35:12.481000",
+                      "event_occurrence_id": "0daff9dd-4cd8-4113-b1ec-9d7fbb76ba80",
+                      "id": "evtint_68gPlaA2Q79nvAa4PFHG9J",
+                      "integration_data": {
+                        "note_html": "<body><ul><li>Very interested in calendar integration feature.</li><li>Frustrated with their existing CRM.</li></ul></body>"
+                      },
+                      "integration_name": "third_party",
+                      "integration_object_id": "8f14e45f-ceea-467a-9575-f1c1d7b0a3c2",
+                      "oauth_client": {
+                        "id": "oa2client_2hoWsDYOJtiaR7SrUbXyN2",
+                        "logo_url": "https://example.com/ai-highlights.png",
+                        "name": "AI Highlights"
+                      },
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "updated_at": "2019-10-11T17:35:12.481000"
+                    }
                   },
-                  "integration_name": "third_party",
-                  "oauth_client": {
-                    "id": "oa2client_2hoWsDYOJtiaR7SrUbXyN2",
-                    "name": "AI Highlights"
+                  "no_note": {
+                    "summary": "Leave out the note",
+                    "value": {}
                   }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/UpsertMeetingIntegrationResponse"
                 }
               }
             },
@@ -5186,7 +5451,12 @@
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
           }
-        }
+        },
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ]
       }
     },
     "/activity/note/": {
@@ -5196,6 +5466,7 @@
           "activities.notes"
         ],
         "summary": "List or filter all Note activities",
+        "description": "List the notes in your organization, newest first. Filter by lead, contact, user or date. To sort by `activity_at` instead of `date_created`, pass `_order_by=-activity_at` together with a `lead_id` filter.\n\n`contact_id`, `contact_id__in` and `user_id__in` require a single `lead_id`. If you can only see some leads, you must filter by `lead_id`, otherwise the request returns 403.",
         "parameters": [
           {
             "in": "query",
@@ -5235,9 +5506,6 @@
             "$ref": "#/components/parameters/ActivityFilters_OrganizationIdParam"
           },
           {
-            "$ref": "#/components/parameters/ActivityFilters_TypeParam"
-          },
-          {
             "$ref": "#/components/parameters/ActivityFilters_DateCreatedGteParam"
           },
           {
@@ -5260,6 +5528,45 @@
           },
           {
             "$ref": "#/components/parameters/ActivityFilters_ActivityAtLtParam"
+          },
+          {
+            "in": "query",
+            "name": "lead_id__in",
+            "required": false,
+            "description": "Filter by a comma-separated list of multiple Lead IDs.",
+            "schema": {
+              "title": "Lead ID (In)",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "user_id__in",
+            "required": false,
+            "description": "Filter by a comma-separated list of multiple User IDs. Requires a single `lead_id`.",
+            "schema": {
+              "title": "User ID (In)",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "contact_id__in",
+            "required": false,
+            "description": "Filter by a comma-separated list of multiple Contact IDs. Requires a single `lead_id`.",
+            "schema": {
+              "title": "Contact ID (In)",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "_order_by",
+            "required": false,
+            "description": "Sort order: `-date_created` (the default) or `-activity_at`, newest first. `-activity_at` requires a single `lead_id` and can't be combined with the `date_created__*` filters. The `activity_at__*` filters require `-activity_at`.",
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "$ref": "#/components/parameters/FieldsParam"
@@ -5343,20 +5650,40 @@
           "activities.notes"
         ],
         "summary": "Create a Note activity",
-        "description": "To include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename` and `content_type`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin `https://app.close.com/go/file/`.\n\nA note can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a note.",
+        "description": "Add a note to a lead and return the created note. Set `pinned` to `true` to pin it to the top of the lead's activity timeline.\n\nA note needs at least one of `note`, `note_html` or `attachments`. Send rich text in `note_html`, which takes precedence over `note`: the plain-text `note` is then derived from it.\n\nTo attach a file, first upload it with the [Files API](https://developer.close.com/api/resources/files). Then add an object with `url`, `filename` and `content_type` to `attachments`. The `url` is the `download.url` from the Files API response, and must start with `https://app.close.com/go/file/`.\n\nReturns 400 if the lead or contact doesn't exist, if the contact isn't on the lead, if you can't see the lead, if `note_html` isn't valid rich text, if the attachments are invalid or add up to more than 25 MB, or if pinning the note would put more than 5 pinned activities on the lead.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/FieldsParam"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
-              "example": {
-                "attachments": [
-                  {
-                    "content_type": "image/gif",
-                    "filename": "picture.gif",
-                    "url": "https://app.close.com/go/file/temporary/user_MvDoAZA889UMrgsZbnXmHkJSomSi7qk2Iwc4JnGHTbo/3HV4BNwDyBLdfrPbFZF78s/picture.gif/"
+              "examples": {
+                "default": {
+                  "summary": "Create a rich-text note with an attachment",
+                  "value": {
+                    "attachments": [
+                      {
+                        "content_type": "image/gif",
+                        "filename": "picture.gif",
+                        "url": "https://app.close.com/go/file/temporary/user_MvDoAZA889UMrgsZbnXmHkJSomSi7qk2Iwc4JnGHTbo/3HV4BNwDyBLdfrPbFZF78s/picture.gif/"
+                      }
+                    ],
+                    "lead_id": "lead_s6vHFTK1TSRoH6otXOexWDO9jM4xyb1kELHDoU7Fdsp",
+                    "note_html": "<body><p>this is a test note.</p></body>"
                   }
-                ],
-                "lead_id": "lead_s6vHFTK1TSRoH6otXOexWDO9jM4xyb1kELHDoU7Fdsp",
-                "note_html": "<body><p>this is a test note.</p></body>"
+                },
+                "plain_text_pinned": {
+                  "summary": "Create a pinned plain-text note about a contact",
+                  "value": {
+                    "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
+                    "lead_id": "lead_s6vHFTK1TSRoH6otXOexWDO9jM4xyb1kELHDoU7Fdsp",
+                    "note": "Prefers a call on Tuesday mornings.",
+                    "pinned": true,
+                    "title": "Call preferences"
+                  }
+                }
               },
               "schema": {
                 "$ref": "#/components/schemas/CreateNoteActivity"
@@ -5369,38 +5696,71 @@
           "200": {
             "content": {
               "application/json": {
-                "example": {
-                  "_type": "Note",
-                  "activity_at": "2013-02-20T06:39:57.266000+00:00",
-                  "attachments": [
-                    {
-                      "content_type": "image/gif",
-                      "filename": "picture.gif",
-                      "size": 20673,
-                      "thumbnail_url": "https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/activity.note/acti_kwWA3rOfy4BnaZ8QQk3RIIAz51dU9ayiluy1s961Oiw/3HV4BNwDyBLdfrPbFZF78s/picture.gif/thumbnail/",
-                      "url": "https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/activity.note/acti_kwWA3rOfy4BnaZ8QQk3RIIAz51dU9ayiluy1s961Oiw/3HV4BNwDyBLdfrPbFZF78s/picture.gif/"
+                "examples": {
+                  "default": {
+                    "summary": "Create a rich-text note with an attachment",
+                    "value": {
+                      "_type": "Note",
+                      "activity_at": "2013-02-20T06:39:57.266000+00:00",
+                      "attachments": [
+                        {
+                          "content_type": "image/gif",
+                          "filename": "picture.gif",
+                          "size": 20673,
+                          "thumbnail_url": "https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/activity.note/acti_kwWA3rOfy4BnaZ8QQk3RIIAz51dU9ayiluy1s961Oiw/3HV4BNwDyBLdfrPbFZF78s/picture.gif/thumbnail/",
+                          "url": "https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/activity.note/acti_kwWA3rOfy4BnaZ8QQk3RIIAz51dU9ayiluy1s961Oiw/3HV4BNwDyBLdfrPbFZF78s/picture.gif/"
+                        }
+                      ],
+                      "contact_id": null,
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_name": "Bruce Wayne",
+                      "date_created": "2013-02-20T06:39:57.266000+00:00",
+                      "date_updated": "2013-02-20T06:39:57.266000+00:00",
+                      "id": "acti_kwWA3rOfy4BnaZ8QQk3RIIAz51dU9ayiluy1s961Oiw",
+                      "lead_id": "lead_s6vHFTK1TSRoH6otXOexWDO9jM4xyb1kELHDoU7Fdsp",
+                      "note": "this is a test note.",
+                      "note_html": "<body><p>this is a test note.</p></body>",
+                      "note_mentions": [],
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "pinned": false,
+                      "pinned_at": null,
+                      "source": "api",
+                      "title": null,
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_name": "Bruce Wayne",
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Bruce Wayne",
+                      "users": []
                     }
-                  ],
-                  "contact_id": null,
-                  "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "created_by_name": "Bruce Wayne",
-                  "date_created": "2013-02-20T06:39:57.266000+00:00",
-                  "date_updated": "2013-02-20T06:39:57.266000+00:00",
-                  "id": "acti_kwWA3rOfy4BnaZ8QQk3RIIAz51dU9ayiluy1s961Oiw",
-                  "lead_id": "lead_s6vHFTK1TSRoH6otXOexWDO9jM4xyb1kELHDoU7Fdsp",
-                  "note": "this is a test note.",
-                  "note_html": "<body><p>this is a test note.</p></body>",
-                  "note_mentions": [],
-                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                  "pinned": false,
-                  "pinned_at": null,
-                  "source": "api",
-                  "title": null,
-                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "updated_by_name": "Bruce Wayne",
-                  "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "user_name": "Bruce Wayne",
-                  "users": []
+                  },
+                  "plain_text_pinned": {
+                    "summary": "Create a pinned plain-text note about a contact",
+                    "value": {
+                      "_type": "Note",
+                      "activity_at": "2013-02-20T06:45:12.410000+00:00",
+                      "attachments": [],
+                      "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_name": "Bruce Wayne",
+                      "date_created": "2013-02-20T06:45:12.410000+00:00",
+                      "date_updated": "2013-02-20T06:45:12.410000+00:00",
+                      "id": "acti_Ib4rNHmJQSGxgdKJwXNRFZxs8mtJ9Ks2nKkcsKXL1Rk",
+                      "lead_id": "lead_s6vHFTK1TSRoH6otXOexWDO9jM4xyb1kELHDoU7Fdsp",
+                      "note": "Prefers a call on Tuesday mornings.",
+                      "note_html": "<body><p>Prefers a call on Tuesday mornings.</p></body>",
+                      "note_mentions": [],
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "pinned": true,
+                      "pinned_at": "2013-02-20T06:45:12.410000+00:00",
+                      "source": "api",
+                      "title": "Call preferences",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_name": "Bruce Wayne",
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Bruce Wayne",
+                      "users": []
+                    }
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/ActivityBase"
@@ -5431,11 +5791,13 @@
           "activities.notes"
         ],
         "summary": "Get a single Note activity",
+        "description": "Fetch a single note by its ID. Returns 404 if no note in your organization has that ID, and 403 if you can't see the note's lead.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the note, prefixed with `acti_`.",
             "schema": {
               "type": "string"
             }
@@ -5511,23 +5873,40 @@
           "activities.notes"
         ],
         "summary": "Update a Note activity",
-        "description": "**`note_html` and `note`**: setting one overwrites the other. If both are provided, `note_html` takes precedence. `note_html` supports rich-text HTML; `note` is plaintext only.\n\nA note can be pinned or unpinned by setting `pinned` to `true` or `false`.",
+        "description": "Edit a note and return it. Only the fields you send change. Send `pinned` as `true` or `false` to pin or unpin the note. The note's lead, user and creation date can't be changed.\n\nA note needs at least one of `note`, `note_html` or `attachments`. Send rich text in `note_html`, which takes precedence over `note`: the plain-text `note` is then derived from it. Sending either one replaces the note's text.\n\nTo attach a file, first upload it with the [Files API](https://developer.close.com/api/resources/files). Then add an object with `url`, `filename` and `content_type` to `attachments`. The `url` is the `download.url` from the Files API response, and must start with `https://app.close.com/go/file/`. Sending `attachments` replaces the note's attachments, so include the ones you want to keep.\n\nReturns 404 if no note in your organization has that ID, and 403 if you can't see the note's lead. Returns 400 if the note belongs to another user and you don't have permission to manage other users' activities, if the update would leave the note with no text or attachments, if `note_html` isn't valid rich text, if the contact isn't on the note's lead, or if pinning the note would put more than 5 pinned activities on the lead.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the note, prefixed with `acti_`.",
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/FieldsParam"
           }
         ],
         "requestBody": {
           "content": {
             "application/json": {
-              "example": {
-                "note_html": "<body><p>this is an update to my existing note.</p></body>",
-                "pinned": true
+              "examples": {
+                "default": {
+                  "summary": "Replace the text and pin the note",
+                  "value": {
+                    "note_html": "<body><p>this is an update to my existing note.</p></body>",
+                    "pinned": true
+                  }
+                },
+                "retitle_and_unpin": {
+                  "summary": "Rename and unpin the note, linking it to a contact",
+                  "value": {
+                    "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
+                    "pinned": false,
+                    "title": "Kickoff call notes"
+                  }
+                }
               },
               "schema": {
                 "$ref": "#/components/schemas/UpdateNoteActivity"
@@ -5540,30 +5919,63 @@
           "200": {
             "content": {
               "application/json": {
-                "example": {
-                  "_type": "Note",
-                  "activity_at": "2013-02-20T06:39:57.266000+00:00",
-                  "attachments": [],
-                  "contact_id": null,
-                  "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "created_by_name": "Bruce Wayne",
-                  "date_created": "2013-02-20T06:39:57.266000+00:00",
-                  "date_updated": "2013-02-20T06:41:59.846000+00:00",
-                  "id": "acti_kwWA3rOfy4BnaZ8QQk3RIIAz51dU9ayiluy1s961Oiw",
-                  "lead_id": "lead_s6vHFTK1TSRoH6otXOexWDO9jM4xyb1kELHDoU7Fdsp",
-                  "note": "this is an update to my existing note.",
-                  "note_html": "<body><p>this is an update to my existing note.</p></body>",
-                  "note_mentions": [],
-                  "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
-                  "pinned": true,
-                  "pinned_at": "2013-02-20T06:41:59.846000+00:00",
-                  "source": "api",
-                  "title": "Welcome to Close!",
-                  "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "updated_by_name": "Bruce Wayne",
-                  "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "user_name": "Bruce Wayne",
-                  "users": []
+                "examples": {
+                  "default": {
+                    "summary": "Replace the text and pin the note",
+                    "value": {
+                      "_type": "Note",
+                      "activity_at": "2013-02-20T06:39:57.266000+00:00",
+                      "attachments": [],
+                      "contact_id": null,
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_name": "Bruce Wayne",
+                      "date_created": "2013-02-20T06:39:57.266000+00:00",
+                      "date_updated": "2013-02-20T06:41:59.846000+00:00",
+                      "id": "acti_kwWA3rOfy4BnaZ8QQk3RIIAz51dU9ayiluy1s961Oiw",
+                      "lead_id": "lead_s6vHFTK1TSRoH6otXOexWDO9jM4xyb1kELHDoU7Fdsp",
+                      "note": "this is an update to my existing note.",
+                      "note_html": "<body><p>this is an update to my existing note.</p></body>",
+                      "note_mentions": [],
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "pinned": true,
+                      "pinned_at": "2013-02-20T06:41:59.846000+00:00",
+                      "source": "api",
+                      "title": "Welcome to Close!",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_name": "Bruce Wayne",
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Bruce Wayne",
+                      "users": []
+                    }
+                  },
+                  "retitle_and_unpin": {
+                    "summary": "Rename and unpin the note, linking it to a contact",
+                    "value": {
+                      "_type": "Note",
+                      "activity_at": "2013-02-20T06:39:57.266000+00:00",
+                      "attachments": [],
+                      "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
+                      "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_name": "Bruce Wayne",
+                      "date_created": "2013-02-20T06:39:57.266000+00:00",
+                      "date_updated": "2013-02-21T09:12:40.118000+00:00",
+                      "id": "acti_kwWA3rOfy4BnaZ8QQk3RIIAz51dU9ayiluy1s961Oiw",
+                      "lead_id": "lead_s6vHFTK1TSRoH6otXOexWDO9jM4xyb1kELHDoU7Fdsp",
+                      "note": "this is an update to my existing note.",
+                      "note_html": "<body><p>this is an update to my existing note.</p></body>",
+                      "note_mentions": [],
+                      "organization_id": "orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH",
+                      "pinned": false,
+                      "pinned_at": null,
+                      "source": "api",
+                      "title": "Kickoff call notes",
+                      "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "updated_by_name": "Bruce Wayne",
+                      "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "user_name": "Bruce Wayne",
+                      "users": []
+                    }
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/ActivityBase"
@@ -5595,11 +6007,13 @@
           "activities.notes"
         ],
         "summary": "Delete a Note activity",
+        "description": "Delete a note and its attachments. Returns an empty object on success.\n\nReturns 404 if no note in your organization has that ID, and 403 if you can't see the note's lead. Returns 400 if you don't have permission to delete the note: deleting your own notes needs permission to delete your own activities, and deleting other users' notes needs permission to manage their activities.",
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
+            "description": "ID of the note, prefixed with `acti_`.",
             "schema": {
               "type": "string"
             }
@@ -5609,6 +6023,7 @@
           "200": {
             "content": {
               "application/json": {
+                "example": {},
                 "schema": {
                   "$ref": "#/components/schemas/EmptyResponse"
                 }
@@ -21950,7 +22365,6 @@
                       "id": "phon_asdjkfev50ZKOqTVndOFN4effzv99vDvpDxrks9XLU3",
                       "inbound_ring_duration": null,
                       "is_group_number": false,
-                      "is_premium": false,
                       "label": "Primary Number",
                       "last_billed_price": 1.15,
                       "local_presence_enabled": true,
@@ -21990,7 +22404,6 @@
                       "date_updated": "2016-07-18T22:55:55.938000+00:00",
                       "id": "phon_973589ev50ZKOqTVndOFN4effz092753608234569U3",
                       "is_group_number": false,
-                      "is_premium": false,
                       "label": "My Personal Cell",
                       "last_billed_price": null,
                       "local_presence_enabled": true,
@@ -22025,7 +22438,6 @@
                       "id": "phon_324230958beOjoa6F42w5Hlkdjfg8p3wmIPnTuvNbaX",
                       "inbound_ring_duration": null,
                       "is_group_number": true,
-                      "is_premium": false,
                       "label": "Group Number",
                       "last_billed_price": 1.15,
                       "local_presence_enabled": true,
@@ -22144,7 +22556,6 @@
                   "id": "phon_MiLNdBqo8utNOf1U78RaZgQB1Iq6rRGftiDW5C8B9uL",
                   "inbound_ring_duration": null,
                   "is_group_number": false,
-                  "is_premium": false,
                   "label": "+1 650-333-5555",
                   "last_billed_price": null,
                   "local_presence_enabled": true,
@@ -22234,7 +22645,6 @@
                   "id": "phon_asdjkfev50ZKOqTVndOFN4effzv99vDvpDxrks9XLU3",
                   "inbound_ring_duration": null,
                   "is_group_number": false,
-                  "is_premium": false,
                   "label": "Primary Number",
                   "last_billed_price": 1.15,
                   "local_presence_enabled": true,
@@ -22341,7 +22751,6 @@
                   "id": "phon_asdjkfev50ZKOqTVndOFN4effzv99vDvpDxrks9XLU3",
                   "inbound_ring_duration": 45,
                   "is_group_number": false,
-                  "is_premium": false,
                   "label": "My number w/ forwarding",
                   "last_billed_price": 1.15,
                   "local_presence_enabled": false,
@@ -32032,7 +32441,7 @@
           },
           "agent_action_reason": {
             "title": "Agent Action Reason",
-            "description": "Why an agent created the activity, e.g. `send_scheduling_link`, or `null` if no agent created it.",
+            "description": "Why an agent created the activity (`send_scheduling_link`, `custom_agent_decision` or `voice_agent_callback`), or `null` if no agent created it.",
             "default": null,
             "anyOf": [
               {
@@ -32059,21 +32468,11 @@
           },
           "attachments": {
             "title": "Attachments",
+            "description": "Files attached to the note.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Attachment"
             }
-          },
-          "comment_summary": {
-            "title": "Comment Summary",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/CommentSummary"
-              },
-              {
-                "type": "null"
-              }
-            ]
           },
           "contact_id": {
             "title": "Contact ID",
@@ -32101,7 +32500,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
-            "description": "ID of the agent that created the activity, or `null` if no agent created it.",
+            "description": "ID of the agent that created the activity, e.g. `agentconfig_abc123`, or `null` if no agent created it.",
             "default": null,
             "anyOf": [
               {
@@ -32156,14 +32555,17 @@
           },
           "note": {
             "title": "Note",
+            "description": "Plain-text content of the note. When the note has rich text, this is derived from `note_html`.",
             "type": "string"
           },
           "note_html": {
-            "title": "Note Html",
+            "title": "Note HTML",
+            "description": "Rich-text content of the note as HTML. For a note that was written as plain text, this is generated from `note`.",
             "type": "string"
           },
           "note_mentions": {
             "title": "Note Mentions",
+            "description": "IDs of the users (`user_`) and groups (`group_`) mentioned in `note_html`.",
             "type": "array",
             "items": {
               "type": "string"
@@ -32176,10 +32578,12 @@
           },
           "pinned": {
             "title": "Pinned",
+            "description": "Whether the note is pinned to the top of the lead's activity timeline.",
             "type": "boolean"
           },
           "pinned_at": {
             "title": "Pinned At",
+            "description": "When the note was pinned, or `null` if it isn't pinned.",
             "anyOf": [
               {
                 "type": "string",
@@ -32191,6 +32595,7 @@
             ]
           },
           "source": {
+            "description": "How the note was created, e.g. `ui` in the Close app or `api` through the API. `null` if the source isn't known.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/CreationSource"
@@ -32202,6 +32607,7 @@
           },
           "title": {
             "title": "Title",
+            "description": "Title of the note, or `null` if it has no title.",
             "anyOf": [
               {
                 "type": "string"
@@ -33441,6 +33847,15 @@
         "required": [
           "error",
           "error_code"
+        ]
+      },
+      "ArtifactFileType": {
+        "title": "ArtifactFileType",
+        "description": "File format of a recording.",
+        "type": "string",
+        "enum": [
+          "MP4",
+          "M4A"
         ]
       },
       "Attachment": {
@@ -37369,6 +37784,7 @@
         "type": "object",
         "properties": {
           "activity_at": {
+            "description": "When the note was logged, which sets its place in the lead's activity timeline. Defaults to the time the note is created.",
             "type": [
               "null",
               "string"
@@ -37376,6 +37792,7 @@
             "format": "date-time"
           },
           "attachments": {
+            "description": "Files to attach to the note. Upload each file with the Files API first. The files can add up to 25 MB. On update, this list replaces the note's attachments.",
             "type": [
               "array",
               "null"
@@ -37385,15 +37802,18 @@
               "type": "object",
               "properties": {
                 "content_type": {
+                  "description": "MIME type of the file, e.g. `image/gif`.",
                   "type": [
                     "null",
                     "string"
                   ]
                 },
                 "filename": {
+                  "description": "Name of the file, e.g. `picture.gif`.",
                   "type": "string"
                 },
                 "url": {
+                  "description": "URL of the uploaded file, from the `download.url` field of the Files API response. Must start with `https://app.close.com/go/file/`.",
                   "type": "string",
                   "format": "uri"
                 }
@@ -37405,18 +37825,21 @@
             }
           },
           "contact_id": {
+            "description": "ID of the contact the note is about. The contact must belong to the note's lead. On update, set it to `null` to unlink the contact.",
             "type": [
               "null",
               "string"
             ]
           },
           "created_by": {
+            "description": "ID of the user to record as the note's creator. Defaults to you. Setting another user needs permission to manage your organization, otherwise you're recorded as the creator.",
             "type": [
               "null",
               "string"
             ]
           },
           "date_created": {
+            "description": "When the note was created, e.g. for notes imported from another system. Defaults to now. Can't be changed later.",
             "type": [
               "null",
               "string"
@@ -37424,39 +37847,46 @@
             "format": "date-time"
           },
           "lead_id": {
+            "description": "ID of the lead to add the note to. Can't be changed later.",
             "type": "string"
           },
           "note": {
+            "description": "Plain-text content of the note. Ignored when `note_html` is set, since `note` is then derived from `note_html`.",
             "type": [
               "null",
               "string"
             ]
           },
           "note_html": {
+            "description": "Rich-text content of the note as HTML. Takes precedence over `note`. To mention a user or group, add an element like `<span data-type=\"mention\" data-id=\"user_...\" class=\"mention\">@Name</span>`.",
             "type": [
               "null",
               "string"
             ]
           },
           "organization_id": {
+            "description": "ID of your organization. Optional, since your API key or OAuth token already determines it.",
             "type": [
               "null",
               "string"
             ]
           },
           "pinned": {
+            "description": "Whether to pin the note to the top of the lead's activity timeline. A lead can have at most 5 pinned activities.",
             "type": [
               "boolean",
               "null"
             ]
           },
           "title": {
+            "description": "Title of the note. An empty title is saved as `null`.",
             "type": [
               "null",
               "string"
             ]
           },
           "user_id": {
+            "description": "ID of the user the note belongs to. Defaults to you. Setting another user needs permission to manage your organization, otherwise the note is assigned to you. Can't be changed later.",
             "type": [
               "null",
               "string"
@@ -38764,7 +39194,45 @@
           "ai",
           "whatsapp",
           "webform"
-        ]
+        ],
+        "x-fern-enum": {
+          "ai": {
+            "description": "Created by Close's AI features, such as AI agents."
+          },
+          "api": {
+            "description": "Created through the API."
+          },
+          "calendly-integration": {
+            "description": "Created by the Calendly integration when someone booked a meeting."
+          },
+          "clipper": {
+            "description": "Created with the Lead Clipper browser extension."
+          },
+          "customerio-integration": {
+            "description": "Created by the Customer.io integration."
+          },
+          "email": {
+            "description": "Created from an email that was synced to Close."
+          },
+          "import": {
+            "description": "Created by a bulk import."
+          },
+          "segment-integration": {
+            "description": "Created by the Segment integration."
+          },
+          "suggestion": {
+            "description": "Created by accepting a lead suggestion in Close."
+          },
+          "ui": {
+            "description": "Created by a user in the Close app."
+          },
+          "webform": {
+            "description": "Created by a web form submission."
+          },
+          "whatsapp": {
+            "description": "Created from a WhatsApp conversation."
+          }
+        }
       },
       "CurrentUserCondition": {
         "title": "CurrentUserCondition",
@@ -40429,6 +40897,7 @@
         "properties": {
           "bcc": {
             "title": "BCC",
+            "description": "Addresses in the `Bcc` header.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/EmailIdentity"
@@ -40436,6 +40905,7 @@
           },
           "cc": {
             "title": "CC",
+            "description": "Addresses in the `Cc` header.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/EmailIdentity"
@@ -40443,6 +40913,7 @@
           },
           "date": {
             "title": "Date",
+            "description": "Value of the email's `Date` header, as sent.",
             "anyOf": [
               {
                 "type": "string"
@@ -40454,6 +40925,7 @@
           },
           "from": {
             "title": "From",
+            "description": "Addresses in the `From` header.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/EmailIdentity"
@@ -40461,6 +40933,7 @@
           },
           "in_reply_to": {
             "title": "In Reply To",
+            "description": "Value of the `In-Reply-To` header: the `Message-ID` of the email this one replies to.",
             "anyOf": [
               {
                 "type": "string"
@@ -40472,10 +40945,12 @@
           },
           "is_autoreply": {
             "title": "Is Auto-Reply",
+            "description": "Whether the email is an automatic reply, such as an out-of-office message.",
             "type": "boolean"
           },
           "message_id": {
             "title": "Message ID",
+            "description": "Value of the email's `Message-ID` header.",
             "anyOf": [
               {
                 "type": "string"
@@ -40487,6 +40962,7 @@
           },
           "reply_to": {
             "title": "Reply To",
+            "description": "Addresses in the `Reply-To` header.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/EmailIdentity"
@@ -40494,6 +40970,7 @@
           },
           "sender": {
             "title": "Sender",
+            "description": "Addresses in the `Sender` header.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/EmailIdentity"
@@ -40501,6 +40978,7 @@
           },
           "subject": {
             "title": "Subject",
+            "description": "Subject of the email.",
             "anyOf": [
               {
                 "type": "string"
@@ -40512,6 +40990,7 @@
           },
           "to": {
             "title": "To",
+            "description": "Addresses in the `To` header.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/EmailIdentity"
@@ -40538,10 +41017,12 @@
         "properties": {
           "email": {
             "title": "Email",
+            "description": "Email address.",
             "type": "string"
           },
           "name": {
             "title": "Name",
+            "description": "Display name, or an empty string if there isn't one.",
             "type": "string"
           }
         },
@@ -40637,6 +41118,7 @@
           },
           "body_html": {
             "title": "Body HTML",
+            "description": "HTML body of the email. Only returned for emails expanded with the `expand_emails` query parameter.",
             "anyOf": [
               {
                 "type": "string"
@@ -40648,7 +41130,7 @@
           },
           "body_html_quoted": {
             "title": "Body HTML Quoted",
-            "description": "`body_html` split into new content and HTML quoted from earlier messages. `null` if there is no HTML body.",
+            "description": "`body_html` split into new content and HTML quoted from earlier messages. `null` if there is no HTML body. Only returned for emails expanded with the `expand_emails` query parameter.",
             "anyOf": [
               {
                 "type": "array",
@@ -40676,6 +41158,7 @@
           },
           "body_text": {
             "title": "Body Text",
+            "description": "Plain-text body of the email. Only returned for emails expanded with the `expand_emails` query parameter.",
             "anyOf": [
               {
                 "type": "string"
@@ -40687,7 +41170,7 @@
           },
           "body_text_quoted": {
             "title": "Body Text Quoted",
-            "description": "`body_text` split into new content and text quoted from earlier messages. `null` if there is no plain-text body.",
+            "description": "`body_text` split into new content and text quoted from earlier messages. `null` if there is no plain-text body. Only returned for emails expanded with the `expand_emails` query parameter.",
             "anyOf": [
               {
                 "type": "array",
@@ -41259,6 +41742,7 @@
         "properties": {
           "bcc": {
             "title": "BCC",
+            "description": "Addresses the email was sent to as Bcc.",
             "type": "array",
             "items": {
               "type": "string"
@@ -41266,6 +41750,7 @@
           },
           "body_preview": {
             "title": "Body Preview",
+            "description": "First 200 characters of the email body, with repeated whitespace collapsed.",
             "anyOf": [
               {
                 "type": "string"
@@ -41277,6 +41762,7 @@
           },
           "cc": {
             "title": "CC",
+            "description": "Addresses the email was sent to as Cc.",
             "type": "array",
             "items": {
               "type": "string"
@@ -41284,11 +41770,13 @@
           },
           "date_created": {
             "title": "Date Created",
+            "description": "When the email was created in Close.",
             "type": "string",
             "format": "date-time"
           },
           "date_sent": {
             "title": "Date Sent",
+            "description": "When the email was sent, or `null` if it hasn't been sent or the time isn't known.",
             "anyOf": [
               {
                 "type": "string",
@@ -41301,13 +41789,16 @@
           },
           "date_updated": {
             "title": "Date Updated",
+            "description": "When the email was last updated.",
             "type": "string",
             "format": "date-time"
           },
           "direction": {
+            "description": "Whether the email was sent or received.",
             "$ref": "#/components/schemas/CommunicationDirection"
           },
           "envelope": {
+            "description": "Headers of the email, or `null` if they aren't available, for example for a draft.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/EmailEnvelope"
@@ -41319,6 +41810,7 @@
           },
           "has_attachments": {
             "title": "Has Attachments",
+            "description": "Whether the email has attachments.",
             "anyOf": [
               {
                 "type": "boolean"
@@ -41330,6 +41822,7 @@
           },
           "id": {
             "title": "ID",
+            "description": "ID of the email, prefixed with `acti_`.",
             "anyOf": [
               {
                 "type": "string"
@@ -41341,6 +41834,7 @@
           },
           "opens_summary": {
             "title": "Opens Summary",
+            "description": "Human-readable summary of who opened the email and when, or `null` if no opens were tracked.",
             "anyOf": [
               {
                 "type": "string"
@@ -41352,6 +41846,7 @@
           },
           "send_as_id": {
             "title": "Send As ID",
+            "description": "ID of the user whose name and address the email was sent with, when sent on that user's behalf. `null` otherwise.",
             "anyOf": [
               {
                 "type": "string"
@@ -41363,6 +41858,7 @@
           },
           "sender": {
             "title": "Sender",
+            "description": "Sender of the email as `Name <address>`, or just the address if there's no name.",
             "anyOf": [
               {
                 "type": "string"
@@ -41373,10 +41869,12 @@
             ]
           },
           "status": {
+            "description": "Status of the email.",
             "$ref": "#/components/schemas/MessageStatus"
           },
           "subject": {
             "title": "Subject",
+            "description": "Subject of the email.",
             "anyOf": [
               {
                 "type": "string"
@@ -41388,6 +41886,7 @@
           },
           "to": {
             "title": "To",
+            "description": "Addresses the email was sent to.",
             "type": "array",
             "items": {
               "type": "string"
@@ -41395,6 +41894,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the Close user who sent the email or whose connected account received it.",
             "anyOf": [
               {
                 "type": "string"
@@ -42099,7 +42599,7 @@
           },
           "activity_at": {
             "title": "Activity At",
-            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
+            "description": "When the most recent email in the thread was sent or received. It moves forward when a new email joins the thread.",
             "anyOf": [
               {
                 "type": "string",
@@ -42110,20 +42610,9 @@
               }
             ]
           },
-          "comment_summary": {
-            "title": "Comment Summary",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/CommentSummary"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "contact_id": {
             "title": "Contact ID",
-            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
+            "description": "Always `null` for email threads. Each email in `emails` has its own `contact_id`.",
             "anyOf": [
               {
                 "type": "string"
@@ -42160,7 +42649,7 @@
           },
           "date_created": {
             "title": "Date Created",
-            "description": "When the activity was created.",
+            "description": "Same as `activity_at`: when the most recent email in the thread was sent or received, not when the thread was first created.",
             "type": "string",
             "format": "date-time"
           },
@@ -42172,6 +42661,7 @@
           },
           "emails": {
             "title": "Emails",
+            "description": "Every email in the thread, most recent first. Only returned when fetching a single thread. Email bodies are left out unless you request them with `expand_emails`.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/EmailInThread"
@@ -42184,6 +42674,7 @@
           },
           "importance": {
             "title": "Importance",
+            "description": "Whether Close considers the thread important, and why.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/ImportantEmailThread"
@@ -42195,6 +42686,7 @@
           },
           "latest_emails": {
             "title": "Latest Emails",
+            "description": "Previews of the 5 most recent emails in the thread, most recent first. Only returned when listing threads.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/EmailPreview"
@@ -42202,6 +42694,7 @@
           },
           "latest_normalized_subject": {
             "title": "Latest Normalized Subject",
+            "description": "Subject of the most recent email, without prefixes such as `Re:` and `Fwd:`.",
             "anyOf": [
               {
                 "type": "string"
@@ -42225,6 +42718,7 @@
           },
           "n_emails": {
             "title": "Number of Emails",
+            "description": "Number of emails in the thread.",
             "anyOf": [
               {
                 "type": "integer"
@@ -42241,6 +42735,7 @@
           },
           "participants": {
             "title": "Participants",
+            "description": "Senders of the emails in the thread, one per address, most recent first.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/EmailIdentity"
@@ -42248,6 +42743,7 @@
           },
           "summary": {
             "title": "Summary",
+            "description": "AI summary of the thread, or `null` if it has none.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/EmailThreadSummary"
@@ -42284,7 +42780,7 @@
           },
           "user_id": {
             "title": "User ID",
-            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
+            "description": "ID of the user of the most recent email in the thread: the user who sent it, or whose connected account received it.",
             "anyOf": [
               {
                 "type": "string"
@@ -42309,7 +42805,7 @@
           },
           "users": {
             "title": "Users",
-            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
+            "description": "IDs of the users of every email in the thread, in no particular order.",
             "type": "array",
             "items": {
               "type": "string"
@@ -42354,7 +42850,7 @@
           },
           "activity_at": {
             "title": "Activity At",
-            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.",
+            "description": "When the most recent email in the thread was sent or received. It moves forward when a new email joins the thread.",
             "anyOf": [
               {
                 "type": "string",
@@ -42367,7 +42863,7 @@
           },
           "contact_id": {
             "title": "Contact ID",
-            "description": "ID of the Contact the activity is with, or `null` if it isn't with a particular Contact.",
+            "description": "Always `null` for email threads. Each email in `emails` has its own `contact_id`.",
             "anyOf": [
               {
                 "type": "string"
@@ -42403,7 +42899,7 @@
           },
           "date_created": {
             "title": "Date Created",
-            "description": "When the activity was created.",
+            "description": "Same as `activity_at`: when the most recent email in the thread was sent or received, not when the thread was first created.",
             "type": "string",
             "format": "date-time"
           },
@@ -42420,6 +42916,7 @@
           },
           "importance": {
             "title": "Importance",
+            "description": "Whether Close considers the thread important, and why.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/ImportantEmailThread"
@@ -42431,6 +42928,7 @@
           },
           "latest_emails": {
             "title": "Latest Emails",
+            "description": "Previews of the 5 most recent emails in the thread, most recent first. Only returned when listing threads.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/EmailPreview"
@@ -42438,6 +42936,7 @@
           },
           "latest_normalized_subject": {
             "title": "Latest Normalized Subject",
+            "description": "Subject of the most recent email, without prefixes such as `Re:` and `Fwd:`.",
             "anyOf": [
               {
                 "type": "string"
@@ -42461,6 +42960,7 @@
           },
           "n_emails": {
             "title": "Number of Emails",
+            "description": "Number of emails in the thread.",
             "anyOf": [
               {
                 "type": "integer"
@@ -42477,6 +42977,7 @@
           },
           "participants": {
             "title": "Participants",
+            "description": "Senders of the emails in the thread, one per address, most recent first.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/EmailIdentity"
@@ -42484,6 +42985,7 @@
           },
           "summary": {
             "title": "Summary",
+            "description": "AI summary of the thread, or `null` if it has none.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/EmailThreadSummary"
@@ -42519,7 +43021,7 @@
           },
           "user_id": {
             "title": "User ID",
-            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be `null`, e.g. for an incoming SMS to a group number.",
+            "description": "ID of the user of the most recent email in the thread: the user who sent it, or whose connected account received it.",
             "anyOf": [
               {
                 "type": "string"
@@ -42543,7 +43045,7 @@
           },
           "users": {
             "title": "Users",
-            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.",
+            "description": "IDs of the users of every email in the thread, in no particular order.",
             "type": "array",
             "items": {
               "type": "string"
@@ -42566,6 +43068,7 @@
         "properties": {
           "expired_at": {
             "title": "Expired At",
+            "description": "When newer emails made the summary out of date, or `null` if it hasn't expired.",
             "anyOf": [
               {
                 "type": "string",
@@ -42578,10 +43081,12 @@
           },
           "feedback": {
             "title": "Feedback",
+            "description": "Your rating of the summary. Left out if you haven't rated it.",
             "$ref": "#/components/schemas/EmailThreadSummaryFeedback"
           },
           "generated_at": {
             "title": "Generated At",
+            "description": "When the summary was generated, or `null` if it hasn't been generated yet.",
             "anyOf": [
               {
                 "type": "string",
@@ -42593,10 +43098,12 @@
             ]
           },
           "status": {
+            "description": "Status of the summary.",
             "$ref": "#/components/schemas/SummaryStatus"
           },
           "summary_html": {
             "title": "Summary HTML",
+            "description": "`summary_text` rendered as HTML, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -42608,6 +43115,7 @@
           },
           "summary_text": {
             "title": "Summary Text",
+            "description": "Summary of the thread in Markdown, or `null` if there's no summary text yet.",
             "anyOf": [
               {
                 "type": "string"
@@ -42619,6 +43127,7 @@
           },
           "updated_at": {
             "title": "Updated At",
+            "description": "When the summary last changed.",
             "type": "string",
             "format": "date-time"
           }
@@ -42638,6 +43147,7 @@
         "properties": {
           "detail": {
             "title": "Detail",
+            "description": "Comment you left with the rating, or `null`.",
             "anyOf": [
               {
                 "type": "string"
@@ -42649,10 +43159,12 @@
           },
           "given_at": {
             "title": "Given At",
+            "description": "When you rated the summary.",
             "type": "string",
             "format": "date-time"
           },
           "rating": {
+            "description": "Your rating of the summary.",
             "$ref": "#/components/schemas/SummaryFeedbackRating"
           }
         },
@@ -42680,6 +43192,40 @@
         },
         "required": [
           "error"
+        ]
+      },
+      "EventAttendeeStatus": {
+        "title": "EventAttendeeStatus",
+        "description": "An attendee's response to a calendar event invitation.",
+        "type": "string",
+        "enum": [
+          "yes",
+          "no",
+          "maybe",
+          "noreply"
+        ],
+        "x-fern-enum": {
+          "maybe": {
+            "description": "The attendee tentatively accepted the invitation."
+          },
+          "no": {
+            "description": "The attendee declined the invitation."
+          },
+          "noreply": {
+            "description": "The attendee hasn't responded to the invitation."
+          },
+          "yes": {
+            "description": "The attendee accepted the invitation."
+          }
+        }
+      },
+      "EventIntegrationArtifactType": {
+        "title": "EventIntegrationArtifactType",
+        "description": "Kind of recording a Meeting integration has.",
+        "type": "string",
+        "enum": [
+          "video",
+          "audio"
         ]
       },
       "ExactMomentCondition": {
@@ -43772,6 +44318,89 @@
           }
         }
       },
+      "GenericMeetingIntegration": {
+        "title": "GenericMeetingIntegration",
+        "description": "Legacy integration type. Close no longer creates these, but older Meetings may still have them.",
+        "type": "object",
+        "properties": {
+          "artifacts": {
+            "title": "Artifacts",
+            "description": "Recordings attached to the integration.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MeetingIntegrationArtifact"
+            }
+          },
+          "created_at": {
+            "title": "Created At",
+            "description": "When the integration was added to Close.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "event_occurrence_id": {
+            "title": "Event Occurrence ID",
+            "description": "ID of the calendar event occurrence the integration is attached to. Meetings for the same occurrence share its integrations.",
+            "type": "string"
+          },
+          "id": {
+            "title": "ID",
+            "description": "ID of the integration, prefixed with `evtint_`.",
+            "type": "string"
+          },
+          "integration_data": {
+            "description": "Data from the integrated service.",
+            "$ref": "#/components/schemas/GenericMeetingIntegrationData"
+          },
+          "integration_name": {
+            "title": "Integration Name",
+            "description": "Type of the integration.",
+            "type": "string",
+            "const": "generic"
+          },
+          "integration_object_id": {
+            "title": "Integration Object ID",
+            "description": "ID of the related object in the integrated service, e.g. the Zoom meeting ID.",
+            "type": "string"
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "description": "ID of the organization the integration belongs to.",
+            "type": "string"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "description": "When the integration was last changed.",
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "artifacts",
+          "created_at",
+          "event_occurrence_id",
+          "id",
+          "integration_data",
+          "integration_name",
+          "integration_object_id",
+          "organization_id",
+          "updated_at"
+        ]
+      },
+      "GenericMeetingIntegrationData": {
+        "title": "GenericMeetingIntegrationData",
+        "type": "object",
+        "properties": {
+          "raw": {
+            "title": "Raw",
+            "description": "Data from the integrated service, in its own format.",
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "required": [
+          "raw"
+        ]
+      },
       "Group": {
         "title": "Group",
         "type": "object",
@@ -44266,10 +44895,12 @@
         "type": "object",
         "properties": {
           "reason": {
+            "description": "Why the thread is important.",
             "$ref": "#/components/schemas/ImportantThreadReason"
           },
           "type": {
             "title": "Type",
+            "description": "Always `important`.",
             "type": "string",
             "const": "important"
           }
@@ -44291,7 +44922,30 @@
           "whitelisted",
           "by-default",
           "unset-initial-default"
-        ]
+        ],
+        "x-fern-enum": {
+          "by-default": {
+            "description": "No rule matched and the thread defaulted to important. Close no longer sets this value, but older threads may still have it."
+          },
+          "contains-manual-message": {
+            "description": "The thread has an email that a user wrote and sent from Close, rather than one sent from a template, a Workflow or a bulk action."
+          },
+          "has-response": {
+            "description": "The thread has an incoming reply that isn't an auto-reply or a marketing email. An auto-reply counts for 14 days after it arrives."
+          },
+          "manual": {
+            "description": "A user marked the thread as important."
+          },
+          "most-recent-communication": {
+            "description": "The thread has the most recent call, meeting, email or SMS on the lead."
+          },
+          "unset-initial-default": {
+            "description": "The thread's importance hasn't been evaluated yet. Threads are important until it is."
+          },
+          "whitelisted": {
+            "description": "An email in the thread is from a sender that matches one of your organization's important sender patterns."
+          }
+        }
       },
       "InStatusQuery": {
         "title": "InStatusQuery",
@@ -46937,6 +47591,7 @@
           },
           "actual_duration": {
             "title": "Actual Duration",
+            "description": "How long the Meeting really took, in seconds, based on its attached Calls. `null` until all attached Calls have ended, or if it has none.",
             "anyOf": [
               {
                 "type": "integer"
@@ -46962,6 +47617,7 @@
           },
           "attached_call_ids": {
             "title": "Attached Call IDs",
+            "description": "IDs of the Call activities linked to this Meeting, e.g. a Call made at the time of the Meeting with the same Lead.",
             "type": "array",
             "items": {
               "type": "string"
@@ -46969,6 +47625,7 @@
           },
           "attendees": {
             "title": "Attendees",
+            "description": "People invited to the Meeting.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/MeetingAttendee"
@@ -46976,6 +47633,7 @@
           },
           "calendar_event_link": {
             "title": "Calendar Event Link",
+            "description": "URL of the event in Google Calendar or Outlook, or `null` if there's no synced calendar event.",
             "anyOf": [
               {
                 "type": "string"
@@ -46987,6 +47645,8 @@
           },
           "calendar_event_uids": {
             "title": "Calendar Event UIDs",
+            "description": "Deprecated. Use `provider_calendar_event_id` instead.",
+            "deprecated": true,
             "type": "array",
             "items": {
               "type": "string"
@@ -46994,6 +47654,7 @@
           },
           "comment_summary": {
             "title": "Comment Summary",
+            "description": "Summary of the comments on the Meeting, or `null` if it has none. Only included when requested with `_fields`.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/CommentSummary"
@@ -47005,6 +47666,7 @@
           },
           "conference_links": {
             "title": "Conference Links",
+            "description": "Video call links found in the calendar event, e.g. a Zoom or Google Meet link.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/MeetingConferenceLink"
@@ -47012,6 +47674,7 @@
           },
           "connected_account_id": {
             "title": "Connected Account ID",
+            "description": "ID of the connected calendar account the Meeting was synced from, e.g. `emailacct_abc123`. `null` for Meetings created in Close, or when that account was removed.",
             "anyOf": [
               {
                 "type": "string"
@@ -47035,6 +47698,8 @@
           },
           "conversation_type_id": {
             "title": "Conversation Type ID",
+            "description": "Deprecated. Use `playbook_id` instead.",
+            "deprecated": true,
             "anyOf": [
               {
                 "type": "string"
@@ -47045,6 +47710,8 @@
             ]
           },
           "conversation_type_reason": {
+            "description": "Deprecated. Use `playbook_reason` instead.",
+            "deprecated": true,
             "anyOf": [
               {
                 "$ref": "#/components/schemas/PlaybookReason"
@@ -47068,6 +47735,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
+            "description": "ID of the AI agent the Meeting is attributed to, e.g. `agentconfig_abc123`, or `null` if there's none.",
             "default": null,
             "anyOf": [
               {
@@ -47105,10 +47773,12 @@
           },
           "duration": {
             "title": "Duration",
+            "description": "How long the Meeting was scheduled for, in seconds. See `actual_duration` for how long it really took.",
             "type": "integer"
           },
           "ends_at": {
             "title": "Ends At",
+            "description": "When the Meeting is scheduled to end: `starts_at` plus `duration`.",
             "type": "string",
             "format": "date-time"
           },
@@ -47119,14 +47789,15 @@
           },
           "integrations": {
             "title": "Integrations",
+            "description": "Data that integrations attached to the Meeting, e.g. Zoom recordings or a note added by an OAuth app.",
             "type": "array",
             "items": {
-              "type": "object",
-              "additionalProperties": true
+              "$ref": "#/components/schemas/MeetingIntegration"
             }
           },
           "is_recurring": {
             "title": "Is Recurring",
+            "description": "Whether the Meeting is one occurrence of a recurring calendar event.",
             "type": "boolean"
           },
           "lead_id": {
@@ -47143,14 +47814,17 @@
           },
           "location": {
             "title": "Location",
+            "description": "Location from the calendar event, or an empty string if it has none.",
             "type": "string"
           },
           "note": {
             "title": "Note",
+            "description": "Description of the calendar event as plain text, or an empty string if it has none. For notes written in Close, see `user_note`.",
             "type": "string"
           },
           "notetaker_id": {
             "title": "Notetaker ID",
+            "description": "ID of the user who last wrote the note, or `null` if the note is empty.",
             "anyOf": [
               {
                 "type": "string"
@@ -47166,6 +47840,7 @@
             "type": "string"
           },
           "outcome_autofill_confidence": {
+            "description": "How confident AI was in the Outcome, or `null` if AI didn't set it.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/OutcomeAutofillConfidence"
@@ -47177,6 +47852,7 @@
           },
           "outcome_autofill_reasoning": {
             "title": "Outcome Autofill Reasoning",
+            "description": "Why AI chose the Outcome, or `null` if AI didn't set it.",
             "anyOf": [
               {
                 "type": "string"
@@ -47188,6 +47864,7 @@
           },
           "outcome_id": {
             "title": "Outcome ID",
+            "description": "ID of the Outcome of the Meeting, e.g. `outcome_03oUxZfoO6e2vHmcz1DiHR`, or `null` if it has none.",
             "anyOf": [
               {
                 "type": "string"
@@ -47198,6 +47875,7 @@
             ]
           },
           "outcome_reason": {
+            "description": "How the Outcome was set, or `null` if it has none.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/OutcomeReason"
@@ -47209,6 +47887,7 @@
           },
           "playbook_id": {
             "title": "Playbook ID",
+            "description": "ID of the Playbook of the Meeting, e.g. `convtyp_4fTvcGkYog1kj5nH7Lx1yJ`, or `null` if it has none.",
             "anyOf": [
               {
                 "type": "string"
@@ -47219,6 +47898,7 @@
             ]
           },
           "playbook_reason": {
+            "description": "How the Playbook was set, or `null` if it has none.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/PlaybookReason"
@@ -47230,6 +47910,7 @@
           },
           "provider_calendar_event_id": {
             "title": "Provider Calendar Event ID",
+            "description": "ID of the event in Google or Microsoft calendar, or `null` for Meetings created in Close. Only unique together with a calendar ID from `provider_calendar_ids`.",
             "anyOf": [
               {
                 "type": "string"
@@ -47241,12 +47922,14 @@
           },
           "provider_calendar_ids": {
             "title": "Provider Calendar IDs",
+            "description": "IDs of the Google or Microsoft calendars the event is on. The same event can be on more than one calendar.",
             "type": "array",
             "items": {
               "type": "string"
             }
           },
           "provider_calendar_type": {
+            "description": "Calendar provider the Meeting was synced from, or `null` for Meetings created in Close.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/ProviderCalendarType"
@@ -47257,14 +47940,17 @@
             ]
           },
           "source": {
+            "description": "How the Meeting got into Close.",
             "$ref": "#/components/schemas/MeetingSource"
           },
           "starts_at": {
             "title": "Starts At",
+            "description": "When the Meeting is scheduled to start. Always the same as `activity_at`.",
             "type": "string",
             "format": "date-time"
           },
           "status": {
+            "description": "Status of the Meeting, or `null` if it isn't known.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/MeetingStatus"
@@ -47275,6 +47961,7 @@
             ]
           },
           "summary": {
+            "description": "AI-generated summary of the Meeting, or `null` if there's none.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/MeetingSummary"
@@ -47286,10 +47973,12 @@
           },
           "title": {
             "title": "Title",
+            "description": "Title of the Meeting, usually from the calendar event.",
             "type": "string"
           },
           "transcripts": {
             "title": "Transcripts",
+            "description": "One transcript per Close Notetaker bot that joined the Meeting, in the order they joined, or `null` for a bot with no transcript yet. Only included when requested with `_fields`.",
             "type": "array",
             "items": {
               "anyOf": [
@@ -47354,6 +48043,7 @@
           },
           "user_note": {
             "title": "User Note",
+            "description": "Plain text version of `user_note_html`, or `null` if there's no note.",
             "anyOf": [
               {
                 "type": "string"
@@ -47365,6 +48055,7 @@
           },
           "user_note_date_updated": {
             "title": "User Note Date Updated",
+            "description": "When the note was last changed, or `null` if it never was.",
             "anyOf": [
               {
                 "type": "string",
@@ -47377,6 +48068,7 @@
           },
           "user_note_html": {
             "title": "User Note Html",
+            "description": "Note about the Meeting written in Close, as rich text HTML, or `null` if there's no note.",
             "anyOf": [
               {
                 "type": "string"
@@ -47388,6 +48080,7 @@
           },
           "user_note_mentions": {
             "title": "User Note Mentions",
+            "description": "IDs of the users and groups mentioned in the note.",
             "type": "array",
             "items": {
               "type": "string"
@@ -47462,6 +48155,7 @@
         "properties": {
           "contact_id": {
             "title": "Contact ID",
+            "description": "ID of the Contact with this email address, or `null` if no Contact matches.",
             "anyOf": [
               {
                 "type": "string"
@@ -47473,6 +48167,7 @@
           },
           "email": {
             "title": "Email",
+            "description": "Email address of the attendee.",
             "anyOf": [
               {
                 "type": "string"
@@ -47484,6 +48179,7 @@
           },
           "is_organizer": {
             "title": "Is Organizer",
+            "description": "Whether the attendee organized the Meeting.",
             "anyOf": [
               {
                 "type": "boolean"
@@ -47495,6 +48191,7 @@
           },
           "name": {
             "title": "Name",
+            "description": "Name of the attendee, if the calendar provides one.",
             "anyOf": [
               {
                 "type": "string"
@@ -47505,10 +48202,10 @@
             ]
           },
           "status": {
-            "title": "Status",
+            "description": "The attendee's response to the invitation.",
             "anyOf": [
               {
-                "type": "string"
+                "$ref": "#/components/schemas/EventAttendeeStatus"
               },
               {
                 "type": "null"
@@ -47517,6 +48214,7 @@
           },
           "user_id": {
             "title": "User ID",
+            "description": "ID of the Close user with this email address, or `null` if the attendee isn't a user in your organization.",
             "anyOf": [
               {
                 "type": "string"
@@ -47541,16 +48239,202 @@
         "type": "object",
         "properties": {
           "type": {
+            "description": "The video conferencing service the link is for.",
             "$ref": "#/components/schemas/ConferenceLinkType"
           },
           "url": {
             "title": "URL",
+            "description": "URL to join the video call.",
             "type": "string"
           }
         },
         "required": [
           "type",
           "url"
+        ]
+      },
+      "MeetingIntegration": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ZoomMeetingIntegration"
+          },
+          {
+            "$ref": "#/components/schemas/ThirdPartyMeetingIntegration"
+          },
+          {
+            "$ref": "#/components/schemas/GenericMeetingIntegration"
+          }
+        ],
+        "discriminator": {
+          "mapping": {
+            "generic": "#/components/schemas/GenericMeetingIntegration",
+            "third_party": "#/components/schemas/ThirdPartyMeetingIntegration",
+            "zoom": "#/components/schemas/ZoomMeetingIntegration"
+          },
+          "propertyName": "integration_name"
+        }
+      },
+      "MeetingIntegrationArtifact": {
+        "title": "MeetingIntegrationArtifact",
+        "type": "object",
+        "properties": {
+          "artifact_data": {
+            "description": "Details of the recording, or `null` if there are none.",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/MeetingIntegrationArtifactData"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "artifact_type": {
+            "description": "Kind of recording.",
+            "$ref": "#/components/schemas/EventIntegrationArtifactType"
+          },
+          "created_at": {
+            "title": "Created At",
+            "description": "When the artifact was added to Close.",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "event_integration_id": {
+            "title": "Event Integration ID",
+            "description": "ID of the integration the artifact belongs to.",
+            "type": "string"
+          },
+          "id": {
+            "title": "ID",
+            "description": "ID of the artifact, prefixed with `evtintart_`.",
+            "type": "string"
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "description": "ID of the organization the artifact belongs to.",
+            "type": "string"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "description": "When the artifact was last changed.",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "artifact_data",
+          "artifact_type",
+          "created_at",
+          "event_integration_id",
+          "id",
+          "organization_id",
+          "updated_at"
+        ]
+      },
+      "MeetingIntegrationArtifactData": {
+        "title": "MeetingIntegrationArtifactData",
+        "type": "object",
+        "properties": {
+          "description": {
+            "title": "Description",
+            "description": "Description of the recording from the integrated service.",
+            "type": "string"
+          },
+          "ends_at": {
+            "title": "Ends At",
+            "description": "When the recording ends, or `null` if it isn't known.",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "external_id": {
+            "title": "External ID",
+            "description": "ID of the recording in the integrated service.",
+            "type": "string"
+          },
+          "file_type": {
+            "description": "File format of the recording.",
+            "$ref": "#/components/schemas/ArtifactFileType"
+          },
+          "starts_at": {
+            "title": "Starts At",
+            "description": "When the recording starts, or `null` if it isn't known.",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "url": {
+            "title": "URL",
+            "description": "URL of the recording file. For Zoom recordings, this is a path in the Close web app, e.g. `/downloads/zoom/recording/evtintart_abc123/`, that redirects a signed-in Close user to a temporary download link. API clients can't download it directly.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "description",
+          "ends_at",
+          "external_id",
+          "file_type",
+          "starts_at",
+          "url"
+        ]
+      },
+      "MeetingIntegrationOAuthApp": {
+        "title": "MeetingIntegrationOAuthApp",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "ID",
+            "description": "ID of the OAuth app, prefixed with `oa2client_`.",
+            "type": "string"
+          },
+          "logo_url": {
+            "title": "Logo URL",
+            "description": "URL of the OAuth app's logo, or `null` if it has none.",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "name": {
+            "title": "Name",
+            "description": "Name of the OAuth app.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "logo_url",
+          "name"
         ]
       },
       "MeetingSearchResult": {
@@ -47587,6 +48471,7 @@
           },
           "actual_duration": {
             "title": "Actual Duration",
+            "description": "How long the Meeting really took, in seconds, based on its attached Calls. `null` until all attached Calls have ended, or if it has none.",
             "anyOf": [
               {
                 "type": "integer"
@@ -47610,6 +48495,7 @@
           },
           "attached_call_ids": {
             "title": "Attached Call IDs",
+            "description": "IDs of the Call activities linked to this Meeting, e.g. a Call made at the time of the Meeting with the same Lead.",
             "type": "array",
             "items": {
               "type": "string"
@@ -47617,6 +48503,7 @@
           },
           "attendees": {
             "title": "Attendees",
+            "description": "People invited to the Meeting.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/MeetingAttendee"
@@ -47624,6 +48511,7 @@
           },
           "calendar_event_link": {
             "title": "Calendar Event Link",
+            "description": "URL of the event in Google Calendar or Outlook, or `null` if there's no synced calendar event.",
             "anyOf": [
               {
                 "type": "string"
@@ -47635,6 +48523,7 @@
           },
           "calendar_event_uids": {
             "title": "Calendar Event UIDs",
+            "description": "Deprecated. Use `provider_calendar_event_id` instead.",
             "type": "array",
             "items": {
               "type": "string"
@@ -47642,6 +48531,7 @@
           },
           "conference_links": {
             "title": "Conference Links",
+            "description": "Video call links found in the calendar event, e.g. a Zoom or Google Meet link.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/MeetingConferenceLink"
@@ -47649,6 +48539,7 @@
           },
           "connected_account_id": {
             "title": "Connected Account ID",
+            "description": "ID of the connected calendar account the Meeting was synced from, e.g. `emailacct_abc123`. `null` for Meetings created in Close, or when that account was removed.",
             "anyOf": [
               {
                 "type": "string"
@@ -47672,6 +48563,7 @@
           },
           "conversation_type_id": {
             "title": "Conversation Type ID",
+            "description": "Deprecated. Use `playbook_id` instead.",
             "anyOf": [
               {
                 "type": "string"
@@ -47683,6 +48575,7 @@
           },
           "conversation_type_reason": {
             "title": "Conversation Type Reason",
+            "description": "Deprecated. Use `playbook_reason` instead.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/PlaybookReason"
@@ -47706,6 +48599,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
+            "description": "ID of the AI agent the Meeting is attributed to, e.g. `agentconfig_abc123`, or `null` if there's none.",
             "anyOf": [
               {
                 "type": "string"
@@ -47741,10 +48635,12 @@
           },
           "duration": {
             "title": "Duration",
+            "description": "How long the Meeting was scheduled for, in seconds. See `actual_duration` for how long it really took.",
             "type": "integer"
           },
           "ends_at": {
             "title": "Ends At",
+            "description": "When the Meeting is scheduled to end: `starts_at` plus `duration`.",
             "type": "string",
             "format": "date-time"
           },
@@ -47755,14 +48651,15 @@
           },
           "integrations": {
             "title": "Integrations",
+            "description": "Data that integrations attached to the Meeting, e.g. Zoom recordings or a note added by an OAuth app.",
             "type": "array",
             "items": {
-              "type": "object",
-              "additionalProperties": true
+              "$ref": "#/components/schemas/MeetingIntegration"
             }
           },
           "is_recurring": {
             "title": "Is Recurring",
+            "description": "Whether the Meeting is one occurrence of a recurring calendar event.",
             "type": "boolean"
           },
           "lead_id": {
@@ -47779,14 +48676,17 @@
           },
           "location": {
             "title": "Location",
+            "description": "Location from the calendar event, or an empty string if it has none.",
             "type": "string"
           },
           "note": {
             "title": "Note",
+            "description": "Description of the calendar event as plain text, or an empty string if it has none. For notes written in Close, see `user_note`.",
             "type": "string"
           },
           "notetaker_id": {
             "title": "Notetaker ID",
+            "description": "ID of the user who last wrote the note, or `null` if the note is empty.",
             "anyOf": [
               {
                 "type": "string"
@@ -47803,6 +48703,7 @@
           },
           "outcome_autofill_confidence": {
             "title": "Outcome Autofill Confidence",
+            "description": "How confident AI was in the Outcome, or `null` if AI didn't set it.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/OutcomeAutofillConfidence"
@@ -47814,6 +48715,7 @@
           },
           "outcome_autofill_reasoning": {
             "title": "Outcome Autofill Reasoning",
+            "description": "Why AI chose the Outcome, or `null` if AI didn't set it.",
             "anyOf": [
               {
                 "type": "string"
@@ -47825,6 +48727,7 @@
           },
           "outcome_id": {
             "title": "Outcome ID",
+            "description": "ID of the Outcome of the Meeting, e.g. `outcome_03oUxZfoO6e2vHmcz1DiHR`, or `null` if it has none.",
             "anyOf": [
               {
                 "type": "string"
@@ -47836,6 +48739,7 @@
           },
           "outcome_reason": {
             "title": "Outcome Reason",
+            "description": "How the Outcome was set, or `null` if it has none.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/OutcomeReason"
@@ -47847,6 +48751,7 @@
           },
           "playbook_id": {
             "title": "Playbook ID",
+            "description": "ID of the Playbook of the Meeting, e.g. `convtyp_4fTvcGkYog1kj5nH7Lx1yJ`, or `null` if it has none.",
             "anyOf": [
               {
                 "type": "string"
@@ -47858,6 +48763,7 @@
           },
           "playbook_reason": {
             "title": "Playbook Reason",
+            "description": "How the Playbook was set, or `null` if it has none.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/PlaybookReason"
@@ -47869,6 +48775,7 @@
           },
           "provider_calendar_event_id": {
             "title": "Provider Calendar Event ID",
+            "description": "ID of the event in Google or Microsoft calendar, or `null` for Meetings created in Close. Only unique together with a calendar ID from `provider_calendar_ids`.",
             "anyOf": [
               {
                 "type": "string"
@@ -47880,6 +48787,7 @@
           },
           "provider_calendar_ids": {
             "title": "Provider Calendar IDs",
+            "description": "IDs of the Google or Microsoft calendars the event is on. The same event can be on more than one calendar.",
             "type": "array",
             "items": {
               "type": "string"
@@ -47887,6 +48795,7 @@
           },
           "provider_calendar_type": {
             "title": "Provider Calendar Type",
+            "description": "Calendar provider the Meeting was synced from, or `null` for Meetings created in Close.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/ProviderCalendarType"
@@ -47898,15 +48807,18 @@
           },
           "source": {
             "title": "Source",
+            "description": "How the Meeting got into Close.",
             "$ref": "#/components/schemas/MeetingSource"
           },
           "starts_at": {
             "title": "Starts At",
+            "description": "When the Meeting is scheduled to start. Always the same as `activity_at`.",
             "type": "string",
             "format": "date-time"
           },
           "status": {
             "title": "Status",
+            "description": "Status of the Meeting, or `null` if it isn't known.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/MeetingStatus"
@@ -47918,6 +48830,7 @@
           },
           "summary": {
             "title": "Summary",
+            "description": "AI-generated summary of the Meeting, or `null` if there's none.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/MeetingSummary"
@@ -47929,6 +48842,7 @@
           },
           "title": {
             "title": "Title",
+            "description": "Title of the Meeting, usually from the calendar event.",
             "type": "string"
           },
           "updated_by": {
@@ -47981,6 +48895,7 @@
           },
           "user_note": {
             "title": "User Note",
+            "description": "Plain text version of `user_note_html`, or `null` if there's no note.",
             "anyOf": [
               {
                 "type": "string"
@@ -47992,6 +48907,7 @@
           },
           "user_note_date_updated": {
             "title": "User Note Date Updated",
+            "description": "When the note was last changed, or `null` if it never was.",
             "anyOf": [
               {
                 "type": "string",
@@ -48004,6 +48920,7 @@
           },
           "user_note_html": {
             "title": "User Note Html",
+            "description": "Note about the Meeting written in Close, as rich text HTML, or `null` if there's no note.",
             "anyOf": [
               {
                 "type": "string"
@@ -48015,6 +48932,7 @@
           },
           "user_note_mentions": {
             "title": "User Note Mentions",
+            "description": "IDs of the users and groups mentioned in the note.",
             "type": "array",
             "items": {
               "type": "string"
@@ -48067,10 +48985,12 @@
         "properties": {
           "html": {
             "title": "Html",
+            "description": "AI-generated summary of the Meeting as HTML.",
             "type": "string"
           },
           "text": {
             "title": "Text",
+            "description": "AI-generated summary of the Meeting as plain text.",
             "type": "string"
           }
         },
@@ -48085,14 +49005,17 @@
         "properties": {
           "has_speaker_labels": {
             "title": "Has Speaker Labels",
+            "description": "Whether the utterances are labeled with who said them. When `false`, `speaker_label` may be a placeholder such as `A` or `Unknown` instead of a name.",
             "type": "boolean"
           },
           "id": {
             "title": "ID",
+            "description": "ID of the transcript, e.g. `transcript_abc123`.",
             "type": "string"
           },
           "speakers": {
             "title": "Speakers",
+            "description": "Talk time statistics for each speaker.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/MeetingTranscriptSpeaker"
@@ -48100,6 +49023,7 @@
           },
           "summary_html": {
             "title": "Summary Html",
+            "description": "AI-generated summary of the transcript as HTML, or `null` if there's no summary yet.",
             "anyOf": [
               {
                 "type": "string"
@@ -48111,6 +49035,7 @@
           },
           "summary_text": {
             "title": "Summary Text",
+            "description": "AI-generated summary of the transcript as plain text, or `null` if there's no summary yet.",
             "anyOf": [
               {
                 "type": "string"
@@ -48122,6 +49047,7 @@
           },
           "utterances": {
             "title": "Utterances",
+            "description": "What was said, in order, one entry per utterance.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/MeetingTranscriptUtterance"
@@ -48142,9 +49068,11 @@
         "properties": {
           "speaker_label": {
             "title": "Speaker Label",
+            "description": "Name or label of the speaker, e.g. `Jane Doe`.",
             "type": "string"
           },
           "speaker_side": {
+            "description": "Which side of the conversation the speaker is on, or `null` if it isn't known.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/SpeakerSide"
@@ -48156,10 +49084,12 @@
           },
           "talk_percentage": {
             "title": "Talk Percentage",
+            "description": "The speaker's share of the total talk time, from 0 to 1. For example, `0.25` means 25%.",
             "type": "number"
           },
           "talk_time": {
             "title": "Talk Time",
+            "description": "How long the speaker talked in total, in seconds.",
             "type": "number"
           }
         },
@@ -48176,13 +49106,16 @@
         "properties": {
           "end": {
             "title": "End",
+            "description": "When the utterance ends, in seconds from the start of the recording.",
             "type": "number"
           },
           "speaker_label": {
             "title": "Speaker Label",
+            "description": "Name or label of the speaker, e.g. `Jane Doe`.",
             "type": "string"
           },
           "speaker_side": {
+            "description": "Which side of the conversation the speaker is on, or `null` if it isn't known.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/SpeakerSide"
@@ -48194,10 +49127,12 @@
           },
           "start": {
             "title": "Start",
+            "description": "When the utterance starts, in seconds from the start of the recording.",
             "type": "number"
           },
           "text": {
             "title": "Text",
+            "description": "What the speaker said.",
             "type": "string"
           }
         },
@@ -48785,10 +49720,12 @@
         "type": "object",
         "properties": {
           "reason": {
+            "description": "Why the thread isn't important.",
             "$ref": "#/components/schemas/NotImportantThreadReason"
           },
           "type": {
             "title": "Type",
+            "description": "Always `not_important`.",
             "type": "string",
             "const": "not_important"
           }
@@ -48808,7 +49745,24 @@
           "automated-outbound",
           "marketing-or-transactional",
           "by-default"
-        ]
+        ],
+        "x-fern-enum": {
+          "automated-outbound": {
+            "description": "Every email in the thread is an automated outgoing email, such as one sent by a Workflow, a bulk action or the API, or an auto-reply."
+          },
+          "by-default": {
+            "description": "No rule marked the thread as important."
+          },
+          "manual": {
+            "description": "A user marked the thread as not important."
+          },
+          "marketing-or-transactional": {
+            "description": "Every email in the thread looks like a marketing or transactional email, for example one with an unsubscribe link or one sent from a no-reply address."
+          },
+          "scheduling-emails": {
+            "description": "Every email in the thread is about scheduling an event, such as a calendar invite or a notification from a scheduling tool."
+          }
+        }
       },
       "NoteSearchResult": {
         "title": "NoteSearchResult",
@@ -48844,7 +49798,7 @@
           },
           "agent_action_reason": {
             "title": "Agent Action Reason",
-            "description": "Why an agent created the activity, e.g. `send_scheduling_link`, or `null` if no agent created it.",
+            "description": "Why an agent created the activity (`send_scheduling_link`, `custom_agent_decision` or `voice_agent_callback`), or `null` if no agent created it.",
             "anyOf": [
               {
                 "type": "string"
@@ -48868,6 +49822,7 @@
           },
           "attachments": {
             "title": "Attachments",
+            "description": "Files attached to the note.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Attachment"
@@ -48899,7 +49854,7 @@
           },
           "created_by_agent_id": {
             "title": "Created By Agent ID",
-            "description": "ID of the agent that created the activity, or `null` if no agent created it.",
+            "description": "ID of the agent that created the activity, e.g. `agentconfig_abc123`, or `null` if no agent created it.",
             "anyOf": [
               {
                 "type": "string"
@@ -48952,14 +49907,17 @@
           },
           "note": {
             "title": "Note",
+            "description": "Plain-text content of the note. When the note has rich text, this is derived from `note_html`.",
             "type": "string"
           },
           "note_html": {
-            "title": "Note Html",
+            "title": "Note HTML",
+            "description": "Rich-text content of the note as HTML. For a note that was written as plain text, this is generated from `note`.",
             "type": "string"
           },
           "note_mentions": {
             "title": "Note Mentions",
+            "description": "IDs of the users (`user_`) and groups (`group_`) mentioned in `note_html`.",
             "type": "array",
             "items": {
               "type": "string"
@@ -48972,10 +49930,12 @@
           },
           "pinned": {
             "title": "Pinned",
+            "description": "Whether the note is pinned to the top of the lead's activity timeline.",
             "type": "boolean"
           },
           "pinned_at": {
             "title": "Pinned At",
+            "description": "When the note was pinned, or `null` if it isn't pinned.",
             "anyOf": [
               {
                 "type": "string",
@@ -48988,6 +49948,7 @@
           },
           "source": {
             "title": "Source",
+            "description": "How the note was created, e.g. `ui` in the Close app or `api` through the API. `null` if the source isn't known.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/CreationSource"
@@ -48999,6 +49960,7 @@
           },
           "title": {
             "title": "Title",
+            "description": "Title of the note, or `null` if it has no title.",
             "anyOf": [
               {
                 "type": "string"
@@ -51501,12 +52463,6 @@
             "deprecated": true,
             "type": "boolean"
           },
-          "is_premium": {
-            "title": "Is Premium",
-            "description": "This field is deprecated and will be removed in a future update. Until then, it is always `false`.",
-            "deprecated": true,
-            "type": "boolean"
-          },
           "label": {
             "title": "Label",
             "type": "string"
@@ -51663,7 +52619,6 @@
           "date_updated",
           "id",
           "is_group_number",
-          "is_premium",
           "label",
           "last_billed_price",
           "local_presence_enabled",
@@ -54234,6 +55189,7 @@
       },
       "SpeakerSide": {
         "title": "SpeakerSide",
+        "description": "Which side of the conversation a speaker is on: `contact` for the Lead's side, `close-user` for a Close user, or `voice-agent` for a Close AI voice agent.",
         "type": "string",
         "enum": [
           "contact",
@@ -54561,7 +55517,15 @@
         "enum": [
           "positive",
           "negative"
-        ]
+        ],
+        "x-fern-enum": {
+          "negative": {
+            "description": "The user didn't find the summary helpful."
+          },
+          "positive": {
+            "description": "The user found the summary helpful."
+          }
+        }
       },
       "SummaryStatus": {
         "title": "SummaryStatus",
@@ -54572,7 +55536,21 @@
           "success",
           "failure",
           "expired"
-        ]
+        ],
+        "x-fern-enum": {
+          "expired": {
+            "description": "Newer emails made the summary out of date."
+          },
+          "failure": {
+            "description": "The summary couldn't be generated."
+          },
+          "pending": {
+            "description": "The summary is being generated."
+          },
+          "success": {
+            "description": "The summary was generated."
+          }
+        }
       },
       "TOTPAuthState": {
         "title": "TOTPAuthState",
@@ -56121,6 +57099,93 @@
           "value"
         ]
       },
+      "ThirdPartyMeetingIntegration": {
+        "title": "ThirdPartyMeetingIntegration",
+        "type": "object",
+        "properties": {
+          "artifacts": {
+            "title": "Artifacts",
+            "description": "Recordings attached to the integration.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MeetingIntegrationArtifact"
+            }
+          },
+          "created_at": {
+            "title": "Created At",
+            "description": "When the integration was added to Close.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "event_occurrence_id": {
+            "title": "Event Occurrence ID",
+            "description": "ID of the calendar event occurrence the integration is attached to. Meetings for the same occurrence share its integrations.",
+            "type": "string"
+          },
+          "id": {
+            "title": "ID",
+            "description": "ID of the integration, prefixed with `evtint_`.",
+            "type": "string"
+          },
+          "integration_data": {
+            "description": "Data the OAuth app added to the Meeting.",
+            "$ref": "#/components/schemas/ThirdPartyMeetingIntegrationData"
+          },
+          "integration_name": {
+            "title": "Integration Name",
+            "description": "Type of the integration.",
+            "type": "string",
+            "const": "third_party"
+          },
+          "integration_object_id": {
+            "title": "Integration Object ID",
+            "description": "ID of the related object in the integrated service, e.g. the Zoom meeting ID.",
+            "type": "string"
+          },
+          "oauth_client": {
+            "title": "OAuth Client",
+            "description": "The OAuth app that added the integration.",
+            "$ref": "#/components/schemas/MeetingIntegrationOAuthApp"
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "description": "ID of the organization the integration belongs to.",
+            "type": "string"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "description": "When the integration was last changed.",
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "artifacts",
+          "created_at",
+          "event_occurrence_id",
+          "id",
+          "integration_data",
+          "integration_name",
+          "integration_object_id",
+          "oauth_client",
+          "organization_id",
+          "updated_at"
+        ]
+      },
+      "ThirdPartyMeetingIntegrationData": {
+        "title": "ThirdPartyMeetingIntegrationData",
+        "type": "object",
+        "properties": {
+          "note_html": {
+            "title": "Note HTML",
+            "description": "Note the OAuth app added to the Meeting, as rich text HTML wrapped in `<body>` tags.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "note_html"
+        ]
+      },
       "TimezoneNameCondition": {
         "title": "TimezoneNameCondition",
         "description": "Matches timezone fields with any of the given timezones.",
@@ -57114,10 +58179,64 @@
           "url"
         ]
       },
+      "UpdateMeetingActivity": {
+        "title": "UpdateMeetingActivity",
+        "type": "object",
+        "properties": {
+          "conversation_type_id": {
+            "title": "Conversation Type ID",
+            "description": "Deprecated. Use `playbook_id` instead.",
+            "deprecated": true,
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "outcome_id": {
+            "title": "Outcome ID",
+            "description": "ID of the Outcome to set, e.g. `outcome_03oUxZfoO6e2vHmcz1DiHR`, or `null` to clear it. Requires the Outcomes feature on your plan. If the Meeting has a Playbook, the Outcome must be one that is linked to it.",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "playbook_id": {
+            "title": "Playbook ID",
+            "description": "ID of the Playbook to set, e.g. `convtyp_4fTvcGkYog1kj5nH7Lx1yJ`, or `null` to clear it. If the Meeting has an Outcome, it must be linked to the new Playbook. Used instead of `conversation_type_id` if you send both.",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "user_note_html": {
+            "title": "User Note HTML",
+            "description": "Note about the Meeting as rich text HTML, wrapped in `<body>` tags, at most 64 KB. Setting it makes you the Meeting's `notetaker_id`. Send `<body><p></p></body>` to clear the note.",
+            "type": "string"
+          }
+        },
+        "patternProperties": {
+          "^custom\\.(cf|lcf|ccf|acf|gcf|scf)_[A-Za-z0-9]+(\\.(add|remove))?$": {
+            "description": "Value of the custom field with ID `custom_field_id`, keyed as `custom.{custom_field_id}` (e.g. `custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c`). The shape depends on the field's type: a string, a number, or an array of strings for fields that accept multiple values. Hidden fields may hold any JSON value. Set the value to null to clear the field. For fields that accept multiple values, append `.add` or `.remove` to the key (e.g. `custom.{custom_field_id}.add`) to add or remove a single value."
+          }
+        }
+      },
       "UpdateNoteActivity": {
         "type": "object",
         "properties": {
           "activity_at": {
+            "description": "When the note was logged, which sets its place in the lead's activity timeline. Defaults to the time the note is created.",
             "type": [
               "null",
               "string"
@@ -57125,6 +58244,7 @@
             "format": "date-time"
           },
           "attachments": {
+            "description": "Files to attach to the note. Upload each file with the Files API first. The files can add up to 25 MB. On update, this list replaces the note's attachments.",
             "type": [
               "array",
               "null"
@@ -57134,15 +58254,18 @@
               "type": "object",
               "properties": {
                 "content_type": {
+                  "description": "MIME type of the file, e.g. `image/gif`.",
                   "type": [
                     "null",
                     "string"
                   ]
                 },
                 "filename": {
+                  "description": "Name of the file, e.g. `picture.gif`.",
                   "type": "string"
                 },
                 "url": {
+                  "description": "URL of the uploaded file, from the `download.url` field of the Files API response. Must start with `https://app.close.com/go/file/`.",
                   "type": "string",
                   "format": "uri"
                 }
@@ -57154,30 +58277,35 @@
             }
           },
           "contact_id": {
+            "description": "ID of the contact the note is about. The contact must belong to the note's lead. On update, set it to `null` to unlink the contact.",
             "type": [
               "null",
               "string"
             ]
           },
           "note": {
+            "description": "Plain-text content of the note. Ignored when `note_html` is set, since `note` is then derived from `note_html`.",
             "type": [
               "null",
               "string"
             ]
           },
           "note_html": {
+            "description": "Rich-text content of the note as HTML. Takes precedence over `note`. To mention a user or group, add an element like `<span data-type=\"mention\" data-id=\"user_...\" class=\"mention\">@Name</span>`.",
             "type": [
               "null",
               "string"
             ]
           },
           "pinned": {
+            "description": "Whether to pin the note to the top of the lead's activity timeline. A lead can have at most 5 pinned activities.",
             "type": [
               "boolean",
               "null"
             ]
           },
           "title": {
+            "description": "Title of the note. An empty title is saved as `null`.",
             "type": [
               "null",
               "string"
@@ -57980,6 +59108,39 @@
           "filename"
         ]
       },
+      "UpsertMeetingIntegration": {
+        "title": "UpsertMeetingIntegrationSchema",
+        "type": "object",
+        "properties": {
+          "integration_data": {
+            "description": "Data your OAuth app adds to the Meeting.",
+            "$ref": "#/components/schemas/UpsertMeetingIntegrationData"
+          }
+        }
+      },
+      "UpsertMeetingIntegrationData": {
+        "title": "UpsertMeetingIntegrationData",
+        "type": "object",
+        "properties": {
+          "note_html": {
+            "title": "Note HTML",
+            "description": "Note to show on the Meeting, as rich text HTML wrapped in `<body>` tags, at most 64 KB. It's shown in a tab named after your OAuth app. If you leave it out, the request doesn't change anything.",
+            "type": "string"
+          }
+        }
+      },
+      "UpsertMeetingIntegrationResponse": {
+        "title": "UpsertMeetingIntegrationResponse",
+        "description": "The created or updated integration, or an empty object if the request had no note.",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/ThirdPartyMeetingIntegration"
+          },
+          {
+            "$ref": "#/components/schemas/EmptyResponse"
+          }
+        ]
+      },
       "ValidationErrors": {
         "description": "Validation errors with the path of each invalid field.",
         "type": "object",
@@ -58613,6 +59774,192 @@
             "description": "Value of the custom field with ID `custom_field_id`, keyed as `custom.{custom_field_id}` (e.g. `custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c`). The shape depends on the field's type: a string, a number, or an array of strings for fields that accept multiple values. Hidden fields may hold any JSON value."
           }
         }
+      },
+      "ZoomMeetingIntegration": {
+        "title": "ZoomMeetingIntegration",
+        "type": "object",
+        "properties": {
+          "artifacts": {
+            "title": "Artifacts",
+            "description": "Recordings attached to the integration.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MeetingIntegrationArtifact"
+            }
+          },
+          "created_at": {
+            "title": "Created At",
+            "description": "When the integration was added to Close.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "event_occurrence_id": {
+            "title": "Event Occurrence ID",
+            "description": "ID of the calendar event occurrence the integration is attached to. Meetings for the same occurrence share its integrations.",
+            "type": "string"
+          },
+          "id": {
+            "title": "ID",
+            "description": "ID of the integration, prefixed with `evtint_`.",
+            "type": "string"
+          },
+          "integration_data": {
+            "description": "Data about the Zoom meeting.",
+            "$ref": "#/components/schemas/ZoomMeetingIntegrationData"
+          },
+          "integration_name": {
+            "title": "Integration Name",
+            "description": "Type of the integration.",
+            "type": "string",
+            "const": "zoom"
+          },
+          "integration_object_id": {
+            "title": "Integration Object ID",
+            "description": "ID of the related object in the integrated service, e.g. the Zoom meeting ID.",
+            "type": "string"
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "description": "ID of the organization the integration belongs to.",
+            "type": "string"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "description": "When the integration was last changed.",
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "artifacts",
+          "created_at",
+          "event_occurrence_id",
+          "id",
+          "integration_data",
+          "integration_name",
+          "integration_object_id",
+          "organization_id",
+          "updated_at"
+        ]
+      },
+      "ZoomMeetingIntegrationData": {
+        "title": "ZoomMeetingIntegrationData",
+        "type": "object",
+        "properties": {
+          "duration": {
+            "title": "Duration",
+            "description": "How long the Zoom meeting lasted, as reported by Zoom, or `null` if it isn't known.",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "end_time": {
+            "title": "End Time",
+            "description": "When the Zoom meeting ended, or `null` if it isn't known.",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "participants": {
+            "title": "Participants",
+            "description": "People who joined the Zoom meeting.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ZoomMeetingParticipant"
+            }
+          },
+          "processing_status": {
+            "description": "Whether Zoom has finished processing the recordings.",
+            "$ref": "#/components/schemas/ZoomRecordingProcessingStatus"
+          },
+          "start_time": {
+            "title": "Start Time",
+            "description": "When the Zoom meeting started, or `null` if it isn't known.",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "zoom_account_id": {
+            "title": "Zoom Account ID",
+            "description": "ID of the connected Zoom account that has access to the meeting's data, e.g. `emailacct_abc123`, or `null` if none does.",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "zoom_uuid": {
+            "title": "Zoom UUID",
+            "description": "Zoom's UUID of this occurrence of the meeting, or `null` if it isn't known.",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "duration",
+          "end_time",
+          "participants",
+          "processing_status",
+          "start_time",
+          "zoom_account_id",
+          "zoom_uuid"
+        ]
+      },
+      "ZoomMeetingParticipant": {
+        "title": "ZoomMeetingParticipant",
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "description": "Name of the participant in Zoom.",
+            "type": "string"
+          },
+          "zoom_id": {
+            "title": "Zoom ID",
+            "description": "ID of the participant in Zoom.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "zoom_id"
+        ]
+      },
+      "ZoomRecordingProcessingStatus": {
+        "title": "ZoomRecordingProcessingStatus",
+        "description": "Whether Zoom has finished processing a meeting's recordings. Unknown until Zoom reports a status.",
+        "type": "string",
+        "enum": [
+          "unknown",
+          "processing",
+          "completed"
+        ]
       }
     }
   }

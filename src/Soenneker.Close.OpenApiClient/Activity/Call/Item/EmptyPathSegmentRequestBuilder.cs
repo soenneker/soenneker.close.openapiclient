@@ -67,7 +67,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Call.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.EmptyResponse>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.EmptyResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get a single Call activity
+        /// Fetch a single call activity by its ID. Custom field values are returned as `custom.{custom_field_id}` keys. Returns 404 if no call in your organization has that ID, and 403 if you can&apos;t see the call&apos;s lead.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.CallActivity"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -154,7 +154,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Call.Item
             return requestInfo;
         }
         /// <summary>
-        /// Get a single Call activity
+        /// Fetch a single call activity by its ID. Custom field values are returned as `custom.{custom_field_id}` keys. Returns 404 if no call in your organization has that ID, and 403 if you can&apos;t see the call&apos;s lead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -204,7 +204,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Call.Item
             return new global::Soenneker.Close.OpenApiClient.Activity.Call.Item.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get a single Call activity
+        /// Fetch a single call activity by its ID. Custom field values are returned as `custom.{custom_field_id}` keys. Returns 404 if no call in your organization has that ID, and 403 if you can&apos;t see the call&apos;s lead.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 

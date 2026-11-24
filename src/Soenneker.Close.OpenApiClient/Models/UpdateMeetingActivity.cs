@@ -9,7 +9,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ActivitiesMeetingsUpdateRequest : IAdditionalDataHolder, IParsable
+    public partial class UpdateMeetingActivity : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
@@ -17,15 +17,30 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("conversation_type_id") is null) { _explicitNullValueConversationTypeId = default!; _explicitNullProperties?.Remove("conversation_type_id"); }
+            else if (parseNode.GetChildNode("conversation_type_id") is { } nullNodeConversationTypeId && nullNodeConversationTypeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConversationTypeId = null;
             if (parseNode.GetChildNode("outcome_id") is null) { _explicitNullValueOutcomeId = default!; _explicitNullProperties?.Remove("outcome_id"); }
             else if (parseNode.GetChildNode("outcome_id") is { } nullNodeOutcomeId && nullNodeOutcomeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutcomeId = null;
+            if (parseNode.GetChildNode("playbook_id") is null) { _explicitNullValuePlaybookId = default!; _explicitNullProperties?.Remove("playbook_id"); }
+            else if (parseNode.GetChildNode("playbook_id") is { } nullNodePlaybookId && nullNodePlaybookId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PlaybookId = null;
             if (parseNode.GetChildNode("user_note_html") is null) { _explicitNullValueUserNoteHtml = default!; _explicitNullProperties?.Remove("user_note_html"); }
             else if (parseNode.GetChildNode("user_note_html") is { } nullNodeUserNoteHtml && nullNodeUserNoteHtml.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserNoteHtml = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The outcome_id property</summary>
+        /// <summary>Deprecated. Use `playbook_id` instead.</summary>
+        [Obsolete("")]
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ConversationTypeId { get => _explicitNullValueConversationTypeId; set { _explicitNullValueConversationTypeId = value; AdditionalData?.Remove("conversation_type_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversation_type_id"); else _explicitNullProperties?.Remove("conversation_type_id"); } }
+        private string? _explicitNullValueConversationTypeId = default!;
+#nullable restore
+#else
+        public string ConversationTypeId { get => _explicitNullValueConversationTypeId; set { _explicitNullValueConversationTypeId = value; AdditionalData?.Remove("conversation_type_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversation_type_id"); else _explicitNullProperties?.Remove("conversation_type_id"); } }
+        private string _explicitNullValueConversationTypeId = default!;
+#endif
+        /// <summary>ID of the Outcome to set, e.g. `outcome_03oUxZfoO6e2vHmcz1DiHR`, or `null` to clear it. Requires the Outcomes feature on your plan. If the Meeting has a Playbook, the Outcome must be one that is linked to it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OutcomeId { get => _explicitNullValueOutcomeId; set { _explicitNullValueOutcomeId = value; AdditionalData?.Remove("outcome_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome_id"); else _explicitNullProperties?.Remove("outcome_id"); } }
@@ -35,7 +50,17 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string OutcomeId { get => _explicitNullValueOutcomeId; set { _explicitNullValueOutcomeId = value; AdditionalData?.Remove("outcome_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome_id"); else _explicitNullProperties?.Remove("outcome_id"); } }
         private string _explicitNullValueOutcomeId = default!;
 #endif
-        /// <summary>The user_note_html property</summary>
+        /// <summary>ID of the Playbook to set, e.g. `convtyp_4fTvcGkYog1kj5nH7Lx1yJ`, or `null` to clear it. If the Meeting has an Outcome, it must be linked to the new Playbook. Used instead of `conversation_type_id` if you send both.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PlaybookId { get => _explicitNullValuePlaybookId; set { _explicitNullValuePlaybookId = value; AdditionalData?.Remove("playbook_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("playbook_id"); else _explicitNullProperties?.Remove("playbook_id"); } }
+        private string? _explicitNullValuePlaybookId = default!;
+#nullable restore
+#else
+        public string PlaybookId { get => _explicitNullValuePlaybookId; set { _explicitNullValuePlaybookId = value; AdditionalData?.Remove("playbook_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("playbook_id"); else _explicitNullProperties?.Remove("playbook_id"); } }
+        private string _explicitNullValuePlaybookId = default!;
+#endif
+        /// <summary>Note about the Meeting as rich text HTML, wrapped in `&lt;body&gt;` tags, at most 64 KB. Setting it makes you the Meeting&apos;s `notetaker_id`. Send `&lt;body&gt;&lt;p&gt;&lt;/p&gt;&lt;/body&gt;` to clear the note.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserNoteHtml { get => _explicitNullValueUserNoteHtml; set { _explicitNullValueUserNoteHtml = value; AdditionalData?.Remove("user_note_html"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_note_html"); else _explicitNullProperties?.Remove("user_note_html"); } }
@@ -46,21 +71,21 @@ namespace Soenneker.Close.OpenApiClient.Models
         private string _explicitNullValueUserNoteHtml = default!;
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.UpdateMeetingActivity"/> and sets the default values.
         /// </summary>
-        public ActivitiesMeetingsUpdateRequest()
+        public UpdateMeetingActivity()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.UpdateMeetingActivity"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Close.OpenApiClient.Models.UpdateMeetingActivity CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.UpdateMeetingActivity(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,9 +93,11 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
+                { "conversation_type_id", n => { ConversationTypeId = n.GetStringValue(); } },
                 { "outcome_id", n => { OutcomeId = n.GetStringValue(); } },
+                { "playbook_id", n => { PlaybookId = n.GetStringValue(); } },
                 { "user_note_html", n => { UserNoteHtml = n.GetStringValue(); } },
             };
         }
@@ -81,7 +108,9 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("conversation_type_id", ConversationTypeId);
             writer.WriteStringValue("outcome_id", OutcomeId);
+            writer.WriteStringValue("playbook_id", PlaybookId);
             writer.WriteStringValue("user_note_html", UserNoteHtml);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

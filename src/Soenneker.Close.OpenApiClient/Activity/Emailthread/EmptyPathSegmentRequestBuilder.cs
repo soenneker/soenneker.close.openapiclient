@@ -22,7 +22,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Emailthread
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/emailthread/{?_fields*,_limit*,_skip*,_type*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,organization_id*,user_id*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/emailthread/{?_fields*,_limit*,_order_by*,_skip*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,lead_id__in*,organization_id*,user_id*,user_id__in*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Emailthread
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/emailthread/{?_fields*,_limit*,_skip*,_type*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,organization_id*,user_id*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/emailthread/{?_fields*,_limit*,_order_by*,_skip*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,lead_id__in*,organization_id*,user_id*,user_id__in*}", rawUrl)
         {
         }
         /// <summary>
-        /// You&apos;ll get one object per email conversation (generally grouped by subject).
+        /// List email threads. A thread groups the emails on a lead that belong to one conversation. An email joins a thread when it shares a `Message-ID` with the thread&apos;s emails, for example a reply, or when it has the same subject (ignoring prefixes such as `Re:`) and was sent around the same time.Each thread includes `latest_emails`, previews of its 5 most recent emails. To get every email in a thread, fetch the thread by its ID.Threads are sorted by `date_created`, newest first. A thread&apos;s `date_created` and `activity_at` are the time of its most recent email, so a thread moves to the top when it gets a new email.`user_id__in` requires a single `lead_id`. To sort by `activity_at`, pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.If you can only see some leads, you must filter by `lead_id`, otherwise the request returns 403.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesEmailThreadsList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Emailthread
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivitiesEmailThreadsList200Response>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivitiesEmailThreadsList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// You&apos;ll get one object per email conversation (generally grouped by subject).
+        /// List email threads. A thread groups the emails on a lead that belong to one conversation. An email joins a thread when it shares a `Message-ID` with the thread&apos;s emails, for example a reply, or when it has the same subject (ignoring prefixes such as `Re:`) and was sent around the same time.Each thread includes `latest_emails`, previews of its 5 most recent emails. To get every email in a thread, fetch the thread by its ID.Threads are sorted by `date_created`, newest first. A thread&apos;s `date_created` and `activity_at` are the time of its most recent email, so a thread moves to the top when it gets a new email.`user_id__in` requires a single `lead_id`. To sort by `activity_at`, pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.If you can only see some leads, you must filter by `lead_id`, otherwise the request returns 403.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -93,7 +93,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Emailthread
             return new global::Soenneker.Close.OpenApiClient.Activity.Emailthread.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// You&apos;ll get one object per email conversation (generally grouped by subject).
+        /// List email threads. A thread groups the emails on a lead that belong to one conversation. An email joins a thread when it shares a `Message-ID` with the thread&apos;s emails, for example a reply, or when it has the same subject (ignoring prefixes such as `Re:`) and was sent around the same time.Each thread includes `latest_emails`, previews of its 5 most recent emails. To get every email in a thread, fetch the thread by its ID.Threads are sorted by `date_created`, newest first. A thread&apos;s `date_created` and `activity_at` are the time of its most recent email, so a thread moves to the top when it gets a new email.`user_id__in` requires a single `lead_id`. To sort by `activity_at`, pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.If you can only see some leads, you must filter by `lead_id`, otherwise the request returns 403.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
@@ -218,9 +218,29 @@ namespace Soenneker.Close.OpenApiClient.Activity.Emailthread
             [QueryParameter("lead_id")]
             public string LeadId { get; set; }
 #endif
+            /// <summary>Filter by a comma-separated list of multiple Lead IDs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("lead_id__in")]
+            public string? LeadIdIn { get; set; }
+#nullable restore
+#else
+            [QueryParameter("lead_id__in")]
+            public string LeadIdIn { get; set; }
+#endif
             /// <summary>Number of results to return.</summary>
             [QueryParameter("_limit")]
             public int? Limit { get; set; }
+            /// <summary>Sort order: `-date_created` (the default) or `-activity_at`, newest first. `-activity_at` requires a single `lead_id` and can&apos;t be combined with the `date_created__*` filters. The `activity_at__*` filters require `-activity_at`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("_order_by")]
+            public string? OrderBy { get; set; }
+#nullable restore
+#else
+            [QueryParameter("_order_by")]
+            public string OrderBy { get; set; }
+#endif
             /// <summary>ID of your organization. Defaults to the organization of your API key or OAuth token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -234,16 +254,6 @@ namespace Soenneker.Close.OpenApiClient.Activity.Emailthread
             /// <summary>Number of results to skip before returning, for pagination. The maximum is 35,000 for some organizations.</summary>
             [QueryParameter("_skip")]
             public int? Skip { get; set; }
-            /// <summary>Filter by a comma-separated list of activity types, e.g. `Call`. Requires a single `lead_id`, or a `user_id` on endpoints for one activity type.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            [QueryParameter("_type")]
-            public string? Type { get; set; }
-#nullable restore
-#else
-            [QueryParameter("_type")]
-            public string Type { get; set; }
-#endif
             /// <summary>Filter by a comma-separated list of User IDs. Requires a single `lead_id`, unless the endpoint is for one activity type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -253,6 +263,16 @@ namespace Soenneker.Close.OpenApiClient.Activity.Emailthread
 #else
             [QueryParameter("user_id")]
             public string UserId { get; set; }
+#endif
+            /// <summary>Filter by a comma-separated list of multiple User IDs. Requires a single `lead_id`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("user_id__in")]
+            public string? UserIdIn { get; set; }
+#nullable restore
+#else
+            [QueryParameter("user_id__in")]
+            public string UserIdIn { get; set; }
 #endif
         }
     }

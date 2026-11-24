@@ -29,7 +29,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The speaker_label property</summary>
+        /// <summary>Name or label of the speaker, e.g. `Jane Doe`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SpeakerLabel { get => _explicitNullValueSpeakerLabel; set { _explicitNullValueSpeakerLabel = value; AdditionalData?.Remove("speaker_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speaker_label"); else _explicitNullProperties?.Remove("speaker_label"); } }
@@ -39,13 +39,13 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string SpeakerLabel { get => _explicitNullValueSpeakerLabel; set { _explicitNullValueSpeakerLabel = value; AdditionalData?.Remove("speaker_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speaker_label"); else _explicitNullProperties?.Remove("speaker_label"); } }
         private string _explicitNullValueSpeakerLabel = default!;
 #endif
-        /// <summary>The speaker_side property</summary>
+        /// <summary>Which side of the conversation the speaker is on, or `null` if it isn&apos;t known.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.SpeakerSide? SpeakerSide { get => _explicitNullValueSpeakerSide; set { _explicitNullValueSpeakerSide = value; AdditionalData?.Remove("speaker_side"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speaker_side"); else _explicitNullProperties?.Remove("speaker_side"); } }
         private global::Soenneker.Close.OpenApiClient.Models.SpeakerSide? _explicitNullValueSpeakerSide = default!;
-        /// <summary>The talk_percentage property</summary>
+        /// <summary>The speaker&apos;s share of the total talk time, from 0 to 1. For example, `0.25` means 25%.</summary>
         public double? TalkPercentage { get => _explicitNullValueTalkPercentage; set { _explicitNullValueTalkPercentage = value; AdditionalData?.Remove("talk_percentage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("talk_percentage"); else _explicitNullProperties?.Remove("talk_percentage"); } }
         private double? _explicitNullValueTalkPercentage = default!;
-        /// <summary>The talk_time property</summary>
+        /// <summary>How long the speaker talked in total, in seconds.</summary>
         public double? TalkTime { get => _explicitNullValueTalkTime; set { _explicitNullValueTalkTime = value; AdditionalData?.Remove("talk_time"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("talk_time"); else _explicitNullProperties?.Remove("talk_time"); } }
         private double? _explicitNullValueTalkTime = default!;
         /// <summary>

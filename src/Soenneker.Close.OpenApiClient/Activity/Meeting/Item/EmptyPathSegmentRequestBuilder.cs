@@ -22,7 +22,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/meeting/{id}/{?_fields*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/meeting/{id}/{?_fields*,include_all_occurrences*,include_future_occurrences*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/meeting/{id}/{?_fields*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/meeting/{id}/{?_fields*,include_all_occurrences*,include_future_occurrences*}", rawUrl)
         {
         }
         /// <summary>
-        /// Delete a Meeting activity
+        /// Delete a Meeting activity. Returns an empty object on success. This only removes the Meeting from Close: it doesn&apos;t change or cancel the event in Google or Microsoft calendar. Calls linked to the Meeting are unlinked, not deleted, and calendar sync won&apos;t add the Meeting back.For a Meeting from a recurring calendar event, pass `include_all_occurrences=true` to also delete the Meetings for every other occurrence of the event, or `include_future_occurrences=true` to also delete the ones for later occurrences. Both only delete Meetings on the same Lead, and both are ignored for other Meetings.Deleting your own Meetings requires the `delete_own_activities` permission, and deleting other users&apos; Meetings requires `manage_others_activities`. Without it, the request returns 400.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.EmptyResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -46,11 +46,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.EmptyResponse?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.EmptyResponse?> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Meeting.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.EmptyResponse> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.EmptyResponse> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Meeting.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderDeleteQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
@@ -100,7 +100,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.MeetingActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.MeetingActivity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Most commonly this can be used to update a meetings&apos;s `user_note_html` or `outcome_id`.
+        /// Update the note, Outcome, Playbook or custom fields of a Meeting activity, and return the updated Meeting. Only the fields you send are changed. Other Meeting fields come from the calendar event and can&apos;t be changed here.`conversation_type_id` is a deprecated name for `playbook_id`. If you send both, `playbook_id` is used. If the Meeting has both an Outcome and a Playbook, the Outcome must be one that is linked to the Playbook.To set a custom field, send its value as `custom.{custom_field_id}`, or `null` to clear it. For fields that accept multiple values, append `.add` or `.remove` to the key to add or remove a single value.Updating other users&apos; Meetings requires the `manage_others_activities` permission. Without it, the request returns 400.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.MeetingActivity"/></returns>
         /// <param name="body">The request body</param>
@@ -113,11 +113,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.MeetingActivity?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.MeetingActivity?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateMeetingActivity body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.MeetingActivity> PutAsync(global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.MeetingActivity> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateMeetingActivity body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -135,17 +135,17 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.MeetingActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.MeetingActivity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete a Meeting activity
+        /// Delete a Meeting activity. Returns an empty object on success. This only removes the Meeting from Close: it doesn&apos;t change or cancel the event in Google or Microsoft calendar. Calls linked to the Meeting are unlinked, not deleted, and calendar sync won&apos;t add the Meeting back.For a Meeting from a recurring calendar event, pass `include_all_occurrences=true` to also delete the Meetings for every other occurrence of the event, or `include_future_occurrences=true` to also delete the ones for later occurrences. Both only delete Meetings on the same Lead, and both are ignored for other Meetings.Deleting your own Meetings requires the `delete_own_activities` permission, and deleting other users&apos; Meetings requires `manage_others_activities`. Without it, the request returns 400.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Meeting.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderDeleteQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Meeting.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderDeleteQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
@@ -173,18 +173,18 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
             return requestInfo;
         }
         /// <summary>
-        /// Most commonly this can be used to update a meetings&apos;s `user_note_html` or `outcome_id`.
+        /// Update the note, Outcome, Playbook or custom fields of a Meeting activity, and return the updated Meeting. Only the fields you send are changed. Other Meeting fields come from the calendar event and can&apos;t be changed here.`conversation_type_id` is a deprecated name for `playbook_id`. If you send both, `playbook_id` is used. If the Meeting has both an Outcome and a Playbook, the Outcome must be one that is linked to the Playbook.To set a custom field, send its value as `custom.{custom_field_id}`, or `null` to clear it. For fields that accept multiple values, append `.add` or `.remove` to the key to add or remove a single value.Updating other users&apos; Meetings requires the `manage_others_activities` permission. Without it, the request returns 400.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.UpdateMeetingActivity body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.ActivitiesMeetingsUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Close.OpenApiClient.Models.UpdateMeetingActivity body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -202,6 +202,19 @@ namespace Soenneker.Close.OpenApiClient.Activity.Meeting.Item
         public global::Soenneker.Close.OpenApiClient.Activity.Meeting.Item.EmptyPathSegmentRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Close.OpenApiClient.Activity.Meeting.Item.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Delete a Meeting activity. Returns an empty object on success. This only removes the Meeting from Close: it doesn&apos;t change or cancel the event in Google or Microsoft calendar. Calls linked to the Meeting are unlinked, not deleted, and calendar sync won&apos;t add the Meeting back.For a Meeting from a recurring calendar event, pass `include_all_occurrences=true` to also delete the Meetings for every other occurrence of the event, or `include_future_occurrences=true` to also delete the ones for later occurrences. Both only delete Meetings on the same Lead, and both are ignored for other Meetings.Deleting your own Meetings requires the `delete_own_activities` permission, and deleting other users&apos; Meetings requires `manage_others_activities`. Without it, the request returns 400.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class EmptyPathSegmentRequestBuilderDeleteQueryParameters 
+        {
+            /// <summary>For a Meeting from a recurring calendar event, also delete the Meetings for every other occurrence of the event on the same Lead. Takes precedence over `include_future_occurrences`.</summary>
+            [QueryParameter("include_all_occurrences")]
+            public bool? IncludeAllOccurrences { get; set; }
+            /// <summary>For a Meeting from a recurring calendar event, also delete the Meetings for the later occurrences of the event on the same Lead.</summary>
+            [QueryParameter("include_future_occurrences")]
+            public bool? IncludeFutureOccurrences { get; set; }
         }
         /// <summary>
         /// Meeting transcripts can be accessed using this API but are not loaded by default. To load transcripts, use the `_fields` parameter with `transcripts` value.The `transcripts` field is an array of objects for each Close Notetaker bot that joined the meeting. Typically, there will be only one transcript. Transcripts are ordered by the time bots joined the meeting.Example transcripts in response:```json{ &quot;transcripts&quot;: [ { &quot;utterances&quot;: [ { &quot;speaker_label&quot;: &quot;John Lead&quot;, &quot;speaker_side&quot;: &quot;contact&quot;, &quot;start&quot;: 0.1, &quot;end&quot;: 1.2, &quot;text&quot;: &quot;Hey, what&apos;s up? How is it going?&quot; }, { &quot;speaker_label&quot;: &quot;Jane User&quot;, &quot;speaker_side&quot;: &quot;close-user&quot;, &quot;start&quot;: 1.3, &quot;end&quot;: 2.4, &quot;text&quot;: &quot;Hey John, I&apos;m doing great. How about you?&quot; } ], &quot;summary_text&quot;: &quot;Summary text&quot;, &quot;summary_html&quot;: &quot;&lt;p&gt;Summary text&lt;/p&gt;&quot; } ] }```

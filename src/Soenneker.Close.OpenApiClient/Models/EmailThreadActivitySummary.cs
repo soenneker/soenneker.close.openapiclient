@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>
+    /// AI summary of the thread, or `null` if it has none.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class EmailThreadActivitySummary : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
@@ -35,10 +36,10 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The expired_at property</summary>
+        /// <summary>When newer emails made the summary out of date, or `null` if it hasn&apos;t expired.</summary>
         public DateTimeOffset? ExpiredAt { get => _explicitNullValueExpiredAt; set { _explicitNullValueExpiredAt = value; AdditionalData?.Remove("expired_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expired_at"); else _explicitNullProperties?.Remove("expired_at"); } }
         private DateTimeOffset? _explicitNullValueExpiredAt = default!;
-        /// <summary>The feedback property</summary>
+        /// <summary>Your rating of the summary. Left out if you haven&apos;t rated it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Close.OpenApiClient.Models.EmailThreadSummaryFeedback? Feedback { get => _explicitNullValueFeedback; set { _explicitNullValueFeedback = value; AdditionalData?.Remove("feedback"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feedback"); else _explicitNullProperties?.Remove("feedback"); } }
@@ -48,13 +49,13 @@ namespace Soenneker.Close.OpenApiClient.Models
         public global::Soenneker.Close.OpenApiClient.Models.EmailThreadSummaryFeedback Feedback { get => _explicitNullValueFeedback; set { _explicitNullValueFeedback = value; AdditionalData?.Remove("feedback"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feedback"); else _explicitNullProperties?.Remove("feedback"); } }
         private global::Soenneker.Close.OpenApiClient.Models.EmailThreadSummaryFeedback _explicitNullValueFeedback = default!;
 #endif
-        /// <summary>The generated_at property</summary>
+        /// <summary>When the summary was generated, or `null` if it hasn&apos;t been generated yet.</summary>
         public DateTimeOffset? GeneratedAt { get => _explicitNullValueGeneratedAt; set { _explicitNullValueGeneratedAt = value; AdditionalData?.Remove("generated_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generated_at"); else _explicitNullProperties?.Remove("generated_at"); } }
         private DateTimeOffset? _explicitNullValueGeneratedAt = default!;
-        /// <summary>Status of an AI summary. `expired` means newer activity made the summary out of date.</summary>
+        /// <summary>Status of the summary.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.SummaryStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.Close.OpenApiClient.Models.SummaryStatus? _explicitNullValueStatus = default!;
-        /// <summary>The summary_html property</summary>
+        /// <summary>`summary_text` rendered as HTML, or `null`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SummaryHtml { get => _explicitNullValueSummaryHtml; set { _explicitNullValueSummaryHtml = value; AdditionalData?.Remove("summary_html"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_html"); else _explicitNullProperties?.Remove("summary_html"); } }
@@ -64,7 +65,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string SummaryHtml { get => _explicitNullValueSummaryHtml; set { _explicitNullValueSummaryHtml = value; AdditionalData?.Remove("summary_html"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_html"); else _explicitNullProperties?.Remove("summary_html"); } }
         private string _explicitNullValueSummaryHtml = default!;
 #endif
-        /// <summary>The summary_text property</summary>
+        /// <summary>Summary of the thread in Markdown, or `null` if there&apos;s no summary text yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SummaryText { get => _explicitNullValueSummaryText; set { _explicitNullValueSummaryText = value; AdditionalData?.Remove("summary_text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_text"); else _explicitNullProperties?.Remove("summary_text"); } }
@@ -74,7 +75,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string SummaryText { get => _explicitNullValueSummaryText; set { _explicitNullValueSummaryText = value; AdditionalData?.Remove("summary_text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_text"); else _explicitNullProperties?.Remove("summary_text"); } }
         private string _explicitNullValueSummaryText = default!;
 #endif
-        /// <summary>The updated_at property</summary>
+        /// <summary>When the summary last changed.</summary>
         public DateTimeOffset? UpdatedAt { get => _explicitNullValueUpdatedAt; set { _explicitNullValueUpdatedAt = value; AdditionalData?.Remove("updated_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_at"); else _explicitNullProperties?.Remove("updated_at"); } }
         private DateTimeOffset? _explicitNullValueUpdatedAt = default!;
         /// <summary>

@@ -126,7 +126,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.</summary>
         public DateTimeOffset? ActivityAt { get => _explicitNullValueActivityAt; set { _explicitNullValueActivityAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activity_at"); else _explicitNullProperties?.Remove("activity_at"); } }
         private DateTimeOffset? _explicitNullValueActivityAt = default!;
-        /// <summary>The actual_duration property</summary>
+        /// <summary>How long the Meeting really took, in seconds, based on its attached Calls. `null` until all attached Calls have ended, or if it has none.</summary>
         public int? ActualDuration { get => _explicitNullValueActualDuration; set { _explicitNullValueActualDuration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actual_duration"); else _explicitNullProperties?.Remove("actual_duration"); } }
         private int? _explicitNullValueActualDuration = default!;
         /// <summary>Deprecated. Use `created_by_agent_id` instead.</summary>
@@ -139,7 +139,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string AgentConfigId { get => _explicitNullValueAgentConfigId; set { _explicitNullValueAgentConfigId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_config_id"); else _explicitNullProperties?.Remove("agent_config_id"); } }
         private string _explicitNullValueAgentConfigId = default!;
 #endif
-        /// <summary>The attached_call_ids property</summary>
+        /// <summary>IDs of the Call activities linked to this Meeting, e.g. a Call made at the time of the Meeting with the same Lead.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? AttachedCallIds { get => _explicitNullValueAttachedCallIds; set { _explicitNullValueAttachedCallIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attached_call_ids"); else _explicitNullProperties?.Remove("attached_call_ids"); } }
@@ -149,7 +149,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<string> AttachedCallIds { get => _explicitNullValueAttachedCallIds; set { _explicitNullValueAttachedCallIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attached_call_ids"); else _explicitNullProperties?.Remove("attached_call_ids"); } }
         private List<string> _explicitNullValueAttachedCallIds = default!;
 #endif
-        /// <summary>The attendees property</summary>
+        /// <summary>People invited to the Meeting.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.MeetingAttendee>? Attendees { get => _explicitNullValueAttendees; set { _explicitNullValueAttendees = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attendees"); else _explicitNullProperties?.Remove("attendees"); } }
@@ -159,7 +159,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<global::Soenneker.Close.OpenApiClient.Models.MeetingAttendee> Attendees { get => _explicitNullValueAttendees; set { _explicitNullValueAttendees = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attendees"); else _explicitNullProperties?.Remove("attendees"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.MeetingAttendee> _explicitNullValueAttendees = default!;
 #endif
-        /// <summary>The calendar_event_link property</summary>
+        /// <summary>URL of the event in Google Calendar or Outlook, or `null` if there&apos;s no synced calendar event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CalendarEventLink { get => _explicitNullValueCalendarEventLink; set { _explicitNullValueCalendarEventLink = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calendar_event_link"); else _explicitNullProperties?.Remove("calendar_event_link"); } }
@@ -169,7 +169,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string CalendarEventLink { get => _explicitNullValueCalendarEventLink; set { _explicitNullValueCalendarEventLink = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calendar_event_link"); else _explicitNullProperties?.Remove("calendar_event_link"); } }
         private string _explicitNullValueCalendarEventLink = default!;
 #endif
-        /// <summary>The calendar_event_uids property</summary>
+        /// <summary>Deprecated. Use `provider_calendar_event_id` instead.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? CalendarEventUids { get => _explicitNullValueCalendarEventUids; set { _explicitNullValueCalendarEventUids = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calendar_event_uids"); else _explicitNullProperties?.Remove("calendar_event_uids"); } }
@@ -179,7 +179,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<string> CalendarEventUids { get => _explicitNullValueCalendarEventUids; set { _explicitNullValueCalendarEventUids = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calendar_event_uids"); else _explicitNullProperties?.Remove("calendar_event_uids"); } }
         private List<string> _explicitNullValueCalendarEventUids = default!;
 #endif
-        /// <summary>The conference_links property</summary>
+        /// <summary>Video call links found in the calendar event, e.g. a Zoom or Google Meet link.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.MeetingConferenceLink>? ConferenceLinks { get => _explicitNullValueConferenceLinks; set { _explicitNullValueConferenceLinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conference_links"); else _explicitNullProperties?.Remove("conference_links"); } }
@@ -189,7 +189,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<global::Soenneker.Close.OpenApiClient.Models.MeetingConferenceLink> ConferenceLinks { get => _explicitNullValueConferenceLinks; set { _explicitNullValueConferenceLinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conference_links"); else _explicitNullProperties?.Remove("conference_links"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.MeetingConferenceLink> _explicitNullValueConferenceLinks = default!;
 #endif
-        /// <summary>The connected_account_id property</summary>
+        /// <summary>ID of the connected calendar account the Meeting was synced from, e.g. `emailacct_abc123`. `null` for Meetings created in Close, or when that account was removed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ConnectedAccountId { get => _explicitNullValueConnectedAccountId; set { _explicitNullValueConnectedAccountId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected_account_id"); else _explicitNullProperties?.Remove("connected_account_id"); } }
@@ -209,7 +209,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ContactId { get => _explicitNullValueContactId; set { _explicitNullValueContactId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact_id"); else _explicitNullProperties?.Remove("contact_id"); } }
         private string _explicitNullValueContactId = default!;
 #endif
-        /// <summary>The conversation_type_id property</summary>
+        /// <summary>Deprecated. Use `playbook_id` instead.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ConversationTypeId { get => _explicitNullValueConversationTypeId; set { _explicitNullValueConversationTypeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversation_type_id"); else _explicitNullProperties?.Remove("conversation_type_id"); } }
@@ -219,7 +219,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ConversationTypeId { get => _explicitNullValueConversationTypeId; set { _explicitNullValueConversationTypeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversation_type_id"); else _explicitNullProperties?.Remove("conversation_type_id"); } }
         private string _explicitNullValueConversationTypeId = default!;
 #endif
-        /// <summary>The conversation_type_reason property</summary>
+        /// <summary>Deprecated. Use `playbook_reason` instead.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.PlaybookReason? ConversationTypeReason { get => _explicitNullValueConversationTypeReason; set { _explicitNullValueConversationTypeReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversation_type_reason"); else _explicitNullProperties?.Remove("conversation_type_reason"); } }
         private global::Soenneker.Close.OpenApiClient.Models.PlaybookReason? _explicitNullValueConversationTypeReason = default!;
         /// <summary>ID of the user who created the activity, or `null` if it wasn&apos;t created by a user.</summary>
@@ -232,7 +232,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
         private string _explicitNullValueCreatedBy = default!;
 #endif
-        /// <summary>The created_by_agent_id property</summary>
+        /// <summary>ID of the AI agent the Meeting is attributed to, e.g. `agentconfig_abc123`, or `null` if there&apos;s none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatedByAgentId { get => _explicitNullValueCreatedByAgentId; set { _explicitNullValueCreatedByAgentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by_agent_id"); else _explicitNullProperties?.Remove("created_by_agent_id"); } }
@@ -258,10 +258,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>When the activity was last updated.</summary>
         public DateTimeOffset? DateUpdated { get => _explicitNullValueDateUpdated; set { _explicitNullValueDateUpdated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_updated"); else _explicitNullProperties?.Remove("date_updated"); } }
         private DateTimeOffset? _explicitNullValueDateUpdated = default!;
-        /// <summary>The duration property</summary>
+        /// <summary>How long the Meeting was scheduled for, in seconds. See `actual_duration` for how long it really took.</summary>
         public int? Duration { get => _explicitNullValueDuration; set { _explicitNullValueDuration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("duration"); else _explicitNullProperties?.Remove("duration"); } }
         private int? _explicitNullValueDuration = default!;
-        /// <summary>The ends_at property</summary>
+        /// <summary>When the Meeting is scheduled to end: `starts_at` plus `duration`.</summary>
         public DateTimeOffset? EndsAt { get => _explicitNullValueEndsAt; set { _explicitNullValueEndsAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ends_at"); else _explicitNullProperties?.Remove("ends_at"); } }
         private DateTimeOffset? _explicitNullValueEndsAt = default!;
         /// <summary>ID of the activity, e.g. `acti_abc123`.</summary>
@@ -274,17 +274,17 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
-        /// <summary>The integrations property</summary>
+        /// <summary>Data that integrations attached to the Meeting, e.g. Zoom recordings or a note added by an OAuth app.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.MeetingSearchResultIntegrationsItemProperty>? Integrations { get => _explicitNullValueIntegrations; set { _explicitNullValueIntegrations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integrations"); else _explicitNullProperties?.Remove("integrations"); } }
-        private List<global::Soenneker.Close.OpenApiClient.Models.MeetingSearchResultIntegrationsItemProperty>? _explicitNullValueIntegrations = default!;
+        public List<global::Soenneker.Close.OpenApiClient.Models.MeetingIntegration>? Integrations { get => _explicitNullValueIntegrations; set { _explicitNullValueIntegrations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integrations"); else _explicitNullProperties?.Remove("integrations"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.MeetingIntegration>? _explicitNullValueIntegrations = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.MeetingSearchResultIntegrationsItemProperty> Integrations { get => _explicitNullValueIntegrations; set { _explicitNullValueIntegrations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integrations"); else _explicitNullProperties?.Remove("integrations"); } }
-        private List<global::Soenneker.Close.OpenApiClient.Models.MeetingSearchResultIntegrationsItemProperty> _explicitNullValueIntegrations = default!;
+        public List<global::Soenneker.Close.OpenApiClient.Models.MeetingIntegration> Integrations { get => _explicitNullValueIntegrations; set { _explicitNullValueIntegrations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integrations"); else _explicitNullProperties?.Remove("integrations"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.MeetingIntegration> _explicitNullValueIntegrations = default!;
 #endif
-        /// <summary>The is_recurring property</summary>
+        /// <summary>Whether the Meeting is one occurrence of a recurring calendar event.</summary>
         public bool? IsRecurring { get => _explicitNullValueIsRecurring; set { _explicitNullValueIsRecurring = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_recurring"); else _explicitNullProperties?.Remove("is_recurring"); } }
         private bool? _explicitNullValueIsRecurring = default!;
         /// <summary>ID of the Lead the activity is on. Can be `null` for Calls and SMS with phone numbers that don&apos;t match any Contact.</summary>
@@ -297,7 +297,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string LeadId { get => _explicitNullValueLeadId; set { _explicitNullValueLeadId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_id"); else _explicitNullProperties?.Remove("lead_id"); } }
         private string _explicitNullValueLeadId = default!;
 #endif
-        /// <summary>The location property</summary>
+        /// <summary>Location from the calendar event, or an empty string if it has none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Location { get => _explicitNullValueLocation; set { _explicitNullValueLocation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("location"); else _explicitNullProperties?.Remove("location"); } }
@@ -307,7 +307,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Location { get => _explicitNullValueLocation; set { _explicitNullValueLocation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("location"); else _explicitNullProperties?.Remove("location"); } }
         private string _explicitNullValueLocation = default!;
 #endif
-        /// <summary>The note property</summary>
+        /// <summary>Description of the calendar event as plain text, or an empty string if it has none. For notes written in Close, see `user_note`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Note { get => _explicitNullValueNote; set { _explicitNullValueNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note"); else _explicitNullProperties?.Remove("note"); } }
@@ -317,7 +317,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Note { get => _explicitNullValueNote; set { _explicitNullValueNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note"); else _explicitNullProperties?.Remove("note"); } }
         private string _explicitNullValueNote = default!;
 #endif
-        /// <summary>The notetaker_id property</summary>
+        /// <summary>ID of the user who last wrote the note, or `null` if the note is empty.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NotetakerId { get => _explicitNullValueNotetakerId; set { _explicitNullValueNotetakerId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notetaker_id"); else _explicitNullProperties?.Remove("notetaker_id"); } }
@@ -337,10 +337,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string _explicitNullValueOrganizationId = default!;
 #endif
-        /// <summary>The outcome_autofill_confidence property</summary>
+        /// <summary>How confident AI was in the Outcome, or `null` if AI didn&apos;t set it.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.OutcomeAutofillConfidence? OutcomeAutofillConfidence { get => _explicitNullValueOutcomeAutofillConfidence; set { _explicitNullValueOutcomeAutofillConfidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome_autofill_confidence"); else _explicitNullProperties?.Remove("outcome_autofill_confidence"); } }
         private global::Soenneker.Close.OpenApiClient.Models.OutcomeAutofillConfidence? _explicitNullValueOutcomeAutofillConfidence = default!;
-        /// <summary>The outcome_autofill_reasoning property</summary>
+        /// <summary>Why AI chose the Outcome, or `null` if AI didn&apos;t set it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OutcomeAutofillReasoning { get => _explicitNullValueOutcomeAutofillReasoning; set { _explicitNullValueOutcomeAutofillReasoning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome_autofill_reasoning"); else _explicitNullProperties?.Remove("outcome_autofill_reasoning"); } }
@@ -350,7 +350,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string OutcomeAutofillReasoning { get => _explicitNullValueOutcomeAutofillReasoning; set { _explicitNullValueOutcomeAutofillReasoning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome_autofill_reasoning"); else _explicitNullProperties?.Remove("outcome_autofill_reasoning"); } }
         private string _explicitNullValueOutcomeAutofillReasoning = default!;
 #endif
-        /// <summary>The outcome_id property</summary>
+        /// <summary>ID of the Outcome of the Meeting, e.g. `outcome_03oUxZfoO6e2vHmcz1DiHR`, or `null` if it has none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OutcomeId { get => _explicitNullValueOutcomeId; set { _explicitNullValueOutcomeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome_id"); else _explicitNullProperties?.Remove("outcome_id"); } }
@@ -360,10 +360,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string OutcomeId { get => _explicitNullValueOutcomeId; set { _explicitNullValueOutcomeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome_id"); else _explicitNullProperties?.Remove("outcome_id"); } }
         private string _explicitNullValueOutcomeId = default!;
 #endif
-        /// <summary>The outcome_reason property</summary>
+        /// <summary>How the Outcome was set, or `null` if it has none.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.OutcomeReason? OutcomeReason { get => _explicitNullValueOutcomeReason; set { _explicitNullValueOutcomeReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome_reason"); else _explicitNullProperties?.Remove("outcome_reason"); } }
         private global::Soenneker.Close.OpenApiClient.Models.OutcomeReason? _explicitNullValueOutcomeReason = default!;
-        /// <summary>The playbook_id property</summary>
+        /// <summary>ID of the Playbook of the Meeting, e.g. `convtyp_4fTvcGkYog1kj5nH7Lx1yJ`, or `null` if it has none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PlaybookId { get => _explicitNullValuePlaybookId; set { _explicitNullValuePlaybookId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("playbook_id"); else _explicitNullProperties?.Remove("playbook_id"); } }
@@ -373,10 +373,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string PlaybookId { get => _explicitNullValuePlaybookId; set { _explicitNullValuePlaybookId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("playbook_id"); else _explicitNullProperties?.Remove("playbook_id"); } }
         private string _explicitNullValuePlaybookId = default!;
 #endif
-        /// <summary>The playbook_reason property</summary>
+        /// <summary>How the Playbook was set, or `null` if it has none.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.PlaybookReason? PlaybookReason { get => _explicitNullValuePlaybookReason; set { _explicitNullValuePlaybookReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("playbook_reason"); else _explicitNullProperties?.Remove("playbook_reason"); } }
         private global::Soenneker.Close.OpenApiClient.Models.PlaybookReason? _explicitNullValuePlaybookReason = default!;
-        /// <summary>The provider_calendar_event_id property</summary>
+        /// <summary>ID of the event in Google or Microsoft calendar, or `null` for Meetings created in Close. Only unique together with a calendar ID from `provider_calendar_ids`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ProviderCalendarEventId { get => _explicitNullValueProviderCalendarEventId; set { _explicitNullValueProviderCalendarEventId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_calendar_event_id"); else _explicitNullProperties?.Remove("provider_calendar_event_id"); } }
@@ -386,7 +386,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string ProviderCalendarEventId { get => _explicitNullValueProviderCalendarEventId; set { _explicitNullValueProviderCalendarEventId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_calendar_event_id"); else _explicitNullProperties?.Remove("provider_calendar_event_id"); } }
         private string _explicitNullValueProviderCalendarEventId = default!;
 #endif
-        /// <summary>The provider_calendar_ids property</summary>
+        /// <summary>IDs of the Google or Microsoft calendars the event is on. The same event can be on more than one calendar.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? ProviderCalendarIds { get => _explicitNullValueProviderCalendarIds; set { _explicitNullValueProviderCalendarIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_calendar_ids"); else _explicitNullProperties?.Remove("provider_calendar_ids"); } }
@@ -396,19 +396,19 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<string> ProviderCalendarIds { get => _explicitNullValueProviderCalendarIds; set { _explicitNullValueProviderCalendarIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_calendar_ids"); else _explicitNullProperties?.Remove("provider_calendar_ids"); } }
         private List<string> _explicitNullValueProviderCalendarIds = default!;
 #endif
-        /// <summary>The provider_calendar_type property</summary>
+        /// <summary>Calendar provider the Meeting was synced from, or `null` for Meetings created in Close.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.ProviderCalendarType? ProviderCalendarType { get => _explicitNullValueProviderCalendarType; set { _explicitNullValueProviderCalendarType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_calendar_type"); else _explicitNullProperties?.Remove("provider_calendar_type"); } }
         private global::Soenneker.Close.OpenApiClient.Models.ProviderCalendarType? _explicitNullValueProviderCalendarType = default!;
-        /// <summary>How the Meeting got into Close: `calendar` if it was synced from a connected calendar, `manual` if it was created in Close.</summary>
+        /// <summary>How the Meeting got into Close.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.MeetingSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
         private global::Soenneker.Close.OpenApiClient.Models.MeetingSource? _explicitNullValueSource = default!;
-        /// <summary>The starts_at property</summary>
+        /// <summary>When the Meeting is scheduled to start. Always the same as `activity_at`.</summary>
         public DateTimeOffset? StartsAt { get => _explicitNullValueStartsAt; set { _explicitNullValueStartsAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("starts_at"); else _explicitNullProperties?.Remove("starts_at"); } }
         private DateTimeOffset? _explicitNullValueStartsAt = default!;
-        /// <summary>The status property</summary>
+        /// <summary>Status of the Meeting, or `null` if it isn&apos;t known.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.MeetingStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.Close.OpenApiClient.Models.MeetingStatus? _explicitNullValueStatus = default!;
-        /// <summary>The summary property</summary>
+        /// <summary>AI-generated summary of the Meeting, or `null` if there&apos;s none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Close.OpenApiClient.Models.MeetingSearchResultSummary? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
@@ -418,7 +418,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public global::Soenneker.Close.OpenApiClient.Models.MeetingSearchResultSummary Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
         private global::Soenneker.Close.OpenApiClient.Models.MeetingSearchResultSummary _explicitNullValueSummary = default!;
 #endif
-        /// <summary>The title property</summary>
+        /// <summary>Title of the Meeting, usually from the calendar event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
@@ -478,7 +478,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string UserName { get => _explicitNullValueUserName; set { _explicitNullValueUserName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_name"); else _explicitNullProperties?.Remove("user_name"); } }
         private string _explicitNullValueUserName = default!;
 #endif
-        /// <summary>The user_note property</summary>
+        /// <summary>Plain text version of `user_note_html`, or `null` if there&apos;s no note.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserNote { get => _explicitNullValueUserNote; set { _explicitNullValueUserNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_note"); else _explicitNullProperties?.Remove("user_note"); } }
@@ -488,10 +488,10 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string UserNote { get => _explicitNullValueUserNote; set { _explicitNullValueUserNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_note"); else _explicitNullProperties?.Remove("user_note"); } }
         private string _explicitNullValueUserNote = default!;
 #endif
-        /// <summary>The user_note_date_updated property</summary>
+        /// <summary>When the note was last changed, or `null` if it never was.</summary>
         public DateTimeOffset? UserNoteDateUpdated { get => _explicitNullValueUserNoteDateUpdated; set { _explicitNullValueUserNoteDateUpdated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_note_date_updated"); else _explicitNullProperties?.Remove("user_note_date_updated"); } }
         private DateTimeOffset? _explicitNullValueUserNoteDateUpdated = default!;
-        /// <summary>The user_note_html property</summary>
+        /// <summary>Note about the Meeting written in Close, as rich text HTML, or `null` if there&apos;s no note.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserNoteHtml { get => _explicitNullValueUserNoteHtml; set { _explicitNullValueUserNoteHtml = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_note_html"); else _explicitNullProperties?.Remove("user_note_html"); } }
@@ -501,7 +501,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string UserNoteHtml { get => _explicitNullValueUserNoteHtml; set { _explicitNullValueUserNoteHtml = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_note_html"); else _explicitNullProperties?.Remove("user_note_html"); } }
         private string _explicitNullValueUserNoteHtml = default!;
 #endif
-        /// <summary>The user_note_mentions property</summary>
+        /// <summary>IDs of the users and groups mentioned in the note.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? UserNoteMentions { get => _explicitNullValueUserNoteMentions; set { _explicitNullValueUserNoteMentions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_note_mentions"); else _explicitNullProperties?.Remove("user_note_mentions"); } }
@@ -559,7 +559,7 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "duration", n => { Duration = n.GetIntValue(); } },
                 { "ends_at", n => { EndsAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "integrations", n => { Integrations = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingSearchResultIntegrationsItemProperty>(global::Soenneker.Close.OpenApiClient.Models.MeetingSearchResultIntegrationsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "integrations", n => { Integrations = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingIntegration>(global::Soenneker.Close.OpenApiClient.Models.MeetingIntegration.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "is_recurring", n => { IsRecurring = n.GetBoolValue(); } },
                 { "lead_id", n => { LeadId = n.GetStringValue(); } },
                 { "location", n => { Location = n.GetStringValue(); } },
@@ -620,7 +620,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteIntValue("duration", Duration);
             writer.WriteDateTimeOffsetValue("ends_at", EndsAt);
             writer.WriteStringValue("id", Id);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingSearchResultIntegrationsItemProperty>("integrations", Integrations);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.MeetingIntegration>("integrations", Integrations);
             writer.WriteBoolValue("is_recurring", IsRecurring);
             writer.WriteStringValue("lead_id", LeadId);
             writer.WriteStringValue("location", Location);
