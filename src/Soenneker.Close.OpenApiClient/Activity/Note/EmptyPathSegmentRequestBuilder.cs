@@ -67,7 +67,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note
         /// <summary>
         /// Add a note to a lead and return the created note. Set `pinned` to `true` to pin it to the top of the lead&apos;s activity timeline.A note needs at least one of `note`, `note_html` or `attachments`. Send rich text in `note_html`, which takes precedence over `note`: the plain-text `note` is then derived from it.To attach a file, first upload it with the [Files API](https://developer.close.com/api/resources/files). Then add an object with `url`, `filename` and `content_type` to `attachments`. The `url` is the `download.url` from the Files API response, and must start with `https://app.close.com/go/file/`.Returns 400 if the lead or contact doesn&apos;t exist, if the contact isn&apos;t on the lead, if you can&apos;t see the lead, if `note_html` isn&apos;t valid rich text, if the attachments are invalid or add up to more than 25 MB, or if pinning the note would put more than 5 pinned activities on the lead.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivityBase"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.NoteActivity"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -77,11 +77,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivityBase?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Note.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.NoteActivity?> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Note.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivityBase> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Note.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.NoteActivity> PostAsync(global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Note.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -95,7 +95,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivityBase>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivityBase.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.NoteActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.NoteActivity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List the notes in your organization, newest first. Filter by lead, contact, user or date. To sort by `activity_at` instead of `date_created`, pass `_order_by=-activity_at` together with a `lead_id` filter.`contact_id`, `contact_id__in` and `user_id__in` require a single `lead_id`. If you can only see some leads, you must filter by `lead_id`, otherwise the request returns 403.

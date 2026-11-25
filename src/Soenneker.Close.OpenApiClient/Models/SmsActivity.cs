@@ -93,8 +93,6 @@ namespace Soenneker.Close.OpenApiClient.Models
             else if (parseNode.GetChildNode("user_id") is { } nullNodeUserId && nullNodeUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserId = null;
             if (parseNode.GetChildNode("user_name") is null) { _explicitNullValueUserName = default!; _explicitNullProperties?.Remove("user_name"); }
             else if (parseNode.GetChildNode("user_name") is { } nullNodeUserName && nullNodeUserName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserName = null;
-            if (parseNode.GetChildNode("users") is null) { _explicitNullValueUsers = default!; _explicitNullProperties?.Remove("users"); }
-            else if (parseNode.GetChildNode("users") is { } nullNodeUsers && nullNodeUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Users = null;
         }
 
         /// <summary>When the activity happened, e.g. when an Email or SMS was sent. Defaults to `date_created`.</summary>
@@ -410,16 +408,6 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string UserName { get => _explicitNullValueUserName; set { _explicitNullValueUserName = value; AdditionalData?.Remove("user_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_name"); else _explicitNullProperties?.Remove("user_name"); } }
         private string _explicitNullValueUserName = default!;
 #endif
-        /// <summary>IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? Users { get => _explicitNullValueUsers; set { _explicitNullValueUsers = value; AdditionalData?.Remove("users"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("users"); else _explicitNullProperties?.Remove("users"); } }
-        private List<string>? _explicitNullValueUsers = default!;
-#nullable restore
-#else
-        public List<string> Users { get => _explicitNullValueUsers; set { _explicitNullValueUsers = value; AdditionalData?.Remove("users"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("users"); else _explicitNullProperties?.Remove("users"); } }
-        private List<string> _explicitNullValueUsers = default!;
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.SmsActivity"/> and sets the default values.
         /// </summary>
@@ -443,7 +431,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(39)
+            return new Dictionary<string, Action<IParseNode>>(38)
             {
                 { "activity_at", n => { ActivityAt = n.GetDateTimeOffsetValue(); } },
                 { "agent_action_reason", n => { AgentActionReason = n.GetStringValue(); } },
@@ -483,7 +471,6 @@ namespace Soenneker.Close.OpenApiClient.Models
                 { "updated_by_name", n => { UpdatedByName = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
                 { "user_name", n => { UserName = n.GetStringValue(); } },
-                { "users", n => { Users = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -531,7 +518,6 @@ namespace Soenneker.Close.OpenApiClient.Models
             writer.WriteStringValue("updated_by_name", UpdatedByName);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteStringValue("user_name", UserName);
-            writer.WriteCollectionOfPrimitiveValues<string>("users", Users);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

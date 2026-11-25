@@ -44,19 +44,26 @@ namespace Soenneker.Close.OpenApiClient.Models
         }
 
         /// <summary>When the note was logged, which sets its place in the lead&apos;s activity timeline. Defaults to the time the note is created.</summary>
-        public DateTimeOffset? ActivityAt { get => _explicitNullValueActivityAt; set { _explicitNullValueActivityAt = value; AdditionalData?.Remove("activity_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activity_at"); else _explicitNullProperties?.Remove("activity_at"); } }
-        private DateTimeOffset? _explicitNullValueActivityAt = default!;
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityActivityAt? ActivityAt { get => _explicitNullValueActivityAt; set { _explicitNullValueActivityAt = value; AdditionalData?.Remove("activity_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activity_at"); else _explicitNullProperties?.Remove("activity_at"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityActivityAt? _explicitNullValueActivityAt = default!;
+#nullable restore
+#else
+        public global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityActivityAt ActivityAt { get => _explicitNullValueActivityAt; set { _explicitNullValueActivityAt = value; AdditionalData?.Remove("activity_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activity_at"); else _explicitNullProperties?.Remove("activity_at"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityActivityAt _explicitNullValueActivityAt = default!;
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Files to attach to the note. Upload each file with the Files API first. The files can add up to 25 MB. On update, this list replaces the note&apos;s attachments.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityAttachmentsItem>? Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; AdditionalData?.Remove("attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
-        private List<global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityAttachmentsItem>? _explicitNullValueAttachments = default!;
+        public List<global::Soenneker.Close.OpenApiClient.Models.NoteAttachmentIn>? Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; AdditionalData?.Remove("attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.NoteAttachmentIn>? _explicitNullValueAttachments = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityAttachmentsItem> Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; AdditionalData?.Remove("attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
-        private List<global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityAttachmentsItem> _explicitNullValueAttachments = default!;
+        public List<global::Soenneker.Close.OpenApiClient.Models.NoteAttachmentIn> Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; AdditionalData?.Remove("attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.NoteAttachmentIn> _explicitNullValueAttachments = default!;
 #endif
         /// <summary>ID of the contact the note is about. The contact must belong to the note&apos;s lead. On update, set it to `null` to unlink the contact.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -79,8 +86,15 @@ namespace Soenneker.Close.OpenApiClient.Models
         private string _explicitNullValueCreatedBy = default!;
 #endif
         /// <summary>When the note was created, e.g. for notes imported from another system. Defaults to now. Can&apos;t be changed later.</summary>
-        public DateTimeOffset? DateCreated { get => _explicitNullValueDateCreated; set { _explicitNullValueDateCreated = value; AdditionalData?.Remove("date_created"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_created"); else _explicitNullProperties?.Remove("date_created"); } }
-        private DateTimeOffset? _explicitNullValueDateCreated = default!;
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityDateCreated? DateCreated { get => _explicitNullValueDateCreated; set { _explicitNullValueDateCreated = value; AdditionalData?.Remove("date_created"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_created"); else _explicitNullProperties?.Remove("date_created"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityDateCreated? _explicitNullValueDateCreated = default!;
+#nullable restore
+#else
+        public global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityDateCreated DateCreated { get => _explicitNullValueDateCreated; set { _explicitNullValueDateCreated = value; AdditionalData?.Remove("date_created"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_created"); else _explicitNullProperties?.Remove("date_created"); } }
+        private global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityDateCreated _explicitNullValueDateCreated = default!;
+#endif
         /// <summary>ID of the lead to add the note to. Can&apos;t be changed later.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -169,11 +183,11 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>(12)
             {
-                { "activity_at", n => { ActivityAt = n.GetDateTimeOffsetValue(); } },
-                { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityAttachmentsItem>(global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityAttachmentsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "activity_at", n => { ActivityAt = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityActivityAt>(global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityActivityAt.CreateFromDiscriminatorValue); } },
+                { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.NoteAttachmentIn>(global::Soenneker.Close.OpenApiClient.Models.NoteAttachmentIn.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
-                { "date_created", n => { DateCreated = n.GetDateTimeOffsetValue(); } },
+                { "date_created", n => { DateCreated = n.GetObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityDateCreated>(global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityDateCreated.CreateFromDiscriminatorValue); } },
                 { "lead_id", n => { LeadId = n.GetStringValue(); } },
                 { "note", n => { Note = n.GetStringValue(); } },
                 { "note_html", n => { NoteHtml = n.GetStringValue(); } },
@@ -190,11 +204,11 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDateTimeOffsetValue("activity_at", ActivityAt);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityAttachmentsItem>("attachments", Attachments);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityActivityAt>("activity_at", ActivityAt);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.NoteAttachmentIn>("attachments", Attachments);
             writer.WriteStringValue("contact_id", ContactId);
             writer.WriteStringValue("created_by", CreatedBy);
-            writer.WriteDateTimeOffsetValue("date_created", DateCreated);
+            writer.WriteObjectValue<global::Soenneker.Close.OpenApiClient.Models.CreateNoteActivityDateCreated>("date_created", DateCreated);
             writer.WriteStringValue("lead_id", LeadId);
             writer.WriteStringValue("note", Note);
             writer.WriteStringValue("note_html", NoteHtml);

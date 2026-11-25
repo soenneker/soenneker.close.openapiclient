@@ -69,7 +69,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note.Item
         /// <summary>
         /// Fetch a single note by its ID. Returns 404 if no note in your organization has that ID, and 403 if you can&apos;t see the note&apos;s lead.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivityBase"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.NoteActivity"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.BadRequestResponseError">When receiving a 400 status code</exception>
@@ -79,11 +79,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note.Item
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivityBase?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Note.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.NoteActivity?> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Note.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivityBase> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Note.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.NoteActivity> GetAsync(Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Note.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -97,13 +97,13 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note.Item
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivityBase>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivityBase.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.NoteActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.NoteActivity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Edit a note and return it. Only the fields you send change. Send `pinned` as `true` or `false` to pin or unpin the note. The note&apos;s lead, user and creation date can&apos;t be changed.A note needs at least one of `note`, `note_html` or `attachments`. Send rich text in `note_html`, which takes precedence over `note`: the plain-text `note` is then derived from it. Sending either one replaces the note&apos;s text.To attach a file, first upload it with the [Files API](https://developer.close.com/api/resources/files). Then add an object with `url`, `filename` and `content_type` to `attachments`. The `url` is the `download.url` from the Files API response, and must start with `https://app.close.com/go/file/`. Sending `attachments` replaces the note&apos;s attachments, so include the ones you want to keep.Returns 404 if no note in your organization has that ID, and 403 if you can&apos;t see the note&apos;s lead. Returns 400 if the note belongs to another user and you don&apos;t have permission to manage other users&apos; activities, if the update would leave the note with no text or attachments, if `note_html` isn&apos;t valid rich text, if the contact isn&apos;t on the note&apos;s lead, or if pinning the note would put more than 5 pinned activities on the lead.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivityBase"/></returns>
-        /// <param name="body">The request body</param>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.NoteActivity"/></returns>
+        /// <param name="body">Changes to a note. Fields you leave out keep their value.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.BadRequestResponseError">When receiving a 400 status code</exception>
@@ -113,11 +113,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note.Item
         /// <exception cref="global::Soenneker.Close.OpenApiClient.Models.RateLimitError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivityBase?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateNoteActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Note.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.NoteActivity?> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateNoteActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Note.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Close.OpenApiClient.Models.ActivityBase> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateNoteActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Note.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Close.OpenApiClient.Models.NoteActivity> PutAsync(global::Soenneker.Close.OpenApiClient.Models.UpdateNoteActivity body, Action<RequestConfiguration<global::Soenneker.Close.OpenApiClient.Activity.Note.Item.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -132,7 +132,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note.Item
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.ActivityBase>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.ActivityBase.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.NoteActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.NoteActivity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete a note and its attachments. Returns an empty object on success.Returns 404 if no note in your organization has that ID, and 403 if you can&apos;t see the note&apos;s lead. Returns 400 if you don&apos;t have permission to delete the note: deleting your own notes needs permission to delete your own activities, and deleting other users&apos; notes needs permission to manage their activities.
@@ -176,7 +176,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Note.Item
         /// Edit a note and return it. Only the fields you send change. Send `pinned` as `true` or `false` to pin or unpin the note. The note&apos;s lead, user and creation date can&apos;t be changed.A note needs at least one of `note`, `note_html` or `attachments`. Send rich text in `note_html`, which takes precedence over `note`: the plain-text `note` is then derived from it. Sending either one replaces the note&apos;s text.To attach a file, first upload it with the [Files API](https://developer.close.com/api/resources/files). Then add an object with `url`, `filename` and `content_type` to `attachments`. The `url` is the `download.url` from the Files API response, and must start with `https://app.close.com/go/file/`. Sending `attachments` replaces the note&apos;s attachments, so include the ones you want to keep.Returns 404 if no note in your organization has that ID, and 403 if you can&apos;t see the note&apos;s lead. Returns 400 if the note belongs to another user and you don&apos;t have permission to manage other users&apos; activities, if the update would leave the note with no text or attachments, if `note_html` isn&apos;t valid rich text, if the contact isn&apos;t on the note&apos;s lead, or if pinning the note would put more than 5 pinned activities on the lead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Changes to a note. Fields you leave out keep their value.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

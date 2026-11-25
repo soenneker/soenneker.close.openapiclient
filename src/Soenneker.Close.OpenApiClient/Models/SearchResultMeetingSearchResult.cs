@@ -130,6 +130,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public int? ActualDuration { get => _explicitNullValueActualDuration; set { _explicitNullValueActualDuration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actual_duration"); else _explicitNullProperties?.Remove("actual_duration"); } }
         private int? _explicitNullValueActualDuration = default!;
         /// <summary>Deprecated. Use `created_by_agent_id` instead.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AgentConfigId { get => _explicitNullValueAgentConfigId; set { _explicitNullValueAgentConfigId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_config_id"); else _explicitNullProperties?.Remove("agent_config_id"); } }
@@ -170,6 +171,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         private string _explicitNullValueCalendarEventLink = default!;
 #endif
         /// <summary>Deprecated. Use `provider_calendar_event_id` instead.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? CalendarEventUids { get => _explicitNullValueCalendarEventUids; set { _explicitNullValueCalendarEventUids = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calendar_event_uids"); else _explicitNullProperties?.Remove("calendar_event_uids"); } }
@@ -210,6 +212,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         private string _explicitNullValueContactId = default!;
 #endif
         /// <summary>Deprecated. Use `playbook_id` instead.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ConversationTypeId { get => _explicitNullValueConversationTypeId; set { _explicitNullValueConversationTypeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversation_type_id"); else _explicitNullProperties?.Remove("conversation_type_id"); } }
@@ -220,6 +223,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         private string _explicitNullValueConversationTypeId = default!;
 #endif
         /// <summary>Deprecated. Use `playbook_reason` instead.</summary>
+        [Obsolete("")]
         public global::Soenneker.Close.OpenApiClient.Models.PlaybookReason? ConversationTypeReason { get => _explicitNullValueConversationTypeReason; set { _explicitNullValueConversationTypeReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversation_type_reason"); else _explicitNullProperties?.Remove("conversation_type_reason"); } }
         private global::Soenneker.Close.OpenApiClient.Models.PlaybookReason? _explicitNullValueConversationTypeReason = default!;
         /// <summary>ID of the user who created the activity, or `null` if it wasn&apos;t created by a user.</summary>

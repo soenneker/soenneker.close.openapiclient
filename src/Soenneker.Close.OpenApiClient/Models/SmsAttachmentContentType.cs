@@ -3,45 +3,33 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
-    /// <summary>MIME type of the file, e.g. `image/jpeg`.</summary>
+    /// <summary>MIME type of a file attached to an SMS, which makes it an MMS.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum UpdateSmsActivityAttachmentsItemContentType
+    public enum SmsAttachmentContentType
     {
-        [EnumMember(Value = "application/pdf")]
+        [EnumMember(Value = "image/jpeg")]
         #pragma warning disable CS1591
-        ApplicationPdf,
+        ImageJpeg,
         #pragma warning restore CS1591
-        [EnumMember(Value = "application/vcard")]
+        [EnumMember(Value = "image/jpg")]
         #pragma warning disable CS1591
-        ApplicationVcard,
+        ImageJpg,
         #pragma warning restore CS1591
-        [EnumMember(Value = "audio/3gpp")]
+        [EnumMember(Value = "image/gif")]
         #pragma warning disable CS1591
-        Audio3Gpp,
+        ImageGif,
         #pragma warning restore CS1591
-        [EnumMember(Value = "audio/3gpp2")]
+        [EnumMember(Value = "image/png")]
         #pragma warning disable CS1591
-        Audio3Gpp2,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "audio/L24")]
-        #pragma warning disable CS1591
-        AudioL24,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "audio/ac3")]
-        #pragma warning disable CS1591
-        AudioAc3,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "audio/amr")]
-        #pragma warning disable CS1591
-        AudioAmr,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "audio/amr-nb")]
-        #pragma warning disable CS1591
-        AudioAmrNb,
+        ImagePng,
         #pragma warning restore CS1591
         [EnumMember(Value = "audio/basic")]
         #pragma warning disable CS1591
         AudioBasic,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "audio/L24")]
+        #pragma warning disable CS1591
+        AudioL24,
         #pragma warning restore CS1591
         [EnumMember(Value = "audio/mp4")]
         #pragma warning disable CS1591
@@ -63,73 +51,57 @@ namespace Soenneker.Close.OpenApiClient.Models
         #pragma warning disable CS1591
         AudioVndWave,
         #pragma warning restore CS1591
+        [EnumMember(Value = "audio/3gpp")]
+        #pragma warning disable CS1591
+        Audio3Gpp,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "audio/3gpp2")]
+        #pragma warning disable CS1591
+        Audio3Gpp2,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "audio/ac3")]
+        #pragma warning disable CS1591
+        AudioAc3,
+        #pragma warning restore CS1591
         [EnumMember(Value = "audio/webm")]
         #pragma warning disable CS1591
         AudioWebm,
         #pragma warning restore CS1591
-        [EnumMember(Value = "image/bmp")]
+        [EnumMember(Value = "audio/amr-nb")]
         #pragma warning disable CS1591
-        ImageBmp,
+        AudioAmrNb,
         #pragma warning restore CS1591
-        [EnumMember(Value = "image/gif")]
+        [EnumMember(Value = "audio/amr")]
         #pragma warning disable CS1591
-        ImageGif,
+        AudioAmr,
         #pragma warning restore CS1591
-        [EnumMember(Value = "image/jpeg")]
+        [EnumMember(Value = "video/mpeg")]
         #pragma warning disable CS1591
-        ImageJpeg,
+        VideoMpeg,
         #pragma warning restore CS1591
-        [EnumMember(Value = "image/jpg")]
+        [EnumMember(Value = "video/mp4")]
         #pragma warning disable CS1591
-        ImageJpg,
+        VideoMp4,
         #pragma warning restore CS1591
-        [EnumMember(Value = "image/png")]
+        [EnumMember(Value = "video/quicktime")]
         #pragma warning disable CS1591
-        ImagePng,
+        VideoQuicktime,
         #pragma warning restore CS1591
-        [EnumMember(Value = "image/tiff")]
+        [EnumMember(Value = "video/webm")]
         #pragma warning disable CS1591
-        ImageTiff,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "text/calendar")]
-        #pragma warning disable CS1591
-        TextCalendar,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "text/csv")]
-        #pragma warning disable CS1591
-        TextCsv,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "text/directory")]
-        #pragma warning disable CS1591
-        TextDirectory,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "text/richtext")]
-        #pragma warning disable CS1591
-        TextRichtext,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "text/rtf")]
-        #pragma warning disable CS1591
-        TextRtf,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "text/vcard")]
-        #pragma warning disable CS1591
-        TextVcard,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "text/x-vcard")]
-        #pragma warning disable CS1591
-        TextXVcard,
+        VideoWebm,
         #pragma warning restore CS1591
         [EnumMember(Value = "video/3gpp")]
         #pragma warning disable CS1591
         Video3Gpp,
         #pragma warning restore CS1591
-        [EnumMember(Value = "video/3gpp-tt")]
-        #pragma warning disable CS1591
-        Video3GppTt,
-        #pragma warning restore CS1591
         [EnumMember(Value = "video/3gpp2")]
         #pragma warning disable CS1591
         Video3Gpp2,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "video/3gpp-tt")]
+        #pragma warning disable CS1591
+        Video3GppTt,
         #pragma warning restore CS1591
         [EnumMember(Value = "video/H261")]
         #pragma warning disable CS1591
@@ -151,21 +123,49 @@ namespace Soenneker.Close.OpenApiClient.Models
         #pragma warning disable CS1591
         VideoH264,
         #pragma warning restore CS1591
-        [EnumMember(Value = "video/mp4")]
+        [EnumMember(Value = "image/bmp")]
         #pragma warning disable CS1591
-        VideoMp4,
+        ImageBmp,
         #pragma warning restore CS1591
-        [EnumMember(Value = "video/mpeg")]
+        [EnumMember(Value = "image/tiff")]
         #pragma warning disable CS1591
-        VideoMpeg,
+        ImageTiff,
         #pragma warning restore CS1591
-        [EnumMember(Value = "video/quicktime")]
+        [EnumMember(Value = "text/vcard")]
         #pragma warning disable CS1591
-        VideoQuicktime,
+        TextVcard,
         #pragma warning restore CS1591
-        [EnumMember(Value = "video/webm")]
+        [EnumMember(Value = "text/x-vcard")]
         #pragma warning disable CS1591
-        VideoWebm,
+        TextXVcard,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "text/csv")]
+        #pragma warning disable CS1591
+        TextCsv,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "text/rtf")]
+        #pragma warning disable CS1591
+        TextRtf,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "text/richtext")]
+        #pragma warning disable CS1591
+        TextRichtext,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "text/calendar")]
+        #pragma warning disable CS1591
+        TextCalendar,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "text/directory")]
+        #pragma warning disable CS1591
+        TextDirectory,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "application/pdf")]
+        #pragma warning disable CS1591
+        ApplicationPdf,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "application/vcard")]
+        #pragma warning disable CS1591
+        ApplicationVcard,
         #pragma warning restore CS1591
     }
 }

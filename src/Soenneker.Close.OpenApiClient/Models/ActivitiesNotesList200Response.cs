@@ -28,12 +28,12 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>The results on this page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.ActivityBase>? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
-        private List<global::Soenneker.Close.OpenApiClient.Models.ActivityBase>? _explicitNullValueData = default!;
+        public List<global::Soenneker.Close.OpenApiClient.Models.NoteActivity>? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.NoteActivity>? _explicitNullValueData = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.ActivityBase> Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
-        private List<global::Soenneker.Close.OpenApiClient.Models.ActivityBase> _explicitNullValueData = default!;
+        public List<global::Soenneker.Close.OpenApiClient.Models.NoteActivity> Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.NoteActivity> _explicitNullValueData = default!;
 #endif
         /// <summary>Whether more results exist after this page.</summary>
         public bool? HasMore { get => _explicitNullValueHasMore; set { _explicitNullValueHasMore = value; AdditionalData?.Remove("has_more"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_more"); else _explicitNullProperties?.Remove("has_more"); } }
@@ -63,7 +63,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivityBase>(global::Soenneker.Close.OpenApiClient.Models.ActivityBase.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.NoteActivity>(global::Soenneker.Close.OpenApiClient.Models.NoteActivity.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "has_more", n => { HasMore = n.GetBoolValue(); } },
             };
         }
@@ -74,7 +74,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.ActivityBase>("data", Data);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.NoteActivity>("data", Data);
             writer.WriteBoolValue("has_more", HasMore);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

@@ -9,7 +9,7 @@ namespace Soenneker.Close.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class UpdateSmsActivityAttachmentsItem : IAdditionalDataHolder, IParsable
+    public partial class NoteAttachmentIn : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
@@ -27,10 +27,17 @@ namespace Soenneker.Close.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>MIME type of the file, e.g. `image/jpeg`.</summary>
-        public global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityAttachmentsItemContentType? ContentType { get => _explicitNullValueContentType; set { _explicitNullValueContentType = value; AdditionalData?.Remove("content_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_type"); else _explicitNullProperties?.Remove("content_type"); } }
-        private global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityAttachmentsItemContentType? _explicitNullValueContentType = default!;
-        /// <summary>Name of the file, e.g. `photo.jpg`.</summary>
+        /// <summary>MIME type of the file, e.g. `image/gif`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ContentType { get => _explicitNullValueContentType; set { _explicitNullValueContentType = value; AdditionalData?.Remove("content_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_type"); else _explicitNullProperties?.Remove("content_type"); } }
+        private string? _explicitNullValueContentType = default!;
+#nullable restore
+#else
+        public string ContentType { get => _explicitNullValueContentType; set { _explicitNullValueContentType = value; AdditionalData?.Remove("content_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_type"); else _explicitNullProperties?.Remove("content_type"); } }
+        private string _explicitNullValueContentType = default!;
+#endif
+        /// <summary>Name of the file, e.g. `picture.gif`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Filename { get => _explicitNullValueFilename; set { _explicitNullValueFilename = value; AdditionalData?.Remove("filename"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filename"); else _explicitNullProperties?.Remove("filename"); } }
@@ -40,7 +47,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public string Filename { get => _explicitNullValueFilename; set { _explicitNullValueFilename = value; AdditionalData?.Remove("filename"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filename"); else _explicitNullProperties?.Remove("filename"); } }
         private string _explicitNullValueFilename = default!;
 #endif
-        /// <summary>URL of a file uploaded with the Files API. Use the `download.url` from the upload response, which begins with `https://app.close.com/go/file/`.</summary>
+        /// <summary>URL of the uploaded file, from the `download.url` field of the Files API response. Must start with `https://app.close.com/go/file/`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; AdditionalData?.Remove("url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
@@ -51,21 +58,21 @@ namespace Soenneker.Close.OpenApiClient.Models
         private string _explicitNullValueUrl = default!;
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityAttachmentsItem"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Close.OpenApiClient.Models.NoteAttachmentIn"/> and sets the default values.
         /// </summary>
-        public UpdateSmsActivityAttachmentsItem()
+        public NoteAttachmentIn()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityAttachmentsItem"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.NoteAttachmentIn"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityAttachmentsItem CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Close.OpenApiClient.Models.NoteAttachmentIn CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityAttachmentsItem(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Close.OpenApiClient.Models.NoteAttachmentIn(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -75,7 +82,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "content_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityAttachmentsItemContentType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueContentType = default; _explicitNullProperties?.Remove("content_type"); AdditionalData["content_type"] = unknown; } else { ContentType = parsed; AdditionalData.Remove("content_type"); } } },
+                { "content_type", n => { ContentType = n.GetStringValue(); } },
                 { "filename", n => { Filename = n.GetStringValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
@@ -87,7 +94,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityAttachmentsItemContentType>("content_type", ContentType);
+            writer.WriteStringValue("content_type", ContentType);
             writer.WriteStringValue("filename", Filename);
             writer.WriteStringValue("url", Url);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

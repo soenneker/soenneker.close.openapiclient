@@ -34,7 +34,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Call.Item
         {
         }
         /// <summary>
-        /// Delete a Call activity
+        /// Delete a call activity. Returns an empty object on success.For calls made or received through Close, this also deletes the call&apos;s recording and voicemail files. If the call is part of a meeting, it&apos;s removed from that meeting.Deleting your own calls requires the `delete_own_activities` permission. Deleting other users&apos; calls, and calls that aren&apos;t assigned to a user, requires `manage_others_activities`. Without the permission, the request returns 400. Calls that are still in progress (`status` is `created` or `in-progress`) can&apos;t be deleted and also return 400. Returns 404 if no call has that ID, and 403 if you can&apos;t see the call&apos;s lead.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.EmptyResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -135,7 +135,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Call.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.CallActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.CallActivity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete a Call activity
+        /// Delete a call activity. Returns an empty object on success.For calls made or received through Close, this also deletes the call&apos;s recording and voicemail files. If the call is part of a meeting, it&apos;s removed from that meeting.Deleting your own calls requires the `delete_own_activities` permission. Deleting other users&apos; calls, and calls that aren&apos;t assigned to a user, requires `manage_others_activities`. Without the permission, the request returns 400. Calls that are still in progress (`status` is `created` or `in-progress`) can&apos;t be deleted and also return 400. Returns 404 if no call has that ID, and 403 if you can&apos;t see the call&apos;s lead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

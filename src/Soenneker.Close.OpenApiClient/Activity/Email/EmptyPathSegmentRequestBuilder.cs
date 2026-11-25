@@ -22,7 +22,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/email/{?_fields*,_limit*,_order_by*,_skip*,_type*,_type__in*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,contact_id__in*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,lead_id__in*,organization_id*,user_id*,user_id__in*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/email/{?_fields*,_limit*,_order_by*,_skip*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,contact_id__in*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,lead_id__in*,organization_id*,user_id*,user_id__in*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/email/{?_fields*,_limit*,_order_by*,_skip*,_type*,_type__in*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,contact_id__in*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,lead_id__in*,organization_id*,user_id*,user_id__in*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity/email/{?_fields*,_limit*,_order_by*,_skip*,activity_at__gt*,activity_at__gte*,activity_at__lt*,activity_at__lte*,contact_id*,contact_id__in*,date_created__gt*,date_created__gte*,date_created__lt*,date_created__lte*,id__in*,lead_id*,lead_id__in*,organization_id*,user_id*,user_id__in*}", rawUrl)
         {
         }
         /// <summary>
-        /// List email activities, newest first, with one object per email message. To get emails grouped into conversations, use the Email Threads endpoints.Results are paginated with `_limit` (at most 100) and `_skip`. Use filters such as `lead_id` or the date filters to narrow down the results.Some filters can only be used together with a single `lead_id`: `contact_id`, `contact_id__in`, `user_id__in`, `_type` and `_type__in`. `user_id` on its own doesn&apos;t need one. If your lead visibility is restricted, `lead_id` is required.By default, emails are sorted by `date_created`. To sort by `activity_at` (when the email was sent or received), pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.
+        /// List email activities, newest first, with one object per email message. To get emails grouped into conversations, use the Email Threads endpoints.Results are paginated with `_limit` (at most 100) and `_skip`. Use filters such as `lead_id` or the date filters to narrow down the results.Some filters can only be used together with a single `lead_id`: `contact_id`, `contact_id__in` and `user_id__in`. `user_id` on its own doesn&apos;t need one. If your lead visibility is restricted, `lead_id` is required.By default, emails are sorted by `date_created`. To sort by `activity_at` (when the email was sent or received), pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Close.OpenApiClient.Models.ActivitiesEmailsList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -98,7 +98,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
             return await RequestAdapter.SendAsync<global::Soenneker.Close.OpenApiClient.Models.EmailActivity>(requestInfo, global::Soenneker.Close.OpenApiClient.Models.EmailActivity.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List email activities, newest first, with one object per email message. To get emails grouped into conversations, use the Email Threads endpoints.Results are paginated with `_limit` (at most 100) and `_skip`. Use filters such as `lead_id` or the date filters to narrow down the results.Some filters can only be used together with a single `lead_id`: `contact_id`, `contact_id__in`, `user_id__in`, `_type` and `_type__in`. `user_id` on its own doesn&apos;t need one. If your lead visibility is restricted, `lead_id` is required.By default, emails are sorted by `date_created`. To sort by `activity_at` (when the email was sent or received), pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.
+        /// List email activities, newest first, with one object per email message. To get emails grouped into conversations, use the Email Threads endpoints.Results are paginated with `_limit` (at most 100) and `_skip`. Use filters such as `lead_id` or the date filters to narrow down the results.Some filters can only be used together with a single `lead_id`: `contact_id`, `contact_id__in` and `user_id__in`. `user_id` on its own doesn&apos;t need one. If your lead visibility is restricted, `lead_id` is required.By default, emails are sorted by `date_created`. To sort by `activity_at` (when the email was sent or received), pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -148,7 +148,7 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
             return new global::Soenneker.Close.OpenApiClient.Activity.Email.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List email activities, newest first, with one object per email message. To get emails grouped into conversations, use the Email Threads endpoints.Results are paginated with `_limit` (at most 100) and `_skip`. Use filters such as `lead_id` or the date filters to narrow down the results.Some filters can only be used together with a single `lead_id`: `contact_id`, `contact_id__in`, `user_id__in`, `_type` and `_type__in`. `user_id` on its own doesn&apos;t need one. If your lead visibility is restricted, `lead_id` is required.By default, emails are sorted by `date_created`. To sort by `activity_at` (when the email was sent or received), pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.
+        /// List email activities, newest first, with one object per email message. To get emails grouped into conversations, use the Email Threads endpoints.Results are paginated with `_limit` (at most 100) and `_skip`. Use filters such as `lead_id` or the date filters to narrow down the results.Some filters can only be used together with a single `lead_id`: `contact_id`, `contact_id__in` and `user_id__in`. `user_id` on its own doesn&apos;t need one. If your lead visibility is restricted, `lead_id` is required.By default, emails are sorted by `date_created`. To sort by `activity_at` (when the email was sent or received), pass `_order_by=-activity_at` with a single `lead_id`. The `activity_at__*` filters only work with that sorting, and the `date_created__*` filters only work with the default one.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
@@ -319,26 +319,6 @@ namespace Soenneker.Close.OpenApiClient.Activity.Email
             /// <summary>Number of results to skip before returning, for pagination. The maximum is 35,000 for some organizations.</summary>
             [QueryParameter("_skip")]
             public int? Skip { get; set; }
-            /// <summary>Filter by a comma-separated list of activity types, e.g. `Call`. Requires a single `lead_id`, or a `user_id` on endpoints for one activity type.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            [QueryParameter("_type")]
-            public string? Type { get; set; }
-#nullable restore
-#else
-            [QueryParameter("_type")]
-            public string Type { get; set; }
-#endif
-            /// <summary>Filter by a comma-separated list of multiple activity types. Requires a single `lead_id`, and can&apos;t be combined with `_type`.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            [QueryParameter("_type__in")]
-            public string? TypeIn { get; set; }
-#nullable restore
-#else
-            [QueryParameter("_type__in")]
-            public string TypeIn { get; set; }
-#endif
             /// <summary>Filter by a comma-separated list of User IDs. Requires a single `lead_id`, unless the endpoint is for one activity type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

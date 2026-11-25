@@ -205,7 +205,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         public List<global::Soenneker.Close.OpenApiClient.Models.QuotedEmailHtml> BodyHtmlQuoted { get => _explicitNullValueBodyHtmlQuoted; set { _explicitNullValueBodyHtmlQuoted = value; AdditionalData?.Remove("body_html_quoted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("body_html_quoted"); else _explicitNullProperties?.Remove("body_html_quoted"); } }
         private List<global::Soenneker.Close.OpenApiClient.Models.QuotedEmailHtml> _explicitNullValueBodyHtmlQuoted = default!;
 #endif
-        /// <summary>First 200 characters of the body, as plain text.</summary>
+        /// <summary>First 200 characters of the body, as plain text. `null` if the email has no body.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BodyPreview { get => _explicitNullValueBodyPreview; set { _explicitNullValueBodyPreview = value; AdditionalData?.Remove("body_preview"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("body_preview"); else _explicitNullProperties?.Remove("body_preview"); } }

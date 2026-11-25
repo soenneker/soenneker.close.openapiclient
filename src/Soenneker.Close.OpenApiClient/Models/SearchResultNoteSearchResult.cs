@@ -89,6 +89,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         private string _explicitNullValueAgentActionReason = default!;
 #endif
         /// <summary>Deprecated. Use `created_by_agent_id` instead.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AgentConfigId { get => _explicitNullValueAgentConfigId; set { _explicitNullValueAgentConfigId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_config_id"); else _explicitNullProperties?.Remove("agent_config_id"); } }

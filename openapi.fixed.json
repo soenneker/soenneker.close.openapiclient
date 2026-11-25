@@ -917,11 +917,13 @@
           "activities.calls"
         ],
         "summary": "Delete a Call activity",
+        "description": "Delete a call activity. Returns an empty object on success.\n\nFor calls made or received through Close, this also deletes the call\u0027s recording and voicemail files. If the call is part of a meeting, it\u0027s removed from that meeting.\n\nDeleting your own calls requires the \u0060delete_own_activities\u0060 permission. Deleting other users\u0027 calls, and calls that aren\u0027t assigned to a user, requires \u0060manage_others_activities\u0060. Without the permission, the request returns 400. Calls that are still in progress (\u0060status\u0060 is \u0060created\u0060 or \u0060in-progress\u0060) can\u0027t be deleted and also return 400. Returns 404 if no call has that ID, and 403 if you can\u0027t see the call\u0027s lead.",
         "operationId": "ActivitiesCallsDelete",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "ID of the call activity, prefixed with \u0060acti_\u0060.",
             "required": true,
             "schema": {
               "type": "string"
@@ -1782,7 +1784,7 @@
           "activities.emails"
         ],
         "summary": "List or filter all Email activities",
-        "description": "List email activities, newest first, with one object per email message. To get emails grouped into conversations, use the Email Threads endpoints.\n\nResults are paginated with \u0060_limit\u0060 (at most 100) and \u0060_skip\u0060. Use filters such as \u0060lead_id\u0060 or the date filters to narrow down the results.\n\nSome filters can only be used together with a single \u0060lead_id\u0060: \u0060contact_id\u0060, \u0060contact_id__in\u0060, \u0060user_id__in\u0060, \u0060_type\u0060 and \u0060_type__in\u0060. \u0060user_id\u0060 on its own doesn\u0027t need one. If your lead visibility is restricted, \u0060lead_id\u0060 is required.\n\nBy default, emails are sorted by \u0060date_created\u0060. To sort by \u0060activity_at\u0060 (when the email was sent or received), pass \u0060_order_by=-activity_at\u0060 with a single \u0060lead_id\u0060. The \u0060activity_at__*\u0060 filters only work with that sorting, and the \u0060date_created__*\u0060 filters only work with the default one.",
+        "description": "List email activities, newest first, with one object per email message. To get emails grouped into conversations, use the Email Threads endpoints.\n\nResults are paginated with \u0060_limit\u0060 (at most 100) and \u0060_skip\u0060. Use filters such as \u0060lead_id\u0060 or the date filters to narrow down the results.\n\nSome filters can only be used together with a single \u0060lead_id\u0060: \u0060contact_id\u0060, \u0060contact_id__in\u0060 and \u0060user_id__in\u0060. \u0060user_id\u0060 on its own doesn\u0027t need one. If your lead visibility is restricted, \u0060lead_id\u0060 is required.\n\nBy default, emails are sorted by \u0060date_created\u0060. To sort by \u0060activity_at\u0060 (when the email was sent or received), pass \u0060_order_by=-activity_at\u0060 with a single \u0060lead_id\u0060. The \u0060activity_at__*\u0060 filters only work with that sorting, and the \u0060date_created__*\u0060 filters only work with the default one.",
         "operationId": "ActivitiesEmailsList",
         "parameters": [
           {
@@ -1824,10 +1826,6 @@
           {
             "description": "ID of your organization. Defaults to the organization of your API key or OAuth token.",
             "$ref": "#/components/parameters/ActivityFilters_OrganizationIdParam"
-          },
-          {
-            "description": "Filter by a comma-separated list of activity types, e.g. \u0060Call\u0060. Requires a single \u0060lead_id\u0060, or a \u0060user_id\u0060 on endpoints for one activity type.",
-            "$ref": "#/components/parameters/ActivityFilters_TypeParam"
           },
           {
             "description": "Only include activities created in Close at or after this date or date and time. Can\u0027t be combined with \u0060_order_by=-activity_at\u0060.",
@@ -1885,15 +1883,6 @@
             "description": "Filter by a comma-separated list of multiple Contact IDs. Requires a single \u0060lead_id\u0060.",
             "schema": {
               "title": "Contact ID (In)",
-              "type": "string"
-            }
-          },
-          {
-            "name": "_type__in",
-            "in": "query",
-            "description": "Filter by a comma-separated list of multiple activity types. Requires a single \u0060lead_id\u0060, and can\u0027t be combined with \u0060_type\u0060.",
-            "schema": {
-              "title": "Type (In)",
               "type": "string"
             }
           },
@@ -5805,7 +5794,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ActivityBase"
+                  "$ref": "#/components/schemas/NoteActivity"
                 },
                 "examples": {
                   "default": {
@@ -5936,7 +5925,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ActivityBase"
+                  "$ref": "#/components/schemas/NoteActivity"
                 },
                 "example": {
                   "_type": "Note",
@@ -6063,7 +6052,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ActivityBase"
+                  "$ref": "#/components/schemas/NoteActivity"
                 },
                 "examples": {
                   "default": {
@@ -6358,6 +6347,8 @@
                     {
                       "_type": "SMS",
                       "activity_at": "2016-10-03T16:06:11.167000\u002B00:00",
+                      "agent_action_reason": null,
+                      "agent_config_id": null,
                       "attachments": [
                         {
                           "content_type": "image/png",
@@ -6373,6 +6364,7 @@
                       "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
                       "cost": "1",
                       "created_by": null,
+                      "created_by_agent_id": null,
                       "created_by_name": null,
                       "date_created": "2016-10-03T16:06:11.167000\u002B00:00",
                       "date_scheduled": null,
@@ -6389,6 +6381,9 @@
                       "remote_country_iso": "US",
                       "remote_phone": "\u002B18183004000",
                       "remote_phone_formatted": "\u002B1 818-300-4000",
+                      "sequence_id": null,
+                      "sequence_name": null,
+                      "sequence_subscription_id": null,
                       "source": "Close.io",
                       "status": "inbox",
                       "template_id": null,
@@ -6396,8 +6391,7 @@
                       "updated_by": null,
                       "updated_by_name": null,
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                      "user_name": "Tobias Fuenke",
-                      "users": []
+                      "user_name": "Tobias Fuenke"
                     }
                   ],
                   "has_more": false
@@ -6526,12 +6520,15 @@
                     "value": {
                       "_type": "SMS",
                       "activity_at": "2016-10-03T16:06:11.167000\u002B00:00",
+                      "agent_action_reason": null,
+                      "agent_config_id": null,
                       "attachments": [],
                       "caller_id_mode": null,
                       "caller_id_reason": null,
                       "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
                       "cost": null,
                       "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_agent_id": null,
                       "created_by_name": "Tobias Fuenke",
                       "date_created": "2016-10-03T16:06:11.167000\u002B00:00",
                       "date_scheduled": null,
@@ -6548,6 +6545,9 @@
                       "remote_country_iso": "US",
                       "remote_phone": "\u002B18183334444",
                       "remote_phone_formatted": "\u002B1 818-333-4444",
+                      "sequence_id": null,
+                      "sequence_name": null,
+                      "sequence_subscription_id": null,
                       "source": "External",
                       "status": "inbox",
                       "template_id": null,
@@ -6555,8 +6555,7 @@
                       "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "updated_by_name": "Tobias Fuenke",
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                      "user_name": "Tobias Fuenke",
-                      "users": []
+                      "user_name": "Tobias Fuenke"
                     }
                   },
                   "send": {
@@ -6564,12 +6563,15 @@
                     "value": {
                       "_type": "SMS",
                       "activity_at": "2026-03-02T17:30:00.000000\u002B00:00",
+                      "agent_action_reason": null,
+                      "agent_config_id": null,
                       "attachments": [],
                       "caller_id_mode": "auto",
                       "caller_id_reason": null,
                       "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
                       "cost": null,
                       "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_agent_id": null,
                       "created_by_name": "Tobias Fuenke",
                       "date_created": "2026-03-02T17:30:00.000000\u002B00:00",
                       "date_scheduled": null,
@@ -6586,6 +6588,9 @@
                       "remote_country_iso": "US",
                       "remote_phone": "\u002B18183334444",
                       "remote_phone_formatted": "\u002B1 818-333-4444",
+                      "sequence_id": null,
+                      "sequence_name": null,
+                      "sequence_subscription_id": null,
                       "source": "Close.io",
                       "status": "outbox",
                       "template_id": null,
@@ -6593,8 +6598,7 @@
                       "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "updated_by_name": "Tobias Fuenke",
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                      "user_name": "Tobias Fuenke",
-                      "users": []
+                      "user_name": "Tobias Fuenke"
                     }
                   },
                   "schedule_mms": {
@@ -6602,6 +6606,8 @@
                     "value": {
                       "_type": "SMS",
                       "activity_at": "2026-03-02T17:45:00.000000\u002B00:00",
+                      "agent_action_reason": null,
+                      "agent_config_id": null,
                       "attachments": [
                         {
                           "content_type": "image/png",
@@ -6617,6 +6623,7 @@
                       "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
                       "cost": null,
                       "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_agent_id": null,
                       "created_by_name": "Tobias Fuenke",
                       "date_created": "2026-03-02T17:45:00.000000\u002B00:00",
                       "date_scheduled": "2026-03-03T16:00:00\u002B00:00",
@@ -6633,6 +6640,9 @@
                       "remote_country_iso": "US",
                       "remote_phone": "\u002B18183334444",
                       "remote_phone_formatted": "\u002B1 818-333-4444",
+                      "sequence_id": null,
+                      "sequence_name": null,
+                      "sequence_subscription_id": null,
                       "source": "Close.io",
                       "status": "scheduled",
                       "template_id": null,
@@ -6640,8 +6650,7 @@
                       "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "updated_by_name": "Tobias Fuenke",
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                      "user_name": "Tobias Fuenke",
-                      "users": []
+                      "user_name": "Tobias Fuenke"
                     }
                   }
                 }
@@ -6713,6 +6722,8 @@
                 "example": {
                   "_type": "SMS",
                   "activity_at": "2016-10-03T16:06:11.167000\u002B00:00",
+                  "agent_action_reason": null,
+                  "agent_config_id": null,
                   "attachments": [
                     {
                       "content_type": "image/png",
@@ -6728,6 +6739,7 @@
                   "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
                   "cost": "1",
                   "created_by": null,
+                  "created_by_agent_id": null,
                   "created_by_name": null,
                   "date_created": "2016-10-03T16:06:11.167000\u002B00:00",
                   "date_scheduled": null,
@@ -6744,6 +6756,9 @@
                   "remote_country_iso": "US",
                   "remote_phone": "\u002B18183004000",
                   "remote_phone_formatted": "\u002B1 818-300-4000",
+                  "sequence_id": null,
+                  "sequence_name": null,
+                  "sequence_subscription_id": null,
                   "source": "Close.io",
                   "status": "inbox",
                   "template_id": null,
@@ -6751,8 +6766,7 @@
                   "updated_by": null,
                   "updated_by_name": null,
                   "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                  "user_name": "Tobias Fuenke",
-                  "users": []
+                  "user_name": "Tobias Fuenke"
                 }
               }
             }
@@ -6852,12 +6866,15 @@
                     "value": {
                       "_type": "SMS",
                       "activity_at": "2026-03-02T16:00:00.000000\u002B00:00",
+                      "agent_action_reason": null,
+                      "agent_config_id": null,
                       "attachments": [],
                       "caller_id_mode": "fixed",
                       "caller_id_reason": null,
                       "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
                       "cost": null,
                       "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_agent_id": null,
                       "created_by_name": "Tobias Fuenke",
                       "date_created": "2026-03-02T16:00:00.000000\u002B00:00",
                       "date_scheduled": null,
@@ -6874,6 +6891,9 @@
                       "remote_country_iso": "US",
                       "remote_phone": "\u002B18183334444",
                       "remote_phone_formatted": "\u002B1 818-333-4444",
+                      "sequence_id": null,
+                      "sequence_name": null,
+                      "sequence_subscription_id": null,
                       "source": "Close.io",
                       "status": "draft",
                       "template_id": null,
@@ -6881,8 +6901,7 @@
                       "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "updated_by_name": "Tobias Fuenke",
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                      "user_name": "Tobias Fuenke",
-                      "users": []
+                      "user_name": "Tobias Fuenke"
                     }
                   },
                   "schedule": {
@@ -6890,12 +6909,15 @@
                     "value": {
                       "_type": "SMS",
                       "activity_at": "2026-03-02T16:00:00.000000\u002B00:00",
+                      "agent_action_reason": null,
+                      "agent_config_id": null,
                       "attachments": [],
                       "caller_id_mode": "fixed",
                       "caller_id_reason": null,
                       "contact_id": "cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk",
                       "cost": null,
                       "created_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
+                      "created_by_agent_id": null,
                       "created_by_name": "Tobias Fuenke",
                       "date_created": "2026-03-02T16:00:00.000000\u002B00:00",
                       "date_scheduled": "2026-03-03T16:00:00\u002B00:00",
@@ -6912,6 +6934,9 @@
                       "remote_country_iso": "US",
                       "remote_phone": "\u002B18183334444",
                       "remote_phone_formatted": "\u002B1 818-333-4444",
+                      "sequence_id": null,
+                      "sequence_name": null,
+                      "sequence_subscription_id": null,
                       "source": "Close.io",
                       "status": "scheduled",
                       "template_id": null,
@@ -6919,8 +6944,7 @@
                       "updated_by": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
                       "updated_by_name": "Tobias Fuenke",
                       "user_id": "user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA",
-                      "user_name": "Tobias Fuenke",
-                      "users": []
+                      "user_name": "Tobias Fuenke"
                     }
                   }
                 }
@@ -36955,233 +36979,6 @@
         },
         "deprecated": true
       },
-      "ActivityBase": {
-        "title": "ActivityBase",
-        "required": [
-          "_type",
-          "activity_at",
-          "attachments",
-          "contact_id",
-          "created_by",
-          "date_created",
-          "date_updated",
-          "id",
-          "lead_id",
-          "note",
-          "note_html",
-          "note_mentions",
-          "organization_id",
-          "pinned",
-          "pinned_at",
-          "source",
-          "title",
-          "updated_by",
-          "user_id",
-          "users"
-        ],
-        "type": "object",
-        "properties": {
-          "_type": {
-            "title": "Type",
-            "type": "string",
-            "description": "Type of the activity, e.g. \u0060Call\u0060, \u0060Email\u0060 or \u0060Note\u0060."
-          },
-          "activity_at": {
-            "title": "Activity At",
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to \u0060date_created\u0060.",
-            "format": "date-time"
-          },
-          "agent_action_reason": {
-            "title": "Agent Action Reason",
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "Why an agent created the activity (\u0060send_scheduling_link\u0060, \u0060custom_agent_decision\u0060 or \u0060voice_agent_callback\u0060), or \u0060null\u0060 if no agent created it.",
-            "default": null
-          },
-          "agent_config_id": {
-            "title": "Agent Config ID",
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead.",
-            "default": null,
-            "deprecated": true
-          },
-          "attachments": {
-            "title": "Attachments",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Attachment"
-            },
-            "description": "Files attached to the note."
-          },
-          "contact_id": {
-            "title": "Contact ID",
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "ID of the Contact the activity is with, or \u0060null\u0060 if it isn\u0027t with a particular Contact."
-          },
-          "created_by": {
-            "title": "Created By",
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "ID of the user who created the activity, or \u0060null\u0060 if it wasn\u0027t created by a user."
-          },
-          "created_by_agent_id": {
-            "title": "Created By Agent ID",
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "ID of the agent that created the activity, e.g. \u0060agentconfig_abc123\u0060, or \u0060null\u0060 if no agent created it.",
-            "default": null
-          },
-          "created_by_name": {
-            "title": "Created By Name",
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "Name of the user in \u0060created_by\u0060.",
-            "default": null
-          },
-          "date_created": {
-            "title": "Date Created",
-            "type": "string",
-            "description": "When the activity was created.",
-            "format": "date-time"
-          },
-          "date_updated": {
-            "title": "Date Updated",
-            "type": "string",
-            "description": "When the activity was last updated.",
-            "format": "date-time"
-          },
-          "id": {
-            "title": "ID",
-            "type": "string",
-            "description": "ID of the activity, e.g. \u0060acti_abc123\u0060."
-          },
-          "lead_id": {
-            "title": "Lead ID",
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "ID of the Lead the activity is on. Can be \u0060null\u0060 for Calls and SMS with phone numbers that don\u0027t match any Contact."
-          },
-          "note": {
-            "title": "Note",
-            "type": "string",
-            "description": "Plain-text content of the note. When the note has rich text, this is derived from \u0060note_html\u0060."
-          },
-          "note_html": {
-            "title": "Note HTML",
-            "type": "string",
-            "description": "Rich-text content of the note as HTML. For a note that was written as plain text, this is generated from \u0060note\u0060."
-          },
-          "note_mentions": {
-            "title": "Note Mentions",
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "IDs of the users (\u0060user_\u0060) and groups (\u0060group_\u0060) mentioned in \u0060note_html\u0060."
-          },
-          "organization_id": {
-            "title": "Organization ID",
-            "type": "string",
-            "description": "ID of the organization the activity belongs to."
-          },
-          "pinned": {
-            "title": "Pinned",
-            "type": "boolean",
-            "description": "Whether the note is pinned to the top of the lead\u0027s activity timeline."
-          },
-          "pinned_at": {
-            "title": "Pinned At",
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "When the note was pinned, or \u0060null\u0060 if it isn\u0027t pinned.",
-            "format": "date-time"
-          },
-          "source": {
-            "$ref": "#/components/schemas/ActivityBaseSource"
-          },
-          "title": {
-            "title": "Title",
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "Title of the note, or \u0060null\u0060 if it has no title."
-          },
-          "updated_by": {
-            "title": "Updated By",
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "ID of the user who last updated the activity, or \u0060null\u0060 if it wasn\u0027t updated by a user."
-          },
-          "updated_by_agent_id": {
-            "title": "Updated By Agent ID",
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "ID of the agent that last updated the activity, or \u0060null\u0060 if the last update wasn\u0027t made by an agent.",
-            "default": null
-          },
-          "updated_by_name": {
-            "title": "Updated By Name",
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "Name of the user in \u0060updated_by\u0060.",
-            "default": null
-          },
-          "user_id": {
-            "title": "User ID",
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be \u0060null\u0060, e.g. for an incoming SMS to a group number."
-          },
-          "user_name": {
-            "title": "User Name",
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "Name of the user in \u0060user_id\u0060.",
-            "default": null
-          },
-          "users": {
-            "title": "Users",
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting."
-          }
-        }
-      },
       "ActivityCallSearchFieldName": {
         "title": "ActivityCallSearchFieldName",
         "enum": [
@@ -40910,7 +40707,7 @@
             "description": "The number used for an earlier call or message with the same contact."
           },
           "fallback": {
-            "description": "No better match, so the default caller ID or the oldest available number."
+            "description": "No better match, so the default Caller ID or the oldest available number."
           },
           "local_presence": {
             "description": "The number closest to the location of the other party\u0027s number."
@@ -42550,97 +42347,107 @@
         }
       },
       "CreateNoteActivity": {
+        "title": "CreateNoteActivity",
         "required": [
           "lead_id"
         ],
         "type": "object",
         "properties": {
           "activity_at": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "When the note was logged, which sets its place in the lead\u0027s activity timeline. Defaults to the time the note is created.",
-            "format": "date-time"
+            "$ref": "#/components/schemas/CreateNoteActivityActivityAt"
           },
           "attachments": {
+            "title": "Attachments",
             "maxItems": 1000,
             "type": [
               "null",
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/CreateNoteActivityAttachmentsItem"
+              "$ref": "#/components/schemas/NoteAttachmentIn"
             },
-            "description": "Files to attach to the note. Upload each file with the Files API first. The files can add up to 25 MB. On update, this list replaces the note\u0027s attachments."
+            "description": "Files to attach to the note. Upload each file with the Files API first. The files can add up to 25 MB. On update, this list replaces the note\u0027s attachments.",
+            "default": null
           },
           "contact_id": {
+            "title": "Contact ID",
             "type": [
               "null",
               "string"
             ],
-            "description": "ID of the contact the note is about. The contact must belong to the note\u0027s lead. On update, set it to \u0060null\u0060 to unlink the contact."
+            "description": "ID of the contact the note is about. The contact must belong to the note\u0027s lead. On update, set it to \u0060null\u0060 to unlink the contact.",
+            "default": null
           },
           "created_by": {
+            "title": "Created By",
             "type": [
               "null",
               "string"
             ],
-            "description": "ID of the user to record as the note\u0027s creator. Defaults to you. Setting another user needs permission to manage your organization, otherwise you\u0027re recorded as the creator."
+            "description": "ID of the user to record as the note\u0027s creator. Defaults to you. Setting another user needs permission to manage your organization, otherwise you\u0027re recorded as the creator.",
+            "default": null
           },
           "date_created": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "When the note was created, e.g. for notes imported from another system. Defaults to now. Can\u0027t be changed later.",
-            "format": "date-time"
+            "$ref": "#/components/schemas/CreateNoteActivityDateCreated"
           },
           "lead_id": {
+            "title": "Lead ID",
             "type": "string",
             "description": "ID of the lead to add the note to. Can\u0027t be changed later."
           },
           "note": {
+            "title": "Note",
             "type": [
               "null",
               "string"
             ],
-            "description": "Plain-text content of the note. Ignored when \u0060note_html\u0060 is set, since \u0060note\u0060 is then derived from \u0060note_html\u0060."
+            "description": "Plain-text content of the note. Ignored when \u0060note_html\u0060 is set, since \u0060note\u0060 is then derived from \u0060note_html\u0060.",
+            "default": null
           },
           "note_html": {
+            "title": "Note HTML",
             "type": [
               "null",
               "string"
             ],
-            "description": "Rich-text content of the note as HTML. Takes precedence over \u0060note\u0060. To mention a user or group, add an element like \u0060\u003Cspan data-type=\u0022mention\u0022 data-id=\u0022user_...\u0022 class=\u0022mention\u0022\u003E@Name\u003C/span\u003E\u0060."
+            "description": "Rich-text content of the note as HTML. Takes precedence over \u0060note\u0060. To mention a user or group, add an element like \u0060\u003Cspan data-type=\u0022mention\u0022 data-id=\u0022user_...\u0022 class=\u0022mention\u0022\u003E@Name\u003C/span\u003E\u0060.",
+            "default": null
           },
           "organization_id": {
+            "title": "Organization ID",
             "type": [
               "null",
               "string"
             ],
-            "description": "ID of your organization. Optional, since your API key or OAuth token already determines it."
+            "description": "ID of your organization. Optional, since your API key or OAuth token already determines it.",
+            "default": null
           },
           "pinned": {
+            "title": "Pinned",
             "type": [
               "null",
               "boolean"
             ],
-            "description": "Whether to pin the note to the top of the lead\u0027s activity timeline. A lead can have at most 5 pinned activities."
+            "description": "Whether to pin the note to the top of the lead\u0027s activity timeline. A lead can have at most 5 pinned activities.",
+            "default": null
           },
           "title": {
+            "title": "Title",
             "type": [
               "null",
               "string"
             ],
-            "description": "Title of the note. An empty title is saved as \u0060null\u0060."
+            "description": "Title of the note. An empty title is saved as \u0060null\u0060.",
+            "default": null
           },
           "user_id": {
+            "title": "User ID",
             "type": [
               "null",
               "string"
             ],
-            "description": "ID of the user the note belongs to. Defaults to you. Setting another user needs permission to manage your organization, otherwise the note is assigned to you. Can\u0027t be changed later."
+            "description": "ID of the user the note belongs to. Defaults to you. Setting another user needs permission to manage your organization, otherwise the note is assigned to you. Can\u0027t be changed later.",
+            "default": null
           }
         }
       },
@@ -43009,56 +42816,68 @@
         }
       },
       "CreateSmsActivity": {
+        "title": "CreateSMSActivity",
         "required": [
           "status"
         ],
         "type": "object",
         "properties": {
           "activity_at": {
+            "title": "Activity At",
             "type": [
               "null",
               "string"
             ],
             "description": "When the SMS happened. Defaults to \u0060date_created\u0060, and is set to the time the SMS is sent.",
-            "format": "date-time"
+            "format": "date-time",
+            "default": null
           },
           "attachments": {
+            "title": "Attachments",
             "maxItems": 10,
             "type": [
               "null",
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/CreateSmsActivityAttachmentsItem"
+              "$ref": "#/components/schemas/SmsAttachmentFile"
             },
-            "description": "Files to send with the SMS as an MMS, at most 10. Can only be changed while the SMS is a draft."
+            "description": "Files to send with the SMS as an MMS, at most 10. Can only be changed while the SMS is a draft.",
+            "default": null
           },
           "caller_id_mode": {
             "$ref": "#/components/schemas/CreateSmsActivityCallerIdMode"
           },
           "contact_id": {
+            "title": "Contact ID",
             "type": [
               "null",
               "string"
             ],
-            "description": "ID of the contact the SMS is with. Can only be changed while the SMS is a draft."
+            "description": "ID of the contact the SMS is with. Can only be changed while the SMS is a draft.",
+            "default": null
           },
           "created_by": {
+            "title": "Created By",
             "type": [
               "null",
               "string"
             ],
-            "description": "ID of the user who created the SMS. Defaults to you. Setting another user requires the \u0060manage_organization\u0060 permission, otherwise you are used instead."
+            "description": "ID of the user who created the SMS. Defaults to you. Setting another user requires the \u0060manage_organization\u0060 permission, otherwise you are used instead.",
+            "default": null
           },
           "date_created": {
+            "title": "Date Created",
             "type": [
               "null",
               "string"
             ],
             "description": "When the SMS was created, e.g. when importing older SMS. Defaults to now.",
-            "format": "date-time"
+            "format": "date-time",
+            "default": null
           },
           "date_scheduled": {
+            "title": "Date Scheduled",
             "type": "string",
             "description": "When to send the message. Required when \u0060status\u0060 is \u0060scheduled\u0060, and ignored otherwise.",
             "format": "date-time"
@@ -43067,38 +42886,51 @@
             "$ref": "#/components/schemas/CreateSmsActivityDirection"
           },
           "lead_id": {
+            "title": "Lead ID",
             "type": [
               "null",
               "string"
             ],
-            "description": "ID of the lead the SMS belongs to. For a logged SMS (\u0060source\u0060 is \u0060External\u0060), it defaults to the lead of \u0060contact_id\u0060, or of the oldest contact with \u0060remote_phone\u0060. Once set, it can\u0027t be removed."
+            "description": "ID of the lead the SMS belongs to. For a logged SMS (\u0060source\u0060 is \u0060External\u0060), it defaults to the lead of \u0060contact_id\u0060, or of the oldest contact with \u0060remote_phone\u0060. Once set, it can\u0027t be removed.",
+            "default": null
           },
           "local_phone": {
+            "title": "Local Phone",
             "type": [
               "null",
               "string"
             ],
-            "description": "Your Close phone number to send the SMS from, or that received it, in E.164 format. Required to send (\u0060outbox\u0060 or \u0060scheduled\u0060) unless \u0060caller_id_mode\u0060 is \u0060auto\u0060. Can only be changed while the SMS is a draft."
+            "description": "Your Close phone number to send the SMS from, or that received it, in E.164 format. Required to send (\u0060outbox\u0060 or \u0060scheduled\u0060) unless \u0060caller_id_mode\u0060 is \u0060auto\u0060. Can only be changed while the SMS is a draft.",
+            "default": null
           },
           "organization_id": {
+            "title": "Organization ID",
             "type": [
               "null",
               "string"
             ],
-            "description": "ID of your organization. Defaults to the organization of your API key or OAuth token."
+            "description": "ID of your organization. Defaults to the organization of your API key or OAuth token.",
+            "default": null
           },
           "remote_phone": {
+            "title": "Remote Phone",
             "type": [
               "null",
               "string"
             ],
-            "description": "Phone number of the other party, in E.164 format. Required to send. A logged SMS needs \u0060remote_phone\u0060 or \u0060contact_id\u0060. Can only be changed while the SMS is a draft."
+            "description": "Phone number of the other party, in E.164 format. Required to send. A logged SMS needs \u0060remote_phone\u0060 or \u0060contact_id\u0060. Can only be changed while the SMS is a draft.",
+            "default": null
           },
           "send_in": {
+            "title": "Send In",
             "maximum": 60,
             "minimum": 0,
-            "type": "integer",
-            "description": "Seconds to delay sending, to allow undo. Only used when \u0060status\u0060 is \u0060outbox\u0060."
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Seconds to delay sending, to allow undo. Only used when \u0060status\u0060 is \u0060outbox\u0060.",
+            "default": 0
           },
           "source": {
             "$ref": "#/components/schemas/CreateSmsActivitySource"
@@ -43108,27 +42940,34 @@
             "$ref": "#/components/schemas/MessageStatus"
           },
           "template_id": {
+            "title": "Template ID",
             "type": [
               "null",
               "string"
             ],
-            "description": "ID of an SMS template. When you create an SMS with a \u0060template_id\u0060 and no \u0060text\u0060, Close renders the template into \u0060text\u0060, which requires \u0060lead_id\u0060. Can only be changed while the SMS is a draft."
+            "description": "ID of an SMS template. When you create an SMS with a \u0060template_id\u0060 and no \u0060text\u0060, Close renders the template into \u0060text\u0060, which requires \u0060lead_id\u0060. Can only be changed while the SMS is a draft.",
+            "default": null
           },
           "text": {
+            "title": "Text",
             "type": [
               "null",
               "string"
             ],
-            "description": "Text of the SMS. Required unless \u0060status\u0060 is \u0060draft\u0060, or you send \u0060attachments\u0060 or a \u0060template_id\u0060. An SMS to send can be at most 1,000 bytes of UTF-8 text. Can only be changed while the SMS is a draft."
+            "description": "Text of the SMS. Required unless \u0060status\u0060 is \u0060draft\u0060, or you send \u0060attachments\u0060 or a \u0060template_id\u0060. An SMS to send can be at most 1,000 bytes of UTF-8 text. Can only be changed while the SMS is a draft.",
+            "default": null
           },
           "user_id": {
+            "title": "User ID",
             "type": [
               "null",
               "string"
             ],
-            "description": "ID of the user who sent or received the SMS. Defaults to you. Setting another user requires the \u0060manage_organization\u0060 permission, otherwise you are used instead."
+            "description": "ID of the user who sent or received the SMS. Defaults to you. Setting another user requires the \u0060manage_organization\u0060 permission, otherwise you are used instead.",
+            "default": null
           }
-        }
+        },
+        "description": "Data of a new SMS activity."
       },
       "CreateSmsTemplate": {
         "title": "CreateSMSTemplate",
@@ -44245,15 +44084,11 @@
           },
           "attachments": {
             "title": "Attachments",
-            "type": [
-              "null",
-              "array"
-            ],
+            "type": "array",
             "items": {
               "$ref": "#/components/schemas/Attachment"
             },
-            "description": "Files attached to the email.",
-            "default": null
+            "description": "Files attached to the email."
           },
           "bcc": {
             "title": "Bcc",
@@ -44288,7 +44123,7 @@
               "null",
               "string"
             ],
-            "description": "First 200 characters of the body, as plain text.",
+            "description": "First 200 characters of the body, as plain text. \u0060null\u0060 if the email has no body.",
             "default": null
           },
           "body_text": {
@@ -44468,15 +44303,11 @@
           },
           "opens": {
             "title": "Opens",
-            "type": [
-              "null",
-              "array"
-            ],
+            "type": "array",
             "items": {
               "$ref": "#/components/schemas/EmailOpen"
             },
-            "description": "Each time a recipient opened the email, oldest first.",
-            "default": null
+            "description": "Each time a recipient opened the email, oldest first."
           },
           "opens_summary": {
             "title": "Opens Summary",
@@ -44509,15 +44340,11 @@
           },
           "send_attempts": {
             "title": "Send Attempts",
-            "type": [
-              "null",
-              "array"
-            ],
+            "type": "array",
             "items": {
               "$ref": "#/components/schemas/SendAttempt"
             },
-            "description": "Failed or partly failed attempts to send the email, oldest first.",
-            "default": null
+            "description": "Failed or partly failed attempts to send the email, oldest first."
           },
           "sender": {
             "title": "Sender",
@@ -44740,15 +44567,11 @@
           },
           "attachments": {
             "title": "Attachments",
-            "type": [
-              "null",
-              "array"
-            ],
+            "type": "array",
             "items": {
               "$ref": "#/components/schemas/Attachment"
             },
-            "description": "Files attached to the email.",
-            "default": null
+            "description": "Files attached to the email."
           },
           "bcc": {
             "title": "Bcc",
@@ -44783,7 +44606,7 @@
               "null",
               "string"
             ],
-            "description": "First 200 characters of the body, as plain text.",
+            "description": "First 200 characters of the body, as plain text. \u0060null\u0060 if the email has no body.",
             "default": null
           },
           "body_text": {
@@ -44963,15 +44786,11 @@
           },
           "opens": {
             "title": "Opens",
-            "type": [
-              "null",
-              "array"
-            ],
+            "type": "array",
             "items": {
               "$ref": "#/components/schemas/EmailOpen"
             },
-            "description": "Each time a recipient opened the email, oldest first.",
-            "default": null
+            "description": "Each time a recipient opened the email, oldest first."
           },
           "opens_summary": {
             "title": "Opens Summary",
@@ -45004,15 +44823,11 @@
           },
           "send_attempts": {
             "title": "Send Attempts",
-            "type": [
-              "null",
-              "array"
-            ],
+            "type": "array",
             "items": {
               "$ref": "#/components/schemas/SendAttempt"
             },
-            "description": "Failed or partly failed attempts to send the email, oldest first.",
-            "default": null
+            "description": "Failed or partly failed attempts to send the email, oldest first."
           },
           "sender": {
             "title": "Sender",
@@ -50950,6 +50765,265 @@
           ]
         }
       },
+      "NoteActivity": {
+        "title": "NoteActivity",
+        "required": [
+          "_type",
+          "activity_at",
+          "attachments",
+          "contact_id",
+          "created_by",
+          "date_created",
+          "date_updated",
+          "id",
+          "lead_id",
+          "note",
+          "note_html",
+          "note_mentions",
+          "organization_id",
+          "pinned",
+          "pinned_at",
+          "source",
+          "title",
+          "updated_by",
+          "user_id",
+          "users"
+        ],
+        "type": "object",
+        "properties": {
+          "_type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Type of the activity, e.g. \u0060Call\u0060, \u0060Email\u0060 or \u0060Note\u0060."
+          },
+          "activity_at": {
+            "title": "Activity At",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When the activity happened, e.g. when an Email or SMS was sent. Defaults to \u0060date_created\u0060.",
+            "format": "date-time"
+          },
+          "agent_action_reason": {
+            "title": "Agent Action Reason",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Why an agent created the activity (\u0060send_scheduling_link\u0060, \u0060custom_agent_decision\u0060 or \u0060voice_agent_callback\u0060), or \u0060null\u0060 if no agent created it.",
+            "default": null
+          },
+          "agent_config_id": {
+            "title": "Agent Config ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead.",
+            "default": null,
+            "deprecated": true
+          },
+          "attachments": {
+            "title": "Attachments",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Attachment"
+            },
+            "description": "Files attached to the note."
+          },
+          "contact_id": {
+            "title": "Contact ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "ID of the Contact the activity is with, or \u0060null\u0060 if it isn\u0027t with a particular Contact."
+          },
+          "created_by": {
+            "title": "Created By",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "ID of the user who created the activity, or \u0060null\u0060 if it wasn\u0027t created by a user."
+          },
+          "created_by_agent_id": {
+            "title": "Created By Agent ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "ID of the agent that created the activity, e.g. \u0060agentconfig_abc123\u0060, or \u0060null\u0060 if no agent created it.",
+            "default": null
+          },
+          "created_by_name": {
+            "title": "Created By Name",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Name of the user in \u0060created_by\u0060.",
+            "default": null
+          },
+          "date_created": {
+            "title": "Date Created",
+            "type": "string",
+            "description": "When the activity was created.",
+            "format": "date-time"
+          },
+          "date_updated": {
+            "title": "Date Updated",
+            "type": "string",
+            "description": "When the activity was last updated.",
+            "format": "date-time"
+          },
+          "id": {
+            "title": "ID",
+            "type": "string",
+            "description": "ID of the activity, e.g. \u0060acti_abc123\u0060."
+          },
+          "lead_id": {
+            "title": "Lead ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "ID of the Lead the activity is on. Can be \u0060null\u0060 for Calls and SMS with phone numbers that don\u0027t match any Contact."
+          },
+          "note": {
+            "title": "Note",
+            "type": "string",
+            "description": "Plain-text content of the note. When the note has rich text, this is derived from \u0060note_html\u0060."
+          },
+          "note_html": {
+            "title": "Note HTML",
+            "type": "string",
+            "description": "Rich-text content of the note as HTML. For a note that was written as plain text, this is generated from \u0060note\u0060."
+          },
+          "note_mentions": {
+            "title": "Note Mentions",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "IDs of the users (\u0060user_\u0060) and groups (\u0060group_\u0060) mentioned in \u0060note_html\u0060."
+          },
+          "organization_id": {
+            "title": "Organization ID",
+            "type": "string",
+            "description": "ID of the organization the activity belongs to."
+          },
+          "pinned": {
+            "title": "Pinned",
+            "type": "boolean",
+            "description": "Whether the note is pinned to the top of the lead\u0027s activity timeline."
+          },
+          "pinned_at": {
+            "title": "Pinned At",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When the note was pinned, or \u0060null\u0060 if it isn\u0027t pinned.",
+            "format": "date-time"
+          },
+          "source": {
+            "$ref": "#/components/schemas/NoteActivitySource"
+          },
+          "title": {
+            "title": "Title",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Title of the note, or \u0060null\u0060 if it has no title."
+          },
+          "updated_by": {
+            "title": "Updated By",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "ID of the user who last updated the activity, or \u0060null\u0060 if it wasn\u0027t updated by a user."
+          },
+          "updated_by_agent_id": {
+            "title": "Updated By Agent ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "ID of the agent that last updated the activity, or \u0060null\u0060 if the last update wasn\u0027t made by an agent.",
+            "default": null
+          },
+          "updated_by_name": {
+            "title": "Updated By Name",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Name of the user in \u0060updated_by\u0060.",
+            "default": null
+          },
+          "user_id": {
+            "title": "User ID",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "ID of the user the activity belongs to, e.g. who made the Call or sent the Email. Can be \u0060null\u0060, e.g. for an incoming SMS to a group number."
+          },
+          "user_name": {
+            "title": "User Name",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Name of the user in \u0060user_id\u0060.",
+            "default": null
+          },
+          "users": {
+            "title": "Users",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting."
+          }
+        }
+      },
+      "NoteAttachmentIn": {
+        "title": "NoteAttachmentIn",
+        "required": [
+          "filename",
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "content_type": {
+            "title": "Content Type",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "MIME type of the file, e.g. \u0060image/gif\u0060.",
+            "default": null
+          },
+          "filename": {
+            "title": "Filename",
+            "minLength": 1,
+            "type": "string",
+            "description": "Name of the file, e.g. \u0060picture.gif\u0060."
+          },
+          "url": {
+            "title": "URL",
+            "minLength": 1,
+            "type": "string",
+            "description": "URL of the uploaded file, from the \u0060download.url\u0060 field of the Files API response. Must start with \u0060https://app.close.com/go/file/\u0060.",
+            "x-client-original-format": "uri"
+          }
+        }
+      },
       "NotificationResolution": {
         "title": "NotificationResolution",
         "enum": [
@@ -54201,8 +54275,7 @@
           "template_id",
           "text",
           "updated_by",
-          "user_id",
-          "users"
+          "user_id"
         ],
         "type": "object",
         "properties": {
@@ -54487,14 +54560,6 @@
             ],
             "description": "Name of the user in \u0060user_id\u0060.",
             "default": null
-          },
-          "users": {
-            "title": "Users",
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "IDs of all users the activity is associated with, e.g. every Close user on an Email Thread or invited to a Meeting."
           }
         }
       },
@@ -54543,6 +54608,368 @@
             "description": "URL to download the file. It requires an authenticated session and redirects to a temporary signed URL."
           }
         }
+      },
+      "SmsAttachmentContentType": {
+        "title": "SMSAttachmentContentType",
+        "enum": [
+          "image/jpeg",
+          "image/jpg",
+          "image/gif",
+          "image/png",
+          "audio/basic",
+          "audio/L24",
+          "audio/mp4",
+          "audio/mpeg",
+          "audio/ogg",
+          "audio/vnd.rn-realaudio",
+          "audio/vnd.wave",
+          "audio/3gpp",
+          "audio/3gpp2",
+          "audio/ac3",
+          "audio/webm",
+          "audio/amr-nb",
+          "audio/amr",
+          "video/mpeg",
+          "video/mp4",
+          "video/quicktime",
+          "video/webm",
+          "video/3gpp",
+          "video/3gpp2",
+          "video/3gpp-tt",
+          "video/H261",
+          "video/H263",
+          "video/H263-1998",
+          "video/H263-2000",
+          "video/H264",
+          "image/bmp",
+          "image/tiff",
+          "text/vcard",
+          "text/x-vcard",
+          "text/csv",
+          "text/rtf",
+          "text/richtext",
+          "text/calendar",
+          "text/directory",
+          "application/pdf",
+          "application/vcard"
+        ],
+        "type": "string",
+        "description": "MIME type of a file attached to an SMS, which makes it an MMS.",
+        "x-fern-enum": {
+          "application/pdf": {
+            "description": "PDF document."
+          },
+          "application/vcard": {
+            "description": "vCard contact card."
+          },
+          "audio/3gpp": {
+            "description": "3GPP audio."
+          },
+          "audio/3gpp2": {
+            "description": "3GPP2 audio."
+          },
+          "audio/L24": {
+            "description": "Uncompressed 24-bit audio."
+          },
+          "audio/ac3": {
+            "description": "AC-3 audio."
+          },
+          "audio/amr": {
+            "description": "AMR audio."
+          },
+          "audio/amr-nb": {
+            "description": "AMR narrowband audio."
+          },
+          "audio/basic": {
+            "description": "Basic audio, such as an \u0060.au\u0060 file."
+          },
+          "audio/mp4": {
+            "description": "MP4 audio, such as an \u0060.m4a\u0060 file."
+          },
+          "audio/mpeg": {
+            "description": "MPEG audio, such as an \u0060.mp3\u0060 file."
+          },
+          "audio/ogg": {
+            "description": "Ogg audio."
+          },
+          "audio/vnd.rn-realaudio": {
+            "description": "RealAudio audio."
+          },
+          "audio/vnd.wave": {
+            "description": "WAV audio."
+          },
+          "audio/webm": {
+            "description": "WebM audio."
+          },
+          "image/bmp": {
+            "description": "BMP image."
+          },
+          "image/gif": {
+            "description": "GIF image."
+          },
+          "image/jpeg": {
+            "description": "JPEG image."
+          },
+          "image/jpg": {
+            "description": "JPEG image, with a nonstandard MIME type."
+          },
+          "image/png": {
+            "description": "PNG image."
+          },
+          "image/tiff": {
+            "description": "TIFF image."
+          },
+          "text/calendar": {
+            "description": "iCalendar file, such as an \u0060.ics\u0060 file."
+          },
+          "text/csv": {
+            "description": "CSV file."
+          },
+          "text/directory": {
+            "description": "Directory information, such as a vCard."
+          },
+          "text/richtext": {
+            "description": "Rich text document."
+          },
+          "text/rtf": {
+            "description": "RTF document."
+          },
+          "text/vcard": {
+            "description": "vCard contact card."
+          },
+          "text/x-vcard": {
+            "description": "vCard contact card, with a legacy MIME type."
+          },
+          "video/3gpp": {
+            "description": "3GPP video."
+          },
+          "video/3gpp-tt": {
+            "description": "3GPP timed text."
+          },
+          "video/3gpp2": {
+            "description": "3GPP2 video."
+          },
+          "video/H261": {
+            "description": "H.261 video."
+          },
+          "video/H263": {
+            "description": "H.263 video."
+          },
+          "video/H263-1998": {
+            "description": "H.263 video, 1998 version."
+          },
+          "video/H263-2000": {
+            "description": "H.263 video, 2000 version."
+          },
+          "video/H264": {
+            "description": "H.264 video."
+          },
+          "video/mp4": {
+            "description": "MP4 video."
+          },
+          "video/mpeg": {
+            "description": "MPEG video."
+          },
+          "video/quicktime": {
+            "description": "QuickTime video, such as a \u0060.mov\u0060 file."
+          },
+          "video/webm": {
+            "description": "WebM video."
+          }
+        },
+        "x-ms-enum": {
+          "name": "SmsAttachmentContentType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "image/jpeg",
+              "name": "ImageJpeg"
+            },
+            {
+              "value": "image/jpg",
+              "name": "ImageJpg"
+            },
+            {
+              "value": "image/gif",
+              "name": "ImageGif"
+            },
+            {
+              "value": "image/png",
+              "name": "ImagePng"
+            },
+            {
+              "value": "audio/basic",
+              "name": "AudioBasic"
+            },
+            {
+              "value": "audio/L24",
+              "name": "AudioL24"
+            },
+            {
+              "value": "audio/mp4",
+              "name": "AudioMp4"
+            },
+            {
+              "value": "audio/mpeg",
+              "name": "AudioMpeg"
+            },
+            {
+              "value": "audio/ogg",
+              "name": "AudioOgg"
+            },
+            {
+              "value": "audio/vnd.rn-realaudio",
+              "name": "AudioVndRnRealaudio"
+            },
+            {
+              "value": "audio/vnd.wave",
+              "name": "AudioVndWave"
+            },
+            {
+              "value": "audio/3gpp",
+              "name": "Audio3Gpp"
+            },
+            {
+              "value": "audio/3gpp2",
+              "name": "Audio3Gpp2"
+            },
+            {
+              "value": "audio/ac3",
+              "name": "AudioAc3"
+            },
+            {
+              "value": "audio/webm",
+              "name": "AudioWebm"
+            },
+            {
+              "value": "audio/amr-nb",
+              "name": "AudioAmrNb"
+            },
+            {
+              "value": "audio/amr",
+              "name": "AudioAmr"
+            },
+            {
+              "value": "video/mpeg",
+              "name": "VideoMpeg"
+            },
+            {
+              "value": "video/mp4",
+              "name": "VideoMp4"
+            },
+            {
+              "value": "video/quicktime",
+              "name": "VideoQuicktime"
+            },
+            {
+              "value": "video/webm",
+              "name": "VideoWebm"
+            },
+            {
+              "value": "video/3gpp",
+              "name": "Video3Gpp"
+            },
+            {
+              "value": "video/3gpp2",
+              "name": "Video3Gpp2"
+            },
+            {
+              "value": "video/3gpp-tt",
+              "name": "Video3GppTt"
+            },
+            {
+              "value": "video/H261",
+              "name": "VideoH261"
+            },
+            {
+              "value": "video/H263",
+              "name": "VideoH263"
+            },
+            {
+              "value": "video/H263-1998",
+              "name": "VideoH2631998"
+            },
+            {
+              "value": "video/H263-2000",
+              "name": "VideoH2632000"
+            },
+            {
+              "value": "video/H264",
+              "name": "VideoH264"
+            },
+            {
+              "value": "image/bmp",
+              "name": "ImageBmp"
+            },
+            {
+              "value": "image/tiff",
+              "name": "ImageTiff"
+            },
+            {
+              "value": "text/vcard",
+              "name": "TextVcard"
+            },
+            {
+              "value": "text/x-vcard",
+              "name": "TextXVcard"
+            },
+            {
+              "value": "text/csv",
+              "name": "TextCsv"
+            },
+            {
+              "value": "text/rtf",
+              "name": "TextRtf"
+            },
+            {
+              "value": "text/richtext",
+              "name": "TextRichtext"
+            },
+            {
+              "value": "text/calendar",
+              "name": "TextCalendar"
+            },
+            {
+              "value": "text/directory",
+              "name": "TextDirectory"
+            },
+            {
+              "value": "application/pdf",
+              "name": "ApplicationPdf"
+            },
+            {
+              "value": "application/vcard",
+              "name": "ApplicationVcard"
+            }
+          ]
+        }
+      },
+      "SmsAttachmentFile": {
+        "title": "SMSAttachmentFile",
+        "required": [
+          "content_type",
+          "filename",
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "content_type": {
+            "$ref": "#/components/schemas/SmsAttachmentContentType"
+          },
+          "filename": {
+            "title": "Filename",
+            "minLength": 1,
+            "type": "string",
+            "description": "Name of the file, e.g. \u0060photo.jpg\u0060."
+          },
+          "url": {
+            "title": "Url",
+            "minLength": 1,
+            "type": "string",
+            "description": "URL of a file uploaded with the Files API. Use the \u0060download.url\u0060 from the upload response, which begins with \u0060https://app.close.com/go/file/\u0060."
+          }
+        },
+        "description": "A file to attach to an SMS, which makes it an MMS."
       },
       "SmsTemplateStatus": {
         "title": "SMSTemplateStatus",
@@ -59130,28 +59557,26 @@
         }
       },
       "UpdateNoteActivity": {
+        "title": "UpdateNoteActivity",
         "type": "object",
         "properties": {
           "activity_at": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "When the note was logged, which sets its place in the lead\u0027s activity timeline. Defaults to the time the note is created.",
-            "format": "date-time"
+            "$ref": "#/components/schemas/CreateNoteActivityActivityAt"
           },
           "attachments": {
+            "title": "Attachments",
             "maxItems": 1000,
             "type": [
               "null",
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/UpdateNoteActivityAttachmentsItem"
+              "$ref": "#/components/schemas/NoteAttachmentIn"
             },
             "description": "Files to attach to the note. Upload each file with the Files API first. The files can add up to 25 MB. On update, this list replaces the note\u0027s attachments."
           },
           "contact_id": {
+            "title": "Contact ID",
             "type": [
               "null",
               "string"
@@ -59159,6 +59584,7 @@
             "description": "ID of the contact the note is about. The contact must belong to the note\u0027s lead. On update, set it to \u0060null\u0060 to unlink the contact."
           },
           "note": {
+            "title": "Note",
             "type": [
               "null",
               "string"
@@ -59166,6 +59592,7 @@
             "description": "Plain-text content of the note. Ignored when \u0060note_html\u0060 is set, since \u0060note\u0060 is then derived from \u0060note_html\u0060."
           },
           "note_html": {
+            "title": "Note HTML",
             "type": [
               "null",
               "string"
@@ -59173,6 +59600,7 @@
             "description": "Rich-text content of the note as HTML. Takes precedence over \u0060note\u0060. To mention a user or group, add an element like \u0060\u003Cspan data-type=\u0022mention\u0022 data-id=\u0022user_...\u0022 class=\u0022mention\u0022\u003E@Name\u003C/span\u003E\u0060."
           },
           "pinned": {
+            "title": "Pinned",
             "type": [
               "null",
               "boolean"
@@ -59180,13 +59608,15 @@
             "description": "Whether to pin the note to the top of the lead\u0027s activity timeline. A lead can have at most 5 pinned activities."
           },
           "title": {
+            "title": "Title",
             "type": [
               "null",
               "string"
             ],
             "description": "Title of the note. An empty title is saved as \u0060null\u0060."
           }
-        }
+        },
+        "description": "Changes to a note. Fields you leave out keep their value."
       },
       "UpdateOpportunity": {
         "patternProperties": {
@@ -59461,9 +59891,11 @@
         }
       },
       "UpdateSmsActivity": {
+        "title": "UpdateSMSActivity",
         "type": "object",
         "properties": {
           "activity_at": {
+            "title": "Activity At",
             "type": [
               "null",
               "string"
@@ -59472,13 +59904,14 @@
             "format": "date-time"
           },
           "attachments": {
+            "title": "Attachments",
             "maxItems": 10,
             "type": [
               "null",
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/UpdateSmsActivityAttachmentsItem"
+              "$ref": "#/components/schemas/SmsAttachmentFile"
             },
             "description": "Files to send with the SMS as an MMS, at most 10. Can only be changed while the SMS is a draft."
           },
@@ -59486,6 +59919,7 @@
             "$ref": "#/components/schemas/CreateSmsActivityCallerIdMode"
           },
           "contact_id": {
+            "title": "Contact ID",
             "type": [
               "null",
               "string"
@@ -59493,11 +59927,13 @@
             "description": "ID of the contact the SMS is with. Can only be changed while the SMS is a draft."
           },
           "date_scheduled": {
+            "title": "Date Scheduled",
             "type": "string",
             "description": "When to send the message. Required when \u0060status\u0060 is \u0060scheduled\u0060, and ignored otherwise.",
             "format": "date-time"
           },
           "lead_id": {
+            "title": "Lead ID",
             "type": [
               "null",
               "string"
@@ -59505,6 +59941,7 @@
             "description": "ID of the lead the SMS belongs to. For a logged SMS (\u0060source\u0060 is \u0060External\u0060), it defaults to the lead of \u0060contact_id\u0060, or of the oldest contact with \u0060remote_phone\u0060. Once set, it can\u0027t be removed."
           },
           "local_phone": {
+            "title": "Local Phone",
             "type": [
               "null",
               "string"
@@ -59512,6 +59949,7 @@
             "description": "Your Close phone number to send the SMS from, or that received it, in E.164 format. Required to send (\u0060outbox\u0060 or \u0060scheduled\u0060) unless \u0060caller_id_mode\u0060 is \u0060auto\u0060. Can only be changed while the SMS is a draft."
           },
           "remote_phone": {
+            "title": "Remote Phone",
             "type": [
               "null",
               "string"
@@ -59519,9 +59957,13 @@
             "description": "Phone number of the other party, in E.164 format. Required to send. A logged SMS needs \u0060remote_phone\u0060 or \u0060contact_id\u0060. Can only be changed while the SMS is a draft."
           },
           "send_in": {
+            "title": "Send In",
             "maximum": 60,
             "minimum": 0,
-            "type": "integer",
+            "type": [
+              "null",
+              "integer"
+            ],
             "description": "Seconds to delay sending, to allow undo. Only used when \u0060status\u0060 is \u0060outbox\u0060."
           },
           "status": {
@@ -59529,6 +59971,7 @@
             "$ref": "#/components/schemas/MessageStatus"
           },
           "template_id": {
+            "title": "Template ID",
             "type": [
               "null",
               "string"
@@ -59536,6 +59979,7 @@
             "description": "ID of an SMS template. When you create an SMS with a \u0060template_id\u0060 and no \u0060text\u0060, Close renders the template into \u0060text\u0060, which requires \u0060lead_id\u0060. Can only be changed while the SMS is a draft."
           },
           "text": {
+            "title": "Text",
             "type": [
               "null",
               "string"
@@ -59543,13 +59987,15 @@
             "description": "Text of the SMS. Required unless \u0060status\u0060 is \u0060draft\u0060, or you send \u0060attachments\u0060 or a \u0060template_id\u0060. An SMS to send can be at most 1,000 bytes of UTF-8 text. Can only be changed while the SMS is a draft."
           },
           "user_id": {
+            "title": "User ID",
             "type": [
               "null",
               "string"
             ],
             "description": "ID of the user who sent or received the SMS. Defaults to you. Setting another user requires the \u0060manage_organization\u0060 permission, otherwise you are used instead."
           }
-        }
+        },
+        "description": "Changes to an SMS activity. Fields you leave out keep their value."
       },
       "UpdateSmsTemplate": {
         "title": "UpdateSMSTemplate",
@@ -60281,17 +60727,6 @@
           }
         ]
       },
-      "ActivityBaseSource": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/CreationSource"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "description": "How the note was created, e.g. \u0060ui\u0060 in the Close app or \u0060api\u0060 through the API. \u0060null\u0060 if the source isn\u0027t known."
-      },
       "BulkDeleteActionStatus": {
         "anyOf": [
           {
@@ -60442,6 +60877,40 @@
         "description": "Deprecated: use \u0060date\u0060 instead. Only used when \u0060date\u0060 is left out.",
         "deprecated": true
       },
+      "CreateNoteActivityActivityAt": {
+        "title": "Activity At",
+        "anyOf": [
+          {
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "type": "string",
+            "format": "date"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "When the note was logged, which sets its place in the lead\u0027s activity timeline. Defaults to the time the note is created."
+      },
+      "CreateNoteActivityDateCreated": {
+        "title": "Date Created",
+        "anyOf": [
+          {
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "type": "string",
+            "format": "date"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "When the note was created, e.g. for notes imported from another system. Defaults to now. Can\u0027t be changed later."
+      },
       "CreateOpportunityValuePeriod": {
         "anyOf": [
           {
@@ -60473,7 +60942,7 @@
             "type": "null"
           }
         ],
-        "description": "How to choose \u0060local_phone\u0060 when sending. \u0060auto\u0060 lets Close pick the number. A logged SMS can\u0027t have a caller ID mode. Can only be changed while the SMS is a draft."
+        "description": "How to choose \u0060local_phone\u0060 when sending. \u0060auto\u0060 lets Close pick the number. A logged SMS can\u0027t have a Caller ID mode. Can only be changed while the SMS is a draft."
       },
       "CreateSmsActivityDirection": {
         "anyOf": [
@@ -61275,7 +61744,8 @@
             "type": "null"
           }
         ],
-        "description": "Deprecated. Use \u0060playbook_reason\u0060 instead."
+        "description": "Deprecated. Use \u0060playbook_reason\u0060 instead.",
+        "deprecated": true
       },
       "MeetingSearchResultOutcomeAutofillConfidence": {
         "title": "Outcome Autofill Confidence",
@@ -61386,6 +61856,17 @@
       },
       "MultipleNumbersConditionValuesItem": {
         "type": "number"
+      },
+      "NoteActivitySource": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/CreationSource"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "How the note was created, e.g. \u0060ui\u0060 in the Close app or \u0060api\u0060 through the API. \u0060null\u0060 if the source isn\u0027t known."
       },
       "NoteSearchResultSource": {
         "title": "Source",
@@ -61867,52 +62348,6 @@
           }
         }
       },
-      "CreateNoteActivityAttachmentsItem": {
-        "required": [
-          "filename",
-          "url"
-        ],
-        "type": "object",
-        "properties": {
-          "content_type": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "MIME type of the file, e.g. \u0060image/gif\u0060."
-          },
-          "filename": {
-            "type": "string",
-            "description": "Name of the file, e.g. \u0060picture.gif\u0060."
-          },
-          "url": {
-            "type": "string",
-            "description": "URL of the uploaded file, from the \u0060download.url\u0060 field of the Files API response. Must start with \u0060https://app.close.com/go/file/\u0060.",
-            "x-client-original-format": "uri"
-          }
-        }
-      },
-      "CreateSmsActivityAttachmentsItem": {
-        "required": [
-          "content_type",
-          "filename",
-          "url"
-        ],
-        "type": "object",
-        "properties": {
-          "content_type": {
-            "$ref": "#/components/schemas/CreateSmsActivityAttachmentsItemContentType"
-          },
-          "filename": {
-            "type": "string",
-            "description": "Name of the file, e.g. \u0060photo.jpg\u0060."
-          },
-          "url": {
-            "type": "string",
-            "description": "URL of a file uploaded with the Files API. Use the \u0060download.url\u0060 from the upload response, which begins with \u0060https://app.close.com/go/file/\u0060."
-          }
-        }
-      },
       "RateLimitErrorError": {
         "required": [
           "message",
@@ -62041,52 +62476,6 @@
             "type": "string",
             "description": "When the email was opened.",
             "format": "date-time"
-          }
-        }
-      },
-      "UpdateNoteActivityAttachmentsItem": {
-        "required": [
-          "filename",
-          "url"
-        ],
-        "type": "object",
-        "properties": {
-          "content_type": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "MIME type of the file, e.g. \u0060image/gif\u0060."
-          },
-          "filename": {
-            "type": "string",
-            "description": "Name of the file, e.g. \u0060picture.gif\u0060."
-          },
-          "url": {
-            "type": "string",
-            "description": "URL of the uploaded file, from the \u0060download.url\u0060 field of the Files API response. Must start with \u0060https://app.close.com/go/file/\u0060.",
-            "x-client-original-format": "uri"
-          }
-        }
-      },
-      "UpdateSmsActivityAttachmentsItem": {
-        "required": [
-          "content_type",
-          "filename",
-          "url"
-        ],
-        "type": "object",
-        "properties": {
-          "content_type": {
-            "$ref": "#/components/schemas/UpdateSmsActivityAttachmentsItemContentType"
-          },
-          "filename": {
-            "type": "string",
-            "description": "Name of the file, e.g. \u0060photo.jpg\u0060."
-          },
-          "url": {
-            "type": "string",
-            "description": "URL of a file uploaded with the Files API. Use the \u0060download.url\u0060 from the upload response, which begins with \u0060https://app.close.com/go/file/\u0060."
           }
         }
       },
@@ -66872,7 +67261,7 @@
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ActivityBase"
+              "$ref": "#/components/schemas/NoteActivity"
             },
             "description": "The results on this page."
           },
@@ -75082,430 +75471,6 @@
           ]
         }
       },
-      "CreateSmsActivityAttachmentsItemContentType": {
-        "enum": [
-          "application/pdf",
-          "application/vcard",
-          "audio/3gpp",
-          "audio/3gpp2",
-          "audio/L24",
-          "audio/ac3",
-          "audio/amr",
-          "audio/amr-nb",
-          "audio/basic",
-          "audio/mp4",
-          "audio/mpeg",
-          "audio/ogg",
-          "audio/vnd.rn-realaudio",
-          "audio/vnd.wave",
-          "audio/webm",
-          "image/bmp",
-          "image/gif",
-          "image/jpeg",
-          "image/jpg",
-          "image/png",
-          "image/tiff",
-          "text/calendar",
-          "text/csv",
-          "text/directory",
-          "text/richtext",
-          "text/rtf",
-          "text/vcard",
-          "text/x-vcard",
-          "video/3gpp",
-          "video/3gpp-tt",
-          "video/3gpp2",
-          "video/H261",
-          "video/H263",
-          "video/H263-1998",
-          "video/H263-2000",
-          "video/H264",
-          "video/mp4",
-          "video/mpeg",
-          "video/quicktime",
-          "video/webm"
-        ],
-        "type": "string",
-        "description": "MIME type of the file, e.g. \u0060image/jpeg\u0060.",
-        "x-ms-enum": {
-          "name": "CreateSmsActivityAttachmentsItemContentType",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "application/pdf",
-              "name": "ApplicationPdf"
-            },
-            {
-              "value": "application/vcard",
-              "name": "ApplicationVcard"
-            },
-            {
-              "value": "audio/3gpp",
-              "name": "Audio3Gpp"
-            },
-            {
-              "value": "audio/3gpp2",
-              "name": "Audio3Gpp2"
-            },
-            {
-              "value": "audio/L24",
-              "name": "AudioL24"
-            },
-            {
-              "value": "audio/ac3",
-              "name": "AudioAc3"
-            },
-            {
-              "value": "audio/amr",
-              "name": "AudioAmr"
-            },
-            {
-              "value": "audio/amr-nb",
-              "name": "AudioAmrNb"
-            },
-            {
-              "value": "audio/basic",
-              "name": "AudioBasic"
-            },
-            {
-              "value": "audio/mp4",
-              "name": "AudioMp4"
-            },
-            {
-              "value": "audio/mpeg",
-              "name": "AudioMpeg"
-            },
-            {
-              "value": "audio/ogg",
-              "name": "AudioOgg"
-            },
-            {
-              "value": "audio/vnd.rn-realaudio",
-              "name": "AudioVndRnRealaudio"
-            },
-            {
-              "value": "audio/vnd.wave",
-              "name": "AudioVndWave"
-            },
-            {
-              "value": "audio/webm",
-              "name": "AudioWebm"
-            },
-            {
-              "value": "image/bmp",
-              "name": "ImageBmp"
-            },
-            {
-              "value": "image/gif",
-              "name": "ImageGif"
-            },
-            {
-              "value": "image/jpeg",
-              "name": "ImageJpeg"
-            },
-            {
-              "value": "image/jpg",
-              "name": "ImageJpg"
-            },
-            {
-              "value": "image/png",
-              "name": "ImagePng"
-            },
-            {
-              "value": "image/tiff",
-              "name": "ImageTiff"
-            },
-            {
-              "value": "text/calendar",
-              "name": "TextCalendar"
-            },
-            {
-              "value": "text/csv",
-              "name": "TextCsv"
-            },
-            {
-              "value": "text/directory",
-              "name": "TextDirectory"
-            },
-            {
-              "value": "text/richtext",
-              "name": "TextRichtext"
-            },
-            {
-              "value": "text/rtf",
-              "name": "TextRtf"
-            },
-            {
-              "value": "text/vcard",
-              "name": "TextVcard"
-            },
-            {
-              "value": "text/x-vcard",
-              "name": "TextXVcard"
-            },
-            {
-              "value": "video/3gpp",
-              "name": "Video3Gpp"
-            },
-            {
-              "value": "video/3gpp-tt",
-              "name": "Video3GppTt"
-            },
-            {
-              "value": "video/3gpp2",
-              "name": "Video3Gpp2"
-            },
-            {
-              "value": "video/H261",
-              "name": "VideoH261"
-            },
-            {
-              "value": "video/H263",
-              "name": "VideoH263"
-            },
-            {
-              "value": "video/H263-1998",
-              "name": "VideoH2631998"
-            },
-            {
-              "value": "video/H263-2000",
-              "name": "VideoH2632000"
-            },
-            {
-              "value": "video/H264",
-              "name": "VideoH264"
-            },
-            {
-              "value": "video/mp4",
-              "name": "VideoMp4"
-            },
-            {
-              "value": "video/mpeg",
-              "name": "VideoMpeg"
-            },
-            {
-              "value": "video/quicktime",
-              "name": "VideoQuicktime"
-            },
-            {
-              "value": "video/webm",
-              "name": "VideoWebm"
-            }
-          ]
-        }
-      },
-      "UpdateSmsActivityAttachmentsItemContentType": {
-        "enum": [
-          "application/pdf",
-          "application/vcard",
-          "audio/3gpp",
-          "audio/3gpp2",
-          "audio/L24",
-          "audio/ac3",
-          "audio/amr",
-          "audio/amr-nb",
-          "audio/basic",
-          "audio/mp4",
-          "audio/mpeg",
-          "audio/ogg",
-          "audio/vnd.rn-realaudio",
-          "audio/vnd.wave",
-          "audio/webm",
-          "image/bmp",
-          "image/gif",
-          "image/jpeg",
-          "image/jpg",
-          "image/png",
-          "image/tiff",
-          "text/calendar",
-          "text/csv",
-          "text/directory",
-          "text/richtext",
-          "text/rtf",
-          "text/vcard",
-          "text/x-vcard",
-          "video/3gpp",
-          "video/3gpp-tt",
-          "video/3gpp2",
-          "video/H261",
-          "video/H263",
-          "video/H263-1998",
-          "video/H263-2000",
-          "video/H264",
-          "video/mp4",
-          "video/mpeg",
-          "video/quicktime",
-          "video/webm"
-        ],
-        "type": "string",
-        "description": "MIME type of the file, e.g. \u0060image/jpeg\u0060.",
-        "x-ms-enum": {
-          "name": "UpdateSmsActivityAttachmentsItemContentType",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "application/pdf",
-              "name": "ApplicationPdf"
-            },
-            {
-              "value": "application/vcard",
-              "name": "ApplicationVcard"
-            },
-            {
-              "value": "audio/3gpp",
-              "name": "Audio3Gpp"
-            },
-            {
-              "value": "audio/3gpp2",
-              "name": "Audio3Gpp2"
-            },
-            {
-              "value": "audio/L24",
-              "name": "AudioL24"
-            },
-            {
-              "value": "audio/ac3",
-              "name": "AudioAc3"
-            },
-            {
-              "value": "audio/amr",
-              "name": "AudioAmr"
-            },
-            {
-              "value": "audio/amr-nb",
-              "name": "AudioAmrNb"
-            },
-            {
-              "value": "audio/basic",
-              "name": "AudioBasic"
-            },
-            {
-              "value": "audio/mp4",
-              "name": "AudioMp4"
-            },
-            {
-              "value": "audio/mpeg",
-              "name": "AudioMpeg"
-            },
-            {
-              "value": "audio/ogg",
-              "name": "AudioOgg"
-            },
-            {
-              "value": "audio/vnd.rn-realaudio",
-              "name": "AudioVndRnRealaudio"
-            },
-            {
-              "value": "audio/vnd.wave",
-              "name": "AudioVndWave"
-            },
-            {
-              "value": "audio/webm",
-              "name": "AudioWebm"
-            },
-            {
-              "value": "image/bmp",
-              "name": "ImageBmp"
-            },
-            {
-              "value": "image/gif",
-              "name": "ImageGif"
-            },
-            {
-              "value": "image/jpeg",
-              "name": "ImageJpeg"
-            },
-            {
-              "value": "image/jpg",
-              "name": "ImageJpg"
-            },
-            {
-              "value": "image/png",
-              "name": "ImagePng"
-            },
-            {
-              "value": "image/tiff",
-              "name": "ImageTiff"
-            },
-            {
-              "value": "text/calendar",
-              "name": "TextCalendar"
-            },
-            {
-              "value": "text/csv",
-              "name": "TextCsv"
-            },
-            {
-              "value": "text/directory",
-              "name": "TextDirectory"
-            },
-            {
-              "value": "text/richtext",
-              "name": "TextRichtext"
-            },
-            {
-              "value": "text/rtf",
-              "name": "TextRtf"
-            },
-            {
-              "value": "text/vcard",
-              "name": "TextVcard"
-            },
-            {
-              "value": "text/x-vcard",
-              "name": "TextXVcard"
-            },
-            {
-              "value": "video/3gpp",
-              "name": "Video3Gpp"
-            },
-            {
-              "value": "video/3gpp-tt",
-              "name": "Video3GppTt"
-            },
-            {
-              "value": "video/3gpp2",
-              "name": "Video3Gpp2"
-            },
-            {
-              "value": "video/H261",
-              "name": "VideoH261"
-            },
-            {
-              "value": "video/H263",
-              "name": "VideoH263"
-            },
-            {
-              "value": "video/H263-1998",
-              "name": "VideoH2631998"
-            },
-            {
-              "value": "video/H263-2000",
-              "name": "VideoH2632000"
-            },
-            {
-              "value": "video/H264",
-              "name": "VideoH264"
-            },
-            {
-              "value": "video/mp4",
-              "name": "VideoMp4"
-            },
-            {
-              "value": "video/mpeg",
-              "name": "VideoMpeg"
-            },
-            {
-              "value": "video/quicktime",
-              "name": "VideoQuicktime"
-            },
-            {
-              "value": "video/webm",
-              "name": "VideoWebm"
-            }
-          ]
-        }
-      },
       "DialersListSourceTypeParameter": {
         "title": "Source Type",
         "anyOf": [
@@ -78964,7 +78929,8 @@
                 "items": {
                   "$ref": "#/components/schemas/Contact"
                 },
-                "description": "Contacts on the lead. Deprecated: use List Contacts with \u0060lead_id\u0060 instead."
+                "description": "Contacts on the lead. Deprecated: use List Contacts with \u0060lead_id\u0060 instead.",
+                "deprecated": true
               },
               "contacts_summary": {
                 "title": "Contacts Summary",
@@ -79061,7 +79027,8 @@
                 "items": {
                   "$ref": "#/components/schemas/Opportunity"
                 },
-                "description": "Opportunities on the lead. Deprecated: use List Opportunities with \u0060lead_id\u0060 instead."
+                "description": "Opportunities on the lead. Deprecated: use List Opportunities with \u0060lead_id\u0060 instead.",
+                "deprecated": true
               },
               "organization_id": {
                 "title": "Organization ID",
@@ -80184,17 +80151,15 @@
                   "null",
                   "string"
                 ],
-                "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead."
+                "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead.",
+                "deprecated": true
               },
               "ai_draft": {
                 "$ref": "#/components/schemas/EmailActivityAiDraft"
               },
               "attachments": {
                 "title": "Attachments",
-                "type": [
-                  "null",
-                  "array"
-                ],
+                "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/Attachment"
                 },
@@ -80233,7 +80198,7 @@
                   "null",
                   "string"
                 ],
-                "description": "First 200 characters of the body, as plain text."
+                "description": "First 200 characters of the body, as plain text. \u0060null\u0060 if the email has no body."
               },
               "body_text": {
                 "title": "Body Text",
@@ -80408,10 +80373,7 @@
               },
               "opens": {
                 "title": "Opens",
-                "type": [
-                  "null",
-                  "array"
-                ],
+                "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/EmailOpen"
                 },
@@ -80448,10 +80410,7 @@
               },
               "send_attempts": {
                 "title": "Send Attempts",
-                "type": [
-                  "null",
-                  "array"
-                ],
+                "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/SendAttempt"
                 },
@@ -81438,7 +81397,8 @@
                   "null",
                   "string"
                 ],
-                "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead."
+                "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead.",
+                "deprecated": true
               },
               "attached_call_ids": {
                 "title": "Attached Call IDs",
@@ -81470,7 +81430,8 @@
                 "items": {
                   "type": "string"
                 },
-                "description": "Deprecated. Use \u0060provider_calendar_event_id\u0060 instead."
+                "description": "Deprecated. Use \u0060provider_calendar_event_id\u0060 instead.",
+                "deprecated": true
               },
               "conference_links": {
                 "title": "Conference Links",
@@ -81502,7 +81463,8 @@
                   "null",
                   "string"
                 ],
-                "description": "Deprecated. Use \u0060playbook_id\u0060 instead."
+                "description": "Deprecated. Use \u0060playbook_id\u0060 instead.",
+                "deprecated": true
               },
               "conversation_type_reason": {
                 "$ref": "#/components/schemas/MeetingSearchResultConversationTypeReason"
@@ -81803,7 +81765,8 @@
                   "null",
                   "string"
                 ],
-                "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead."
+                "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead.",
+                "deprecated": true
               },
               "attachments": {
                 "title": "Attachments",
@@ -82256,7 +82219,8 @@
                   "null",
                   "string"
                 ],
-                "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead."
+                "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead.",
+                "deprecated": true
               },
               "attachments": {
                 "title": "Attachments",
@@ -85569,17 +85533,15 @@
             "null",
             "string"
           ],
-          "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead."
+          "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead.",
+          "deprecated": true
         },
         "ai_draft": {
           "$ref": "#/components/schemas/EmailActivityAiDraft"
         },
         "attachments": {
           "title": "Attachments",
-          "type": [
-            "null",
-            "array"
-          ],
+          "type": "array",
           "items": {
             "$ref": "#/components/schemas/Attachment"
           },
@@ -85618,7 +85580,7 @@
             "null",
             "string"
           ],
-          "description": "First 200 characters of the body, as plain text."
+          "description": "First 200 characters of the body, as plain text. \u0060null\u0060 if the email has no body."
         },
         "body_text": {
           "title": "Body Text",
@@ -85793,10 +85755,7 @@
         },
         "opens": {
           "title": "Opens",
-          "type": [
-            "null",
-            "array"
-          ],
+          "type": "array",
           "items": {
             "$ref": "#/components/schemas/EmailOpen"
           },
@@ -85833,10 +85792,7 @@
         },
         "send_attempts": {
           "title": "Send Attempts",
-          "type": [
-            "null",
-            "array"
-          ],
+          "type": "array",
           "items": {
             "$ref": "#/components/schemas/SendAttempt"
           },
@@ -87167,7 +87123,8 @@
           "items": {
             "$ref": "#/components/schemas/Contact"
           },
-          "description": "Contacts on the lead. Deprecated: use List Contacts with \u0060lead_id\u0060 instead."
+          "description": "Contacts on the lead. Deprecated: use List Contacts with \u0060lead_id\u0060 instead.",
+          "deprecated": true
         },
         "contacts_summary": {
           "title": "Contacts Summary",
@@ -87264,7 +87221,8 @@
           "items": {
             "$ref": "#/components/schemas/Opportunity"
           },
-          "description": "Opportunities on the lead. Deprecated: use List Opportunities with \u0060lead_id\u0060 instead."
+          "description": "Opportunities on the lead. Deprecated: use List Opportunities with \u0060lead_id\u0060 instead.",
+          "deprecated": true
         },
         "organization_id": {
           "title": "Organization ID",
@@ -87665,7 +87623,8 @@
             "null",
             "string"
           ],
-          "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead."
+          "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead.",
+          "deprecated": true
         },
         "attached_call_ids": {
           "title": "Attached Call IDs",
@@ -87697,7 +87656,8 @@
           "items": {
             "type": "string"
           },
-          "description": "Deprecated. Use \u0060provider_calendar_event_id\u0060 instead."
+          "description": "Deprecated. Use \u0060provider_calendar_event_id\u0060 instead.",
+          "deprecated": true
         },
         "conference_links": {
           "title": "Conference Links",
@@ -87729,7 +87689,8 @@
             "null",
             "string"
           ],
-          "description": "Deprecated. Use \u0060playbook_id\u0060 instead."
+          "description": "Deprecated. Use \u0060playbook_id\u0060 instead.",
+          "deprecated": true
         },
         "conversation_type_reason": {
           "$ref": "#/components/schemas/MeetingSearchResultConversationTypeReason"
@@ -88189,7 +88150,8 @@
             "null",
             "string"
           ],
-          "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead."
+          "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead.",
+          "deprecated": true
         },
         "attachments": {
           "title": "Attachments",
@@ -89192,7 +89154,8 @@
             "null",
             "string"
           ],
-          "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead."
+          "description": "Deprecated. Use \u0060created_by_agent_id\u0060 instead.",
+          "deprecated": true
         },
         "attachments": {
           "title": "Attachments",
@@ -91129,6 +91092,23 @@
         }
       ]
     },
+    "UpdateNoteActivityActivityAt": {
+      "title": "Activity At",
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "string",
+          "format": "date"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "When the note was logged, which sets its place in the lead\u0027s activity timeline. Defaults to the time the note is created."
+    },
     "UpdateSmsActivityCallerIdMode": {
       "anyOf": [
         {
@@ -91138,7 +91118,7 @@
           "type": "null"
         }
       ],
-      "description": "How to choose \u0060local_phone\u0060 when sending. \u0060auto\u0060 lets Close pick the number. A logged SMS can\u0027t have a caller ID mode. Can only be changed while the SMS is a draft."
+      "description": "How to choose \u0060local_phone\u0060 when sending. \u0060auto\u0060 lets Close pick the number. A logged SMS can\u0027t have a Caller ID mode. Can only be changed while the SMS is a draft."
     },
     "UpdateTaskDate": {
       "title": "Date",

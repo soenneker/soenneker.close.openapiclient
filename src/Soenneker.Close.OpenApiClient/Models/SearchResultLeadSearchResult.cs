@@ -100,6 +100,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         private List<string> _explicitNullValueContactIds = default!;
 #endif
         /// <summary>Contacts on the lead. Deprecated: use List Contacts with `lead_id` instead.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.Contact>? Contacts { get => _explicitNullValueContacts; set { _explicitNullValueContacts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contacts"); else _explicitNullProperties?.Remove("contacts"); } }
@@ -219,6 +220,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>Opportunities on the lead. Deprecated: use List Opportunities with `lead_id` instead.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Close.OpenApiClient.Models.Opportunity>? Opportunities { get => _explicitNullValueOpportunities; set { _explicitNullValueOpportunities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("opportunities"); else _explicitNullProperties?.Remove("opportunities"); } }

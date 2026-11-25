@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.Close.OpenApiClient.Models
 {
+    /// <summary>
+    /// Changes to an SMS activity. Fields you leave out keep their value.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class UpdateSmsActivity : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
@@ -53,14 +54,14 @@ namespace Soenneker.Close.OpenApiClient.Models
         /// <summary>Files to send with the SMS as an MMS, at most 10. Can only be changed while the SMS is a draft.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityAttachmentsItem>? Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; AdditionalData?.Remove("attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
-        private List<global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityAttachmentsItem>? _explicitNullValueAttachments = default!;
+        public List<global::Soenneker.Close.OpenApiClient.Models.SmsAttachmentFile>? Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; AdditionalData?.Remove("attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.SmsAttachmentFile>? _explicitNullValueAttachments = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityAttachmentsItem> Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; AdditionalData?.Remove("attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
-        private List<global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityAttachmentsItem> _explicitNullValueAttachments = default!;
+        public List<global::Soenneker.Close.OpenApiClient.Models.SmsAttachmentFile> Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; AdditionalData?.Remove("attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
+        private List<global::Soenneker.Close.OpenApiClient.Models.SmsAttachmentFile> _explicitNullValueAttachments = default!;
 #endif
-        /// <summary>How to choose `local_phone` when sending. `auto` lets Close pick the number. A logged SMS can&apos;t have a caller ID mode. Can only be changed while the SMS is a draft.</summary>
+        /// <summary>How to choose `local_phone` when sending. `auto` lets Close pick the number. A logged SMS can&apos;t have a Caller ID mode. Can only be changed while the SMS is a draft.</summary>
         public global::Soenneker.Close.OpenApiClient.Models.CallerIdMode? CallerIdMode { get => _explicitNullValueCallerIdMode; set { _explicitNullValueCallerIdMode = value; AdditionalData?.Remove("caller_id_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("caller_id_mode"); else _explicitNullProperties?.Remove("caller_id_mode"); } }
         private global::Soenneker.Close.OpenApiClient.Models.CallerIdMode? _explicitNullValueCallerIdMode = default!;
         /// <summary>ID of the contact the SMS is with. Can only be changed while the SMS is a draft.</summary>
@@ -168,7 +169,7 @@ namespace Soenneker.Close.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>(13)
             {
                 { "activity_at", n => { ActivityAt = n.GetDateTimeOffsetValue(); } },
-                { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityAttachmentsItem>(global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityAttachmentsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.SmsAttachmentFile>(global::Soenneker.Close.OpenApiClient.Models.SmsAttachmentFile.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "caller_id_mode", n => { var parsed = n.GetEnumValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdMode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCallerIdMode = default; _explicitNullProperties?.Remove("caller_id_mode"); AdditionalData["caller_id_mode"] = unknown; } else { CallerIdMode = parsed; AdditionalData.Remove("caller_id_mode"); } } },
                 { "contact_id", n => { ContactId = n.GetStringValue(); } },
                 { "date_scheduled", n => { DateScheduled = n.GetDateTimeOffsetValue(); } },
@@ -190,7 +191,7 @@ namespace Soenneker.Close.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("activity_at", ActivityAt);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.UpdateSmsActivityAttachmentsItem>("attachments", Attachments);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Close.OpenApiClient.Models.SmsAttachmentFile>("attachments", Attachments);
             writer.WriteEnumValue<global::Soenneker.Close.OpenApiClient.Models.CallerIdMode>("caller_id_mode", CallerIdMode);
             writer.WriteStringValue("contact_id", ContactId);
             writer.WriteDateTimeOffsetValue("date_scheduled", DateScheduled);
